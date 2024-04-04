@@ -422,7 +422,9 @@ public class StableDiffusionText2Material : StableDiffusionGenerator
             Shader standardShader = sdc.settings.useUniversalRenderPipeline ? Shader.Find("Universal Render Pipeline/Lit") : Shader.Find("Standard");
             
             if(!standardShader)
+            {
                 Debug.LogError("Shader setup wrong: Please check if you're project uses 'Standard' or 'Universal Render Pipeline'");
+            }
             
             mr.sharedMaterial = new Material(standardShader);
             mr.sharedMaterial.mainTexture = texture;
