@@ -33,7 +33,7 @@ public class StableDiffusionGenerator : MonoBehaviour
             SDProgress sdp = JsonConvert.DeserializeObject<SDProgress>(responseBody);
             progress = sdp.progress;
 
-            EditorUtility.DisplayProgressBar("Generation in progress", (progress*100).ToString("F1") + "%", progress);
+            //EditorUtility.DisplayProgressBar("Generation in progress", (progress*100).ToString("F1") + "%", progress);
         }
 #endif
     }
@@ -67,7 +67,7 @@ public class StableDiffusionGenerator : MonoBehaviour
             SDProgress sdp = JsonConvert.DeserializeObject<SDProgress>(modelInfoRequest.downloadHandler.text);
             progress = sdp.progress;
 
-            EditorUtility.DisplayProgressBar("Generation in progress", progress * 100 + "%", progress);
+            //EditorUtility.DisplayProgressBar("Generation in progress", progress * 100 + "%", progress);
         }
 
         _updateProgressRunning = null;

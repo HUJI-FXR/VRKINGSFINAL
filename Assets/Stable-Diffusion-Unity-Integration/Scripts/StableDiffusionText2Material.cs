@@ -1,4 +1,3 @@
-using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.IO;
@@ -6,6 +5,8 @@ using System.Net;
 using System.Text;
 using UnityEngine;
 using System.Threading.Tasks;
+
+using Newtonsoft.Json;
 
 #if UNITY_EDITOR
 using UnityEditor;
