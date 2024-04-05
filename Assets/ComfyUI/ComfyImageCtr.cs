@@ -92,7 +92,7 @@ public void RequestFileName(string id){
     
      IEnumerator DownloadImage(string imageUrl)
     {
-         yield return new WaitForSeconds(0.5f);
+         //yield return new WaitForSeconds(0.5f);
         using (UnityWebRequest webRequest = UnityWebRequestTexture.GetTexture(imageUrl))
         {
             yield return webRequest.SendWebRequest();

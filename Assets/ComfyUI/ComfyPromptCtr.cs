@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 [System.Serializable]
 public class ResponseData
@@ -13,10 +14,11 @@ public class ComfyPromptCtr : MonoBehaviour
 {
 
     public InputField pInput,nInput,promptJsonInput;
+
     private void Start()
     {
         //QueuePrompt("pretty man","watermark");
-        QueuePrompt();
+        InvokeRepeating("QueuePrompt", 0.7f, 1);
     }
 
     public void QueuePrompt()
@@ -29,6 +31,9 @@ public class ComfyPromptCtr : MonoBehaviour
         string promptText = GeneratePromptJson();
         promptText = promptText.Replace("Pprompt", positivePrompt);
         promptText = promptText.Replace("Nprompt", negativePrompt);
+
+        promptText = promptText.Replace("SeedHere", UnityEngine.Random.Range(1, 100).ToString());
+
         Debug.Log(promptText);
 
         UnityWebRequest request = new UnityWebRequest(url, "POST");
@@ -41,7 +46,7 @@ public class ComfyPromptCtr : MonoBehaviour
 
         if (request.result != UnityWebRequest.Result.Success)
         {
-            Debug.Log(request.error);
+            //Debug.Log(request.error);
         }
         else
         {
@@ -52,7 +57,10 @@ public class ComfyPromptCtr : MonoBehaviour
             GetComponent<ComfyWebsocket>().promptID = data.prompt_id;
            // GetComponent<ComfyImageCtr>().RequestFileName(data.prompt_id);
         }
+
+        yield break;
     }
+
     public string promptJson;
 
 private string GeneratePromptJson()

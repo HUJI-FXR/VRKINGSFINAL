@@ -1,0 +1,15 @@
+ComfyUI:
+https://github.com/comfyanonymous/ComfyUI
+ComfyUI Unity integration:
+https://www.youtube.com/watch?v=iJUhw5hTiVI
+
+Automatic1111:
+https://github.com/AUTOMATIC1111/stable-diffusion-webui
+Automatic1111 Unity integration:
+https://www.youtube.com/watch?app=desktop&v=8gf5GPzhgk8
+
+SD 1.5 LCM LoRA:
+https://civitai.com/models/198694?modelVersionId=223551
+MiniSD:
+https://huggingface.co/justinpinkney/miniSD + https://www.storminthecastle.com/posts/minisd/
+
