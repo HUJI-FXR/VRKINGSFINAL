@@ -47,6 +47,7 @@ public class ComfyWebsocket : MonoBehaviour
                     var str = Encoding.UTF8.GetString(buffer, 0, result.Count);
                     stringBuilder.Append(str);
                 }
+                Debug.Log("RESULT COUNT:" + result.Count.ToString());
             }
             while (!result.EndOfMessage);
 

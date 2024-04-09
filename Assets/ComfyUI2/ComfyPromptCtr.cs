@@ -17,8 +17,8 @@ public class ComfyPromptCtr : MonoBehaviour
 
     private void Start()
     {
-        //QueuePrompt("pretty man","watermark");
-        InvokeRepeating("QueuePrompt", 0.7f, 1);
+        QueuePrompt();
+        //InvokeRepeating("QueuePrompt", 1f, 1);
     }
 
     public void QueuePrompt()
@@ -32,9 +32,9 @@ public class ComfyPromptCtr : MonoBehaviour
         promptText = promptText.Replace("Pprompt", positivePrompt);
         promptText = promptText.Replace("Nprompt", negativePrompt);
 
-        promptText = promptText.Replace("SeedHere", UnityEngine.Random.Range(1, 100).ToString());
+        promptText = promptText.Replace("SeedHere", UnityEngine.Random.Range(1, 1000).ToString());
 
-        Debug.Log(promptText);
+        //Debug.Log(promptText);
 
         UnityWebRequest request = new UnityWebRequest(url, "POST");
         byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(promptText);
