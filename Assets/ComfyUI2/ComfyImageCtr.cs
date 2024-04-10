@@ -44,8 +44,8 @@ public class ComfyImageCtr: MonoBehaviour
     private void Start()
     {
         //texture_timer.Elapsed += TimerElapsed;
-        texture_timer.AutoReset = true; // AutoReset is set to true to restart the timer automatically
-        texture_timer.Enabled = true;
+        //texture_timer.AutoReset = true; // AutoReset is set to true to restart the timer automatically
+        //texture_timer.Enabled = true;
     }
     public void RequestFileName(string id){
     StartCoroutine(RequestFileNameRoutine(id));
@@ -217,6 +217,7 @@ string[] ExtractFilename(string jsonString)
         //    outputImage.sprite = cur_sprite;
         //}
 
+        Debug.Log("COUNT: " + blocks.transform.childCount.ToString());
         GameObject cur_child_block = children_blocks[UnityEngine.Random.Range(0, blocks.transform.childCount)];
         if (cur_child_block != null)
         {
