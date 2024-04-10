@@ -32,7 +32,14 @@ public class PromptData
 
 public class ComfyImageCtr: MonoBehaviour
 {
-    Queue<Texture2D> textures = new Queue<Texture2D>();
+    static int TOTAL_NUM_TEXTURES = 50;
+    Texture2D[] textures = new Texture2D[TOTAL_NUM_TEXTURES];
+    Sprite[] final_sprites = new Sprite[TOTAL_NUM_TEXTURES];
+
+    public GameObject blocks;
+    private GameObject[] children_blocks;
+
+    int num_texture = 0;
     System.Timers.Timer texture_timer = new System.Timers.Timer(1000);
     private void Start()
     {
@@ -84,14 +91,28 @@ public class ComfyImageCtr: MonoBehaviour
                     for (int i = 0; i < filenames.Length; i++)
                     {
                         string imageURL = "http://127.0.0.1:8188/view?filename=" + filenames[i];
+                        Debug.Log(filenames[i]);
+                        //StartCoroutine(ExampleCoroutine());
                         StartCoroutine(DownloadImage(imageURL));
                     }
+                    InvokeRepeating("DelayedChangeToTexture", 1f, 0.01f);
                     break;
             }
         }
     }
-    
-    string[] ExtractFilename(string jsonString)
+
+    IEnumerator ExampleCoroutine()
+    {
+        //Print the time of when the function is first called.
+        //Debug.Log("Started Coroutine at timestamp : " + Time.time);
+
+        //yield on a new YieldInstruction that waits for 5 seconds.
+        yield return new WaitForSeconds(1f);
+
+        //After we have waited 5 seconds print the time again.
+        //Debug.Log("Finished Coroutine at timestamp : " + Time.time);
+    }
+string[] ExtractFilename(string jsonString)
     {
         // Jonathan - Changed this from returning a single filename to all the filenames in the output - with the for loop
         string keyToLookFor = "\"filename\":";
@@ -127,6 +148,7 @@ public class ComfyImageCtr: MonoBehaviour
 
             // Removing leading and trailing quotes from the extracted value
             filenames[i] = filenameWithQuotes.Trim('"');
+           
         }
 
         Debug.Log(filenames);
@@ -146,9 +168,8 @@ public class ComfyImageCtr: MonoBehaviour
             {
                 // Get the downloaded texture
                 Texture2D texture = ((DownloadHandlerTexture)webRequest.downloadHandler).texture;
-
-                outputImage.sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.zero);
-    
+                // Adding the texture to the texture queue
+                AddTextureToTotal(texture);
             }
             else
             {
@@ -157,13 +178,51 @@ public class ComfyImageCtr: MonoBehaviour
         }
     }
 
-    // todo want to cause texture change every 0.1 seconds without regard of what is happening around it
-    async void DelayedChangeToTexture(Texture2D texture)
-    {
-        textures.Enqueue(texture);
-        texture_timer.Start();
+    void AddTextureToTotal(Texture2D texture) {
+        textures[num_texture] = texture;
+        num_texture++;
+        if (num_texture >= TOTAL_NUM_TEXTURES)
+        {
+            num_texture = 0;
 
-        //if (texture_timer.Elapsed)
-        textures.Dequeue();
+            for (int i = 0; i < TOTAL_NUM_TEXTURES; i++)
+            {
+                Texture2D cur_texture = textures[i];
+                final_sprites[i] = Sprite.Create(cur_texture, new Rect(0, 0, cur_texture.width, cur_texture.height), Vector2.zero);
+            }
+
+            children_blocks = new GameObject[blocks.transform.childCount];
+            for (int i = 0; i < blocks.transform.childCount; i++)
+            {
+                children_blocks[i] = blocks.transform.GetChild(i).gameObject;
+            }
+        }
+    }
+
+    // todo want to cause texture change every 1 seconds without regard of what is happening around it
+    void DelayedChangeToTexture()
+    {
+        //if (outputImage.sprite != null)
+        //{
+        //    Destroy(outputImage.sprite);
+        //}
+        if (final_sprites == null | blocks == null)
+        {
+            return;
+        }
+
+        Sprite cur_sprite = final_sprites[UnityEngine.Random.Range(0, TOTAL_NUM_TEXTURES)];
+        //if (cur_sprite != null)
+        //{
+        //    outputImage.sprite = cur_sprite;
+        //}
+
+        GameObject cur_child_block = children_blocks[UnityEngine.Random.Range(0, blocks.transform.childCount)];
+        if (cur_child_block != null)
+        {
+            Renderer cur_block_renderer = cur_child_block.GetComponent<Renderer>();
+            Texture2D cur_texture = textures[UnityEngine.Random.Range(0, TOTAL_NUM_TEXTURES)];
+            cur_block_renderer.material.SetTexture("_MainTex", cur_texture);
+        }
     }
 }

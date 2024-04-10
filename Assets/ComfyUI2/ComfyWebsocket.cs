@@ -29,7 +29,8 @@ public class ComfyWebsocket : MonoBehaviour
     public string promptID;
     private async void StartListening()
     {
-        var buffer = new byte[1024 * 4];
+        //new byte[1024 * 4];
+        var buffer = new byte[1024 * 16];
         WebSocketReceiveResult result = null;
 
         while (ws.State == WebSocketState.Open)
