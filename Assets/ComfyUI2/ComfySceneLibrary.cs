@@ -9,6 +9,9 @@ using UnityEditor.PackageManager;
 using System.Net.WebSockets;
 using System.Text;
 using System.Text.RegularExpressions;
+using UnityEngine.InputSystem;
+using System.Collections.Generic;
+using System.Security.Cryptography;
 
 [System.Serializable]
 public class ResponseData
@@ -41,21 +44,39 @@ public class PromptData
 }
 
 
+[Serializable]
+public struct GameObjectPromptJsonPair
+{
+    public GameObject ParentObject;
+
+    [System.NonSerialized]
+    public List<Texture2D> textures;
+    [System.NonSerialized]
+    public GameObject[] childrenBlocks;
+}
+
 public class ComfySceneLibrary : MonoBehaviour
 {
-    private static int TOTAL_NUM_TEXTURES = 50;
+    private static int TOTAL_NUM_TEXTURES = 3;
     private Texture2D[] textures = new Texture2D[TOTAL_NUM_TEXTURES];
     private Sprite[] final_sprites = new Sprite[TOTAL_NUM_TEXTURES];
+
+    //public Dictionary<GameObject, Texture2D[]> textureDictionary = new Dictionary<GameObject, Texture2D[]>();
+    public GameObjectPromptJsonPair[] TextureLists;
 
     private string serverAddress = "127.0.0.1:8188";
     private string clientId = Guid.NewGuid().ToString();
     private ClientWebSocket ws = new ClientWebSocket();
 
-    public GameObject blocks;
-    private GameObject[] children_blocks;
+    //public GameObject blocks;
+    //private GameObject[] children_blocks;
 
-    private int num_texture = 0;
+    //private int num_texture = 0;
     //private System.Timers.Timer texture_timer = new System.Timers.Timer(1000);
+
+    private string promptID;
+
+    private int curParentObject = 0;
 
     public string positivePrompt;
     public string negativePrompt;
@@ -63,10 +84,36 @@ public class ComfySceneLibrary : MonoBehaviour
 
     private async void Start()
     {
+        // TODO remove the global children_blocks and blocks array
+        /*children_blocks = new GameObject[blocks.transform.childCount];
+        for (int i = 0; i < blocks.transform.childCount; i++)
+        {
+            children_blocks[i] = blocks.transform.GetChild(i).gameObject;
+        }*/
+
+        for (int i = 0; i<TextureLists.Length; i++)
+        {
+            TextureLists[i].textures = new List<Texture2D>();
+
+            Transform curParentTransform = TextureLists[i].ParentObject.transform;
+            int numberOfChildren = curParentTransform.childCount;
+            if (numberOfChildren > 0)
+            {
+                // TODO what if the number of children changes in the middle of the game inside a parent object? need to FIX
+                TextureLists[i].childrenBlocks = new GameObject[numberOfChildren];
+                for (int j = 0; j < numberOfChildren; j++)
+                {
+                    TextureLists[i].childrenBlocks[j] = curParentTransform.GetChild(j).gameObject;
+                }
+            }
+        }
+
+        InvokeRepeating("DelayedChangeToTexture", 1f, 0.01f);
+
         await ws.ConnectAsync(new Uri($"ws://{serverAddress}/ws?clientId={clientId}"), CancellationToken.None);
         StartListening();
     }
-    
+
     public void PromptActivate()
     {
         StartCoroutine(QueuePromptCoroutine());
@@ -82,6 +129,8 @@ public class ComfySceneLibrary : MonoBehaviour
             ""id"": ""{guid}"",
             ""prompt"": {promptJson.text}
         }}";
+
+        Debug.Log(promptJson.text);
 
         // Replacing stand-in tags with relevant input for the final generation
         promptText = promptText.Replace("Pprompt", positivePrompt);
@@ -105,15 +154,13 @@ public class ComfySceneLibrary : MonoBehaviour
             Debug.Log("Prompt queued successfully." + request.downloadHandler.text);
 
             ResponseData data = JsonUtility.FromJson<ResponseData>(request.downloadHandler.text);
+            promptID = data.prompt_id;
             Debug.Log("Prompt ID: " + data.prompt_id);
-            GetComponent<ComfyWebsocket>().promptID = data.prompt_id;
-            // GetComponent<ComfyImageCtr>().RequestFileName(data.prompt_id);
         }
 
         yield break;
     }
 
-    public string promptID;
     private async void StartListening()
     {
         //new byte[1024 * 4];
@@ -135,16 +182,22 @@ public class ComfySceneLibrary : MonoBehaviour
                     var str = Encoding.UTF8.GetString(buffer, 0, result.Count);
                     stringBuilder.Append(str);
                 }
-                Debug.Log("RESULT COUNT:" + result.Count.ToString());
+                //Debug.Log("RESULT COUNT:" + result.Count.ToString());
             }
             while (!result.EndOfMessage);
 
             string response = stringBuilder.ToString();
-            Debug.Log("Received: " + response);
+            //Debug.Log("Received: " + response);
 
             if (response.Contains("\"queue_remaining\": 0"))
             {
-                RequestFileName(promptID);
+                RequestFileName(promptID, curParentObject);
+                
+                curParentObject++;
+                if (curParentObject >= TextureLists.Length)
+                {
+                    curParentObject = 0;
+                }
             }
         }
     }
@@ -157,12 +210,12 @@ public class ComfySceneLibrary : MonoBehaviour
         }
     }
 
-    public void RequestFileName(string id)
+    public void RequestFileName(string id, int curGroup)
     {
-        StartCoroutine(RequestFileNameRoutine(id));
+        StartCoroutine(RequestFileNameRoutine(id, curGroup));
     }
 
-    IEnumerator RequestFileNameRoutine(string promptID)
+    IEnumerator RequestFileNameRoutine(string promptID, int curGroup)
     {
         string url = "http://" + serverAddress + "/history/" + promptID;
 
@@ -194,39 +247,30 @@ public class ComfySceneLibrary : MonoBehaviour
                         sb.Append(" ");
                     }
                     string result = sb.ToString();
-                    Debug.Log("FILENAMES: " + result);
+                    //Debug.Log("FILENAMES: " + result);
 
 
 
                     for (int i = 0; i < filenames.Length; i++)
                     {
                         string imageURL = "http://" + serverAddress + "/view?filename=" + filenames[i];
-                        Debug.Log(filenames[i]);
+                        //Debug.Log(filenames[i]);
                         //StartCoroutine(ExampleCoroutine());
-                        StartCoroutine(DownloadImage(imageURL));
+                        StartCoroutine(DownloadImage(imageURL, curGroup));
                     }
-                    InvokeRepeating("DelayedChangeToTexture", 1f, 0.01f);
+                    //InvokeRepeating("DelayedChangeToTexture", 1f, 0.01f); -- at Start OK?
                     break;
             }
         }
     }
 
-    IEnumerator ExampleCoroutine()
-    {
-        //Print the time of when the function is first called.
-        //Debug.Log("Started Coroutine at timestamp : " + Time.time);
-
-        //yield on a new YieldInstruction that waits for 5 seconds.
-        yield return new WaitForSeconds(1f);
-
-        //After we have waited 5 seconds print the time again.
-        //Debug.Log("Finished Coroutine at timestamp : " + Time.time);
-    }
     string[] ExtractFilename(string jsonString)
     {
         // Jonathan - Changed this from returning a single filename to all the filenames in the output - with the for loop
         string keyToLookFor = "\"filename\":";
         int total_files = Regex.Matches(jsonString, keyToLookFor).Count;
+
+        Debug.Log("TOTAL FILES NUM " + total_files);
 
         string[] filenames = new string[total_files];
         int prevIndex = -1;
@@ -265,7 +309,7 @@ public class ComfySceneLibrary : MonoBehaviour
         return filenames;
     }
 
-    IEnumerator DownloadImage(string imageUrl)
+    IEnumerator DownloadImage(string imageUrl, int curGroup)
     {
         //yield return new WaitForSeconds(0.5f);
         using (UnityWebRequest webRequest = UnityWebRequestTexture.GetTexture(imageUrl))
@@ -277,7 +321,8 @@ public class ComfySceneLibrary : MonoBehaviour
                 // Get the downloaded texture
                 Texture2D texture = ((DownloadHandlerTexture)webRequest.downloadHandler).texture;
                 // Adding the texture to the texture queue
-                AddTextureToTotal(texture);
+                TextureLists[curGroup].textures.Add(texture);
+                //AddTextureToTotal(texture);
             }
             else
             {
@@ -286,9 +331,14 @@ public class ComfySceneLibrary : MonoBehaviour
         }
     }
 
-    void AddTextureToTotal(Texture2D texture)
+    /*void AddTextureToTotal(Texture2D texture)
     {
-        textures[num_texture] = texture;
+        for (int i = 0; i < TextureLists.Length; i++)
+        {
+            TextureLists[i].textures.Add(texture);
+        }
+
+       *//* textures[num_texture] = texture;
         num_texture++;
         if (num_texture >= TOTAL_NUM_TEXTURES)
         {
@@ -300,30 +350,35 @@ public class ComfySceneLibrary : MonoBehaviour
                 final_sprites[i] = Sprite.Create(cur_texture, new Rect(0, 0, cur_texture.width, cur_texture.height), Vector2.zero);
             }
 
-            children_blocks = new GameObject[blocks.transform.childCount];
-            for (int i = 0; i < blocks.transform.childCount; i++)
-            {
-                children_blocks[i] = blocks.transform.GetChild(i).gameObject;
-            }
-        }
-    }
+            Debug.Log("TEXTURES");
+        }*//*
+    }*/
 
     void DelayedChangeToTexture()
     {
-        if (final_sprites == null | blocks == null)
+        // TODO remove this and final_sprites and blocks arrays in general
+        /*if (final_sprites == null | blocks == null)
         {
             return;
-        }
+        }*/
 
-        Sprite cur_sprite = final_sprites[UnityEngine.Random.Range(0, TOTAL_NUM_TEXTURES)];
-
-        Debug.Log("COUNT: " + blocks.transform.childCount.ToString());
-        GameObject cur_child_block = children_blocks[UnityEngine.Random.Range(0, blocks.transform.childCount)];
-        if (cur_child_block != null)
+        // TODO why do we need Sprites anyways??
+        /*Sprite cur_sprite = final_sprites[UnityEngine.Random.Range(0, TOTAL_NUM_TEXTURES)];
+*/
+        for (int i = 0; i < TextureLists.Length; i++)
         {
-            Renderer cur_block_renderer = cur_child_block.GetComponent<Renderer>();
-            Texture2D cur_texture = textures[UnityEngine.Random.Range(0, TOTAL_NUM_TEXTURES)];
-            cur_block_renderer.material.SetTexture("_MainTex", cur_texture);
+            GameObject cur_child_block = TextureLists[i].childrenBlocks[UnityEngine.Random.Range(0, TextureLists[i].childrenBlocks.Length)];
+            //GameObject cur_child_block = children_blocks[UnityEngine.Random.Range(0, blocks.transform.childCount)];
+            if (cur_child_block != null & TextureLists[i].textures != null)
+            {
+                // TODO how do I flip this if statment around?
+                if (TextureLists[i].textures.Count > 0)
+                {
+                    Renderer cur_block_renderer = cur_child_block.GetComponent<Renderer>();
+                    Texture2D cur_texture = TextureLists[i].textures[UnityEngine.Random.Range(0, TextureLists[i].textures.Count)];
+                    cur_block_renderer.material.SetTexture("_MainTex", cur_texture);
+                }
+            }
         }
     }
 }

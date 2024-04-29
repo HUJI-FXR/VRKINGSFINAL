@@ -1,7 +1,7 @@
 {
   "3": {
     "inputs": {
-      "seed": "SeedHere",
+      "seed": SeedHere,
       "steps": 3,
       "cfg": 1.5,
       "sampler_name": "euler",
@@ -125,7 +125,7 @@
   },
   "11": {
     "inputs": {
-      "image": "Brick.jpg",
+      "image": "Brick (1).jpg",
       "upload": "image"
     },
     "class_type": "LoadImage",
@@ -151,7 +151,7 @@
   },
   "14": {
     "inputs": {
-      "amount": 50,
+      "amount": 1,
       "samples": [
         "12",
         0
