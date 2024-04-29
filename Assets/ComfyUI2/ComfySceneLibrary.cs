@@ -1,16 +1,26 @@
-using System.Collections.Generic; 
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
-using System;
-using System.Collections;
-using System.Text.RegularExpressions;
-using UnityEngine.Windows;
-using System.Text;
-using System.Timers;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading;
+using UnityEditor.PackageManager;
+using System.Net.WebSockets;
+using System.Text;
+using System.Text.RegularExpressions;
 
-/*[System.Serializable]
+[System.Serializable]
+public class ResponseData
+{
+    public string prompt_id;
+}
+public class ResponseDataWebsocket
+{
+    public string prompt_id;
+}
+
+[System.Serializable]
 public class ImageData
 {
     public string filename;
@@ -28,38 +38,139 @@ public class OutputData
 public class PromptData
 {
     public OutputData outputs;
-}*/
+}
 
-public class ComfyImageCtr: MonoBehaviour
+
+public class ComfySceneLibrary : MonoBehaviour
 {
-    static int TOTAL_NUM_TEXTURES = 50;
-    Texture2D[] textures = new Texture2D[TOTAL_NUM_TEXTURES];
-    Sprite[] final_sprites = new Sprite[TOTAL_NUM_TEXTURES];
+    private static int TOTAL_NUM_TEXTURES = 50;
+    private Texture2D[] textures = new Texture2D[TOTAL_NUM_TEXTURES];
+    private Sprite[] final_sprites = new Sprite[TOTAL_NUM_TEXTURES];
+
+    private string serverAddress = "127.0.0.1:8188";
+    private string clientId = Guid.NewGuid().ToString();
+    private ClientWebSocket ws = new ClientWebSocket();
 
     public GameObject blocks;
     private GameObject[] children_blocks;
 
-    int num_texture = 0;
-    System.Timers.Timer texture_timer = new System.Timers.Timer(1000);
-    private void Start()
-    {
-        //texture_timer.Elapsed += TimerElapsed;
-        //texture_timer.AutoReset = true; // AutoReset is set to true to restart the timer automatically
-        //texture_timer.Enabled = true;
-    }
-    public void RequestFileName(string id){
-    StartCoroutine(RequestFileNameRoutine(id));
-}
+    private int num_texture = 0;
+    //private System.Timers.Timer texture_timer = new System.Timers.Timer(1000);
 
- IEnumerator RequestFileNameRoutine(string promptID)
+    public string positivePrompt;
+    public string negativePrompt;
+    public TextAsset promptJson;
+
+    private async void Start()
     {
-        string url = "http://127.0.0.1:8188/history/" + promptID;
-        
+        await ws.ConnectAsync(new Uri($"ws://{serverAddress}/ws?clientId={clientId}"), CancellationToken.None);
+        StartListening();
+    }
+    
+    public void PromptActivate()
+    {
+        StartCoroutine(QueuePromptCoroutine());
+    }
+
+    public IEnumerator QueuePromptCoroutine()
+    {
+        string url = "http://" + serverAddress + "/prompt";
+
+        string guid = Guid.NewGuid().ToString();
+        string promptText = $@"
+        {{
+            ""id"": ""{guid}"",
+            ""prompt"": {promptJson.text}
+        }}";
+
+        // Replacing stand-in tags with relevant input for the final generation
+        promptText = promptText.Replace("Pprompt", positivePrompt);
+        promptText = promptText.Replace("Nprompt", negativePrompt);
+        promptText = promptText.Replace("SeedHere", UnityEngine.Random.Range(1, 10000).ToString());
+
+        UnityWebRequest request = new UnityWebRequest(url, "POST");
+        byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(promptText);
+        request.uploadHandler = (UploadHandler)new UploadHandlerRaw(bodyRaw);
+        request.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
+        request.SetRequestHeader("Content-Type", "application/json");
+
+        yield return request.SendWebRequest();
+
+        if (request.result != UnityWebRequest.Result.Success)
+        {
+            Debug.Log(request.error);
+        }
+        else
+        {
+            Debug.Log("Prompt queued successfully." + request.downloadHandler.text);
+
+            ResponseData data = JsonUtility.FromJson<ResponseData>(request.downloadHandler.text);
+            Debug.Log("Prompt ID: " + data.prompt_id);
+            GetComponent<ComfyWebsocket>().promptID = data.prompt_id;
+            // GetComponent<ComfyImageCtr>().RequestFileName(data.prompt_id);
+        }
+
+        yield break;
+    }
+
+    public string promptID;
+    private async void StartListening()
+    {
+        //new byte[1024 * 4];
+        var buffer = new byte[1024 * 16];
+        WebSocketReceiveResult result = null;
+
+        while (ws.State == WebSocketState.Open)
+        {
+            var stringBuilder = new StringBuilder();
+            do
+            {
+                result = await ws.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
+                if (result.MessageType == WebSocketMessageType.Close)
+                {
+                    await ws.CloseAsync(WebSocketCloseStatus.NormalClosure, string.Empty, CancellationToken.None);
+                }
+                else
+                {
+                    var str = Encoding.UTF8.GetString(buffer, 0, result.Count);
+                    stringBuilder.Append(str);
+                }
+                Debug.Log("RESULT COUNT:" + result.Count.ToString());
+            }
+            while (!result.EndOfMessage);
+
+            string response = stringBuilder.ToString();
+            Debug.Log("Received: " + response);
+
+            if (response.Contains("\"queue_remaining\": 0"))
+            {
+                RequestFileName(promptID);
+            }
+        }
+    }
+
+    void OnDestroy()
+    {
+        if (ws != null && ws.State == WebSocketState.Open)
+        {
+            ws.CloseAsync(WebSocketCloseStatus.NormalClosure, string.Empty, CancellationToken.None);
+        }
+    }
+
+    public void RequestFileName(string id)
+    {
+        StartCoroutine(RequestFileNameRoutine(id));
+    }
+
+    IEnumerator RequestFileNameRoutine(string promptID)
+    {
+        string url = "http://" + serverAddress + "/history/" + promptID;
+
         using (UnityWebRequest webRequest = UnityWebRequest.Get(url))
         {
             // Request and wait for the desired page.
             yield return webRequest.SendWebRequest();
-            
+
             switch (webRequest.result)
             {
                 case UnityWebRequest.Result.ConnectionError:
@@ -70,7 +181,6 @@ public class ComfyImageCtr: MonoBehaviour
                     Debug.LogError(": HTTP Error: " + webRequest.error);
                     break;
                 case UnityWebRequest.Result.Success:
-                    //Debug.Log("Got URL: " + url);
                     Debug.Log(":\nReceived: " + webRequest.downloadHandler.text);
                     // Jonathan - added the for loop to coincide with the changes to the ExtractFilename function becoming a batch-size dependant downloader
                     // Jonathan - another change, download all the images FIRST, then display, to test display speed
@@ -90,7 +200,7 @@ public class ComfyImageCtr: MonoBehaviour
 
                     for (int i = 0; i < filenames.Length; i++)
                     {
-                        string imageURL = "http://127.0.0.1:8188/view?filename=" + filenames[i];
+                        string imageURL = "http://" + serverAddress + "/view?filename=" + filenames[i];
                         Debug.Log(filenames[i]);
                         //StartCoroutine(ExampleCoroutine());
                         StartCoroutine(DownloadImage(imageURL));
@@ -112,7 +222,7 @@ public class ComfyImageCtr: MonoBehaviour
         //After we have waited 5 seconds print the time again.
         //Debug.Log("Finished Coroutine at timestamp : " + Time.time);
     }
-string[] ExtractFilename(string jsonString)
+    string[] ExtractFilename(string jsonString)
     {
         // Jonathan - Changed this from returning a single filename to all the filenames in the output - with the for loop
         string keyToLookFor = "\"filename\":";
@@ -124,7 +234,7 @@ string[] ExtractFilename(string jsonString)
         for (int i = 0; i < total_files; i++)
         {
             // Step 1: Identify the part of the string that contains the "filename" key
-            int startIndex = jsonString.IndexOf(keyToLookFor, prevIndex+1);
+            int startIndex = jsonString.IndexOf(keyToLookFor, prevIndex + 1);
             prevIndex = startIndex;
 
             if (startIndex == -1)
@@ -148,18 +258,16 @@ string[] ExtractFilename(string jsonString)
 
             // Removing leading and trailing quotes from the extracted value
             filenames[i] = filenameWithQuotes.Trim('"');
-           
+
         }
 
         Debug.Log(filenames);
         return filenames;
     }
 
-    public Image outputImage;
-    
-     IEnumerator DownloadImage(string imageUrl)
+    IEnumerator DownloadImage(string imageUrl)
     {
-         //yield return new WaitForSeconds(0.5f);
+        //yield return new WaitForSeconds(0.5f);
         using (UnityWebRequest webRequest = UnityWebRequestTexture.GetTexture(imageUrl))
         {
             yield return webRequest.SendWebRequest();
@@ -178,7 +286,8 @@ string[] ExtractFilename(string jsonString)
         }
     }
 
-    void AddTextureToTotal(Texture2D texture) {
+    void AddTextureToTotal(Texture2D texture)
+    {
         textures[num_texture] = texture;
         num_texture++;
         if (num_texture >= TOTAL_NUM_TEXTURES)
@@ -199,23 +308,14 @@ string[] ExtractFilename(string jsonString)
         }
     }
 
-    // todo want to cause texture change every 1 seconds without regard of what is happening around it
     void DelayedChangeToTexture()
     {
-        //if (outputImage.sprite != null)
-        //{
-        //    Destroy(outputImage.sprite);
-        //}
         if (final_sprites == null | blocks == null)
         {
             return;
         }
 
         Sprite cur_sprite = final_sprites[UnityEngine.Random.Range(0, TOTAL_NUM_TEXTURES)];
-        //if (cur_sprite != null)
-        //{
-        //    outputImage.sprite = cur_sprite;
-        //}
 
         Debug.Log("COUNT: " + blocks.transform.childCount.ToString());
         GameObject cur_child_block = children_blocks[UnityEngine.Random.Range(0, blocks.transform.childCount)];

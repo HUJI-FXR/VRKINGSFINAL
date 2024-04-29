@@ -5,11 +5,11 @@ using UnityEngine.UI;
 using UnityEngine.Networking;
 using System.Runtime.InteropServices.WindowsRuntime;
 
-[System.Serializable]
-public class ResponseData
-{
-    public string prompt_id;
-}
+//[System.Serializable]
+//public class ResponseData
+//{
+//    public string prompt_id;
+//}
 public class ComfyPromptCtr : MonoBehaviour
 {
 

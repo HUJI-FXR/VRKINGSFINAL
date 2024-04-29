@@ -7,10 +7,10 @@ using System.Threading;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class ResponseDataWebsocket
-{
-    public string prompt_id;
-}
+//public class ResponseDataWebsocket
+//{
+//    public string prompt_id;
+//}
 public class ComfyWebsocket : MonoBehaviour
 {
     private string serverAddress = "127.0.0.1:8188";
