@@ -314,13 +314,13 @@ public class ComfySceneLibrary : MonoBehaviour
             GameObject cur_child_block = TextureLists[i].childrenBlocks[UnityEngine.Random.Range(0, TextureLists[i].childrenBlocks.Length)];
             if (cur_child_block != null & TextureLists[i].textures != null)
             {
-                // TODO how do I flip this if statment around?
-                if (TextureLists[i].textures.Count > 0)
+                if (TextureLists[i].textures.Count <= 0)
                 {
-                    Renderer cur_block_renderer = cur_child_block.GetComponent<Renderer>();
-                    Texture2D cur_texture = TextureLists[i].textures[UnityEngine.Random.Range(0, TextureLists[i].textures.Count)];
-                    cur_block_renderer.material.SetTexture("_MainTex", cur_texture);
+                    continue;
                 }
+                Renderer cur_block_renderer = cur_child_block.GetComponent<Renderer>();
+                Texture2D cur_texture = TextureLists[i].textures[UnityEngine.Random.Range(0, TextureLists[i].textures.Count)];
+                cur_block_renderer.material.SetTexture("_MainTex", cur_texture);
             }
         }
     }
