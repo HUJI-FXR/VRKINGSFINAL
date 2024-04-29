@@ -12,6 +12,7 @@ using System.Text.RegularExpressions;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using UnityEngine.TextCore.Text;
 
 [System.Serializable]
 public class ResponseData
@@ -49,6 +50,10 @@ public struct GameObjectPromptJsonPair
 {
     public GameObject ParentObject;
 
+    public string positivePrompt;
+    public string negativePrompt;
+    public UnityEngine.TextAsset promptJson;
+
     [System.NonSerialized]
     public List<Texture2D> textures;
     [System.NonSerialized]
@@ -78,9 +83,11 @@ public class ComfySceneLibrary : MonoBehaviour
 
     private int curParentObject = 0;
 
-    public string positivePrompt;
-    public string negativePrompt;
-    public TextAsset promptJson;
+    //public string positivePrompt;
+    //public string negativePrompt;
+    //public TextAsset promptJson;
+
+    private bool started_generations = false;
 
     private async void Start()
     {
@@ -116,10 +123,14 @@ public class ComfySceneLibrary : MonoBehaviour
 
     public void PromptActivate()
     {
-        StartCoroutine(QueuePromptCoroutine());
+        started_generations = true;
+        for (int i = 0;i<TextureLists.Length;i++)
+        {
+            StartCoroutine(QueuePromptCoroutine(i));
+        }
     }
 
-    public IEnumerator QueuePromptCoroutine()
+    private IEnumerator QueuePromptCoroutine(int curGroup)
     {
         string url = "http://" + serverAddress + "/prompt";
 
@@ -127,14 +138,14 @@ public class ComfySceneLibrary : MonoBehaviour
         string promptText = $@"
         {{
             ""id"": ""{guid}"",
-            ""prompt"": {promptJson.text}
+            ""prompt"": {TextureLists[curGroup].promptJson.text}
         }}";
 
-        Debug.Log(promptJson.text);
+        //Debug.Log(TextureLists[curGroup].promptJson.text);
 
         // Replacing stand-in tags with relevant input for the final generation
-        promptText = promptText.Replace("Pprompt", positivePrompt);
-        promptText = promptText.Replace("Nprompt", negativePrompt);
+        promptText = promptText.Replace("Pprompt", TextureLists[curGroup].positivePrompt);
+        promptText = promptText.Replace("Nprompt", TextureLists[curGroup].negativePrompt);
         promptText = promptText.Replace("SeedHere", UnityEngine.Random.Range(1, 10000).ToString());
 
         UnityWebRequest request = new UnityWebRequest(url, "POST");
@@ -151,11 +162,11 @@ public class ComfySceneLibrary : MonoBehaviour
         }
         else
         {
-            Debug.Log("Prompt queued successfully." + request.downloadHandler.text);
+            //Debug.Log("Prompt queued successfully." + request.downloadHandler.text);
 
             ResponseData data = JsonUtility.FromJson<ResponseData>(request.downloadHandler.text);
             promptID = data.prompt_id;
-            Debug.Log("Prompt ID: " + data.prompt_id);
+            //Debug.Log("Prompt ID: " + data.prompt_id);
         }
 
         yield break;
@@ -231,7 +242,10 @@ public class ComfySceneLibrary : MonoBehaviour
                     Debug.LogError(": Error: " + webRequest.error);
                     break;
                 case UnityWebRequest.Result.ProtocolError:
-                    Debug.LogError(": HTTP Error: " + webRequest.error);
+                    if (started_generations)
+                    {
+                        Debug.LogError(": HTTP Error: " + webRequest.error);
+                    }
                     break;
                 case UnityWebRequest.Result.Success:
                     Debug.Log(":\nReceived: " + webRequest.downloadHandler.text);
@@ -247,7 +261,7 @@ public class ComfySceneLibrary : MonoBehaviour
                         sb.Append(" ");
                     }
                     string result = sb.ToString();
-                    //Debug.Log("FILENAMES: " + result);
+                    //Debug.Log("FILENAMES LENGTH: " + filenames.Length);
 
 
 
@@ -269,8 +283,8 @@ public class ComfySceneLibrary : MonoBehaviour
         // Jonathan - Changed this from returning a single filename to all the filenames in the output - with the for loop
         string keyToLookFor = "\"filename\":";
         int total_files = Regex.Matches(jsonString, keyToLookFor).Count;
-
-        Debug.Log("TOTAL FILES NUM " + total_files);
+        
+        //Debug.Log("TOTAL FILES NUM " + total_files);
 
         string[] filenames = new string[total_files];
         int prevIndex = -1;
@@ -305,7 +319,7 @@ public class ComfySceneLibrary : MonoBehaviour
 
         }
 
-        Debug.Log(filenames);
+        //Debug.Log(filenames);
         return filenames;
     }
 
