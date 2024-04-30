@@ -53,6 +53,8 @@ public struct GameObjectPromptJsonPair
     public string negativePrompt;
     public UnityEngine.TextAsset promptJson;
 
+    public bool active;
+
     [System.NonSerialized]
     public List<Texture2D> textures;
     [System.NonSerialized]
@@ -102,7 +104,10 @@ public class ComfySceneLibrary : MonoBehaviour
         started_generations = true;
         for (int i = 0;i<TextureLists.Length;i++)
         {
-            StartCoroutine(QueuePromptCoroutine(i));
+            if (TextureLists[i].active)
+            {
+                StartCoroutine(QueuePromptCoroutine(i));
+            }
         }
     }
 
