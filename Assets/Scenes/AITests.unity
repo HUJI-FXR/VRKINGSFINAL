@@ -12230,21 +12230,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TextureLists:
-  - ParentObject: {fileID: 1918685862}
+  - ParentObject: {fileID: 1001110411}
     positivePrompt: red brick wall, red bricks
     negativePrompt: watermark
     promptJson: {fileID: 4900000, guid: d4ab441efc840984c947d8f9e3dbcd3c, type: 3}
-    active: 0
-  - ParentObject: {fileID: 49453699}
-    positivePrompt: blue brick wall, blue bricks
-    negativePrompt: watermark
-    promptJson: {fileID: 4900000, guid: 9fe9c97db0b7bda4e9fff6bbf54cfb75, type: 3}
-    active: 0
-  - ParentObject: {fileID: 1001110411}
-    positivePrompt: blue brick wall, blue bricks
-    negativePrompt: watermark
-    promptJson: {fileID: 4900000, guid: 9fe9c97db0b7bda4e9fff6bbf54cfb75, type: 3}
-    active: 0
+    active: 1
 --- !u!4 &1087103410
 Transform:
   m_ObjectHideFlags: 0
