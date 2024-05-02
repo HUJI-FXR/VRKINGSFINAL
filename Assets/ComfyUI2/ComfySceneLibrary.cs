@@ -100,13 +100,14 @@ public class ComfySceneLibrary : MonoBehaviour
         StartListening();
     }
 
-    public void PromptActivate()
+    public void PromptActivate(InputAction.CallbackContext context)
     {
         started_generations = true;
         for (int i = 0;i<TextureLists.Length;i++)
         {
-            if (TextureLists[i].active)
+            if (TextureLists[i].active && context.performed)
             {
+                Debug.Log("PRMPT " + TextureLists.Length);
                 StartCoroutine(QueuePromptCoroutine(i));
             }
         }
@@ -179,7 +180,10 @@ public class ComfySceneLibrary : MonoBehaviour
 
             if (response.Contains("\"queue_remaining\": 0"))
             {
-                RequestFileName(promptID, curParentObject);
+                if (TextureLists[curParentObject].active)
+                {
+                    RequestFileName(promptID, curParentObject);
+                }
                 
                 curParentObject++;
                 if (curParentObject >= TextureLists.Length)
@@ -329,7 +333,7 @@ public class ComfySceneLibrary : MonoBehaviour
                 {
                     Debug.Log(cur_child_mat.name);
                 }
-                if (cur_child_mat != null && cur_child_mat.name != "TransMaterial") {
+                /*if (cur_child_mat != null && cur_child_mat.name != "TransMaterial") {
                     Renderer cur_block_renderer = cur_child_block.GetComponent<Renderer>();
                     Texture2D cur_texture = TextureLists[i].textures[UnityEngine.Random.Range(0, TextureLists[i].textures.Count)];
                     //cur_child_mat.shader.SetGlobalTexture("_tex1", cur_texture);
@@ -338,11 +342,11 @@ public class ComfySceneLibrary : MonoBehaviour
                     Debug.Log("HAPPENED");
                 }
                 else
-                {
-                    Renderer cur_block_renderer = cur_child_block.GetComponent<Renderer>();
-                    Texture2D cur_texture = TextureLists[i].textures[UnityEngine.Random.Range(0, TextureLists[i].textures.Count)];
-                    cur_block_renderer.material.SetTexture("_MainTex", cur_texture);
-                }
+                {*/
+                Renderer cur_block_renderer = cur_child_block.GetComponent<Renderer>();
+                Texture2D cur_texture = TextureLists[i].textures[UnityEngine.Random.Range(0, TextureLists[i].textures.Count)];
+                cur_block_renderer.material.SetTexture("_MainTex", cur_texture);
+                /*}*/
             }
         }
     }
