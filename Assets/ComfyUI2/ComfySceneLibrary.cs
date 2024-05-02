@@ -107,7 +107,7 @@ public class ComfySceneLibrary : MonoBehaviour
         {
             if (TextureLists[i].active && context.performed)
             {
-                Debug.Log("PRMPT " + TextureLists.Length);
+                //Debug.Log("PRMPT " + TextureLists.Length);
                 StartCoroutine(QueuePromptCoroutine(i));
             }
         }
@@ -154,7 +154,7 @@ public class ComfySceneLibrary : MonoBehaviour
 
     private async void StartListening()
     {
-        var buffer = new byte[1024 * 16];
+        var buffer = new byte[1024 * 4];
         WebSocketReceiveResult result = null;
 
         while (ws.State == WebSocketState.Open)
@@ -165,10 +165,12 @@ public class ComfySceneLibrary : MonoBehaviour
                 result = await ws.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
                 if (result.MessageType == WebSocketMessageType.Close)
                 {
+                    Debug.Log("closed STATE");
                     await ws.CloseAsync(WebSocketCloseStatus.NormalClosure, string.Empty, CancellationToken.None);
                 }
                 else
                 {
+                    Debug.Log("open STATE");
                     var str = Encoding.UTF8.GetString(buffer, 0, result.Count);
                     stringBuilder.Append(str);
                 }
@@ -204,13 +206,13 @@ public class ComfySceneLibrary : MonoBehaviour
 
     public void RequestFileName(string id, int curGroup)
     {
+        Debug.Log("STARTED ROUTINE");
         StartCoroutine(RequestFileNameRoutine(id, curGroup));
     }
 
     IEnumerator RequestFileNameRoutine(string promptID, int curGroup)
     {
         string url = "http://" + serverAddress + "/history/" + promptID;
-
         using (UnityWebRequest webRequest = UnityWebRequest.Get(url))
         {
             // Request and wait for the desired page.
@@ -298,6 +300,7 @@ public class ComfySceneLibrary : MonoBehaviour
 
     IEnumerator DownloadImage(string imageUrl, int curGroup)
     {
+        Debug.Log("DOWNLOADING IMAGE");
         //yield return new WaitForSeconds(0.5f);
         using (UnityWebRequest webRequest = UnityWebRequestTexture.GetTexture(imageUrl))
         {
