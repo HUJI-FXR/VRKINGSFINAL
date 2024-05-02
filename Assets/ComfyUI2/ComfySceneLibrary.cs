@@ -163,14 +163,13 @@ public class ComfySceneLibrary : MonoBehaviour
             do
             {
                 result = await ws.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
+                Debug.Log("open STATE" + result);
                 if (result.MessageType == WebSocketMessageType.Close)
                 {
-                    Debug.Log("closed STATE");
                     await ws.CloseAsync(WebSocketCloseStatus.NormalClosure, string.Empty, CancellationToken.None);
                 }
                 else
                 {
-                    Debug.Log("open STATE");
                     var str = Encoding.UTF8.GetString(buffer, 0, result.Count);
                     stringBuilder.Append(str);
                 }
