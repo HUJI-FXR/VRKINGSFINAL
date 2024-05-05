@@ -113,6 +113,19 @@ public class ComfySceneLibrary : MonoBehaviour
         }
     }
 
+    public void ButtonTest()
+    {
+        started_generations = true;
+        for (int i = 0; i < TextureLists.Length; i++)
+        {
+            if (TextureLists[i].active)
+            {
+                //Debug.Log("PRMPT " + TextureLists.Length);
+                StartCoroutine(QueuePromptCoroutine(i));
+            }
+        }
+    }
+
     private IEnumerator QueuePromptCoroutine(int curGroup)
     {
         string url = "http://" + serverAddress + "/prompt";
