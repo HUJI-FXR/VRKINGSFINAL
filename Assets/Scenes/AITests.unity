@@ -13035,11 +13035,11 @@ MonoBehaviour:
     negativePrompt: 
     promptJson: {fileID: 4900000, guid: 66a8fb91fd106d64d8ffb7f80f3ae152, type: 3}
     active: 1
-  - ParentObject: {fileID: 804591436}
+  - ParentObject: {fileID: 1918685862}
     positivePrompt: red brick wall, red bricks
     negativePrompt: watermark
-    promptJson: {fileID: 4900000, guid: 35b8c9b3bb2da9d4e9f8fed3ae6d95c5, type: 3}
-    active: 0
+    promptJson: {fileID: 4900000, guid: 53deea62b9986834d8fd61a981ec38c1, type: 3}
+    active: 1
   - ParentObject: {fileID: 2114411058}
     positivePrompt: ice cream cone
     negativePrompt: watermark
@@ -19039,7 +19039,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -2.44, y: -0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1625993888
@@ -22459,14 +22459,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1889223826}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -0.005, y: 0.51, z: 0.078}
   m_LocalScale: {x: 0.512, y: 0.02, z: 0.768}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1625993887}
   m_Father: {fileID: 2017253966}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!65 &1889223828
 BoxCollider:
   m_ObjectHideFlags: 0

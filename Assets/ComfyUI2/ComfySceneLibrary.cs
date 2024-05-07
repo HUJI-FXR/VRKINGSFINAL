@@ -14,6 +14,8 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine.TextCore.Text;
 using UnityEngine.Rendering;
+using UnityEditor.PackageManager.Requests;
+using System.Linq;
 
 [System.Serializable]
 public class ResponseData
@@ -37,6 +39,8 @@ public struct GameObjectPromptJsonPair
     public List<Texture2D> textures;
     [System.NonSerialized]
     public GameObject[] childrenBlocks;
+    [System.NonSerialized]
+    public Dictionary<string, bool> genPromptIDs;
 }
 
 public class ComfySceneLibrary : MonoBehaviour
@@ -47,9 +51,6 @@ public class ComfySceneLibrary : MonoBehaviour
     private string clientId = Guid.NewGuid().ToString();
     private ClientWebSocket ws = new ClientWebSocket();
 
-    private string promptID;
-    private int curParentObject = 0;
-
     private bool started_generations = false;
 
     private async void Start()
@@ -57,6 +58,7 @@ public class ComfySceneLibrary : MonoBehaviour
         for (int i = 0; i<TextureLists.Length; i++)
         {
             TextureLists[i].textures = new List<Texture2D>();
+            TextureLists[i].genPromptIDs = new Dictionary<string, bool>();
 
             Transform curParentTransform = TextureLists[i].ParentObject.transform;
             int numberOfChildren = curParentTransform.childCount;
@@ -75,6 +77,8 @@ public class ComfySceneLibrary : MonoBehaviour
 
         await ws.ConnectAsync(new Uri($"ws://{serverAddress}/ws?clientId={clientId}"), CancellationToken.None);
         StartListening();
+
+        ButtonTest();
     }
 
     public void PromptActivate(InputAction.CallbackContext context)
@@ -84,7 +88,6 @@ public class ComfySceneLibrary : MonoBehaviour
         {
             if (TextureLists[i].active && context.performed)
             {
-                //Debug.Log("PRMPT " + TextureLists.Length);
                 StartCoroutine(QueuePromptCoroutine(i));
             }
         }
@@ -97,7 +100,6 @@ public class ComfySceneLibrary : MonoBehaviour
         {
             if (TextureLists[i].active)
             {
-                //Debug.Log("PRMPT " + TextureLists.Length);
                 StartCoroutine(QueuePromptCoroutine(i));
             }
         }
@@ -135,11 +137,16 @@ public class ComfySceneLibrary : MonoBehaviour
         {
             //Debug.Log("Prompt queued successfully." + request.downloadHandler.text);
             ResponseData data = JsonUtility.FromJson<ResponseData>(request.downloadHandler.text);
-            promptID = data.prompt_id;
-            //Debug.Log("Prompt ID: " + data.prompt_id);
+            TextureLists[curGroup].genPromptIDs.TryAdd(data.prompt_id, false);
         }
 
         yield break;
+    }
+
+    // Used to save up on compute when not using the image generation
+    private IEnumerator SmallWait()
+    {
+        yield return new WaitForSeconds(0.1f);
     }
 
     private async void StartListening()
@@ -153,7 +160,6 @@ public class ComfySceneLibrary : MonoBehaviour
             do
             {
                 result = await ws.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
-                //Debug.Log("open STATE" + result);
                 if (result.MessageType == WebSocketMessageType.Close)
                 {
                     await ws.CloseAsync(WebSocketCloseStatus.NormalClosure, string.Empty, CancellationToken.None);
@@ -167,19 +173,27 @@ public class ComfySceneLibrary : MonoBehaviour
             while (!result.EndOfMessage);
 
             string response = stringBuilder.ToString();
-            //Debug.Log("Received: " + response);
 
+            // When images are not being generated, this statement makes the program wait a bit which saves on compute
             if (response.Contains("\"queue_remaining\": 0"))
             {
-                if (TextureLists[curParentObject].active)
+                StartCoroutine(SmallWait());
+            }
+
+            // Goes over each prompt that needs completing and checks whether it has completed, if it did, it downloads the images and labels the promptID as true(as in, finished)
+            for (int i = 0; i < TextureLists.Length; i++)
+            {
+                string[] cur_arr_keys = TextureLists[i].genPromptIDs.Keys.ToArray<string>();
+                for (int j = 0; j < cur_arr_keys.Length; j++)
                 {
-                    RequestFileName(promptID, curParentObject);
-                }
-                
-                curParentObject++;
-                if (curParentObject >= TextureLists.Length)
-                {
-                    curParentObject = 0;
+                    if (TextureLists[i].genPromptIDs[cur_arr_keys[j]])
+                    {
+                        break;
+                    }
+
+                    // TODO this solution requires us to constantly ask the server about each promptID and whether it has finished it - inefficient!
+                    // TODO - cont. can we not check which promptID has finished without asking to download it?
+                    RequestFileName(cur_arr_keys[j]);
                 }
             }
         }
@@ -193,13 +207,12 @@ public class ComfySceneLibrary : MonoBehaviour
         }
     }
 
-    public void RequestFileName(string id, int curGroup)
+    public void RequestFileName(string id)
     {
-        Debug.Log("STARTED ROUTINE");
-        StartCoroutine(RequestFileNameRoutine(id, curGroup));
+        StartCoroutine(RequestFileNameRoutine(id));
     }
 
-    IEnumerator RequestFileNameRoutine(string promptID, int curGroup)
+    IEnumerator RequestFileNameRoutine(string promptID)
     {
         string url = "http://" + serverAddress + "/history/" + promptID;
         using (UnityWebRequest webRequest = UnityWebRequest.Get(url))
@@ -225,17 +238,41 @@ public class ComfySceneLibrary : MonoBehaviour
                     // Jonathan - another change, download all the images FIRST, then display, to test display speed
                     string[] filenames = ExtractFilename(webRequest.downloadHandler.text);
 
+                    // If there are no filenames, the prompt has not yet finished generating
+                    if (filenames.Length <= 0)
+                    {
+                        break;
+                    }
+
                     // Print all filenames
-                    StringBuilder sb = new StringBuilder();
+                    /*StringBuilder sb = new StringBuilder();
                     foreach (string filename in filenames)
                     {
                         sb.Append(filename);
                         sb.Append(" ");
                     }
-                    string result = sb.ToString();
+                    string result = sb.ToString();*/
 
-                    for (int i = 0; i < filenames.Length; i++)
+                    // Checks which TextureLists group has asked for the prompt
+                    int curGroup = -1;
+                    for (int textureListGroup = 0; textureListGroup < TextureLists.Length; textureListGroup++) {
+                        if (TextureLists[textureListGroup].genPromptIDs.Keys.Contains(promptID))
+                        {
+                            curGroup = textureListGroup;
+                            break;
+                        }
+                    }
+                    if (curGroup < 0)
                     {
+                        break;
+                    }
+
+                    // Indicating that this prompt has been completed(and won't be repeated with the same exact PromptID and is now downloading)
+                    TextureLists[curGroup].genPromptIDs[promptID] = true;
+
+                    // Downloading each image of the prompt
+                    for (int i = 0; i < filenames.Length; i++)
+                    { 
                         string imageURL = "http://" + serverAddress + "/view?filename=" + filenames[i];
                         StartCoroutine(DownloadImage(imageURL, curGroup));
                     }
@@ -288,8 +325,6 @@ public class ComfySceneLibrary : MonoBehaviour
 
     IEnumerator DownloadImage(string imageUrl, int curGroup)
     {
-        Debug.Log("DOWNLOADING IMAGE");
-        //yield return new WaitForSeconds(0.5f);
         using (UnityWebRequest webRequest = UnityWebRequestTexture.GetTexture(imageUrl))
         {
             yield return webRequest.SendWebRequest();
@@ -325,7 +360,7 @@ public class ComfySceneLibrary : MonoBehaviour
                 {
                     Debug.Log(cur_child_mat.name);
                 }
-
+                
                 Renderer cur_block_renderer = cur_child_block.GetComponent<Renderer>();
                 Texture2D cur_texture = TextureLists[i].textures[UnityEngine.Random.Range(0, TextureLists[i].textures.Count)];
                 cur_block_renderer.material.SetTexture("_MainTex", cur_texture);
