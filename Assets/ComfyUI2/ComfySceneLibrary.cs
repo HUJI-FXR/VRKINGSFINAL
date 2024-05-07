@@ -20,30 +20,7 @@ public class ResponseData
 {
     public string prompt_id;
 }
-/*public class ResponseDataWebsocket
-{
-    public string prompt_id;
-}*/
 
-/*[System.Serializable]
-public class ImageData
-{
-    public string filename;
-    public string subfolder;
-    public string type;
-}*/
-
-/*[System.Serializable]
-public class OutputData
-{
-    public ImageData[] images;
-}*/
-
-/*[System.Serializable]
-public class PromptData
-{
-    public OutputData outputs;
-}*/
 
 [Serializable]
 public struct GameObjectPromptJsonPair
@@ -306,7 +283,6 @@ public class ComfySceneLibrary : MonoBehaviour
 
         }
 
-        //Debug.Log(filenames);
         return filenames;
     }
 
@@ -332,6 +308,7 @@ public class ComfySceneLibrary : MonoBehaviour
         }
     }
 
+    // TODO Change of texture functionality is DIFFERENT and should happen in a DIFFERENT place than creating and downloading he imagery
     void DelayedChangeToTexture()
     {
         for (int i = 0; i < TextureLists.Length; i++)
@@ -348,20 +325,10 @@ public class ComfySceneLibrary : MonoBehaviour
                 {
                     Debug.Log(cur_child_mat.name);
                 }
-                /*if (cur_child_mat != null && cur_child_mat.name != "TransMaterial") {
-                    Renderer cur_block_renderer = cur_child_block.GetComponent<Renderer>();
-                    Texture2D cur_texture = TextureLists[i].textures[UnityEngine.Random.Range(0, TextureLists[i].textures.Count)];
-                    //cur_child_mat.shader.SetGlobalTexture("_tex1", cur_texture);
-                    cur_block_renderer.material.SetTexture("_tex1", cur_texture);
 
-                    Debug.Log("HAPPENED");
-                }
-                else
-                {*/
                 Renderer cur_block_renderer = cur_child_block.GetComponent<Renderer>();
                 Texture2D cur_texture = TextureLists[i].textures[UnityEngine.Random.Range(0, TextureLists[i].textures.Count)];
                 cur_block_renderer.material.SetTexture("_MainTex", cur_texture);
-                /*}*/
             }
         }
     }
