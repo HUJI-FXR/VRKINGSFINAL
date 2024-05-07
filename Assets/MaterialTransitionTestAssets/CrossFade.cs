@@ -8,9 +8,11 @@ public class CrossFade : MonoBehaviour
     public List<Texture> textures;
 
     private Renderer renderer;
-    private float duration = 1f;
+    private float duration = 0.2f;
     private int texNum = 0;
     private float lerp = 0f;
+
+    public AudioReact au;
 
     void Start()
     {
@@ -29,7 +31,14 @@ public class CrossFade : MonoBehaviour
 
             if (lerp > 1)
             {
-                CrossFadeStart();
+                // TODO changed this for audioreaction test
+                lerp = 1;
+
+                if (au.sum > 1.2)
+                {
+                    lerp = 0;
+                    CrossFadeStart();
+                }
             }
         }
     }
