@@ -38,8 +38,6 @@ public struct GameObjectPromptJsonPair
     [System.NonSerialized]
     public List<Texture2D> textures;
     [System.NonSerialized]
-    public GameObject[] childrenBlocks;
-    [System.NonSerialized]
     public Dictionary<string, bool> genPromptIDs;
 }
 
@@ -59,18 +57,6 @@ public class ComfySceneLibrary : MonoBehaviour
         {
             TextureLists[i].textures = new List<Texture2D>();
             TextureLists[i].genPromptIDs = new Dictionary<string, bool>();
-
-            Transform curParentTransform = TextureLists[i].ParentObject.transform;
-            int numberOfChildren = curParentTransform.childCount;
-            if (numberOfChildren > 0)
-            {
-                // TODO what if the number of children changes in the middle of the game inside a parent object? need to FIX
-                TextureLists[i].childrenBlocks = new GameObject[numberOfChildren];
-                for (int j = 0; j < numberOfChildren; j++)
-                {
-                    TextureLists[i].childrenBlocks[j] = curParentTransform.GetChild(j).gameObject;
-                }
-            }
         }
 
         InvokeRepeating("DelayedChangeToTexture", 1f, 0.01f);
@@ -233,7 +219,8 @@ public class ComfySceneLibrary : MonoBehaviour
                     }
                     break;
                 case UnityWebRequest.Result.Success:
-                    Debug.Log(":\nReceived: " + webRequest.downloadHandler.text);
+                    //Debug.Log(":\nReceived: " + webRequest.downloadHandler.text);
+
                     // Jonathan - added the for loop to coincide with the changes to the ExtractFilename function becoming a batch-size dependant downloader
                     // Jonathan - another change, download all the images FIRST, then display, to test display speed
                     string[] filenames = ExtractFilename(webRequest.downloadHandler.text);
@@ -348,22 +335,46 @@ public class ComfySceneLibrary : MonoBehaviour
     {
         for (int i = 0; i < TextureLists.Length; i++)
         {
-            GameObject cur_child_block = TextureLists[i].childrenBlocks[UnityEngine.Random.Range(0, TextureLists[i].childrenBlocks.Length)];
-            if (cur_child_block != null & TextureLists[i].textures != null)
+            Transform parentObjectTransform = TextureLists[i].ParentObject.transform;
+            int numberOfChildren = parentObjectTransform.childCount;
+
+            // If the ParentObject does not have children, change its own texture
+            GameObject block_to_transform = TextureLists[i].ParentObject;
+
+            if (numberOfChildren > 0)
+            {
+                // Get a random child out of the children of the ParentObject to change its texture
+                block_to_transform = parentObjectTransform.GetChild(UnityEngine.Random.Range(0, numberOfChildren)).gameObject;
+            }
+
+            if (block_to_transform != null & TextureLists[i].textures != null)
             {
                 if (TextureLists[i].textures.Count <= 0)
                 {
                     continue;
                 }
-                Material cur_child_mat = cur_child_block.GetComponent<Material>();
-                if (cur_child_mat != null)
-                {
-                    Debug.Log(cur_child_mat.name);
-                }
-                
-                Renderer cur_block_renderer = cur_child_block.GetComponent<Renderer>();
+
+                Renderer cur_block_renderer = block_to_transform.GetComponent<Renderer>();
                 Texture2D cur_texture = TextureLists[i].textures[UnityEngine.Random.Range(0, TextureLists[i].textures.Count)];
-                cur_block_renderer.material.SetTexture("_MainTex", cur_texture);
+
+                // TODO change in regards to various Shader types that might come, also change it so that doesn't require every block to have a script(only one script for all blocks)
+                if (cur_block_renderer.material.shader.name == "Custom/Fade")
+                {
+                    // TODO - Checks if there is the CrossFade script, bad code, needs to change look at one TODO above
+                    CrossFade cur_crossfade = block_to_transform.GetComponent<CrossFade>();
+                    if (cur_crossfade != null)
+                    {
+                        if (cur_crossfade.textures.Count < 3)
+                        {
+                            cur_crossfade.textures.Add(cur_texture);
+                        }
+                    }
+                }
+                else
+                {
+                    // TODO notice the many Magic numbers and names that need to become CONSTANT etc
+                    cur_block_renderer.material.SetTexture("_MainTex", cur_texture);
+                }
             }
         }
     }

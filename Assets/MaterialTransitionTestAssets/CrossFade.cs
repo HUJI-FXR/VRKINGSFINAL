@@ -1,30 +1,36 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.XR.Interaction.Toolkit.AffordanceSystem.Receiver.Primitives;
+using System.Collections.Generic;
 
 public class CrossFade : MonoBehaviour
 {
-    public Texture[] textures;
+    public List<Texture> textures;
 
     private Renderer renderer;
-    private float duration = 2f;
+    private float duration = 1f;
     private int texNum = 0;
     private float lerp = 0f;
 
     void Start()
     {
+        textures = new List<Texture>();
+
         renderer = GetComponent<Renderer>();
         renderer.material.SetFloat("_Blend", 0f);
     }
 
     void Update()
     {
-        lerp += Time.deltaTime / duration;
-        renderer.material.SetFloat("_Blend", lerp);
-
-        if (lerp > 1)
+        if (textures.Count > 0)
         {
-            CrossFadeStart();
+            lerp += Time.deltaTime / duration;
+            renderer.material.SetFloat("_Blend", lerp);
+
+            if (lerp > 1)
+            {
+                CrossFadeStart();
+            }
         }
     }
 
@@ -33,13 +39,13 @@ public class CrossFade : MonoBehaviour
         lerp = 0;
 
         texNum++;
-        if (texNum < textures.Length) {
+        if (texNum < textures.Count) {
             CrossFadeBetween(textures[texNum - 1], textures[texNum]);
         }
         else
         {
             texNum = 0;
-            CrossFadeBetween(textures[textures.Length-1], textures[texNum]);
+            CrossFadeBetween(textures[textures.Count-1], textures[texNum]);
         }
     }
 
