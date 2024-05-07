@@ -5,6 +5,8 @@ using UnityEngine;
 public class NamePromptScript : MonoBehaviour
 {
     [SerializeField] private string prompt;
+
+    [SerializeField] private PaintBrushPrompts _paintBrushPrompts;
     // Stalizrt is called before the first frame update
     void Start()
     {
@@ -17,8 +19,8 @@ public class NamePromptScript : MonoBehaviour
         
     }
 
-    public string getPrompt()
+    public void addPrompt()
     {
-        return prompt;
+        _paintBrushPrompts.addPrompt(prompt);
     }
 }
