@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static Unity.Burst.Intrinsics.X86;
 
 
 [RequireComponent (typeof(AudioSource))]
@@ -10,7 +11,7 @@ public class AudioReact : MonoBehaviour
     AudioSource audioSource;
     public float[] samples = new float[512];
 
-    public float sum = 0f;
+    public float avg = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -22,12 +23,13 @@ public class AudioReact : MonoBehaviour
     void Update()
     {
         GetSpectrumAudioSource ();
+        avg = samples.Average();
 
-        sum = samples.Sum();
-        if (sum > 1 )
+        //Debug.Log(avg);
+        /*if (avg > 1 )
         {
-            Debug.Log(samples.Sum());
-        }
+            Debug.Log(avg);
+        }*/
     }
 
     void GetSpectrumAudioSource()

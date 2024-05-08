@@ -12557,7 +12557,7 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  sum: 0
+  avg: 0
 --- !u!82 &959031107
 AudioSource:
   m_ObjectHideFlags: 0
@@ -14414,7 +14414,7 @@ MonoBehaviour:
     positivePrompt: brick wall, video game graphics, various colors
     negativePrompt: easynegative, negative_hand-neg, black and white, monochrome,
       bad quality, watermark
-    promptJson: {fileID: 4900000, guid: f9448d6042d8cf641b28fedc22a99496, type: 3}
+    promptJson: {fileID: 4900000, guid: a3d9cc8e36533ae4bb4096f10ee5bec0, type: 3}
     active: 1
   - ParentObject: {fileID: 2114411058}
     positivePrompt: ice cream cone

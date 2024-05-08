@@ -34,7 +34,7 @@ public class CrossFade : MonoBehaviour
                 // TODO changed this for audioreaction test
                 lerp = 1;
 
-                if (au.sum > 1.2)
+                if (au.avg > 0.004)
                 {
                     lerp = 0;
                     CrossFadeStart();
