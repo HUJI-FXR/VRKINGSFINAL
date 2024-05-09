@@ -45,7 +45,7 @@ public class ComfySceneLibrary : MonoBehaviour
 {
     public GameObjectPromptJsonPair[] TextureLists;
 
-    private string serverAddress = "jonathanmiroshnik-glitch-08211026.thinkdiffusion.xyz";  //"127.0.0.1:8188";
+    public string serverAddress = "jonathanmiroshnik-backpropagation-09103750.thinkdiffusion.xyz";  //"127.0.0.1:8188";
     private string clientId = Guid.NewGuid().ToString();
     private ClientWebSocket ws = new ClientWebSocket();
 
@@ -63,7 +63,6 @@ public class ComfySceneLibrary : MonoBehaviour
 
         //await ws.ConnectAsync(new Uri($"ws://{serverAddress}/ws?clientId={clientId}"), CancellationToken.None);
 
-        //www.thinkdiffusion.com/sd/jonathanmiroshnik-dreambooth-08205736.thinkdiffusion.xyz
         await ws.ConnectAsync(new Uri($"ws://{serverAddress}/ws?clientId={clientId}"), CancellationToken.None);
         StartListening();
 

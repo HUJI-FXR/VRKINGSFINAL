@@ -14414,13 +14414,14 @@ MonoBehaviour:
     positivePrompt: brick wall, video game graphics, various colors
     negativePrompt: easynegative, negative_hand-neg, black and white, monochrome,
       bad quality, watermark
-    promptJson: {fileID: 4900000, guid: a3d9cc8e36533ae4bb4096f10ee5bec0, type: 3}
+    promptJson: {fileID: 4900000, guid: 81b33e8ae9fa82f41a409304ce9f08a2, type: 3}
     active: 1
   - ParentObject: {fileID: 2114411058}
     positivePrompt: ice cream cone
     negativePrompt: watermark
     promptJson: {fileID: 4900000, guid: ec4e76b4d403e314b88736f6f3172b45, type: 3}
     active: 0
+  serverAddress: jonathanmiroshnik-backpropagation-09103750.thinkdiffusion.xyz
 --- !u!4 &1087103410
 Transform:
   m_ObjectHideFlags: 0
