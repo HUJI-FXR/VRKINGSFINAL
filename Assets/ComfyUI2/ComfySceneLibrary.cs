@@ -44,12 +44,15 @@ public struct GameObjectPromptJsonPair
 public class ComfySceneLibrary : MonoBehaviour
 {
     public GameObjectPromptJsonPair[] TextureLists;
+    public string serverAddress = "127.0.0.1:8188";  //"jonathanmiroshnik-backpropagation-09103750.thinkdiffusion.xyz"
 
-    public string serverAddress = "jonathanmiroshnik-backpropagation-09103750.thinkdiffusion.xyz";  //"127.0.0.1:8188";
+    public ScreenRecorder screenRecorder;
+
     private string clientId = Guid.NewGuid().ToString();
     private ClientWebSocket ws = new ClientWebSocket();
-
     private bool started_generations = false;
+
+    private string cameraImage;
 
     private async void Start()
     {
@@ -61,10 +64,21 @@ public class ComfySceneLibrary : MonoBehaviour
 
         InvokeRepeating("DelayedChangeToTexture", 1f, 0.01f);
 
-        //await ws.ConnectAsync(new Uri($"ws://{serverAddress}/ws?clientId={clientId}"), CancellationToken.None);
-
         await ws.ConnectAsync(new Uri($"ws://{serverAddress}/ws?clientId={clientId}"), CancellationToken.None);
         StartListening();
+
+        ScreenRecorderToImg2Img();
+    }
+
+    public void ScreenRecorderToImg2Img()
+    {
+        if (screenRecorder == null)
+        {
+            return;
+        }
+
+        cameraImage = screenRecorder.CaptureScreenshot();
+        Debug.Log(cameraImage);
 
         ButtonTest();
     }
@@ -108,6 +122,7 @@ public class ComfySceneLibrary : MonoBehaviour
         promptText = promptText.Replace("Pprompt", TextureLists[curGroup].positivePrompt);
         promptText = promptText.Replace("Nprompt", TextureLists[curGroup].negativePrompt);
         promptText = promptText.Replace("SeedHere", UnityEngine.Random.Range(1, 10000).ToString());
+        promptText = promptText.Replace("CameraImage", cameraImage);
 
         UnityWebRequest request = new UnityWebRequest(url, "POST");
         byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(promptText);
