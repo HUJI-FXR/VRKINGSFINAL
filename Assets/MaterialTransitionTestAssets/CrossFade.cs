@@ -8,7 +8,7 @@ public class CrossFade : MonoBehaviour
     public List<Texture> textures;
 
     private Renderer renderer;
-    private float duration = 0.5f;
+    private float duration = 3f;
     private int texNum = 0;
     private float lerp = 0f;
 
@@ -29,7 +29,7 @@ public class CrossFade : MonoBehaviour
 
             if (au == null)
             {
-                if (lerp > 1)
+                if (lerp > 3 )
                 {
                     CrossFadeStart();
                 }
@@ -63,6 +63,7 @@ public class CrossFade : MonoBehaviour
         {
             texNum = 0;
             CrossFadeBetween(textures[textures.Count-1], textures[texNum]);
+
         }
     }
 

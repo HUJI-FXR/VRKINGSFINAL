@@ -424,7 +424,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 419183942}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed4355c0bdea61b41971505afe35f1bb, type: 3}
   m_Name: 
@@ -950,7 +950,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 419183942}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 36771e7e4f970a34fac708eb966e363e, type: 3}
@@ -1054,6 +1054,7 @@ MonoBehaviour:
   textures:
   - {fileID: 2800000, guid: 45b76a5bc70a52f4e9f9bf1ea5eae112, type: 3}
   - {fileID: 2800000, guid: ba730c6ae7b7612438485068f1167bb1, type: 3}
+  - {fileID: 2800000, guid: 6312edc5c9ebda341a72485dbe4c4dbf, type: 3}
   au: {fileID: 419183949}
 --- !u!1 &1325285651
 GameObject:

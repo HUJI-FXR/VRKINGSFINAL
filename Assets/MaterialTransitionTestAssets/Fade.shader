@@ -2,7 +2,7 @@
     {
       Properties
       {
-        _Blend ( "Blend", Range ( 0, 1 ) ) = 0.5
+        _Blend ( "Blend", Range ( 0, 1 ) ) = 2
         _Color ( "Main Color", Color ) = ( 1, 1, 1, 1 )
         _MainTex ( "Main Texture", 2D ) = "white" {}
         _TransitionTex ( "Transition Texture", 2D ) = ""
