@@ -8,7 +8,7 @@ public class CrossFade : MonoBehaviour
     public List<Texture> textures;
 
     private Renderer renderer;
-    private float duration = 0.2f;
+    private float duration = 0.5f;
     private int texNum = 0;
     private float lerp = 0f;
 
@@ -16,28 +16,37 @@ public class CrossFade : MonoBehaviour
 
     void Start()
     {
-        textures = new List<Texture>();
-
         renderer = GetComponent<Renderer>();
         renderer.material.SetFloat("_Blend", 0f);
     }
 
     void Update()
     {
-        if (textures.Count > 0)
+        if (textures.Count > 1)
         {
             lerp += Time.deltaTime / duration;
             renderer.material.SetFloat("_Blend", lerp);
 
-            if (lerp > 1)
+            if (au == null)
             {
-                // TODO changed this for audioreaction test
-                lerp = 1;
-
-                if (au.avg > 0.004)
+                if (lerp > 1)
                 {
-                    lerp = 0;
                     CrossFadeStart();
+                }
+            }
+
+            // When using audio source for starting transitions
+            else
+            {
+                if (lerp > 1)
+                {
+                    // TODO changed this for audioreaction test
+                    lerp = 1;
+
+                    if (au.avg > 0.004)
+                    {
+                        CrossFadeStart();
+                    }
                 }
             }
         }
@@ -46,7 +55,6 @@ public class CrossFade : MonoBehaviour
     public void CrossFadeStart()
     {
         lerp = 0;
-
         texNum++;
         if (texNum < textures.Count) {
             CrossFadeBetween(textures[texNum - 1], textures[texNum]);
