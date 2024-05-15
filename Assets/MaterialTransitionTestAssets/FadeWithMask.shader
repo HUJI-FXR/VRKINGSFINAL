@@ -46,9 +46,18 @@ Shader "Custom/FadeWithMask"
         {
             fixed4 t1 = tex2D(_MainTex, IN.uv_MainTex) * _Color;
             fixed4 t2 = tex2D(_TransitionTex, IN.uv_TransitionTex) * _Color;
-            float maskValue = tex2D(_MaskTex, IN.uv_MaskTex).r; // Assuming mask texture is grayscale
-            float maskedBlend = _Blend * maskValue; // Applying mask to blend value
-            o.Albedo = lerp(t1, t2, maskedBlend);
+
+            fixed4 maskf4 = tex2D(_MaskTex, IN.uv_MaskTex) * _Color;
+
+
+            //float maskValue = tex2D(_MaskTex, IN.uv_MaskTex).r; // Assuming mask texture is grayscale
+            //float maskedBlend = _Blend * maskValue; // Applying mask to blend value
+
+            //o.Albedo = lerp(t1, t2, maskedBlend);
+
+            updated_maskf4 = maskf4 + _Blend * 255;
+            updated_maskf4_opposite = 255 - updated_maskf4;
+            o.Albedo = lerp(t1, t2, _Blend);
         }
         ENDCG
     }
