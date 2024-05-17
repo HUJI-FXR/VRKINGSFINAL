@@ -20,10 +20,10 @@ Shader "Custom/FadeWithMask"
             SetTexture[_TransitionTex]
             SetTexture[_MaskTex]
 
-            {
-                ConstantColor(0, 0, 0, [_Blend])
-                Combine texture Lerp(constant) previous, texture * previous
-            }
+           // {
+           //     ConstantColor(0, 0, 0, [_Blend])
+           //     Combine texture Lerp(constant) previous, texture * previous
+           // }
         }
 
         CGPROGRAM
@@ -55,9 +55,13 @@ Shader "Custom/FadeWithMask"
 
             //o.Albedo = lerp(t1, t2, maskedBlend);
 
-            updated_maskf4 = maskf4 + _Blend * 255;
-            updated_maskf4_opposite = 255 - updated_maskf4;
-            o.Albedo = lerp(t1, t2, _Blend);
+            //fixed4 updated_maskf4 = maskf4 + (_Blend * 255) - 127.5;
+            fixed4 updated_maskf4 = maskf4 + _Blend;
+            //updated_maskf4_opposite = 255 - updated_maskf4;
+            //o.Albedo = lerp(t1, t2, _Blend);
+            o.Albedo = ((maskf4 + (_Blend * 2 - 1) + t1) + ((1-maskf4) + (_Blend * 2 - 1) + t2));
+
+            //o.Albedo = lerp(t1, t2, updated_maskf4);
         }
         ENDCG
     }

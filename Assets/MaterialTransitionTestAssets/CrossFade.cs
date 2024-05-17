@@ -29,7 +29,7 @@ public class CrossFade : MonoBehaviour
 
             if (au == null)
             {
-                if (lerp > 3 )
+                if (lerp > 1 )
                 {
                     CrossFadeStart();
                 }
