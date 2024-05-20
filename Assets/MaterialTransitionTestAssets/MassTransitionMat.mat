@@ -72,7 +72,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TransitionTex:
-        m_Texture: {fileID: 2800000, guid: f52bc0c2376d290449f49d88f87dade9, type: 3}
+        m_Texture: {fileID: 2800000, guid: ed309daa36c8f274488a29b3c95faa39, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []

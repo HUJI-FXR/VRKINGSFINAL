@@ -11175,6 +11175,8 @@ MonoBehaviour:
   optimizeForManyScreenshots: 1
   format: 1
   folder: Assets/ComfyUI2/PromptSources
+  comfySceneLibrary: {fileID: 1087103409}
+  preabsolutePath: C:\Users\USER\Desktop\AIVRProj\VRKINGSFINAL\
 --- !u!1 &849264265
 GameObject:
   m_ObjectHideFlags: 0
@@ -12357,7 +12359,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 959031105}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed4355c0bdea61b41971505afe35f1bb, type: 3}
   m_Name: 
@@ -12883,7 +12885,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 959031105}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 36771e7e4f970a34fac708eb966e363e, type: 3}
@@ -14952,13 +14954,18 @@ MonoBehaviour:
     positivePrompt: Beautiful landscape, photography, fisheye lens
     negativePrompt: easynegative, negative_hand-neg, black and white, monochrome,
       bad quality, watermark
-    promptJson: {fileID: 4900000, guid: 2ae82ad67801f034c85e7a3b6dbb1e1d, type: 3}
-    active: 1
+    promptJson: {fileID: 4900000, guid: 5a6259d29bdcaf644b2a50dcd40535e5, type: 3}
+    active: 0
   - ParentObject: {fileID: 2114411058}
     positivePrompt: ice cream cone
     negativePrompt: watermark
     promptJson: {fileID: 4900000, guid: ec4e76b4d403e314b88736f6f3172b45, type: 3}
     active: 0
+  - ParentObject: {fileID: 49453699}
+    positivePrompt: Mona Lisa inside frame
+    negativePrompt: watermark
+    promptJson: {fileID: 4900000, guid: 5a6259d29bdcaf644b2a50dcd40535e5, type: 3}
+    active: 1
   serverAddress: 127.0.0.1:8188
   screenRecorder: {fileID: 834583400}
 --- !u!4 &1087103410

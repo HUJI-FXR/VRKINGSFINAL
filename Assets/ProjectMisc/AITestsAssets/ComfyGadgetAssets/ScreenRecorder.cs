@@ -39,6 +39,14 @@ public class ScreenRecorder : MonoBehaviour
     private Texture2D screenShot;
     private int counter = 0; // image #
 
+
+    // TODO maybe delete these?
+    // Comfy AI Image Generation Library
+    public ComfySceneLibrary comfySceneLibrary = null;
+    private bool DELETETHISBOOL = false;
+    //TODO TERRIBLE CODE THING HERE, NEED TO CONVERT RELATIVE TO ABSOLUTE PATH WITHOUT THIS SHORTCUT IN LINE BELOW
+    public string preabsolutePath;
+
     // create a unique filename using a one-up variable
     private string uniqueFilename(int width, int height)
     {
@@ -192,10 +200,21 @@ public class ScreenRecorder : MonoBehaviour
 
     private void LoadScreenshot(string path)
     {
-        Debug.Log("Got to load screenshot: " + path);
+        if (DELETETHISBOOL)
+        {
+            return;
+        }
+
+        string[] pathStrings = path.Split("/");
+        string fullPath = (preabsolutePath + path).Replace('\\', '/');
+        Debug.Log("Got to load screenshot: " + fullPath + " File name is: " + pathStrings[pathStrings.Length-1]);
         byte[] fileData = File.ReadAllBytes(path);
         Texture2D texture = new Texture2D(captureWidth, captureHeight);
         texture.LoadImage(fileData);
         display.GetComponent<Renderer>().material.mainTexture = texture;
+
+        comfySceneLibrary.startGenerationForCameraImg(3, fullPath);
+
+        DELETETHISBOOL = true;
     }
 }

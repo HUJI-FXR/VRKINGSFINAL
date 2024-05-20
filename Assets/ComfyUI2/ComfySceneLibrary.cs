@@ -66,21 +66,6 @@ public class ComfySceneLibrary : MonoBehaviour
 
         await ws.ConnectAsync(new Uri($"ws://{serverAddress}/ws?clientId={clientId}"), CancellationToken.None);
         StartListening();
-
-        ScreenRecorderToImg2Img();
-    }
-
-    public void ScreenRecorderToImg2Img()
-    {
-        if (screenRecorder == null)
-        {
-            return;
-        }
-
-        cameraImage = screenRecorder.CaptureScreenshot();
-        Debug.Log(cameraImage);
-
-        ButtonTest();
     }
 
     public void PromptActivate(InputAction.CallbackContext context)
@@ -92,6 +77,20 @@ public class ComfySceneLibrary : MonoBehaviour
             {
                 StartCoroutine(QueuePromptCoroutine(i));
             }
+        }
+    }
+
+    public void startGenerationForCameraImg(int elementInt, string imgName)
+    {
+        cameraImage = imgName;
+        startGenerationForElement(elementInt);
+    }
+
+    public void startGenerationForElement(int elementInt)
+    {
+        if (TextureLists[elementInt].active)
+        {
+            StartCoroutine(QueuePromptCoroutine(elementInt));
         }
     }
 
