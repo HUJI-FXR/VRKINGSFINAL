@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using System.Collections;
 using System.IO;
@@ -13,6 +14,8 @@ using UnityEngine.UI;
 
 public class ScreenRecorder : MonoBehaviour
 {
+    [SerializeField] private GameObject display;
+    
     // 4k = 3840 x 2160   1080p = 1920 x 1080
     public int captureWidth = 1920;
     public int captureHeight = 1080;
@@ -67,12 +70,15 @@ public class ScreenRecorder : MonoBehaviour
 
         // return unique filename
         return filename;
+        
     }
 
-    /*private void Start()
+    private void Start()
     {
-        InvokeRepeating("CaptureScreenshot", 5, 5);
-    }*/
+        
+        InvokeRepeating("CaptureScreenshot", 0, 5f);
+
+    }
 
     public string CaptureScreenshot()
     {
@@ -160,8 +166,36 @@ public class ScreenRecorder : MonoBehaviour
         }
 
 
+        
         string mask = string.Format("screen_{0}x{1}*.{2}", rect.width, rect.height, format.ToString().ToLower());
         int counter = Directory.GetFiles(folder, mask, SearchOption.TopDirectoryOnly).Length;
-        return string.Format("screen_{0}x{1}_{2}.{3}", rect.width, rect.height, counter, format.ToString().ToLower());
+        
+        // --------------------- NADAV'S COMMENT: ADDED THIS METHOD TO DISPLAY THE SCREENSHOT ---------
+        StartCoroutine(DisplayScreenshot(filename));
+
+        return filename;
+        // --------------------- NADAV'S COMMENT: WHY DOES IT RETURN A DIFFERENT FILE NAME ---------
+        //return string.Format("screen_{0}x{1}_{2}.{3}", rect.width, rect.height, counter, format.ToString().ToLower());
+    }
+
+    IEnumerator DisplayScreenshot(string filepath)
+    {
+
+        while (!File.Exists(filepath))
+        {
+            yield return null;
+        }
+
+        LoadScreenshot(filepath);
+
+    }
+
+    private void LoadScreenshot(string path)
+    {
+        Debug.Log("Got to load screenshot: " + path);
+        byte[] fileData = File.ReadAllBytes(path);
+        Texture2D texture = new Texture2D(captureWidth, captureHeight);
+        texture.LoadImage(fileData);
+        display.GetComponent<Renderer>().material.mainTexture = texture;
     }
 }
