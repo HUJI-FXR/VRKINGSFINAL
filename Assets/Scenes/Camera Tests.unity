@@ -610,7 +610,7 @@ Transform:
   m_GameObject: {fileID: 120611418}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5345947, y: 0.32773402, z: 0.52763104}
+  m_LocalPosition: {x: 0.5345947, y: 0.006, z: -0.524}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5990,7 +5990,7 @@ Transform:
   m_GameObject: {fileID: 682017971}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.445, y: 0.37, z: 0.477}
+  m_LocalPosition: {x: 0.436, y: -0.493, z: -0.509}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10157,7 +10157,7 @@ MonoBehaviour:
   turnSmoothness: 0.1
   head:
     vrTarget: {fileID: 768116111}
-    ikTarget: {fileID: 1277169816}
+    ikTarget: {fileID: 1740153958}
     trackingPositionOffset: {x: 0, y: 0, z: 0}
     trackingRotationOffset: {x: 0, y: 0, z: 0}
   leftHand:
@@ -10167,7 +10167,7 @@ MonoBehaviour:
     trackingRotationOffset: {x: 0, y: 0, z: 0}
   rightHand:
     vrTarget: {fileID: 1682569096}
-    ikTarget: {fileID: 2113069651}
+    ikTarget: {fileID: 1277169816}
     trackingPositionOffset: {x: 0, y: 0, z: 0}
     trackingRotationOffset: {x: 0, y: 0, z: 0}
   headBodyPositionOffset: {x: 0, y: -0.54, z: 0}
