@@ -16,6 +16,8 @@ using UnityEngine.TextCore.Text;
 using UnityEngine.Rendering;
 using UnityEditor.PackageManager.Requests;
 using System.Linq;
+using static UnityEditor.Progress;
+using Newtonsoft.Json.Linq;
 
 [System.Serializable]
 public class ResponseData
@@ -66,6 +68,8 @@ public class ComfySceneLibrary : MonoBehaviour
 
         await ws.ConnectAsync(new Uri($"ws://{serverAddress}/ws?clientId={clientId}"), CancellationToken.None);
         StartListening();
+
+        startGenerationForElement(3);
     }
 
     public void PromptActivate(InputAction.CallbackContext context)
@@ -117,11 +121,25 @@ public class ComfySceneLibrary : MonoBehaviour
             ""prompt"": {TextureLists[curGroup].promptJson.text}
         }}";
 
+        // TODO change this from string manipulation and replacement to json placement ------------------------------
+        JObject json = JObject.Parse(promptText);
+        //Debug.Log(json.ToString());
+
+        json["prompt"]["3"]["inputs"]["seed"] = UnityEngine.Random.Range(1, 10000).ToString();
+        json["prompt"]["6"]["inputs"]["text"] = TextureLists[curGroup].positivePrompt;
+        json["prompt"]["7"]["inputs"]["text"] = TextureLists[curGroup].negativePrompt;
+
+        json["prompt"]["10"]["inputs"]["filename_prefix"] = "CURFILENAME";
+
+        promptText = json.ToString();
+
         // Replacing stand-in tags with relevant input for the final generation
-        promptText = promptText.Replace("Pprompt", TextureLists[curGroup].positivePrompt);
-        promptText = promptText.Replace("Nprompt", TextureLists[curGroup].negativePrompt);
-        promptText = promptText.Replace("SeedHere", UnityEngine.Random.Range(1, 10000).ToString());
+        //promptText = promptText.Replace("Pprompt", TextureLists[curGroup].positivePrompt);
+        //promptText = promptText.Replace("Nprompt", TextureLists[curGroup].negativePrompt);
+        //promptText = promptText.Replace("SeedHere", UnityEngine.Random.Range(1, 10000).ToString());
         promptText = promptText.Replace("CameraImage", cameraImage);
+
+        // TODO END ---------------------------------------------------------------------------------------------------
 
         UnityWebRequest request = new UnityWebRequest(url, "POST");
         byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(promptText);
@@ -240,6 +258,11 @@ public class ComfySceneLibrary : MonoBehaviour
                     // Jonathan - added the for loop to coincide with the changes to the ExtractFilename function becoming a batch-size dependant downloader
                     // Jonathan - another change, download all the images FIRST, then display, to test display speed
                     string[] filenames = ExtractFilename(webRequest.downloadHandler.text);
+
+                    //Debug.Log("All File Names:");
+                    foreach (string item in filenames) { 
+                        //Debug.Log(item);
+                    }
 
                     // If there are no filenames, the prompt has not yet finished generating
                     if (filenames.Length <= 0)

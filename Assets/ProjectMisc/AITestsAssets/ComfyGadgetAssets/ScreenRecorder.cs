@@ -84,7 +84,7 @@ public class ScreenRecorder : MonoBehaviour
     private void Start()
     {
         
-        InvokeRepeating("CaptureScreenshot", 0, 5f);
+        //InvokeRepeating("CaptureScreenshot", 0, 5f);
 
     }
 

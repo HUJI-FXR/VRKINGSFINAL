@@ -14964,8 +14964,13 @@ MonoBehaviour:
   - ParentObject: {fileID: 49453699}
     positivePrompt: Mona Lisa inside frame
     negativePrompt: watermark
-    promptJson: {fileID: 4900000, guid: 5a6259d29bdcaf644b2a50dcd40535e5, type: 3}
+    promptJson: {fileID: 4900000, guid: 7f63f9af882b88c459fcfa29388ca260, type: 3}
     active: 1
+  - ParentObject: {fileID: 49453699}
+    positivePrompt: Mona Lisa inside frame
+    negativePrompt: watermark
+    promptJson: {fileID: 4900000, guid: 5a6259d29bdcaf644b2a50dcd40535e5, type: 3}
+    active: 0
   serverAddress: 127.0.0.1:8188
   screenRecorder: {fileID: 834583400}
 --- !u!4 &1087103410
