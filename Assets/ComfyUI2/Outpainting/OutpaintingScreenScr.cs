@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.HighDefinition;
 
 public class OutpaintingScreenScr : MonoBehaviour
 {
     public Vector3 tileSize = new Vector3(2, 1, 0.01f);
     public GameObject tileObject;
     public Vector2Int tileMatrixSize = Vector2Int.one;
+    
+    private GameObject[,] tiles;
 
     private void OnValidate()
     {
@@ -41,6 +44,8 @@ public class OutpaintingScreenScr : MonoBehaviour
                 return;
             }
             
+            tiles = new GameObject[tileMatrixSize.x, tileMatrixSize.y];
+
             // TODO make a tile matrix?
             tileObject.transform.localScale = tileSize;
             for (int i = 0; i < tileMatrixSize.x; i++)
@@ -53,8 +58,39 @@ public class OutpaintingScreenScr : MonoBehaviour
                     OutpaintingTile cur_tile_scr = clone.GetComponent<OutpaintingTile>();
                     cur_tile_scr.tilePosition = new Vector2Int(i, j);
                     cur_tile_scr.painted = false;
+
+                    tiles[i, j] = clone;
                 }
             }
         }
+    }
+
+
+    public void Paint(Vector2Int tilePos, string keyword)
+    {
+        // TODO assuming that we are not yet taking into accoount a situation where we generate a middle image between 8 generated tiles
+        // TODO get adjacent tiles - currently only taking into account the left tile
+        if (tilePos.x == 0)
+        {
+            return;
+        }
+        if (tilePos.x > 0)
+        {
+            if (!tiles[tilePos.x-1, tilePos.y].GetComponent<OutpaintingTile>().painted)
+            {
+                return;
+            }
+        }
+
+        // TODO get adjacent tile textures - currently only taking into account the left tile
+        Renderer tileRenderer = tiles[tilePos.x-1, tilePos.y].GetComponent<Renderer>();
+        Texture prevTexture = tileRenderer.material.GetTexture("_MainTex");
+
+        // TODO make texture to fill up accordingly
+        // TODO send texture
+        // TODO get outpainted texture for tile
+        // TODO add the outpainted texture to tile
+
+        tiles[tilePos.x, tilePos.y].GetComponent<OutpaintingTile>().painted = true;
     }
 }

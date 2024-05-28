@@ -1,28 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class OutpaintingTile : MonoBehaviour
 {
     public Vector2Int tilePosition;
     public bool painted = false;
+    public OutpaintingScreenScr out_screen;
 
-    void Paint()
+    private void OnTriggerEnter(Collider other)
     {
-        if (painted)
+        if (painted || other == null || out_screen == null)
         {
             return;
         }
 
-        // TODO get adjacent tiles
-        // TODO get adjacent tile textures
-        // TODO make texture to fill up accordingly
-        // TODO send texture
-        // TODO get outpainted texture for tile
-        // TODO add the outpainted texture to tile
+        DiffusableObject diff = other.gameObject.GetComponent<DiffusableObject>();
+        if (diff == null) return;
+        XRGrabInteractable inter = other.gameObject.GetComponent<XRGrabInteractable>();
+        if (inter == null) return;
+        Rigidbody rigidbody = inter.gameObject.GetComponent<Rigidbody>();
+        if (rigidbody == null) return;
 
-        painted = true;
+        rigidbody.useGravity = false;
+        out_screen.Paint(tilePosition, diff.keyword);
     }
-
-    // TODO cause touch with object on tile to start Paint function
 }
