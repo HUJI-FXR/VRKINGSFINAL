@@ -2170,6 +2170,98 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &250201545
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 250201548}
+  - component: {fileID: 250201547}
+  - component: {fileID: 250201546}
+  m_Layer: 0
+  m_Name: Camera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!81 &250201546
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 250201545}
+  m_Enabled: 1
+--- !u!20 &250201547
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 250201545}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!4 &250201548
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 250201545}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 2.71, y: 1.2615722, z: 2.661}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &269468608
 GameObject:
   m_ObjectHideFlags: 0
@@ -14693,8 +14785,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7ebcfd1775a21944b232b6724737c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  comfyImageCtr: {fileID: 1829308485}
-  promptID: 1
 --- !u!114 &1829308484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14707,41 +14797,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f79945781b6eb3b469512ff72c92081f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pInput: {fileID: 0}
-  nInput: {fileID: 0}
-  promptJsonInput: {fileID: 0}
-  promptJson: '{   "3": {     "inputs": {       "seed": "SeedHere",       "steps":
-    3,       "cfg": 1.5,       "sampler_name": "euler",       "scheduler": "normal",      
-    "denoise": 0.6,       "model": [         "10",         0       ],       "positive":
-    [         "6",         0       ],       "negative": [         "7",         0      
-    ],       "latent_image": [         "14",         0       ]     },     "class_type":
-    "KSampler",     "_meta": {       "title": "KSampler"     }   },   "4": {    
-    "inputs": {       "ckpt_name": "stable-diffusion-nano-2-1.ckpt"     },     "class_type":
-    "CheckpointLoaderSimple",     "_meta": {       "title": "Load Checkpoint"    
-    }   },   "5": {     "inputs": {       "width": 128,       "height": 128,      
-    "batch_size": 50     },     "class_type": "EmptyLatentImage",     "_meta": {      
-    "title": "Empty Latent Image"     }   },   "6": {     "inputs": {       "text":
-    "Pprompt",       "clip": [         "10",         1       ]     },     "class_type":
-    "CLIPTextEncode",     "_meta": {       "title": "CLIP Text Encode (Prompt)"    
-    }   },   "7": {     "inputs": {       "text": "Nprompt",       "clip": [        
-    "10",         1       ]     },     "class_type": "CLIPTextEncode",     "_meta":
-    {       "title": "CLIP Text Encode (Prompt)"     }   },   "8": {     "inputs":
-    {       "samples": [         "3",         0       ],       "vae": [         "4",        
-    2       ]     },     "class_type": "VAEDecode",     "_meta": {       "title":
-    "VAE Decode"     }   },   "9": {     "inputs": {       "filename_prefix": "ComfyUI",      
-    "images": [         "8",         0       ]     },     "class_type": "SaveImage",    
-    "_meta": {       "title": "Save Image"     }   },   "10": {     "inputs": {      
-    "lora_name": "pytorch_lora_weights.safetensors",       "strength_model": 1,      
-    "strength_clip": 1,       "model": [         "4",         0       ],       "clip":
-    [         "4",         1       ]     },     "class_type": "LoraLoader",     "_meta":
-    {       "title": "Load LoRA"     }   },   "11": {     "inputs": {       "image":
-    "Brick-Texture-900317381 (2).jpg",       "upload": "image"     },     "class_type":
-    "LoadImage",     "_meta": {       "title": "Load Image"     }   },   "12": {    
-    "inputs": {       "pixels": [         "11",         0       ],       "vae": [        
-    "4",         2       ]     },     "class_type": "VAEEncode",     "_meta": {      
-    "title": "VAE Encode"     }   },   "14": {     "inputs": {       "amount": 50,      
-    "samples": [         "12",         0       ]     },     "class_type": "RepeatLatentBatch",    
-    "_meta": {       "title": "Repeat Latent Batch"     }   } }'
 --- !u!114 &1829308485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14754,8 +14809,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c8341c5dc26d3e4bbb6cc0c655ae5ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blocks: {fileID: 0}
-  outputImage: {fileID: 0}
 --- !u!4 &1829308486
 Transform:
   m_ObjectHideFlags: 0
@@ -21430,3 +21483,4 @@ SceneRoots:
   - {fileID: 479559259}
   - {fileID: 946187891}
   - {fileID: 173009957}
+  - {fileID: 250201548}
