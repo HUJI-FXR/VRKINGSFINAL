@@ -213,7 +213,7 @@ public class ScreenRecorder : MonoBehaviour
         texture.LoadImage(fileData);
         display.GetComponent<Renderer>().material.mainTexture = texture;
 
-        comfySceneLibrary.startGenerationForCameraImg(3, fullPath);
+        //comfySceneLibrary.startGenerationForCameraImg(3, fullPath);
 
         DELETETHISBOOL = true;
     }

@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using UnityEngine.XR.Interaction.Toolkit.AffordanceSystem.Receiver.Primitives;
 using System.Collections.Generic;
 
 public class CrossFade : MonoBehaviour
@@ -12,7 +11,7 @@ public class CrossFade : MonoBehaviour
     private int texNum = 0;
     private float lerp = 0f;
 
-    public AudioReact au;
+    //public AudioReact au;
 
     void Start()
     {
@@ -27,7 +26,7 @@ public class CrossFade : MonoBehaviour
             lerp += Time.deltaTime / duration;
             renderer.material.SetFloat("_Blend", lerp);
 
-            if (au == null)
+            /*if (au == null)
             {
                 if (lerp > 1 )
                 {
@@ -48,7 +47,7 @@ public class CrossFade : MonoBehaviour
                         CrossFadeStart();
                     }
                 }
-            }
+            }*/
         }
     }
 

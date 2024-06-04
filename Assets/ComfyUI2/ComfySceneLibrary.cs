@@ -1,23 +1,15 @@
 using System;
 using System.Collections;
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.Networking;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Threading;
-using UnityEditor.PackageManager;
+using System.Collections.Generic;
+using System.IO;
 using System.Net.WebSockets;
 using System.Text;
 using System.Text.RegularExpressions;
-using UnityEngine.InputSystem;
-using System.Collections.Generic;
-using System.Security.Cryptography;
-using UnityEngine.TextCore.Text;
-using UnityEngine.Rendering;
-using UnityEditor.PackageManager.Requests;
-using System.Linq;
-using static UnityEditor.Progress;
+using System.Threading;
 using Newtonsoft.Json.Linq;
+using UnityEditor.PackageManager.Requests;
+using UnityEngine;
+using UnityEngine.Networking;
 
 [System.Serializable]
 public class ResponseData
@@ -25,143 +17,208 @@ public class ResponseData
     public string prompt_id;
 }
 
-
-[Serializable]
-public struct GameObjectPromptJsonPair
+public enum diffusionWorkflows
 {
-    public GameObject ParentObject;
+    txt2img,
+    txt2imgLCM,
+    img2img,
+    img2imgLCM,
 
-    public string positivePrompt;
-    public string negativePrompt;
-    public UnityEngine.TextAsset promptJson;
+    // Assuming these workflows will not use low powered models and thus no need for LCM
+    baseCamera,
+    depthCamera,
+    openpose,
+    outpainting
+}
 
-    public bool active;
-
-    [System.NonSerialized]
-    public List<Texture2D> textures;
-    [System.NonSerialized]
-    public Dictionary<string, bool> genPromptIDs;
+public enum diffusionModels
+{
+    nano,
+    mini,
+    turbo,
+    turblxl
 }
 
 public class ComfySceneLibrary : MonoBehaviour
 {
-    public GameObjectPromptJsonPair[] TextureLists;
     public string serverAddress = "127.0.0.1:8188";  //"jonathanmiroshnik-backpropagation-09103750.thinkdiffusion.xyz"
+    public ComfyOrganizer comfyOrg;
 
-    public ScreenRecorder screenRecorder;
+    public string JSONFolderPath;
+    public string ImageFolderName = "Assets/";
 
     private string clientId = Guid.NewGuid().ToString();
     private ClientWebSocket ws = new ClientWebSocket();
     private bool started_generations = false;
+    private Dictionary<diffusionWorkflows, string> diffusionJsons = new Dictionary<diffusionWorkflows, string>();
 
-    private string cameraImage;
+    private bool uploadingImage = false;
 
     private async void Start()
     {
-        for (int i = 0; i<TextureLists.Length; i++)
-        {
-            TextureLists[i].textures = new List<Texture2D>();
-            TextureLists[i].genPromptIDs = new Dictionary<string, bool>();
-        }
+        // Get all enum adjacent JSON workflows
+        var jsonFiles = Directory.GetFiles(JSONFolderPath, "*.json");
 
-        InvokeRepeating("DelayedChangeToTexture", 1f, 0.01f);
+        foreach (var file in jsonFiles)
+        {
+            string fileName = Path.GetFileName(file);
+            string fileContent = File.ReadAllText(file);
+
+            int dotIndex = fileName.LastIndexOf('.');
+            string splitName = fileName.Substring(0, dotIndex);
+            if (Enum.IsDefined(typeof(diffusionWorkflows), splitName))
+            {
+                diffusionWorkflows enumVal;
+                Enum.TryParse<diffusionWorkflows>(splitName, out enumVal);
+                diffusionJsons.Add(enumVal, fileContent);
+            }
+            else
+            {
+                // TODO check why this error is not reached and instead getting a different dictionary type error
+                Debug.LogError("Please add JSON workflow " + splitName.ToString() + " to the diffusionJsons enum");
+            }
+        }
 
         await ws.ConnectAsync(new Uri($"ws://{serverAddress}/ws?clientId={clientId}"), CancellationToken.None);
         StartListening();
-
-        startGenerationForElement(3);
     }
 
-    public void PromptActivate(InputAction.CallbackContext context)
+    private string getWorkflowJSON(diffusionWorkflows enumValName)
     {
-        started_generations = true;
-        for (int i = 0;i<TextureLists.Length;i++)
+        string ret_str = "";
+        if (Enum.IsDefined(typeof(diffusionWorkflows), enumValName))
         {
-            if (TextureLists[i].active && context.performed)
-            {
-                StartCoroutine(QueuePromptCoroutine(i));
-            }
+            ret_str = diffusionJsons[enumValName];
         }
+
+        return ret_str;
     }
 
-    public void startGenerationForCameraImg(int elementInt, string imgName)
+    private string DiffusionJSONFactory(DiffusionRequest diffReq)
     {
-        cameraImage = imgName;
-        startGenerationForElement(elementInt);
-    }
-
-    public void startGenerationForElement(int elementInt)
-    {
-        if (TextureLists[elementInt].active)
-        {
-            StartCoroutine(QueuePromptCoroutine(elementInt));
-        }
-    }
-
-    public void ButtonTest()
-    {
-        started_generations = true;
-        for (int i = 0; i < TextureLists.Length; i++)
-        {
-            if (TextureLists[i].active)
-            {
-                StartCoroutine(QueuePromptCoroutine(i));
-            }
-        }
-    }
-
-    private IEnumerator QueuePromptCoroutine(int curGroup)
-    {
-        string url = "http://" + serverAddress + "/prompt";
-
         string guid = Guid.NewGuid().ToString();
         string promptText = $@"
         {{
             ""id"": ""{guid}"",
-            ""prompt"": {TextureLists[curGroup].promptJson.text}
+            ""prompt"": {getWorkflowJSON(diffReq.diffusionJsonType)}
         }}";
-
-        // TODO change this from string manipulation and replacement to json placement ------------------------------
         JObject json = JObject.Parse(promptText);
-        //Debug.Log(json.ToString());
 
-        json["prompt"]["3"]["inputs"]["seed"] = UnityEngine.Random.Range(1, 10000).ToString();
-        json["prompt"]["6"]["inputs"]["text"] = TextureLists[curGroup].positivePrompt;
-        json["prompt"]["7"]["inputs"]["text"] = TextureLists[curGroup].negativePrompt;
+        // TODO notice that curImageSize will need to change in a situation like outpainting
 
-        json["prompt"]["10"]["inputs"]["filename_prefix"] = "CURFILENAME";
-
-        promptText = json.ToString();
-
-        // Replacing stand-in tags with relevant input for the final generation
-        //promptText = promptText.Replace("Pprompt", TextureLists[curGroup].positivePrompt);
-        //promptText = promptText.Replace("Nprompt", TextureLists[curGroup].negativePrompt);
-        //promptText = promptText.Replace("SeedHere", UnityEngine.Random.Range(1, 10000).ToString());
-        promptText = promptText.Replace("CameraImage", cameraImage);
-
-        // TODO END ---------------------------------------------------------------------------------------------------
-
-        UnityWebRequest request = new UnityWebRequest(url, "POST");
-        byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(promptText);
-        request.uploadHandler = (UploadHandler)new UploadHandlerRaw(bodyRaw);
-        request.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
-        request.SetRequestHeader("Content-Type", "application/json");
-
-        yield return request.SendWebRequest();
-
-        if (request.result != UnityWebRequest.Result.Success)
+        string curDiffModel = "";
+        Vector2Int curImageSize = Vector2Int.zero;
+        switch (diffReq.diffusionModel)
         {
-            Debug.Log(request.error);
+            case diffusionModels.nano:
+                curDiffModel = "stable-diffusion-nano-2-1.ckpt";
+                curImageSize = new Vector2Int(128, 128);
+                break;
+            case diffusionModels.mini:
+                curDiffModel = "miniSD.ckpt";
+                curImageSize = new Vector2Int(256, 256);
+                break;
+            case diffusionModels.turbo:
+                curDiffModel = "sdTurbo_v10.safetensors";
+                curImageSize = new Vector2Int(512, 512);
+                break;
+            case diffusionModels.turblxl:
+                // TODO add this model
+                curDiffModel = "??";
+                curImageSize = new Vector2Int(1024, 1024);
+                break;
+        }
+
+        if (curDiffModel == null || curDiffModel == "" || curImageSize == Vector2Int.zero)
+        {
+            Debug.LogError("You must choose a useable Diffusion model");
+            return null;
+        }
+
+        string randomSeed = UnityEngine.Random.Range(1, 10000).ToString();
+        //TODO add all cases according to diffusionWorkflows ENUM
+        switch (diffReq.diffusionJsonType)
+        {
+            case diffusionWorkflows.txt2imgLCM:
+                json["prompt"]["3"]["inputs"]["seed"] = randomSeed;
+                json["prompt"]["6"]["inputs"]["text"] = diffReq.positivePrompt;
+                json["prompt"]["7"]["inputs"]["text"] = diffReq.negativePrompt;
+                json["prompt"]["5"]["inputs"]["batch_size"] = diffReq.numOfVariations;
+
+                json["prompt"]["4"]["inputs"]["ckpt_name"] = curDiffModel;
+
+                json["prompt"]["5"]["width"] = curImageSize.x;
+                json["prompt"]["5"]["height"] = curImageSize.y;
+                break;
+
+            case diffusionWorkflows.img2imgLCM:
+                if (diffReq.uploadImageName == null || diffReq.uploadImageName == "")
+                {
+                    Debug.LogError("Make sure a valid uploadImage is part of the Diffusion Request before upload it");
+                    return null;
+                }
+
+                json["prompt"]["3"]["inputs"]["seed"] = randomSeed;
+                json["prompt"]["6"]["inputs"]["text"] = diffReq.positivePrompt;
+                json["prompt"]["7"]["inputs"]["text"] = diffReq.negativePrompt;
+                json["prompt"]["15"]["inputs"]["amount"] = diffReq.numOfVariations;
+
+                json["prompt"]["4"]["inputs"]["ckpt_name"] = curDiffModel;
+                
+                StartCoroutine(UploadImage(diffReq.uploadImageName));
+                json["prompt"]["11"]["inputs"]["image"] = diffReq.uploadImageName;
+                break;
+
+            default:
+                Debug.LogError("Please choose a useable Diffusion workflow");
+                return null;
+        }
+
+        return json.ToString();
+    }
+
+    public IEnumerator QueuePromptCoroutine(DiffusionRequest diffReq)
+    {
+        string url = "http://" + serverAddress + "/prompt";
+
+        string promptText = DiffusionJSONFactory(diffReq);
+        while (uploadingImage)
+        {
+            yield return null;
+            //yield return new WaitForSeconds(0.02f);
+        }
+
+        if (promptText == null || promptText.Length <= 0)
+        {
+            yield return null;
         }
         else
         {
-            //Debug.Log("Prompt queued successfully." + request.downloadHandler.text);
-            ResponseData data = JsonUtility.FromJson<ResponseData>(request.downloadHandler.text);
-            TextureLists[curGroup].genPromptIDs.TryAdd(data.prompt_id, false);
-        }
+            UnityWebRequest request = new UnityWebRequest(url, "POST");
+            byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(promptText);
+            request.uploadHandler = (UploadHandler)new UploadHandlerRaw(bodyRaw);
+            request.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
+            request.SetRequestHeader("Content-Type", "application/json");
 
-        yield break;
+            yield return request.SendWebRequest();
+
+            if (request.result != UnityWebRequest.Result.Success)
+            {
+                Debug.Log(request.error);
+            }
+            else
+            {
+                //Debug.Log("Prompt queued successfully." + request.downloadHandler.text);
+
+                // This is the only use of ResponseData, but it is needed for proper downloading of the prompt
+                ResponseData data = JsonUtility.FromJson<ResponseData>(request.downloadHandler.text);
+                diffReq.prompt_id = data.prompt_id;
+            }
+
+            yield break;
+        }
     }
+
 
     // Used to save up on compute when not using the image generation
     private IEnumerator SmallWait()
@@ -200,21 +257,12 @@ public class ComfySceneLibrary : MonoBehaviour
                 StartCoroutine(SmallWait());
             }
 
-            // Goes over each prompt that needs completing and checks whether it has completed, if it did, it downloads the images and labels the promptID as true(as in, finished)
-            for (int i = 0; i < TextureLists.Length; i++)
+            // Goes over each prompt that needs completing and checks whether it has completed,
+            // if it did, it downloads the images and labels the promptID as true(as in, finished).
+            List<DiffusionRequest> allDiffReqs = comfyOrg.GetUnfinishedRequestPrompts();
+            foreach (DiffusionRequest diffReq in allDiffReqs)
             {
-                string[] cur_arr_keys = TextureLists[i].genPromptIDs.Keys.ToArray<string>();
-                for (int j = 0; j < cur_arr_keys.Length; j++)
-                {
-                    if (TextureLists[i].genPromptIDs[cur_arr_keys[j]])
-                    {
-                        break;
-                    }
-
-                    // TODO this solution requires us to constantly ask the server about each promptID and whether it has finished it - inefficient!
-                    // TODO - cont. can we not check which promptID has finished without asking to download it?
-                    RequestFileName(cur_arr_keys[j]);
-                }
+                RequestFileName(diffReq);
             }
         }
     }
@@ -227,14 +275,14 @@ public class ComfySceneLibrary : MonoBehaviour
         }
     }
 
-    public void RequestFileName(string id)
+    public void RequestFileName(DiffusionRequest diffReq)
     {
-        StartCoroutine(RequestFileNameRoutine(id));
+        StartCoroutine(RequestFileNameRoutine(diffReq));
     }
 
-    IEnumerator RequestFileNameRoutine(string promptID)
+    IEnumerator RequestFileNameRoutine(DiffusionRequest diffReq)
     {
-        string url = "http://" + serverAddress + "/history/" + promptID;
+        string url = "http://" + serverAddress + "/history/" + diffReq.prompt_id;
         using (UnityWebRequest webRequest = UnityWebRequest.Get(url))
         {
             // Request and wait for the desired page.
@@ -260,9 +308,9 @@ public class ComfySceneLibrary : MonoBehaviour
                     string[] filenames = ExtractFilename(webRequest.downloadHandler.text);
 
                     //Debug.Log("All File Names:");
-                    foreach (string item in filenames) { 
-                        //Debug.Log(item);
-                    }
+                    //foreach (string item in filenames) { 
+                    //Debug.Log(item);
+                    //}
 
                     // If there are no filenames, the prompt has not yet finished generating
                     if (filenames.Length <= 0)
@@ -270,37 +318,11 @@ public class ComfySceneLibrary : MonoBehaviour
                         break;
                     }
 
-                    // Print all filenames
-                    /*StringBuilder sb = new StringBuilder();
-                    foreach (string filename in filenames)
-                    {
-                        sb.Append(filename);
-                        sb.Append(" ");
-                    }
-                    string result = sb.ToString();*/
-
-                    // Checks which TextureLists group has asked for the prompt
-                    int curGroup = -1;
-                    for (int textureListGroup = 0; textureListGroup < TextureLists.Length; textureListGroup++) {
-                        if (TextureLists[textureListGroup].genPromptIDs.Keys.Contains(promptID))
-                        {
-                            curGroup = textureListGroup;
-                            break;
-                        }
-                    }
-                    if (curGroup < 0)
-                    {
-                        break;
-                    }
-
-                    // Indicating that this prompt has been completed(and won't be repeated with the same exact PromptID and is now downloading)
-                    TextureLists[curGroup].genPromptIDs[promptID] = true;
-
                     // Downloading each image of the prompt
                     for (int i = 0; i < filenames.Length; i++)
-                    { 
+                    {
                         string imageURL = "http://" + serverAddress + "/view?filename=" + filenames[i];
-                        StartCoroutine(DownloadImage(imageURL, curGroup));
+                        StartCoroutine(DownloadImage(imageURL, diffReq));
                     }
                     break;
             }
@@ -324,9 +346,7 @@ public class ComfySceneLibrary : MonoBehaviour
 
             if (startIndex == -1)
             {
-                // Jonathan - changed to null because we return string[] instead of string in the func from now on
                 return null;
-                //return "filename key not found";
             }
 
             // Adjusting startIndex to get the position right after the keyToLookFor
@@ -349,8 +369,14 @@ public class ComfySceneLibrary : MonoBehaviour
         return filenames;
     }
 
-    IEnumerator DownloadImage(string imageUrl, int curGroup)
+    IEnumerator DownloadImage(string imageUrl, DiffusionRequest diffReq)
     {
+        while (uploadingImage)
+        {
+            yield return null;
+            //yield return new WaitForSeconds(0.02f);
+        }
+
         using (UnityWebRequest webRequest = UnityWebRequestTexture.GetTexture(imageUrl))
         {
             yield return webRequest.SendWebRequest();
@@ -360,7 +386,8 @@ public class ComfySceneLibrary : MonoBehaviour
                 // Get the downloaded texture
                 Texture2D texture = ((DownloadHandlerTexture)webRequest.downloadHandler).texture;
                 // Adding the texture to the texture queue
-                TextureLists[curGroup].textures.Add(texture);
+
+                comfyOrg.AddImage(texture, diffReq);
             }
             else
             {
@@ -369,52 +396,67 @@ public class ComfySceneLibrary : MonoBehaviour
         }
     }
 
-    // TODO Change of texture functionality is DIFFERENT and should happen in a DIFFERENT place than creating and downloading he imagery
-    void DelayedChangeToTexture()
+    //https://stackoverflow.com/questions/44264468/convert-rendertexture-to-texture2d
+    public Texture2D toTexture2D(RenderTexture rTex)
     {
-        for (int i = 0; i < TextureLists.Length; i++)
+        Texture2D tex = new Texture2D(rTex.width, rTex.height, TextureFormat.RGB24, false);
+        var old_rt = RenderTexture.active;
+        RenderTexture.active = rTex;
+
+        tex.ReadPixels(new Rect(0, 0, rTex.width, rTex.height), 0, 0);
+        tex.Apply();
+
+        RenderTexture.active = old_rt;
+        return tex;
+    }
+
+    public Texture2D DeCompress(Texture2D source)
+    {
+        RenderTexture renderTex = RenderTexture.GetTemporary(
+                    source.width,
+                    source.height,
+                    0,
+                    RenderTextureFormat.Default,
+                    RenderTextureReadWrite.Linear);
+
+        Graphics.Blit(source, renderTex);
+        RenderTexture previous = RenderTexture.active;
+        RenderTexture.active = renderTex;
+        Texture2D readableText = new Texture2D(source.width, source.height);
+        readableText.ReadPixels(new Rect(0, 0, renderTex.width, renderTex.height), 0, 0);
+        readableText.Apply();
+        RenderTexture.active = previous;
+        RenderTexture.ReleaseTemporary(renderTex);
+        return readableText;
+    }
+
+    private IEnumerator UploadImage(string imgName)
+    {
+        string url = "http://" + serverAddress + "/upload/image";
+
+        WWWForm form = new WWWForm();
+
+        form.AddBinaryData("image", System.IO.File.ReadAllBytes(ImageFolderName + '/' + imgName), imgName, "image/png");
+        form.AddField("type", "input");
+        form.AddField("overwrite", "false");
+
+        uploadingImage = true;
+
+        using (var unityWebRequest = UnityWebRequest.Post(url, form))
         {
-            Transform parentObjectTransform = TextureLists[i].ParentObject.transform;
-            int numberOfChildren = parentObjectTransform.childCount;
+            yield return unityWebRequest.SendWebRequest();
 
-            // If the ParentObject does not have children, change its own texture
-            GameObject block_to_transform = TextureLists[i].ParentObject;
-
-            if (numberOfChildren > 0)
+            if (unityWebRequest.result != UnityWebRequest.Result.Success)
             {
-                // Get a random child out of the children of the ParentObject to change its texture
-                block_to_transform = parentObjectTransform.GetChild(UnityEngine.Random.Range(0, numberOfChildren)).gameObject;
+                Debug.Log(unityWebRequest.error);
             }
-
-            if (block_to_transform != null & TextureLists[i].textures != null)
+            else
             {
-                if (TextureLists[i].textures.Count <= 0)
-                {
-                    continue;
-                }
-
-                Renderer cur_block_renderer = block_to_transform.GetComponent<Renderer>();
-                Texture2D cur_texture = TextureLists[i].textures[UnityEngine.Random.Range(0, TextureLists[i].textures.Count)];
-
-                // TODO change in regards to various Shader types that might come, also change it so that doesn't require every block to have a script(only one script for all blocks)
-                if (cur_block_renderer.material.shader.name == "Custom/Fade")
-                {
-                    // TODO - Checks if there is the CrossFade script, bad code, needs to change look at one TODO above
-                    CrossFade cur_crossfade = block_to_transform.GetComponent<CrossFade>();
-                    if (cur_crossfade != null)
-                    {
-                        if (cur_crossfade.textures.Count < 3)
-                        {
-                            cur_crossfade.textures.Add(cur_texture);
-                        }
-                    }
-                }
-                else
-                {
-                    // TODO notice the many Magic numbers and names that need to become CONSTANT etc
-                    cur_block_renderer.material.SetTexture("_MainTex", cur_texture);
-                }
+                uploadingImage = false;
+                //Debug.Log("Image Upload succesful");
             }
         }
+
+        uploadingImage = false;
     }
 }
