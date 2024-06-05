@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RandomQuickAIChanging : MonoBehaviour
 {
-    public StableDiffusionText2Material DiffusionText;
+   /* public StableDiffusionText2Material DiffusionText;
 
     public void Generate()
     {
@@ -15,5 +15,5 @@ public class RandomQuickAIChanging : MonoBehaviour
     void Start()
     {
         InvokeRepeating("Generate", 10, 1);    
-    }
+    }*/
 }

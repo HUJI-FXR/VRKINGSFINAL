@@ -15,7 +15,7 @@ using UnityEngine.UI;
 public class ScreenRecorder : MonoBehaviour
 {
     [SerializeField] private GameObject display;
-    
+
     // 4k = 3840 x 2160   1080p = 1920 x 1080
     public int captureWidth = 1920;
     public int captureHeight = 1080;
@@ -39,13 +39,8 @@ public class ScreenRecorder : MonoBehaviour
     private Texture2D screenShot;
     private int counter = 0; // image #
 
-
-    // TODO maybe delete these?
-    // Comfy AI Image Generation Library
-    public ComfySceneLibrary comfySceneLibrary = null;
-    private bool DELETETHISBOOL = false;
-    //TODO TERRIBLE CODE THING HERE, NEED TO CONVERT RELATIVE TO ABSOLUTE PATH WITHOUT THIS SHORTCUT IN LINE BELOW
-    public string preabsolutePath;
+    public ComfyOrganizer comfyOrganizer;
+    public DiffusionRequest diffReq;
 
     // create a unique filename using a one-up variable
     private string uniqueFilename(int width, int height)
@@ -78,17 +73,10 @@ public class ScreenRecorder : MonoBehaviour
 
         // return unique filename
         return filename;
-        
-    }
-
-    private void Start()
-    {
-        
-        //InvokeRepeating("CaptureScreenshot", 0, 5f);
 
     }
 
-    public string CaptureScreenshot()
+    public void CaptureScreenshot()
     {
         // hide optional game object if set
         if (hideGameObject != null) hideGameObject.SetActive(false);
@@ -144,7 +132,7 @@ public class ScreenRecorder : MonoBehaviour
         }
 
         // create new thread to save the image to file (only operation that can be done in background)
-       /* new System.Threading.Thread(() =>
+        /*new System.Threading.Thread(() =>
         {
             // create file and write optional header with image bytes
             var f = System.IO.File.Create(filename);
@@ -173,38 +161,29 @@ public class ScreenRecorder : MonoBehaviour
             screenShot = null;
         }
 
+        /*string mask = string.Format("screen_{0}x{1}*.{2}", rect.width, rect.height, format.ToString().ToLower());
+        int counter = Directory.GetFiles(folder, mask, SearchOption.TopDirectoryOnly).Length;*/
 
-        
-        string mask = string.Format("screen_{0}x{1}*.{2}", rect.width, rect.height, format.ToString().ToLower());
-        int counter = Directory.GetFiles(folder, mask, SearchOption.TopDirectoryOnly).Length;
-        
-        // --------------------- NADAV'S COMMENT: ADDED THIS METHOD TO DISPLAY THE SCREENSHOT ---------
-        StartCoroutine(DisplayScreenshot(filename));
+        int lastSlashIndex = filename.LastIndexOf('/');
+        // Extract the file name by taking the substring after the last slash
+        string cutFileName = filename.Substring(lastSlashIndex + 1);
+        diffReq.uploadImageName = cutFileName;
 
-        return filename;
-        // --------------------- NADAV'S COMMENT: WHY DOES IT RETURN A DIFFERENT FILE NAME ---------
-        //return string.Format("screen_{0}x{1}_{2}.{3}", rect.width, rect.height, counter, format.ToString().ToLower());
+        comfyOrganizer.SendDiffusionRequest(diffReq);
     }
 
-    IEnumerator DisplayScreenshot(string filepath)
+    /*IEnumerator DisplayScreenshot(string filepath)
     {
-
         while (!File.Exists(filepath))
         {
             yield return null;
         }
 
         LoadScreenshot(filepath);
-
     }
 
     private void LoadScreenshot(string path)
     {
-        if (DELETETHISBOOL)
-        {
-            return;
-        }
-
         string[] pathStrings = path.Split("/");
         string fullPath = (preabsolutePath + path).Replace('\\', '/');
         Debug.Log("Got to load screenshot: " + fullPath + " File name is: " + pathStrings[pathStrings.Length-1]);
@@ -212,9 +191,5 @@ public class ScreenRecorder : MonoBehaviour
         Texture2D texture = new Texture2D(captureWidth, captureHeight);
         texture.LoadImage(fileData);
         display.GetComponent<Renderer>().material.mainTexture = texture;
-
-        //comfySceneLibrary.startGenerationForCameraImg(3, fullPath);
-
-        DELETETHISBOOL = true;
-    }
+    }*/
 }

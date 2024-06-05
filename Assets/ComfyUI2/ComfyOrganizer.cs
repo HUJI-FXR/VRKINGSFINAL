@@ -116,7 +116,6 @@ public class ComfyOrganizer : MonoBehaviour
         if (DiffuseDictionary[requestNum].numOfVariations > DiffuseDictionary[requestNum].textures.Count)
         {
             DiffuseDictionary[requestNum].textures.Add(texture);
-
         }
         if (DiffuseDictionary[requestNum].numOfVariations <= DiffuseDictionary[requestNum].textures.Count)
         {

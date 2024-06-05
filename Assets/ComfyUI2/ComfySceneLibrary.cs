@@ -386,7 +386,6 @@ public class ComfySceneLibrary : MonoBehaviour
                 // Get the downloaded texture
                 Texture2D texture = ((DownloadHandlerTexture)webRequest.downloadHandler).texture;
                 // Adding the texture to the texture queue
-
                 comfyOrg.AddImage(texture, diffReq);
             }
             else
