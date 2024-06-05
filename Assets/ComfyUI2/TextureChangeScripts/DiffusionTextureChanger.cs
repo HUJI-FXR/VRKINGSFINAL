@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using UnityEditor.UI;
 using UnityEngine;
 
@@ -20,14 +21,14 @@ public class DiffusionTextureChanger : MonoBehaviour
         if (!addToTextureTotal)
         {
             curTextureIndex = 0;
-            diff_Textures.Clear();
+            diff_Textures = new List<Texture2D> ();
         }
         diff_Textures.Add(texture);
     }
 
-    public void AddTexture(List<Texture2D> diffTextures, bool addToTextureTotal)
+    public void AddTexture(List<Texture2D> newDiffTextures, bool addToTextureTotal)
     {
-        if (diffTextures == null)
+        if (newDiffTextures == null)
         {
             return;
         }
@@ -35,9 +36,10 @@ public class DiffusionTextureChanger : MonoBehaviour
         if (!addToTextureTotal)
         {
             curTextureIndex = 0;
-            diff_Textures.Clear();
+            diff_Textures = new List<Texture2D>();
         }
-        foreach (Texture2D texture in diffTextures)
+
+        foreach (Texture2D texture in newDiffTextures)
         {
             diff_Textures.Add(texture);
         }
@@ -50,6 +52,6 @@ public class DiffusionTextureChanger : MonoBehaviour
             return;
         }
         Renderer renderer = curGameObject.GetComponent<Renderer>();
-        renderer.material.SetTexture("_MainTex", diff_Textures[curTextureIndex]);
+        renderer.material.SetTexture("_BaseMap", diff_Textures[curTextureIndex]);
     }
 }

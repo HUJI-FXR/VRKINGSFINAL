@@ -25,6 +25,8 @@ public class DiffusionRequest
 
     public string uploadImageName;
 
+    public float denoise = 1.0f;
+
     // TODO decide, do I need diffusionModels separate from the workflows? what about models that don't work with certain workflows? do we disregard?
     // TODO just put everything on the diffusionWorkFlows?
     public diffusionModels diffusionModel;
@@ -50,10 +52,23 @@ public class ComfyOrganizer : MonoBehaviour
 
     private static int currentRequestNum = 0;
 
+    private List<string> allTextureNames = new List<string>();
+    private static int currentTextureNameNumber = 0;
+
     private string GetDiffusionImageName(DiffusionRequest diffReq)
     {
         string retName = "Generated_" + diffReq.requestNum;
         return retName;
+    }
+
+    public string UniqueImageName()
+    {
+        string newTextureName = "DiffImage_" + new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds() + '_' + currentTextureNameNumber.ToString();
+        allTextureNames.Add(newTextureName);
+
+        currentTextureNameNumber++;
+
+        return newTextureName;
     }
 
     public void addDiffusionRequestToDatabase(DiffusionRequest diffReq, int currentRequestNum)
@@ -61,15 +76,52 @@ public class ComfyOrganizer : MonoBehaviour
         DiffuseDictionary.Add(currentRequestNum, diffReq);
     }
 
+    public DiffusionRequest copyDiffusionRequest(DiffusionRequest diffReq)
+    {
+        DiffusionRequest newDiffReq = new DiffusionRequest();
+
+        newDiffReq.target = diffReq.target;
+        newDiffReq.addToTextureTotal = diffReq.addToTextureTotal;
+        newDiffReq.numOfVariations = diffReq.numOfVariations;
+        newDiffReq.positivePrompt = diffReq.positivePrompt;
+        newDiffReq.negativePrompt = diffReq.negativePrompt;
+        newDiffReq.uploadImageName = diffReq.uploadImageName;
+        newDiffReq.denoise = diffReq.denoise;
+        newDiffReq.requestNum = diffReq.requestNum;
+
+        newDiffReq.diffusionModel = diffReq.diffusionModel;
+        newDiffReq.diffusionJsonType = diffReq.diffusionJsonType;
+
+        // TODO texture deepcopy
+        //diffReq.textures.ConvertAll(texture => new Texture2D(texture));
+        newDiffReq.textures = new List<Texture2D>();
+        foreach (Texture2D texture in diffReq.textures)
+        {
+            Texture2D copyTexture = new Texture2D(texture.width, texture.height);
+            copyTexture.SetPixels(texture.GetPixels());
+            copyTexture.Apply();
+
+            newDiffReq.textures.Add(copyTexture);
+        }
+
+        newDiffReq.finishedRequest = diffReq.finishedRequest;
+        newDiffReq.diffImgName = diffReq.diffImgName;
+        newDiffReq.prompt_id = diffReq.prompt_id;
+
+        return newDiffReq;
+    }
+
     // TODO choose who has the responsibility for defining the various parameters of a diffusion request, the GameObject? whoever?
     public void SendDiffusionRequest(DiffusionRequest diffReq)
     {
-        diffReq.requestNum = currentRequestNum;
-        diffReq.diffImgName = GetDiffusionImageName(diffReq);
-        addDiffusionRequestToDatabase(diffReq, currentRequestNum);
+        DiffusionRequest newDiffReq = copyDiffusionRequest(diffReq);
+
+        newDiffReq.requestNum = currentRequestNum;
+        newDiffReq.diffImgName = GetDiffusionImageName(newDiffReq);
+        addDiffusionRequestToDatabase(newDiffReq, currentRequestNum);
         currentRequestNum++;
 
-        StartCoroutine(comfyLib.QueuePromptCoroutine(diffReq));
+        StartCoroutine(comfyLib.QueuePromptCoroutine(newDiffReq));
     }
 
     public List<DiffusionRequest> GetUnfinishedRequestPrompts()
@@ -128,16 +180,9 @@ public class ComfyOrganizer : MonoBehaviour
     {
         if (!diffReq.finishedRequest || diffReq.target == null)
         {
+            Debug.LogError("Add target to send textures to");
             return;
         }
-
-        // TODO leave the responsibility to target
-        /*DiffusionTextureChanger curTextureChanger = diffReq.gameObject.GetComponent<DiffusionTextureChanger>();
-        if (curTextureChanger == null)
-        {
-            // TODO error message?
-            return;
-        }*/
 
         diffReq.target.AddTexture(diffReq.textures, diffReq.addToTextureTotal);
     }

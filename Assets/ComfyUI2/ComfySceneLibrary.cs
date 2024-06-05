@@ -159,6 +159,7 @@ public class ComfySceneLibrary : MonoBehaviour
                 }
 
                 json["prompt"]["3"]["inputs"]["seed"] = randomSeed;
+                json["prompt"]["3"]["inputs"]["denoise"] = diffReq.denoise;
                 json["prompt"]["6"]["inputs"]["text"] = diffReq.positivePrompt;
                 json["prompt"]["7"]["inputs"]["text"] = diffReq.negativePrompt;
                 json["prompt"]["15"]["inputs"]["amount"] = diffReq.numOfVariations;

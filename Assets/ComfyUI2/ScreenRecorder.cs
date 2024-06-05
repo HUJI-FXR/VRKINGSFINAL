@@ -105,7 +105,8 @@ public class ScreenRecorder : MonoBehaviour
         RenderTexture.active = null;
 
         // get our unique filename
-        string filename = uniqueFilename((int)rect.width, (int)rect.height);
+        //string filename = uniqueFilename((int)rect.width, (int)rect.height);
+        string filename = folder + '/' +  comfyOrganizer.UniqueImageName() + '.' + format.ToString().ToLower();
 
         // pull in our file header/data bytes for the specified image format (has to be done from main thread)
         byte[] fileHeader = null;
@@ -148,7 +149,7 @@ public class ScreenRecorder : MonoBehaviour
         if (fileHeader != null) f.Write(fileHeader, 0, fileHeader.Length);
         f.Write(fileData, 0, fileData.Length);
         f.Close();
-        Debug.Log(string.Format("Wrote screenshot {0} of size {1}", filename, fileData.Length));
+        //Debug.Log(string.Format("Wrote screenshot {0} of size {1}", filename, fileData.Length));
 
         // unhide optional game object if set
         if (hideGameObject != null) hideGameObject.SetActive(true);
