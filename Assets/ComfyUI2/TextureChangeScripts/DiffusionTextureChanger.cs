@@ -6,27 +6,10 @@ using UnityEngine;
 
 public class DiffusionTextureChanger : MonoBehaviour
 {
-    public float changeTextureEvery;
-    public bool changeTextureToChildren;
-
     protected List<Texture2D> diff_Textures = new List<Texture2D>();
     protected int curTextureIndex = 0;
 
-    public void AddTexture(Texture2D texture, bool addToTextureTotal)
-    {
-        if (texture == null)
-        {
-            return;
-        }
-        if (!addToTextureTotal)
-        {
-            curTextureIndex = 0;
-            diff_Textures = new List<Texture2D> ();
-        }
-        diff_Textures.Add(texture);
-    }
-
-    public void AddTexture(List<Texture2D> newDiffTextures, bool addToTextureTotal)
+    public virtual void AddTexture(List<Texture2D> newDiffTextures, bool addToTextureTotal)
     {
         if (newDiffTextures == null)
         {

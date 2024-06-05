@@ -6,9 +6,9 @@
             "id": "80a9a25d-10a4-4c99-8de1-a80d03d49e44",
             "actions": [
                 {
-                    "name": "ChangeDiffusionMechanic",
+                    "name": "TakePicture",
                     "type": "Button",
-                    "id": "bcb6547e-a0e4-40ac-b5a7-63705a3bf3d3",
+                    "id": "2e76901a-fe8f-49c6-919c-a1f05f345a13",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -18,23 +18,12 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "129b3eb2-75fe-4965-91dd-35a76202720b",
+                    "id": "6c2f0d54-f434-4538-85a4-5081ecbf5f9e",
                     "path": "<XRController>{RightHand}/{PrimaryButton}",
                     "interactions": "Press",
                     "processors": "",
                     "groups": "",
-                    "action": "ChangeDiffusionMechanic",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "595cbfd9-bc60-41f7-bb11-8f1eef5e73b3",
-                    "path": "<XRController>{RightHand}/{SecondaryButton}",
-                    "interactions": "Press",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ChangeDiffusionMechanic",
+                    "action": "TakePicture",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

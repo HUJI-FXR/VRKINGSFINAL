@@ -22,18 +22,16 @@ public class DiffusionQueueStickers : MonoBehaviour
         }
 
         // TODO download Linq for sorting: https://discussions.unity.com/t/how-to-sort-a-list-of-gameobjects-by-their-name/58831
-
-        //_stickers.Sort();
         _stickers.Reverse();
 
         MAX_DIFFUSION_IMAGES = _stickers.Count;
 
-        UpdateStickers(3);
+        UpdateStickers(0);
     }
 
     public void AddOne()
     {
-        if (currentDiffusionImageCount < MAX_DIFFUSION_IMAGES)
+        if (currentDiffusionImageCount >= MAX_DIFFUSION_IMAGES)
         {
             Debug.LogError("Tried to increase Diffusion image Sticker progress bar while it's already full");
             return;
