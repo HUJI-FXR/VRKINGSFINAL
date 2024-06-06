@@ -92,8 +92,7 @@ public class ComfyOrganizer : MonoBehaviour
         newDiffReq.diffusionModel = diffReq.diffusionModel;
         newDiffReq.diffusionJsonType = diffReq.diffusionJsonType;
 
-        // TODO texture deepcopy
-        //diffReq.textures.ConvertAll(texture => new Texture2D(texture));
+        // Texture2D deep copying
         newDiffReq.textures = new List<Texture2D>();
         foreach (Texture2D texture in diffReq.textures)
         {
@@ -186,56 +185,4 @@ public class ComfyOrganizer : MonoBehaviour
 
         diffReq.target.AddTexture(diffReq.textures, diffReq.addToTextureTotal);
     }
-
-    // -------------------------------------------------------------------------------- TODO CHANGE UNDER
-
-
-    // TODO Change of texture functionality is DIFFERENT and should happen in a DIFFERENT place than creating and downloading he imagery
-    /*void DelayedChangeToTexture()
-    {
-        for (int i = 0; i < TextureLists.Length; i++)
-        {
-            Transform parentObjectTransform = TextureLists[i].ParentObject.transform;
-            int numberOfChildren = parentObjectTransform.childCount;
-
-            // If the ParentObject does not have children, change its own texture
-            GameObject block_to_transform = TextureLists[i].ParentObject;
-
-            if (numberOfChildren > 0)
-            {
-                // Get a random child out of the children of the ParentObject to change its texture
-                block_to_transform = parentObjectTransform.GetChild(UnityEngine.Random.Range(0, numberOfChildren)).gameObject;
-            }
-
-            if (block_to_transform != null & TextureLists[i].textures != null)
-            {
-                if (TextureLists[i].textures.Count <= 0)
-                {
-                    continue;
-                }
-
-                Renderer cur_block_renderer = block_to_transform.GetComponent<Renderer>();
-                Texture2D cur_texture = TextureLists[i].textures[UnityEngine.Random.Range(0, TextureLists[i].textures.Count)];
-
-                // TODO change in regards to various Shader types that might come, also change it so that doesn't require every block to have a script(only one script for all blocks)
-                if (cur_block_renderer.material.shader.name == "Custom/Fade")
-                {
-                    // TODO - Checks if there is the CrossFade script, bad code, needs to change look at one TODO above
-                    CrossFade cur_crossfade = block_to_transform.GetComponent<CrossFade>();
-                    if (cur_crossfade != null)
-                    {
-                        if (cur_crossfade.textures.Count < 3)
-                        {
-                            cur_crossfade.textures.Add(cur_texture);
-                        }
-                    }
-                }
-                else
-                {
-                    // TODO notice the many Magic numbers and names that need to become CONSTANT etc
-                    cur_block_renderer.material.SetTexture("_MainTex", cur_texture);
-                }
-            }
-        }
-    }*/
 }

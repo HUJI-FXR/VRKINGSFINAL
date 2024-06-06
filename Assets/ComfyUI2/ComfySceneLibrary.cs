@@ -44,7 +44,7 @@ public class ComfySceneLibrary : MonoBehaviour
     public string serverAddress = "127.0.0.1:8188";  //"jonathanmiroshnik-backpropagation-09103750.thinkdiffusion.xyz"
     public ComfyOrganizer comfyOrg;
 
-    public string JSONFolderPath;
+    public string JSONFolderPath = "Assets/ComfyUI2/JSONMain";
     public string ImageFolderName = "Assets/";
 
     private string clientId = Guid.NewGuid().ToString();
@@ -54,7 +54,11 @@ public class ComfySceneLibrary : MonoBehaviour
 
     private bool uploadingImage = false;
 
-    private async void Start()
+    private bool readyForDiffusion = false;
+
+    // TODO notice that this START must always come BEFORE(put the library before the organizer in the node properties)
+    // TODO cont. the ComfyOrganizer or else some things will not be ready for an instant diffusion request
+    private void Start()
     {
         // Get all enum adjacent JSON workflows
         var jsonFiles = Directory.GetFiles(JSONFolderPath, "*.json");
@@ -79,6 +83,13 @@ public class ComfySceneLibrary : MonoBehaviour
             }
         }
 
+        readyForDiffusion = true;
+
+        StartServerConnection();
+    }
+
+    private async void StartServerConnection()
+    {
         await ws.ConnectAsync(new Uri($"ws://{serverAddress}/ws?clientId={clientId}"), CancellationToken.None);
         StartListening();
     }
@@ -180,6 +191,11 @@ public class ComfySceneLibrary : MonoBehaviour
 
     public IEnumerator QueuePromptCoroutine(DiffusionRequest diffReq)
     {
+        if (!readyForDiffusion)
+        {
+            yield return null;
+        }
+
         string url = "http://" + serverAddress + "/prompt";
 
         string promptText = DiffusionJSONFactory(diffReq);

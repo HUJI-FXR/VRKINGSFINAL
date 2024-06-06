@@ -9,11 +9,11 @@ public class DiffusionTextureChanger : MonoBehaviour
     protected List<Texture2D> diff_Textures = new List<Texture2D>();
     protected int curTextureIndex = 0;
 
-    public virtual void AddTexture(List<Texture2D> newDiffTextures, bool addToTextureTotal)
+    public virtual bool AddTexture(List<Texture2D> newDiffTextures, bool addToTextureTotal)
     {
         if (newDiffTextures == null)
         {
-            return;
+            return false;
         }
 
         if (!addToTextureTotal)
@@ -26,9 +26,11 @@ public class DiffusionTextureChanger : MonoBehaviour
         {
             diff_Textures.Add(texture);
         }
+
+        return true;
     }
 
-    protected void changeTextureOn(GameObject curGameObject, Texture2D texture)
+    protected virtual void changeTextureOn(GameObject curGameObject, Texture2D texture)
     {
         if (curGameObject == null || texture == null)
         {

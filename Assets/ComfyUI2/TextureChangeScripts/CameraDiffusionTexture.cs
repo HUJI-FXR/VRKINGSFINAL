@@ -19,16 +19,17 @@ public class CameraDiffusionTexture : DiffusionTextureChanger
         }
     }
 
-    public override void AddTexture(List<Texture2D> textures, bool addToTextureTotal)
+    public override bool AddTexture(List<Texture2D> textures, bool addToTextureTotal)
     {
         if (textures == null)
         {
-            return;
+            return false;
         }
 
         if (diff_Textures.Count >= MAX_CAMERA_IMAGES)
         {
             Debug.LogError("Too many images in Gadget Camera Queue");
+            return false;
         }
         diff_Textures.Enqueue(textures);
 
@@ -36,6 +37,8 @@ public class CameraDiffusionTexture : DiffusionTextureChanger
         {
             stickers.AddOne();
         }
+
+        return true;
     }
 
     public void SendCameraRayInput(InputAction.CallbackContext ctx)
