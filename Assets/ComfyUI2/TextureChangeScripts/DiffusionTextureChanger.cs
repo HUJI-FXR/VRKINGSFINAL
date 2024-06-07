@@ -20,6 +20,7 @@ public class DiffusionTextureChanger : MonoBehaviour
         {
             curTextureIndex = 0;
             diff_Textures = new List<Texture2D>();
+            diff_Textures.Clear();
         }
 
         foreach (Texture2D texture in newDiffTextures)
