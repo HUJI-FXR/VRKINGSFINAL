@@ -17,7 +17,7 @@ public class UIDiffusionTexture : DiffusionTextureChanger
     private float changeRate = 3.0f;
     private float curChangeDelta = 0f;
 
-    //private static float IMAGES_REDUCE_SIZE_FACTOR = 51200;
+    private static float IMAGES_REDUCE_SIZE_FACTOR = 5;
     public override bool AddTexture(List<Texture2D> textures, bool addToTextureTotal)
     {
         if (UIDisplay == null || displayPrefab == null)
@@ -51,10 +51,13 @@ public class UIDiffusionTexture : DiffusionTextureChanger
 
                 // Add a RectTransform component to the child GameObject if not already present
                 RectTransform rectTransform = childGameObject.AddComponent<RectTransform>();
-                rectTransform.sizeDelta = new Vector2(tex.width, tex.height); // Adjust the size as needed                
+                rectTransform.sizeDelta = new Vector2(tex.width / IMAGES_REDUCE_SIZE_FACTOR, tex.height / IMAGES_REDUCE_SIZE_FACTOR); // Adjust the size as needed
+                                                                                                                                      
 
                 // Add an Image component to the child GameObject
                 childGameObject.AddComponent<Image>();
+
+
             }
 
             for (int i = 0; i < diff_Textures.Count; i++)
