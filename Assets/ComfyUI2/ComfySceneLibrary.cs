@@ -158,8 +158,8 @@ public class ComfySceneLibrary : MonoBehaviour
 
                 json["prompt"]["4"]["inputs"]["ckpt_name"] = curDiffModel;
 
-                json["prompt"]["5"]["width"] = curImageSize.x;
-                json["prompt"]["5"]["height"] = curImageSize.y;
+                json["prompt"]["5"]["inputs"]["width"] = curImageSize.x;
+                json["prompt"]["5"]["inputs"]["height"] = curImageSize.y;
                 break;
 
             case diffusionWorkflows.img2imgLCM:
@@ -179,6 +179,18 @@ public class ComfySceneLibrary : MonoBehaviour
                 
                 StartCoroutine(UploadImage(diffReq.uploadImageName));
                 json["prompt"]["11"]["inputs"]["image"] = diffReq.uploadImageName;
+                break;
+
+            case diffusionWorkflows.txt2img:
+                json["prompt"]["3"]["inputs"]["seed"] = randomSeed;
+                json["prompt"]["6"]["inputs"]["text"] = diffReq.positivePrompt;
+                json["prompt"]["7"]["inputs"]["text"] = diffReq.negativePrompt;
+                json["prompt"]["5"]["inputs"]["batch_size"] = diffReq.numOfVariations;
+
+                json["prompt"]["4"]["inputs"]["ckpt_name"] = curDiffModel;
+
+                json["prompt"]["5"]["inputs"]["width"] = curImageSize.x;
+                json["prompt"]["5"]["inputs"]["height"] = curImageSize.y;
                 break;
 
             default:
