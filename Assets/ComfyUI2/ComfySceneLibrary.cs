@@ -23,6 +23,7 @@ public enum diffusionWorkflows
     txt2imgLCM,
     img2img,
     img2imgLCM,
+    combineImages,
 
     // Assuming these workflows will not use low powered models and thus no need for LCM
     baseCamera,
@@ -191,6 +192,22 @@ public class ComfySceneLibrary : MonoBehaviour
 
                 json["prompt"]["5"]["inputs"]["width"] = curImageSize.x;
                 json["prompt"]["5"]["inputs"]["height"] = curImageSize.y;
+                break;
+
+            case diffusionWorkflows.combineImages:
+                json["prompt"]["1"]["inputs"]["ckpt_name"] = curDiffModel;
+                json["prompt"]["2"]["inputs"]["text"] = diffReq.positivePrompt;
+                json["prompt"]["3"]["inputs"]["text"] = diffReq.negativePrompt;
+
+                StartCoroutine(UploadImage(diffReq.uploadImageName));
+                StartCoroutine(UploadImage(diffReq.secondUploadImageName));
+                // Input Image:
+                json["prompt"]["12"]["inputs"]["image"] = diffReq.uploadImageName;
+                // Style is extracted from this Image:
+                json["prompt"]["41"]["inputs"]["image"] = diffReq.secondUploadImageName;
+
+                json["prompt"]["21"]["inputs"]["denoise"] = diffReq.denoise;
+                json["prompt"]["21"]["inputs"]["seed"] = randomSeed;
                 break;
 
             default:

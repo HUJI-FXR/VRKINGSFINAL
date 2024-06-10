@@ -17,7 +17,7 @@ public class UIDiffusionTexture : DiffusionTextureChanger
     private float changeRate = 3.0f;
     private float curChangeDelta = 0f;
 
-    private static float IMAGES_REDUCE_SIZE_FACTOR = 5;
+    private static float IMAGES_REDUCE_SIZE_FACTOR = 1;
     public override bool AddTexture(List<Texture2D> textures, bool addToTextureTotal)
     {
         if (UIDisplay == null || displayPrefab == null)
@@ -52,18 +52,13 @@ public class UIDiffusionTexture : DiffusionTextureChanger
                 // Add a RectTransform component to the child GameObject if not already present
                 RectTransform rectTransform = childGameObject.AddComponent<RectTransform>();
                 rectTransform.sizeDelta = new Vector2(tex.width / IMAGES_REDUCE_SIZE_FACTOR, tex.height / IMAGES_REDUCE_SIZE_FACTOR); // Adjust the size as needed
-                                                                                                                                      
 
                 // Add an Image component to the child GameObject
                 childGameObject.AddComponent<Image>();
-
-
             }
 
             for (int i = 0; i < diff_Textures.Count; i++)
             {
-                Debug.Log(curDisplayPrefab.transform.childCount.ToString());
-                Debug.Log(diff_Textures.Count.ToString());
                 GameObject go = curDisplayPrefab.transform.GetChild(i).gameObject;
                 if (go != null)
                 {
@@ -78,21 +73,34 @@ public class UIDiffusionTexture : DiffusionTextureChanger
         return false;
     }
 
+    private float totalChangeDelta(float curDelta, float totalDelta)
+    {
+        // TODO can do this with a min statement between these two if options
+        if (curDelta >= totalDelta/2)
+        {
+            return (totalDelta - curDelta) / (totalDelta/2);
+        }
+        return curDelta / (totalDelta/2);
+    }
+
     private void Update()
     {
         if (displayTextures || curDisplayPrefab != null)
         {
             curChangeDelta += Time.deltaTime;
 
+            float curTotalChangeDelta = totalChangeDelta(curChangeDelta, changeRate);
             // Assume all children of UIDisplay are Images
             foreach (Transform child in curDisplayPrefab.transform)
             {
                 Image curImage = child.GetComponent<Image>();
-                curImage.color = new Color(curImage.color.r, curImage.color.g, curImage.color.b, 1 - (curChangeDelta / changeRate));
+                // 1 - (curChangeDelta / changeRate)
+                curImage.color = new Color(curImage.color.r, curImage.color.g, curImage.color.b, curTotalChangeDelta);
             }
 
             Image displayImage = curDisplayPrefab.GetComponent<Image>();
-            displayImage.color = new Color(displayImage.color.r, displayImage.color.g, displayImage.color.b, 1 - (curChangeDelta / changeRate));
+            // 1 - (curChangeDelta / changeRate)
+            displayImage.color = new Color(displayImage.color.r, displayImage.color.g, displayImage.color.b, curTotalChangeDelta);
 
             if (curChangeDelta > changeRate)
             {

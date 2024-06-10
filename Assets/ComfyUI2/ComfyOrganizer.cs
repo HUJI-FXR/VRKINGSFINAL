@@ -23,6 +23,7 @@ public class DiffusionRequest
     public string negativePrompt;
 
     public string uploadImageName;
+    public string secondUploadImageName;
 
     public float denoise = 1.0f;
 
