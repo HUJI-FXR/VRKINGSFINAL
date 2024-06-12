@@ -9,6 +9,7 @@ using Debug = UnityEngine.Debug;
 using UnityEngine.Windows;
 using static UnityEngine.GraphicsBuffer;
 using System.Net;
+using UnityEngine.Rendering;
 
 
 // TODO maybe remove requestNum from this class?
@@ -22,8 +23,11 @@ public class DiffusionRequest
     public string positivePrompt;
     public string negativePrompt;
 
-    public string uploadImageName;
-    public string secondUploadImageName;
+    /*public string uploadImageName;
+    public string secondUploadImageName;*/
+
+    public Texture2D uploadImage;
+    public Texture2D secondUploadImage;
 
     public float denoise = 1.0f;
 
@@ -85,14 +89,16 @@ public class ComfyOrganizer : MonoBehaviour
         newDiffReq.numOfVariations = diffReq.numOfVariations;
         newDiffReq.positivePrompt = diffReq.positivePrompt;
         newDiffReq.negativePrompt = diffReq.negativePrompt;
-        newDiffReq.uploadImageName = diffReq.uploadImageName;
+
+        //newDiffReq.uploadImageName = diffReq.uploadImageName;
+
         newDiffReq.denoise = diffReq.denoise;
         newDiffReq.requestNum = diffReq.requestNum;
 
         newDiffReq.diffusionModel = diffReq.diffusionModel;
         newDiffReq.diffusionJsonType = diffReq.diffusionJsonType;
 
-        // Texture2D deep copying
+        // Texture2D deep copying --------------------------------------------------------------------
         newDiffReq.textures = new List<Texture2D>();
         foreach (Texture2D texture in diffReq.textures)
         {
@@ -102,6 +108,22 @@ public class ComfyOrganizer : MonoBehaviour
 
             newDiffReq.textures.Add(copyTexture);
         }
+        if (diffReq.uploadImage != null)
+        {
+            Texture2D uploadCopyTexture = new Texture2D(diffReq.uploadImage.width, diffReq.uploadImage.height);
+            uploadCopyTexture.SetPixels(diffReq.uploadImage.GetPixels());
+            uploadCopyTexture.Apply();
+            newDiffReq.uploadImage = uploadCopyTexture;
+        }
+        if (diffReq.secondUploadImage != null)
+        {
+            Texture2D uploadSecondCopyTexture = new Texture2D(diffReq.secondUploadImage.width, diffReq.secondUploadImage.height);
+            uploadSecondCopyTexture.SetPixels(diffReq.secondUploadImage.GetPixels());
+            uploadSecondCopyTexture.Apply();
+            newDiffReq.secondUploadImage = uploadSecondCopyTexture;
+        }
+        // Texture2D deep copying --------------------------------------------------------------------
+
 
         newDiffReq.finishedRequest = diffReq.finishedRequest;
         newDiffReq.diffImgName = diffReq.diffImgName;
