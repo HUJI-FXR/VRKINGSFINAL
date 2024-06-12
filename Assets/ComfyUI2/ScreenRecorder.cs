@@ -169,7 +169,8 @@ public class ScreenRecorder : MonoBehaviour
         int lastSlashIndex = filename.LastIndexOf('/');
         // Extract the file name by taking the substring after the last slash
         string cutFileName = filename.Substring(lastSlashIndex + 1);
-        diffReq.uploadImageName = cutFileName;
+        //diffReq.uploadImageName = cutFileName;
+        diffReq.uploadImage = screenShot;
 
         comfyOrganizer.SendDiffusionRequest(diffReq);
     }

@@ -164,7 +164,13 @@ public class ComfySceneLibrary : MonoBehaviour
                 break;
 
             case diffusionWorkflows.img2imgLCM:
-                if (diffReq.uploadImageName == null || diffReq.uploadImageName == "")
+                /*if (diffReq.uploadImageName == null || diffReq.uploadImageName == "")
+                {
+                    Debug.LogError("Make sure a valid uploadImage is part of the Diffusion Request before upload it");
+                    return null;
+                }*/
+
+                if (diffReq.uploadImage == null)
                 {
                     Debug.LogError("Make sure a valid uploadImage is part of the Diffusion Request before upload it");
                     return null;
@@ -178,8 +184,8 @@ public class ComfySceneLibrary : MonoBehaviour
 
                 json["prompt"]["4"]["inputs"]["ckpt_name"] = curDiffModel;
                 
-                StartCoroutine(UploadImage(diffReq.uploadImageName));
-                json["prompt"]["11"]["inputs"]["image"] = diffReq.uploadImageName;
+                StartCoroutine(UploadImage(diffReq.uploadImage));
+                json["prompt"]["11"]["inputs"]["image"] = diffReq.uploadImage.name;
                 break;
 
             case diffusionWorkflows.txt2img:
@@ -195,16 +201,22 @@ public class ComfySceneLibrary : MonoBehaviour
                 break;
 
             case diffusionWorkflows.combineImages:
+                if (diffReq.uploadImage == null || (diffReq.secondUploadImage == null))
+                {
+                    Debug.LogError("Make sure a valid uploadImage or secondUploadImage is part of the Diffusion Request before upload it");
+                    return null;
+                }
+
                 json["prompt"]["1"]["inputs"]["ckpt_name"] = curDiffModel;
                 json["prompt"]["2"]["inputs"]["text"] = diffReq.positivePrompt;
                 json["prompt"]["3"]["inputs"]["text"] = diffReq.negativePrompt;
 
-                StartCoroutine(UploadImage(diffReq.uploadImageName));
-                StartCoroutine(UploadImage(diffReq.secondUploadImageName));
+                StartCoroutine(UploadImage(diffReq.uploadImage));
+                StartCoroutine(UploadImage(diffReq.secondUploadImage));
                 // Input Image:
-                json["prompt"]["12"]["inputs"]["image"] = diffReq.uploadImageName;
+                json["prompt"]["12"]["inputs"]["image"] = diffReq.uploadImage.name;
                 // Style is extracted from this Image:
-                json["prompt"]["41"]["inputs"]["image"] = diffReq.secondUploadImageName;
+                json["prompt"]["41"]["inputs"]["image"] = diffReq.secondUploadImage.name;
 
                 json["prompt"]["21"]["inputs"]["denoise"] = diffReq.denoise;
                 json["prompt"]["21"]["inputs"]["seed"] = randomSeed;
@@ -475,7 +487,37 @@ public class ComfySceneLibrary : MonoBehaviour
         return readableText;
     }
 
-    private IEnumerator UploadImage(string imgName)
+    private IEnumerator UploadImage(Texture2D curTexture)
+    {        
+        string url = "http://" + serverAddress + "/upload/image";
+
+        WWWForm form = new WWWForm();
+
+        form.AddBinaryData("image", curTexture.GetRawTextureData(), curTexture.name, "image/png");
+        form.AddField("type", "input");
+        form.AddField("overwrite", "false");
+
+        uploadingImage = true;
+
+        using (var unityWebRequest = UnityWebRequest.Post(url, form))
+        {
+            yield return unityWebRequest.SendWebRequest();
+
+            if (unityWebRequest.result != UnityWebRequest.Result.Success)
+            {
+                Debug.Log(unityWebRequest.error);
+            }
+            else
+            {
+                uploadingImage = false;
+                //Debug.Log("Image Upload succesful");
+            }
+        }
+
+        uploadingImage = false;
+    }
+
+    /*private IEnumerator UploadImage(string imgName)
     {
         string url = "http://" + serverAddress + "/upload/image";
 
@@ -503,5 +545,5 @@ public class ComfySceneLibrary : MonoBehaviour
         }
 
         uploadingImage = false;
-    }
+    }*/
 }
