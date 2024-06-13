@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Experimental.XR.Interaction;
 using UnityEngine.Rendering;
@@ -9,16 +10,23 @@ using UnityEngine.XR.Interaction.Toolkit.UI;
 
 public class RaycastFromHand : MonoBehaviour
 {
+    // TODO make Diffusables and Organizer a disconnected global variable
     public GameObject Diffusables;
+    public DiffusionRequest DiffReq;
+    public ComfyOrganizer Organizer;
 
-    void FireRay()
-    {
-        Ray ray = new Ray(transform.position, transform.forward);
-        RaycastHit hitData;
+    // TODO generalize this, instead of making specific variables for each mechanism, make it work for all mechanisms at once with an enum for choosing between the mechanics.
 
-        Physics.Raycast(ray, out hitData);
-    }
+    private Queue<GameObject> selectedObjects = new Queue<GameObject>();
+    private int MAX_QUEUED_OBJECTS = 2;
 
+    
+
+    private Color preSelectColor = new Color(0, 0, 255);
+    private Color selectColor = new Color(0, 255, 0);
+    private float outlineWidth = 30;
+
+    // TODO remove all Diffusables == null statements after finishing with diffusables placement
     public void OnUIHoverEntered(UIHoverEventArgs args)
     {
         if (args == null || args.uiObject == null) {
@@ -33,25 +41,22 @@ public class RaycastFromHand : MonoBehaviour
 
     public void OnGameObjectHoverEntered(HoverEnterEventArgs args)
     {
-        Debug.Log("kkk");
         if (Diffusables == null)
         {
             return;
         }
-
+        
         if (args == null || args.interactableObject == null)
         {
             return;
         }
         if (args.interactableObject.transform.parent != Diffusables.transform)
         {
-            Debug.Log("IS not parent");
             return;
         }
-        Debug.Log("IS parent");
-        Outline curOutline = args.interactableObject.transform.gameObject.AddComponent<Outline>();
-        curOutline.OutlineColor = new Color(100, 100, 100);
-        curOutline.OutlineWidth = 50;
+
+        // Creates pre-selection outline
+        AddOutline(args.interactableObject.transform.gameObject, preSelectColor, outlineWidth);
     }
 
     public void OnGameObjectHoverExited(HoverExitEventArgs args)
@@ -71,55 +76,85 @@ public class RaycastFromHand : MonoBehaviour
             return;
         }
 
-        if (args.interactableObject.transform.gameObject.TryGetComponent<Outline>(out Outline curOutline))
+        // Remove pre-selection outline
+        if (selectedObjects.Contains(args.interactableObject.transform.gameObject))
         {
-            Destroy(curOutline);
             return;
         }
+        DeleteOutline(args.interactableObject.transform.gameObject);
     }
 
-    /*private void Update()
+    public void onGameObjectSelectEntered(SelectEnterEventArgs args)
     {
-        Ray ray = new Ray(transform.position, transform.forward);
-        RaycastHit hitData;
-        Physics.Raycast(ray, out hitData);
-        
-        if (hitData.collider == null)
+        if (Diffusables == null)
         {
             return;
         }
-        if (hitData.collider.gameObject != null)
+        if (args == null || args.interactableObject == null)
         {
-            Debug.Log("rrrr");
-            if (!hitData.collider.gameObject.TryGetComponent<UnityEngine.UI.Image>(out UnityEngine.UI.Image innerImg))
-            {
-                Debug.Log("zzzz");
-                return;
-            }
-            Debug.Log("ggggggg");
-
-            Sprite img = innerImg.sprite;
-
-           *//* var croppedTexture = new Texture2D((int)img.rect.width, (int)img.rect.height);
-            var pixels = img.texture.GetPixels((int)img.textureRect.x,
-                                                    (int)img.textureRect.y,
-                                                    (int)img.textureRect.width,
-                                                    (int)img.textureRect.height);
-            croppedTexture.SetPixels(pixels);
-            croppedTexture.Apply();*//*
-
-            if (img != null)
-            {
-                *//*Sprite curSprite = Sprite.Create(croppedTexture, new Rect(0.0f, 0.0f, croppedTexture.width, croppedTexture.height), new Vector2(0.5f, 0.5f), 100.0f);
-                Image curFinImage = GetComponent<Image>();*//*
-                GetComponent<Image>().sprite = img;
-                Debug.Log("aaaa");
-            }
-            //Debug.Log("Hit " + hitData.collider);
+            return;
         }
-        else
+        if (args.interactableObject.transform.parent != Diffusables.transform)
         {
-            //Debug.Log("Hit nothing!");
+            return;
         }
-    }*/
+
+        if (selectedObjects.Contains(args.interactableObject.transform.gameObject))
+        {
+            return;
+        }
+        // Adds to queue of selected objects
+        if (selectedObjects.Count >= MAX_QUEUED_OBJECTS)
+        {
+            GameObject dequeObject = selectedObjects.Dequeue();
+            DeleteOutline(dequeObject);
+        }
+
+        selectedObjects.Enqueue(args.interactableObject.transform.gameObject);
+        // Creates selection outline
+        AddOutline(args.interactableObject.transform.gameObject, selectColor, outlineWidth);
+
+        GetTexturesFromSelected();
+    }
+
+    private void DeleteOutline(GameObject obj)
+    {
+        if (obj == null)
+        {
+            return;
+        }
+        if (obj.TryGetComponent<Outline>(out Outline curOutline))
+        {
+            Destroy(curOutline);
+        }
+    }
+    private void AddOutline(GameObject obj, Color outlineColor, float outlineWidth)
+    {
+        if (obj == null)
+        {
+            return;
+        }
+        if (obj.TryGetComponent<Outline>(out Outline curOutline))
+        {
+            curOutline.OutlineColor = outlineColor;
+            curOutline.OutlineWidth = outlineWidth;
+            return;
+        }
+        Outline elseOutline = obj.AddComponent<Outline>();
+        elseOutline.OutlineColor = outlineColor;
+        elseOutline.OutlineWidth = outlineWidth;
+    }
+
+    public void GetTexturesFromSelected()
+    {
+        if (selectedObjects.Count != MAX_QUEUED_OBJECTS)
+        {
+            return;
+        }
+
+        DiffReq.uploadImage = (selectedObjects.ElementAt(0).GetComponent<Renderer>().material.GetTexture("_BaseMap") as Texture2D);
+        DiffReq.secondUploadImage = (selectedObjects.ElementAt(1).GetComponent<Renderer>().material.GetTexture("_BaseMap") as Texture2D);
+
+        Organizer.SendDiffusionRequest(DiffReq);
+    }
 }

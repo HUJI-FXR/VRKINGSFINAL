@@ -1965,6 +1965,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Diffusables: {fileID: 2114443391}
+  DiffReq:
+    target: {fileID: 0}
+    addToTextureTotal: 0
+    numOfVariations: 1
+    positivePrompt: 
+    negativePrompt: 
+    uploadImage: {fileID: 0}
+    secondUploadImage: {fileID: 0}
+    denoise: 1
+    diffusionModel: 0
+    diffusionJsonType: 0
+  Organizer: {fileID: 1818206208}
 --- !u!1 &1316955085
 GameObject:
   m_ObjectHideFlags: 0
