@@ -1964,8 +1964,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dc49c30374bd5a4ab6481af70bf401f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Diffusables: {fileID: 2114443391}
-  DiffReq:
+  diffRequest:
     target: {fileID: 476312443}
     addToTextureTotal: 0
     numOfVariations: 1
@@ -1973,12 +1972,58 @@ MonoBehaviour:
     negativePrompt: 
     uploadImage: {fileID: 0}
     secondUploadImage: {fileID: 0}
-    denoise: 1
-    diffusionModel: 2
+    denoise: 0.8
+    diffusionModel: 4
     diffusionJsonType: 4
-  Organizer: {fileID: 1818206208}
   go1: {fileID: 1638014210}
   go2: {fileID: 33246041}
+--- !u!1 &1250809675
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1250809677}
+  - component: {fileID: 1250809676}
+  m_Layer: 0
+  m_Name: General
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1250809676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1250809675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 906aded8c3935be4f8b7634f2098c52e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  comfyOrganizer: {fileID: 1818206208}
+  comfySceneLibrary: {fileID: 1818206207}
+  diffusables: {fileID: 2114443391}
+--- !u!4 &1250809677
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1250809675}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1316955085
 GameObject:
   m_ObjectHideFlags: 0
@@ -3893,6 +3938,7 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1250809677}
   - {fileID: 538256607}
   - {fileID: 82064884}
   - {fileID: 1431994756}

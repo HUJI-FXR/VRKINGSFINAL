@@ -472,6 +472,20 @@ public class ComfySceneLibrary : MonoBehaviour
         return tex;
     }
 
+    public Texture2D toTexture2D(Texture inTex)
+    {
+        RenderTexture rTex = new RenderTexture(inTex.width, inTex.height, 4);
+        Graphics.Blit(inTex, rTex);
+
+        Texture2D tex = new Texture2D(rTex.width, rTex.height, TextureFormat.RGB24, false);
+        // ReadPixels looks at the active RenderTexture.
+        RenderTexture.active = rTex;
+        tex.ReadPixels(new Rect(0, 0, rTex.width, rTex.height), 0, 0);
+        tex.Apply();
+
+        return tex;
+    }
+
     public Texture2D DeCompress(Texture2D source)
     {
         RenderTexture renderTex = RenderTexture.GetTemporary(
@@ -498,10 +512,11 @@ public class ComfySceneLibrary : MonoBehaviour
 
         WWWForm form = new WWWForm();
 
-        form.AddBinaryData("image", curTexture.GetRawTextureData(), curTexture.name, "image/png");
+        Debug.Log("NAME " + curTexture.name);
+
+        form.AddBinaryData("image", curTexture.EncodeToPNG(), curTexture.name, "image/png");
         form.AddField("type", "input");
         form.AddField("overwrite", "false");
-
         uploadingImage = true;
 
         using (var unityWebRequest = UnityWebRequest.Post(url, form))

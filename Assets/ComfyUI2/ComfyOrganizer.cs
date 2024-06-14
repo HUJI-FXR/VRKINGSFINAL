@@ -105,6 +105,7 @@ public class ComfyOrganizer : MonoBehaviour
             Texture2D copyTexture = new Texture2D(texture.width, texture.height);
             copyTexture.SetPixels(texture.GetPixels());
             copyTexture.Apply();
+            copyTexture.name = texture.name;
 
             newDiffReq.textures.Add(copyTexture);
         }
@@ -113,6 +114,7 @@ public class ComfyOrganizer : MonoBehaviour
             Texture2D uploadCopyTexture = new Texture2D(diffReq.uploadImage.width, diffReq.uploadImage.height);
             uploadCopyTexture.SetPixels(diffReq.uploadImage.GetPixels());
             uploadCopyTexture.Apply();
+            uploadCopyTexture.name = diffReq.uploadImage.name;
             newDiffReq.uploadImage = uploadCopyTexture;
         }
         if (diffReq.secondUploadImage != null)
@@ -120,7 +122,9 @@ public class ComfyOrganizer : MonoBehaviour
             Texture2D uploadSecondCopyTexture = new Texture2D(diffReq.secondUploadImage.width, diffReq.secondUploadImage.height);
             uploadSecondCopyTexture.SetPixels(diffReq.secondUploadImage.GetPixels());
             uploadSecondCopyTexture.Apply();
+            uploadSecondCopyTexture.name = diffReq.secondUploadImage.name;
             newDiffReq.secondUploadImage = uploadSecondCopyTexture;
+
         }
         // Texture2D deep copying --------------------------------------------------------------------
 

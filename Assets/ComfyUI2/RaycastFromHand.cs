@@ -12,9 +12,7 @@ using UnityEngine.XR.Interaction.Toolkit.UI;
 public class RaycastFromHand : MonoBehaviour
 {
     // TODO make Diffusables and Organizer a disconnected global variable
-    public GameObject Diffusables;
-    public DiffusionRequest DiffReq;
-    public ComfyOrganizer Organizer;
+    public DiffusionRequest diffRequest;
 
     // TODO generalize this, instead of making specific variables for each mechanism, make it work for all mechanisms at once with an enum for choosing between the mechanics.
 
@@ -31,19 +29,24 @@ public class RaycastFromHand : MonoBehaviour
     public GameObject go1;
     public GameObject go2;
 
-    private void Start()
+    /*private void Start()
     {
         Texture go1Text = go1.GetComponent<Renderer>().material.mainTexture;
-        Texture go2Text = go1.GetComponent<Renderer>().material.mainTexture;
+        Texture go2Text = go2.GetComponent<Renderer>().material.mainTexture;
 
-        Texture2D copyTexture = toTexture2D(go1Text);
-        Texture2D secondCopyTexture = toTexture2D(go2Text);
+        Texture2D copyTexture = GeneralGameScript.instance.comfySceneLibrary.toTexture2D(go1Text);
+        Texture2D secondCopyTexture = GeneralGameScript.instance.comfySceneLibrary.toTexture2D(go2Text);
 
-        DiffReq.uploadImage = copyTexture;
-        DiffReq.secondUploadImage = secondCopyTexture;
+        copyTexture.name = GeneralGameScript.instance.comfyOrganizer.UniqueImageName() + ".png";
+        secondCopyTexture.name = GeneralGameScript.instance.comfyOrganizer.UniqueImageName() + "_2" + ".png";
 
-        Organizer.SendDiffusionRequest(DiffReq);
-    }
+        Debug.Log(secondCopyTexture.name);
+
+        diffRequest.uploadImage = copyTexture;
+        diffRequest.secondUploadImage = secondCopyTexture;
+
+        GeneralGameScript.instance.comfyOrganizer.SendDiffusionRequest(diffRequest);
+    }*/
 
     // TODO remove all Diffusables == null statements after finishing with diffusables placement
     public void OnUIHoverEntered(UIHoverEventArgs args)
@@ -60,16 +63,11 @@ public class RaycastFromHand : MonoBehaviour
 
     public void OnGameObjectHoverEntered(HoverEnterEventArgs args)
     {
-        if (Diffusables == null)
-        {
-            return;
-        }
-        
         if (args == null || args.interactableObject == null)
         {
             return;
         }
-        if (args.interactableObject.transform.parent != Diffusables.transform)
+        if (args.interactableObject.transform.parent != GeneralGameScript.instance.diffusables.transform)
         {
             return;
         }
@@ -84,16 +82,11 @@ public class RaycastFromHand : MonoBehaviour
 
     public void OnGameObjectHoverExited(HoverExitEventArgs args)
     {
-        if (Diffusables == null)
-        {
-            return;
-        }
-
         if (args == null || args.interactableObject == null)
         {
             return;
         }
-        if (args.interactableObject.transform.parent != Diffusables.transform)
+        if (args.interactableObject.transform.parent != GeneralGameScript.instance.diffusables.transform)
         {
             
             return;
@@ -109,15 +102,11 @@ public class RaycastFromHand : MonoBehaviour
 
     public void onGameObjectSelectEntered(SelectEnterEventArgs args)
     {
-        if (Diffusables == null)
-        {
-            return;
-        }
         if (args == null || args.interactableObject == null)
         {
             return;
         }
-        if (args.interactableObject.transform.parent != Diffusables.transform)
+        if (args.interactableObject.transform.parent != GeneralGameScript.instance.diffusables.transform)
         {
             return;
         }
@@ -175,40 +164,49 @@ public class RaycastFromHand : MonoBehaviour
             return;
         }
 
-        Texture firstMap = selectedObjects.Dequeue().GetComponent<Renderer>().material.GetTexture("_MainTex");
+        /*Texture go1Text = selectedObjects.Dequeue().GetComponent<Renderer>().material.mainTexture;
+        Texture go2Text = selectedObjects.Dequeue().GetComponent<Renderer>().material.mainTexture;
+
+        Texture2D copyTexture = GeneralGameScript.instance.comfySceneLibrary.toTexture2D(go1Text);
+        Texture2D secondCopyTexture = GeneralGameScript.instance.comfySceneLibrary.toTexture2D(go2Text);
+
+        diffRequest.uploadImage = copyTexture;
+        diffRequest.secondUploadImage = secondCopyTexture;
+
+        GeneralGameScript.instance.comfyOrganizer.SendDiffusionRequest(diffRequest);*/
+
+
+
+        /*Texture go1Text = go1.GetComponent<Renderer>().material.mainTexture;
+        Texture go2Text = go2.GetComponent<Renderer>().material.mainTexture;*/
+        Texture go1Text = selectedObjects.Dequeue().GetComponent<Renderer>().material.mainTexture;
+        Texture go2Text = selectedObjects.Dequeue().GetComponent<Renderer>().material.mainTexture;
+
+        Texture2D copyTexture = GeneralGameScript.instance.comfySceneLibrary.toTexture2D(go1Text);
+        Texture2D secondCopyTexture = GeneralGameScript.instance.comfySceneLibrary.toTexture2D(go2Text);
+
+        copyTexture.name = GeneralGameScript.instance.comfyOrganizer.UniqueImageName() + ".png";
+        secondCopyTexture.name = GeneralGameScript.instance.comfyOrganizer.UniqueImageName() + "_2" + ".png";
+
+        Debug.Log(secondCopyTexture.name);
+
+        diffRequest.uploadImage = copyTexture;
+        diffRequest.secondUploadImage = secondCopyTexture;
+
+        GeneralGameScript.instance.comfyOrganizer.SendDiffusionRequest(diffRequest);
+
+        /*Texture firstMap = selectedObjects.Dequeue().GetComponent<Renderer>().material.GetTexture("_MainTex");
         RenderTexture firstRt = new RenderTexture(firstMap.width, firstMap.height, 3, RenderTextureFormat.Default);
         Graphics.Blit(firstMap, firstRt);
-        DiffReq.uploadImage = toTexture2D(firstRt);
+        diffRequest.uploadImage = toTexture2D(firstRt);
 
 
         RenderTexture secondRt = new RenderTexture(firstMap.width, firstMap.height, 3, RenderTextureFormat.Default);
         Graphics.Blit(firstMap, secondRt);
-        DiffReq.secondUploadImage = toTexture2D(secondRt);
+        diffRequest.secondUploadImage = toTexture2D(secondRt);
 
-        Organizer.SendDiffusionRequest(DiffReq);
+        GeneralGameScript.comfyOrganizer.SendDiffusionRequest(diffRequest);*/
     }
 
-    Texture2D toTexture2D(RenderTexture rTex)
-    {
-        Texture2D tex = new Texture2D(rTex.width, rTex.height, TextureFormat.RGB24, false);
-        // ReadPixels looks at the active RenderTexture.
-        RenderTexture.active = rTex;
-        tex.ReadPixels(new Rect(0, 0, rTex.width, rTex.height), 0, 0);
-        tex.Apply();
-        return tex;
-    }
 
-    Texture2D toTexture2D(Texture inTex)
-    {
-        RenderTexture rTex = new RenderTexture(inTex.width, inTex.height, 4);
-        Graphics.Blit(inTex, rTex);
-
-        Texture2D tex = new Texture2D(rTex.width, rTex.height, TextureFormat.RGB24, false);
-        // ReadPixels looks at the active RenderTexture.
-        RenderTexture.active = rTex;
-        tex.ReadPixels(new Rect(0, 0, rTex.width, rTex.height), 0, 0);
-        tex.Apply();
-
-        return tex;
-    }
 }
