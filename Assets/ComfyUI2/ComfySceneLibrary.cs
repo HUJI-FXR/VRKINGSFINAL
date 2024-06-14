@@ -37,7 +37,8 @@ public enum diffusionModels
     nano,
     mini,
     turbo,
-    turblxl
+    turblxl,
+    ghostmix
 }
 
 public class ComfySceneLibrary : MonoBehaviour
@@ -138,6 +139,10 @@ public class ComfySceneLibrary : MonoBehaviour
                 // TODO add this model
                 curDiffModel = "??";
                 curImageSize = new Vector2Int(1024, 1024);
+                break;
+            case diffusionModels.ghostmix:
+                curDiffModel = "ghostmix_v20Bakedvae.safetensors";
+                curImageSize = new Vector2Int(512, 512);
                 break;
         }
 
