@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 [ExecuteInEditMode]
 public class RenderDepth : MonoBehaviour
@@ -9,11 +8,10 @@ public class RenderDepth : MonoBehaviour
     public float depthLevel = 0.5f;
 
     [SerializeField] private Renderer renderOn;
-    
+    [SerializeField] private RenderTexture dest;
+	
     private Shader _shader;
     private Shader shader
-    
-    
     {
         get { return _shader != null ? _shader : (_shader = Shader.Find("Custom/RenderDepth")); }
     }
@@ -72,8 +70,25 @@ public class RenderDepth : MonoBehaviour
 
     private void Update()
     {
-        renderOn.material = new Material(material);
-        renderOn.material.mainTexture = ScreenCapture.CaptureScreenshotAsTexture();
-
+        
+        RenderTexture src = GetComponent<Camera>().targetTexture;
+        
+        if (shader != null)
+        {
+            material.SetFloat("_DepthLevel", depthLevel);
+            Graphics.Blit(src, dest, material);
+        }
+        else
+        {
+            Graphics.Blit(src, dest);
+        }
+        
+        
+        Texture2D tex = new Texture2D(dest.width, dest.height, TextureFormat.RGB24, false);
+        // ReadPixels looks at the active RenderTexture.
+        RenderTexture.active = dest;
+        tex.ReadPixels(new Rect(0, 0, dest.width, dest.height), 0, 0);
+        tex.Apply();
+        
     }
 }
