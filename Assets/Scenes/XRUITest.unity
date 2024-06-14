@@ -199,7 +199,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: aa0426c31b14dcb4e8e50d6dee241927, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1966,7 +1966,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Diffusables: {fileID: 2114443391}
   DiffReq:
-    target: {fileID: 0}
+    target: {fileID: 476312443}
     addToTextureTotal: 0
     numOfVariations: 1
     positivePrompt: 
@@ -1974,9 +1974,11 @@ MonoBehaviour:
     uploadImage: {fileID: 0}
     secondUploadImage: {fileID: 0}
     denoise: 1
-    diffusionModel: 0
-    diffusionJsonType: 0
+    diffusionModel: 2
+    diffusionJsonType: 4
   Organizer: {fileID: 1818206208}
+  go1: {fileID: 1638014210}
+  go2: {fileID: 33246041}
 --- !u!1 &1316955085
 GameObject:
   m_ObjectHideFlags: 0
@@ -2340,7 +2342,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: f5ba3196316e8694c8beb16b41194874, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2829,7 +2831,19 @@ MonoBehaviour:
         m_CallState: 2
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1153637272}
+        m_TargetAssemblyTypeName: RaycastFromHand, Assembly-CSharp
+        m_MethodName: onGameObjectSelectEntered
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
       m_Calls: []
@@ -3530,7 +3544,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1853006840}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a075e87b1392a84794d082af22793d8, type: 3}
   m_Name: 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Experimental.XR.Interaction;
+using UnityEngine.Profiling;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -24,7 +25,25 @@ public class RaycastFromHand : MonoBehaviour
 
     private Color preSelectColor = new Color(0, 0, 255);
     private Color selectColor = new Color(0, 255, 0);
-    private float outlineWidth = 30;
+    private float outlineWidth = 20;
+
+    //TODO DELETE BELOW
+    public GameObject go1;
+    public GameObject go2;
+
+    private void Start()
+    {
+        Texture go1Text = go1.GetComponent<Renderer>().material.mainTexture;
+        Texture go2Text = go1.GetComponent<Renderer>().material.mainTexture;
+
+        Texture2D copyTexture = toTexture2D(go1Text);
+        Texture2D secondCopyTexture = toTexture2D(go2Text);
+
+        DiffReq.uploadImage = copyTexture;
+        DiffReq.secondUploadImage = secondCopyTexture;
+
+        Organizer.SendDiffusionRequest(DiffReq);
+    }
 
     // TODO remove all Diffusables == null statements after finishing with diffusables placement
     public void OnUIHoverEntered(UIHoverEventArgs args)
@@ -55,6 +74,10 @@ public class RaycastFromHand : MonoBehaviour
             return;
         }
 
+        if (selectedObjects.Contains(args.interactableObject.transform.gameObject))
+        {
+            return;
+        }
         // Creates pre-selection outline
         AddOutline(args.interactableObject.transform.gameObject, preSelectColor, outlineWidth);
     }
@@ -152,9 +175,40 @@ public class RaycastFromHand : MonoBehaviour
             return;
         }
 
-        DiffReq.uploadImage = (selectedObjects.ElementAt(0).GetComponent<Renderer>().material.GetTexture("_BaseMap") as Texture2D);
-        DiffReq.secondUploadImage = (selectedObjects.ElementAt(1).GetComponent<Renderer>().material.GetTexture("_BaseMap") as Texture2D);
+        Texture firstMap = selectedObjects.Dequeue().GetComponent<Renderer>().material.GetTexture("_MainTex");
+        RenderTexture firstRt = new RenderTexture(firstMap.width, firstMap.height, 3, RenderTextureFormat.Default);
+        Graphics.Blit(firstMap, firstRt);
+        DiffReq.uploadImage = toTexture2D(firstRt);
+
+
+        RenderTexture secondRt = new RenderTexture(firstMap.width, firstMap.height, 3, RenderTextureFormat.Default);
+        Graphics.Blit(firstMap, secondRt);
+        DiffReq.secondUploadImage = toTexture2D(secondRt);
 
         Organizer.SendDiffusionRequest(DiffReq);
+    }
+
+    Texture2D toTexture2D(RenderTexture rTex)
+    {
+        Texture2D tex = new Texture2D(rTex.width, rTex.height, TextureFormat.RGB24, false);
+        // ReadPixels looks at the active RenderTexture.
+        RenderTexture.active = rTex;
+        tex.ReadPixels(new Rect(0, 0, rTex.width, rTex.height), 0, 0);
+        tex.Apply();
+        return tex;
+    }
+
+    Texture2D toTexture2D(Texture inTex)
+    {
+        RenderTexture rTex = new RenderTexture(inTex.width, inTex.height, 4);
+        Graphics.Blit(inTex, rTex);
+
+        Texture2D tex = new Texture2D(rTex.width, rTex.height, TextureFormat.RGB24, false);
+        // ReadPixels looks at the active RenderTexture.
+        RenderTexture.active = rTex;
+        tex.ReadPixels(new Rect(0, 0, rTex.width, rTex.height), 0, 0);
+        tex.Apply();
+
+        return tex;
     }
 }
