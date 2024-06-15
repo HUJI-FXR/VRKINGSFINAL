@@ -11,6 +11,7 @@ public class RegularDiffusionTexture : DiffusionTextureChanger
     // Update is called once per frame
     protected void Update()
     {
+        // TODO should be more than 1, because otherwise only one change is necessary and should be down in addimage function
         if (diff_Textures.Count > 0)
         {
             textureChangeDelta += Time.deltaTime;

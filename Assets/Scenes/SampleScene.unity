@@ -1093,12 +1093,14 @@ MonoBehaviour:
   folder: Assets/screenshots
   comfyOrganizer: {fileID: 0}
   diffReq:
-    target: {fileID: 0}
+    targets: []
     addToTextureTotal: 0
     numOfVariations: 1
     positivePrompt: 
     negativePrompt: 
-    uploadImageName: 
+    uploadImage: {fileID: 0}
+    secondUploadImage: {fileID: 0}
+    denoise: 1
     diffusionModel: 0
     diffusionJsonType: 0
 --- !u!20 &755281870
@@ -1740,12 +1742,14 @@ MonoBehaviour:
   comfyOrg: {fileID: 840646250}
   testGameObj: {fileID: 1935092302}
   diffReq:
-    target: {fileID: 1935092307}
+    targets: []
     addToTextureTotal: 0
     numOfVariations: 20
     positivePrompt: very purple bricks
     negativePrompt: red bricks
-    uploadImageName: bird.png
+    uploadImage: {fileID: 0}
+    secondUploadImage: {fileID: 0}
+    denoise: 1
     diffusionModel: 0
     diffusionJsonType: 3
 --- !u!65 &1144363998
@@ -2678,7 +2682,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1928421789}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: DiffusionInput, Assembly-CSharp
         m_MethodName: ChangeToNextMechanic
         m_Mode: 1
@@ -2709,7 +2713,6 @@ GameObject:
   - component: {fileID: 1928421788}
   - component: {fileID: 1928421787}
   - component: {fileID: 1928421786}
-  - component: {fileID: 1928421789}
   m_Layer: 5
   m_Name: MechanicText
   m_TagString: Untagged
@@ -2800,18 +2803,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &1928421789
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1928421784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46f65423e13d7c740ac86f2d3fa88359, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1935092302
 GameObject:
   m_ObjectHideFlags: 0

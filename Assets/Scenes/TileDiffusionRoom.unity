@@ -9280,7 +9280,6 @@ GameObject:
   - component: {fileID: 925138712}
   - component: {fileID: 925138711}
   - component: {fileID: 925138710}
-  - component: {fileID: 925138709}
   m_Layer: 5
   m_Name: MechanicText
   m_TagString: Untagged
@@ -9308,20 +9307,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0.503, y: 0.017}
   m_SizeDelta: {x: 0.55, y: 0.08}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &925138709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 925138707}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46f65423e13d7c740ac86f2d3fa88359, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cameraDiffTexture: {fileID: 0}
-  inputActions: {fileID: 0}
 --- !u!114 &925138710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9334,7 +9319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
+  m_IgnoreReversedGraphics: 0
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
@@ -17137,12 +17122,13 @@ MonoBehaviour:
   folder: Assets/ComfyUI2/Screenshots
   comfyOrganizer: {fileID: 1759152776}
   diffReq:
-    target: {fileID: 1632854994}
+    targets: []
     addToTextureTotal: 0
     numOfVariations: 5
     positivePrompt: Blocks from hell, red hellish
     negativePrompt: heaven
-    uploadImageName: 
+    uploadImage: {fileID: 0}
+    secondUploadImage: {fileID: 0}
     denoise: 0.62
     diffusionModel: 1
     diffusionJsonType: 3

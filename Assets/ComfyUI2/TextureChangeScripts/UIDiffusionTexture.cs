@@ -11,6 +11,8 @@ public class UIDiffusionTexture : DiffusionTextureChanger
     public GameObject UIDisplay;
     public GameObject displayPrefab;
 
+    public GameObject gadgetImagePanel;
+
     private GameObject curDisplayPrefab;
 
     private bool displayTextures = false;
@@ -55,6 +57,12 @@ public class UIDiffusionTexture : DiffusionTextureChanger
 
                 // Add an Image component to the child GameObject
                 childGameObject.AddComponent<Image>();
+
+                // Adding the Image in the Gadget panel as well
+                // TODO should this part be in a separate place? should these textures have a global variable for global access? shouldn't the gadget deal with it? is UI and gadget sepearate?
+                // TODO change with this and make a PopupDiffusionTexture instead?
+                GameObject childGadgetGameObject = Instantiate(childGameObject);
+                childGadgetGameObject.transform.SetParent(gadgetImagePanel.transform, false);
             }
 
             for (int i = 0; i < diff_Textures.Count; i++)

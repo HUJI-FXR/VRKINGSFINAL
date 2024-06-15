@@ -16,7 +16,7 @@ using UnityEngine.Rendering;
 [Serializable]
 public class DiffusionRequest
 {
-    public DiffusionTextureChanger target;
+    public List<DiffusionTextureChanger> targets;
     public bool addToTextureTotal = false;
     public int numOfVariations = 1;
 
@@ -84,7 +84,7 @@ public class ComfyOrganizer : MonoBehaviour
     {
         DiffusionRequest newDiffReq = new DiffusionRequest();
 
-        newDiffReq.target = diffReq.target;
+        newDiffReq.targets = diffReq.targets;
         newDiffReq.addToTextureTotal = diffReq.addToTextureTotal;
         newDiffReq.numOfVariations = diffReq.numOfVariations;
         newDiffReq.positivePrompt = diffReq.positivePrompt;
@@ -203,12 +203,15 @@ public class ComfyOrganizer : MonoBehaviour
 
     private void SendTexturesToRecipient(DiffusionRequest diffReq)
     {
-        if (!diffReq.finishedRequest || diffReq.target == null)
+        if (!diffReq.finishedRequest || diffReq.targets == null)
         {
             Debug.LogError("Add target to send textures to");
             return;
         }
 
-        diffReq.target.AddTexture(diffReq.textures, diffReq.addToTextureTotal);
+        foreach(DiffusionTextureChanger changer in diffReq.targets)
+        {
+            changer.AddTexture(diffReq.textures, diffReq.addToTextureTotal);
+        }
     }
 }

@@ -41,7 +41,6 @@ public class ScreenRecorder : MonoBehaviour
     private int counter = 0; // image #
 
     public ComfyOrganizer comfyOrganizer;
-    public DiffusionRequest diffReq;
 
     // create a unique filename using a one-up variable
     private string uniqueFilename(int width, int height)
@@ -77,7 +76,7 @@ public class ScreenRecorder : MonoBehaviour
 
     }
 
-    public void CaptureScreenshot()
+    public void CaptureScreenshot(DiffusionRequest diffusionRequest)
     {
         // hide optional game object if set
         if (hideGameObject != null) hideGameObject.SetActive(false);
@@ -171,9 +170,10 @@ public class ScreenRecorder : MonoBehaviour
         string cutFileName = filename.Substring(lastSlashIndex + 1);
         //diffReq.uploadImageName = cutFileName;
         screenShot.name = cutFileName;
-        diffReq.uploadImage = screenShot;
+        diffusionRequest.uploadImage = screenShot;
+        // TODO make a different case for depth and selfie cameras
 
-        comfyOrganizer.SendDiffusionRequest(diffReq);
+        comfyOrganizer.SendDiffusionRequest(diffusionRequest);
     }
 
     /*IEnumerator DisplayScreenshot(string filepath)

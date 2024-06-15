@@ -3,30 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal.Internal;
+using UnityEngine.XR.Interaction.Toolkit;
+
+// TODO create a class like this DiffusionGroup which will be the father class without radius?
+public class DiffusionRing
+{
+    public float maxRadius = 1;
+    public float curRadius = 0;
+    public float changeMaxTime = 1;
+    public float curChangeTime = 0;
+    public bool changeTextures = false;
+    public List<GameObject> gameObjects = new List<GameObject>();
+    public List<Texture2D> diffusionTextureList = new List<Texture2D>();
+    public int diffusionTextureIndex = 0;
+}
 
 public class RadiusDiffusionTexture : DiffusionTextureChanger
 {
-    public float changeTextureEvery = 1;
-    public GameObject DiffusionParent;
-    public DiffusionRequest DiffReq;
-    public ComfyOrganizer comfyOrganizer;
+    public DiffusionRequest diffusionRequest;
     
-    private bool diffuse = false;
     private bool allowCollision = false;
-    
-    private float textureChangeDelta = 0;
-    private float radius = 0;
+    private GameObject grabbedObject = null;
+
+
+    // TODO Do I even need diffusionlist when I have  GeneralGameScript.instance.diffusables??
     private List<GameObject> diffusionList = new List<GameObject>();
-    public List<List<GameObject>> radiusDiffusionLists = new List<List<GameObject>>();
+
+    public List<DiffusionRing> radiusDiffusionRings = new List<DiffusionRing>();
 
     private void Start()
     {
-        if (DiffusionParent == null || comfyOrganizer == null)
-        {
-            return;
-        }
-
-        foreach (Transform diffusionTransform in DiffusionParent.transform)
+        foreach (Transform diffusionTransform in GeneralGameScript.instance.diffusables.transform)
         {
             diffusionList.Add(diffusionTransform.gameObject);
         }
@@ -35,37 +42,33 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
     // Update is called once per frame
     protected void Update()
     {
-        if (!diffuse)
-        {
-            return;
-        }
-
         if (diff_Textures.Count > 0)
         {
-            textureChangeDelta += Time.deltaTime;
-            if (textureChangeDelta > changeTextureEvery)
+            foreach (DiffusionRing dr in radiusDiffusionRings)
             {
-                foreach (List<GameObject> rl in radiusDiffusionLists)
+                dr.curChangeTime += Time.deltaTime;
+                if (dr.curChangeTime > dr.maxRadius && dr.changeTextures)
                 {
-                    foreach (GameObject diffusionGO in rl)
+                    foreach (GameObject diffusionGO in dr.gameObjects)
                     {
-                        // TODO decide how the different textures in a radius change the situation
-                        changeTextureOn(diffusionGO, diff_Textures[curTextureIndex]);
+                        // TODO add timer(?) to changeTextureOn
+                        changeTextureOn(diffusionGO, dr.diffusionTextureList[dr.diffusionTextureIndex]);
                     }
+                    // TODO change curRadius of dr over time
+                    dr.diffusionTextureIndex++;
+                    dr.diffusionTextureIndex %= dr.diffusionTextureList.Count;
+
+                    dr.curChangeTime = 0;
                 }
-
-                curTextureIndex++;
-                curTextureIndex %= diff_Textures.Count;
-
-                textureChangeDelta = 0;
             }
+            
         }
     }
 
     // TODO instead of each throwable being a radiusDiffusionTexture, let them have a simpler script to send a request to a central one that is responsible for the whole scene
     private void OnCollisionEnter(Collision collision)
     {
-        if (!allowCollision)
+        if (!allowCollision || grabbedObject != null)
         {
             return;
         }
@@ -77,17 +80,24 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
         allowCollision = false;
     }
 
-    public void StartDiffusion()
-    {
-        comfyOrganizer.SendDiffusionRequest(DiffReq);
-        diffuse = true;
-        allowCollision = true;
-    }
-
     public void addRadiusGameObjects(float curRadius, Vector3 position)
     {
-        List<GameObject> curRadList = gameObjectsInRadius(curRadius, position);
-        radiusDiffusionLists.Add(curRadList);
+        if (radiusDiffusionRings.Count <= 0)
+        {
+            return;
+        }
+        DiffusionRing dr = radiusDiffusionRings[radiusDiffusionRings.Count-1];
+        if (dr == null)
+        {
+            return;
+        }
+        if (dr.gameObjects.Count > 0)
+        {
+            return;
+        }
+
+        dr.gameObjects = gameObjectsInRadius(curRadius, position);
+        dr.changeTextures = true;
     }
 
     private List<GameObject> gameObjectsInRadius(float curRadius, Vector3 position)
@@ -102,5 +112,33 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
         }
 
         return radiusGameObjects;
+    }
+
+    public override bool AddTexture(List<Texture2D> newDiffTextures, bool addToTextureTotal)
+    {
+        // TODO think if this line is even useful in this script
+        base.AddTexture(newDiffTextures, addToTextureTotal);
+
+        if (grabbedObject != null)
+        {
+            if (grabbedObject.TryGetComponent<ParticleSystem>(out ParticleSystem ps))
+            {
+                var emission = ps.emission;
+                emission.enabled = true;
+            }
+            
+
+            DiffusionRing newDiffusionRing = new DiffusionRing();
+            foreach (Texture2D texture in newDiffTextures)
+            {
+                newDiffusionRing.diffusionTextureList.Add(texture);
+            }            
+            radiusDiffusionRings.Add(newDiffusionRing);
+            Debug.Log("added diffusion ring");
+            return true;
+        }
+        
+
+        return false;
     }
 }
