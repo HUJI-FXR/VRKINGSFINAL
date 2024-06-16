@@ -202,10 +202,10 @@ public class CameraGadgetMechanism : GadgetMechanism
     private ScreenRecorder screenRecorder;
     private Camera mechanismCamera;
     private Camera XRCamera;
-    private DiffusionRequest diffusionRequest;
+    private DiffusionRequest diffusionRequest;    
 
     private bool takingPicture = true;
-    public CameraGadgetMechanism(Gadget gadget, ScreenRecorder screenRecorder, Camera camera ,Camera xrCamera) : base(gadget)
+    public CameraGadgetMechanism(Gadget gadget, ScreenRecorder screenRecorder, Camera camera ,Camera xrCamera, UIDiffusionTexture uiDiffusionTexture) : base(gadget)
     {
         this.screenRecorder = screenRecorder;
         this.mechanismCamera = camera;
@@ -216,7 +216,8 @@ public class CameraGadgetMechanism : GadgetMechanism
         diffusionRequest = new DiffusionRequest();
         diffusionRequest.positivePrompt = "Beautiful";
         diffusionRequest.negativePrompt = "watermark";
-        diffusionRequest.numOfVariations = 5;        
+        diffusionRequest.numOfVariations = 5;
+        diffusionRequest.targets.Add(uiDiffusionTexture);
     }
 
     public override void OnClick()

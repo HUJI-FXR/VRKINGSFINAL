@@ -26,9 +26,14 @@ public class Gadget : MonoBehaviour
     public Camera gadgetCamera;
     public Camera xrCamera;
 
+    public UIDiffusionTexture uiDiffusionTexture;
+
+    public PlayGadgetSounds playGadgetSounds;
+    
+
     // Strategy Design Pattern
-    public List<GadgetMechanism> GadgetMechanisms = new List<GadgetMechanism>();
-    public int gadgetMechanismIndex = 0;
+    private List<GadgetMechanism> GadgetMechanisms = new List<GadgetMechanism>();
+    private int gadgetMechanismIndex = 0;
 
     // TODO make this Queue<List<Texture2D>>
     public Queue<Texture2D> textureQueue = new Queue<Texture2D>();
@@ -36,13 +41,13 @@ public class Gadget : MonoBehaviour
     private Gadget gadget;
     private void Start()
     {
-        if (gadgetCamera == null || xrCamera == null)
+        if (gadgetCamera == null || xrCamera == null || uiDiffusionTexture == null || playGadgetSounds == null)
         {
             Debug.LogError("Add all requirements of Gadget");
             return;
         }
         gadget = GetComponent<Gadget>();
-        GadgetMechanism cameraGadgetMechanism = new CameraGadgetMechanism(gadget, screenRecorder, gadgetCamera, xrCamera);
+        GadgetMechanism cameraGadgetMechanism = new CameraGadgetMechanism(gadget, screenRecorder, gadgetCamera, xrCamera, uiDiffusionTexture);
         GadgetMechanism combineImagesGadgetMechanism = new CombineImagesGadgetMechanism(gadget);
         GadgetMechanism throwingGadgetMechanism = new ThrowingGadgetMechanism(gadget);
         GadgetMechanisms.Add(cameraGadgetMechanism);
@@ -53,31 +58,34 @@ public class Gadget : MonoBehaviour
     }
 
     // Passing along the various 
-    public virtual void OnGameObjectHoverEntered(HoverEnterEventArgs args)
+    public void OnGameObjectHoverEntered(HoverEnterEventArgs args)
     {
+        playGadgetSounds.PlaySound("HoverOverElements");
         GadgetMechanisms[gadgetMechanismIndex].OnGameObjectHoverEntered(args);
     }
-    public virtual void OnGameObjectHoverExited(HoverExitEventArgs args)
+    public void OnGameObjectHoverExited(HoverExitEventArgs args)
     {
         GadgetMechanisms[gadgetMechanismIndex].OnGameObjectHoverExited(args);
     }
-    public virtual void onGameObjectSelectEntered(SelectEnterEventArgs args)
+    public void onGameObjectSelectEntered(SelectEnterEventArgs args)
     {
+        playGadgetSounds.PlaySound("SelectElement");
         GadgetMechanisms[gadgetMechanismIndex].onGameObjectSelectEntered(args);
     }
-    public virtual void onGameObjectSelectExited(SelectExitEventArgs args)
+    public void onGameObjectSelectExited(SelectExitEventArgs args)
     {
         GadgetMechanisms[gadgetMechanismIndex].onGameObjectSelectExited(args);
     }
-    public virtual void OnUIHoverEntered(UIHoverEventArgs args)
+    public void OnUIHoverEntered(UIHoverEventArgs args)
     {
+        playGadgetSounds.PlaySound("HoverOverElements");
         GadgetMechanisms[gadgetMechanismIndex].OnUIHoverEntered(args);
     }
-    public virtual void OnUIHoverExited(UIHoverEventArgs args)
+    public void OnUIHoverExited(UIHoverEventArgs args)
     {
         GadgetMechanisms[gadgetMechanismIndex].OnUIHoverExited(args);
     }
-    public virtual void OnClick()
+    public void OnClick()
     {
         GadgetMechanisms[gadgetMechanismIndex].OnClick();
     }

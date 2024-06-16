@@ -20,6 +20,16 @@ public class UIDiffusionTexture : DiffusionTextureChanger
     private float curChangeDelta = 0f;
 
     private static float IMAGES_REDUCE_SIZE_FACTOR = 1;
+
+    public PlayGadgetSounds playGadgetSounds;
+
+    private void Start()
+    {
+        if (playGadgetSounds == null)
+        {
+            Debug.LogError("Add all UIDiffusionTexture inputs");
+        }
+    }
     public override bool AddTexture(List<Texture2D> textures, bool addToTextureTotal)
     {
         if (UIDisplay == null || displayPrefab == null)
@@ -61,8 +71,8 @@ public class UIDiffusionTexture : DiffusionTextureChanger
                 // Adding the Image in the Gadget panel as well
                 // TODO should this part be in a separate place? should these textures have a global variable for global access? shouldn't the gadget deal with it? is UI and gadget sepearate?
                 // TODO change with this and make a PopupDiffusionTexture instead?
-                GameObject childGadgetGameObject = Instantiate(childGameObject);
-                childGadgetGameObject.transform.SetParent(gadgetImagePanel.transform, false);
+                /*GameObject childGadgetGameObject = Instantiate(childGameObject);
+                childGadgetGameObject.transform.SetParent(gadgetImagePanel.transform, false);*/
             }
 
             for (int i = 0; i < diff_Textures.Count; i++)
@@ -75,6 +85,8 @@ public class UIDiffusionTexture : DiffusionTextureChanger
             }
 
             displayTextures = true;
+
+            playGadgetSounds.PlaySound("ShowUIElement");
             return true;
         }
 

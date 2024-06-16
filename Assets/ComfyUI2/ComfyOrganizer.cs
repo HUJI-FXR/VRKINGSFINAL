@@ -16,7 +16,7 @@ using UnityEngine.Rendering;
 [Serializable]
 public class DiffusionRequest
 {
-    public List<DiffusionTextureChanger> targets;
+    public List<DiffusionTextureChanger> targets = new List<DiffusionTextureChanger>();
     public bool addToTextureTotal = false;
     public int numOfVariations = 1;
 
