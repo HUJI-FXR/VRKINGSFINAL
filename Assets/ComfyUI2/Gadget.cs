@@ -22,12 +22,29 @@ public class Gadget : MonoBehaviour
     public TextMeshProUGUI MechanismText;
     public TextMeshProUGUI ButtonText;
 
+    public ScreenRecorder screenRecorder = null;
+    public Camera gadgetCamera;
+
     // Strategy Design Pattern
-    public List<GadgetMechanism> GadgetMechanisms;
+    public List<GadgetMechanism> GadgetMechanisms = new List<GadgetMechanism>();
     public int gadgetMechanismIndex = 0;
 
     // TODO make this Queue<List<Texture2D>>
     public Queue<Texture2D> textureQueue = new Queue<Texture2D>();
+
+    private Gadget gadget;
+    private void Start()
+    {
+        gadget = GetComponent<Gadget>();
+        GadgetMechanism cameraGadgetMechanism = new CameraGadgetMechanism(gadget, screenRecorder, gadgetCamera);
+        GadgetMechanism combineImagesGadgetMechanism = new CombineImagesGadgetMechanism(gadget);
+        GadgetMechanism throwingGadgetMechanism = new ThrowingGadgetMechanism(gadget);
+        GadgetMechanisms.Add(cameraGadgetMechanism);
+        GadgetMechanisms.Add(combineImagesGadgetMechanism);
+        GadgetMechanisms.Add(throwingGadgetMechanism);
+
+        ChangeToMechanic(0);
+    }
 
     // Passing along the various 
     public virtual void OnGameObjectHoverEntered(HoverEnterEventArgs args)
@@ -53,6 +70,10 @@ public class Gadget : MonoBehaviour
     public virtual void OnUIHoverExited(UIHoverEventArgs args)
     {
         GadgetMechanisms[gadgetMechanismIndex].OnUIHoverExited(args);
+    }
+    public virtual void OnClick()
+    {
+        GadgetMechanisms[gadgetMechanismIndex].OnClick();
     }
 
     private void DeleteOutline(GameObject obj)
@@ -117,6 +138,7 @@ public class Gadget : MonoBehaviour
 
     public void ChangeToMechanic(int index)
     {
+        gadgetMechanismIndex = index;
         MechanismText.text = GadgetMechanisms[index].mechanismText;
         ButtonText.text = GadgetMechanisms[index].buttonText;
     }

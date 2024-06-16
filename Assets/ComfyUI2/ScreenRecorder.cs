@@ -18,8 +18,8 @@ public class ScreenRecorder : MonoBehaviour
     [SerializeField] private GameObject display;
 
     // 4k = 3840 x 2160   1080p = 1920 x 1080
-    public int captureWidth = 1920;
-    public int captureHeight = 1080;
+    public int captureWidth = 512;
+    public int captureHeight = 512;
 
     // optional game object to hide during screenshots (usually your scene canvas hud)
     public GameObject hideGameObject;
@@ -32,7 +32,7 @@ public class ScreenRecorder : MonoBehaviour
     public Format format = Format.PPM;
 
     // folder to write output (defaults to data path)
-    public string folder;
+    public string folder = "Assets/ComfyUI2/Screenshots";
 
     // private vars for screenshot
     private Rect rect;
@@ -102,7 +102,7 @@ public class ScreenRecorder : MonoBehaviour
 
         // reset active camera texture and render texture
         camera.targetTexture = null;
-        RenderTexture.active = null;
+        RenderTexture.active = null;        
 
         // get our unique filename
         //string filename = uniqueFilename((int)rect.width, (int)rect.height);

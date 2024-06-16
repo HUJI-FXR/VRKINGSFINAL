@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 
 // TODO need to remove button from several of these, choose exactly
-public class GadgetMechanism : MonoBehaviour
+public class GadgetMechanism : Object
 {
     public static string MECHANISM_PRETEXT = "Mechanism:\n";
     
@@ -25,11 +25,9 @@ public class GadgetMechanism : MonoBehaviour
 
     /*
             new DiffusionMechanism("txt2img", MECHANISM_PRETEXT + "Item to Image", "Generate"),
-            new DiffusionMechanism("camera", MECHANISM_PRETEXT + "Camera", "Generate"),
             new DiffusionMechanism("depthCamera", MECHANISM_PRETEXT + "Depth Camera", "Generate"),
             new DiffusionMechanism("selfieCamera", MECHANISM_PRETEXT + "Selfie Camera", "Generate"),
-            new DiffusionMechanism("outpainting", MECHANISM_PRETEXT + "Outpainting", "Generate"),
-            new DiffusionMechanism("throwing", MECHANISM_PRETEXT + "Throw an Object", "Generate")*/
+            new DiffusionMechanism("outpainting", MECHANISM_PRETEXT + "Outpainting", "Generate"),*/
 
     public virtual void OnGameObjectHoverEntered(HoverEnterEventArgs args)
     {
@@ -91,10 +89,10 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
             return;
         }
 
-        if (args.uiObject.TryGetComponent<UnityEngine.UI.Image>(out UnityEngine.UI.Image innerImg))
+        /*if (args.uiObject.TryGetComponent<UnityEngine.UI.Image>(out UnityEngine.UI.Image innerImg))
         {
             GetComponent<Image>().sprite = innerImg.sprite;
-        }
+        }*/
     }
 
     public override void OnGameObjectHoverEntered(HoverEnterEventArgs args)
@@ -163,6 +161,11 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
         gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.selected);
     }
 
+    public override void OnClick()
+    {
+        GetTexturesFromSelected();
+    }
+
     public void GetTexturesFromSelected()
     {
         if (selectedObjects.Count != MAX_QUEUED_OBJECTS)
@@ -196,15 +199,22 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
 
 public class CameraGadgetMechanism : GadgetMechanism
 {    
-    public ScreenRecorder screenRecorder;
-    public DiffusionRequest diffusionRequest;
-    public Camera mechanismCamera;
+    private ScreenRecorder screenRecorder;
+    private Camera mechanismCamera;
+    private DiffusionRequest diffusionRequest;
 
     private bool takingPicture = true;
     public CameraGadgetMechanism(Gadget gadget, ScreenRecorder screenRecorder, Camera camera) : base(gadget)
     {
         this.screenRecorder = screenRecorder;
         this.mechanismCamera = camera;
+        this.mechanismText = MECHANISM_PRETEXT + "Camera";
+        this.buttonText = "Generate";
+
+        diffusionRequest = new DiffusionRequest();
+        diffusionRequest.positivePrompt = "Beautiful";
+        diffusionRequest.negativePrompt = "watermark";
+        diffusionRequest.numOfVariations = 5;        
     }
 
     public override void OnClick()
@@ -241,17 +251,17 @@ public class CameraGadgetMechanism : GadgetMechanism
             if (Physics.Raycast(ray, out hit))
             {
                 // Check if the hit GameObject has the TextureScript component
-                DiffusionTextureChanger diffTextureScript = hit.collider.GetComponent<DiffusionTextureChanger>();
-                if (diffTextureScript != null)
+                
+                if (hit.collider.gameObject.TryGetComponent<DiffusionTextureChanger>(out DiffusionTextureChanger dtc))
                 {
-                    diffTextureScript.AddTexture(new List<Texture2D>(){ curTexture }, false);
+                    dtc.AddTexture(new List<Texture2D>() { curTexture }, false);
                 }
             }
         }        
     }
 }
 
-public class ThrowingGadgetMechanism : GadgetMechanism
+/*public class ThrowingGadgetMechanism : GadgetMechanism
 {
     public DiffusionRequest diffusionRequest;
 
@@ -281,5 +291,13 @@ public class ThrowingGadgetMechanism : GadgetMechanism
             var emission = ps.emission;
             emission.enabled = false;
         }
+    }
+}*/
+
+public class ThrowingGadgetMechanism : GadgetMechanism
+{
+    public ThrowingGadgetMechanism(Gadget gadget) : base(gadget) {
+        this.mechanismText = MECHANISM_PRETEXT + "Throw an Object";
+        this.buttonText = "Generate"; // TODO deccide if throwing mechanism is per object or from the gadget, this will determine button text too
     }
 }
