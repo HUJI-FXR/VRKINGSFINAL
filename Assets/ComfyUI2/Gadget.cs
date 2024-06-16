@@ -24,6 +24,7 @@ public class Gadget : MonoBehaviour
 
     public ScreenRecorder screenRecorder = null;
     public Camera gadgetCamera;
+    public Camera xrCamera;
 
     // Strategy Design Pattern
     public List<GadgetMechanism> GadgetMechanisms = new List<GadgetMechanism>();
@@ -35,8 +36,13 @@ public class Gadget : MonoBehaviour
     private Gadget gadget;
     private void Start()
     {
+        if (gadgetCamera == null || xrCamera == null)
+        {
+            Debug.LogError("Add all requirements of Gadget");
+            return;
+        }
         gadget = GetComponent<Gadget>();
-        GadgetMechanism cameraGadgetMechanism = new CameraGadgetMechanism(gadget, screenRecorder, gadgetCamera);
+        GadgetMechanism cameraGadgetMechanism = new CameraGadgetMechanism(gadget, screenRecorder, gadgetCamera, xrCamera);
         GadgetMechanism combineImagesGadgetMechanism = new CombineImagesGadgetMechanism(gadget);
         GadgetMechanism throwingGadgetMechanism = new ThrowingGadgetMechanism(gadget);
         GadgetMechanisms.Add(cameraGadgetMechanism);

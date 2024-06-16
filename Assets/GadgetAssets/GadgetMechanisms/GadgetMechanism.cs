@@ -201,13 +201,15 @@ public class CameraGadgetMechanism : GadgetMechanism
 {    
     private ScreenRecorder screenRecorder;
     private Camera mechanismCamera;
+    private Camera XRCamera;
     private DiffusionRequest diffusionRequest;
 
     private bool takingPicture = true;
-    public CameraGadgetMechanism(Gadget gadget, ScreenRecorder screenRecorder, Camera camera) : base(gadget)
+    public CameraGadgetMechanism(Gadget gadget, ScreenRecorder screenRecorder, Camera camera ,Camera xrCamera) : base(gadget)
     {
         this.screenRecorder = screenRecorder;
         this.mechanismCamera = camera;
+        this.XRCamera = xrCamera;
         this.mechanismText = MECHANISM_PRETEXT + "Camera";
         this.buttonText = "Generate";
 
@@ -235,6 +237,9 @@ public class CameraGadgetMechanism : GadgetMechanism
         if (takingPicture)
         {
             screenRecorder.CaptureScreenshot(diffusionRequest);
+            mechanismCamera.enabled = false;
+            XRCamera.enabled = true;
+
         }
         else
         {
