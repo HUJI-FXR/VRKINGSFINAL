@@ -59,7 +59,7 @@ public class Gadget : MonoBehaviour
 
     // Passing along the various 
     public void OnGameObjectHoverEntered(HoverEnterEventArgs args)
-    {
+    {        
         playGadgetSounds.PlaySound("HoverOverElements");
         GadgetMechanisms[gadgetMechanismIndex].OnGameObjectHoverEntered(args);
     }

@@ -18,13 +18,13 @@ public class PlayGadgetSounds : MonoBehaviour
         switch (sound)
         {
             case "HoverOverElements":
-                audioSource.PlayOneShot(sounds[0], 10);
+                audioSource.PlayOneShot(sounds[0], 0.2f);
                 break;
             case "SelectElement":
-                audioSource.PlayOneShot(sounds[1], 10);
+                audioSource.PlayOneShot(sounds[1], 1);
                 break;
             case "ShowUIElement":
-                audioSource.PlayOneShot(sounds[2], 10);
+                audioSource.PlayOneShot(sounds[2], 1);
                 break;
         }
     }
