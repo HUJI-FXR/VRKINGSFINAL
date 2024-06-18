@@ -20,24 +20,10 @@ public class DiffusionRing
 
 public class RadiusDiffusionTexture : DiffusionTextureChanger
 {
-    public DiffusionRequest diffusionRequest;
-    
-    private bool allowCollision = false;
-    private GameObject grabbedObject = null;
-
-
-    // TODO Do I even need diffusionlist when I have  GeneralGameScript.instance.diffusables??
-    private List<GameObject> diffusionList = new List<GameObject>();
-
+    //public DiffusionRequest diffusionRequest;
     public List<DiffusionRing> radiusDiffusionRings = new List<DiffusionRing>();
 
-    private void Start()
-    {
-        foreach (Transform diffusionTransform in GeneralGameScript.instance.diffusables.transform)
-        {
-            diffusionList.Add(diffusionTransform.gameObject);
-        }
-    }
+    private GameObject grabbedObject = null;
 
     // Update is called once per frame
     protected void Update()
@@ -65,19 +51,30 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
         }
     }
 
-    // TODO instead of each throwable being a radiusDiffusionTexture, let them have a simpler script to send a request to a central one that is responsible for the whole scene
-    private void OnCollisionEnter(Collision collision)
+    public override bool AddTexture(DiffusionRequest diffusionRequest)
     {
-        if (!allowCollision || grabbedObject != null)
+        // TODO think if this line is even useful in this script
+        base.AddTexture(diffusionRequest);
+
+        if (diffusionRequest.diffusableObject.grabbed)
         {
-            return;
+            if (diffusionRequest.diffusableObject.gameObject.TryGetComponent<ParticleSystem>(out ParticleSystem ps))
+            {
+                var emission = ps.emission;
+                emission.enabled = true;
+            }            
         }
 
-        // TODO change radius over time
-        addRadiusGameObjects(3, collision.transform.position);
+        DiffusionRing newDiffusionRing = new DiffusionRing();
+        foreach (Texture2D texture in diffusionRequest.textures)
+        {
+            newDiffusionRing.diffusionTextureList.Add(texture);
+        }
+        radiusDiffusionRings.Add(newDiffusionRing);
+        Debug.Log("added diffusion ring");
 
-        // TODO create some sort of feedback that makes it obvious that holding it is what causes the collision
-        allowCollision = false;
+        // todo needs to be bool??
+        return true;
     }
 
     public void addRadiusGameObjects(float curRadius, Vector3 position)
@@ -86,7 +83,7 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
         {
             return;
         }
-        DiffusionRing dr = radiusDiffusionRings[radiusDiffusionRings.Count-1];
+        DiffusionRing dr = radiusDiffusionRings[radiusDiffusionRings.Count - 1];
         if (dr == null)
         {
             return;
@@ -101,44 +98,27 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
     }
 
     private List<GameObject> gameObjectsInRadius(float curRadius, Vector3 position)
-    {        
+    {
         List<GameObject> radiusGameObjects = new List<GameObject>();
-        foreach (GameObject go in diffusionList)
+        foreach (GameObject go in GeneralGameScript.instance.diffusionList)
         {
             if (Vector3.Distance(go.transform.position, position) <= curRadius)
             {
                 radiusGameObjects.Add(go);
-            }            
+            }
         }
 
         return radiusGameObjects;
     }
 
-    public override bool AddTexture(List<Texture2D> newDiffTextures, bool addToTextureTotal)
+
+    public void DiffusableObjectCollided(Collision collision)
     {
-        // TODO think if this line is even useful in this script
-        base.AddTexture(newDiffTextures, addToTextureTotal);
+        // todo delete, and delete collision in diffusionrequest??
+        //diffusionRequest.collision = collision;
 
-        if (grabbedObject != null)
-        {
-            if (grabbedObject.TryGetComponent<ParticleSystem>(out ParticleSystem ps))
-            {
-                var emission = ps.emission;
-                emission.enabled = true;
-            }
-            
-
-            DiffusionRing newDiffusionRing = new DiffusionRing();
-            foreach (Texture2D texture in newDiffTextures)
-            {
-                newDiffusionRing.diffusionTextureList.Add(texture);
-            }            
-            radiusDiffusionRings.Add(newDiffusionRing);
-            Debug.Log("added diffusion ring");
-            return true;
-        }
-        
-
-        return false;
+        // TODO change radius over time
+        addRadiusGameObjects(3, collision.transform.position);
     }
+       
 }

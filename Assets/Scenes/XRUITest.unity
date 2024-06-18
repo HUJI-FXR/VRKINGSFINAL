@@ -1681,9 +1681,9 @@ GameObject:
   - component: {fileID: 135467391}
   - component: {fileID: 135467390}
   - component: {fileID: 135467389}
-  - component: {fileID: 135467388}
   - component: {fileID: 135467387}
   - component: {fileID: 135467386}
+  - component: {fileID: 135467395}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -6488,30 +6488,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!114 &135467388
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 135467385}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8e9f2e1b5852c54d88a8efaac00f6fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  diffusionRequest:
-    targets:
-    - {fileID: 135467388}
-    addToTextureTotal: 0
-    numOfVariations: 3
-    positivePrompt: 
-    negativePrompt: 
-    uploadImage: {fileID: 0}
-    secondUploadImage: {fileID: 0}
-    denoise: 1
-    diffusionModel: 0
-    diffusionJsonType: 0
 --- !u!114 &135467389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6779,6 +6755,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &135467395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135467385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyword: love and pills
+  grabbable: 1
 --- !u!1 &135718802
 GameObject:
   m_ObjectHideFlags: 0
@@ -11365,6 +11355,7 @@ GameObject:
   - component: {fileID: 627817430}
   - component: {fileID: 627817429}
   - component: {fileID: 627817434}
+  - component: {fileID: 627817435}
   - component: {fileID: 627817433}
   m_Layer: 0
   m_Name: PalmDiffusionGadget
@@ -11488,18 +11479,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dc49c30374bd5a4ab6481af70bf401f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diffusionRequest:
-    targets:
-    - {fileID: 627817434}
-    addToTextureTotal: 0
-    numOfVariations: 1
-    positivePrompt: 
-    negativePrompt: 
-    uploadImage: {fileID: 0}
-    secondUploadImage: {fileID: 0}
-    denoise: 1
-    diffusionModel: 0
-    diffusionJsonType: 0
   MechanismText: {fileID: 2029758748}
   ButtonText: {fileID: 1311101120}
   screenRecorder: {fileID: 345902827}
@@ -11523,6 +11502,52 @@ MonoBehaviour:
   displayPrefab: {fileID: 8910628764355201766, guid: 8ee60319c427de74b987c210b9babef9, type: 3}
   gadgetImagePanel: {fileID: 1620720338}
   playGadgetSounds: {fileID: 1791469568}
+--- !u!114 &627817435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627817427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: d93486540bc217e45a7603214c564d18, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 627817433}
+        m_TargetAssemblyTypeName: Gadget, Assembly-CSharp
+        m_MethodName: TakePicture
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 2e76901a-fe8f-49c6-919c-a1f05f345a13
+    m_ActionName: DiffusionMechanicPicker/TakePicture
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: DiffusionMechanicPicker
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &648285408
 GameObject:
   m_ObjectHideFlags: 0
@@ -17239,53 +17264,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1249017210}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1250809675
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1250809677}
-  - component: {fileID: 1250809676}
-  m_Layer: 0
-  m_Name: General
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1250809676
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1250809675}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 906aded8c3935be4f8b7634f2098c52e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  comfyOrganizer: {fileID: 1818206208}
-  comfySceneLibrary: {fileID: 1818206207}
-  diffusables: {fileID: 2114443391}
---- !u!4 &1250809677
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1250809675}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1298880111
 GameObject:
   m_ObjectHideFlags: 0
@@ -23363,6 +23341,7 @@ GameObject:
   - component: {fileID: 1818206209}
   - component: {fileID: 1818206207}
   - component: {fileID: 1818206208}
+  - component: {fileID: 1818206211}
   - component: {fileID: 1818206210}
   m_Layer: 0
   m_Name: ComfyUILib
@@ -23430,6 +23409,20 @@ MonoBehaviour:
   comfyOrganizer: {fileID: 1818206208}
   comfySceneLibrary: {fileID: 1818206207}
   diffusables: {fileID: 2114443391}
+  gadget: {fileID: 627817433}
+  radiusDiffusionTexture: {fileID: 1818206211}
+--- !u!114 &1818206211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818206205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8e9f2e1b5852c54d88a8efaac00f6fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1847060203
 GameObject:
   m_ObjectHideFlags: 0
@@ -27247,14 +27240,13 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1250809677}
+  - {fileID: 1818206209}
   - {fileID: 538256607}
   - {fileID: 82064884}
   - {fileID: 1431994756}
   - {fileID: 776495045}
   - {fileID: 138513186}
   - {fileID: 1940498946}
-  - {fileID: 1818206209}
   - {fileID: 1853006842}
   - {fileID: 1316955089}
   - {fileID: 8473049813797334391}

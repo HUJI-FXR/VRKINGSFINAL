@@ -47,6 +47,10 @@ public class DiffusionRequest
     public string diffImgName;
     [System.NonSerialized]
     public string prompt_id;
+    [System.NonSerialized]
+    public Collision collision = null;
+    [System.NonSerialized]
+    public DiffusableObject diffusableObject = null;
 }
 
 public class ComfyOrganizer : MonoBehaviour
@@ -211,7 +215,7 @@ public class ComfyOrganizer : MonoBehaviour
 
         foreach(DiffusionTextureChanger changer in diffReq.targets)
         {
-            changer.AddTexture(diffReq.textures, diffReq.addToTextureTotal);
+            changer.AddTexture(diffReq);
         }
     }
 }

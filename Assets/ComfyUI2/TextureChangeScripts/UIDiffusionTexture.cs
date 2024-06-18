@@ -30,14 +30,14 @@ public class UIDiffusionTexture : DiffusionTextureChanger
             Debug.LogError("Add all UIDiffusionTexture inputs");
         }
     }
-    public override bool AddTexture(List<Texture2D> textures, bool addToTextureTotal)
+    public override bool AddTexture(DiffusionRequest diffusionRequest)
     {
         if (UIDisplay == null || displayPrefab == null)
         {
             Debug.LogError("Add UI Display and Prefab for the Image UI popup");
             return false;
         }
-        if (base.AddTexture(textures, addToTextureTotal))
+        if (base.AddTexture(diffusionRequest))
         {
             curChangeDelta = 0f;
 

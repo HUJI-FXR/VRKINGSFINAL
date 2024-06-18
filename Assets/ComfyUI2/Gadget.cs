@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEditor.PackageManager;
 using UnityEngine;
+using UnityEngine.Rendering.HighDefinition;
 using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.UI;
@@ -17,6 +19,7 @@ public enum GadgetSelection
 // TODO change name of class to GadgetScript or something
 public class Gadget : MonoBehaviour
 {
+    [NonSerialized]
     public DiffusionRequest diffusionRequest;
 
     public TextMeshProUGUI MechanismText;
@@ -88,6 +91,38 @@ public class Gadget : MonoBehaviour
     public void OnClick()
     {
         GadgetMechanisms[gadgetMechanismIndex].OnClick();
+    }
+
+
+    // todo THESE 3 move this out of gadget, bad design need it in camera mechanism with correct input system of game.
+    public void TakePicture()
+    {
+        
+        if (gadgetMechanismIndex != 0)
+        {
+            return;
+        }
+        if (((CameraGadgetMechanism)GadgetMechanisms[gadgetMechanismIndex]).takingPicture)
+        {
+            GadgetMechanisms[gadgetMechanismIndex].OnGameObjectHoverExited(null);
+        }        
+    }
+
+    public void DiffusableGrabbed(SelectEnterEventArgs args)
+    {
+        if (gadgetMechanismIndex != 2)
+        {
+            return;
+        }
+        ((ThrowingGadgetMechanism)GadgetMechanisms[gadgetMechanismIndex]).DiffusableGrabbed(args);
+    }
+    public void DiffusableUnGrabbed(SelectExitEventArgs args)
+    {
+        if (gadgetMechanismIndex != 2)
+        {
+            return;
+        }
+        ((ThrowingGadgetMechanism)GadgetMechanisms[gadgetMechanismIndex]).DiffusableUnGrabbed(args);
     }
 
     private void DeleteOutline(GameObject obj)

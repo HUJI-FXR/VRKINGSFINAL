@@ -199,12 +199,13 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
 
 public class CameraGadgetMechanism : GadgetMechanism
 {    
+    // todo break into two parts, one the input the other the output through the comfy lib
     private ScreenRecorder screenRecorder;
     private Camera mechanismCamera;
     private Camera XRCamera;
     private DiffusionRequest diffusionRequest;    
 
-    private bool takingPicture = true;
+    public bool takingPicture = true;
     public CameraGadgetMechanism(Gadget gadget, ScreenRecorder screenRecorder, Camera camera ,Camera xrCamera, UIDiffusionTexture uiDiffusionTexture) : base(gadget)
     {
         this.screenRecorder = screenRecorder;
@@ -223,6 +224,7 @@ public class CameraGadgetMechanism : GadgetMechanism
     public override void OnClick()
     {
         // TODO change mechanismText to correspond to the current takingPicture status?
+        // TODO add base call to OnClick for sound? need sound of click(camera sound)
         if (takingPicture)
         {
             takingPicture = false;
@@ -234,9 +236,10 @@ public class CameraGadgetMechanism : GadgetMechanism
     }
 
     public override void onGameObjectSelectEntered(SelectEnterEventArgs args)
-    {
+    {        
         if (takingPicture)
         {
+            // TODO add DiffusableObject data entry for diffusionrequest when taking a picture of stuff
             screenRecorder.CaptureScreenshot(diffusionRequest);
             mechanismCamera.enabled = false;
             XRCamera.enabled = true;
@@ -258,6 +261,9 @@ public class CameraGadgetMechanism : GadgetMechanism
             {
                 // Check if the hit GameObject has the TextureScript component
                 
+
+                //TODO maybe this is a wrong choice to make ANOTHER diffusion request because this one isn't really a diffusion request at all, just a transfer from one
+                // texturechange to another
                 if (hit.collider.gameObject.TryGetComponent<DiffusionTextureChanger>(out DiffusionTextureChanger dtc))
                 {
                     dtc.AddTexture(new List<Texture2D>() { curTexture }, false);
@@ -302,8 +308,43 @@ public class CameraGadgetMechanism : GadgetMechanism
 
 public class ThrowingGadgetMechanism : GadgetMechanism
 {
-    public ThrowingGadgetMechanism(Gadget gadget) : base(gadget) {
+    // TODO Do I even need diffusionlist when I have  GeneralGameScript.instance.diffusables??
+
+    private bool allowCollision = false;
+    private DiffusionRequest diffusionRequest = null;
+
+    public ThrowingGadgetMechanism(Gadget gadget) : base(gadget)
+    {
         this.mechanismText = MECHANISM_PRETEXT + "Throw an Object";
         this.buttonText = "Generate"; // TODO deccide if throwing mechanism is per object or from the gadget, this will determine button text too
+
+        diffusionRequest = new DiffusionRequest();
+        diffusionRequest.positivePrompt = "Beautiful";
+        diffusionRequest.negativePrompt = "watermark";
+        diffusionRequest.numOfVariations = 5;
+        diffusionRequest.targets.Add(GeneralGameScript.instance.radiusDiffusionTexture);        
+    }
+
+    public void DiffusableGrabbed(SelectEnterEventArgs args)
+    {
+        if(args.interactableObject == null)
+        {
+            return;
+        }
+        diffusionRequest.diffusableObject = args.interactableObject.transform.gameObject.GetComponent<DiffusableObject>();
+        GeneralGameScript.instance.comfyOrganizer.SendDiffusionRequest(diffusionRequest);        
+    }
+    public void DiffusableUnGrabbed(SelectExitEventArgs args)
+    {
+        if (args.interactableObject == null)
+        {
+            return;
+        }
+
+        if (args.interactableObject.transform.gameObject.TryGetComponent<ParticleSystem>(out ParticleSystem ps))
+        {
+            var emission = ps.emission;
+            emission.enabled = false;
+        }
     }
 }

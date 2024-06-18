@@ -26,6 +26,17 @@
                     "action": "TakePicture",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a9ffc2f9-82f5-45ce-87b8-08bf638ae7aa",
+                    "path": "<XRController>{LeftHand}/{PrimaryButton}",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TakePicture",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
