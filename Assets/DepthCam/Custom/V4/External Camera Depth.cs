@@ -20,7 +20,7 @@ public class ExternalCameraDepth : MonoBehaviour
 
     private void OnEnable()
     {
-        Invoke("StartSwitch", 2f);
+        //Invoke("StartSwitch", 2f);
     }
     
 
