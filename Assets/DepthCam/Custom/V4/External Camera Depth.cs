@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -15,10 +16,13 @@ public class ExternalCameraDepth : MonoBehaviour
 
     [SerializeField] private Renderer project;
     // Start is called before the first frame update
-    void Start()
+
+
+    private void OnEnable()
     {
-        Invoke("SaveTexture", 2f);
+        Invoke("StartSwitch", 2f);
     }
+    
 
     // Update is called once per frame
     void Update()
@@ -35,6 +39,12 @@ public class ExternalCameraDepth : MonoBehaviour
         }
     }
 
+    public void StartSwitch()
+    {
+        switchEnabled = true;
+        Invoke("SaveTexture", swtichTime );
+    }
+
     public void SaveTexture()
     {
         
@@ -44,15 +54,9 @@ public class ExternalCameraDepth : MonoBehaviour
         {
             project.material.mainTexture = _texture2D;
         }
-
-        switchEnabled = true;
-        
-        Invoke("DisableSwitch", swtichTime);
+        switchEnabled = false;
     }
-
-    public void DisableSwitch()
-    {
-        switchEnabled = false; }
+    
     
     public Texture2D toTexture2D(RenderTexture rTex)
     {
