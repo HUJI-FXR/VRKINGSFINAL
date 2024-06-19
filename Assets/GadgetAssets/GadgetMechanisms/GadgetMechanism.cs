@@ -189,8 +189,6 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
         copyTexture.name = uniqueName + ".png";
         secondCopyTexture.name = uniqueName + "_2" + ".png";
 
-        Debug.Log(secondCopyTexture.name);
-
         diffusionRequest.uploadImage = copyTexture;
         diffusionRequest.secondUploadImage = secondCopyTexture;
 
@@ -216,10 +214,12 @@ public class CameraGadgetMechanism : GadgetMechanism
         this.buttonText = "Generate";
 
         diffusionRequest = new DiffusionRequest();
-        diffusionRequest.positivePrompt = "Beautiful";
+        diffusionRequest.positivePrompt = "Beautiful scene";
         diffusionRequest.negativePrompt = "watermark";
         diffusionRequest.numOfVariations = 5;
         diffusionRequest.targets.Add(GeneralGameScript.instance.uiDiffusionTexture);
+        diffusionRequest.diffusionModel = diffusionModels.ghostmix;
+        diffusionRequest.denoise = 0.4f;
     }
 
     public override void OnClick()
@@ -268,8 +268,10 @@ public class CameraGadgetMechanism : GadgetMechanism
                 // texturechange to another
                 if (hit.collider.gameObject.TryGetComponent<DiffusionTextureChanger>(out DiffusionTextureChanger dtc))
                 {
+                    Debug.Log("wewew");
                     dtc.AddTexture(new List<Texture2D>() { curTexture }, false);
                 }
+                Debug.Log("kklk");
             }
         }        
     }

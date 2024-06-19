@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEditor.PackageManager;
 using UnityEngine;
@@ -30,7 +31,9 @@ public class Gadget : MonoBehaviour
     public Camera xrCamera;    
 
     public PlayGadgetSounds playGadgetSounds;
-    
+
+    public GameObject gadgetImagePanel;
+
 
     // Strategy Design Pattern
     private List<GadgetMechanism> GadgetMechanisms = new List<GadgetMechanism>();
@@ -42,7 +45,7 @@ public class Gadget : MonoBehaviour
     private Gadget gadget;
     private void Start()
     {
-        if (gadgetCamera == null || xrCamera == null || playGadgetSounds == null)
+        if (gadgetCamera == null || xrCamera == null || playGadgetSounds == null || gadgetImagePanel == null)
         {
             Debug.LogError("Add all requirements of Gadget");
             return;
@@ -95,12 +98,15 @@ public class Gadget : MonoBehaviour
     // todo THESE 3 move this out of gadget, bad design need it in camera mechanism with correct input system of game.
     public void TakePicture()
     {
-        
-        if (gadgetMechanismIndex != 0)
+        if (GadgetMechanisms.Count <= 0)
         {
             return;
         }
-        if (((CameraGadgetMechanism)GadgetMechanisms[gadgetMechanismIndex]).takingPicture)
+        if (GadgetMechanisms[gadgetMechanismIndex].GetType() != typeof(CameraGadgetMechanism))
+        { 
+            return;
+        }
+        if ((GadgetMechanisms[gadgetMechanismIndex] as CameraGadgetMechanism).takingPicture)
         {
             GadgetMechanisms[gadgetMechanismIndex].OnGameObjectHoverExited(null);
         }        
@@ -108,19 +114,27 @@ public class Gadget : MonoBehaviour
 
     public void DiffusableGrabbed(SelectEnterEventArgs args)
     {
-        if (gadgetMechanismIndex != 2)
+        if (GadgetMechanisms.Count <= 0)
         {
             return;
         }
-        ((ThrowingGadgetMechanism)GadgetMechanisms[gadgetMechanismIndex]).DiffusableGrabbed(args);
+        if (GadgetMechanisms[gadgetMechanismIndex].GetType() != typeof(ThrowingGadgetMechanism))
+        {
+            return;
+        }
+        (GadgetMechanisms[gadgetMechanismIndex] as ThrowingGadgetMechanism).DiffusableGrabbed(args);
     }
     public void DiffusableUnGrabbed(SelectExitEventArgs args)
     {
-        if (gadgetMechanismIndex != 2)
+        if (GadgetMechanisms.Count <= 0)
         {
             return;
         }
-        ((ThrowingGadgetMechanism)GadgetMechanisms[gadgetMechanismIndex]).DiffusableUnGrabbed(args);
+        if (GadgetMechanisms[gadgetMechanismIndex].GetType() != typeof(ThrowingGadgetMechanism))
+        {
+            return;
+        }
+        (GadgetMechanisms[gadgetMechanismIndex] as ThrowingGadgetMechanism).DiffusableUnGrabbed(args);
     }
 
     private void DeleteOutline(GameObject obj)
@@ -137,6 +151,16 @@ public class Gadget : MonoBehaviour
     public void ChangeOutline(GameObject obj, GadgetSelection gadgetSelection)
     {
         if (obj == null)
+        {
+            return;
+        }
+
+        // Only GameObjects with valid textures
+        if (obj.GetComponent<Renderer>() == null )
+        {
+            return;
+        }
+        if (obj.GetComponent<Renderer>().material.mainTexture == null)
         {
             return;
         }
@@ -182,20 +206,36 @@ public class Gadget : MonoBehaviour
         gadgetMechanismIndex %= GadgetMechanisms.Count;
         ChangeToMechanic(gadgetMechanismIndex);
     }
-
     public void ChangeToMechanic(int index)
     {
+        textureQueue.Clear();
         gadgetMechanismIndex = index;
         MechanismText.text = GadgetMechanisms[index].mechanismText;
         ButtonText.text = GadgetMechanisms[index].buttonText;
     }
 
     public Texture2D getGeneratedTexture()
-    {
+    {        
         if (textureQueue.Count == 0)
         {
+            GeneralGameScript.instance.uiDiffusionTexture.CreateImagesInside(new List<Texture2D>(), gadgetImagePanel, true);
             return null;
         }
-        return textureQueue.Dequeue();
+
+        Texture2D current = textureQueue.Dequeue();
+        GeneralGameScript.instance.uiDiffusionTexture.CreateImagesInside(textureQueue.ToList<Texture2D>(), gadgetImagePanel, true);
+        return current;
+    }
+
+    public bool AddTexturesToQueue(List<Texture2D> textures)
+    {
+        GeneralGameScript.instance.uiDiffusionTexture.CreateImagesInside(textures, gadgetImagePanel, true);
+
+        foreach (Texture2D texture in textures)
+        {
+            textureQueue.Enqueue(texture);
+        }
+
+        return true;
     }
 }

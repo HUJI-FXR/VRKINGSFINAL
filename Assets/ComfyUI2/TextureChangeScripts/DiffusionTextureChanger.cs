@@ -61,6 +61,7 @@ public class DiffusionTextureChanger : MonoBehaviour
             return;
         }
         Renderer renderer = curGameObject.GetComponent<Renderer>();
-        renderer.material.SetTexture("_BaseMap", texture);
+        //renderer.material.SetTexture("_BaseMap", texture);
+        renderer.material.SetTexture("_MainTex", texture);
     }
 }

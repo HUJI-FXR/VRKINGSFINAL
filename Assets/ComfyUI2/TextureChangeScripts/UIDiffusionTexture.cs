@@ -8,10 +8,8 @@ using UnityEngine.UI;
 
 public class UIDiffusionTexture : DiffusionTextureChanger
 {
-    public GameObject UIDisplay;
-    public GameObject displayPrefab;
-
-    public GameObject gadgetImagePanel;
+    public GameObject PopupDisplay;
+    public GameObject displayPrefab;    
 
     private GameObject curDisplayPrefab;
 
@@ -30,9 +28,58 @@ public class UIDiffusionTexture : DiffusionTextureChanger
             Debug.LogError("Add all UIDiffusionTexture inputs");
         }
     }
+
+
+    // Adding the Image in the Gadget panel as well
+    // TODO should this part be in a separate place? should these textures have a global variable for global access? shouldn't the gadget deal with it? is UI and gadget sepearate?
+    // TODO change with this and make a PopupDiffusionTexture instead?
+    public void CreateImagesInside(List<Texture2D> textures, GameObject toBeParent, bool destroyPreviousChildren)
+    {
+        if (textures == null || toBeParent == null) {
+            return;
+        }
+        if (textures.Count == 0) { return; }
+
+        if (destroyPreviousChildren)
+        {
+            var children = new List<GameObject>();
+            foreach (Transform child in toBeParent.transform) children.Add(child.gameObject);
+            children.ForEach(child => DestroyImmediate(child));
+
+            /*foreach (Transform child in toBeParent.transform)
+            {
+                DestroyImmediate(child.gameObject);
+            }*/
+        }
+
+        foreach (Texture2D tex in textures)
+        {
+            GameObject childGameObject = new GameObject("Image");
+
+            // Set the new GameObject as a child of the parentGameObject
+            childGameObject.transform.SetParent(toBeParent.transform, false);
+
+            // Add a RectTransform component to the child GameObject if not already present
+            RectTransform rectTransform = childGameObject.AddComponent<RectTransform>();
+            rectTransform.sizeDelta = new Vector2(tex.width / IMAGES_REDUCE_SIZE_FACTOR, tex.height / IMAGES_REDUCE_SIZE_FACTOR); // Adjust the size as needed
+
+            // Add an Image component to the child GameObject
+            childGameObject.AddComponent<Image>();
+        }
+
+        for (int i = 0; i < textures.Count; i++)
+        {
+            GameObject go = toBeParent.transform.GetChild(i).gameObject;
+            if (go != null)
+            {
+                changeTextureOn(go, textures[i]);
+            }
+        }
+    }
+
     public override bool AddTexture(DiffusionRequest diffusionRequest)
     {
-        if (UIDisplay == null || displayPrefab == null)
+        if (PopupDisplay == null || displayPrefab == null)
         {
             Debug.LogError("Add UI Display and Prefab for the Image UI popup");
             return false;
@@ -41,52 +88,21 @@ public class UIDiffusionTexture : DiffusionTextureChanger
         {
             curChangeDelta = 0f;
 
-            foreach (Transform child in UIDisplay.transform)
-            {
-                DestroyImmediate(child.gameObject);          
-            }
-            displayTextures = false;
-
             if (curDisplayPrefab != null)
             {
                 Destroy(curDisplayPrefab);
                 curDisplayPrefab = null;
             }
-            curDisplayPrefab = Instantiate(displayPrefab, UIDisplay.transform, false);
+            curDisplayPrefab = Instantiate(displayPrefab, PopupDisplay.transform, false);
 
-            foreach (Texture2D tex in diff_Textures)
-            {
-                GameObject childGameObject = new GameObject("Image");
-
-                // Set the new GameObject as a child of the parentGameObject
-                childGameObject.transform.SetParent(curDisplayPrefab.transform, false);
-
-                // Add a RectTransform component to the child GameObject if not already present
-                RectTransform rectTransform = childGameObject.AddComponent<RectTransform>();
-                rectTransform.sizeDelta = new Vector2(tex.width / IMAGES_REDUCE_SIZE_FACTOR, tex.height / IMAGES_REDUCE_SIZE_FACTOR); // Adjust the size as needed
-
-                // Add an Image component to the child GameObject
-                childGameObject.AddComponent<Image>();
-
-                // Adding the Image in the Gadget panel as well
-                // TODO should this part be in a separate place? should these textures have a global variable for global access? shouldn't the gadget deal with it? is UI and gadget sepearate?
-                // TODO change with this and make a PopupDiffusionTexture instead?
-                /*GameObject childGadgetGameObject = Instantiate(childGameObject);
-                childGadgetGameObject.transform.SetParent(gadgetImagePanel.transform, false);*/
-            }
-
-            for (int i = 0; i < diff_Textures.Count; i++)
-            {
-                GameObject go = curDisplayPrefab.transform.GetChild(i).gameObject;
-                if (go != null)
-                {
-                    changeTextureOn(go, diff_Textures[i]);
-                }
-            }
+            CreateImagesInside(diff_Textures, curDisplayPrefab, true);
 
             displayTextures = true;
 
             playGadgetSounds.PlaySound("ShowUIElement");
+
+            GeneralGameScript.instance.gadget.AddTexturesToQueue(diff_Textures);
+
             return true;
         }
 

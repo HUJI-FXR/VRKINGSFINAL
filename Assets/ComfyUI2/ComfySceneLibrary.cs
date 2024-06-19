@@ -216,6 +216,9 @@ public class ComfySceneLibrary : MonoBehaviour
                 json["prompt"]["2"]["inputs"]["text"] = diffReq.positivePrompt;
                 json["prompt"]["3"]["inputs"]["text"] = diffReq.negativePrompt;
 
+                json["prompt"]["50"]["inputs"]["amount"] = diffReq.numOfVariations;
+                json["prompt"]["51"]["inputs"]["amount"] = diffReq.numOfVariations;
+
                 StartCoroutine(UploadImage(diffReq.uploadImage));
                 StartCoroutine(UploadImage(diffReq.secondUploadImage));
                 // Input Image:
@@ -511,8 +514,6 @@ public class ComfySceneLibrary : MonoBehaviour
         string url = "http://" + serverAddress + "/upload/image";
 
         WWWForm form = new WWWForm();
-
-        Debug.Log("NAME " + curTexture.name);
 
         form.AddBinaryData("image", curTexture.EncodeToPNG(), curTexture.name, "image/png");
         form.AddField("type", "input");

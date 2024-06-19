@@ -51,7 +51,7 @@
         0
       ],
       "image": [
-        "12",
+        "50",
         0
       ],
       "clip_vision": [
@@ -101,7 +101,7 @@
   },
   "21": {
     "inputs": {
-      "seed": 46,
+      "seed": 285537576246822,
       "steps": 8,
       "cfg": 2.1,
       "sampler_name": "dpmpp_sde_gpu",
@@ -142,7 +142,7 @@
   "42": {
     "inputs": {
       "pixels": [
-        "41",
+        "51",
         0
       ],
       "vae": [
@@ -164,31 +164,43 @@
       "title": "IPAdapter Model Loader"
     }
   },
-  "46": {
+  "47": {
     "inputs": {
-      "output_path": "",
-      "filename_prefix": "CombineImages",
-      "filename_delimiter": "_",
-      "filename_number_padding": 4,
-      "filename_number_start": "false",
-      "extension": "png",
-      "dpi": 300,
-      "quality": 100,
-      "optimize_image": "true",
-      "lossless_webp": "false",
-      "overwrite_mode": "false",
-      "show_history": "false",
-      "show_history_by_prefix": "true",
-      "embed_workflow": "true",
-      "show_previews": "true",
+      "filename_prefix": "ComfyUI",
       "images": [
         "18",
         0
       ]
     },
-    "class_type": "Image Save",
+    "class_type": "SaveImage",
     "_meta": {
-      "title": "Image Save"
+      "title": "Save Image"
+    }
+  },
+  "50": {
+    "inputs": {
+      "amount": 5,
+      "image": [
+        "12",
+        0
+      ]
+    },
+    "class_type": "RepeatImageBatch",
+    "_meta": {
+      "title": "RepeatImageBatch"
+    }
+  },
+  "51": {
+    "inputs": {
+      "amount": 5,
+      "image": [
+        "41",
+        0
+      ]
+    },
+    "class_type": "RepeatImageBatch",
+    "_meta": {
+      "title": "RepeatImageBatch"
     }
   }
 }

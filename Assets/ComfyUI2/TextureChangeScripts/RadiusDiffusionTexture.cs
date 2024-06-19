@@ -71,7 +71,7 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
             newDiffusionRing.diffusionTextureList.Add(texture);
         }
         radiusDiffusionRings.Add(newDiffusionRing);
-        Debug.Log("added diffusion ring");
+        //Debug.Log("added diffusion ring");
 
         // todo needs to be bool??
         return true;
