@@ -55,13 +55,19 @@ public class DiffusionRequest
 
 public class ComfyOrganizer : MonoBehaviour
 {
-    public Dictionary<int, DiffusionRequest> DiffuseDictionary = new Dictionary<int, DiffusionRequest>();
+    public Dictionary<int, DiffusionRequest> DiffuseDictionary;
     public ComfySceneLibrary comfyLib;
 
     private static int currentRequestNum = 0;
 
-    private List<string> allTextureNames = new List<string>();
+    private List<string> allTextureNames;
     private static int currentTextureNameNumber = 0;
+
+    private void Awake()
+    {
+        DiffuseDictionary = new Dictionary<int, DiffusionRequest>();
+        allTextureNames = new List<string>();
+    }
 
     private string GetDiffusionImageName(DiffusionRequest diffReq)
     {

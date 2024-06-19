@@ -36,13 +36,19 @@ public class Gadget : MonoBehaviour
 
 
     // Strategy Design Pattern
-    private List<GadgetMechanism> GadgetMechanisms = new List<GadgetMechanism>();
+    private List<GadgetMechanism> GadgetMechanisms;
     private int gadgetMechanismIndex = 0;
 
     // TODO make this Queue<List<Texture2D>>
-    public Queue<Texture2D> textureQueue = new Queue<Texture2D>();
+    public Queue<Texture2D> textureQueue;
 
     private Gadget gadget;
+    private void Awake()
+    {
+        GadgetMechanisms = new List<GadgetMechanism>();
+        textureQueue = new Queue<Texture2D>();
+    }
+
     private void Start()
     {
         if (gadgetCamera == null || xrCamera == null || playGadgetSounds == null || gadgetImagePanel == null)
@@ -218,12 +224,19 @@ public class Gadget : MonoBehaviour
     {        
         if (textureQueue.Count == 0)
         {
-            GeneralGameScript.instance.uiDiffusionTexture.CreateImagesInside(new List<Texture2D>(), gadgetImagePanel, true);
             return null;
         }
 
         Texture2D current = textureQueue.Dequeue();
-        GeneralGameScript.instance.uiDiffusionTexture.CreateImagesInside(textureQueue.ToList<Texture2D>(), gadgetImagePanel, true);
+        if (textureQueue.Count == 0)
+        {
+            GeneralGameScript.instance.uiDiffusionTexture.CreateImagesInside(new List<Texture2D>(), gadgetImagePanel, true);
+        }
+        else
+        {
+            GeneralGameScript.instance.uiDiffusionTexture.CreateImagesInside(textureQueue.ToList<Texture2D>(), gadgetImagePanel, true);
+        }
+            
         return current;
     }
 

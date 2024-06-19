@@ -61,7 +61,20 @@ public class DiffusionTextureChanger : MonoBehaviour
             return;
         }
         Renderer renderer = curGameObject.GetComponent<Renderer>();
-        //renderer.material.SetTexture("_BaseMap", texture);
-        renderer.material.SetTexture("_MainTex", texture);
+
+        // TODO MAJOT ISSUE, sometimes it's _BaseMap, sometimes _MainTex depending on SHADER of object PROBLEM
+        Debug.Log(renderer.material.GetPropertyNames(MaterialPropertyType.Texture));
+
+        renderer.material.SetTexture("_BaseMap", texture);
+        /*var baseMap = renderer.material.GetTexture("_BaseMap");
+        if (baseMap != null)
+        {
+            renderer.material.SetTexture("_BaseMap", texture);
+        }
+        else
+        {
+            renderer.material.SetTexture("_MainTex", texture);
+        }*/
+        //renderer.material.SetTexture("_MainTex", texture);
     }
 }

@@ -35,21 +35,18 @@ public class UIDiffusionTexture : DiffusionTextureChanger
     // TODO change with this and make a PopupDiffusionTexture instead?
     public void CreateImagesInside(List<Texture2D> textures, GameObject toBeParent, bool destroyPreviousChildren)
     {
-        if (textures == null || toBeParent == null) {
+        if (toBeParent == null)
+        {
             return;
         }
-        if (textures.Count == 0) { return; }
-
         if (destroyPreviousChildren)
         {
             var children = new List<GameObject>();
             foreach (Transform child in toBeParent.transform) children.Add(child.gameObject);
             children.ForEach(child => DestroyImmediate(child));
-
-            /*foreach (Transform child in toBeParent.transform)
-            {
-                DestroyImmediate(child.gameObject);
-            }*/
+        }
+        if (textures == null || textures.Count == 0) {
+            return;
         }
 
         foreach (Texture2D tex in textures)

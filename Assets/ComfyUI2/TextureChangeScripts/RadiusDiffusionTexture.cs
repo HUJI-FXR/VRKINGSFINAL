@@ -12,49 +12,56 @@ public class DiffusionRing
     public float curRadius = 0;
     public float changeMaxTime = 0.1f;
     public float curChangeTime = 0;
-    public bool changeTextures = false;
-    public List<GameObject> gameObjects = new List<GameObject>();
-    public List<Texture2D> diffusionTextureList = new List<Texture2D>();
+    public bool changeTextures = true;
+    public List<GameObject> gameObjects;
+    public List<Texture2D> diffusionTextureList;
     public int diffusionTextureIndex = 0;
 }
 
 public class RadiusDiffusionTexture : DiffusionTextureChanger
 {
     //public DiffusionRequest diffusionRequest;
-    public List<DiffusionRing> radiusDiffusionRings = new List<DiffusionRing>();
+    public List<DiffusionRing> radiusDiffusionRings;
 
-    private GameObject grabbedObject = null;
+    private void Awake()
+    {
+        radiusDiffusionRings = new List<DiffusionRing>();        
+    }
+
+    //private GameObject grabbedObject = null;
 
     // Update is called once per frame
     protected void Update()
     {
-        if (diff_Textures.Count > 0)
+        if (radiusDiffusionRings.Count == 0)
         {
-            foreach (DiffusionRing dr in radiusDiffusionRings)
+            return;
+        }
+        foreach (DiffusionRing dr in radiusDiffusionRings)
+        {            
+            dr.curChangeTime += Time.deltaTime;
+            if (dr.curChangeTime > dr.changeMaxTime && dr.changeTextures)
             {
-                dr.curChangeTime += Time.deltaTime;
-                if (dr.curChangeTime > dr.changeMaxTime && dr.changeTextures)
+                Debug.Log("ada");
+                foreach (GameObject diffusionGO in dr.gameObjects)
                 {
-                    foreach (GameObject diffusionGO in dr.gameObjects)
-                    {
-                        // TODO add timer(?) to changeTextureOn
-                        changeTextureOn(diffusionGO, dr.diffusionTextureList[dr.diffusionTextureIndex]);
-                    }
-                    // TODO change curRadius of dr over time
-                    dr.diffusionTextureIndex++;
-                    dr.diffusionTextureIndex %= dr.diffusionTextureList.Count;
-
-                    dr.curChangeTime = 0;
+                    Debug.Log("adaddd");
+                    // TODO add timer(?) to changeTextureOn
+                    changeTextureOn(diffusionGO, dr.diffusionTextureList[dr.diffusionTextureIndex]);
                 }
+                // TODO change curRadius of dr over time
+                dr.diffusionTextureIndex++;
+                dr.diffusionTextureIndex %= dr.diffusionTextureList.Count;
+
+                dr.curChangeTime = 0;
             }
-            
         }
     }
 
     public override bool AddTexture(DiffusionRequest diffusionRequest)
     {
         // TODO think if this line is even useful in this script
-        base.AddTexture(diffusionRequest);
+        //base.AddTexture(diffusionRequest);
 
         if (diffusionRequest.diffusableObject.grabbed)
         {
@@ -66,6 +73,8 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
         }
 
         DiffusionRing newDiffusionRing = new DiffusionRing();
+        newDiffusionRing.gameObjects = new List<GameObject>();
+        newDiffusionRing.diffusionTextureList = new List<Texture2D>();
         foreach (Texture2D texture in diffusionRequest.textures)
         {
             newDiffusionRing.diffusionTextureList.Add(texture);
@@ -83,16 +92,17 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
         {
             return;
         }
-        Debug.Log("RING " + (radiusDiffusionRings.Count - 1).ToString());
         DiffusionRing dr = radiusDiffusionRings[radiusDiffusionRings.Count - 1];
         if (dr == null)
         {
+            Debug.Log("oooop");
             return;
         }
-        if (dr.gameObjects.Count > 0)
+        /*if (dr.gameObjects.Count > 0)
         {
+            Debug.Log("zooooommmmmm");
             return;
-        }
+        }*/
 
         dr.gameObjects = gameObjectsInRadius(curRadius, position);
         dr.changeTextures = true;

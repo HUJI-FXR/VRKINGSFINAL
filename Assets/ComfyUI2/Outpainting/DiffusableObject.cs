@@ -11,8 +11,8 @@ public class DiffusableObject : MonoBehaviour
 
     [NonSerialized]
     public bool grabbed;
-    [NonSerialized]
-    private bool allowCollision;
+    /*[NonSerialized]
+    private bool allowCollision;*/
     //public DiffusionRequest diffusionRequest;
 
     // todo make gamemanager script
@@ -30,12 +30,12 @@ public class DiffusableObject : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (grabbed || !allowCollision)
+        if (grabbed)
         {
             return;
         }
         GeneralGameScript.instance.radiusDiffusionTexture.DiffusableObjectCollided(collision);
-        allowCollision = false;
+        //allowCollision = false;
         
     }
 
@@ -46,7 +46,7 @@ public class DiffusableObject : MonoBehaviour
             return;
         }
         GeneralGameScript.instance.gadget.DiffusableGrabbed(args);
-        allowCollision = true;
+        //allowCollision = true;
     }
     public void OnSelectExited(SelectExitEventArgs args)
     {
