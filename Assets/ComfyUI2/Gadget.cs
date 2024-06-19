@@ -19,17 +19,15 @@ public enum GadgetSelection
 // TODO change name of class to GadgetScript or something
 public class Gadget : MonoBehaviour
 {
-    [NonSerialized]
-    public DiffusionRequest diffusionRequest;
+    /*[NonSerialized]
+    public DiffusionRequest diffusionRequest;*/
 
     public TextMeshProUGUI MechanismText;
     public TextMeshProUGUI ButtonText;
 
     public ScreenRecorder screenRecorder = null;
     public Camera gadgetCamera;
-    public Camera xrCamera;
-
-    public UIDiffusionTexture uiDiffusionTexture;
+    public Camera xrCamera;    
 
     public PlayGadgetSounds playGadgetSounds;
     
@@ -44,13 +42,13 @@ public class Gadget : MonoBehaviour
     private Gadget gadget;
     private void Start()
     {
-        if (gadgetCamera == null || xrCamera == null || uiDiffusionTexture == null || playGadgetSounds == null)
+        if (gadgetCamera == null || xrCamera == null || playGadgetSounds == null)
         {
             Debug.LogError("Add all requirements of Gadget");
             return;
         }
         gadget = GetComponent<Gadget>();
-        GadgetMechanism cameraGadgetMechanism = new CameraGadgetMechanism(gadget, screenRecorder, gadgetCamera, xrCamera, uiDiffusionTexture);
+        GadgetMechanism cameraGadgetMechanism = new CameraGadgetMechanism(gadget, screenRecorder, gadgetCamera, xrCamera);
         GadgetMechanism combineImagesGadgetMechanism = new CombineImagesGadgetMechanism(gadget);
         GadgetMechanism throwingGadgetMechanism = new ThrowingGadgetMechanism(gadget);
         GadgetMechanisms.Add(cameraGadgetMechanism);

@@ -11,23 +11,15 @@ public class GadgetMechanism : Object
 {
     public static string MECHANISM_PRETEXT = "Mechanism:\n";
     
-    public new string name;
     public string mechanismText;
     public string buttonText;
     public Gadget gadget;
     public GadgetMechanism(Gadget gadget)
     {
-        this.name = "";
         this.mechanismText = "";
         this.buttonText = "";
         this.gadget = gadget;
     }
-
-    /*
-            new DiffusionMechanism("txt2img", MECHANISM_PRETEXT + "Item to Image", "Generate"),
-            new DiffusionMechanism("depthCamera", MECHANISM_PRETEXT + "Depth Camera", "Generate"),
-            new DiffusionMechanism("selfieCamera", MECHANISM_PRETEXT + "Selfie Camera", "Generate"),
-            new DiffusionMechanism("outpainting", MECHANISM_PRETEXT + "Outpainting", "Generate"),*/
 
     public virtual void OnGameObjectHoverEntered(HoverEnterEventArgs args)
     {
@@ -75,11 +67,20 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
     public Queue<GameObject> selectedObjects = new Queue<GameObject>();
     public int MAX_QUEUED_OBJECTS = 2;
 
+    private DiffusionRequest diffusionRequest;
+
     public CombineImagesGadgetMechanism(Gadget gadget) : base(gadget)
     {        
-        name = "combineImages";
         mechanismText = MECHANISM_PRETEXT + "Combine Two Images";
         buttonText = "Combine";
+
+        diffusionRequest = new DiffusionRequest();
+        diffusionRequest.positivePrompt = "Beautiful";
+        diffusionRequest.negativePrompt = "watermark";
+        diffusionRequest.numOfVariations = 5;
+        diffusionRequest.targets.Add(GeneralGameScript.instance.uiDiffusionTexture);
+        diffusionRequest.diffusionJsonType = diffusionWorkflows.combineImages;
+        diffusionRequest.diffusionModel = diffusionModels.ghostmix;
     }
 
     public override void OnUIHoverEntered(UIHoverEventArgs args)
@@ -190,10 +191,10 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
 
         Debug.Log(secondCopyTexture.name);
 
-        gadget.diffusionRequest.uploadImage = copyTexture;
-        gadget.diffusionRequest.secondUploadImage = secondCopyTexture;
+        diffusionRequest.uploadImage = copyTexture;
+        diffusionRequest.secondUploadImage = secondCopyTexture;
 
-        GeneralGameScript.instance.comfyOrganizer.SendDiffusionRequest(gadget.diffusionRequest);
+        GeneralGameScript.instance.comfyOrganizer.SendDiffusionRequest(diffusionRequest);
     }
 }
 
@@ -206,7 +207,7 @@ public class CameraGadgetMechanism : GadgetMechanism
     private DiffusionRequest diffusionRequest;    
 
     public bool takingPicture = true;
-    public CameraGadgetMechanism(Gadget gadget, ScreenRecorder screenRecorder, Camera camera ,Camera xrCamera, UIDiffusionTexture uiDiffusionTexture) : base(gadget)
+    public CameraGadgetMechanism(Gadget gadget, ScreenRecorder screenRecorder, Camera camera, Camera xrCamera) : base(gadget)
     {
         this.screenRecorder = screenRecorder;
         this.mechanismCamera = camera;
@@ -218,7 +219,7 @@ public class CameraGadgetMechanism : GadgetMechanism
         diffusionRequest.positivePrompt = "Beautiful";
         diffusionRequest.negativePrompt = "watermark";
         diffusionRequest.numOfVariations = 5;
-        diffusionRequest.targets.Add(uiDiffusionTexture);
+        diffusionRequest.targets.Add(GeneralGameScript.instance.uiDiffusionTexture);
     }
 
     public override void OnClick()
@@ -251,6 +252,7 @@ public class CameraGadgetMechanism : GadgetMechanism
             if (curTexture == null)
             {
                 Debug.LogError("Tried to add a textures from the Gadget camera without textures in the Queue");
+                return;
             }
 
             // Perform the raycast
@@ -273,39 +275,6 @@ public class CameraGadgetMechanism : GadgetMechanism
     }
 }
 
-/*public class ThrowingGadgetMechanism : GadgetMechanism
-{
-    public DiffusionRequest diffusionRequest;
-
-    private bool allowCollision = false;
-    private GameObject grabbedObject = null;
-
-    public ThrowingGadgetMechanism(Gadget gadget) : base(gadget)
-    {
-
-    }
-
-    public override void onGameObjectSelectEntered(SelectEnterEventArgs args)
-    {
-        grabbedObject = args.interactableObject.transform.gameObject;
-        GeneralGameScript.instance.comfyOrganizer.SendDiffusionRequest(diffusionRequest);
-        allowCollision = true;
-    }
-    public override void onGameObjectSelectExited(SelectExitEventArgs args)
-    {
-        grabbedObject = null;
-        if (args.interactableObject == null)
-        {
-            return;
-        }
-        if (args.interactableObject.transform.gameObject.TryGetComponent<ParticleSystem>(out ParticleSystem ps))
-        {
-            var emission = ps.emission;
-            emission.enabled = false;
-        }
-    }
-}*/
-
 public class ThrowingGadgetMechanism : GadgetMechanism
 {
     // TODO Do I even need diffusionlist when I have  GeneralGameScript.instance.diffusables??
@@ -322,7 +291,8 @@ public class ThrowingGadgetMechanism : GadgetMechanism
         diffusionRequest.positivePrompt = "Beautiful";
         diffusionRequest.negativePrompt = "watermark";
         diffusionRequest.numOfVariations = 5;
-        diffusionRequest.targets.Add(GeneralGameScript.instance.radiusDiffusionTexture);        
+        diffusionRequest.targets.Add(GeneralGameScript.instance.radiusDiffusionTexture);
+        diffusionRequest.diffusionModel = diffusionModels.nano;
     }
 
     public void DiffusableGrabbed(SelectEnterEventArgs args)

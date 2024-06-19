@@ -45,6 +45,7 @@ public class DiffusableObject : MonoBehaviour
         if (GeneralGameScript.instance.gadget == null) {
             return;
         }
+        Debug.Log("GRABBED");
         GeneralGameScript.instance.gadget.DiffusableGrabbed(args);
         allowCollision = true;
     }

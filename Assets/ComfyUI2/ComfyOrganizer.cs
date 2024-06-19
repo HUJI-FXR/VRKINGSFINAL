@@ -79,10 +79,10 @@ public class ComfyOrganizer : MonoBehaviour
         return newTextureName;
     }
 
-    public void addDiffusionRequestToDatabase(DiffusionRequest diffReq, int currentRequestNum)
+    /*public void addDiffusionRequestToDatabase(DiffusionRequest diffReq, int currentRequestNum)
     {
-        DiffuseDictionary.Add(currentRequestNum, diffReq);
-    }
+        DiffuseDictionary.Add(currentRequestNum, diffReq);        
+    }*/
 
     public DiffusionRequest copyDiffusionRequest(DiffusionRequest diffReq)
     {
@@ -101,6 +101,9 @@ public class ComfyOrganizer : MonoBehaviour
 
         newDiffReq.diffusionModel = diffReq.diffusionModel;
         newDiffReq.diffusionJsonType = diffReq.diffusionJsonType;
+
+        newDiffReq.collision = diffReq.collision;
+        newDiffReq.diffusableObject = diffReq.diffusableObject;
 
         // Texture2D deep copying --------------------------------------------------------------------
         newDiffReq.textures = new List<Texture2D>();
@@ -147,7 +150,7 @@ public class ComfyOrganizer : MonoBehaviour
 
         newDiffReq.requestNum = currentRequestNum;
         newDiffReq.diffImgName = GetDiffusionImageName(newDiffReq);
-        addDiffusionRequestToDatabase(newDiffReq, currentRequestNum);
+        DiffuseDictionary.Add(currentRequestNum, newDiffReq);
         currentRequestNum++;
 
         StartCoroutine(comfyLib.QueuePromptCoroutine(newDiffReq));

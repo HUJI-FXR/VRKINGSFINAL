@@ -10,7 +10,7 @@ public class DiffusionRing
 {
     public float maxRadius = 1;
     public float curRadius = 0;
-    public float changeMaxTime = 1;
+    public float changeMaxTime = 0.1f;
     public float curChangeTime = 0;
     public bool changeTextures = false;
     public List<GameObject> gameObjects = new List<GameObject>();
@@ -33,7 +33,7 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
             foreach (DiffusionRing dr in radiusDiffusionRings)
             {
                 dr.curChangeTime += Time.deltaTime;
-                if (dr.curChangeTime > dr.maxRadius && dr.changeTextures)
+                if (dr.curChangeTime > dr.changeMaxTime && dr.changeTextures)
                 {
                     foreach (GameObject diffusionGO in dr.gameObjects)
                     {
@@ -83,6 +83,7 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
         {
             return;
         }
+        Debug.Log("RING " + (radiusDiffusionRings.Count - 1).ToString());
         DiffusionRing dr = radiusDiffusionRings[radiusDiffusionRings.Count - 1];
         if (dr == null)
         {
