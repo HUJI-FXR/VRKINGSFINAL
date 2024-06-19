@@ -7,6 +7,9 @@ public class ExternalCameraDepth : MonoBehaviour
 {
     [NotNull] [SerializeField] private RenderTexture _renderTexture;
     [NotNull] [SerializeField] private GameObject externalCamera;
+    [NotNull] [SerializeField] private GameObject mainCamera;
+    [NotNull] [SerializeField] private float swtichTime = 0.2f;
+    private bool switchEnabled = false;
 
     private Texture2D _texture2D;
 
@@ -14,27 +17,42 @@ public class ExternalCameraDepth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Invoke("SaveTexture", 2f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        SaveTexture();
+        if (switchEnabled)
+        {
+            externalCamera.SetActive(true);
+            mainCamera.SetActive(false);
+        }
+        else
+        {
+            mainCamera.SetActive(true);
+            externalCamera.SetActive(false);
+        }
     }
 
     public void SaveTexture()
     {
-        externalCamera.SetActive(true);
-        _texture2D = toTexture2D(_renderTexture);
-        externalCamera.SetActive(false);
         
-
+        _texture2D = toTexture2D(_renderTexture);
+        
         if (project != null)
         {
             project.material.mainTexture = _texture2D;
         }
+
+        switchEnabled = true;
+        
+        Invoke("DisableSwitch", swtichTime);
     }
+
+    public void DisableSwitch()
+    {
+        switchEnabled = false; }
     
     public Texture2D toTexture2D(RenderTexture rTex)
     {
