@@ -14,10 +14,11 @@ public class GeneralGameScript : MonoBehaviour
     public UIDiffusionTexture uiDiffusionTexture;
 
     [NonSerialized]
-    public List<GameObject> diffusionList = new List<GameObject>();
+    public List<GameObject> diffusionList;
 
     private void Awake()
     {
+        diffusionList = new List<GameObject>();
         if (instance != null)
         {
             return;

@@ -49,14 +49,21 @@ public class ComfySceneLibrary : MonoBehaviour
     public string JSONFolderPath = "Assets/ComfyUI2/JSONMain";
     public string ImageFolderName = "Assets/";
 
-    private string clientId = Guid.NewGuid().ToString();
-    private ClientWebSocket ws = new ClientWebSocket();
+    private string clientId;
+    private ClientWebSocket ws;
     private bool started_generations = false;
-    private Dictionary<diffusionWorkflows, string> diffusionJsons = new Dictionary<diffusionWorkflows, string>();
+    private Dictionary<diffusionWorkflows, string> diffusionJsons;
 
     private bool uploadingImage = false;
 
     private bool readyForDiffusion = false;
+
+    private void Awake()
+    {
+        clientId = Guid.NewGuid().ToString();
+        ws = new ClientWebSocket();
+        diffusionJsons = new Dictionary<diffusionWorkflows, string>();
+    }
 
     // TODO notice that this START must always come BEFORE(put the library before the organizer in the node properties)
     // TODO cont. the ComfyOrganizer or else some things will not be ready for an instant diffusion request

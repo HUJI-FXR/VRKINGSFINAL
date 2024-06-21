@@ -16,7 +16,7 @@ using UnityEngine.Rendering;
 [Serializable]
 public class DiffusionRequest
 {
-    public List<DiffusionTextureChanger> targets = new List<DiffusionTextureChanger>();
+    public List<DiffusionTextureChanger> targets;
     public bool addToTextureTotal = false;
     public int numOfVariations = 1;
 
@@ -38,7 +38,7 @@ public class DiffusionRequest
     public diffusionWorkflows diffusionJsonType;
 
     [System.NonSerialized]
-    public List<Texture2D> textures = new List<Texture2D>();
+    public List<Texture2D> textures;
     [System.NonSerialized]
     public bool finishedRequest = false;
     [System.NonSerialized]
@@ -51,6 +51,12 @@ public class DiffusionRequest
     public Collision collision = null;
     [System.NonSerialized]
     public DiffusableObject diffusableObject = null;
+
+    public DiffusionRequest()
+    {
+        targets = new List<DiffusionTextureChanger>();
+        textures = new List<Texture2D>();
+    }
 }
 
 public class ComfyOrganizer : MonoBehaviour

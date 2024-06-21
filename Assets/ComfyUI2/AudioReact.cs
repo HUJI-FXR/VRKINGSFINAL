@@ -9,13 +9,14 @@ using static Unity.Burst.Intrinsics.X86;
 public class AudioReact : MonoBehaviour
 {
     AudioSource audioSource;
-    public float[] samples = new float[512];
+    public float[] samples;
 
     public float avg = 0f;
 
     // Start is called before the first frame update
     void Start()
     {
+        samples = new float[512];
         audioSource = GetComponent<AudioSource> ();
     }
 

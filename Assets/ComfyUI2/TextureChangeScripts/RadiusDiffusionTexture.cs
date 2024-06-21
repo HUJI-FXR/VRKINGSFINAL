@@ -42,10 +42,8 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
             dr.curChangeTime += Time.deltaTime;
             if (dr.curChangeTime > dr.changeMaxTime && dr.changeTextures)
             {
-                Debug.Log("ada");
                 foreach (GameObject diffusionGO in dr.gameObjects)
                 {
-                    Debug.Log("adaddd");
                     // TODO add timer(?) to changeTextureOn
                     changeTextureOn(diffusionGO, dr.diffusionTextureList[dr.diffusionTextureIndex]);
                 }
@@ -86,26 +84,15 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
         return true;
     }
 
-    public void addRadiusGameObjects(float curRadius, Vector3 position)
-    {
-        if (radiusDiffusionRings.Count <= 0)
+    public void addRadiusGameObjects(DiffusionRing diffusionRing, Vector3 position)
+    {        
+        if (diffusionRing == null)
         {
             return;
-        }
-        DiffusionRing dr = radiusDiffusionRings[radiusDiffusionRings.Count - 1];
-        if (dr == null)
-        {
-            Debug.Log("oooop");
-            return;
-        }
-        /*if (dr.gameObjects.Count > 0)
-        {
-            Debug.Log("zooooommmmmm");
-            return;
-        }*/
+        }        
 
-        dr.gameObjects = gameObjectsInRadius(curRadius, position);
-        dr.changeTextures = true;
+        diffusionRing.gameObjects = gameObjectsInRadius(diffusionRing.curRadius, position);
+        diffusionRing.changeTextures = true;
     }
 
     private List<GameObject> gameObjectsInRadius(float curRadius, Vector3 position)
@@ -125,11 +112,22 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
 
     public void DiffusableObjectCollided(Collision collision)
     {
-        // todo delete, and delete collision in diffusionrequest??
-        //diffusionRequest.collision = collision;
+        if (radiusDiffusionRings.Count <= 0)
+        {
+            return;
+        }
 
+        DiffusionRing dr = radiusDiffusionRings[radiusDiffusionRings.Count - 1];
+
+        if (dr.gameObjects.Count > 0)
+        {
+            return;
+        }
+
+        // todo delete, and delete collision in diffusionrequest??
         // TODO change radius over time
-        addRadiusGameObjects(3, collision.transform.position);
+
+        addRadiusGameObjects(dr, collision.transform.position);
     }
        
 }

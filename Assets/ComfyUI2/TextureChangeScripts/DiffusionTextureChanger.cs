@@ -6,8 +6,13 @@ using UnityEngine;
 
 public class DiffusionTextureChanger : MonoBehaviour
 {
-    protected List<Texture2D> diff_Textures = new List<Texture2D>();
+    protected List<Texture2D> diff_Textures;
     protected int curTextureIndex = 0;
+
+    private void Awake()
+    {
+        diff_Textures = new List<Texture2D>();
+    }
 
     public virtual bool AddTexture(DiffusionRequest diffusionRequest)
     {
@@ -63,8 +68,10 @@ public class DiffusionTextureChanger : MonoBehaviour
         Renderer renderer = curGameObject.GetComponent<Renderer>();
 
         // TODO MAJOT ISSUE, sometimes it's _BaseMap, sometimes _MainTex depending on SHADER of object PROBLEM
-        Debug.Log(renderer.material.GetPropertyNames(MaterialPropertyType.Texture));
+        //Debug.Log(renderer.material.GetPropertyNames(MaterialPropertyType.Texture));
 
+        //renderer.material.SetTexture("_BaseMap", texture);
+        renderer.material.mainTexture = texture;
         renderer.material.SetTexture("_BaseMap", texture);
         /*var baseMap = renderer.material.GetTexture("_BaseMap");
         if (baseMap != null)
