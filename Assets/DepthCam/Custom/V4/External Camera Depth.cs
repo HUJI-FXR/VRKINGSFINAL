@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class ExternalCameraDepth : MonoBehaviour
 {
-    [NotNull] [SerializeField] private RenderTexture _renderTexture;
+    [NotNull] [SerializeField] public RenderTexture _renderTexture;
     [NotNull] [SerializeField] private GameObject externalCamera;
     [NotNull] [SerializeField] private GameObject mainCamera;
     [NotNull] [SerializeField] private float swtichTime = 0.2f;
@@ -55,6 +55,12 @@ public class ExternalCameraDepth : MonoBehaviour
             project.material.mainTexture = _texture2D;
         }
         switchEnabled = false;
+    }
+    
+    public Texture2D GetTexture()
+    {
+
+        return _texture2D;
     }
     
     
