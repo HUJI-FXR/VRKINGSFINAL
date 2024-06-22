@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections;
 using System.IO;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 // Got this script from: https://discussions.unity.com/t/how-to-save-a-picture-take-screenshot-from-a-camera-in-game/5792/8
 
@@ -12,13 +13,13 @@ using UnityEngine.UI;
 // You can compile these images into a video using ffmpeg:
 // ffmpeg -i screen_3840x2160_%d.ppm -y test.avi
 
-public class ScreenRecorderold : MonoBehaviour
+public class ScreenRecorder : MonoBehaviour
 {
     [SerializeField] private GameObject display;
-    
+
     // 4k = 3840 x 2160   1080p = 1920 x 1080
-    public int captureWidth = 1920;
-    public int captureHeight = 1080;
+    public int captureWidth = 512;
+    public int captureHeight = 512;
 
     // optional game object to hide during screenshots (usually your scene canvas hud)
     public GameObject hideGameObject;
@@ -31,7 +32,7 @@ public class ScreenRecorderold : MonoBehaviour
     public Format format = Format.PPM;
 
     // folder to write output (defaults to data path)
-    public string folder;
+    public string folder = "Assets/ComfyUILib/Screenshots";
 
     // private vars for screenshot
     private Rect rect;
@@ -39,13 +40,7 @@ public class ScreenRecorderold : MonoBehaviour
     private Texture2D screenShot;
     private int counter = 0; // image #
 
-
-    // TODO maybe delete these?
-    // Comfy AI Image Generation Library
-    public ComfySceneLibrary comfySceneLibrary = null;
-    private bool DELETETHISBOOL = false;
-    //TODO TERRIBLE CODE THING HERE, NEED TO CONVERT RELATIVE TO ABSOLUTE PATH WITHOUT THIS SHORTCUT IN LINE BELOW
-    public string preabsolutePath;
+    public ComfyOrganizer comfyOrganizer;
 
     // create a unique filename using a one-up variable
     private string uniqueFilename(int width, int height)
@@ -78,17 +73,10 @@ public class ScreenRecorderold : MonoBehaviour
 
         // return unique filename
         return filename;
-        
-    }
-
-    private void Start()
-    {
-        
-        //InvokeRepeating("CaptureScreenshot", 0, 5f);
 
     }
 
-    public string CaptureScreenshot()
+    public void CaptureScreenshot(DiffusionRequest diffusionRequest)
     {
         // hide optional game object if set
         if (hideGameObject != null) hideGameObject.SetActive(false);
@@ -114,10 +102,11 @@ public class ScreenRecorderold : MonoBehaviour
 
         // reset active camera texture and render texture
         camera.targetTexture = null;
-        RenderTexture.active = null;
+        RenderTexture.active = null;        
 
         // get our unique filename
-        string filename = uniqueFilename((int)rect.width, (int)rect.height);
+        //string filename = uniqueFilename((int)rect.width, (int)rect.height);
+        string filename = folder + '/' +  comfyOrganizer.UniqueImageName() + '.' + format.ToString().ToLower();
 
         // pull in our file header/data bytes for the specified image format (has to be done from main thread)
         byte[] fileHeader = null;
@@ -144,7 +133,7 @@ public class ScreenRecorderold : MonoBehaviour
         }
 
         // create new thread to save the image to file (only operation that can be done in background)
-       /* new System.Threading.Thread(() =>
+        /*new System.Threading.Thread(() =>
         {
             // create file and write optional header with image bytes
             var f = System.IO.File.Create(filename);
@@ -160,7 +149,7 @@ public class ScreenRecorderold : MonoBehaviour
         if (fileHeader != null) f.Write(fileHeader, 0, fileHeader.Length);
         f.Write(fileData, 0, fileData.Length);
         f.Close();
-        Debug.Log(string.Format("Wrote screenshot {0} of size {1}", filename, fileData.Length));
+        //Debug.Log(string.Format("Wrote screenshot {0} of size {1}", filename, fileData.Length));
 
         // unhide optional game object if set
         if (hideGameObject != null) hideGameObject.SetActive(true);
@@ -173,38 +162,32 @@ public class ScreenRecorderold : MonoBehaviour
             screenShot = null;
         }
 
+        /*string mask = string.Format("screen_{0}x{1}*.{2}", rect.width, rect.height, format.ToString().ToLower());
+        int counter = Directory.GetFiles(folder, mask, SearchOption.TopDirectoryOnly).Length;*/
 
-        
-        string mask = string.Format("screen_{0}x{1}*.{2}", rect.width, rect.height, format.ToString().ToLower());
-        int counter = Directory.GetFiles(folder, mask, SearchOption.TopDirectoryOnly).Length;
-        
-        // --------------------- NADAV'S COMMENT: ADDED THIS METHOD TO DISPLAY THE SCREENSHOT ---------
-        StartCoroutine(DisplayScreenshot(filename));
+        int lastSlashIndex = filename.LastIndexOf('/');
+        // Extract the file name by taking the substring after the last slash
+        string cutFileName = filename.Substring(lastSlashIndex + 1);
+        //diffReq.uploadImageName = cutFileName;
+        screenShot.name = cutFileName;
+        diffusionRequest.uploadImage = screenShot;
+        // TODO make a different case for depth and selfie cameras
 
-        return filename;
-        // --------------------- NADAV'S COMMENT: WHY DOES IT RETURN A DIFFERENT FILE NAME ---------
-        //return string.Format("screen_{0}x{1}_{2}.{3}", rect.width, rect.height, counter, format.ToString().ToLower());
+        comfyOrganizer.SendDiffusionRequest(diffusionRequest);
     }
 
-    IEnumerator DisplayScreenshot(string filepath)
+    /*IEnumerator DisplayScreenshot(string filepath)
     {
-
         while (!File.Exists(filepath))
         {
             yield return null;
         }
 
         LoadScreenshot(filepath);
-
     }
 
     private void LoadScreenshot(string path)
     {
-        if (DELETETHISBOOL)
-        {
-            return;
-        }
-
         string[] pathStrings = path.Split("/");
         string fullPath = (preabsolutePath + path).Replace('\\', '/');
         Debug.Log("Got to load screenshot: " + fullPath + " File name is: " + pathStrings[pathStrings.Length-1]);
@@ -212,9 +195,5 @@ public class ScreenRecorderold : MonoBehaviour
         Texture2D texture = new Texture2D(captureWidth, captureHeight);
         texture.LoadImage(fileData);
         display.GetComponent<Renderer>().material.mainTexture = texture;
-
-        //comfySceneLibrary.startGenerationForCameraImg(3, fullPath);
-
-        DELETETHISBOOL = true;
-    }
+    }*/
 }

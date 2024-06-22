@@ -29,7 +29,10 @@ public enum diffusionWorkflows
     baseCamera,
     depthCamera,
     openpose,
-    outpainting
+    outpainting,
+
+    // Gadget AI representation
+    AIAssistant
 }
 
 public enum diffusionModels
@@ -46,7 +49,7 @@ public class ComfySceneLibrary : MonoBehaviour
     public string serverAddress = "127.0.0.1:8188";  //"jonathanmiroshnik-backpropagation-09103750.thinkdiffusion.xyz"
     public ComfyOrganizer comfyOrg;
 
-    public string JSONFolderPath = "Assets/ComfyUI2/JSONMain";
+    public string JSONFolderPath = "Assets/ComfyUILib/JSONMain";
     public string ImageFolderName = "Assets/";
 
     private string clientId;
@@ -97,12 +100,19 @@ public class ComfySceneLibrary : MonoBehaviour
         StartServerConnection();
     }
 
+    /// <summary>
+    /// Starts a connection to the server
+    /// </summary>
     private async void StartServerConnection()
     {
         await ws.ConnectAsync(new Uri($"ws://{serverAddress}/ws?clientId={clientId}"), CancellationToken.None);
         StartListening();
     }
 
+    /// <summary>
+    /// Gets the JSON workflow corresponding to the Diffusion Workflow
+    /// </summary>
+    /// <param name="enumValName">Diffusion Workflow to get JSON of</param>
     private string getWorkflowJSON(diffusionWorkflows enumValName)
     {
         string ret_str = "";
@@ -235,6 +245,20 @@ public class ComfySceneLibrary : MonoBehaviour
 
                 json["prompt"]["21"]["inputs"]["denoise"] = diffReq.denoise;
                 json["prompt"]["21"]["inputs"]["seed"] = randomSeed;
+                break;
+
+            case diffusionWorkflows.AIAssistant:
+                json["prompt"]["3"]["inputs"]["seed"] = randomSeed;
+                json["prompt"]["6"]["inputs"]["text"] = diffReq.positivePrompt;
+                json["prompt"]["7"]["inputs"]["text"] = diffReq.negativePrompt;
+                json["prompt"]["5"]["inputs"]["batch_size"] = diffReq.numOfVariations;
+
+                json["prompt"]["4"]["inputs"]["ckpt_name"] = curDiffModel;
+                
+                curImageSize.x = 512;
+                curImageSize.y = 768;
+                json["prompt"]["5"]["inputs"]["width"] = curImageSize.x;
+                json["prompt"]["5"]["inputs"]["height"] = curImageSize.y;
                 break;
 
             default:

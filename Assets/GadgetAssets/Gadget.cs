@@ -43,6 +43,8 @@ public class Gadget : MonoBehaviour
     public Queue<Texture2D> textureQueue;
 
     private Gadget gadget;
+
+    public AIGadgetAssistant aiGadgetAssistant;
     private void Awake()
     {
         GadgetMechanisms = new List<GadgetMechanism>();
@@ -51,7 +53,7 @@ public class Gadget : MonoBehaviour
 
     private void Start()
     {
-        if (gadgetCamera == null || xrCamera == null || playGadgetSounds == null || gadgetImagePanel == null)
+        if (gadgetCamera == null || xrCamera == null || playGadgetSounds == null || gadgetImagePanel == null || aiGadgetAssistant == null)
         {
             Debug.LogError("Add all requirements of Gadget");
             return;

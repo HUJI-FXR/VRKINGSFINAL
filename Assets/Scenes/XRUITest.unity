@@ -11441,6 +11441,7 @@ GameObject:
   - component: {fileID: 627817429}
   - component: {fileID: 627817434}
   - component: {fileID: 627817435}
+  - component: {fileID: 627817436}
   - component: {fileID: 627817433}
   m_Layer: 0
   m_Name: PalmDiffusionGadget
@@ -11571,6 +11572,7 @@ MonoBehaviour:
   xrCamera: {fileID: 1791469566}
   playGadgetSounds: {fileID: 1791469568}
   gadgetImagePanel: {fileID: 1620720338}
+  aiGadgetAssistant: {fileID: 627817436}
 --- !u!114 &627817434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11632,6 +11634,19 @@ MonoBehaviour:
   m_DefaultActionMap: DiffusionMechanicPicker
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &627817436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627817427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b0b18809a25c204786431db6b254fa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AIAudioClipFolder: Assets/Sounds/Voiceover
 --- !u!1 &648285408
 GameObject:
   m_ObjectHideFlags: 0
@@ -23328,8 +23343,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serverAddress: 127.0.0.1:8188
   comfyOrg: {fileID: 1818206208}
-  JSONFolderPath: Assets/ComfyUI2/JSONMain
-  ImageFolderName: Assets/ComfyUI2/DiffusionImageOutput
+  JSONFolderPath: Assets/ComfyUILib/JSONMain
+  ImageFolderName: Assets/ComfyUILib/DiffusionImageOutput
 --- !u!114 &1818206208
 MonoBehaviour:
   m_ObjectHideFlags: 0

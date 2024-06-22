@@ -17,12 +17,18 @@ public class UIDiffusionTexture : DiffusionTextureChanger
     private float changeRate = 3.0f;
     private float curChangeDelta = 0f;
 
-    private static float IMAGES_REDUCE_SIZE_FACTOR = 1;
+    private static float IMAGES_REDUCE_SIZE_FACTOR = 512;
 
     public PlayGadgetSounds playGadgetSounds;
 
     private void Start()
     {
+        if (PopupDisplay == null || displayPrefab == null)
+        {
+            Debug.LogError("Add UI Display and Prefab for the Image UI popup");
+            return;
+        }
+
         if (playGadgetSounds == null)
         {
             Debug.LogError("Add all UIDiffusionTexture inputs");
@@ -56,12 +62,13 @@ public class UIDiffusionTexture : DiffusionTextureChanger
             // Set the new GameObject as a child of the parentGameObject
             childGameObject.transform.SetParent(toBeParent.transform, false);
 
-            // Add a RectTransform component to the child GameObject if not already present
-            RectTransform rectTransform = childGameObject.AddComponent<RectTransform>();
-            rectTransform.sizeDelta = new Vector2(tex.width / IMAGES_REDUCE_SIZE_FACTOR, tex.height / IMAGES_REDUCE_SIZE_FACTOR); // Adjust the size as needed
+            // Add a RectTransform component to the child GameObject if not already present            
+            RectTransform rectTransform = childGameObject.AddComponent<RectTransform>();            
+            rectTransform.localScale = new Vector2(((float)tex.width) / IMAGES_REDUCE_SIZE_FACTOR, ((float)tex.height) / IMAGES_REDUCE_SIZE_FACTOR);
+            //rectTransform.sizeDelta = new Vector2(tex.width / IMAGES_REDUCE_SIZE_FACTOR, tex.height / IMAGES_REDUCE_SIZE_FACTOR); // Adjust the size as needed
 
             // Add an Image component to the child GameObject
-            childGameObject.AddComponent<Image>();
+            Image curImage = childGameObject.AddComponent<Image>();
         }
 
         for (int i = 0; i < textures.Count; i++)
@@ -72,6 +79,29 @@ public class UIDiffusionTexture : DiffusionTextureChanger
                 changeTextureOn(go, textures[i]);
             }
         }
+    }    
+
+    public void CreatePopup(List<Texture2D> textures)
+    {
+        if (PopupDisplay == null || displayPrefab == null)
+        {
+            Debug.LogError("Add UI Display and Prefab for the Image UI popup");
+            return;
+        }
+
+        curChangeDelta = 0f;
+
+        if (curDisplayPrefab != null)
+        {
+            Destroy(curDisplayPrefab);
+            curDisplayPrefab = null;
+        }
+        curDisplayPrefab = Instantiate(displayPrefab, PopupDisplay.transform, false);
+
+        CreateImagesInside(textures, curDisplayPrefab, true);
+
+        displayTextures = true;
+        playGadgetSounds.PlaySound("ShowUIElement");
     }
 
     public override bool AddTexture(DiffusionRequest diffusionRequest)
@@ -83,21 +113,7 @@ public class UIDiffusionTexture : DiffusionTextureChanger
         }
         if (base.AddTexture(diffusionRequest))
         {
-            curChangeDelta = 0f;
-
-            if (curDisplayPrefab != null)
-            {
-                Destroy(curDisplayPrefab);
-                curDisplayPrefab = null;
-            }
-            curDisplayPrefab = Instantiate(displayPrefab, PopupDisplay.transform, false);
-
-            CreateImagesInside(diff_Textures, curDisplayPrefab, true);
-
-            displayTextures = true;
-
-            playGadgetSounds.PlaySound("ShowUIElement");
-
+            CreatePopup(diff_Textures);
             GeneralGameScript.instance.gadget.AddTexturesToQueue(diff_Textures);
 
             return true;
