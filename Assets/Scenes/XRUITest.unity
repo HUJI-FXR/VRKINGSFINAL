@@ -1173,7 +1173,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.14
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -11439,7 +11439,6 @@ GameObject:
   - component: {fileID: 627817431}
   - component: {fileID: 627817430}
   - component: {fileID: 627817429}
-  - component: {fileID: 627817434}
   - component: {fileID: 627817435}
   - component: {fileID: 627817436}
   - component: {fileID: 627817433}
@@ -11573,21 +11572,6 @@ MonoBehaviour:
   playGadgetSounds: {fileID: 1791469568}
   gadgetImagePanel: {fileID: 1620720338}
   aiGadgetAssistant: {fileID: 627817436}
---- !u!114 &627817434
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 627817427}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b442ddabdfc60444b59fa8ae70113f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PopupDisplay: {fileID: 476312437}
-  displayPrefab: {fileID: 8910628764355201766, guid: 8ee60319c427de74b987c210b9babef9, type: 3}
-  playGadgetSounds: {fileID: 1791469568}
 --- !u!114 &627817435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11646,7 +11630,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b0b18809a25c204786431db6b254fa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AIAudioClipFolder: Assets/Sounds/Voiceover
+  AIAudioClipFolder: Sounds/Voiceover
 --- !u!1 &648285408
 GameObject:
   m_ObjectHideFlags: 0
@@ -23321,7 +23305,8 @@ GameObject:
   - component: {fileID: 1818206207}
   - component: {fileID: 1818206208}
   - component: {fileID: 1818206211}
-  - component: {fileID: 1818206210}
+  - component: {fileID: 1818206212}
+  - component: {fileID: 1818206213}
   m_Layer: 0
   m_Name: ComfyUILib
   m_TagString: Untagged
@@ -23373,24 +23358,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1818206210
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1818206205}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 906aded8c3935be4f8b7634f2098c52e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  comfyOrganizer: {fileID: 1818206208}
-  comfySceneLibrary: {fileID: 1818206207}
-  diffusables: {fileID: 2114443391}
-  gadget: {fileID: 627817433}
-  radiusDiffusionTexture: {fileID: 1818206211}
-  uiDiffusionTexture: {fileID: 627817434}
 --- !u!114 &1818206211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23403,6 +23370,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8e9f2e1b5852c54d88a8efaac00f6fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1818206212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818206205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5c0250285573f24f809c50abfb4d259, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  comfyOrganizer: {fileID: 1818206208}
+  comfySceneLibrary: {fileID: 1818206207}
+  diffusables: {fileID: 2114443391}
+  gadget: {fileID: 627817433}
+  radiusDiffusionTexture: {fileID: 1818206211}
+  uiDiffusionTexture: {fileID: 0}
+  headAudioSource: {fileID: 75795148}
+--- !u!114 &1818206213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818206205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b442ddabdfc60444b59fa8ae70113f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PopupDisplay: {fileID: 476312437}
+  displayPrefab: {fileID: 8910628764355201766, guid: 8ee60319c427de74b987c210b9babef9, type: 3}
+  playGadgetSounds: {fileID: 1791469568}
 --- !u!1 &1847060203
 GameObject:
   m_ObjectHideFlags: 0
@@ -23613,63 +23614,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1851939888}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1853006840
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1853006842}
-  - component: {fileID: 1853006841}
-  m_Layer: 0
-  m_Name: ComfyGenTest
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1853006841
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1853006840}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a075e87b1392a84794d082af22793d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  comfyOrg: {fileID: 1818206208}
-  testGameObj: {fileID: 0}
-  diffReq:
-    targets: []
-    addToTextureTotal: 0
-    numOfVariations: 5
-    positivePrompt: brick wall texture, masterpiece
-    negativePrompt: ugly, disfigured
-    uploadImage: {fileID: 0}
-    secondUploadImage: {fileID: 0}
-    denoise: 1
-    diffusionModel: 0
-    diffusionJsonType: 1
---- !u!4 &1853006842
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1853006840}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1863128429
 GameObject:
   m_ObjectHideFlags: 0
@@ -27227,7 +27171,6 @@ SceneRoots:
   - {fileID: 776495045}
   - {fileID: 138513186}
   - {fileID: 1940498946}
-  - {fileID: 1853006842}
   - {fileID: 1316955089}
   - {fileID: 8473049813797334391}
   - {fileID: 2083628288}

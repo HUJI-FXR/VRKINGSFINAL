@@ -232,11 +232,11 @@ public class Gadget : MonoBehaviour
         Texture2D current = textureQueue.Dequeue();
         if (textureQueue.Count == 0)
         {
-            GeneralGameScript.instance.uiDiffusionTexture.CreateImagesInside(new List<Texture2D>(), gadgetImagePanel, true);
+            GameManager.getInstance().uiDiffusionTexture.CreateImagesInside(new List<Texture2D>(), gadgetImagePanel, true);
         }
         else
         {
-            GeneralGameScript.instance.uiDiffusionTexture.CreateImagesInside(textureQueue.ToList<Texture2D>(), gadgetImagePanel, true);
+            GameManager.getInstance().uiDiffusionTexture.CreateImagesInside(textureQueue.ToList<Texture2D>(), gadgetImagePanel, true);
         }
             
         return current;
@@ -244,7 +244,7 @@ public class Gadget : MonoBehaviour
 
     public bool AddTexturesToQueue(List<Texture2D> textures)
     {
-        GeneralGameScript.instance.uiDiffusionTexture.CreateImagesInside(textures, gadgetImagePanel, true);
+        GameManager.getInstance().uiDiffusionTexture.CreateImagesInside(textures, gadgetImagePanel, true);
 
         foreach (Texture2D texture in textures)
         {

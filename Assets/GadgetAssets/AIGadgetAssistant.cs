@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class AIGadgetAssistant : MonoBehaviour
 {
-    public string AIAudioClipFolder = "Assets/Sounds/Voiceover";
+    public string AIAudioClipFolder = "Sounds/Voiceover";
 
     private DiffusionTextureChanger diffusionTextureChanger;
     private Dictionary<string, AudioClip> AIAudioClips;
@@ -28,25 +28,38 @@ public class AIGadgetAssistant : MonoBehaviour
 
     private void Start()
     {
-        InvokeRepeating("REMOVETHISFUNC", 2, 2);
+        GetAudioClips(AIAudioClipFolder);
+        //InvokeRepeating("REMOVETHISFUNC", 5, 5);
     }
 
+    /// <summary>
+    /// Gets all the Audio Clips from the given folder and adds it to the AIAudioClips Dictionary
+    /// </summary>
+    /// <param name="audioClipFolder">Folder to get Audio Clips from</param>
     private void GetAudioClips(string audioClipFolder)
     {
-        var audioClipFileNames = Directory.GetFiles(audioClipFolder, "*.wav"); // TODO notice that this is WAV, but might be other formats??
+        // TODO what if not mp3 wav?
+        //var audioClipFileNames = Directory.GetFiles(audioClipFolder, "*.wav");
+        //var audioClipFileNames = Directory.GetFiles(audioClipFolder, "*.mp3");      
+        var audioClipFileNames = Resources.LoadAll(audioClipFolder, typeof(AudioClip));
 
-        foreach(string audioClipName in audioClipFileNames)
+        foreach (AudioClip audioClip in audioClipFileNames)
         {
-            AIAudioClips[audioClipName] = Resources.Load(audioClipFolder + "/" + audioClipName) as AudioClip;
+            Debug.Log(audioClipFolder + "/" + audioClip.name);
+            AIAudioClips[audioClip.name] = Resources.Load<AudioClip>(audioClipFolder + "/" + audioClip.name);
         }        
     }
 
-    public void REMOVETHISFUNC()
+    /*public void REMOVETHISFUNC()
     {
         CreateAITexture();
-        AITalk();
-    }
+        AITalk("Introduction");
+    }*/
 
+    /// <summary>
+    /// Sends an Image generation request for the AI representation, according to the input keywords
+    /// </summary>
+    /// <param name="keywords">To be added to the prompts of the Image Generation request</param>
     public void CreateAITexture(string keywords = "")
     {
         DiffusionRequest diffusionRequest = new DiffusionRequest();
@@ -60,9 +73,13 @@ public class AIGadgetAssistant : MonoBehaviour
         diffusionRequest.addToTextureTotal = true;
         diffusionRequest.diffusionJsonType = diffusionWorkflows.AIAssistant;
 
-        GeneralGameScript.instance.comfyOrganizer.SendDiffusionRequest(diffusionRequest);
+        GameManager.getInstance().comfyOrganizer.SendDiffusionRequest(diffusionRequest);
     }
 
+    /// <summary>
+    /// Plays an AI assistant Audio Clip and creates a popup to go along with it
+    /// </summary>
+    /// <param name="audioClipName">AI Assistant Audio Clip to be played</param>
     public void AITalk(string audioClipName = "")
     {
         List<Texture2D> curTextures = diffusionTextureChanger.GetTextures();
@@ -71,8 +88,14 @@ public class AIGadgetAssistant : MonoBehaviour
             return;
         }
 
-        Texture2D currentTexture = curTextures[curTextures.Count - 1];        
+        Texture2D currentTexture = curTextures[curTextures.Count - 1];
 
-        GeneralGameScript.instance.uiDiffusionTexture.CreatePopup(new List<Texture2D>() { currentTexture });
+        GameManager.getInstance().uiDiffusionTexture.CreatePopup(new List<Texture2D>() { currentTexture });
+
+        if (audioClipName == "")
+        {
+            return;
+        }
+        GameManager.getInstance().headAudioSource.PlayOneShot(AIAudioClips[audioClipName]);
     }
 }

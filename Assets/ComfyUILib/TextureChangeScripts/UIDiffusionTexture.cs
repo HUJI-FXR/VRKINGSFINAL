@@ -114,7 +114,7 @@ public class UIDiffusionTexture : DiffusionTextureChanger
         if (base.AddTexture(diffusionRequest))
         {
             CreatePopup(diff_Textures);
-            GeneralGameScript.instance.gadget.AddTexturesToQueue(diff_Textures);
+            GameManager.getInstance().gadget.AddTexturesToQueue(diff_Textures);
 
             return true;
         }

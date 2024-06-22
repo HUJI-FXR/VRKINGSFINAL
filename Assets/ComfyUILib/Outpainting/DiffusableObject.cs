@@ -34,7 +34,7 @@ public class DiffusableObject : MonoBehaviour
         {
             return;
         }
-        GeneralGameScript.instance.radiusDiffusionTexture.DiffusableObjectCollided(collision);
+        GameManager.getInstance().radiusDiffusionTexture.DiffusableObjectCollided(collision);
         //allowCollision = false;
         
     }
@@ -42,19 +42,19 @@ public class DiffusableObject : MonoBehaviour
     public void OnSelectEntered(SelectEnterEventArgs args)
     {
         grabbed = true;
-        if (GeneralGameScript.instance.gadget == null) {
+        if (GameManager.getInstance().gadget == null) {
             return;
         }
-        GeneralGameScript.instance.gadget.DiffusableGrabbed(args);
+        GameManager.getInstance().gadget.DiffusableGrabbed(args);
         //allowCollision = true;
     }
     public void OnSelectExited(SelectExitEventArgs args)
     {
         grabbed = false;
-        if (GeneralGameScript.instance.gadget == null)
+        if (GameManager.getInstance().gadget == null)
         {
             return;
         }
-        GeneralGameScript.instance.gadget.DiffusableUnGrabbed(args);
+        GameManager.getInstance().gadget.DiffusableUnGrabbed(args);
     }
 }

@@ -10193,17 +10193,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8e9f2e1b5852c54d88a8efaac00f6fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diffusionRequest:
-    target: {fileID: 832506831}
-    addToTextureTotal: 1
-    numOfVariations: 5
-    positivePrompt: big plant
-    negativePrompt: 
-    uploadImage: {fileID: 0}
-    secondUploadImage: {fileID: 0}
-    denoise: 1
-    diffusionModel: 0
-    diffusionJsonType: 0
 --- !u!135 &832506832
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -20559,12 +20548,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1124714194}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 906aded8c3935be4f8b7634f2098c52e, type: 3}
+  m_Script: {fileID: 11500000, guid: d5c0250285573f24f809c50abfb4d259, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   comfyOrganizer: {fileID: 1124714196}
   comfySceneLibrary: {fileID: 1124714195}
   diffusables: {fileID: 1189485727}
+  gadget: {fileID: 0}
+  radiusDiffusionTexture: {fileID: 832506831}
+  uiDiffusionTexture: {fileID: 0}
 --- !u!1 &1157035187
 GameObject:
   m_ObjectHideFlags: 0

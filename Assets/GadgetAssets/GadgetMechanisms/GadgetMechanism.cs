@@ -78,7 +78,7 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
         diffusionRequest.positivePrompt = "Beautiful";
         diffusionRequest.negativePrompt = "watermark";
         diffusionRequest.numOfVariations = 5;
-        diffusionRequest.targets.Add(GeneralGameScript.instance.uiDiffusionTexture);
+        diffusionRequest.targets.Add(GameManager.getInstance().uiDiffusionTexture);
         diffusionRequest.diffusionJsonType = diffusionWorkflows.combineImages;
         diffusionRequest.diffusionModel = diffusionModels.ghostmix;
     }
@@ -102,7 +102,7 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
         {
             return;
         }
-        if (args.interactableObject.transform.parent != GeneralGameScript.instance.diffusables.transform)
+        if (args.interactableObject.transform.parent != GameManager.getInstance().diffusables.transform)
         {
             return;
         }
@@ -121,7 +121,7 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
         {
             return;
         }
-        if (args.interactableObject.transform.parent != GeneralGameScript.instance.diffusables.transform)
+        if (args.interactableObject.transform.parent != GameManager.getInstance().diffusables.transform)
         {
 
             return;
@@ -141,7 +141,7 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
         {
             return;
         }
-        if (args.interactableObject.transform.parent != GeneralGameScript.instance.diffusables.transform)
+        if (args.interactableObject.transform.parent != GameManager.getInstance().diffusables.transform)
         {
             return;
         }
@@ -182,17 +182,17 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
         gadget.ChangeOutline(firstGameObject, GadgetSelection.unSelected);
         gadget.ChangeOutline(secondGameObject, GadgetSelection.unSelected);
 
-        Texture2D copyTexture = GeneralGameScript.instance.comfySceneLibrary.toTexture2D(go1Text);
-        Texture2D secondCopyTexture = GeneralGameScript.instance.comfySceneLibrary.toTexture2D(go2Text);
+        Texture2D copyTexture = GameManager.getInstance().comfySceneLibrary.toTexture2D(go1Text);
+        Texture2D secondCopyTexture = GameManager.getInstance().comfySceneLibrary.toTexture2D(go2Text);
 
-        string uniqueName = GeneralGameScript.instance.comfyOrganizer.UniqueImageName();
+        string uniqueName = GameManager.getInstance().comfyOrganizer.UniqueImageName();
         copyTexture.name = uniqueName + ".png";
         secondCopyTexture.name = uniqueName + "_2" + ".png";
 
         diffusionRequest.uploadImage = copyTexture;
         diffusionRequest.secondUploadImage = secondCopyTexture;
 
-        GeneralGameScript.instance.comfyOrganizer.SendDiffusionRequest(diffusionRequest);
+        GameManager.getInstance().comfyOrganizer.SendDiffusionRequest(diffusionRequest);
     }
 }
 
@@ -217,7 +217,7 @@ public class CameraGadgetMechanism : GadgetMechanism
         diffusionRequest.positivePrompt = "Beautiful scene";
         diffusionRequest.negativePrompt = "watermark";
         diffusionRequest.numOfVariations = 5;
-        diffusionRequest.targets.Add(GeneralGameScript.instance.uiDiffusionTexture);
+        diffusionRequest.targets.Add(GameManager.getInstance().uiDiffusionTexture);
         diffusionRequest.diffusionModel = diffusionModels.ghostmix;
         diffusionRequest.denoise = 0.4f;
     }
@@ -293,7 +293,7 @@ public class ThrowingGadgetMechanism : GadgetMechanism
         diffusionRequest.positivePrompt = "Beautiful";
         diffusionRequest.negativePrompt = "watermark";
         diffusionRequest.numOfVariations = 5;
-        diffusionRequest.targets.Add(GeneralGameScript.instance.radiusDiffusionTexture);
+        diffusionRequest.targets.Add(GameManager.getInstance().radiusDiffusionTexture);
         diffusionRequest.diffusionModel = diffusionModels.nano;
     }
 
@@ -304,7 +304,7 @@ public class ThrowingGadgetMechanism : GadgetMechanism
             return;
         }
         diffusionRequest.diffusableObject = args.interactableObject.transform.gameObject.GetComponent<DiffusableObject>();
-        GeneralGameScript.instance.comfyOrganizer.SendDiffusionRequest(diffusionRequest);        
+        GameManager.getInstance().comfyOrganizer.SendDiffusionRequest(diffusionRequest);        
     }
     public void DiffusableUnGrabbed(SelectExitEventArgs args)
     {
