@@ -13719,6 +13719,57 @@ Transform:
   - {fileID: 1925459728}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1269136211
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1269136213}
+  - component: {fileID: 1269136212}
+  m_Layer: 0
+  m_Name: Comfy Scene Parameters
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1269136212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269136211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be4418a18c649f647aa7c6d3e0da1b2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  comfyOrganizer: {fileID: 1759152776}
+  comfySceneLibrary: {fileID: 1759152775}
+  radiusDiffusionTexture: {fileID: 0}
+  uiDiffusionTexture: {fileID: 1759152781}
+  diffusables: {fileID: 1395143966}
+  gadget: {fileID: 0}
+  headAudioSource: {fileID: 723432193}
+--- !u!4 &1269136213
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269136211}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -45.070152, y: 3.5583446, z: 6.459057}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1270441021
 GameObject:
   m_ObjectHideFlags: 0
@@ -18594,18 +18645,19 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1759152774}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5c0250285573f24f809c50abfb4d259, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  comfyOrganizer: {fileID: 1759152776}
-  comfySceneLibrary: {fileID: 1759152775}
+  firstScene: 
   diffusables: {fileID: 1395143966}
   gadget: {fileID: 0}
+  headAudioSource: {fileID: 723432193}
+  comfyOrganizer: {fileID: 1759152776}
+  comfySceneLibrary: {fileID: 1759152775}
   radiusDiffusionTexture: {fileID: 0}
   uiDiffusionTexture: {fileID: 1759152781}
-  headAudioSource: {fileID: 723432193}
 --- !u!114 &1759152781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21526,6 +21578,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1759152777}
+  - {fileID: 1269136213}
   - {fileID: 759472617}
   - {fileID: 1460096857}
   - {fileID: 980344785}

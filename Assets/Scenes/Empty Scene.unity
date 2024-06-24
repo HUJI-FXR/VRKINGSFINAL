@@ -132,10 +132,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 690699866}
-  - component: {fileID: 690699865}
-  - component: {fileID: 690699864}
-  - component: {fileID: 690699863}
-  - component: {fileID: 690699862}
   - component: {fileID: 690699861}
   m_Layer: 0
   m_Name: ComfyUILib
@@ -157,103 +153,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstScene: TileDiffusionRoom
-  comfyOrganizer: {fileID: 690699865}
-  comfySceneLibrary: {fileID: 690699864}
   diffusables: {fileID: 0}
   gadget: {fileID: 0}
-  radiusDiffusionTexture: {fileID: 0}
-  uiDiffusionTexture: {fileID: 690699862}
   headAudioSource: {fileID: 0}
---- !u!114 &690699862
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 690699860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b442ddabdfc60444b59fa8ae70113f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PopupDisplay: {fileID: 0}
-  displayPrefab: {fileID: 0}
-  playGadgetSounds: {fileID: 0}
---- !u!114 &690699863
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 690699860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: d93486540bc217e45a7603214c564d18, type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: CameraDiffusionTexture, Assembly-CSharp
-        m_MethodName: SendCameraRayInput
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 2e76901a-fe8f-49c6-919c-a1f05f345a13
-    m_ActionName: DiffusionMechanicPicker/TakePicture
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: DiffusionMechanicPicker
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
---- !u!114 &690699864
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 690699860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32d753976eb9b3148a2832dbb629c80e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  serverAddress: 127.0.0.1:8188
-  comfyOrg: {fileID: 690699865}
-  JSONFolderPath: Assets/ComfyUI2/JSONMain
-  ImageFolderName: Assets/ComfyUI2/Screenshots
---- !u!114 &690699865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 690699860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76a2971b81e6fae4da6b85ea734f8e05, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  comfyLib: {fileID: 690699864}
+  comfyOrganizer: {fileID: 0}
+  comfySceneLibrary: {fileID: 0}
+  radiusDiffusionTexture: {fileID: 0}
+  uiDiffusionTexture: {fileID: 0}
 --- !u!4 &690699866
 Transform:
   m_ObjectHideFlags: 0
