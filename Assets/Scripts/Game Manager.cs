@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
     private static GameManager instance;
 
     [SerializeField] private string firstScene;
+    [SerializeField] private bool loadFirstScene;
+
+    public string IP = "";
 
     [NonSerialized]
     public List<GameObject> diffusionList;
@@ -43,7 +46,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (firstScene == null)
+        if (!loadFirstScene)
         {
             return;
         }
@@ -78,6 +81,8 @@ public class GameManager : MonoBehaviour
         diffusables = _diffusables;
         gadget = _gadget;
         headAudioSource = _headAudioSource;
+        
+        
         
         if (diffusables == null)
         {
@@ -133,6 +138,8 @@ public class GameManager : MonoBehaviour
             diffusionList.Add(diffusionTransform.gameObject);
         }
     }
+
+    
     
     
 

@@ -72,6 +72,17 @@ public class ComfySceneLibrary : MonoBehaviour
     // TODO cont. the ComfyOrganizer or else some things will not be ready for an instant diffusion request
     private void Start()
     {
+        serverAddress = GameManager.getInstance().IP;
+
+        if (serverAddress == "")
+        {
+            Debug.LogError("Error! given IP in game manager is empty!");
+        }
+        else
+        {
+            Debug.Log("Passed the IP: " + serverAddress);
+        }
+        
         // Get all enum adjacent JSON workflows
         var jsonFiles = Directory.GetFiles(JSONFolderPath, "*.json");
 
