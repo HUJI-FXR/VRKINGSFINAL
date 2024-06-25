@@ -40,8 +40,6 @@ public class ScreenRecorder : MonoBehaviour
     private Texture2D screenShot;
     private int counter = 0; // image #
 
-    public ComfyOrganizer comfyOrganizer;
-
     // create a unique filename using a one-up variable
     private string uniqueFilename(int width, int height)
     {
@@ -106,7 +104,7 @@ public class ScreenRecorder : MonoBehaviour
 
         // get our unique filename
         //string filename = uniqueFilename((int)rect.width, (int)rect.height);
-        string filename = folder + '/' +  comfyOrganizer.UniqueImageName() + '.' + format.ToString().ToLower();
+        string filename = folder + '/' +  GameManager.getInstance().comfyOrganizer.UniqueImageName() + '.' + format.ToString().ToLower();
 
         // pull in our file header/data bytes for the specified image format (has to be done from main thread)
         byte[] fileHeader = null;
@@ -173,7 +171,7 @@ public class ScreenRecorder : MonoBehaviour
         diffusionRequest.uploadImage = screenShot;
         // TODO make a different case for depth and selfie cameras
 
-        comfyOrganizer.SendDiffusionRequest(diffusionRequest);
+        GameManager.getInstance().comfyOrganizer.SendDiffusionRequest(diffusionRequest);
     }
 
     /*IEnumerator DisplayScreenshot(string filepath)

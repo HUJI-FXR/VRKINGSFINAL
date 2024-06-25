@@ -20,15 +20,12 @@ public class DiffusionRing
 
 public class RadiusDiffusionTexture : DiffusionTextureChanger
 {
-    //public DiffusionRequest diffusionRequest;
     public List<DiffusionRing> radiusDiffusionRings;
 
     private void Awake()
     {
         radiusDiffusionRings = new List<DiffusionRing>();        
     }
-
-    //private GameObject grabbedObject = null;
 
     // Update is called once per frame
     protected void Update()

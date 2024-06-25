@@ -26,7 +26,7 @@ public class Gadget : MonoBehaviour
     public DiffusionRequest diffusionRequest;*/
 
     public TextMeshProUGUI MechanismText;
-    public TextMeshProUGUI ButtonText;
+    //public TextMeshProUGUI ButtonText;
 
     public ScreenRecorder screenRecorder = null;
     public Camera gadgetCamera;
@@ -205,7 +205,7 @@ public class Gadget : MonoBehaviour
         textureQueue.Clear();
         gadgetMechanismIndex = index;
         MechanismText.text = GadgetMechanisms[index].mechanismText;
-        ButtonText.text = GadgetMechanisms[index].buttonText;
+        //ButtonText.text = GadgetMechanisms[index].buttonText;
     }
 
     public Texture2D getGeneratedTexture()

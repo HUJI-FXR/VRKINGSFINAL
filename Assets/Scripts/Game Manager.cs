@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : UnityEngine.Object
 {
     // Non scene-local objects
     private static GameManager instance;
@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private string firstScene;
     [SerializeField] private bool loadFirstScene;
 
-    public string IP = "";
+    public string IP = "127.0.0.1:8188";
 
     [NonSerialized]
     public List<GameObject> diffusionList;
