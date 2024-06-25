@@ -104,6 +104,10 @@ public class ScreenRecorder : MonoBehaviour
 
         // get our unique filename
         //string filename = uniqueFilename((int)rect.width, (int)rect.height);
+        if (GameManager.getInstance() == null)
+        {
+            Debug.Log("adad");
+        }
         string filename = folder + '/' +  GameManager.getInstance().comfyOrganizer.UniqueImageName() + '.' + format.ToString().ToLower();
 
         // pull in our file header/data bytes for the specified image format (has to be done from main thread)

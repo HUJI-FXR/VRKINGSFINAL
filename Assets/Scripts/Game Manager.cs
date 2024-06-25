@@ -4,13 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : UnityEngine.Object
+public class GameManager : MonoBehaviour
 {
     // Non scene-local objects
-    private static GameManager instance;
-
-    [SerializeField] private string firstScene;
-    [SerializeField] private bool loadFirstScene;
+    private static GameManager instance = null;
 
     public string IP = "127.0.0.1:8188";
 
@@ -44,23 +41,26 @@ public class GameManager : UnityEngine.Object
     }
 
     // Start is called before the first frame update
-    void Start()
+    /*void Start()
     {
         if (!loadFirstScene)
         {
             return;
         }
         SceneManager.LoadScene(firstScene, LoadSceneMode.Additive);
+        
         Debug.Log("Got to part of script after load scene!");
-    }    
+    } */
 
     public static GameManager getInstance()
     {
         if (instance == null)
         {
-            instance = new GameManager();
+            GameManager.instance.Awake();
+            /*instance = new GameManager();
+            instance.diffusionList = new List<GameObject>();*/
         }
-
+        
         return instance;
     }
 
@@ -82,8 +82,6 @@ public class GameManager : UnityEngine.Object
         gadget = _gadget;
         headAudioSource = _headAudioSource;
         
-        
-        
         if (diffusables == null)
         {
             Debug.LogError("Please add a parent GameObject for the diffusable GameObjects to the GameManager");
@@ -96,9 +94,7 @@ public class GameManager : UnityEngine.Object
         if (headAudioSource == null)
         {
             Debug.LogError("Please add a Audio Source to the GameManager");
-        }
-
-        
+        } 
         
         if (uiDiffusionTexture.PopupDisplay == null || uiDiffusionTexture.displayPrefab == null)
         {
