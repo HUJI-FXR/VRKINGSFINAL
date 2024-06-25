@@ -1,0 +1,14 @@
+# Blender MTL File: 'liberty.blend'
+# Material Count: 1
+
+newmtl Statue_de_la_libert__Model_1
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Bump C:\\Users\\Utilisateur\\Desktop\\photos gh5\\RC\\statue de la liberté\\Statue_de_la_libert__Model_1_u0_v0_normal.jpeg
+map_Kd C:\\Users\\Utilisateur\\Desktop\\photos gh5\\RC\\statue de la liberté\\Statue_de_la_libert__Model_1_u0_v0_diffuse.jpeg

@@ -2750,7 +2750,7 @@ GameObject:
   - component: {fileID: 1422277734}
   - component: {fileID: 1422277735}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Display
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2830,8 +2830,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.5
-  m_fontSizeBase: 0.5
+  m_fontSize: 0.4
+  m_fontSizeBase: 0.4
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3312,7 +3312,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3484128598961847063, guid: 02be27ab17ab3b14f954f65dc06dd738, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.97
+      value: 3.83
       objectReference: {fileID: 0}
     - target: {fileID: 3484128598961847063, guid: 02be27ab17ab3b14f954f65dc06dd738, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3336,7 +3336,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3484128598961847063, guid: 02be27ab17ab3b14f954f65dc06dd738, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 2.45
+      value: 2.68
       objectReference: {fileID: 0}
     - target: {fileID: 3484128598961847063, guid: 02be27ab17ab3b14f954f65dc06dd738, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3426,7 +3426,7 @@ MonoBehaviour:
   display: {fileID: 1422277735}
   input: {fileID: 18043663}
   thisScene: StartScene
-  nextScene: TileDiffusionRoom
+  nextScene: MuseumExhibitTest
 --- !u!4 &1927090521
 Transform:
   m_ObjectHideFlags: 0

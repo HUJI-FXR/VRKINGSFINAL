@@ -152,14 +152,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5c0250285573f24f809c50abfb4d259, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstScene: TileDiffusionRoom
-  diffusables: {fileID: 0}
-  gadget: {fileID: 0}
-  headAudioSource: {fileID: 0}
-  comfyOrganizer: {fileID: 0}
-  comfySceneLibrary: {fileID: 0}
-  radiusDiffusionTexture: {fileID: 0}
-  uiDiffusionTexture: {fileID: 0}
+  firstScene: StartScene
+  loadFirstScene: 1
+  IP: 
 --- !u!4 &690699866
 Transform:
   m_ObjectHideFlags: 0
