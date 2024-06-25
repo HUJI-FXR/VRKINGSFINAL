@@ -134,7 +134,7 @@ public class UIDiffusionTexture : DiffusionTextureChanger
 
     private void Update()
     {
-        if (displayTextures || curDisplayPrefab != null)
+        if (displayTextures && curDisplayPrefab != null)
         {
             curChangeDelta += Time.deltaTime;
 
