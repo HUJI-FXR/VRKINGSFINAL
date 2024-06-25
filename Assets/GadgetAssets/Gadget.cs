@@ -38,10 +38,11 @@ public class Gadget : MonoBehaviour
 
 
     // Strategy Design Pattern
-    private List<GadgetMechanism> GadgetMechanisms;
+    public List<GadgetMechanism> GadgetMechanisms;
     private int gadgetMechanismIndex = 0;
 
     // TODO make this Queue<List<Texture2D>>
+    [NonSerialized]
     public Queue<Texture2D> textureQueue;
 
     private Gadget gadget;
@@ -49,7 +50,7 @@ public class Gadget : MonoBehaviour
     public AIGadgetAssistant aiGadgetAssistant;
     private void Awake()
     {
-        GadgetMechanisms = new List<GadgetMechanism>();
+        //GadgetMechanisms = new List<GadgetMechanism>();
         textureQueue = new Queue<Texture2D>();
     }
 
@@ -60,15 +61,15 @@ public class Gadget : MonoBehaviour
             Debug.LogError("Add all requirements of Gadget");
             return;
         }
-        gadget = GetComponent<Gadget>();
+        /*gadget = GetComponent<Gadget>();
         GadgetMechanism cameraGadgetMechanism = new CameraGadgetMechanism(gadget, screenRecorder, gadgetCamera, xrCamera);
         GadgetMechanism combineImagesGadgetMechanism = new CombineImagesGadgetMechanism(gadget);
         GadgetMechanism throwingGadgetMechanism = new ThrowingGadgetMechanism(gadget);
         GadgetMechanisms.Add(cameraGadgetMechanism);
         GadgetMechanisms.Add(combineImagesGadgetMechanism);
-        GadgetMechanisms.Add(throwingGadgetMechanism);
+        GadgetMechanisms.Add(throwingGadgetMechanism);*/
 
-        ChangeToMechanic(0);
+        //ChangeToMechanic(0);
     }
 
     // Passing along the various 

@@ -2347,6 +2347,7 @@ GameObject:
   - component: {fileID: 315440999}
   - component: {fileID: 315440998}
   - component: {fileID: 315440997}
+  - component: {fileID: 315441001}
   - component: {fileID: 315440993}
   m_Layer: 0
   m_Name: Gadget
@@ -2394,6 +2395,8 @@ MonoBehaviour:
   xrCamera: {fileID: 338407496}
   playGadgetSounds: {fileID: 117527938}
   gadgetImagePanel: {fileID: 1398749285}
+  GadgetMechanisms:
+  - {fileID: 315441001}
   aiGadgetAssistant: {fileID: 315440997}
 --- !u!114 &315440994
 MonoBehaviour:
@@ -2434,7 +2437,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &315440996
 Canvas:
   m_ObjectHideFlags: 0
@@ -2585,6 +2588,32 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &315441001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315440991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f731b13ca2e704e4b98939a72d19572a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mechanismText: 
+  buttonText: 
+  diffusionRequest:
+    targets:
+    - {fileID: 399383148}
+    addToTextureTotal: 0
+    numOfVariations: 1
+    positivePrompt: 
+    negativePrompt: 
+    uploadImage: {fileID: 0}
+    secondUploadImage: {fileID: 0}
+    denoise: 1
+    diffusionModel: 0
+    diffusionJsonType: 0
 --- !u!1 &319296717
 GameObject:
   m_ObjectHideFlags: 0

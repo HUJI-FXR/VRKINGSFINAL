@@ -29,6 +29,7 @@ public class ComfySceneParameters : MonoBehaviour
                 return;
             }
             SceneManager.LoadScene(GameManagerScene, LoadSceneMode.Additive);
+            loadedGameManagerScene = true;
 
             Debug.Log("Got to part of script after load scene!");
         }

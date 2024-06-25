@@ -57,6 +57,12 @@ public class DiffusionRequest
         targets = new List<DiffusionTextureChanger>();
         textures = new List<Texture2D>();
     }
+
+    public DiffusionRequest(List<DiffusionTextureChanger> curTargets)
+    {
+        targets = curTargets;
+        textures = new List<Texture2D>();
+    }
 }
 
 public class ComfyOrganizer : MonoBehaviour

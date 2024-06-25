@@ -56,7 +56,8 @@ public class GameManager : MonoBehaviour
     {
         if (instance == null)
         {
-            GameManager.instance.Awake();
+            Debug.LogError("Awake the GameManager");
+            //GameManager.instance.Awake();
             /*instance = new GameManager();
             instance.diffusionList = new List<GameObject>();*/
         }
