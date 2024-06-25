@@ -4,6 +4,8 @@ using System.Linq;
 using TMPro;
 using UnityEditor.PackageManager;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 using UnityEngine.Rendering.HighDefinition;
 using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -91,35 +93,19 @@ public class Gadget : MonoBehaviour
     public void OnUIHoverEntered(UIHoverEventArgs args)
     {
         playGadgetSounds.PlaySound("HoverOverElements");
-        GadgetMechanisms[gadgetMechanismIndex].OnUIHoverEntered(args);
+        //GadgetMechanisms[gadgetMechanismIndex].OnUIHoverEntered(args);
     }
-    public void OnUIHoverExited(UIHoverEventArgs args)
+    /*public void OnUIHoverExited(UIHoverEventArgs args)
     {
         GadgetMechanisms[gadgetMechanismIndex].OnUIHoverExited(args);
-    }
+    }*/
     public void OnClick()
     {
         GadgetMechanisms[gadgetMechanismIndex].OnClick();
     }
 
 
-    // todo THESE 3 move this out of gadget, bad design need it in camera mechanism with correct input system of game.
-    public void TakePicture()
-    {
-        if (GadgetMechanisms.Count <= 0)
-        {
-            return;
-        }
-        if (GadgetMechanisms[gadgetMechanismIndex].GetType() != typeof(CameraGadgetMechanism))
-        { 
-            return;
-        }
-        if ((GadgetMechanisms[gadgetMechanismIndex] as CameraGadgetMechanism).takingPicture)
-        {
-            GadgetMechanisms[gadgetMechanismIndex].OnGameObjectHoverExited(null);
-        }        
-    }
-
+    // todo THESE 2 move this out of gadget, bad design need it in camera mechanism with correct input system of game.
     public void DiffusableGrabbed(SelectEnterEventArgs args)
     {
         if (GadgetMechanisms.Count <= 0)
@@ -252,5 +238,40 @@ public class Gadget : MonoBehaviour
         }
 
         return true;
+    }
+
+
+
+    // -----------------------------------------  PLAYER INPUTS ----------------------------------------- //
+    public void ChangeMechanicInput(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            ChangeToNextMechanic();
+        }
+    }
+    public void TakeTextureInput(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            GadgetMechanisms[gadgetMechanismIndex].TakeTextureInput(context);
+            Debug.Log("Taking Texture");
+        }
+    }
+    public void PlaceTextureInput(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            GadgetMechanisms[gadgetMechanismIndex].PlaceTextureInput(context);
+            Debug.Log("Placing Texture");
+        }
+    }
+    public void ActivateGeneration(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            GadgetMechanisms[gadgetMechanismIndex].ActivateGeneration(context);
+            Debug.Log("Generating Texture");
+        }
     }
 }

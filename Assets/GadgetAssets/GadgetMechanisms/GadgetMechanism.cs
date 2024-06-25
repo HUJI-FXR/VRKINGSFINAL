@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit.UI;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.UI;
+using static GeneralGameLibraries;
+using UnityEngine.InputSystem;
 
 
 // TODO need to remove button from several of these, choose exactly
@@ -37,14 +39,14 @@ public class GadgetMechanism : Object
     {
         return;
     }
-    public virtual void OnUIHoverEntered(UIHoverEventArgs args)
+    /*public virtual void OnUIHoverEntered(UIHoverEventArgs args)
     {
         return;
     }
     public virtual void OnUIHoverExited(UIHoverEventArgs args)
     {
         return;
-    }
+    }*/
     public virtual void OnClick()
     {
         return;
@@ -56,6 +58,20 @@ public class GadgetMechanism : Object
         return;
     }
     public virtual void OnDeActivate(DeactivateEventArgs args)
+    {
+        return;
+    }
+
+    // -----------------------------------------  PLAYER INPUTS ----------------------------------------- //
+    public virtual void TakeTextureInput(InputAction.CallbackContext context)
+    {
+        return;
+    }
+    public virtual void PlaceTextureInput(InputAction.CallbackContext context)
+    {
+        return;
+    }
+    public virtual void ActivateGeneration(InputAction.CallbackContext context)
     {
         return;
     }
@@ -81,19 +97,6 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
         diffusionRequest.targets.Add(GameManager.getInstance().uiDiffusionTexture);
         diffusionRequest.diffusionJsonType = diffusionWorkflows.combineImages;
         diffusionRequest.diffusionModel = diffusionModels.ghostmix;
-    }
-
-    public override void OnUIHoverEntered(UIHoverEventArgs args)
-    {
-        if (args == null || args.uiObject == null)
-        {
-            return;
-        }
-
-        /*if (args.uiObject.TryGetComponent<UnityEngine.UI.Image>(out UnityEngine.UI.Image innerImg))
-        {
-            GetComponent<Image>().sprite = innerImg.sprite;
-        }*/
     }
 
     public override void OnGameObjectHoverEntered(HoverEnterEventArgs args)
@@ -160,12 +163,12 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
         selectedObjects.Enqueue(args.interactableObject.transform.gameObject);
         // Creates selection outline
         gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.selected);
-    }
+    }    
 
-    public override void OnClick()
+    /*public override void OnClick()
     {
         GetTexturesFromSelected();
-    }
+    }*/
 
     public void GetTexturesFromSelected()
     {
@@ -182,8 +185,8 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
         gadget.ChangeOutline(firstGameObject, GadgetSelection.unSelected);
         gadget.ChangeOutline(secondGameObject, GadgetSelection.unSelected);
 
-        Texture2D copyTexture = GameManager.getInstance().comfySceneLibrary.toTexture2D(go1Text);
-        Texture2D secondCopyTexture = GameManager.getInstance().comfySceneLibrary.toTexture2D(go2Text);
+        Texture2D copyTexture = TextureManipulationLibrary.toTexture2D(go1Text);
+        Texture2D secondCopyTexture = TextureManipulationLibrary.toTexture2D(go2Text);
 
         string uniqueName = GameManager.getInstance().comfyOrganizer.UniqueImageName();
         copyTexture.name = uniqueName + ".png";
@@ -193,6 +196,65 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
         diffusionRequest.secondUploadImage = secondCopyTexture;
 
         GameManager.getInstance().comfyOrganizer.SendDiffusionRequest(diffusionRequest);
+    }
+
+    // -----------------------------------------  PLAYER INPUTS ----------------------------------------- //
+    public override void TakeTextureInput(InputAction.CallbackContext context)
+    {
+        /*if (args == null || args.interactableObject == null)
+        {
+            return;
+        }
+        if (args.interactableObject.transform.parent != GameManager.getInstance().diffusables.transform)
+        {
+            return;
+        }
+
+        if (selectedObjects.Contains(args.interactableObject.transform.gameObject))
+        {
+            return;
+        }
+        // Adds to queue of selected objects
+        if (selectedObjects.Count >= MAX_QUEUED_OBJECTS)
+        {
+            GameObject dequeObject = selectedObjects.Dequeue();
+            gadget.ChangeOutline(dequeObject, GadgetSelection.unSelected);
+        }
+
+        selectedObjects.Enqueue(args.interactableObject.transform.gameObject);
+        // Creates selection outline
+        gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.selected);*/
+        return;
+    }
+    public override void PlaceTextureInput(InputAction.CallbackContext context)
+    {
+        Texture2D curTexture = gadget.getGeneratedTexture();
+        if (curTexture == null)
+        {
+            Debug.LogError("Tried to add a textures from the Gadget camera without textures in the Queue");
+            return;
+        }
+
+        // Perform the raycast
+        Ray ray = new Ray(gadget.transform.position, gadget.transform.forward);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit))
+        {
+            // Check if the hit GameObject has the TextureScript component
+
+
+            //TODO maybe this is a wrong choice to make ANOTHER diffusion request because this one isn't really a diffusion request at all, just a transfer from one
+            // texturechange to another
+            if (hit.collider.gameObject.TryGetComponent<DiffusionTextureChanger>(out DiffusionTextureChanger dtc))
+            {
+                dtc.AddTexture(new List<Texture2D>() { curTexture }, false);
+            }
+        }
+    }
+    public override void ActivateGeneration(InputAction.CallbackContext context)
+    {
+        GetTexturesFromSelected();
     }
 }
 
@@ -222,7 +284,7 @@ public class CameraGadgetMechanism : GadgetMechanism
         diffusionRequest.denoise = 0.4f;
     }
 
-    public override void OnClick()
+    /*public override void OnClick()
     {
         // TODO change mechanismText to correspond to the current takingPicture status?
         // TODO add base call to OnClick for sound? need sound of click(camera sound)
@@ -234,9 +296,9 @@ public class CameraGadgetMechanism : GadgetMechanism
         {
             takingPicture = true;
         }
-    }
+    }*/
 
-    public override void onGameObjectSelectEntered(SelectEnterEventArgs args)
+    /*public override void onGameObjectSelectEntered(SelectEnterEventArgs args)
     {        
         if (takingPicture)
         {
@@ -274,6 +336,42 @@ public class CameraGadgetMechanism : GadgetMechanism
                 Debug.Log("kklk");
             }
         }        
+    }*/
+
+    // -----------------------------------------  PLAYER INPUTS ----------------------------------------- //
+    public override void TakeTextureInput(InputAction.CallbackContext context)
+    {
+        // TODO add DiffusableObject data entry for diffusionrequest when taking a picture of stuff
+        screenRecorder.CaptureScreenshot(diffusionRequest);
+        mechanismCamera.enabled = false;
+        XRCamera.enabled = true;
+    }
+
+    public override void PlaceTextureInput(InputAction.CallbackContext context)
+    {
+        Texture2D curTexture = gadget.getGeneratedTexture();
+        if (curTexture == null)
+        {
+            Debug.LogError("Tried to add a textures from the Gadget camera without textures in the Queue");
+            return;
+        }
+
+        // Perform the raycast
+        Ray ray = new Ray(gadget.transform.position, gadget.transform.forward);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit))
+        {
+            // Check if the hit GameObject has the TextureScript component
+
+
+            //TODO maybe this is a wrong choice to make ANOTHER diffusion request because this one isn't really a diffusion request at all, just a transfer from one
+            // texturechange to another
+            if (hit.collider.gameObject.TryGetComponent<DiffusionTextureChanger>(out DiffusionTextureChanger dtc))
+            {
+                dtc.AddTexture(new List<Texture2D>() { curTexture }, false);
+            }
+        }
     }
 }
 

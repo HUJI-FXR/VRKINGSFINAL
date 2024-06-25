@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class RegularDiffusionTexture : DiffusionTextureChanger
 {
-    public float changeTextureEvery;
-    public bool changeTextureToChildren;
+    public float changeTextureEvery = 1;
+    public bool changeTextureToChildren = false;
     private float textureChangeDelta = 0;
 
     // Update is called once per frame

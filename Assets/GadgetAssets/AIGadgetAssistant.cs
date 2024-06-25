@@ -3,58 +3,23 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEditor.Rendering;
 using UnityEngine;
+using static GeneralGameLibraries;
 
 public class AIGadgetAssistant : MonoBehaviour
 {
     public string AIAudioClipFolder = "Sounds/Voiceover";
+    private GeneralGameLibraries.AudioClipsLibrary AudioClipsLibrary;
 
     private DiffusionTextureChanger diffusionTextureChanger;
-    private Dictionary<string, AudioClip> AIAudioClips;
 
     private static string DEFAULT_POSITIVE_PROMPT = "masterpiece,high quality,highres,solo,pslain,x hair ornament,brown eyes,dress,hoop,black dress,strings,floating circles,blue orbs,turning around,detached sleeves,black background, short hair,luminous hair,blonde hair,smile";
     private static string DEFAULT_NEGATIVE_PROMPT = "EasyNegativeV2,negative_hand-neg,(low quality, worst quality:1.2)";
 
     private void Awake()
     {
-        if (AIAudioClipFolder == null || AIAudioClipFolder == "")
-        {
-            Debug.LogError("Choose a AI Audio Clip Folder");
-            return;
-        }
+        AudioClipsLibrary = new GeneralGameLibraries.AudioClipsLibrary(AIAudioClipFolder);
         diffusionTextureChanger = gameObject.AddComponent<DiffusionTextureChanger>();
-        AIAudioClips = new Dictionary<string, AudioClip>();
-        GetAudioClips(AIAudioClipFolder);
     }
-
-    private void Start()
-    {
-        GetAudioClips(AIAudioClipFolder);
-        //InvokeRepeating("REMOVETHISFUNC", 5, 5);
-    }
-
-    /// <summary>
-    /// Gets all the Audio Clips from the given folder and adds it to the AIAudioClips Dictionary
-    /// </summary>
-    /// <param name="audioClipFolder">Folder to get Audio Clips from</param>
-    private void GetAudioClips(string audioClipFolder)
-    {
-        // TODO what if not mp3 wav?
-        //var audioClipFileNames = Directory.GetFiles(audioClipFolder, "*.wav");
-        //var audioClipFileNames = Directory.GetFiles(audioClipFolder, "*.mp3");      
-        var audioClipFileNames = Resources.LoadAll(audioClipFolder, typeof(AudioClip));
-
-        foreach (AudioClip audioClip in audioClipFileNames)
-        {
-            Debug.Log(audioClipFolder + "/" + audioClip.name);
-            AIAudioClips[audioClip.name] = Resources.Load<AudioClip>(audioClipFolder + "/" + audioClip.name);
-        }        
-    }
-
-    /*public void REMOVETHISFUNC()
-    {
-        CreateAITexture();
-        AITalk("Introduction");
-    }*/
 
     /// <summary>
     /// Sends an Image generation request for the AI representation, according to the input keywords
@@ -96,6 +61,6 @@ public class AIGadgetAssistant : MonoBehaviour
         {
             return;
         }
-        GameManager.getInstance().headAudioSource.PlayOneShot(AIAudioClips[audioClipName]);
+        GameManager.getInstance().headAudioSource.PlayOneShot(AudioClipsLibrary.AudioClips[audioClipName]);
     }
 }

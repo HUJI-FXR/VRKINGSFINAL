@@ -4,28 +4,16 @@ using UnityEngine;
 
 public class PlayGadgetSounds : MonoBehaviour
 {
-    public AudioSource audioSource;
-    public List<AudioClip> sounds;
+    public string GadgetAudioClipFolder = "Sounds/SFX/GadgetSounds";
+    private GeneralGameLibraries.AudioClipsLibrary AudioClipsLibrary;
 
-    private void Start()
+    private void Awake()
     {
-        if (sounds == null || audioSource == null || sounds.Count != 3) {
-            Debug.LogError("Add everything needed to the PlayGadgetSounds");
-        }
+        AudioClipsLibrary = new GeneralGameLibraries.AudioClipsLibrary(GadgetAudioClipFolder);
     }
+
     public void PlaySound(string sound)
     {
-        switch (sound)
-        {
-            case "HoverOverElements":
-                audioSource.PlayOneShot(sounds[0], 0.2f);
-                break;
-            case "SelectElement":
-                audioSource.PlayOneShot(sounds[1], 1);
-                break;
-            case "ShowUIElement":
-                audioSource.PlayOneShot(sounds[2], 1);
-                break;
-        }
+        GameManager.getInstance().headAudioSource.PlayOneShot(AudioClipsLibrary.AudioClips[sound]);
     }
 }

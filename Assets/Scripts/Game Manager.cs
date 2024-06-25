@@ -11,21 +11,24 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private string firstScene;
 
-
     [NonSerialized]
     public List<GameObject> diffusionList;
-    
-    // Scene-local objects
-    public GameObject diffusables;
-    public Gadget gadget;
-    public AudioSource headAudioSource;
-    public ComfyOrganizer comfyOrganizer;
-    public ComfySceneLibrary comfySceneLibrary;
-    
-    public RadiusDiffusionTexture radiusDiffusionTexture;
-    public UIDiffusionTexture uiDiffusionTexture;
 
-    
+    // Scene-local objects
+    [NonSerialized]
+    public GameObject diffusables;
+    [NonSerialized]
+    public Gadget gadget;
+    [NonSerialized]
+    public AudioSource headAudioSource;
+    [NonSerialized]
+    public ComfyOrganizer comfyOrganizer;
+    [NonSerialized]
+    public ComfySceneLibrary comfySceneLibrary;
+    [NonSerialized]
+    public RadiusDiffusionTexture radiusDiffusionTexture;
+    [NonSerialized]
+    public UIDiffusionTexture uiDiffusionTexture;
 
     private void Awake()
     {
@@ -40,15 +43,12 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-        
-        
-        
+        if (firstScene == null)
+        {
+            return;
+        }
         SceneManager.LoadScene(firstScene, LoadSceneMode.Additive);
-        
         Debug.Log("Got to part of script after load scene!");
-        
-        
     }    
 
     public static GameManager getInstance()
@@ -66,21 +66,6 @@ public class GameManager : MonoBehaviour
         SceneManager.UnloadSceneAsync(thisScene);
         SceneManager.LoadScene(nextScene, LoadSceneMode.Additive);
     }
-    
-    /*
-
-    public ComfyOrganizer comfyOrganizer;
-    public ComfySceneLibrary comfySceneLibrary;
-
-    public RadiusDiffusionTexture radiusDiffusionTexture;
-    public UIDiffusionTexture uiDiffusionTexture;
-
-
-    // Scene-local objects
-    public GameObject diffusables;
-    public Gadget gadget;
-    public AudioSource headAudioSource;
-    */
 
     public void InitiateSceneParameters(ComfyOrganizer _comfyOrganizer, ComfySceneLibrary _comfySceneLibrary, 
         RadiusDiffusionTexture _radiusDiffusionTexture, UIDiffusionTexture _uiDiffusionTexture, 
@@ -128,7 +113,6 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogError("Please add a Comfy Scene Library to the GameManager");
         }
-        
 
         // todo maybe make these texturechangers into a universal and individual category?
         /*if (radiusDiffusionTexture == null)

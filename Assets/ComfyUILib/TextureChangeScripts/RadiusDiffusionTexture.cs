@@ -105,7 +105,6 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
                 radiusGameObjects.Add(go);
             }
         }
-
         return radiusGameObjects;
     }
 
@@ -116,7 +115,6 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
         {
             return;
         }
-
         DiffusionRing dr = radiusDiffusionRings[radiusDiffusionRings.Count - 1];
 
         if (dr.gameObjects.Count > 0)

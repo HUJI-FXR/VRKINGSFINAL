@@ -2,13 +2,40 @@
     "name": "GadgetInputs",
     "maps": [
         {
-            "name": "DiffusionMechanicPicker",
+            "name": "Controller Input",
             "id": "80a9a25d-10a4-4c99-8de1-a80d03d49e44",
             "actions": [
                 {
-                    "name": "TakePicture",
+                    "name": "ChangeMechanic",
                     "type": "Button",
-                    "id": "2e76901a-fe8f-49c6-919c-a1f05f345a13",
+                    "id": "68b04621-59e4-4fc1-967e-8ed3b9aa06f8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "TakeTexture",
+                    "type": "Button",
+                    "id": "f3f7384e-2912-41d6-8e2a-2bea3556c042",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PlaceTexture",
+                    "type": "Button",
+                    "id": "e94f3b2b-42f9-47db-ba06-cd53d4ccb02e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ActivateGeneration",
+                    "type": "Button",
+                    "id": "1d351ce6-ce57-483e-bd5b-1658d1ffe168",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -18,23 +45,67 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "6c2f0d54-f434-4538-85a4-5081ecbf5f9e",
-                    "path": "<XRController>{RightHand}/{PrimaryButton}",
-                    "interactions": "Press",
+                    "id": "3d9f8b5c-afcd-416a-b731-2f4442b66fbb",
+                    "path": "<XRController>{LeftHand}/{PrimaryButton}",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "TakePicture",
+                    "action": "ChangeMechanic",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "a9ffc2f9-82f5-45ce-87b8-08bf638ae7aa",
-                    "path": "<XRController>{LeftHand}/{PrimaryButton}",
-                    "interactions": "Press",
+                    "id": "a67f9341-18d0-4382-928f-31a64c88efba",
+                    "path": "<XRController>{LeftHand}/{GripButton}",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "TakePicture",
+                    "action": "TakeTexture",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3d6b81e7-d027-46e3-8157-a973769f4f1a",
+                    "path": "<XRController>{RightHand}/{GripButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TakeTexture",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6143282b-875b-4e20-a2a3-24cd2075ec7e",
+                    "path": "<XRController>{RightHand}/{TriggerButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PlaceTexture",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f2a2b446-e147-4763-ac94-4ca51eef0163",
+                    "path": "<XRController>{LeftHand}/{TriggerButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PlaceTexture",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "865799c9-8f32-4d74-bbf7-eb897d9f345d",
+                    "path": "<XRController>{RightHand}/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ActivateGeneration",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
