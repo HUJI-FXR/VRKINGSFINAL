@@ -183,6 +183,7 @@ public class Gadget : MonoBehaviour
             curOutline.OutlineWidth = outlineWidth;
             return;
         }
+        
         Outline elseOutline = obj.AddComponent<Outline>();
         elseOutline.OutlineColor = curColor;
         elseOutline.OutlineWidth = outlineWidth;

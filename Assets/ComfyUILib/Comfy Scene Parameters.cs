@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -28,7 +29,8 @@ public class ComfySceneParameters : MonoBehaviour
             {
                 return;
             }
-            SceneManager.LoadScene(GameManagerScene, LoadSceneMode.Additive);
+
+            StartCoroutine(LoadGameManagerScene());
             loadedGameManagerScene = true;
 
             Debug.Log("Got to part of script after load scene!");
@@ -38,7 +40,20 @@ public class ComfySceneParameters : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Started Passing Parameters to game manager");
+        /*Debug.Log("Started Passing Parameters to game manager");
+        GameManager.getInstance().InitiateSceneParameters(comfyOrganizer, comfySceneLibrary,
+            radiusDiffusionTexture, uiDiffusionTexture, diffusables, gadget, headAudioSource);*/
+    }
+
+    IEnumerator LoadGameManagerScene()
+    {
+        var asyncLoad = SceneManager.LoadSceneAsync(GameManagerScene, LoadSceneMode.Additive);
+        // Wait until the asynchronous scene fully loads
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+
         GameManager.getInstance().InitiateSceneParameters(comfyOrganizer, comfySceneLibrary,
             radiusDiffusionTexture, uiDiffusionTexture, diffusables, gadget, headAudioSource);
     }
