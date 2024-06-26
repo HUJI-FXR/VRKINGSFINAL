@@ -171,7 +171,7 @@ public class GameManager : MonoBehaviour
         LoadSceneMode.Additive
         );
 
-        /*loadScene.allowSceneActivation = false;
+        loadScene.allowSceneActivation = false;
 
         // wait for the scene to load
         while (!loadScene.isDone)
@@ -184,7 +184,7 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
 
-        loadScene.allowSceneActivation = true;*/
+        loadScene.allowSceneActivation = true;
 
         // HERE IS WHERE ALOT OF PEOPLE FAIL.
         // You need to wait for the scene to be loaded before you can unload the another scene.
