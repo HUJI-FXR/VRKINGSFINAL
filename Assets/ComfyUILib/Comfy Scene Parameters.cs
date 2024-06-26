@@ -13,48 +13,44 @@ public class ComfySceneParameters : MonoBehaviour
     public UIDiffusionTexture uiDiffusionTexture;
 
     private string GameManagerScene = "Empty Scene";
-    private bool loadedGameManagerScene = false;
+    private static bool loadedGameManagerScene = false;
 
     // Scene-local objects
     public GameObject diffusables;
     public Gadget gadget;
     public AudioSource headAudioSource;
 
+    public bool LoadComfyParametrs = true;
+
     private void Awake()
     {
-        // Current scene, DontDestroyOnLoad and the GameManager Scene
-        if (SceneManager.sceneCount < 3)
-        {
-            if (loadedGameManagerScene)
-            {
-                return;
-            }
-
-            StartCoroutine(LoadGameManagerScene());
-            loadedGameManagerScene = true;
-
-            Debug.Log("Got to part of script after load scene!");
-        }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        /*Debug.Log("Started Passing Parameters to game manager");
-        GameManager.getInstance().InitiateSceneParameters(comfyOrganizer, comfySceneLibrary,
-            radiusDiffusionTexture, uiDiffusionTexture, diffusables, gadget, headAudioSource);*/
+        StartCoroutine(LoadGameManagerScene());
     }
 
     IEnumerator LoadGameManagerScene()
     {
-        var asyncLoad = SceneManager.LoadSceneAsync(GameManagerScene, LoadSceneMode.Additive);
-        // Wait until the asynchronous scene fully loads
-        while (!asyncLoad.isDone)
+        if (SceneManager.sceneCount < 3 && !loadedGameManagerScene)
         {
-            yield return null;
+            loadedGameManagerScene = true;
+
+            var asyncLoad = SceneManager.LoadSceneAsync(GameManagerScene, LoadSceneMode.Additive);            
+            // Wait until the asynchronous scene fully loads
+            while (!asyncLoad.isDone)
+            {
+                yield return null;
+            }
+            //asyncLoad.allowSceneActivation = false;
+            Debug.Log("Got to part of script after load scene!");
+        }
+        else
+        {
+            loadedGameManagerScene = true;
         }
 
-        GameManager.getInstance().InitiateSceneParameters(comfyOrganizer, comfySceneLibrary,
+        if (LoadComfyParametrs)
+        {
+            GameManager.getInstance().InitiateSceneParameters(comfyOrganizer, comfySceneLibrary,
             radiusDiffusionTexture, uiDiffusionTexture, diffusables, gadget, headAudioSource);
+        }
     }
 }

@@ -8,17 +8,8 @@ public class StartSceneManager : MonoBehaviour
     [SerializeField] private TMP_Text display;
     [SerializeField] private TMP_InputField input;
     [SerializeField] private string thisScene, nextScene;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public GameObject XROrigin;
 
     public void TryTransferScene()
     {
@@ -28,7 +19,10 @@ public class StartSceneManager : MonoBehaviour
             display.text = "IP cannot be empty!";
             return;
         }
+
+        XROrigin.SetActive(false);
         GameManager.getInstance().IP = input.text;
         GameManager.getInstance().LoadNextScene(thisScene, nextScene);
+        
     }
 }
