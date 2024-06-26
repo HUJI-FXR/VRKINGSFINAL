@@ -30,6 +30,9 @@ public class GameManager : MonoBehaviour
     [NonSerialized]
     public UIDiffusionTexture uiDiffusionTexture;
 
+    /*public string firstScene = "StartScene";
+    public static bool loadFirstScene = true;*/
+
     private void Awake()
     {
         diffusionList = new List<GameObject>();
@@ -43,14 +46,19 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     /*void Start()
     {
+        if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName(firstScene))
+        {
+            loadFirstScene = false;
+            return;
+        }
         if (!loadFirstScene)
         {
             return;
         }
         SceneManager.LoadScene(firstScene, LoadSceneMode.Additive);
-        
+        loadFirstScene = false;
         Debug.Log("Got to part of script after load scene!");
-    } */
+    }*/
 
     public static GameManager getInstance()
     {
@@ -67,8 +75,9 @@ public class GameManager : MonoBehaviour
 
     public void LoadNextScene(string thisScene, string nextScene)
     {
-        SceneManager.UnloadSceneAsync(thisScene);
-        SceneManager.LoadScene(nextScene, LoadSceneMode.Additive);
+        StartCoroutine(LoadScene(thisScene, nextScene));
+        /*SceneManager.UnloadSceneAsync(thisScene);
+        SceneManager.LoadScene(nextScene, LoadSceneMode.Additive);*/
     }
 
     public void InitiateSceneParameters(ComfyOrganizer _comfyOrganizer, ComfySceneLibrary _comfySceneLibrary, 
@@ -136,9 +145,57 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    
-    
-    
+
+
+    // Use a courotine so u dont freeze the ui
+    public IEnumerator LoadScene(string thisScene, string nextScene)
+    {
+        // Only when the scene is loaded we can unload the orginally active screen
+        var asyncUnload = SceneManager.UnloadSceneAsync(thisScene);
+
+        while (!asyncUnload.isDone)
+        {
+            if (asyncUnload.progress >= 0.9f)
+            {
+                UnityEngine.Debug.Log("Unloading...");
+                break;
+            }
+
+            yield return null;
+        }
+
+
+        // Load a scene in additive mode, meaning it wont unload the currently loaded scene if there is one
+        var loadScene = SceneManager.LoadSceneAsync(
+        nextScene,
+        LoadSceneMode.Additive
+        );
+
+        /*loadScene.allowSceneActivation = false;
+
+        // wait for the scene to load
+        while (!loadScene.isDone)
+        {
+            if (loadScene.progress >= 0.9f)
+            {
+                break;
+            }
+
+            yield return null;
+        }
+
+        loadScene.allowSceneActivation = true;*/
+
+        // HERE IS WHERE ALOT OF PEOPLE FAIL.
+        // You need to wait for the scene to be loaded before you can unload the another scene.
+        // This is because UNITY WILL NOT UNLOAD A scene if its the only one  currently active
+        // If you look up, we allow scene activate only at 90% of the loading(for reasons im not sure but whatever), 
+        // so now we have to wait for the rest of the 10% to load
+        yield return null;
+
+        bool d = SceneManager.SetActiveScene(SceneManager.GetSceneByName(nextScene));
+        Debug.Log(SceneManager.GetActiveScene().name);
+    }
 
 
 }

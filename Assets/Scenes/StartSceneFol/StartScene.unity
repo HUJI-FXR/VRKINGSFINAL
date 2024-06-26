@@ -714,8 +714,8 @@ GameObject:
   m_Component:
   - component: {fileID: 780606762}
   - component: {fileID: 780606765}
-  - component: {fileID: 780606764}
   - component: {fileID: 780606763}
+  - component: {fileID: 780606766}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -847,14 +847,6 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
---- !u!81 &780606764
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 780606761}
-  m_Enabled: 1
 --- !u!20 &780606765
 Camera:
   m_ObjectHideFlags: 0
@@ -906,6 +898,50 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &780606766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780606761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    quality: 3
+    frameInfluence: 0.1
+    jitterScale: 1
+    mipBias: 0
+    varianceClampScale: 0.9
+    contrastAdaptiveSharpening: 0
 --- !u!1 &819191097
 GameObject:
   m_ObjectHideFlags: 0
@@ -2651,7 +2687,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1269476374}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3111,51 +3147,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1509128202
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1509128204}
-  - component: {fileID: 1509128203}
-  m_Layer: 0
-  m_Name: ComfyUILib
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1509128203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1509128202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5c0250285573f24f809c50abfb4d259, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IP: 
---- !u!4 &1509128204
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1509128202}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1567921203
 GameObject:
   m_ObjectHideFlags: 0
@@ -3410,6 +3401,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1927090521}
   - component: {fileID: 1927090520}
+  - component: {fileID: 1927090522}
   m_Layer: 0
   m_Name: Start Scene Manager
   m_TagString: Untagged
@@ -3432,7 +3424,8 @@ MonoBehaviour:
   display: {fileID: 1422277735}
   input: {fileID: 18043663}
   thisScene: StartScene
-  nextScene: MuseumExhibitTest
+  nextScene: TileRoom
+  XROrigin: {fileID: 1269476374}
 --- !u!4 &1927090521
 Transform:
   m_ObjectHideFlags: 0
@@ -3448,6 +3441,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1927090522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1927090519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be4418a18c649f647aa7c6d3e0da1b2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  comfyOrganizer: {fileID: 0}
+  comfySceneLibrary: {fileID: 0}
+  radiusDiffusionTexture: {fileID: 0}
+  uiDiffusionTexture: {fileID: 0}
+  diffusables: {fileID: 0}
+  gadget: {fileID: 0}
+  headAudioSource: {fileID: 0}
+  LoadComfyParametrs: 0
 --- !u!224 &1964334200 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3484128598961847063, guid: 02be27ab17ab3b14f954f65dc06dd738, type: 3}
@@ -3911,5 +3924,4 @@ SceneRoots:
   - {fileID: 869952644}
   - {fileID: 1876738956}
   - {fileID: 1492619854}
-  - {fileID: 1509128204}
   - {fileID: 1927090521}
