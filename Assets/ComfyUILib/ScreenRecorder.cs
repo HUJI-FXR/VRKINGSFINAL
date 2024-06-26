@@ -174,7 +174,7 @@ public class ScreenRecorder : MonoBehaviour
         screenShot.name = cutFileName;
         diffusionRequest.uploadImage = screenShot;
         // TODO make a different case for depth and selfie cameras
-
+        Debug.Log("ewwew");
         GameManager.getInstance().comfyOrganizer.SendDiffusionRequest(diffusionRequest);
     }
 

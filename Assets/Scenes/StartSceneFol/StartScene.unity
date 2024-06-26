@@ -3140,8 +3140,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5c0250285573f24f809c50abfb4d259, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstScene: 
-  loadFirstScene: 0
   IP: 
 --- !u!4 &1509128204
 Transform:
@@ -3249,6 +3247,10 @@ PrefabInstance:
     - target: {fileID: 3484128597883003585, guid: 02be27ab17ab3b14f954f65dc06dd738, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.03699875
+      objectReference: {fileID: 0}
+    - target: {fileID: 3484128598174819074, guid: 02be27ab17ab3b14f954f65dc06dd738, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3484128598174819085, guid: 02be27ab17ab3b14f954f65dc06dd738, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -3377,6 +3379,10 @@ PrefabInstance:
     - target: {fileID: 3484128599083367831, guid: 02be27ab17ab3b14f954f65dc06dd738, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3484128599267958350, guid: 02be27ab17ab3b14f954f65dc06dd738, type: 3}
+      propertyPath: m_Text
+      value: 127.0.0.1:8188
       objectReference: {fileID: 0}
     - target: {fileID: 3484128599267958351, guid: 02be27ab17ab3b14f954f65dc06dd738, type: 3}
       propertyPath: m_SizeDelta.y
