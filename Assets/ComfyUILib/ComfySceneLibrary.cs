@@ -256,6 +256,7 @@ public class ComfySceneLibrary : MonoBehaviour
 
                 json["prompt"]["21"]["inputs"]["denoise"] = diffReq.denoise;
                 json["prompt"]["21"]["inputs"]["seed"] = randomSeed;
+                json["prompt"]["21"]["inputs"]["steps"] = 10;
                 break;
 
             case diffusionWorkflows.AIAssistant:

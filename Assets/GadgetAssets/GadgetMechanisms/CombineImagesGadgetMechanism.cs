@@ -138,33 +138,6 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
     }
 
     // -----------------------------------------  PLAYER INPUTS ----------------------------------------- //
-    public override void TakeTextureInput(InputAction.CallbackContext context)
-    {
-        /*if (args == null || args.interactableObject == null)
-        {
-            return;
-        }
-        if (args.interactableObject.transform.parent != GameManager.getInstance().diffusables.transform)
-        {
-            return;
-        }
-
-        if (selectedObjects.Contains(args.interactableObject.transform.gameObject))
-        {
-            return;
-        }
-        // Adds to queue of selected objects
-        if (selectedObjects.Count >= MAX_QUEUED_OBJECTS)
-        {
-            GameObject dequeObject = selectedObjects.Dequeue();
-            gadget.ChangeOutline(dequeObject, GadgetSelection.unSelected);
-        }
-
-        selectedObjects.Enqueue(args.interactableObject.transform.gameObject);
-        // Creates selection outline
-        gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.selected);*/
-        return;
-    }
     public override void PlaceTextureInput(InputAction.CallbackContext context)
     {
         Texture2D curTexture = GameManager.getInstance().gadget.getGeneratedTexture();
