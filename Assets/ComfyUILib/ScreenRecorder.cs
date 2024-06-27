@@ -74,7 +74,7 @@ public class ScreenRecorder : MonoBehaviour
 
     }
 
-    public void CaptureScreenshot(DiffusionRequest diffusionRequest)
+    public Texture2D CaptureScreenshot(DiffusionRequest diffusionRequest)
     {
         // hide optional game object if set
         if (hideGameObject != null) hideGameObject.SetActive(false);
@@ -171,11 +171,9 @@ public class ScreenRecorder : MonoBehaviour
         // Extract the file name by taking the substring after the last slash
         string cutFileName = filename.Substring(lastSlashIndex + 1);
         //diffReq.uploadImageName = cutFileName;
-        screenShot.name = cutFileName;
-        diffusionRequest.uploadImage = screenShot;
-        // TODO make a different case for depth and selfie cameras
-        Debug.Log("ewwew");
-        GameManager.getInstance().comfyOrganizer.SendDiffusionRequest(diffusionRequest);
+        screenShot.name = cutFileName;        
+
+        return screenShot;
     }
 
     /*IEnumerator DisplayScreenshot(string filepath)

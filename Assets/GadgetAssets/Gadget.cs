@@ -276,4 +276,12 @@ public class Gadget : MonoBehaviour
             Debug.Log("Generating Texture");
         }
     }
+    public void TakeScreenshot(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            GadgetMechanisms[gadgetMechanismIndex].TakeScreenshot(context);
+            Debug.Log("Taking Screenshot");
+        }
+    }
 }

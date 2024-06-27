@@ -40,6 +40,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "TakeScreenshot",
+                    "type": "Button",
+                    "id": "4e171964-0d2a-47b0-8d8f-176443ad16f8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -51,17 +60,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "ChangeMechanic",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "a67f9341-18d0-4382-928f-31a64c88efba",
-                    "path": "<XRController>{LeftHand}/{GripButton}",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "TakeTexture",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -106,6 +104,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "ActivateGeneration",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a4ca9cf9-41e2-4d90-81ef-7f52651ba26c",
+                    "path": "<XRController>{LeftHand}/{GripButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TakeScreenshot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -12,36 +12,15 @@ public class CameraGadgetMechanism : GadgetMechanism
 {
     // todo break into two parts, one the input the other the output through the comfy lib
     public DiffusionRequest diffusionRequest;
-
-    /*
-    diffusionRequest.positivePrompt = "Beautiful scene";
-    diffusionRequest.negativePrompt = "watermark";
-    diffusionRequest.numOfVariations = 5;
-    diffusionRequest.targets.Add(GameManager.getInstance().uiDiffusionTexture);
-    diffusionRequest.diffusionModel = diffusionModels.ghostmix;
-    diffusionRequest.denoise = 0.4f;*/
-
-    private bool TookImage = false;
     public bool UseStyleTransfer = true;
 
-    // -----------------------------------------  PLAYER INPUTS ----------------------------------------- //
-    public override void TakeTextureInput(InputAction.CallbackContext context)
-    {
-        if (UseStyleTransfer && (TookImage || diffusionRequest.secondUploadImage == null))
-        {
-            return;
-        }
-        if (UseStyleTransfer)
-        {
-            diffusionRequest.diffusionJsonType = diffusionWorkflows.combineImages;
-            TookImage = true;
-        }
+    private GameObject selectedStyleObject = null;
 
-        // TODO add DiffusableObject data entry for diffusionrequest when taking a picture of stuff
-        GameManager.getInstance().gadget.screenRecorder.CaptureScreenshot(diffusionRequest);
-        GameManager.getInstance().gadget.gadgetCamera.enabled = false;
-        GameManager.getInstance().gadget.xrCamera.enabled = true;
-    }
+    // -----------------------------------------  PLAYER INPUTS ----------------------------------------- //
+    /*public override void TakeTextureInput(InputAction.CallbackContext context)
+    {
+        return;
+    }*/
 
 
 
@@ -68,20 +47,13 @@ public class CameraGadgetMechanism : GadgetMechanism
             if (hit.collider.gameObject.TryGetComponent<DiffusionTextureChanger>(out DiffusionTextureChanger dtc))
             {
                 dtc.AddTexture(new List<Texture2D>() { curTexture }, false);
-
-                if (UseStyleTransfer)
-                {
-                    TookImage = false;
-                    diffusionRequest.uploadImage = null;
-                    diffusionRequest.secondUploadImage = null;
-                }
             }
         }
     }
 
     public override void OnGameObjectHoverEntered(HoverEnterEventArgs args)
     {
-        if (!UseStyleTransfer || TookImage)
+        if (!UseStyleTransfer)
         {
             return;
         }
@@ -94,13 +66,18 @@ public class CameraGadgetMechanism : GadgetMechanism
         {
             return;
         }
+        if (args.interactableObject.transform.gameObject == selectedStyleObject)
+        {
+            return;
+        }
+
         // Creates pre-selection outline
         GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.preSelected);
     }
 
     public override void OnGameObjectHoverExited(HoverExitEventArgs args)
     {
-        if (!UseStyleTransfer || TookImage)
+        if (!UseStyleTransfer)
         {
             return;
         }
@@ -113,12 +90,17 @@ public class CameraGadgetMechanism : GadgetMechanism
 
             return;
         }
+        if (args.interactableObject.transform.gameObject == selectedStyleObject)
+        {
+            return;
+        }
+
         GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.unSelected);
     }
 
     public override void onGameObjectSelectEntered(SelectEnterEventArgs args)
     {
-        if (!UseStyleTransfer || TookImage)
+        if (!UseStyleTransfer)
         {
             return;
         }
@@ -130,9 +112,52 @@ public class CameraGadgetMechanism : GadgetMechanism
         {
             return;
         }
+
+        // Removing previously selected object
+        if (selectedStyleObject != null)
+        {
+            GameManager.getInstance().gadget.ChangeOutline(selectedStyleObject, GadgetSelection.unSelected);
+            selectedStyleObject = null;
+        }
+
         // Creates selection outline
         GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.selected);
+        selectedStyleObject = args.interactableObject.transform.gameObject;
         Texture2D curTexture = TextureManipulationLibrary.toTexture2D(args.interactableObject.transform.gameObject.GetComponent<Renderer>().material.mainTexture);
         diffusionRequest.secondUploadImage = curTexture;
+    }
+
+    public override void ActivateGeneration(InputAction.CallbackContext context)
+    {
+        if (diffusionRequest.uploadImage == null || diffusionRequest.secondUploadImage == null)
+        {
+            Debug.Log("Need to select a style and take a screenshot");
+            return;
+        }
+
+        GameManager.getInstance().comfyOrganizer.SendDiffusionRequest(diffusionRequest);
+        return;
+    }
+
+    public override void TakeScreenshot(InputAction.CallbackContext context)
+    {
+        // TODO add DiffusableObject data entry for diffusionrequest when taking a picture of stuff
+        Texture2D screenShot = GameManager.getInstance().gadget.screenRecorder.CaptureScreenshot(diffusionRequest);
+        GameManager.getInstance().gadget.gadgetCamera.enabled = false;
+        GameManager.getInstance().gadget.xrCamera.enabled = true;
+
+        diffusionRequest.uploadImage = screenShot;
+
+        if (selectedStyleObject != null)
+        {
+            GameManager.getInstance().gadget.ChangeOutline(selectedStyleObject, GadgetSelection.unSelected);
+            selectedStyleObject = null;
+        }
+
+        if (!UseStyleTransfer)
+        {
+            diffusionRequest.diffusionJsonType = diffusionWorkflows.combineImages;
+            GameManager.getInstance().comfyOrganizer.SendDiffusionRequest(diffusionRequest);
+        }
     }
 }

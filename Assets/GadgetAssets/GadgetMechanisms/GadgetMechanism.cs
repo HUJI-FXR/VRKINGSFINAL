@@ -73,4 +73,8 @@ public class GadgetMechanism : MonoBehaviour
     {
         return;
     }
+    public virtual void TakeScreenshot(InputAction.CallbackContext context)
+    {
+        return;
+    }
 }
