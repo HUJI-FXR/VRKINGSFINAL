@@ -27,7 +27,7 @@ public class CameraGadgetMechanism : GadgetMechanism
     // -----------------------------------------  PLAYER INPUTS ----------------------------------------- //
     public override void TakeTextureInput(InputAction.CallbackContext context)
     {
-        if (TookImage || diffusionRequest.secondUploadImage == null)
+        if (UseStyleTransfer && (TookImage || diffusionRequest.secondUploadImage == null))
         {
             return;
         }
