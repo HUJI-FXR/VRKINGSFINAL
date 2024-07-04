@@ -10,7 +10,7 @@ public class OutpaintingTile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (painted || other == null || out_screen == null)
+        if (painted || other == null || out_screen == null || GetComponent<RegularDiffusionTexture>() == null)
         {
             return;
         }
@@ -24,5 +24,7 @@ public class OutpaintingTile : MonoBehaviour
 
         /*rigidbody.useGravity = false;
         out_screen.Paint(tilePosition, diff.keyword);*/
+
+        GameManager.getInstance().gadget.GeneralActivation(GetComponent<RegularDiffusionTexture>());
     }
 }

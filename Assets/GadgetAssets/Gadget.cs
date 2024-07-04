@@ -284,4 +284,10 @@ public class Gadget : MonoBehaviour
             Debug.Log("Taking Screenshot");
         }
     }
+    public void GeneralActivation(DiffusionTextureChanger dtc)
+    {
+        GadgetMechanisms[gadgetMechanismIndex].GeneralActivation(dtc);
+        Debug.Log("Activating General Generation");
+        return;
+    }
 }

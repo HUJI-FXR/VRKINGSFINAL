@@ -77,4 +77,8 @@ public class GadgetMechanism : MonoBehaviour
     {
         return;
     }
+    public virtual void GeneralActivation(DiffusionTextureChanger dtc)
+    {
+        return;
+    }
 }
