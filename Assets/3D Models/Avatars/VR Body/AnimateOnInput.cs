@@ -10,10 +10,13 @@ public class AnimationInput
     public InputActionProperty action;
 }
 
+
+
 public class AnimateOnInput : MonoBehaviour
 {
     public List<AnimationInput> animationInputs;
     public Animator animator;
+    [SerializeField] private float displayLeftHandInput;
 
     // Update is called once per frame
     void Update()
@@ -22,6 +25,10 @@ public class AnimateOnInput : MonoBehaviour
         {
             float actionValue = item.action.action.ReadValue<float>();
             animator.SetFloat(item.animationPropertyName, actionValue);
+            if (item.animationPropertyName == "Left Grab")
+            {
+                displayLeftHandInput = actionValue;
+            }
         }
     }
 }
