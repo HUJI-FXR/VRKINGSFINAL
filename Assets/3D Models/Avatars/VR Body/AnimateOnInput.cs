@@ -25,7 +25,7 @@ public class AnimateOnInput : MonoBehaviour
         {
             float actionValue = item.action.action.ReadValue<float>();
             animator.SetFloat(item.animationPropertyName, actionValue);
-            if (item.animationPropertyName == "Left Grab")
+            if (item.animationPropertyName == "Left Pinch")
             {
                 displayLeftHandInput = actionValue;
             }
