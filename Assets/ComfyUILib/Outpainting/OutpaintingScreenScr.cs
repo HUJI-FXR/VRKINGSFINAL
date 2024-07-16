@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,9 +7,10 @@ public class OutpaintingScreenScr : MonoBehaviour
 {
     public Vector3 tileSize = new Vector3(2, 1, 0.01f);
     public GameObject tileObject;
-    public Vector2Int tileMatrixSize = Vector2Int.one;    
-    
-    private GameObject[,] tiles;
+    public Vector2Int tileMatrixSize = Vector2Int.one;
+
+    [NonSerialized]
+    public GameObject[,] tiles;
 
     private void OnValidate()
     {
@@ -32,8 +34,7 @@ public class OutpaintingScreenScr : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void CreateScreen()
     {
         if (tileObject != null)
         {
@@ -42,8 +43,10 @@ public class OutpaintingScreenScr : MonoBehaviour
             {
                 return;
             }
-            
+
             tiles = new GameObject[tileMatrixSize.x, tileMatrixSize.y];
+
+            Vector2Int midTilePos = new Vector2Int(Mathf.CeilToInt(tileMatrixSize.x / 2), 0);
 
             // TODO make a tile matrix?
             tileObject.transform.localScale = tileSize;
@@ -51,19 +54,20 @@ public class OutpaintingScreenScr : MonoBehaviour
             {
                 for (int j = 0; j < tileMatrixSize.y; j++)
                 {
-                    GameObject clone = Instantiate(tileObject, transform.position + new Vector3((((tileMatrixSize.x-1)/2) - i)*tileSize.x, 
+                    GameObject clone = Instantiate(tileObject, transform.position + new Vector3((((tileMatrixSize.x - 1) / 2) - i) * tileSize.x,
                         (((tileMatrixSize.y - 1) / 2) - j) * tileSize.y, 0), transform.rotation);
-
-                    if (GameManager.getInstance().diffusables == null)
-                    {
-                        Debug.Log("DIFFUSABLES DONT EXIST");
-                    }
 
                     clone.transform.SetParent(GameManager.getInstance().diffusables.transform, false);
 
-                    OutpaintingTile cur_tile_scr = clone.GetComponent<OutpaintingTile>();                    
+                    OutpaintingTile cur_tile_scr = clone.GetComponent<OutpaintingTile>();
                     cur_tile_scr.tilePosition = new Vector2Int(i, j);
                     cur_tile_scr.painted = false;
+                    cur_tile_scr.paintable = false;
+
+                    if (Mathf.Abs(midTilePos.x - i) == 1 ^ j - midTilePos.y == 1)
+                    {
+                        cur_tile_scr.paintable = true;                        
+                    }
 
                     tiles[i, j] = clone;
                 }
@@ -98,5 +102,53 @@ public class OutpaintingScreenScr : MonoBehaviour
         // TODO add the outpainted texture to tile
 
         tiles[tilePos.x, tilePos.y].GetComponent<OutpaintingTile>().painted = true;
+    }
+
+    /// <summary>
+    /// Updates the tiles around the given Tile(given from the position of the tile in the matrix)
+    /// </summary>
+    /// <param name="tilePos">Position of the tile in the outpainting screen matrix</param>
+    private void UpdateTiles(Vector2Int tilePos)
+    {
+        // Checks if the the tile position is valid
+        if (!(tilePos.y < tileMatrixSize.y && tilePos.y >= 0 && tilePos.x < tileMatrixSize.x && tilePos.x >= 0))
+        {
+            return;
+        }
+
+        // Paints the current tile and makes it unpaintable beyond that
+        OutpaintingTile cur_tile_scr = tiles[tilePos.x, tilePos.y].GetComponent<OutpaintingTile>();
+        cur_tile_scr.painted = true;
+        cur_tile_scr.paintable = false;
+
+        // Makes the above tile paintable
+        if (tilePos.y < tileMatrixSize.y - 1)
+        {
+            OutpaintingTile cur_tile_target = tiles[tilePos.x, tilePos.y+1].GetComponent<OutpaintingTile>();
+            if (cur_tile_target.painted == false)
+            {
+                cur_tile_target.paintable = true;
+            }            
+        }
+
+        // Makes the right tile paintable
+        if (tilePos.x < tileMatrixSize.x - 1)
+        {
+            OutpaintingTile cur_tile_target = tiles[tilePos.x+1, tilePos.y].GetComponent<OutpaintingTile>();
+            if (cur_tile_target.painted == false)
+            {
+                cur_tile_target.paintable = true;
+            }
+        }
+
+        // Makes the left tile paintable
+        if (tilePos.x > 0)
+        {
+            OutpaintingTile cur_tile_target = tiles[tilePos.x-1, tilePos.y].GetComponent<OutpaintingTile>();
+            if (cur_tile_target.painted == false)
+            {
+                cur_tile_target.paintable = true;
+            }
+        }
     }
 }

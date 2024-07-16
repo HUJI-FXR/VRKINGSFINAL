@@ -6,6 +6,7 @@ public class OutpaintingTile : MonoBehaviour
 {
     public Vector2Int tilePosition;
     public bool painted = false;
+    public bool paintable = false;
     public OutpaintingScreenScr out_screen;
 
     private void OnTriggerEnter(Collider other)
