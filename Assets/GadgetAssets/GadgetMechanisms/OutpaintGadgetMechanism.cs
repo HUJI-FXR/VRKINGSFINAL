@@ -12,6 +12,7 @@ using UnityEngine.InputSystem;
 public class OutpaintGadgetMechanism : GadgetMechanism
 {
     public DiffusionRequest diffusionRequest;
+    public OutpaintingScreenScr outpaintingScreen;
     private string currentKeywords = "";
 
     // TODO currently the mechanism will work by CLICKING on a DiffusableObject, getting the keywords from it and then picking a relevant OutpaintingTile to start the generation on.outpaintin
@@ -58,27 +59,57 @@ public class OutpaintGadgetMechanism : GadgetMechanism
 
         DiffusableObject diffObj = args.interactableObject.transform.gameObject.GetComponent<DiffusableObject>();
         OutpaintingTile OPT = args.interactableObject.transform.gameObject.GetComponent<OutpaintingTile>();
-        if (diffObj == null && OPT == null) 
+        RegularDiffusionTexture RDT = args.interactableObject.transform.gameObject.GetComponent<RegularDiffusionTexture>();
+        if (diffObj == null) 
         {
-            return;
-        }
-
-        if (OPT != null)
-        {            
-            if (OPT.paintable && !OPT.painted)
+            if (OPT == null)
             {
-
+                return;
             }
+            // Object that is interacted with is an OutpaintingTile
+            if (!(OPT.paintable && !OPT.painted) || RDT == null)
+            {
+                return;
+            }
+
+            Debug.Log("trial");
+
+            Texture2D curTexture;
+
+            // Finding a texture to be the original to be outpainted from.
+            GameObject curTileGO;
+            if ((curTileGO = outpaintingScreen.tiles[OPT.tilePosition.x, OPT.tilePosition.y+1]).GetComponent<OutpaintingTile>().painted == true)
+            {
+                curTexture = TextureManipulationLibrary.toTexture2D(curTileGO.GetComponent<Renderer>().material.mainTexture);
+            }
+            else if ((curTileGO = outpaintingScreen.tiles[OPT.tilePosition.x-1, OPT.tilePosition.y]).GetComponent<OutpaintingTile>().painted == true)
+            {
+                curTexture = TextureManipulationLibrary.toTexture2D(curTileGO.GetComponent<Renderer>().material.mainTexture);
+            }
+            else if((curTileGO = outpaintingScreen.tiles[OPT.tilePosition.x+1, OPT.tilePosition.y]).GetComponent<OutpaintingTile>().painted == true)
+            {
+                curTexture = TextureManipulationLibrary.toTexture2D(curTileGO.GetComponent<Renderer>().material.mainTexture);
+            }
+            else
+            {
+                return;
+            }
+
+            Debug.Log("trial2");
+
+            diffusionRequest.uploadImage = curTexture;
+            diffusionRequest.targets.Add(RDT);
+            GameManager.getInstance().comfyOrganizer.SendDiffusionRequest(diffusionRequest);
         }
+        // Object that is interacted with is a DiffusableObject
         else
         {
-            currentKeywords = diffObj.keyword;
-        }
+            Debug.Log("trial3 " + diffObj.keyword);
+            // Creates selection outline
+            GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.selected);
 
-        // Creates selection outline
-        GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.selected);
-        Texture2D curTexture = TextureManipulationLibrary.toTexture2D(args.interactableObject.transform.gameObject.GetComponent<Renderer>().material.mainTexture);
-        diffusionRequest.secondUploadImage = curTexture;
+            currentKeywords = diffObj.keyword;
+        }                        
     }
 
     public override void GeneralActivation(DiffusionTextureChanger dtc)

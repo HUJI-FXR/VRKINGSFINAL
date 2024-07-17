@@ -1,7 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Data;
-using UnityEditor.UI;
 using UnityEngine;
 
 public class DiffusionTextureChanger : MonoBehaviour
