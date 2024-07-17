@@ -6726,7 +6726,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 28f3d8f436f7c43438da645dd69eeac9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 179.38391
+      value: 183.13
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 28f3d8f436f7c43438da645dd69eeac9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -10095,6 +10095,67 @@ Transform:
   - {fileID: 1968744818}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1578331312
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 22716efd396a4ae47ac0fcb8da179809, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 74.38
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 22716efd396a4ae47ac0fcb8da179809, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 12.03
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 22716efd396a4ae47ac0fcb8da179809, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 155.52
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 22716efd396a4ae47ac0fcb8da179809, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.69245785
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 22716efd396a4ae47ac0fcb8da179809, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 22716efd396a4ae47ac0fcb8da179809, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7214584
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 22716efd396a4ae47ac0fcb8da179809, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 22716efd396a4ae47ac0fcb8da179809, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 22716efd396a4ae47ac0fcb8da179809, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -267.65
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 22716efd396a4ae47ac0fcb8da179809, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7635826562936255635, guid: 22716efd396a4ae47ac0fcb8da179809, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b4071163f8b8a104a8986838e2c24248, type: 2}
+    - target: {fileID: 919132149155446097, guid: 22716efd396a4ae47ac0fcb8da179809, type: 3}
+      propertyPath: m_Name
+      value: 20240328_Hirakata_kaikan_371MB_triming_table_Remesh578K_smooth (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 22716efd396a4ae47ac0fcb8da179809, type: 3}
 --- !u!1001 &1600129480
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12517,6 +12578,7 @@ SceneRoots:
   - {fileID: 581992895}
   - {fileID: 1544043098}
   - {fileID: 1600129480}
+  - {fileID: 1578331312}
   - {fileID: 1265517829}
   - {fileID: 1079811325}
   - {fileID: 1132918882}
