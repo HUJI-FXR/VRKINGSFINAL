@@ -7,7 +7,6 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using Newtonsoft.Json.Linq;
-using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -389,6 +388,10 @@ public class ComfySceneLibrary : MonoBehaviour
         StartCoroutine(RequestFileNameRoutine(diffReq));
     }
 
+    /// <summary>
+    /// Requests and downloads the images created for a given DiffusionRequest
+    /// </summary>
+    /// <param name="diffReq">given DiffusionRequest to download the images created for it</param>
     IEnumerator RequestFileNameRoutine(DiffusionRequest diffReq)
     {
         string url = "http://" + serverAddress + "/history/" + diffReq.prompt_id;
@@ -478,6 +481,11 @@ public class ComfySceneLibrary : MonoBehaviour
         return filenames;
     }
 
+    /// <summary>
+    /// Downloads a single image according to the given image URL and adds it to the DiffusionRequest
+    /// </summary>
+    /// <param name="imageUrl">Image URL to download</param>
+    /// <param name="diffReq">DiffusionRequest to add downloaded image to</param>
     IEnumerator DownloadImage(string imageUrl, DiffusionRequest diffReq)
     {
         while (uploadingImage)

@@ -39,6 +39,7 @@ public class DiffusableObject : MonoBehaviour
             return;
         }
         GameManager.getInstance().radiusDiffusionTexture.DiffusableObjectCollided(collision);
+
         //allowCollision = false;
         
     }
