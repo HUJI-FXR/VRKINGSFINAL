@@ -88,7 +88,7 @@ public class UIDiffusionTexture : DiffusionTextureChanger
             Debug.LogError("Add UI Display and Prefab for the Image UI popup");
             return;
         }
-
+        
         curChangeDelta = 0f;
 
         if (curDisplayPrefab != null)
@@ -96,6 +96,8 @@ public class UIDiffusionTexture : DiffusionTextureChanger
             Destroy(curDisplayPrefab);
             curDisplayPrefab = null;
         }
+        
+        
         curDisplayPrefab = Instantiate(displayPrefab, PopupDisplay.transform, false);
 
         CreateImagesInside(textures, curDisplayPrefab, true);

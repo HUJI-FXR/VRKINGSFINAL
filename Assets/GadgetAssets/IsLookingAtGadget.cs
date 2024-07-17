@@ -16,7 +16,6 @@ public class IsLookingAtGadget : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(LookingAtGadget());
     }
 
     public bool LookingAtGadget()
