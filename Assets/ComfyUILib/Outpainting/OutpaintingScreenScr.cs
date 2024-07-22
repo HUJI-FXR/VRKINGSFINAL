@@ -70,10 +70,10 @@ public class OutpaintingScreenScr : MonoBehaviour
                     cur_tile_scr.painted = false;
                     cur_tile_scr.paintable = false;
 
-                    if (Mathf.Abs(midTilePos.x - i) == 1 ^ midTilePos.y - j == 1)
+                    /*if (Mathf.Abs(midTilePos.x - i) == 1 ^ midTilePos.y - j == 1)
                     {
                         cur_tile_scr.paintable = true;                        
-                    }
+                    }*/
 
                     tiles[i, j] = clone;
                 }
@@ -83,6 +83,7 @@ public class OutpaintingScreenScr : MonoBehaviour
             {
                 Debug.Log("Setting first texture in screen");
                 Renderer renderer = tiles[firstPaintedTile.x, firstPaintedTile.y].GetComponent<Renderer>();
+                tiles[firstPaintedTile.x, firstPaintedTile.y].GetComponent<OutpaintingTile>().painted = true;
                 renderer.material.mainTexture = firstTileTexture;
                 renderer.material.SetTexture("_BaseMap", firstTileTexture);
             }            

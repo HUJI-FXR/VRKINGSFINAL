@@ -72,22 +72,26 @@ public class OutpaintGadgetMechanism : GadgetMechanism
                 return;
             }
 
-            Debug.Log("trial");
-
             Texture2D curTexture;
 
             // Finding a texture to be the original to be outpainted from.
             GameObject curTileGO;
-            if ((curTileGO = outpaintingScreen.tiles[OPT.tilePosition.x, OPT.tilePosition.y+1]).GetComponent<OutpaintingTile>().painted == true)
+            if (OPT.tilePosition.y < outpaintingScreen.tileMatrixSize.y-1 && 
+                outpaintingScreen.tiles[OPT.tilePosition.x, OPT.tilePosition.y+1].GetComponent<OutpaintingTile>().painted == true)
             {
+                curTileGO = outpaintingScreen.tiles[OPT.tilePosition.x, OPT.tilePosition.y + 1];
                 curTexture = TextureManipulationLibrary.toTexture2D(curTileGO.GetComponent<Renderer>().material.mainTexture);
             }
-            else if ((curTileGO = outpaintingScreen.tiles[OPT.tilePosition.x-1, OPT.tilePosition.y]).GetComponent<OutpaintingTile>().painted == true)
+            else if (OPT.tilePosition.x > 0 && 
+                outpaintingScreen.tiles[OPT.tilePosition.x-1, OPT.tilePosition.y].GetComponent<OutpaintingTile>().painted == true)
             {
+                curTileGO = outpaintingScreen.tiles[OPT.tilePosition.x-1, OPT.tilePosition.y];
                 curTexture = TextureManipulationLibrary.toTexture2D(curTileGO.GetComponent<Renderer>().material.mainTexture);
             }
-            else if((curTileGO = outpaintingScreen.tiles[OPT.tilePosition.x+1, OPT.tilePosition.y]).GetComponent<OutpaintingTile>().painted == true)
+            else if(OPT.tilePosition.x < outpaintingScreen.tileMatrixSize.x-1 && 
+                outpaintingScreen.tiles[OPT.tilePosition.x+1, OPT.tilePosition.y].GetComponent<OutpaintingTile>().painted == true)
             {
+                curTileGO = outpaintingScreen.tiles[OPT.tilePosition.x+1, OPT.tilePosition.y];
                 curTexture = TextureManipulationLibrary.toTexture2D(curTileGO.GetComponent<Renderer>().material.mainTexture);
             }
             else

@@ -1459,7 +1459,7 @@ MonoBehaviour:
   tileSize: {x: 10, y: 6, z: 1}
   tileObject: {fileID: 971472021}
   tileMatrixSize: {x: 3, y: 3}
-  firstPaintedTile: {x: 0, y: 0}
+  firstPaintedTile: {x: 1, y: 2}
   firstTileTexture: {fileID: 2800000, guid: 677d2ba6f5d638840ba8d510f86e386d, type: 3}
 --- !u!1 &420177950
 GameObject:
@@ -1741,9 +1741,9 @@ MonoBehaviour:
     uploadImage: {fileID: 0}
     secondUploadImage: {fileID: 0}
     denoise: 1
-    diffusionModel: 0
-    diffusionJsonType: 0
-  outpaintingScreen: {fileID: 0}
+    diffusionModel: 4
+    diffusionJsonType: 8
+  outpaintingScreen: {fileID: 274099988}
 --- !u!1 &500895995
 GameObject:
   m_ObjectHideFlags: 0
@@ -2257,7 +2257,7 @@ MonoBehaviour:
   tilePosition: {x: 0, y: 0}
   painted: 0
   paintable: 0
-  out_screen: {fileID: 0}
+  out_screen: {fileID: 274099988}
 --- !u!114 &971472027
 MonoBehaviour:
   m_ObjectHideFlags: 0
