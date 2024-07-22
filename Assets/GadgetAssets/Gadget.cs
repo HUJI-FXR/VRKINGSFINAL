@@ -2,12 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
-using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Rendering;
-using UnityEngine.Rendering.HighDefinition;
-using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.UI;
 
@@ -74,7 +70,7 @@ public class Gadget : MonoBehaviour
 
     // Passing along the various 
     public void OnGameObjectHoverEntered(HoverEnterEventArgs args)
-    {        
+    {
         playGadgetSounds.PlaySound("HoverOverElements");
         GadgetMechanisms[gadgetMechanismIndex].OnGameObjectHoverEntered(args);
     }
@@ -183,7 +179,7 @@ public class Gadget : MonoBehaviour
             curOutline.OutlineWidth = outlineWidth;
             return;
         }
-        
+
         Outline elseOutline = obj.AddComponent<Outline>();
         elseOutline.OutlineColor = curColor;
         elseOutline.OutlineWidth = outlineWidth;

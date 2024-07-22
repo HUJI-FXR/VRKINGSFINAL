@@ -47,7 +47,7 @@ public class ComfySceneParameters : MonoBehaviour
             loadedGameManagerScene = true;
         }
 
-        if (LoadComfyParametrs)
+        if (!loadedGameManagerScene || LoadComfyParametrs)
         {
             GameManager.getInstance().InitiateSceneParameters(comfyOrganizer, comfySceneLibrary,
             radiusDiffusionTexture, uiDiffusionTexture, diffusables, gadget, headAudioSource);

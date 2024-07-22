@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     public GameObject diffusables;
     [NonSerialized]
     public Gadget gadget;
-    [NonSerialized]
+    //[NonSerialized]
     public AudioSource headAudioSource;
     [NonSerialized]
     public ComfyOrganizer comfyOrganizer;
