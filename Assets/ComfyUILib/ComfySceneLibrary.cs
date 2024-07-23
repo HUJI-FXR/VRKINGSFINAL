@@ -272,6 +272,29 @@ public class ComfySceneLibrary : MonoBehaviour
                 json["prompt"]["5"]["inputs"]["height"] = curImageSize.y;
                 break;
 
+            case diffusionWorkflows.outpainting:
+                // TODO create the outpainting workflow
+
+                // REMOVE THIS FOR TODO ------------------------
+                if (diffReq.uploadImage == null)
+                {
+                    Debug.LogError("Make sure a valid uploadImage is part of the Diffusion Request before upload it");
+                    return null;
+                }
+
+                json["prompt"]["3"]["inputs"]["seed"] = randomSeed;
+                json["prompt"]["3"]["inputs"]["denoise"] = diffReq.denoise;
+                json["prompt"]["6"]["inputs"]["text"] = diffReq.positivePrompt;
+                json["prompt"]["7"]["inputs"]["text"] = diffReq.negativePrompt;
+                json["prompt"]["15"]["inputs"]["amount"] = diffReq.numOfVariations;
+
+                json["prompt"]["4"]["inputs"]["ckpt_name"] = curDiffModel;
+
+                StartCoroutine(UploadImage(diffReq.uploadImage));
+                json["prompt"]["11"]["inputs"]["image"] = diffReq.uploadImage.name;
+                // REMOVE THIS FOR TODO ------------------------
+                break;
+
             default:
                 Debug.LogError("Please choose a useable Diffusion workflow");
                 return null;
@@ -519,6 +542,11 @@ public class ComfySceneLibrary : MonoBehaviour
         string url = "http://" + serverAddress + "/upload/image";
 
         WWWForm form = new WWWForm();
+
+        if (curTexture == null)
+        {
+            Debug.Log("WHOWHOWH");
+        }
 
         form.AddBinaryData("image", curTexture.EncodeToPNG(), curTexture.name, "image/png");
         form.AddField("type", "input");

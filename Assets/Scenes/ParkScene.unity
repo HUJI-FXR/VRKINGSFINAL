@@ -1461,6 +1461,7 @@ MonoBehaviour:
   tileMatrixSize: {x: 3, y: 3}
   firstPaintedTile: {x: 1, y: 2}
   firstTileTexture: {fileID: 2800000, guid: 677d2ba6f5d638840ba8d510f86e386d, type: 3}
+  paintableTexture: {fileID: 2800000, guid: 5b127cfad4c559247b2e742774b4a208, type: 3}
 --- !u!1 &420177950
 GameObject:
   m_ObjectHideFlags: 0

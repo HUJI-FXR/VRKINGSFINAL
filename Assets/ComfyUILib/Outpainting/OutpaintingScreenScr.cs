@@ -12,6 +12,8 @@ public class OutpaintingScreenScr : MonoBehaviour
     public Vector2Int firstPaintedTile = new Vector2Int(0, 0);
     public Texture2D firstTileTexture;
 
+    public Texture2D paintableTexture;
+
     [NonSerialized]
     public GameObject[,] tiles;
 
@@ -86,6 +88,7 @@ public class OutpaintingScreenScr : MonoBehaviour
                 tiles[firstPaintedTile.x, firstPaintedTile.y].GetComponent<OutpaintingTile>().painted = true;
                 renderer.material.mainTexture = firstTileTexture;
                 renderer.material.SetTexture("_BaseMap", firstTileTexture);
+                UpdateTiles(firstPaintedTile);
             }            
         }
     }
@@ -123,7 +126,7 @@ public class OutpaintingScreenScr : MonoBehaviour
     /// Updates the tiles around the given Tile(given from the position of the tile in the matrix)
     /// </summary>
     /// <param name="tilePos">Position of the tile in the outpainting screen matrix</param>
-    private void UpdateTiles(Vector2Int tilePos)
+    public void UpdateTiles(Vector2Int tilePos)
     {
         // Checks if the the tile position is valid
         if (!(tilePos.y < tileMatrixSize.y && tilePos.y >= 0 && tilePos.x < tileMatrixSize.x && tilePos.x >= 0))
@@ -143,6 +146,7 @@ public class OutpaintingScreenScr : MonoBehaviour
             if (cur_tile_target.painted == false)
             {
                 cur_tile_target.paintable = true;
+                cur_tile_target.GetComponent<Renderer>().material.mainTexture = paintableTexture;
             }            
         }
 
@@ -151,8 +155,9 @@ public class OutpaintingScreenScr : MonoBehaviour
         {
             OutpaintingTile cur_tile_target = tiles[tilePos.x+1, tilePos.y].GetComponent<OutpaintingTile>();
             if (cur_tile_target.painted == false)
-            {
+            {                
                 cur_tile_target.paintable = true;
+                cur_tile_target.GetComponent<Renderer>().material.mainTexture = paintableTexture;
             }
         }
 
@@ -163,6 +168,7 @@ public class OutpaintingScreenScr : MonoBehaviour
             if (cur_tile_target.painted == false)
             {
                 cur_tile_target.paintable = true;
+                cur_tile_target.GetComponent<Renderer>().material.mainTexture = paintableTexture;
             }
         }
     }

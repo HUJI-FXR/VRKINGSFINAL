@@ -81,34 +81,35 @@ public class OutpaintGadgetMechanism : GadgetMechanism
             {
                 curTileGO = outpaintingScreen.tiles[OPT.tilePosition.x, OPT.tilePosition.y + 1];
                 curTexture = TextureManipulationLibrary.toTexture2D(curTileGO.GetComponent<Renderer>().material.mainTexture);
+                outpaintingScreen.UpdateTiles(new Vector2Int(OPT.tilePosition.x, OPT.tilePosition.y + 1));
             }
             else if (OPT.tilePosition.x > 0 && 
                 outpaintingScreen.tiles[OPT.tilePosition.x-1, OPT.tilePosition.y].GetComponent<OutpaintingTile>().painted == true)
             {
                 curTileGO = outpaintingScreen.tiles[OPT.tilePosition.x-1, OPT.tilePosition.y];
                 curTexture = TextureManipulationLibrary.toTexture2D(curTileGO.GetComponent<Renderer>().material.mainTexture);
+                outpaintingScreen.UpdateTiles(new Vector2Int(OPT.tilePosition.x-1, OPT.tilePosition.y));
             }
             else if(OPT.tilePosition.x < outpaintingScreen.tileMatrixSize.x-1 && 
                 outpaintingScreen.tiles[OPT.tilePosition.x+1, OPT.tilePosition.y].GetComponent<OutpaintingTile>().painted == true)
             {
                 curTileGO = outpaintingScreen.tiles[OPT.tilePosition.x+1, OPT.tilePosition.y];
                 curTexture = TextureManipulationLibrary.toTexture2D(curTileGO.GetComponent<Renderer>().material.mainTexture);
+                outpaintingScreen.UpdateTiles(new Vector2Int(OPT.tilePosition.x+1, OPT.tilePosition.y));
             }
             else
             {
                 return;
             }
 
-            Debug.Log("trial2");
-
             diffusionRequest.uploadImage = curTexture;
+            curTexture.name = "IIWOOD";
             diffusionRequest.targets.Add(RDT);
             GameManager.getInstance().comfyOrganizer.SendDiffusionRequest(diffusionRequest);
         }
         // Object that is interacted with is a DiffusableObject
         else
         {
-            Debug.Log("trial3 " + diffObj.keyword);
             // Creates selection outline
             GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.selected);
 
