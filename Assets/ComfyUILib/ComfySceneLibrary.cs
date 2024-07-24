@@ -71,6 +71,7 @@ public class ComfySceneLibrary : MonoBehaviour
     // TODO cont. the ComfyOrganizer or else some things will not be ready for an instant diffusion request
     private void Start()
     {
+        Debug.Log(serverAddress);
         serverAddress = GameManager.getInstance().IP;
 
         if (serverAddress == "")
@@ -542,11 +543,6 @@ public class ComfySceneLibrary : MonoBehaviour
         string url = "http://" + serverAddress + "/upload/image";
 
         WWWForm form = new WWWForm();
-
-        if (curTexture == null)
-        {
-            Debug.Log("WHOWHOWH");
-        }
 
         form.AddBinaryData("image", curTexture.EncodeToPNG(), curTexture.name, "image/png");
         form.AddField("type", "input");

@@ -103,7 +103,8 @@ public class OutpaintGadgetMechanism : GadgetMechanism
             }
 
             diffusionRequest.uploadImage = curTexture;
-            curTexture.name = "IIWOOD";
+            string uniqueName = GameManager.getInstance().comfyOrganizer.UniqueImageName();
+            curTexture.name = uniqueName + ".png";
             diffusionRequest.targets.Add(RDT);
             GameManager.getInstance().comfyOrganizer.SendDiffusionRequest(diffusionRequest);
         }
