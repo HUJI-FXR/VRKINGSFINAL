@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb60a22f311433c4c962b888d1393f88, type: 3}
   m_Name: PaniniProjection
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   distance:
     m_OverrideState: 1
-    m_Value: 0.855
+    m_Value: 0.707
   cropToFit:
     m_OverrideState: 0
     m_Value: 1
@@ -47,16 +47,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29fa0085f50d5e54f8144f766051a691, type: 3}
   m_Name: FilmGrain
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   type:
     m_OverrideState: 1
-    m_Value: 10
+    m_Value: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 0.487
+    m_Value: 0.374
   response:
     m_OverrideState: 1
-    m_Value: 0.47
+    m_Value: 0.065
   texture:
     m_OverrideState: 0
     m_Value: {fileID: 0}
@@ -72,7 +72,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 899c54efeace73346a0a16faa3afe726, type: 3}
   m_Name: Vignette
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   color:
     m_OverrideState: 1
     m_Value: {r: 0, g: 0, b: 0, a: 1}
@@ -81,10 +81,10 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.59
+    m_Value: 0.516
   smoothness:
     m_OverrideState: 1
-    m_Value: 0.143
+    m_Value: 0.208
   rounded:
     m_OverrideState: 0
     m_Value: 0
