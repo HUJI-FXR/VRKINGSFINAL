@@ -2489,7 +2489,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3484128598174819074, guid: 02be27ab17ab3b14f954f65dc06dd738, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3484128598174819085, guid: 02be27ab17ab3b14f954f65dc06dd738, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2625,7 +2625,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3484128599267958350, guid: 02be27ab17ab3b14f954f65dc06dd738, type: 3}
       propertyPath: m_Text
-      value: jonathanmiroshnik-.thinkdiffusion.xyz
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3484128599267958351, guid: 02be27ab17ab3b14f954f65dc06dd738, type: 3}
       propertyPath: m_SizeDelta.x

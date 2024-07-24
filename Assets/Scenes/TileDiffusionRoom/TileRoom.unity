@@ -5266,7 +5266,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serverAddress: jonathanmiroshnik-autoencoder-24100650.thinkdiffusion.xyz
   comfyOrg: {fileID: 399383150}
-  JSONFolderPath: Assets/ComfyUILib/JSONMain
   ImageFolderName: Assets/
 --- !u!114 &399383150
 MonoBehaviour:

@@ -48,7 +48,7 @@ public class ComfySceneLibrary : MonoBehaviour
     public string serverAddress = "127.0.0.1:8188";  //"jonathanmiroshnik-backpropagation-09103750.thinkdiffusion.xyz"
     public ComfyOrganizer comfyOrg;
 
-    public string JSONFolderPath = "Assets/ComfyUILib/JSONMain";
+    private string JSONFolderPath = "JSONMain";
     public string ImageFolderName = "Assets/";
 
     private string clientId;
@@ -71,7 +71,6 @@ public class ComfySceneLibrary : MonoBehaviour
     // TODO cont. the ComfyOrganizer or else some things will not be ready for an instant diffusion request
     private void Start()
     {
-        Debug.Log(serverAddress);
         serverAddress = GameManager.getInstance().IP;
 
         if (serverAddress == "")
@@ -84,25 +83,29 @@ public class ComfySceneLibrary : MonoBehaviour
         }
         
         // Get all enum adjacent JSON workflows
-        var jsonFiles = Directory.GetFiles(JSONFolderPath, "*.json");
+        //var jsonFiles = Directory.GetFiles(JSONFolderPath, "*.json");
+        TextAsset[] jsonFiles = Resources.LoadAll<TextAsset>(JSONFolderPath);
 
         foreach (var file in jsonFiles)
         {
-            string fileName = Path.GetFileName(file);
-            string fileContent = File.ReadAllText(file);
+            //string fileName = Path.GetFileName(file);
+            string fileName = file.name;
+            //string fileContent = File.ReadAllText(file);
+            string fileContent = file.text;
 
-            int dotIndex = fileName.LastIndexOf('.');
-            string splitName = fileName.Substring(0, dotIndex);
-            if (Enum.IsDefined(typeof(diffusionWorkflows), splitName))
+            /*int dotIndex = fileName.LastIndexOf('.');
+            string splitName = fileName.Substring(0, dotIndex);*/
+            if (Enum.IsDefined(typeof(diffusionWorkflows), fileName))
             {
                 diffusionWorkflows enumVal;
-                Enum.TryParse<diffusionWorkflows>(splitName, out enumVal);
+                Enum.TryParse<diffusionWorkflows>(fileName, out enumVal);
                 diffusionJsons.Add(enumVal, fileContent);
             }
             else
             {
+                GameManager.getInstance().gadget.MechanismText.text = GameManager.getInstance().gadget.MechanismText.text + "BOOOO";
                 // TODO check why this error is not reached and instead getting a different dictionary type error
-                Debug.LogError("Please add JSON workflow " + splitName.ToString() + " to the diffusionJsons enum");
+                Debug.LogError("Please add JSON workflow " + fileName.ToString() + " to the diffusionJsons enum");
             }
         }
 
@@ -127,9 +130,15 @@ public class ComfySceneLibrary : MonoBehaviour
     private string getWorkflowJSON(diffusionWorkflows enumValName)
     {
         string ret_str = "";
-        if (Enum.IsDefined(typeof(diffusionWorkflows), enumValName))
+        GameManager.getInstance().gadget.MechanismText.text = "PREWORKFLOW";
+        if (diffusionJsons.ContainsKey(enumValName))
         {
+            GameManager.getInstance().gadget.MechanismText.text = "INFLOW";
             ret_str = diffusionJsons[enumValName];
+        }
+        else
+        {
+            GameManager.getInstance().gadget.MechanismText.text = GameManager.getInstance().gadget.MechanismText.text  + "BADWORKFLOWENUM";
         }
 
         return ret_str;
@@ -137,16 +146,19 @@ public class ComfySceneLibrary : MonoBehaviour
 
     private string DiffusionJSONFactory(DiffusionRequest diffReq)
     {
+        GameManager.getInstance().gadget.MechanismText.text = GameManager.getInstance().gadget.MechanismText.text + "CHECKER";
         string guid = Guid.NewGuid().ToString();
+        GameManager.getInstance().gadget.MechanismText.text = GameManager.getInstance().gadget.MechanismText.text + "DUBCHECKER";
         string promptText = $@"
         {{
             ""id"": ""{guid}"",
             ""prompt"": {getWorkflowJSON(diffReq.diffusionJsonType)}
         }}";
+        GameManager.getInstance().gadget.MechanismText.text = "CHICKCHAK";
         JObject json = JObject.Parse(promptText);
 
         // TODO notice that curImageSize will need to change in a situation like outpainting
-
+        GameManager.getInstance().gadget.MechanismText.text = "CHECKER2";
         string curDiffModel = "";
         Vector2Int curImageSize = Vector2Int.zero;
         switch (diffReq.diffusionModel)
@@ -173,9 +185,10 @@ public class ComfySceneLibrary : MonoBehaviour
                 curImageSize = new Vector2Int(512, 512);
                 break;
         }
-
+        GameManager.getInstance().gadget.MechanismText.text = "CHECKER3";
         if (curDiffModel == null || curDiffModel == "" || curImageSize == Vector2Int.zero)
         {
+            GameManager.getInstance().gadget.MechanismText.text = "BAD MODEL";
             Debug.LogError("You must choose a useable Diffusion model");
             return null;
         }
@@ -236,6 +249,7 @@ public class ComfySceneLibrary : MonoBehaviour
             case diffusionWorkflows.combineImages:
                 if (diffReq.uploadImage == null || (diffReq.secondUploadImage == null))
                 {
+                    GameManager.getInstance().gadget.MechanismText.text = "SOME NULL IMAGE";
                     Debug.LogError("Make sure a valid uploadImage or secondUploadImage is part of the Diffusion Request before upload it");
                     return null;
                 }
@@ -257,6 +271,7 @@ public class ComfySceneLibrary : MonoBehaviour
                 json["prompt"]["21"]["inputs"]["denoise"] = diffReq.denoise;
                 json["prompt"]["21"]["inputs"]["seed"] = randomSeed;
                 json["prompt"]["21"]["inputs"]["steps"] = 10;
+                GameManager.getInstance().gadget.MechanismText.text = "COMBINE";
                 break;
 
             case diffusionWorkflows.AIAssistant:
@@ -297,10 +312,11 @@ public class ComfySceneLibrary : MonoBehaviour
                 break;
 
             default:
+                GameManager.getInstance().gadget.MechanismText.text = "NOWORKFLOW";
                 Debug.LogError("Please choose a useable Diffusion workflow");
                 return null;
         }
-
+        GameManager.getInstance().gadget.MechanismText.text = "CHECKER4";
         return json.ToString();
     }
 
@@ -316,35 +332,45 @@ public class ComfySceneLibrary : MonoBehaviour
         string promptText = DiffusionJSONFactory(diffReq);
         while (uploadingImage)
         {
+            GameManager.getInstance().gadget.MechanismText.text = "UPLOADINGIMAGE";
             yield return null;
             //yield return new WaitForSeconds(0.02f);
         }
 
         if (promptText == null || promptText.Length <= 0)
         {
+            GameManager.getInstance().gadget.MechanismText.text = "BADPROMPTTEXT";
             yield return null;
         }
         else
         {
+            int NUMBER_OF_RETRIES = 100;
+
             UnityWebRequest request = new UnityWebRequest(url, "POST");
             byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(promptText);
             request.uploadHandler = (UploadHandler)new UploadHandlerRaw(bodyRaw);
             request.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
             request.SetRequestHeader("Content-Type", "application/json");
 
-            yield return request.SendWebRequest();
-
-            if (request.result != UnityWebRequest.Result.Success)
+            for (int i = 0; i < NUMBER_OF_RETRIES; i++)
             {
-                Debug.Log(request.error);
-            }
-            else
-            {
-                //Debug.Log("Prompt queued successfully." + request.downloadHandler.text);
+                yield return request.SendWebRequest();
 
-                // This is the only use of ResponseData, but it is needed for proper downloading of the prompt
-                ResponseData data = JsonUtility.FromJson<ResponseData>(request.downloadHandler.text);
-                diffReq.prompt_id = data.prompt_id;
+                if (request.result != UnityWebRequest.Result.Success)
+                {
+                    GameManager.getInstance().gadget.MechanismText.text = "ERROR1";
+                    Debug.Log(request.error);
+                }
+                else
+                {
+                    //Debug.Log("Prompt queued successfully." + request.downloadHandler.text);
+
+                    // This is the only use of ResponseData, but it is needed for proper downloading of the prompt
+                    ResponseData data = JsonUtility.FromJson<ResponseData>(request.downloadHandler.text);
+                    diffReq.prompt_id = data.prompt_id;
+
+                    i = NUMBER_OF_RETRIES + 1;
+                }                
             }
 
             yield break;
@@ -427,10 +453,14 @@ public class ComfySceneLibrary : MonoBehaviour
             switch (webRequest.result)
             {
                 case UnityWebRequest.Result.ConnectionError:
+                    GameManager.getInstance().gadget.MechanismText.text = "CONERR";
+                    break;
                 case UnityWebRequest.Result.DataProcessingError:
+                    GameManager.getInstance().gadget.MechanismText.text = "DATERR";
                     Debug.LogError(": Error: " + webRequest.error);
                     break;
                 case UnityWebRequest.Result.ProtocolError:
+                    GameManager.getInstance().gadget.MechanismText.text = "PROTERR";
                     if (started_generations)
                     {
                         Debug.LogError(": HTTP Error: " + webRequest.error);
@@ -555,11 +585,13 @@ public class ComfySceneLibrary : MonoBehaviour
 
             if (unityWebRequest.result != UnityWebRequest.Result.Success)
             {
+                GameManager.getInstance().gadget.MechanismText.text = GameManager.getInstance().gadget.MechanismText.text + "UPPPERR";
                 Debug.Log(unityWebRequest.error);
             }
             else
             {
                 uploadingImage = false;
+                GameManager.getInstance().gadget.MechanismText.text = "GOODUPLOAD";
                 //Debug.Log("Image Upload succesful");
             }
         }
