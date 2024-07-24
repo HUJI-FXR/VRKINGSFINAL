@@ -344,34 +344,27 @@ public class ComfySceneLibrary : MonoBehaviour
         }
         else
         {
-            int NUMBER_OF_RETRIES = 100;
-
             UnityWebRequest request = new UnityWebRequest(url, "POST");
             byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(promptText);
             request.uploadHandler = (UploadHandler)new UploadHandlerRaw(bodyRaw);
             request.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
             request.SetRequestHeader("Content-Type", "application/json");
 
-            for (int i = 0; i < NUMBER_OF_RETRIES; i++)
+            yield return request.SendWebRequest();
+
+            if (request.result != UnityWebRequest.Result.Success)
             {
-                yield return request.SendWebRequest();
-
-                if (request.result != UnityWebRequest.Result.Success)
-                {
-                    GameManager.getInstance().gadget.MechanismText.text = "ERROR1";
-                    Debug.Log(request.error);
-                }
-                else
-                {
-                    //Debug.Log("Prompt queued successfully." + request.downloadHandler.text);
-
-                    // This is the only use of ResponseData, but it is needed for proper downloading of the prompt
-                    ResponseData data = JsonUtility.FromJson<ResponseData>(request.downloadHandler.text);
-                    diffReq.prompt_id = data.prompt_id;
-
-                    i = NUMBER_OF_RETRIES + 1;
-                }                
+                GameManager.getInstance().gadget.MechanismText.text = "ERROR1";
+                Debug.Log(request.error);
             }
+            else
+            {
+                //Debug.Log("Prompt queued successfully." + request.downloadHandler.text);
+
+                // This is the only use of ResponseData, but it is needed for proper downloading of the prompt
+                ResponseData data = JsonUtility.FromJson<ResponseData>(request.downloadHandler.text);
+                diffReq.prompt_id = data.prompt_id;
+            }                
 
             yield break;
         }
