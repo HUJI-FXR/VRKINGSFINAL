@@ -311,7 +311,7 @@ public class ComfySceneLibrary : MonoBehaviour
             yield return null;
         }
 
-        string url = "http://" + serverAddress + "/prompt";
+        string url = "https://" + serverAddress + "/prompt";
 
         string promptText = DiffusionJSONFactory(diffReq);
         while (uploadingImage)
@@ -418,7 +418,7 @@ public class ComfySceneLibrary : MonoBehaviour
     /// <param name="diffReq">given DiffusionRequest to download the images created for it</param>
     IEnumerator RequestFileNameRoutine(DiffusionRequest diffReq)
     {
-        string url = "http://" + serverAddress + "/history/" + diffReq.prompt_id;
+        string url = "https://" + serverAddress + "/history/" + diffReq.prompt_id;
         using (UnityWebRequest webRequest = UnityWebRequest.Get(url))
         {
             // Request and wait for the desired page.
@@ -457,7 +457,7 @@ public class ComfySceneLibrary : MonoBehaviour
                     // Downloading each image of the prompt
                     for (int i = 0; i < filenames.Length; i++)
                     {
-                        string imageURL = "http://" + serverAddress + "/view?filename=" + filenames[i];
+                        string imageURL = "https://" + serverAddress + "/view?filename=" + filenames[i];
                         StartCoroutine(DownloadImage(imageURL, diffReq));
                     }
                     break;
@@ -540,7 +540,7 @@ public class ComfySceneLibrary : MonoBehaviour
 
     private IEnumerator UploadImage(Texture2D curTexture)
     {        
-        string url = "http://" + serverAddress + "/upload/image";
+        string url = "https://" + serverAddress + "/upload/image";
 
         WWWForm form = new WWWForm();
 
