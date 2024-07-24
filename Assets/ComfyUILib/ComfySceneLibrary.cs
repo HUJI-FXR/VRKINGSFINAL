@@ -45,7 +45,7 @@ public enum diffusionModels
 
 public class ComfySceneLibrary : MonoBehaviour
 {
-    public string serverAddress = "127.0.0.1:8188";  //"jonathanmiroshnik-backpropagation-09103750.thinkdiffusion.xyz"
+    public string serverAddress;
     public ComfyOrganizer comfyOrg;
 
     private string JSONFolderPath = "JSONMain";
@@ -83,18 +83,13 @@ public class ComfySceneLibrary : MonoBehaviour
         }
         
         // Get all enum adjacent JSON workflows
-        //var jsonFiles = Directory.GetFiles(JSONFolderPath, "*.json");
         TextAsset[] jsonFiles = Resources.LoadAll<TextAsset>(JSONFolderPath);
 
         foreach (var file in jsonFiles)
         {
-            //string fileName = Path.GetFileName(file);
             string fileName = file.name;
-            //string fileContent = File.ReadAllText(file);
             string fileContent = file.text;
 
-            /*int dotIndex = fileName.LastIndexOf('.');
-            string splitName = fileName.Substring(0, dotIndex);*/
             if (Enum.IsDefined(typeof(diffusionWorkflows), fileName))
             {
                 diffusionWorkflows enumVal;
@@ -103,7 +98,6 @@ public class ComfySceneLibrary : MonoBehaviour
             }
             else
             {
-                GameManager.getInstance().gadget.MechanismText.text = GameManager.getInstance().gadget.MechanismText.text + "BOOOO";
                 // TODO check why this error is not reached and instead getting a different dictionary type error
                 Debug.LogError("Please add JSON workflow " + fileName.ToString() + " to the diffusionJsons enum");
             }
@@ -130,15 +124,9 @@ public class ComfySceneLibrary : MonoBehaviour
     private string getWorkflowJSON(diffusionWorkflows enumValName)
     {
         string ret_str = "";
-        GameManager.getInstance().gadget.MechanismText.text = "PREWORKFLOW";
         if (diffusionJsons.ContainsKey(enumValName))
         {
-            GameManager.getInstance().gadget.MechanismText.text = "INFLOW";
             ret_str = diffusionJsons[enumValName];
-        }
-        else
-        {
-            GameManager.getInstance().gadget.MechanismText.text = GameManager.getInstance().gadget.MechanismText.text  + "BADWORKFLOWENUM";
         }
 
         return ret_str;
@@ -146,19 +134,15 @@ public class ComfySceneLibrary : MonoBehaviour
 
     private string DiffusionJSONFactory(DiffusionRequest diffReq)
     {
-        GameManager.getInstance().gadget.MechanismText.text = GameManager.getInstance().gadget.MechanismText.text + "CHECKER";
         string guid = Guid.NewGuid().ToString();
-        GameManager.getInstance().gadget.MechanismText.text = GameManager.getInstance().gadget.MechanismText.text + "DUBCHECKER";
         string promptText = $@"
         {{
             ""id"": ""{guid}"",
             ""prompt"": {getWorkflowJSON(diffReq.diffusionJsonType)}
         }}";
-        GameManager.getInstance().gadget.MechanismText.text = "CHICKCHAK";
         JObject json = JObject.Parse(promptText);
 
         // TODO notice that curImageSize will need to change in a situation like outpainting
-        GameManager.getInstance().gadget.MechanismText.text = "CHECKER2";
         string curDiffModel = "";
         Vector2Int curImageSize = Vector2Int.zero;
         switch (diffReq.diffusionModel)
@@ -185,10 +169,8 @@ public class ComfySceneLibrary : MonoBehaviour
                 curImageSize = new Vector2Int(512, 512);
                 break;
         }
-        GameManager.getInstance().gadget.MechanismText.text = "CHECKER3";
         if (curDiffModel == null || curDiffModel == "" || curImageSize == Vector2Int.zero)
         {
-            GameManager.getInstance().gadget.MechanismText.text = "BAD MODEL";
             Debug.LogError("You must choose a useable Diffusion model");
             return null;
         }
@@ -249,7 +231,6 @@ public class ComfySceneLibrary : MonoBehaviour
             case diffusionWorkflows.combineImages:
                 if (diffReq.uploadImage == null || (diffReq.secondUploadImage == null))
                 {
-                    GameManager.getInstance().gadget.MechanismText.text = "SOME NULL IMAGE";
                     Debug.LogError("Make sure a valid uploadImage or secondUploadImage is part of the Diffusion Request before upload it");
                     return null;
                 }
@@ -261,17 +242,18 @@ public class ComfySceneLibrary : MonoBehaviour
                 json["prompt"]["50"]["inputs"]["amount"] = diffReq.numOfVariations;
                 json["prompt"]["51"]["inputs"]["amount"] = diffReq.numOfVariations;
 
-                StartCoroutine(UploadImage(diffReq.uploadImage));
+                StartCoroutine(UploadImage(diffReq.uploadImage, true));
                 StartCoroutine(UploadImage(diffReq.secondUploadImage));
                 // Input Image:
                 json["prompt"]["12"]["inputs"]["image"] = diffReq.uploadImage.name;
+                Debug.Log(diffReq.uploadImage.name);
+                Debug.Log(diffReq.secondUploadImage.name);
                 // Style is extracted from this Image:
                 json["prompt"]["41"]["inputs"]["image"] = diffReq.secondUploadImage.name;
 
                 json["prompt"]["21"]["inputs"]["denoise"] = diffReq.denoise;
                 json["prompt"]["21"]["inputs"]["seed"] = randomSeed;
                 json["prompt"]["21"]["inputs"]["steps"] = 10;
-                GameManager.getInstance().gadget.MechanismText.text = "COMBINE";
                 break;
 
             case diffusionWorkflows.AIAssistant:
@@ -312,11 +294,9 @@ public class ComfySceneLibrary : MonoBehaviour
                 break;
 
             default:
-                GameManager.getInstance().gadget.MechanismText.text = "NOWORKFLOW";
                 Debug.LogError("Please choose a useable Diffusion workflow");
                 return null;
         }
-        GameManager.getInstance().gadget.MechanismText.text = "CHECKER4";
         return json.ToString();
     }
 
@@ -332,14 +312,12 @@ public class ComfySceneLibrary : MonoBehaviour
         string promptText = DiffusionJSONFactory(diffReq);
         while (uploadingImage)
         {
-            GameManager.getInstance().gadget.MechanismText.text = "UPLOADINGIMAGE";
             yield return null;
             //yield return new WaitForSeconds(0.02f);
         }
 
         if (promptText == null || promptText.Length <= 0)
         {
-            GameManager.getInstance().gadget.MechanismText.text = "BADPROMPTTEXT";
             yield return null;
         }
         else
@@ -446,10 +424,7 @@ public class ComfySceneLibrary : MonoBehaviour
             switch (webRequest.result)
             {
                 case UnityWebRequest.Result.ConnectionError:
-                    GameManager.getInstance().gadget.MechanismText.text = "CONERR";
-                    break;
                 case UnityWebRequest.Result.DataProcessingError:
-                    GameManager.getInstance().gadget.MechanismText.text = "DATERR";
                     Debug.LogError(": Error: " + webRequest.error);
                     break;
                 case UnityWebRequest.Result.ProtocolError:
@@ -558,10 +533,9 @@ public class ComfySceneLibrary : MonoBehaviour
             }
         }
     }
-
     
 
-    private IEnumerator UploadImage(Texture2D curTexture)
+    private IEnumerator UploadImage(Texture2D curTexture, bool uploadImageStatusAtEnd = false)
     {        
         string url = "https://" + serverAddress + "/upload/image";
 
@@ -578,47 +552,15 @@ public class ComfySceneLibrary : MonoBehaviour
 
             if (unityWebRequest.result != UnityWebRequest.Result.Success)
             {
-                GameManager.getInstance().gadget.MechanismText.text = GameManager.getInstance().gadget.MechanismText.text + "UPPPERR";
                 Debug.Log(unityWebRequest.error);
             }
             else
             {
-                uploadingImage = false;
-                GameManager.getInstance().gadget.MechanismText.text = "GOODUPLOAD";
+                uploadingImage = uploadImageStatusAtEnd;
                 //Debug.Log("Image Upload succesful");
             }
         }
 
-        uploadingImage = false;
+        uploadingImage = uploadImageStatusAtEnd;
     }
-
-    /*private IEnumerator UploadImage(string imgName)
-    {
-        string url = "http://" + serverAddress + "/upload/image";
-
-        WWWForm form = new WWWForm();
-
-        form.AddBinaryData("image", System.IO.File.ReadAllBytes(ImageFolderName + '/' + imgName), imgName, "image/png");
-        form.AddField("type", "input");
-        form.AddField("overwrite", "false");
-
-        uploadingImage = true;
-
-        using (var unityWebRequest = UnityWebRequest.Post(url, form))
-        {
-            yield return unityWebRequest.SendWebRequest();
-
-            if (unityWebRequest.result != UnityWebRequest.Result.Success)
-            {
-                Debug.Log(unityWebRequest.error);
-            }
-            else
-            {
-                uploadingImage = false;
-                //Debug.Log("Image Upload succesful");
-            }
-        }
-
-        uploadingImage = false;
-    }*/
 }

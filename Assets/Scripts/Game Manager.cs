@@ -9,7 +9,8 @@ public class GameManager : MonoBehaviour
     // Non scene-local objects
     private static GameManager instance = null;
 
-    public string IP = "127.0.0.1:8188";
+    [NonSerialized]
+    public string IP = "jonathanmiroshnik-networks-24172136.thinkdiffusion.xyz"; // 127.0.0.1:8188
 
     [NonSerialized]
     public List<GameObject> diffusionList;
@@ -43,23 +44,6 @@ public class GameManager : MonoBehaviour
         instance = this;
     }
 
-    // Start is called before the first frame update
-    /*void Start()
-    {
-        if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName(firstScene))
-        {
-            loadFirstScene = false;
-            return;
-        }
-        if (!loadFirstScene)
-        {
-            return;
-        }
-        SceneManager.LoadScene(firstScene, LoadSceneMode.Additive);
-        loadFirstScene = false;
-        Debug.Log("Got to part of script after load scene!");
-    }*/
-
     public static GameManager getInstance()
     {
         if (instance == null)
@@ -76,8 +60,6 @@ public class GameManager : MonoBehaviour
     public void LoadNextScene(string thisScene, string nextScene)
     {
         StartCoroutine(LoadScene(thisScene, nextScene));
-        /*SceneManager.UnloadSceneAsync(thisScene);
-        SceneManager.LoadScene(nextScene, LoadSceneMode.Additive);*/
     }
 
     public void InitiateSceneParameters(ComfyOrganizer _comfyOrganizer, ComfySceneLibrary _comfySceneLibrary, 

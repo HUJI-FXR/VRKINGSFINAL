@@ -8,6 +8,9 @@ using static GeneralGameLibraries;
 using UnityEngine.InputSystem;
 
 
+// TODO make a unique ID for everything, downloaded images, uploaded images, request IDs etc
+// TODO make requests repeat themselves until completion with a max number of RETRIES
+
 
 public class CombineImagesGadgetMechanism : GadgetMechanism
 {
@@ -16,27 +19,7 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
     public int MAX_QUEUED_OBJECTS = 2;
 
     public DiffusionRequest diffusionRequest;
-
-    /*
-    diffusionRequest.positivePrompt = "Beautiful";
-    diffusionRequest.negativePrompt = "watermark";
-    diffusionRequest.numOfVariations = 5;
-    diffusionRequest.targets.Add(GameManager.getInstance().uiDiffusionTexture);
-    diffusionRequest.diffusionJsonType = diffusionWorkflows.combineImages;
-    diffusionRequest.diffusionModel = diffusionModels.ghostmix;*/
-    /*public CombineImagesGadgetMechanism()
-    {        
-        mechanismText = MECHANISM_PRETEXT + "Combine Two Images";
-        buttonText = "Combine";
-
-        diffusionRequest = new DiffusionRequest();
-        diffusionRequest.positivePrompt = "Beautiful";
-        diffusionRequest.negativePrompt = "watermark";
-        diffusionRequest.numOfVariations = 5;
-        diffusionRequest.targets.Add(GameManager.getInstance().uiDiffusionTexture);
-        diffusionRequest.diffusionJsonType = diffusionWorkflows.combineImages;
-        diffusionRequest.diffusionModel = diffusionModels.ghostmix;
-    }*/
+    // TODO set several diffusionRequests 
 
     public override void OnGameObjectHoverEntered(HoverEnterEventArgs args)
     {
