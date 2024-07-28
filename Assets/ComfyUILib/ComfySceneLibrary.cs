@@ -45,7 +45,7 @@ public enum diffusionModels
 
 public class ComfySceneLibrary : MonoBehaviour
 {
-    public string serverAddress;
+    public string serverAddress = "127.0.0.1:8188";
     public ComfyOrganizer comfyOrg;
 
     private string JSONFolderPath = "JSONMain";
@@ -69,7 +69,7 @@ public class ComfySceneLibrary : MonoBehaviour
 
     // TODO notice that this START must always come BEFORE(put the library before the organizer in the node properties)
     // TODO cont. the ComfyOrganizer or else some things will not be ready for an instant diffusion request
-    private void Start()
+    public void StartComfySceneLibrary()
     {
         serverAddress = GameManager.getInstance().IP;
 
@@ -135,12 +135,14 @@ public class ComfySceneLibrary : MonoBehaviour
     private string DiffusionJSONFactory(DiffusionRequest diffReq)
     {
         string guid = Guid.NewGuid().ToString();
+        
         string promptText = $@"
         {{
             ""id"": ""{guid}"",
             ""prompt"": {getWorkflowJSON(diffReq.diffusionJsonType)}
         }}";
-        JObject json = JObject.Parse(promptText);
+        // TODO fix json bug
+        JObject json = JObject.Parse(promptText); // promptText
 
         // TODO notice that curImageSize will need to change in a situation like outpainting
         string curDiffModel = "";

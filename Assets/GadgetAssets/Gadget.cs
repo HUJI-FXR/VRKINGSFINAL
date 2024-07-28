@@ -18,22 +18,18 @@ public enum GadgetSelection
 // TODO change name of class to GadgetScript or something
 public class Gadget : MonoBehaviour
 {
-    /*[NonSerialized]
-    public DiffusionRequest diffusionRequest;*/
-
     public TextMeshProUGUI MechanismText;
-    //public TextMeshProUGUI ButtonText;
+    public GameObject gadgetImagePanel;
+
+    public PlayGadgetSounds playGadgetSounds;
+    public AIGadgetAssistant aiGadgetAssistant;
 
     public ScreenRecorder screenRecorder = null;
     public Camera gadgetCamera;
-    public Camera xrCamera;    
-
-    public PlayGadgetSounds playGadgetSounds;
-
-    public GameObject gadgetImagePanel;
-
+    public Camera xrCamera;
 
     // Strategy Design Pattern
+    [NonSerialized]
     public List<GadgetMechanism> GadgetMechanisms;
     private int gadgetMechanismIndex = 0;
 
@@ -41,9 +37,6 @@ public class Gadget : MonoBehaviour
     [NonSerialized]
     public Queue<Texture2D> textureQueue;
 
-    private Gadget gadget;
-
-    public AIGadgetAssistant aiGadgetAssistant;
     private void Awake()
     {
         //GadgetMechanisms = new List<GadgetMechanism>();
@@ -72,19 +65,35 @@ public class Gadget : MonoBehaviour
     public void OnGameObjectHoverEntered(HoverEnterEventArgs args)
     {
         playGadgetSounds.PlaySound("HoverOverElements");
+        if (GadgetMechanisms.Count <= 0)
+        {
+            return;
+        }
         GadgetMechanisms[gadgetMechanismIndex].OnGameObjectHoverEntered(args);
     }
     public void OnGameObjectHoverExited(HoverExitEventArgs args)
     {
+        if (GadgetMechanisms.Count <= 0)
+        {
+            return;
+        }
         GadgetMechanisms[gadgetMechanismIndex].OnGameObjectHoverExited(args);
     }
     public void onGameObjectSelectEntered(SelectEnterEventArgs args)
     {
         playGadgetSounds.PlaySound("SelectElement");
+        if (GadgetMechanisms.Count <= 0)
+        {
+            return;
+        }
         GadgetMechanisms[gadgetMechanismIndex].onGameObjectSelectEntered(args);
     }
     public void onGameObjectSelectExited(SelectExitEventArgs args)
     {
+        if (GadgetMechanisms.Count <= 0)
+        {
+            return;
+        }
         GadgetMechanisms[gadgetMechanismIndex].onGameObjectSelectExited(args);
     }
     public void OnUIHoverEntered(UIHoverEventArgs args)
@@ -98,6 +107,10 @@ public class Gadget : MonoBehaviour
     }*/
     public void OnClick()
     {
+        if (GadgetMechanisms.Count <= 0)
+        {
+            return;
+        }
         GadgetMechanisms[gadgetMechanismIndex].OnClick();
     }
 
@@ -188,18 +201,30 @@ public class Gadget : MonoBehaviour
     // For managing the current Diffusion Mechanism
     public void ChangeToNextMechanic()
     {
+        if (GadgetMechanisms.Count <= 0)
+        {
+            return;
+        }
         gadgetMechanismIndex++;
         gadgetMechanismIndex %= GadgetMechanisms.Count;
         ChangeToMechanic(gadgetMechanismIndex);
     }
     public void ChangeToPreviousMechanic()
     {
+        if (GadgetMechanisms.Count <= 0)
+        {
+            return;
+        }
         gadgetMechanismIndex--;
         gadgetMechanismIndex %= GadgetMechanisms.Count;
         ChangeToMechanic(gadgetMechanismIndex);
     }
     public void ChangeToMechanic(int index)
     {
+        if (GadgetMechanisms.Count <= 0)
+        {
+            return;
+        }
         textureQueue.Clear();
         gadgetMechanismIndex = index;
         MechanismText.text = GadgetMechanisms[index].mechanismText;
@@ -250,6 +275,10 @@ public class Gadget : MonoBehaviour
     }
     public void TakeTextureInput(InputAction.CallbackContext context)
     {
+        if (GadgetMechanisms.Count <= 0)
+        {
+            return;
+        }
         if (context.performed)
         {
             GadgetMechanisms[gadgetMechanismIndex].TakeTextureInput(context);
@@ -258,6 +287,10 @@ public class Gadget : MonoBehaviour
     }
     public void PlaceTextureInput(InputAction.CallbackContext context)
     {
+        if (GadgetMechanisms.Count <= 0)
+        {
+            return;
+        }
         if (context.performed)
         {
             GadgetMechanisms[gadgetMechanismIndex].PlaceTextureInput(context);
@@ -266,6 +299,10 @@ public class Gadget : MonoBehaviour
     }
     public void ActivateGeneration(InputAction.CallbackContext context)
     {
+        if (GadgetMechanisms.Count <= 0)
+        {
+            return;
+        }
         if (context.performed)
         {
             GadgetMechanisms[gadgetMechanismIndex].ActivateGeneration(context);
@@ -274,6 +311,10 @@ public class Gadget : MonoBehaviour
     }
     public void TakeScreenshot(InputAction.CallbackContext context)
     {
+        if (GadgetMechanisms.Count <= 0)
+        {
+            return;
+        }
         if (context.performed)
         {
             GadgetMechanisms[gadgetMechanismIndex].TakeScreenshot(context);
@@ -282,6 +323,10 @@ public class Gadget : MonoBehaviour
     }
     public void GeneralActivation(DiffusionTextureChanger dtc)
     {
+        if (GadgetMechanisms.Count <= 0)
+        {
+            return;
+        }
         GadgetMechanisms[gadgetMechanismIndex].GeneralActivation(dtc);
         Debug.Log("Activating General Generation");
         return;

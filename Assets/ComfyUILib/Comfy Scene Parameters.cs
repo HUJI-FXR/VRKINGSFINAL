@@ -22,12 +22,7 @@ public class ComfySceneParameters : MonoBehaviour
 
     public bool LoadComfyParametrs = true;
 
-    private void Awake()
-    {
-        StartCoroutine(LoadGameManagerScene());
-    }
-
-    IEnumerator LoadGameManagerScene()
+    public IEnumerator LoadGameManagerScene()
     {
         if (SceneManager.sceneCount < 3 && !loadedGameManagerScene)
         {
@@ -49,6 +44,15 @@ public class ComfySceneParameters : MonoBehaviour
 
         if (!loadedGameManagerScene || LoadComfyParametrs)
         {
+            if (comfyOrganizer == null)
+            {
+                comfyOrganizer = gameObject.GetComponent<ComfyOrganizer>();
+            }
+            if (comfySceneLibrary == null)
+            {
+                comfySceneLibrary = gameObject.GetComponent<ComfySceneLibrary>();
+            }
+
             GameManager.getInstance().InitiateSceneParameters(comfyOrganizer, comfySceneLibrary,
             radiusDiffusionTexture, uiDiffusionTexture, diffusables, gadget, headAudioSource);
         }

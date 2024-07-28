@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     private static GameManager instance = null;
 
     [NonSerialized]
-    public string IP = "jonathanmiroshnik-networks-24172136.thinkdiffusion.xyz"; // 127.0.0.1:8188
+    public string IP = "127.0.0.1:8188"; // jonathanmiroshnik-networks-24172136.thinkdiffusion.xyz
 
     [NonSerialized]
     public List<GameObject> diffusionList;
@@ -131,7 +131,7 @@ public class GameManager : MonoBehaviour
 
     // Use a courotine so u dont freeze the ui
     public IEnumerator LoadScene(string thisScene, string nextScene)
-    {
+    {        
         // Only when the scene is loaded we can unload the orginally active screen
         var asyncUnload = SceneManager.UnloadSceneAsync(thisScene);
 
@@ -177,6 +177,8 @@ public class GameManager : MonoBehaviour
 
         bool d = SceneManager.SetActiveScene(SceneManager.GetSceneByName(nextScene));
         Debug.Log(SceneManager.GetActiveScene().name);
+
+        comfySceneLibrary.StartComfySceneLibrary();
     }
 
 

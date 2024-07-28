@@ -182,9 +182,10 @@ public class ComfyOrganizer : MonoBehaviour
     /// <param name="diffusionRequest">Diffusion Request that is sent to the ComfySceneLibrary</param>
     public void SendDiffusionRequest(DiffusionRequest diffusionRequest)
     {
+        //Debug.Log("wiwi " + diffusionRequest.diffusionJsonType.ToString());
         // TODO choose who has the responsibility for defining the various parameters of a diffusion request, the GameObject? whoever?
         DiffusionRequest newDiffusionRequest = copyDiffusionRequest(diffusionRequest);
-
+        //Debug.Log("wiwi2 " + newDiffusionRequest.diffusionJsonType.ToString());
         newDiffusionRequest.requestNum = currentRequestNum;
         newDiffusionRequest.diffImgName = GetDiffusionImageName(newDiffusionRequest);
         DiffuseDictionary.Add(currentRequestNum, newDiffusionRequest);

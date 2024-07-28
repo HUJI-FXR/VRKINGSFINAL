@@ -1,0 +1,21 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ComfyXROriginConnector : MonoBehaviour
+{
+    public RadiusDiffusionTexture radiusDiffusionTexture;
+    public UIDiffusionTexture uiDiffusionTexture;
+    public AudioSource headAudioSource;
+
+    public Gadget gadget;
+    public List<GadgetMechanism> gadgetMechanisms;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        if (gadgetMechanisms != null) {
+            gadget.GadgetMechanisms = gadgetMechanisms;
+        }
+    }
+}
