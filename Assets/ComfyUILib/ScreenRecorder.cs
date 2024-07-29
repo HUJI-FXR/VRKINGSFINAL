@@ -76,6 +76,14 @@ public class ScreenRecorder : MonoBehaviour
 
     public Texture2D CaptureScreenshot(DiffusionRequest diffusionRequest)
     {
+        // cleanup if needed
+        if (optimizeForManyScreenshots == false)
+        {
+            Destroy(renderTexture);
+            renderTexture = null;
+            screenShot = null;
+        }
+
         // hide optional game object if set
         if (hideGameObject != null) hideGameObject.SetActive(false);
 
@@ -156,14 +164,6 @@ public class ScreenRecorder : MonoBehaviour
         // unhide optional game object if set
         if (hideGameObject != null) hideGameObject.SetActive(true);
 
-        // cleanup if needed
-        if (optimizeForManyScreenshots == false)
-        {
-            Destroy(renderTexture);
-            renderTexture = null;
-            screenShot = null;
-        }
-
         /*string mask = string.Format("screen_{0}x{1}*.{2}", rect.width, rect.height, format.ToString().ToLower());
         int counter = Directory.GetFiles(folder, mask, SearchOption.TopDirectoryOnly).Length;*/
 
@@ -172,6 +172,11 @@ public class ScreenRecorder : MonoBehaviour
         string cutFileName = filename.Substring(lastSlashIndex + 1);
         //diffReq.uploadImageName = cutFileName;
         screenShot.name = cutFileName;        
+
+        if (screenShot == null)
+        {
+            Debug.Log("oqoqoq");
+        }
 
         return screenShot;
     }

@@ -125,6 +125,8 @@ public class GameManager : MonoBehaviour
         {
             diffusionList.Add(diffusionTransform.gameObject);
         }
+
+        comfySceneLibrary.StartComfySceneLibrary();
     }
 
 
@@ -177,8 +179,6 @@ public class GameManager : MonoBehaviour
 
         bool d = SceneManager.SetActiveScene(SceneManager.GetSceneByName(nextScene));
         Debug.Log(SceneManager.GetActiveScene().name);
-
-        comfySceneLibrary.StartComfySceneLibrary();
     }
 
 

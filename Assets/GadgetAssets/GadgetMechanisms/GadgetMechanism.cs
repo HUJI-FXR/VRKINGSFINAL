@@ -9,34 +9,64 @@ using UnityEngine.InputSystem;
 
 
 // TODO need to remove button from several of these, choose exactly
+
+/// <summary>
+/// Represents a Gadget(Diffusion images making device) Mechanism, using a Strategy design pattern.
+/// Other Gadget Mechanisms inherit from this one.
+/// </summary>
 public class GadgetMechanism : MonoBehaviour
 {
     public static string MECHANISM_PRETEXT = "Mechanism:\n";
-    
+
+    /// <summary>
+    /// Text that will be shown that represents and indicates the mechanism.
+    /// </summary>
     public string mechanismText;
+
+    // TODO delete this one??
     public string buttonText;
+
     public GadgetMechanism()
     {
         this.mechanismText = "";
         this.buttonText = "";
     }
 
-    public virtual void OnGameObjectHoverEntered(HoverEnterEventArgs args)
+    public virtual void OnGameObjectLeftHoverEntered(HoverEnterEventArgs args)
     {
         return;
     }
-    public virtual void OnGameObjectHoverExited(HoverExitEventArgs args)
+    public virtual void OnGameObjectLeftHoverExited(HoverExitEventArgs args)
     {
         return;
     }
-    public virtual void onGameObjectSelectEntered(SelectEnterEventArgs args)
+
+    public virtual void OnGameObjectRightHoverEntered(HoverEnterEventArgs args)
     {
         return;
     }
-    public virtual void onGameObjectSelectExited(SelectExitEventArgs args)
+    public virtual void OnGameObjectRightHoverExited(HoverExitEventArgs args)
     {
         return;
     }
+
+    public virtual void onGameObjectLeftSelectEntered(SelectEnterEventArgs args)
+    {
+        return;
+    }
+    public virtual void onGameObjectLeftSelectExited(SelectExitEventArgs args)
+    {
+        return;
+    }
+    public virtual void onGameObjectRightSelectEntered(SelectEnterEventArgs args)
+    {
+        return;
+    }
+    public virtual void onGameObjectRightSelectExited(SelectExitEventArgs args)
+    {
+        return;
+    }
+
     /*public virtual void OnUIHoverEntered(UIHoverEventArgs args)
     {
         return;

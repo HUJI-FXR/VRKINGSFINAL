@@ -8,6 +8,7 @@ using static GeneralGameLibraries;
 using UnityEngine.InputSystem;
 
 
+// TODO write comments explaining everything for mechanisms
 public class CameraGadgetMechanism : GadgetMechanism
 {
     // todo break into two parts, one the input the other the output through the comfy lib
@@ -16,13 +17,17 @@ public class CameraGadgetMechanism : GadgetMechanism
 
     private GameObject selectedStyleObject = null;
 
+
+    private void Start()
+    {
+        mechanismText = "Base Camera";
+    }
+
     // -----------------------------------------  PLAYER INPUTS ----------------------------------------- //
     /*public override void TakeTextureInput(InputAction.CallbackContext context)
     {
         return;
     }*/
-
-
 
     public override void PlaceTextureInput(InputAction.CallbackContext context)
     {
@@ -51,7 +56,7 @@ public class CameraGadgetMechanism : GadgetMechanism
         }
     }
 
-    public override void OnGameObjectHoverEntered(HoverEnterEventArgs args)
+    public override void OnGameObjectRightHoverEntered(HoverEnterEventArgs args)
     {
         if (!UseStyleTransfer)
         {
@@ -75,7 +80,7 @@ public class CameraGadgetMechanism : GadgetMechanism
         GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.preSelected);
     }
 
-    public override void OnGameObjectHoverExited(HoverExitEventArgs args)
+    public override void OnGameObjectRightHoverExited(HoverExitEventArgs args)
     {
         if (!UseStyleTransfer)
         {
@@ -98,7 +103,7 @@ public class CameraGadgetMechanism : GadgetMechanism
         GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.unSelected);
     }
 
-    public override void onGameObjectSelectEntered(SelectEnterEventArgs args)
+    public override void onGameObjectRightSelectEntered(SelectEnterEventArgs args)
     {
         if (!UseStyleTransfer)
         {
@@ -124,9 +129,14 @@ public class CameraGadgetMechanism : GadgetMechanism
         GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.selected);
         selectedStyleObject = args.interactableObject.transform.gameObject;
         Texture2D curTexture = TextureManipulationLibrary.toTexture2D(args.interactableObject.transform.gameObject.GetComponent<Renderer>().material.mainTexture);
+
+        string uniqueName = GameManager.getInstance().comfyOrganizer.UniqueImageName();
+        curTexture.name = uniqueName + "_2.png";
+
         diffusionRequest.secondUploadImage = curTexture;
     }
 
+    // The function is called with the right hand.
     public override void ActivateGeneration(InputAction.CallbackContext context)
     {
         if (diffusionRequest.uploadImage == null || diffusionRequest.secondUploadImage == null)
@@ -135,10 +145,17 @@ public class CameraGadgetMechanism : GadgetMechanism
             return;
         }
 
+        if (selectedStyleObject != null)
+        {
+            GameManager.getInstance().gadget.ChangeOutline(selectedStyleObject, GadgetSelection.unSelected);
+            selectedStyleObject = null;
+        }
+
         GameManager.getInstance().comfyOrganizer.SendDiffusionRequest(diffusionRequest);
         return;
     }
 
+    // The function is called with the left hand, and the camera is also positioned on the left hand.
     public override void TakeScreenshot(InputAction.CallbackContext context)
     {
         // TODO add DiffusableObject data entry for diffusionrequest when taking a picture of stuff

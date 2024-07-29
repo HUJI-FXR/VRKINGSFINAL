@@ -9,6 +9,7 @@ using System.Threading;
 using Newtonsoft.Json.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.Rendering.UI;
 
 [System.Serializable]
 public class ResponseData
@@ -46,6 +47,7 @@ public enum diffusionModels
 public class ComfySceneLibrary : MonoBehaviour
 {
     public string serverAddress = "127.0.0.1:8188";
+    private const string HTTPPrefix = "http://";  // https://  ------ When using online API service
     public ComfyOrganizer comfyOrg;
 
     private string JSONFolderPath = "JSONMain";
@@ -135,13 +137,12 @@ public class ComfySceneLibrary : MonoBehaviour
     private string DiffusionJSONFactory(DiffusionRequest diffReq)
     {
         string guid = Guid.NewGuid().ToString();
-        
         string promptText = $@"
         {{
             ""id"": ""{guid}"",
             ""prompt"": {getWorkflowJSON(diffReq.diffusionJsonType)}
         }}";
-        // TODO fix json bug
+
         JObject json = JObject.Parse(promptText); // promptText
 
         // TODO notice that curImageSize will need to change in a situation like outpainting
@@ -231,7 +232,7 @@ public class ComfySceneLibrary : MonoBehaviour
                 break;
 
             case diffusionWorkflows.combineImages:
-                if (diffReq.uploadImage == null || (diffReq.secondUploadImage == null))
+                if (diffReq.uploadImage == null || diffReq.secondUploadImage == null)
                 {
                     Debug.LogError("Make sure a valid uploadImage or secondUploadImage is part of the Diffusion Request before upload it");
                     return null;
@@ -309,7 +310,7 @@ public class ComfySceneLibrary : MonoBehaviour
             yield return null;
         }
 
-        string url = "https://" + serverAddress + "/prompt";
+        string url = HTTPPrefix + serverAddress + "/prompt";
 
         string promptText = DiffusionJSONFactory(diffReq);
         while (uploadingImage)
@@ -417,7 +418,7 @@ public class ComfySceneLibrary : MonoBehaviour
     /// <param name="diffReq">given DiffusionRequest to download the images created for it</param>
     IEnumerator RequestFileNameRoutine(DiffusionRequest diffReq)
     {
-        string url = "https://" + serverAddress + "/history/" + diffReq.prompt_id;
+        string url = HTTPPrefix + serverAddress + "/history/" + diffReq.prompt_id;
         using (UnityWebRequest webRequest = UnityWebRequest.Get(url))
         {
             // Request and wait for the desired page.
@@ -457,7 +458,7 @@ public class ComfySceneLibrary : MonoBehaviour
                     // Downloading each image of the prompt
                     for (int i = 0; i < filenames.Length; i++)
                     {
-                        string imageURL = "https://" + serverAddress + "/view?filename=" + filenames[i];
+                        string imageURL = HTTPPrefix + serverAddress + "/view?filename=" + filenames[i];
                         StartCoroutine(DownloadImage(imageURL, diffReq));
                     }
                     break;
@@ -539,7 +540,7 @@ public class ComfySceneLibrary : MonoBehaviour
 
     private IEnumerator UploadImage(Texture2D curTexture, bool uploadImageStatusAtEnd = false)
     {        
-        string url = "https://" + serverAddress + "/upload/image";
+        string url = HTTPPrefix + serverAddress + "/upload/image";
 
         WWWForm form = new WWWForm();
 

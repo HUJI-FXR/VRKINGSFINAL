@@ -50,61 +50,92 @@ public class Gadget : MonoBehaviour
             Debug.LogError("Add all requirements of Gadget");
             return;
         }
-        /*gadget = GetComponent<Gadget>();
-        GadgetMechanism cameraGadgetMechanism = new CameraGadgetMechanism(gadget, screenRecorder, gadgetCamera, xrCamera);
-        GadgetMechanism combineImagesGadgetMechanism = new CombineImagesGadgetMechanism(gadget);
-        GadgetMechanism throwingGadgetMechanism = new ThrowingGadgetMechanism(gadget);
-        GadgetMechanisms.Add(cameraGadgetMechanism);
-        GadgetMechanisms.Add(combineImagesGadgetMechanism);
-        GadgetMechanisms.Add(throwingGadgetMechanism);*/
-
-        //ChangeToMechanic(0);
     }
 
-    // Passing along the various 
-    public void OnGameObjectHoverEntered(HoverEnterEventArgs args)
+    // Passing along the various Controller interactions onto the Mechanisms.
+    // We differentiate the input between the two hands, sometimes we want different roles for each hand.
+    // We send a unique function for the same type of action for each hand, the Mechanism will internally change
+    //                                                                                    How it deals with each hand's actions.
+    public void OnGameObjectLeftHoverEntered(HoverEnterEventArgs args)
     {
         playGadgetSounds.PlaySound("HoverOverElements");
         if (GadgetMechanisms.Count <= 0)
         {
             return;
         }
-        GadgetMechanisms[gadgetMechanismIndex].OnGameObjectHoverEntered(args);
+        GadgetMechanisms[gadgetMechanismIndex].OnGameObjectLeftHoverEntered(args);
     }
-    public void OnGameObjectHoverExited(HoverExitEventArgs args)
+    public void OnGameObjectLeftHoverExited(HoverExitEventArgs args)
     {
         if (GadgetMechanisms.Count <= 0)
         {
             return;
         }
-        GadgetMechanisms[gadgetMechanismIndex].OnGameObjectHoverExited(args);
+        GadgetMechanisms[gadgetMechanismIndex].OnGameObjectLeftHoverExited(args);
     }
-    public void onGameObjectSelectEntered(SelectEnterEventArgs args)
+
+    public void OnGameObjectRightHoverEntered(HoverEnterEventArgs args)
+    {
+        playGadgetSounds.PlaySound("HoverOverElements");
+        if (GadgetMechanisms.Count <= 0)
+        {
+            return;
+        }
+        GadgetMechanisms[gadgetMechanismIndex].OnGameObjectRightHoverEntered(args);
+    }
+    public void OnGameObjectRightHoverExited(HoverExitEventArgs args)
+    {
+        if (GadgetMechanisms.Count <= 0)
+        {
+            return;
+        }
+        GadgetMechanisms[gadgetMechanismIndex].OnGameObjectRightHoverExited(args);
+    }
+
+    public void onGameObjectLeftSelectEntered(SelectEnterEventArgs args)
     {
         playGadgetSounds.PlaySound("SelectElement");
         if (GadgetMechanisms.Count <= 0)
         {
             return;
         }
-        GadgetMechanisms[gadgetMechanismIndex].onGameObjectSelectEntered(args);
+        GadgetMechanisms[gadgetMechanismIndex].onGameObjectLeftSelectEntered(args);
     }
-    public void onGameObjectSelectExited(SelectExitEventArgs args)
+    public void onGameObjectLeftSelectExited(SelectExitEventArgs args)
     {
         if (GadgetMechanisms.Count <= 0)
         {
             return;
         }
-        GadgetMechanisms[gadgetMechanismIndex].onGameObjectSelectExited(args);
+        GadgetMechanisms[gadgetMechanismIndex].onGameObjectLeftSelectExited(args);
     }
+    public void onGameObjectRightSelectEntered(SelectEnterEventArgs args)
+    {
+        playGadgetSounds.PlaySound("SelectElement");
+        if (GadgetMechanisms.Count <= 0)
+        {
+            return;
+        }
+        GadgetMechanisms[gadgetMechanismIndex].onGameObjectRightSelectEntered(args);
+    }
+    public void onGameObjectRightSelectExited(SelectExitEventArgs args)
+    {
+        if (GadgetMechanisms.Count <= 0)
+        {
+            return;
+        }
+        GadgetMechanisms[gadgetMechanismIndex].onGameObjectRightSelectExited(args);
+    }
+
+
+
+
     public void OnUIHoverEntered(UIHoverEventArgs args)
     {
         playGadgetSounds.PlaySound("HoverOverElements");
         //GadgetMechanisms[gadgetMechanismIndex].OnUIHoverEntered(args);
     }
-    /*public void OnUIHoverExited(UIHoverEventArgs args)
-    {
-        GadgetMechanisms[gadgetMechanismIndex].OnUIHoverExited(args);
-    }*/
+
     public void OnClick()
     {
         if (GadgetMechanisms.Count <= 0)

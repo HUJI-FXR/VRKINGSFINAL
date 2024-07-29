@@ -15371,7 +15371,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1046431418}
-  - component: {fileID: 1046431417}
   m_Layer: 0
   m_Name: GadgetMechanismsHolder
   m_TagString: Untagged
@@ -15379,33 +15378,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1046431417
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1046431416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 394f70d6693067640a73d91737fa3081, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mechanismText: 
-  buttonText: 
-  MAX_QUEUED_OBJECTS: 2
-  diffusionRequest:
-    targets:
-    - {fileID: 0}
-    addToTextureTotal: 0
-    numOfVariations: 1
-    positivePrompt: Beautiful, detailed
-    negativePrompt: watermark, bad quality
-    uploadImage: {fileID: 0}
-    secondUploadImage: {fileID: 0}
-    denoise: 0.7
-    diffusionModel: 4
-    diffusionJsonType: 4
 --- !u!4 &1046431418
 Transform:
   m_ObjectHideFlags: 0
@@ -15460,7 +15432,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1053983993}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -30.112967, y: 2.5020099, z: -40.401302}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -26102,6 +26074,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+--- !u!1 &1793777812 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5795090120012688178, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+  m_PrefabInstance: {fileID: 8001637510276974063}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1795123094
 GameObject:
   m_ObjectHideFlags: 0
@@ -29593,6 +29570,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+--- !u!114 &1979441171 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4159365404132763867, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+  m_PrefabInstance: {fileID: 8001637510276974063}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b442ddabdfc60444b59fa8ae70113f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1988538343
 GameObject:
   m_ObjectHideFlags: 0
@@ -33048,12 +33036,66 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6941804284128476148, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
   m_PrefabInstance: {fileID: 8001637510276974063}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1793777812}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c7b1ad9061d2c0049b3cbbd6e6f512ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2545934797310713546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793777812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 394f70d6693067640a73d91737fa3081, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mechanismText: Combine Images
+  buttonText: 
+  MAX_QUEUED_OBJECTS: 2
+  diffusionRequest:
+    targets:
+    - {fileID: 1979441171}
+    addToTextureTotal: 0
+    numOfVariations: 1
+    positivePrompt: Beautiful, detailed
+    negativePrompt: watermark, bad quality
+    uploadImage: {fileID: 0}
+    secondUploadImage: {fileID: 0}
+    denoise: 0.7
+    diffusionModel: 4
+    diffusionJsonType: 4
+--- !u!114 &2545934797310713547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793777812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f731b13ca2e704e4b98939a72d19572a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mechanismText: 
+  buttonText: 
+  diffusionRequest:
+    targets:
+    - {fileID: 1979441171}
+    addToTextureTotal: 0
+    numOfVariations: 3
+    positivePrompt: 
+    negativePrompt: 
+    uploadImage: {fileID: 0}
+    secondUploadImage: {fileID: 0}
+    denoise: 1
+    diffusionModel: 4
+    diffusionJsonType: 4
+  UseStyleTransfer: 1
 --- !u!1001 &4609053867631895012
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33173,24 +33215,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6941804284128476148, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
       propertyPath: gadgetMechanisms.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6941804284128476148, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
       propertyPath: gadgetMechanisms.Array.data[0]
       value: 
-      objectReference: {fileID: 1046431417}
+      objectReference: {fileID: 2545934797310713546}
+    - target: {fileID: 6941804284128476148, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+      propertyPath: gadgetMechanisms.Array.data[1]
+      value: 
+      objectReference: {fileID: 2545934797310713547}
+    - target: {fileID: 7720086305723655827, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+      propertyPath: optimizeForManyScreenshots
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5795090120012688178, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2545934797310713546}
+    - targetCorrespondingSourceObject: {fileID: 5795090120012688178, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2545934797310713547}
   m_SourcePrefab: {fileID: 100100000, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1053983995}
   - {fileID: 1046431418}
   - {fileID: 8001637510276974063}
-  - {fileID: 1053983995}
   - {fileID: 4609053867631895012}
   - {fileID: 2070549933}
   - {fileID: 817647769}

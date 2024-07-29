@@ -17,7 +17,7 @@ public class OutpaintGadgetMechanism : GadgetMechanism
 
     // TODO currently the mechanism will work by CLICKING on a DiffusableObject, getting the keywords from it and then picking a relevant OutpaintingTile to start the generation on.outpaintin
 
-    public override void OnGameObjectHoverEntered(HoverEnterEventArgs args)
+    public override void OnGameObjectLeftHoverEntered(HoverEnterEventArgs args)
     {
         if (args == null || args.interactableObject == null)
         {
@@ -32,7 +32,7 @@ public class OutpaintGadgetMechanism : GadgetMechanism
         GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.preSelected);
     }
 
-    public override void OnGameObjectHoverExited(HoverExitEventArgs args)
+    public override void OnGameObjectLeftHoverExited(HoverExitEventArgs args)
     {
         if (args == null || args.interactableObject == null)
         {
@@ -46,7 +46,7 @@ public class OutpaintGadgetMechanism : GadgetMechanism
         GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.unSelected);
     }
 
-    public override void onGameObjectSelectEntered(SelectEnterEventArgs args)
+    public override void onGameObjectLeftSelectEntered(SelectEnterEventArgs args)
     {
         if (args == null || args.interactableObject == null)
         {

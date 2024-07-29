@@ -21,7 +21,38 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
     public DiffusionRequest diffusionRequest;
     // TODO set several diffusionRequests 
 
-    public override void OnGameObjectHoverEntered(HoverEnterEventArgs args)
+    private void Start()
+    {
+        mechanismText = "Combine Images";
+    }
+
+    // In this Mechanism, the selection of images happens equally with both hands.
+    public override void OnGameObjectLeftHoverEntered(HoverEnterEventArgs args)
+    {
+        OnGameObjectHoverEntered(args);
+    }
+    public override void OnGameObjectLeftHoverExited(HoverExitEventArgs args)
+    {
+        OnGameObjectHoverExited(args);
+    }
+    public override void OnGameObjectRightHoverEntered(HoverEnterEventArgs args)
+    {
+        OnGameObjectHoverEntered(args);
+    }
+    public override void OnGameObjectRightHoverExited(HoverExitEventArgs args)
+    {
+        OnGameObjectHoverExited(args);
+    }
+    public override void onGameObjectLeftSelectEntered(SelectEnterEventArgs args)
+    {
+        onGameObjectSelectEntered(args);
+    }
+    public override void onGameObjectRightSelectEntered(SelectEnterEventArgs args)
+    {
+        onGameObjectSelectEntered(args);
+    }
+
+    public void OnGameObjectHoverEntered(HoverEnterEventArgs args)
     {
         if (args == null || args.interactableObject == null)
         {
@@ -40,7 +71,7 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
         GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.preSelected);
     }
 
-    public override void OnGameObjectHoverExited(HoverExitEventArgs args)
+    public void OnGameObjectHoverExited(HoverExitEventArgs args)
     {
         if (args == null || args.interactableObject == null)
         {
@@ -60,7 +91,7 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
         GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.unSelected);
     }
 
-    public override void onGameObjectSelectEntered(SelectEnterEventArgs args)
+    public void onGameObjectSelectEntered(SelectEnterEventArgs args)
     {
         if (args == null || args.interactableObject == null)
         {
@@ -86,11 +117,6 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
         // Creates selection outline
         GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.selected);
     }    
-
-    /*public override void OnClick()
-    {
-        GetTexturesFromSelected();
-    }*/
 
     public void GetTexturesFromSelected()
     {
@@ -126,7 +152,7 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
         Texture2D curTexture = GameManager.getInstance().gadget.getGeneratedTexture();
         if (curTexture == null)
         {
-            Debug.LogError("Tried to add a textures from the Gadget camera without textures in the Queue");
+            Debug.Log("Tried to add a textures from the Gadget camera without textures in the Queue");
             return;
         }
 

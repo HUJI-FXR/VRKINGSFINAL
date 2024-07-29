@@ -266,6 +266,10 @@ public class ComfyOrganizer : MonoBehaviour
             return;
         }
 
+        if (diffusionRequest.targets.Count == 0)
+        {
+            return;
+        }
         foreach(DiffusionTextureChanger changer in diffusionRequest.targets)
         {
             changer.AddTexture(diffusionRequest);
