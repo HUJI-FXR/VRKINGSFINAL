@@ -15,8 +15,8 @@ public class CameraGadgetMechanism : GadgetMechanism
     public DiffusionRequest diffusionRequest;
     public bool UseStyleTransfer = true;
 
+    // Object that was selected for the texture to be used as the style base for the Camera's image.
     private GameObject selectedStyleObject = null;
-
 
     private void Start()
     {
@@ -24,11 +24,11 @@ public class CameraGadgetMechanism : GadgetMechanism
     }
 
     // -----------------------------------------  PLAYER INPUTS ----------------------------------------- //
-    /*public override void TakeTextureInput(InputAction.CallbackContext context)
-    {
-        return;
-    }*/
 
+    /// <summary>
+    /// Places a texture on the object that was selected with the controllers' Trigger button. 
+    /// The Object is selected with a ray that comes from the left hand.
+    /// </summary>
     public override void PlaceTextureInput(InputAction.CallbackContext context)
     {
         Texture2D curTexture = GameManager.getInstance().gadget.getGeneratedTexture();
@@ -56,6 +56,8 @@ public class CameraGadgetMechanism : GadgetMechanism
         }
     }
 
+    
+    // The Mechanism chooses the style of the Camera texture diffusion with the right hand
     public override void OnGameObjectRightHoverEntered(HoverEnterEventArgs args)
     {
         if (!UseStyleTransfer)
@@ -79,7 +81,6 @@ public class CameraGadgetMechanism : GadgetMechanism
         // Creates pre-selection outline
         GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.preSelected);
     }
-
     public override void OnGameObjectRightHoverExited(HoverExitEventArgs args)
     {
         if (!UseStyleTransfer)
@@ -102,7 +103,6 @@ public class CameraGadgetMechanism : GadgetMechanism
 
         GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.unSelected);
     }
-
     public override void onGameObjectRightSelectEntered(SelectEnterEventArgs args)
     {
         if (!UseStyleTransfer)
@@ -137,6 +137,10 @@ public class CameraGadgetMechanism : GadgetMechanism
     }
 
     // The function is called with the right hand.
+    /// <summary>
+    /// Activates the Diffusion image generation using the right hand controller. 
+    /// For the generation to begin, a camera shot and a style texture need to be picked to be sent to the generator.
+    /// </summary>
     public override void ActivateGeneration(InputAction.CallbackContext context)
     {
         if (diffusionRequest.uploadImage == null || diffusionRequest.secondUploadImage == null)
@@ -156,6 +160,9 @@ public class CameraGadgetMechanism : GadgetMechanism
     }
 
     // The function is called with the left hand, and the camera is also positioned on the left hand.
+    /// <summary>
+    /// Shoots an image with the Gadget left-hand camera.
+    /// </summary>
     public override void TakeScreenshot(InputAction.CallbackContext context)
     {
         // TODO add DiffusableObject data entry for diffusionrequest when taking a picture of stuff

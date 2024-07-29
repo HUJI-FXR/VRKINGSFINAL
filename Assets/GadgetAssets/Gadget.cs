@@ -18,19 +18,44 @@ public enum GadgetSelection
 // TODO change name of class to GadgetScript or something
 public class Gadget : MonoBehaviour
 {
+    /// <summary>
+    /// TextMeshPro object that shows the text that represents the current Mechanism.
+    /// </summary>
     public TextMeshProUGUI MechanismText;
     public GameObject gadgetImagePanel;
 
+    /// <summary>
+    /// Plays the sounds associated with the Gadget's actions.
+    /// </summary>
     public PlayGadgetSounds playGadgetSounds;
+
+    /// <summary>
+    /// Manages the AI Gadget Assistant.
+    /// </summary>
     public AIGadgetAssistant aiGadgetAssistant;
 
+    /// <summary>
+    /// Used for shooting images with virtual cameras.
+    /// </summary>
     public ScreenRecorder screenRecorder = null;
+
+    /// <summary>
+    /// Left hand Gadget Camera for taking pictures.
+    /// </summary>
     public Camera gadgetCamera;
+
+    /// <summary>
+    /// XR Origin Main Camera.
+    /// </summary>
     public Camera xrCamera;
 
     // Strategy Design Pattern
+    /// <summary>
+    /// Gadget Mechanisms list to be cycled through.
+    /// </summary>
     [NonSerialized]
     public List<GadgetMechanism> GadgetMechanisms;
+    // Represents the current used Gadget Mechanism.
     private int gadgetMechanismIndex = 0;
 
     // TODO make this Queue<List<Texture2D>>
