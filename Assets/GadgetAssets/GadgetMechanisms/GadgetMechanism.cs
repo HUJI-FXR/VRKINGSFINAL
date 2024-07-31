@@ -6,6 +6,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.UI;
 using static GeneralGameLibraries;
 using UnityEngine.InputSystem;
+using System;
 
 /// <summary>
 /// Represents a Gadget(Diffusion images making device) Mechanism, using a Strategy design pattern.
@@ -18,6 +19,7 @@ public class GadgetMechanism : MonoBehaviour
     /// <summary>
     /// Text that will be shown that represents and indicates the mechanism.
     /// </summary>
+    [NonSerialized]
     public string mechanismText;
 
     public GadgetMechanism()

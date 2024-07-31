@@ -60,6 +60,7 @@ public class ComfySceneLibrary : MonoBehaviour
 
     private bool uploadingImage = false;
 
+
     private bool readyForDiffusion = false;
 
     private void Awake()
@@ -73,11 +74,15 @@ public class ComfySceneLibrary : MonoBehaviour
     // TODO cont. the ComfyOrganizer or else some things will not be ready for an instant diffusion request
     public void StartComfySceneLibrary()
     {
-        serverAddress = GameManager.getInstance().IP;
+        if (!(serverAddress != "" || serverAddress != "127.0.0.1:8188"))
+        {
+            serverAddress = GameManager.getInstance().IP;
+        }
 
         if (serverAddress == "")
         {
-            Debug.LogError("Error! given IP in game manager is empty!");
+            // TODO maybe gamemanager has this responsibility?
+            Debug.LogError("The given IP in game manager is empty!");
         }
         else
         {

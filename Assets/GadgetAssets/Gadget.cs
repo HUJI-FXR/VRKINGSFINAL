@@ -210,20 +210,11 @@ public class Gadget : MonoBehaviour
     }
     public void ChangeOutline(GameObject obj, GadgetSelection gadgetSelection)
     {
-        if (obj == null)
-        {
-            return;
-        }
+        if (obj == null)    return;
 
         // Only GameObjects with valid textures
-        if (obj.GetComponent<Renderer>() == null )
-        {
-            return;
-        }
-        if (obj.GetComponent<Renderer>().material.mainTexture == null)
-        {
-            return;
-        }
+        if (obj.GetComponent<Renderer>() == null ) return;
+        if (obj.GetComponent<Renderer>().material.mainTexture == null && obj.GetComponent<DiffusableObject>() == null)  return;
 
         Color curColor = Color.black;
         float outlineWidth = 0;
@@ -257,30 +248,24 @@ public class Gadget : MonoBehaviour
     // For managing the current Diffusion Mechanism
     public void ChangeToNextMechanic()
     {
-        if (GadgetMechanisms.Count <= 0)
-        {
-            return;
-        }
+        if (GadgetMechanisms.Count <= 0) return;
+
         gadgetMechanismIndex++;
         gadgetMechanismIndex %= GadgetMechanisms.Count;
         ChangeToMechanic(gadgetMechanismIndex);
     }
     public void ChangeToPreviousMechanic()
     {
-        if (GadgetMechanisms.Count <= 0)
-        {
-            return;
-        }
+        if (GadgetMechanisms.Count <= 0) return;
+
         gadgetMechanismIndex--;
         gadgetMechanismIndex %= GadgetMechanisms.Count;
         ChangeToMechanic(gadgetMechanismIndex);
     }
     public void ChangeToMechanic(int index)
     {
-        if (GadgetMechanisms.Count <= 0)
-        {
-            return;
-        }
+        if (GadgetMechanisms.Count <= 0) return;
+
         textureQueue.Clear();
         gadgetMechanismIndex = index;
         MechanismText.text = GadgetMechanisms[index].mechanismText;
@@ -289,10 +274,7 @@ public class Gadget : MonoBehaviour
 
     public Texture2D getGeneratedTexture()
     {        
-        if (textureQueue.Count == 0)
-        {
-            return null;
-        }
+        if (textureQueue.Count == 0) return null;
 
         Texture2D current = textureQueue.Dequeue();
         if (textureQueue.Count == 0)
