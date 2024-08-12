@@ -38,46 +38,15 @@ public class ScreenRecorder : MonoBehaviour
     private Rect rect;
     private RenderTexture renderTexture;
     private Texture2D screenShot;
-    private int counter = 0; // image #
 
-    // create a unique filename using a one-up variable
-    private string uniqueFilename(int width, int height)
-    {
-        // if folder not specified by now use a good default
-        if (folder == null || folder.Length == 0)
-        {
-            folder = Application.dataPath;
-            if (Application.isEditor)
-            {
-                // put screenshots in folder above asset path so unity doesn't index the files
-                var stringPath = folder + "/..";
-                folder = Path.GetFullPath(stringPath);
-            }
-            folder += "/screenshots";
 
-            // make sure directoroy exists
-            System.IO.Directory.CreateDirectory(folder);
-
-            // count number of files of specified format in folder
-            string mask = string.Format("screen_{0}x{1}*.{2}", width, height, format.ToString().ToLower());
-            counter = Directory.GetFiles(folder, mask, SearchOption.TopDirectoryOnly).Length;
-        }
-
-        // use width, height, and counter for unique file name
-        var filename = string.Format("{0}/screen_{1}x{2}_{3}.{4}", folder, width, height, counter, format.ToString().ToLower());
-
-        // up counter for next call
-        ++counter;
-
-        // return unique filename
-        return filename;
-
-    }
-
-    public Texture2D CaptureScreenshot(DiffusionRequest diffusionRequest)
+    /// <summary>
+    /// Captures an image with the Camera it is attached to, saves it to folder and returns it.
+    /// </summary>
+    public Texture2D CaptureScreenshot()
     {
         // cleanup if needed
-        if (optimizeForManyScreenshots == false)
+        if (!optimizeForManyScreenshots)
         {
             Destroy(renderTexture);
             renderTexture = null;
@@ -111,11 +80,6 @@ public class ScreenRecorder : MonoBehaviour
         RenderTexture.active = null;        
 
         // get our unique filename
-        //string filename = uniqueFilename((int)rect.width, (int)rect.height);
-        if (GameManager.getInstance() == null)
-        {
-            Debug.Log("adad");
-        }
         string filename = folder + '/' +  GameManager.getInstance().comfyOrganizer.UniqueImageName() + '.' + format.ToString().ToLower();
 
         // pull in our file header/data bytes for the specified image format (has to be done from main thread)
@@ -142,8 +106,8 @@ public class ScreenRecorder : MonoBehaviour
             fileData = screenShot.GetRawTextureData();
         }
 
-        // create new thread to save the image to file (only operation that can be done in background)
-        /*new System.Threading.Thread(() =>
+        // Create new thread to save the image to file (only operation that can be done in background)
+        new System.Threading.Thread(() =>
         {
             // create file and write optional header with image bytes
             var f = System.IO.File.Create(filename);
@@ -151,32 +115,16 @@ public class ScreenRecorder : MonoBehaviour
             f.Write(fileData, 0, fileData.Length);
             f.Close();
             Debug.Log(string.Format("Wrote screenshot {0} of size {1}", filename, fileData.Length));
-        }).Start();*/
-
-        // Changed it to not happen in the background, so there will be a file for the Comfy library to use
-        // create file and write optional header with image bytes
-        var f = System.IO.File.Create(filename);
-        if (fileHeader != null) f.Write(fileHeader, 0, fileHeader.Length);
-        f.Write(fileData, 0, fileData.Length);
-        f.Close();
-        //Debug.Log(string.Format("Wrote screenshot {0} of size {1}", filename, fileData.Length));
+        }).Start();
 
         // unhide optional game object if set
         if (hideGameObject != null) hideGameObject.SetActive(true);
 
-        /*string mask = string.Format("screen_{0}x{1}*.{2}", rect.width, rect.height, format.ToString().ToLower());
-        int counter = Directory.GetFiles(folder, mask, SearchOption.TopDirectoryOnly).Length;*/
-
         int lastSlashIndex = filename.LastIndexOf('/');
         // Extract the file name by taking the substring after the last slash
         string cutFileName = filename.Substring(lastSlashIndex + 1);
-        //diffReq.uploadImageName = cutFileName;
-        screenShot.name = cutFileName;        
 
-        if (screenShot == null)
-        {
-            Debug.Log("oqoqoq");
-        }
+        screenShot.name = cutFileName;        
 
         return screenShot;
     }

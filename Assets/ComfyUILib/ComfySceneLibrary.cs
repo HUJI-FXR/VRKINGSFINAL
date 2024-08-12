@@ -47,7 +47,7 @@ public enum diffusionModels
 public class ComfySceneLibrary : MonoBehaviour
 {
     public string serverAddress = "127.0.0.1:8188";
-    private const string HTTPPrefix = "http://";  // https://  ------ When using online API service
+    private const string HTTPPrefix = "https://";  // https://  ------ When using online API service
     public ComfyOrganizer comfyOrg;
 
     private string JSONFolderPath = "JSONMain";
@@ -59,7 +59,6 @@ public class ComfySceneLibrary : MonoBehaviour
     private Dictionary<diffusionWorkflows, string> diffusionJsons;
 
     private bool uploadingImage = false;
-
 
     private bool readyForDiffusion = false;
 
@@ -77,6 +76,10 @@ public class ComfySceneLibrary : MonoBehaviour
         if (!(serverAddress != "" || serverAddress != "127.0.0.1:8188"))
         {
             serverAddress = GameManager.getInstance().IP;
+        }
+        else
+        {
+            GameManager.getInstance().IP = serverAddress;
         }
 
         if (serverAddress == "")
@@ -139,6 +142,10 @@ public class ComfySceneLibrary : MonoBehaviour
         return ret_str;
     }
 
+    /// <summary>
+    /// Returns an appropriate JSON text in accordance to the given DiffusionRequest. Factory design pattern.
+    /// </summary>
+    /// <param name="diffReq">given DiffusionRequest to create the JSON text from.</param>
     private string DiffusionJSONFactory(DiffusionRequest diffReq)
     {
         string guid = Guid.NewGuid().ToString();
@@ -308,6 +315,10 @@ public class ComfySceneLibrary : MonoBehaviour
         return json.ToString();
     }
 
+    /// <summary>
+    /// Sends a Diffusion Image generation request to the server.
+    /// </summary>
+    /// <param name="diffReq">DiffusionRequest to send to the server.</param>
     public IEnumerator QueuePromptCoroutine(DiffusionRequest diffReq)
     {
         if (!readyForDiffusion)
@@ -365,7 +376,7 @@ public class ComfySceneLibrary : MonoBehaviour
 
     private async void StartListening()
     {
-        var buffer = new byte[1024 * 4];
+        var buffer = new byte[1024 * 1024 * 16];
         WebSocketReceiveResult result = null;
 
         while (ws.State == WebSocketState.Open)
@@ -541,8 +552,12 @@ public class ComfySceneLibrary : MonoBehaviour
             }
         }
     }
-    
 
+    /// <summary>
+    /// Uploads a given Texture to the server.
+    /// </summary>
+    /// <param name="curTexture">Texture to upload to the server.</param>
+    /// <param name="uploadImageStatusAtEnd">Sets the final status of the uploadingImage parameter at the end of the function's work.</param>
     private IEnumerator UploadImage(Texture2D curTexture, bool uploadImageStatusAtEnd = false)
     {        
         string url = HTTPPrefix + serverAddress + "/upload/image";

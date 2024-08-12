@@ -166,7 +166,7 @@ public class CameraGadgetMechanism : GadgetMechanism
     public override void TakeScreenshot(InputAction.CallbackContext context)
     {
         // TODO add DiffusableObject data entry for diffusionrequest when taking a picture of stuff
-        Texture2D screenShot = GameManager.getInstance().gadget.screenRecorder.CaptureScreenshot(diffusionRequest);
+        Texture2D screenShot = GameManager.getInstance().gadget.screenRecorder.CaptureScreenshot();
         GameManager.getInstance().gadget.gadgetCamera.enabled = false;
         GameManager.getInstance().gadget.xrCamera.enabled = true;
 

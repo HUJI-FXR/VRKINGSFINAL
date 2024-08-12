@@ -17,7 +17,7 @@ public class UIDiffusionTexture : DiffusionTextureChanger
     private float changeRate = 3.0f;
     private float curChangeDelta = 0f;
 
-    private static float IMAGES_REDUCE_SIZE_FACTOR = 512;
+    //private static float IMAGES_REDUCE_SIZE_FACTOR = 512;
 
     public PlayGadgetSounds playGadgetSounds;
 

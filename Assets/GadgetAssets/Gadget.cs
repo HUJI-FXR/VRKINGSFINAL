@@ -152,9 +152,6 @@ public class Gadget : MonoBehaviour
         GadgetMechanisms[gadgetMechanismIndex].onGameObjectRightSelectExited(args);
     }
 
-
-
-
     public void OnUIHoverEntered(UIHoverEventArgs args)
     {
         playGadgetSounds.PlaySound("HoverOverElements");
