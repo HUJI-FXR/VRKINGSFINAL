@@ -7,14 +7,22 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using Newtonsoft.Json.Linq;
+using Unity.Android.Types;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.Rendering.HighDefinition;
 using UnityEngine.Rendering.UI;
+using UnityEngine.Windows;
 
 [System.Serializable]
 public class ResponseData
 {
     public string prompt_id;
+}
+
+public class FileExistsChecker
+{
+    public bool fileExists = false;
 }
 
 public enum diffusionWorkflows
@@ -41,7 +49,8 @@ public enum diffusionModels
     mini,
     turbo,
     turblxl,
-    ghostmix
+    ghostmix,
+    thinkdiffusiontest
 }
 
 public class ComfySceneLibrary : MonoBehaviour
@@ -115,7 +124,24 @@ public class ComfySceneLibrary : MonoBehaviour
 
         readyForDiffusion = true;
 
-        StartServerConnection();
+        StartCoroutine(DownloadCycle());
+
+        //StartServerConnection();
+    }
+
+
+    public IEnumerator DownloadCycle()
+    {
+        while(true)
+        {
+            yield return new WaitForSeconds(0.01f);
+
+            List<DiffusionRequest> allDiffReqs = comfyOrg.GetUnfinishedRequestPrompts();
+            foreach (DiffusionRequest diffReq in allDiffReqs)
+            {
+                RequestFileName(diffReq);
+            }
+        }
     }
 
     /// <summary>
@@ -183,6 +209,10 @@ public class ComfySceneLibrary : MonoBehaviour
                 curDiffModel = "ghostmix_v20Bakedvae.safetensors";
                 curImageSize = new Vector2Int(512, 512);
                 break;
+            case diffusionModels.thinkdiffusiontest:
+                curDiffModel = "01_ThinkDiffusionXL.safetensors";
+                curImageSize = new Vector2Int(512, 512);
+                break;
         }
         if (curDiffModel == null || curDiffModel == "" || curImageSize == Vector2Int.zero)
         {
@@ -204,6 +234,15 @@ public class ComfySceneLibrary : MonoBehaviour
 
                 json["prompt"]["5"]["inputs"]["width"] = curImageSize.x;
                 json["prompt"]["5"]["inputs"]["height"] = curImageSize.y;
+                break;
+
+            case diffusionWorkflows.img2img:
+                StartCoroutine(UploadImage(diffReq.uploadImage));
+
+                json["prompt"]["10"]["inputs"]["image"] = diffReq.uploadImage.name;
+                json["prompt"]["3"]["inputs"]["denoise"] = diffReq.denoise;
+                json["prompt"]["3"]["inputs"]["seed"] = randomSeed;
+                json["prompt"]["3"]["inputs"]["steps"] = 10;
                 break;
 
             case diffusionWorkflows.img2imgLCM:
@@ -228,11 +267,12 @@ public class ComfySceneLibrary : MonoBehaviour
                 json["prompt"]["4"]["inputs"]["ckpt_name"] = curDiffModel;
                 
                 StartCoroutine(UploadImage(diffReq.uploadImage));
+
                 json["prompt"]["11"]["inputs"]["image"] = diffReq.uploadImage.name;
                 break;
 
             case diffusionWorkflows.txt2img:
-                json["prompt"]["3"]["inputs"]["seed"] = randomSeed;
+                /*json["prompt"]["3"]["inputs"]["seed"] = randomSeed;
                 json["prompt"]["6"]["inputs"]["text"] = diffReq.positivePrompt;
                 json["prompt"]["7"]["inputs"]["text"] = diffReq.negativePrompt;
                 json["prompt"]["5"]["inputs"]["batch_size"] = diffReq.numOfVariations;
@@ -240,7 +280,7 @@ public class ComfySceneLibrary : MonoBehaviour
                 json["prompt"]["4"]["inputs"]["ckpt_name"] = curDiffModel;
 
                 json["prompt"]["5"]["inputs"]["width"] = curImageSize.x;
-                json["prompt"]["5"]["inputs"]["height"] = curImageSize.y;
+                json["prompt"]["5"]["inputs"]["height"] = curImageSize.y;*/
                 break;
 
             case diffusionWorkflows.combineImages:
@@ -257,12 +297,12 @@ public class ComfySceneLibrary : MonoBehaviour
                 json["prompt"]["50"]["inputs"]["amount"] = diffReq.numOfVariations;
                 json["prompt"]["51"]["inputs"]["amount"] = diffReq.numOfVariations;
 
-                StartCoroutine(UploadImage(diffReq.uploadImage, true));
+                StartCoroutine(UploadImage(diffReq.uploadImage, true));                
                 StartCoroutine(UploadImage(diffReq.secondUploadImage));
+
                 // Input Image:
                 json["prompt"]["12"]["inputs"]["image"] = diffReq.uploadImage.name;
-                Debug.Log(diffReq.uploadImage.name);
-                Debug.Log(diffReq.secondUploadImage.name);
+
                 // Style is extracted from this Image:
                 json["prompt"]["41"]["inputs"]["image"] = diffReq.secondUploadImage.name;
 
@@ -304,6 +344,7 @@ public class ComfySceneLibrary : MonoBehaviour
                 json["prompt"]["4"]["inputs"]["ckpt_name"] = curDiffModel;
 
                 StartCoroutine(UploadImage(diffReq.uploadImage));
+
                 json["prompt"]["11"]["inputs"]["image"] = diffReq.uploadImage.name;
                 // REMOVE THIS FOR TODO ------------------------
                 break;
@@ -368,16 +409,16 @@ public class ComfySceneLibrary : MonoBehaviour
     }
 
 
-    // Used to save up on compute when not using the image generation
+    /*// Used to save up on compute when not using the image generation
     private IEnumerator SmallWait()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(5f);
     }
 
     private async void StartListening()
     {
-        var buffer = new byte[1024 * 1024 * 16];
-        WebSocketReceiveResult result = null;
+        //var buffer = new byte[1024 * 1024 * 32];
+        //WebSocketReceiveResult result = null;
 
         while (ws.State == WebSocketState.Open)
         {
@@ -407,13 +448,14 @@ public class ComfySceneLibrary : MonoBehaviour
 
             // Goes over each prompt that needs completing and checks whether it has completed,
             // if it did, it downloads the images and labels the promptID as true(as in, finished).
+
             List<DiffusionRequest> allDiffReqs = comfyOrg.GetUnfinishedRequestPrompts();
             foreach (DiffusionRequest diffReq in allDiffReqs)
             {
                 RequestFileName(diffReq);
             }
         }
-    }
+    }*/
 
     void OnDestroy()
     {
@@ -422,6 +464,55 @@ public class ComfySceneLibrary : MonoBehaviour
             ws.CloseAsync(WebSocketCloseStatus.NormalClosure, string.Empty, CancellationToken.None);
         }
     }
+
+
+    public IEnumerator CheckIfFileExists(string imageName, FileExistsChecker fileChecker, bool uploadImageStatusAtEnd)
+    {
+        string url = HTTPPrefix + serverAddress + "/view?filename=" + imageName + "&type=input";
+
+        using (var unityWebRequest = UnityWebRequest.Head(url))
+        {
+            yield return unityWebRequest.SendWebRequest();
+
+            if (unityWebRequest.result != UnityWebRequest.Result.Success)
+            {
+                uploadingImage = false;
+                Debug.Log("File " + imageName + " still not in Input");
+            }
+            else
+            {
+                uploadingImage = uploadImageStatusAtEnd;
+                fileChecker.fileExists = true;
+                Debug.Log("File " + imageName + " in Input");
+            }
+        }
+
+        /*using (UnityWebRequest request = UnityWebRequest.Head(url))
+        {
+            // Send the request and wait for a response
+            yield return request.SendWebRequest();
+
+            // Check for network errors
+            if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
+            {
+                Debug.LogError($"Error: {request.error}");
+            }
+            else
+            {
+                // Check the response code
+                if (request.responseCode == 200)
+                {
+                    Debug.Log("File exists.");
+                    fileChecker.fileExists = true;
+                }
+                else
+                {
+                    Debug.Log("File does not exist or is inaccessible.");
+                }
+            }
+        }*/
+    }
+
 
     public void RequestFileName(DiffusionRequest diffReq)
     {
@@ -436,7 +527,7 @@ public class ComfySceneLibrary : MonoBehaviour
     {
         string url = HTTPPrefix + serverAddress + "/history/" + diffReq.prompt_id;
         using (UnityWebRequest webRequest = UnityWebRequest.Get(url))
-        {
+        {            
             // Request and wait for the desired page.
             yield return webRequest.SendWebRequest();
 
@@ -460,10 +551,10 @@ public class ComfySceneLibrary : MonoBehaviour
                     // Jonathan - another change, download all the images FIRST, then display, to test display speed
                     string[] filenames = ExtractFilename(webRequest.downloadHandler.text);
 
-                    //Debug.Log("All File Names:");
-                    //foreach (string item in filenames) { 
-                    //Debug.Log(item);
-                    //}
+                    /*Debug.Log("All File Names:");
+                    foreach (string item in filenames) { 
+                        Debug.Log(item);
+                    }*/
 
                     // If there are no filenames, the prompt has not yet finished generating
                     if (filenames.Length <= 0)
@@ -579,11 +670,16 @@ public class ComfySceneLibrary : MonoBehaviour
             }
             else
             {
-                uploadingImage = uploadImageStatusAtEnd;
-                //Debug.Log("Image Upload succesful");
+                /*Debug.Log("Image Upload succesful");
+                Debug.Log(unityWebRequest.uploadHandler.progress);*/
+
+                FileExistsChecker fileCheck = new FileExistsChecker();
+                while (!fileCheck.fileExists)
+                {
+                    yield return new WaitForSeconds(0.2f);
+                    StartCoroutine(CheckIfFileExists(curTexture.name, fileCheck, uploadImageStatusAtEnd));
+                }
             }
         }
-
-        uploadingImage = uploadImageStatusAtEnd;
     }
 }

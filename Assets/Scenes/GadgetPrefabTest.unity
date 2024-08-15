@@ -200,7 +200,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f7f0e86d61d68534fb0d4e534ce73c5a, type: 2}
+  - {fileID: 2100000, guid: ecb90591b0249f141bc60957ae7925fa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1028,7 +1028,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5cb7b619a38123a498d07ca87b28d0b8, type: 2}
+  - {fileID: 2100000, guid: 5bbf5527f85b5d449ac5306416aeed76, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1182,6 +1182,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 505080063357859650, guid: 6cf941391e6bdbc4abdbed9a86feb39a, type: 3}
+      propertyPath: serverAddress
+      value: jonathanmiroshnik-multishot-15135337.thinkdiffusion.xyz
+      objectReference: {fileID: 0}
     - target: {fileID: 3320564364425000189, guid: 6cf941391e6bdbc4abdbed9a86feb39a, type: 3}
       propertyPath: m_Name
       value: Universal ComfyUI Object
@@ -1421,7 +1425,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 289a879dd9b0e5846bfb974ad183624f, type: 2}
+  - {fileID: 2100000, guid: 67e3e3d2f39323b42b0bc396ab78ae55, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1729,12 +1733,12 @@ MonoBehaviour:
     targets:
     - {fileID: 1772330520}
     addToTextureTotal: 0
-    numOfVariations: 1
+    numOfVariations: 3
     positivePrompt: 
     negativePrompt: 
     uploadImage: {fileID: 0}
     secondUploadImage: {fileID: 0}
-    denoise: 1
+    denoise: 0.8
     diffusionModel: 4
     diffusionJsonType: 4
 --- !u!114 &1772330520 stripped
@@ -1770,8 +1774,8 @@ MonoBehaviour:
     uploadImage: {fileID: 0}
     secondUploadImage: {fileID: 0}
     denoise: 1
-    diffusionModel: 0
-    diffusionJsonType: 1
+    diffusionModel: 4
+    diffusionJsonType: 0
 --- !u!1001 &2046811205
 PrefabInstance:
   m_ObjectHideFlags: 0
