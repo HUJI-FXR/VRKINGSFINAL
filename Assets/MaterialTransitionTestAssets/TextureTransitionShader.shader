@@ -56,7 +56,7 @@ Shader "Unlit/TextureTransitionShader"
 
                 // Adjust noise influence with intensity and smoothness
                 float adjustedNoise = (noise - 0.5) * _NoiseIntensity + 0.5;
-                float maskedTransition = smoothstep(0.0, 1.0, _Transition + (adjustedNoise - 0.5) * _Smoothness);
+                float maskedTransition = smoothstep(0.0, 1.0, (_Transition * 2) + (adjustedNoise - 0.5) * _Smoothness);
 
                 return lerp(col1, col2, maskedTransition);
             }

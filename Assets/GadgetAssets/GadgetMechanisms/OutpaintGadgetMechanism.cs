@@ -81,21 +81,21 @@ public class OutpaintGadgetMechanism : GadgetMechanism
             {
                 curTileGO = outpaintingScreen.tiles[OPT.tilePosition.x, OPT.tilePosition.y + 1];
                 curTexture = TextureManipulationLibrary.toTexture2D(curTileGO.GetComponent<Renderer>().material.mainTexture);
-                outpaintingScreen.UpdateTiles(new Vector2Int(OPT.tilePosition.x, OPT.tilePosition.y + 1));
+                //outpaintingScreen.UpdateTiles(new Vector2Int(OPT.tilePosition.x, OPT.tilePosition.y + 1));
             }
             else if (OPT.tilePosition.x > 0 && 
                 outpaintingScreen.tiles[OPT.tilePosition.x-1, OPT.tilePosition.y].GetComponent<OutpaintingTile>().painted == true)
             {
                 curTileGO = outpaintingScreen.tiles[OPT.tilePosition.x-1, OPT.tilePosition.y];
                 curTexture = TextureManipulationLibrary.toTexture2D(curTileGO.GetComponent<Renderer>().material.mainTexture);
-                outpaintingScreen.UpdateTiles(new Vector2Int(OPT.tilePosition.x-1, OPT.tilePosition.y));
+                //outpaintingScreen.UpdateTiles(new Vector2Int(OPT.tilePosition.x-1, OPT.tilePosition.y));
             }
             else if(OPT.tilePosition.x < outpaintingScreen.tileMatrixSize.x-1 && 
                 outpaintingScreen.tiles[OPT.tilePosition.x+1, OPT.tilePosition.y].GetComponent<OutpaintingTile>().painted == true)
             {
                 curTileGO = outpaintingScreen.tiles[OPT.tilePosition.x+1, OPT.tilePosition.y];
                 curTexture = TextureManipulationLibrary.toTexture2D(curTileGO.GetComponent<Renderer>().material.mainTexture);
-                outpaintingScreen.UpdateTiles(new Vector2Int(OPT.tilePosition.x+1, OPT.tilePosition.y));
+                //outpaintingScreen.UpdateTiles(new Vector2Int(OPT.tilePosition.x+1, OPT.tilePosition.y));
             }
             else
             {
@@ -117,6 +117,52 @@ public class OutpaintGadgetMechanism : GadgetMechanism
             currentKeywords = diffObj.keyword;
         }                        
     }
+
+    /*public GameObject GetTileInScreen(GameObject curGameObject)
+    {
+        GameObject curTileGO = null;
+
+        DiffusableObject diffObj = curGameObject.GetComponent<DiffusableObject>();
+        OutpaintingTile OPT = curGameObject.GetComponent<OutpaintingTile>();
+        RegularDiffusionTexture RDT = curGameObject.GetComponent<RegularDiffusionTexture>();
+        
+        if (diffObj == null)
+        {
+            if (OPT == null)
+            {
+                return curTileGO;
+            }
+            // Object that is interacted with is an OutpaintingTile
+            if (!(OPT.paintable && !OPT.painted) || RDT == null)
+            {
+                return curTileGO;
+            }
+
+            Texture2D curTexture;
+
+            // Finding a texture to be the original to be outpainted from.            
+            if (OPT.tilePosition.y < outpaintingScreen.tileMatrixSize.y - 1 &&
+                outpaintingScreen.tiles[OPT.tilePosition.x, OPT.tilePosition.y + 1].GetComponent<OutpaintingTile>().painted == true)
+            {
+                curTileGO = outpaintingScreen.tiles[OPT.tilePosition.x, OPT.tilePosition.y + 1];
+                outpaintingScreen.UpdateTiles(new Vector2Int(OPT.tilePosition.x, OPT.tilePosition.y + 1));
+            }
+            else if (OPT.tilePosition.x > 0 &&
+                outpaintingScreen.tiles[OPT.tilePosition.x - 1, OPT.tilePosition.y].GetComponent<OutpaintingTile>().painted == true)
+            {
+                curTileGO = outpaintingScreen.tiles[OPT.tilePosition.x - 1, OPT.tilePosition.y];
+                outpaintingScreen.UpdateTiles(new Vector2Int(OPT.tilePosition.x - 1, OPT.tilePosition.y));
+            }
+            else if (OPT.tilePosition.x < outpaintingScreen.tileMatrixSize.x - 1 &&
+                outpaintingScreen.tiles[OPT.tilePosition.x + 1, OPT.tilePosition.y].GetComponent<OutpaintingTile>().painted == true)
+            {
+                curTileGO = outpaintingScreen.tiles[OPT.tilePosition.x + 1, OPT.tilePosition.y];
+                outpaintingScreen.UpdateTiles(new Vector2Int(OPT.tilePosition.x + 1, OPT.tilePosition.y));
+            }
+        }
+
+        return curTileGO;
+    }*/
 
     public override void GeneralActivation(DiffusionTextureChanger dtc)
     {

@@ -56,7 +56,7 @@ public enum diffusionModels
 public class ComfySceneLibrary : MonoBehaviour
 {
     public string serverAddress = "127.0.0.1:8188";
-    private const string HTTPPrefix = "https://";  // https://  ------ When using online API service
+    private const string HTTPPrefix = "http://";  // https://  ------ When using online API service
     public ComfyOrganizer comfyOrg;
 
     private string JSONFolderPath = "JSONMain";
@@ -147,11 +147,11 @@ public class ComfySceneLibrary : MonoBehaviour
     /// <summary>
     /// Starts a connection to the server
     /// </summary>
-    private async void StartServerConnection()
+    /*private async void StartServerConnection()
     {
         await ws.ConnectAsync(new Uri($"ws://{serverAddress}/ws?clientId={clientId}"), CancellationToken.None);
         StartListening();
-    }
+    }*/
 
     /// <summary>
     /// Gets the JSON workflow corresponding to the Diffusion Workflow

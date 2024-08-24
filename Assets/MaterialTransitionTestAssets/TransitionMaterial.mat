@@ -45,7 +45,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _CurrentTex:
-        m_Texture: {fileID: 2800000, guid: de976f746a009554bacbd6b3c919b4cc, type: 3}
+        m_Texture: {fileID: 2800000, guid: 26f5d52439369e24fbd5c18874fd35f7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -77,11 +77,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NextTex:
-        m_Texture: {fileID: 2800000, guid: 3c83981dd2e9ce943868ec9b1047cab3, type: 3}
+        m_Texture: {fileID: 2800000, guid: 73e05a6ebf9107e43add337fb979b748, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NoiseTex:
-        m_Texture: {fileID: 2800000, guid: cf11dac0f4ad9244b9333d0483ba9610, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7454adb4899437947860e51c03bcdac1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 24.305662}
     - _OcclusionMap:
@@ -147,7 +147,7 @@ Material:
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
-    - _Transition: 0.4349232
+    - _Transition: 0.9585381
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
