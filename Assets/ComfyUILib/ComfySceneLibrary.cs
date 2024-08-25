@@ -1,18 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Net.WebSockets;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using Newtonsoft.Json.Linq;
-using Unity.Android.Types;
 using UnityEngine;
 using UnityEngine.Networking;
-using UnityEngine.Rendering.HighDefinition;
-using UnityEngine.Rendering.UI;
-using UnityEngine.Windows;
 
 [System.Serializable]
 public class ResponseData
@@ -53,10 +47,13 @@ public enum diffusionModels
     thinkdiffusiontest
 }
 
+
+// TODO remove LogErrors with something that doesn't force out the user in the game.
+
 public class ComfySceneLibrary : MonoBehaviour
 {
     public string serverAddress = "127.0.0.1:8188";
-    private const string HTTPPrefix = "http://";  // https://  ------ When using online API service
+    private const string HTTPPrefix = "https://";  // https://  ------ When using online API service
     public ComfyOrganizer comfyOrg;
 
     private string JSONFolderPath = "JSONMain";
@@ -82,24 +79,24 @@ public class ComfySceneLibrary : MonoBehaviour
     // TODO cont. the ComfyOrganizer or else some things will not be ready for an instant diffusion request
     public void StartComfySceneLibrary()
     {
-        if (!(serverAddress != "" || serverAddress != "127.0.0.1:8188"))
+        /*if (!(serverAddress != "" || serverAddress != "127.0.0.1:8188"))
         {
             serverAddress = GameManager.getInstance().IP;
         }
         else
         {
             GameManager.getInstance().IP = serverAddress;
-        }
+        }*/
 
-        if (serverAddress == "")
+        /*if (serverAddress == "")
         {
             // TODO maybe gamemanager has this responsibility?
             Debug.LogError("The given IP in game manager is empty!");
         }
         else
         {
-            Debug.Log("Passed the IP: " + serverAddress);
-        }
+            Debug.Log("Passed the IP: " + GameManager.getInstance().IP);
+        }*/
         
         // Get all enum adjacent JSON workflows
         TextAsset[] jsonFiles = Resources.LoadAll<TextAsset>(JSONFolderPath);
@@ -135,6 +132,12 @@ public class ComfySceneLibrary : MonoBehaviour
         while(true)
         {
             yield return new WaitForSeconds(0.01f);
+
+            while (uploadingImage)
+            {
+                //yield return null;
+                yield return new WaitForSeconds(0.02f);
+            }
 
             List<DiffusionRequest> allDiffReqs = comfyOrg.GetUnfinishedRequestPrompts();
             foreach (DiffusionRequest diffReq in allDiffReqs)
@@ -292,6 +295,7 @@ public class ComfySceneLibrary : MonoBehaviour
 
                 json["prompt"]["1"]["inputs"]["ckpt_name"] = curDiffModel;
                 json["prompt"]["2"]["inputs"]["text"] = diffReq.positivePrompt;
+                //Debug.Log("POSITIVE " + diffReq.positivePrompt);
                 json["prompt"]["3"]["inputs"]["text"] = diffReq.negativePrompt;
 
                 json["prompt"]["50"]["inputs"]["amount"] = diffReq.numOfVariations;
@@ -356,29 +360,43 @@ public class ComfySceneLibrary : MonoBehaviour
         return json.ToString();
     }
 
+
+    /*public void RedoQueuePrompt(DiffusionRequest diffReq)
+    {
+        int TOTAL_TRIAL_NUMBER = 5;
+        int cur = -2;
+
+        for (int i = 0; i < TOTAL_TRIAL_NUMBER; i++)
+        {
+            StartCoroutine(cur = QueuePromptCoroutine(diffReq));
+        }
+
+    }*/
+
     /// <summary>
     /// Sends a Diffusion Image generation request to the server.
     /// </summary>
     /// <param name="diffReq">DiffusionRequest to send to the server.</param>
-    public IEnumerator QueuePromptCoroutine(DiffusionRequest diffReq)
+    public IEnumerator QueuePromptCoroutine(DiffusionRequest diffReq, int trials)
     {
-        if (!readyForDiffusion)
+        if (!readyForDiffusion || trials <= 0)
         {
-            yield return null;
+            //yield return -1;
+            yield break;
         }
-
-        string url = HTTPPrefix + serverAddress + "/prompt";
+        //serverAddress
+        string url = HTTPPrefix + GameManager.getInstance().IP + "/prompt";
 
         string promptText = DiffusionJSONFactory(diffReq);
         while (uploadingImage)
         {
-            yield return null;
+            yield return -1;
             //yield return new WaitForSeconds(0.02f);
         }
 
         if (promptText == null || promptText.Length <= 0)
         {
-            yield return null;
+            yield return -1;
         }
         else
         {
@@ -392,8 +410,14 @@ public class ComfySceneLibrary : MonoBehaviour
 
             if (request.result != UnityWebRequest.Result.Success)
             {
-                GameManager.getInstance().gadget.MechanismText.text = "ERROR1";
+                GameManager.getInstance().gadget.MechanismText.text = "ERROR1 " + trials.ToString();
                 Debug.Log(request.error);
+
+                yield return new WaitForSeconds(0.2f);
+                trials--;
+                StartCoroutine(QueuePromptCoroutine(diffReq, trials));
+
+                yield return 0;
             }
             else
             {
@@ -402,9 +426,8 @@ public class ComfySceneLibrary : MonoBehaviour
                 // This is the only use of ResponseData, but it is needed for proper downloading of the prompt
                 ResponseData data = JsonUtility.FromJson<ResponseData>(request.downloadHandler.text);
                 diffReq.prompt_id = data.prompt_id;
+                yield return 1;
             }                
-
-            yield break;
         }
     }
 
@@ -468,7 +491,7 @@ public class ComfySceneLibrary : MonoBehaviour
 
     public IEnumerator CheckIfFileExists(string imageName, FileExistsChecker fileChecker, bool uploadImageStatusAtEnd)
     {
-        string url = HTTPPrefix + serverAddress + "/view?filename=" + imageName + "&type=input";
+        string url = HTTPPrefix + GameManager.getInstance().IP + "/view?filename=" + imageName + "&type=input";
 
         using (var unityWebRequest = UnityWebRequest.Head(url))
         {
@@ -525,7 +548,8 @@ public class ComfySceneLibrary : MonoBehaviour
     /// <param name="diffReq">given DiffusionRequest to download the images created for it</param>
     IEnumerator RequestFileNameRoutine(DiffusionRequest diffReq)
     {
-        string url = HTTPPrefix + serverAddress + "/history/" + diffReq.prompt_id;
+        string url = HTTPPrefix + GameManager.getInstance().IP + "/history/" + diffReq.prompt_id;
+
         using (UnityWebRequest webRequest = UnityWebRequest.Get(url))
         {            
             // Request and wait for the desired page.
@@ -565,7 +589,7 @@ public class ComfySceneLibrary : MonoBehaviour
                     // Downloading each image of the prompt
                     for (int i = 0; i < filenames.Length; i++)
                     {
-                        string imageURL = HTTPPrefix + serverAddress + "/view?filename=" + filenames[i];
+                        string imageURL = HTTPPrefix + GameManager.getInstance().IP + "/view?filename=" + filenames[i];
                         StartCoroutine(DownloadImage(imageURL, diffReq));
                     }
                     break;
@@ -620,12 +644,6 @@ public class ComfySceneLibrary : MonoBehaviour
     /// <param name="diffReq">DiffusionRequest to add downloaded image to</param>
     IEnumerator DownloadImage(string imageUrl, DiffusionRequest diffReq)
     {
-        while (uploadingImage)
-        {
-            yield return null;
-            //yield return new WaitForSeconds(0.02f);
-        }
-
         using (UnityWebRequest webRequest = UnityWebRequestTexture.GetTexture(imageUrl))
         {
             yield return webRequest.SendWebRequest();
@@ -651,7 +669,7 @@ public class ComfySceneLibrary : MonoBehaviour
     /// <param name="uploadImageStatusAtEnd">Sets the final status of the uploadingImage parameter at the end of the function's work.</param>
     private IEnumerator UploadImage(Texture2D curTexture, bool uploadImageStatusAtEnd = false)
     {        
-        string url = HTTPPrefix + serverAddress + "/upload/image";
+        string url = HTTPPrefix + GameManager.getInstance().IP + "/upload/image";
 
         WWWForm form = new WWWForm();
 

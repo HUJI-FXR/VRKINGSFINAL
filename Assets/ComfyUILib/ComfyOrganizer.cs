@@ -191,7 +191,9 @@ public class ComfyOrganizer : MonoBehaviour
         DiffuseDictionary.Add(currentRequestNum, newDiffusionRequest);
         currentRequestNum++;
 
-        StartCoroutine(comfyLib.QueuePromptCoroutine(newDiffusionRequest));
+
+        int PROMPT_TRIAL_NUM = 5;
+        StartCoroutine(comfyLib.QueuePromptCoroutine(newDiffusionRequest, PROMPT_TRIAL_NUM));
     }
 
     /// <summary>
@@ -240,6 +242,7 @@ public class ComfyOrganizer : MonoBehaviour
         }
         if (DiffuseDictionary[requestNum].finishedRequest)
         {
+            Debug.Log("wewew");
             return;
         }
 

@@ -14,6 +14,12 @@ public class PlayGadgetSounds : MonoBehaviour
 
     public void PlaySound(string sound)
     {
+        if (GameManager.getInstance().headAudioSource == null)
+        {
+            Debug.LogError("Add a Head Audio Source");
+            return;
+        }
+
         GameManager.getInstance().headAudioSource.PlayOneShot(AudioClipsLibrary.AudioClips[sound]);
     }
 }

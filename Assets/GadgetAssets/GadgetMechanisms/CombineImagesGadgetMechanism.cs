@@ -143,6 +143,16 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
         diffusionRequest.uploadImage = copyTexture;
         diffusionRequest.secondUploadImage = secondCopyTexture;
 
+        diffusionRequest.positivePrompt = "";
+        if (firstGameObject.TryGetComponent<DiffusableObject>(out DiffusableObject DiffObj))
+        {
+            diffusionRequest.positivePrompt += DiffObj.keyword;
+        }
+        if (secondGameObject.TryGetComponent<DiffusableObject>(out DiffusableObject DiffObjSec))
+        {
+            diffusionRequest.positivePrompt += DiffObjSec.keyword;
+        }
+
         GameManager.getInstance().comfyOrganizer.SendDiffusionRequest(diffusionRequest);
     }
 

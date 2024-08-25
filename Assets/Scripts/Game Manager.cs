@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     // Non scene-local objects
     private static GameManager instance = null;
 
-    [NonSerialized]
+    
     public string IP = "127.0.0.1:8188"; // jonathanmiroshnik-networks-24172136.thinkdiffusion.xyz
 
     [NonSerialized]
@@ -73,7 +73,9 @@ public class GameManager : MonoBehaviour
         diffusables = _diffusables;
         gadget = _gadget;
         headAudioSource = _headAudioSource;
-        
+
+        Debug.Log("DIFF " + (diffusables == null).ToString());
+
         if (diffusables == null)
         {
             Debug.LogError("Please add a parent GameObject for the diffusable GameObjects to the GameManager");
@@ -133,7 +135,7 @@ public class GameManager : MonoBehaviour
 
     // Use a courotine so u dont freeze the ui
     public IEnumerator LoadScene(string thisScene, string nextScene)
-    {        
+    {
         // Only when the scene is loaded we can unload the orginally active screen
         var asyncUnload = SceneManager.UnloadSceneAsync(thisScene);
 
@@ -175,10 +177,11 @@ public class GameManager : MonoBehaviour
         // This is because UNITY WILL NOT UNLOAD A scene if its the only one  currently active
         // If you look up, we allow scene activate only at 90% of the loading(for reasons im not sure but whatever), 
         // so now we have to wait for the rest of the 10% to load
-        yield return null;
+        // yield return null;
+        yield return new WaitForSeconds(1f);
 
         bool d = SceneManager.SetActiveScene(SceneManager.GetSceneByName(nextScene));
-        Debug.Log(SceneManager.GetActiveScene().name);
+        Debug.Log("New Scene: " + SceneManager.GetActiveScene().name);
     }
 
 

@@ -26,21 +26,17 @@ public class ComfySceneParameters : MonoBehaviour
     {
         if (SceneManager.sceneCount < 3 && !loadedGameManagerScene)
         {
-            loadedGameManagerScene = true;
-
             var asyncLoad = SceneManager.LoadSceneAsync(GameManagerScene, LoadSceneMode.Additive);            
             // Wait until the asynchronous scene fully loads
             while (!asyncLoad.isDone)
             {
-                yield return null;
+                yield return new WaitForSeconds(0.2f);
             }
             //asyncLoad.allowSceneActivation = false;
             Debug.Log("Got to part of script after load scene!");
         }
-        else
-        {
-            loadedGameManagerScene = true;
-        }
+
+        loadedGameManagerScene = true;
 
         if (!loadedGameManagerScene || LoadComfyParametrs)
         {
@@ -56,5 +52,7 @@ public class ComfySceneParameters : MonoBehaviour
             GameManager.getInstance().InitiateSceneParameters(comfyOrganizer, comfySceneLibrary,
             radiusDiffusionTexture, uiDiffusionTexture, diffusables, gadget, headAudioSource);
         }
+
+        yield return new WaitForSeconds(1f);
     }
 }

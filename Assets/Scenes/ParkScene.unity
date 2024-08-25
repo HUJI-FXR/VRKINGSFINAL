@@ -1077,7 +1077,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 505080063357859650, guid: 6cf941391e6bdbc4abdbed9a86feb39a, type: 3}
       propertyPath: serverAddress
-      value: jonathanmiroshnik-multishot-15135337.thinkdiffusion.xyz
+      value: 127.0.0.1:8188
       objectReference: {fileID: 0}
     - target: {fileID: 3320564364425000189, guid: 6cf941391e6bdbc4abdbed9a86feb39a, type: 3}
       propertyPath: m_Name

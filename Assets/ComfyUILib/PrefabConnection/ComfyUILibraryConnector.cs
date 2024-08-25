@@ -9,6 +9,8 @@ public class ComfyUILibraryConnector : MonoBehaviour
     public ComfyXROriginConnector comfyXROriginConnector;
     public GameObject diffusables;
 
+    public ComfySceneParameters curParameters;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,8 +20,14 @@ public class ComfyUILibraryConnector : MonoBehaviour
             return;
         }
 
-        GameObject comfyUILibrary = GameObject.Find(ComfyUILibraryName);
-        ComfySceneParameters curParameters = comfyUILibrary.AddComponent<ComfySceneParameters>();
+        /*GameObject comfyUILibrary = GameObject.Find(ComfyUILibraryName);
+        ComfySceneParameters curParameters = comfyUILibrary.GetComponent<ComfySceneParameters>();*/
+
+        if (curParameters == null)
+        {
+            Debug.LogError("Add a Comfy Scene Parameters component to the ComfyUILib Object");
+            return;
+        }
 
         curParameters.gadget = comfyXROriginConnector.gadget;
         curParameters.uiDiffusionTexture = comfyXROriginConnector.uiDiffusionTexture;

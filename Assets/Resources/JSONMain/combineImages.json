@@ -36,7 +36,7 @@
   },
   "6": {
     "inputs": {
-      "weight": 1,
+      "weight": 0.75,
       "weight_type": "strong style transfer",
       "combine_embeds": "concat",
       "start_at": 0,
@@ -102,7 +102,7 @@
   "21": {
     "inputs": {
       "seed": 285537576246822,
-      "steps": 8,
+      "steps": 20,
       "cfg": 2.1,
       "sampler_name": "dpmpp_sde_gpu",
       "scheduler": "karras",

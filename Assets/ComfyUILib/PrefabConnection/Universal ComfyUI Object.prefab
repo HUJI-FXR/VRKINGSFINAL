@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   comfyXROriginConnector: {fileID: 0}
   diffusables: {fileID: 0}
+  curParameters: {fileID: 2161866615071764844}
 --- !u!1 &3977405010171434302
 GameObject:
   m_ObjectHideFlags: 0
