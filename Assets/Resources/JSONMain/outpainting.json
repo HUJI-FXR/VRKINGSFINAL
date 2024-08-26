@@ -1,14 +1,78 @@
 {
-  "3": {
+  "6": {
     "inputs": {
-      "seed": null,
-      "steps": 3,
-      "cfg": 1.5,
-      "sampler_name": "euler",
-      "scheduler": "normal",
-      "denoise": 0.33,
+      "text": "a fantastic colorful alien landscape with mountains and valleys with galaxy in the sky",
+      "clip": [
+        "25",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Positive)"
+    }
+  },
+  "7": {
+    "inputs": {
+      "text": "illustration, painting, text, watermark, copyright, signature, notes",
+      "clip": [
+        "25",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Negative)"
+    }
+  },
+  "11": {
+    "inputs": {
+      "left": 0,
+      "top": 0,
+      "right": 0,
+      "bottom": 0,
+      "feathering": 50,
+      "image": [
+        "80",
+        0
+      ]
+    },
+    "class_type": "ImagePadForOutpaint",
+    "_meta": {
+      "title": "Pad Image for Outpainting"
+    }
+  },
+  "12": {
+    "inputs": {
+      "grow_mask_by": 16,
+      "pixels": [
+        "11",
+        0
+      ],
+      "vae": [
+        "70",
+        0
+      ],
+      "mask": [
+        "11",
+        1
+      ]
+    },
+    "class_type": "VAEEncodeForInpaint",
+    "_meta": {
+      "title": "VAE Encode (for Inpainting)"
+    }
+  },
+  "21": {
+    "inputs": {
+      "seed": 10007,
+      "steps": 20,
+      "cfg": 7,
+      "sampler_name": "dpmpp_2m",
+      "scheduler": "karras",
+      "denoise": 1,
       "model": [
-        "10",
+        "25",
         0
       ],
       "positive": [
@@ -20,7 +84,7 @@
         0
       ],
       "latent_image": [
-        "15",
+        "12",
         0
       ]
     },
@@ -29,50 +93,15 @@
       "title": "KSampler"
     }
   },
-  "4": {
-    "inputs": {
-      "ckpt_name": "stable-diffusion-nano-2-1.ckpt"
-    },
-    "class_type": "CheckpointLoaderSimple",
-    "_meta": {
-      "title": "Load Checkpoint"
-    }
-  },
-  "6": {
-    "inputs": {
-      "text": "Pprompt",
-      "clip": [
-        "10",
-        1
-      ]
-    },
-    "class_type": "CLIPTextEncode",
-    "_meta": {
-      "title": "CLIP Text Encode (Prompt)"
-    }
-  },
-  "7": {
-    "inputs": {
-      "text": "Nprompt",
-      "clip": [
-        "10",
-        1
-      ]
-    },
-    "class_type": "CLIPTextEncode",
-    "_meta": {
-      "title": "CLIP Text Encode (Prompt)"
-    }
-  },
-  "8": {
+  "23": {
     "inputs": {
       "samples": [
-        "3",
+        "82",
         0
       ],
       "vae": [
-        "4",
-        2
+        "70",
+        0
       ]
     },
     "class_type": "VAEDecode",
@@ -80,11 +109,39 @@
       "title": "VAE Decode"
     }
   },
-  "9": {
+  "25": {
+    "inputs": {
+      "ckpt_name": "cetusInpainting_v2-inpainting.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "70": {
+    "inputs": {
+      "vae_name": "taesd"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "80": {
+    "inputs": {
+      "image": "ComfyUI_01079_.png",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "81": {
     "inputs": {
       "filename_prefix": "ComfyUI",
       "images": [
-        "8",
+        "23",
         0
       ]
     },
@@ -93,62 +150,20 @@
       "title": "Save Image"
     }
   },
-  "10": {
+  "82": {
     "inputs": {
-      "lora_name": "pytorch_lora_weights.safetensors",
-      "strength_model": 1,
-      "strength_clip": 1,
-      "model": [
-        "4",
-        0
-      ],
-      "clip": [
-        "4",
-        1
-      ]
-    },
-    "class_type": "LoraLoader",
-    "_meta": {
-      "title": "Load LoRA"
-    }
-  },
-  "11": {
-    "inputs": {
-      "image": "Brick.jpg",
-      "upload": "image"
-    },
-    "class_type": "LoadImage",
-    "_meta": {
-      "title": "Load Image"
-    }
-  },
-  "12": {
-    "inputs": {
-      "pixels": [
-        "11",
-        0
-      ],
-      "vae": [
-        "4",
-        2
-      ]
-    },
-    "class_type": "VAEEncode",
-    "_meta": {
-      "title": "VAE Encode"
-    }
-  },
-  "15": {
-    "inputs": {
-      "amount": 1,
+      "width": 512,
+      "height": 512,
+      "x": 0,
+      "y": 0,
       "samples": [
-        "12",
+        "21",
         0
       ]
     },
-    "class_type": "RepeatLatentBatch",
+    "class_type": "LatentCrop",
     "_meta": {
-      "title": "Repeat Latent Batch"
+      "title": "Crop Latent"
     }
   }
 }

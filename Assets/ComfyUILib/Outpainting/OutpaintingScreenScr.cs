@@ -63,7 +63,8 @@ public class OutpaintingScreenScr : MonoBehaviour
                 for (int j = 0; j < tileMatrixSize.y; j++)
                 {
                     GameObject clone = Instantiate(tileObject, transform.position + new Vector3((((tileMatrixSize.x - 1) / 2) - i) * tileSize.x,
-                        (((tileMatrixSize.y - 1) / 2) - j) * tileSize.y, 0), transform.rotation);
+                        (((tileMatrixSize.y - 1) / 2) - j) * tileSize.y, 0), tileObject.transform.rotation);
+                    clone.name = "ScreenTile" + i.ToString() + j.ToString();
 
                     clone.transform.SetParent(GameManager.getInstance().diffusables.transform, false);
 
@@ -140,7 +141,7 @@ public class OutpaintingScreenScr : MonoBehaviour
         cur_tile_scr.paintable = false;
 
         // Makes the above tile paintable
-        if (tilePos.y < tileMatrixSize.y + 1)
+        if (0 < tilePos.y && tilePos.y < tileMatrixSize.y + 1)
         {
             OutpaintingTile cur_tile_target = tiles[tilePos.x, tilePos.y-1].GetComponent<OutpaintingTile>();
             if (cur_tile_target.painted == false)

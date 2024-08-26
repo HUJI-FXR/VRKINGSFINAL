@@ -13,29 +13,45 @@ using UnityEngine.Rendering;
 
 
 // TODO maybe remove requestNum from this class?
+
+/// <summary>
+/// Describes a single Diffusion Image generation Request which goes throughout the system, picking up the relevant
+/// information for the Request, sends it to the generation, and sends the images to the proper targets, to be finished.
+/// </summary>
 [Serializable]
 public class DiffusionRequest
 {
+    // Where the images that are generated are sent.
     public List<DiffusionTextureChanger> targets;
+
+    // true if we add the images that generated to the previous image rotation of a target.
     public bool addToTextureTotal = false;
+
+    // Number of image variations for one generation(same prompt, model, etc.)
     public int numOfVariations = 1;
 
+    // Positive and negative text prompts
     public string positivePrompt;
     public string negativePrompt;
 
-    /*public string uploadImageName;
-    public string secondUploadImageName;*/
-
+    // TODO upload an Image list instead of just 2? outpainting?
+    // We upload up-to two images to the server
     public Texture2D uploadImage;
     public Texture2D secondUploadImage;
 
+    // Denoising parameter for the input image
     public float denoise = 1.0f;
 
     // TODO decide, do I need diffusionModels separate from the workflows? what about models that don't work with certain workflows? do we disregard?
     // TODO just put everything on the diffusionWorkFlows?
+    // Checkpoint model to be used in the generation
     public diffusionModels diffusionModel;
 
+    // Workflow type to be used in the generation.
     public diffusionWorkflows diffusionJsonType;
+
+    // Used for sending any type of information that might be unique to a Request
+    public string SpecialInput;
 
     [System.NonSerialized]
     public List<Texture2D> textures;
@@ -160,6 +176,8 @@ public class ComfyOrganizer : MonoBehaviour
         newDiffusionRequest.diffImgName = diffusionRequest.diffImgName;
         newDiffusionRequest.prompt_id = diffusionRequest.prompt_id;
 
+        newDiffusionRequest.SpecialInput = diffusionRequest.SpecialInput;
+
         return newDiffusionRequest;
     }
 
@@ -243,7 +261,6 @@ public class ComfyOrganizer : MonoBehaviour
         }
         if (DiffuseDictionary[requestNum].finishedRequest)
         {
-            Debug.Log("wewew");
             return;
         }
 
@@ -278,5 +295,7 @@ public class ComfyOrganizer : MonoBehaviour
         {
             changer.AddTexture(diffusionRequest);
         }
+
+        diffusionRequest.targets.Clear();
     }
 }

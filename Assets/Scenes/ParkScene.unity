@@ -604,7 +604,7 @@ MonoBehaviour:
   tileObject: {fileID: 971472021}
   tileMatrixSize: {x: 3, y: 3}
   firstPaintedTile: {x: 1, y: 2}
-  firstTileTexture: {fileID: 2800000, guid: 677d2ba6f5d638840ba8d510f86e386d, type: 3}
+  firstTileTexture: {fileID: 2800000, guid: 6292a212190993942aa66e167894b09d, type: 3}
   paintableTexture: {fileID: 2800000, guid: 5b127cfad4c559247b2e742774b4a208, type: 3}
 --- !u!1 &500895995
 GameObject:
@@ -928,13 +928,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 971472021}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: -40.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!114 &971472026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1077,7 +1077,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 505080063357859650, guid: 6cf941391e6bdbc4abdbed9a86feb39a, type: 3}
       propertyPath: serverAddress
-      value: 127.0.0.1:8188
+      value: object-26131123
       objectReference: {fileID: 0}
     - target: {fileID: 3320564364425000189, guid: 6cf941391e6bdbc4abdbed9a86feb39a, type: 3}
       propertyPath: m_Name
@@ -1255,6 +1255,7 @@ MonoBehaviour:
     denoise: 1
     diffusionModel: 4
     diffusionJsonType: 8
+    SpecialInput: 
   outpaintingScreen: {fileID: 274099988}
 --- !u!1001 &2022962454
 PrefabInstance:

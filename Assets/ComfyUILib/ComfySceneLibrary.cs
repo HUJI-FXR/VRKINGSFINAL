@@ -56,6 +56,8 @@ public class ComfySceneLibrary : MonoBehaviour
     private string HTTPPrefix = "https://";  // https://  ------ When using online API service
     public ComfyOrganizer comfyOrg;
 
+    public string serverAddress = "";
+
     private string JSONFolderPath = "JSONMain";
     public string ImageFolderName = "Assets/";
 
@@ -82,6 +84,11 @@ public class ComfySceneLibrary : MonoBehaviour
         // TODO delete this PREFIX before full release
         string THINKDIFFUSION_PREFIX = "jonathanmiroshnik-";
         string THINKDIFFUSION_POSTFIX = ".thinkdiffusion.xyz";
+
+        if (serverAddress != "")
+        {
+            GameManager.getInstance().IP = serverAddress;
+        }
 
         if (GameManager.getInstance().IP == "" || GameManager.getInstance().IP == "127.0.0.1:8188")
         {
@@ -317,27 +324,50 @@ public class ComfySceneLibrary : MonoBehaviour
                 break;
 
             case diffusionWorkflows.outpainting:
-                // TODO create the outpainting workflow
-
-                // REMOVE THIS FOR TODO ------------------------
-                if (diffReq.uploadImage == null)
+                if (diffReq.SpecialInput == "")
                 {
-                    Debug.LogError("Make sure a valid uploadImage is part of the Diffusion Request before upload it");
+                    Debug.LogError("Make sure to apply the correct special input when dealing with Outpainting");
                     return null;
                 }
 
-                json["prompt"]["3"]["inputs"]["seed"] = randomSeed;
-                json["prompt"]["3"]["inputs"]["denoise"] = diffReq.denoise;
-                json["prompt"]["6"]["inputs"]["text"] = diffReq.positivePrompt;
-                json["prompt"]["7"]["inputs"]["text"] = diffReq.negativePrompt;
-                json["prompt"]["15"]["inputs"]["amount"] = diffReq.numOfVariations;
+                switch (diffReq.SpecialInput)
+                {
+                    // Regular cases.
+                    case "left":
+                        json["prompt"]["11"]["inputs"]["left"] = 512;
+                        break;
+                    case "right":
+                        json["prompt"]["11"]["inputs"]["right"] = 512;
+                        json["prompt"]["82"]["inputs"]["x"] = 512;
+                        break;
+                    case "top":
+                        json["prompt"]["11"]["inputs"]["top"] = 512;
+                        break;
 
-                json["prompt"]["4"]["inputs"]["ckpt_name"] = curDiffModel;
+                    // Cases using up to 3 images as input.
+                    case "topRight":
+                        break;
+                    case "topLeft":
+                        break;                   
+                }
+
+
+                json["prompt"]["21"]["inputs"]["seed"] = randomSeed;
+                /*json["prompt"]["21"]["inputs"]["denoise"] = diffReq.denoise;
+                 * 
+                 * VERY IMPORTANT TO GIVE PROPER PROMPTS for OUTPANGINTG
+                json["prompt"]["6"]["inputs"]["text"] = diffReq.positivePrompt;
+                json["prompt"]["7"]["inputs"]["text"] = diffReq.negativePrompt;*/
+
+                // TODO needs inpainting model input?
+                //json["prompt"]["4"]["inputs"]["ckpt_name"] = curDiffModel;
 
                 StartCoroutine(UploadImage(diffReq.uploadImage));
 
-                json["prompt"]["11"]["inputs"]["image"] = diffReq.uploadImage.name;
-                // REMOVE THIS FOR TODO ------------------------
+                json["prompt"]["80"]["inputs"]["image"] = diffReq.uploadImage.name;
+
+                Debug.Log("RIGHT " + json["prompt"]["11"]["inputs"]["right"]);
+
                 break;
 
             default:
