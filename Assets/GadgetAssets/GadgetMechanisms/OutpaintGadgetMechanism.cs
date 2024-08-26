@@ -15,6 +15,12 @@ public class OutpaintGadgetMechanism : GadgetMechanism
     public OutpaintingScreenScr outpaintingScreen;
     private string currentKeywords = "";
 
+
+    private void Start()
+    {
+        mechanismText = "Outpainting";
+    }
+
     // TODO currently the mechanism will work by CLICKING on a DiffusableObject, getting the keywords from it and then picking a relevant OutpaintingTile to start the generation on.outpaintin
 
     public override void OnGameObjectLeftHoverEntered(HoverEnterEventArgs args)

@@ -14,6 +14,12 @@ public class ThrowingGadgetMechanism : GadgetMechanism
     //private bool allowCollision = false;
     public DiffusionRequest diffusionRequest = null;
 
+
+    private void Start()
+    {
+        mechanismText = "Throwing";
+    }
+
     /*
     diffusionRequest.positivePrompt = "Beautiful";
     diffusionRequest.negativePrompt = "watermark";

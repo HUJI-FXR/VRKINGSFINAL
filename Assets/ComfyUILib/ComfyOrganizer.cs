@@ -201,6 +201,7 @@ public class ComfyOrganizer : MonoBehaviour
     /// </summary>
     public List<DiffusionRequest> GetUnfinishedRequestPrompts()
     {
+        // TODO take into account ONLY the requests that were sent to generation?
         List<DiffusionRequest> relevantKeys = new List<DiffusionRequest>();
         List<DiffusionRequest> finishedKeys = new List<DiffusionRequest>();
 

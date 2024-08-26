@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
         gadget = _gadget;
         headAudioSource = _headAudioSource;
 
-        Debug.Log("DIFF " + (diffusables == null).ToString());
+        //Debug.Log("DIFF " + (diffusables == null).ToString());
 
         if (diffusables == null)
         {

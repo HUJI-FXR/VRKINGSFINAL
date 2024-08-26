@@ -52,7 +52,6 @@ public enum diffusionModels
 
 public class ComfySceneLibrary : MonoBehaviour
 {
-    public string serverAddress = "127.0.0.1:8188";
     private const string HTTPPrefix = "https://";  // https://  ------ When using online API service
     public ComfyOrganizer comfyOrg;
 
@@ -79,25 +78,6 @@ public class ComfySceneLibrary : MonoBehaviour
     // TODO cont. the ComfyOrganizer or else some things will not be ready for an instant diffusion request
     public void StartComfySceneLibrary()
     {
-        /*if (!(serverAddress != "" || serverAddress != "127.0.0.1:8188"))
-        {
-            serverAddress = GameManager.getInstance().IP;
-        }
-        else
-        {
-            GameManager.getInstance().IP = serverAddress;
-        }*/
-
-        /*if (serverAddress == "")
-        {
-            // TODO maybe gamemanager has this responsibility?
-            Debug.LogError("The given IP in game manager is empty!");
-        }
-        else
-        {
-            Debug.Log("Passed the IP: " + GameManager.getInstance().IP);
-        }*/
-        
         // Get all enum adjacent JSON workflows
         TextAsset[] jsonFiles = Resources.LoadAll<TextAsset>(JSONFolderPath);
 
@@ -131,7 +111,7 @@ public class ComfySceneLibrary : MonoBehaviour
     {
         while(true)
         {
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSeconds(0.1f);
 
             while (uploadingImage)
             {
@@ -146,15 +126,6 @@ public class ComfySceneLibrary : MonoBehaviour
             }
         }
     }
-
-    /// <summary>
-    /// Starts a connection to the server
-    /// </summary>
-    /*private async void StartServerConnection()
-    {
-        await ws.ConnectAsync(new Uri($"ws://{serverAddress}/ws?clientId={clientId}"), CancellationToken.None);
-        StartListening();
-    }*/
 
     /// <summary>
     /// Gets the JSON workflow corresponding to the Diffusion Workflow
@@ -384,7 +355,7 @@ public class ComfySceneLibrary : MonoBehaviour
             //yield return -1;
             yield break;
         }
-        //serverAddress
+
         string url = HTTPPrefix + GameManager.getInstance().IP + "/prompt";
 
         string promptText = DiffusionJSONFactory(diffReq);
