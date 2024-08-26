@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour
 {
     // Non scene-local objects
     private static GameManager instance = null;
-
     
     public string IP = "127.0.0.1:8188"; // jonathanmiroshnik-networks-24172136.thinkdiffusion.xyz
 

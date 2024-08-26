@@ -7,6 +7,7 @@ using System.Threading;
 using Newtonsoft.Json.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
+using static System.Net.WebRequestMethods;
 
 [System.Serializable]
 public class ResponseData
@@ -52,7 +53,7 @@ public enum diffusionModels
 
 public class ComfySceneLibrary : MonoBehaviour
 {
-    private const string HTTPPrefix = "https://";  // https://  ------ When using online API service
+    private string HTTPPrefix = "https://";  // https://  ------ When using online API service
     public ComfyOrganizer comfyOrg;
 
     private string JSONFolderPath = "JSONMain";
@@ -78,6 +79,21 @@ public class ComfySceneLibrary : MonoBehaviour
     // TODO cont. the ComfyOrganizer or else some things will not be ready for an instant diffusion request
     public void StartComfySceneLibrary()
     {
+        // TODO delete this PREFIX before full release
+        string THINKDIFFUSION_PREFIX = "jonathanmiroshnik-";
+        string THINKDIFFUSION_POSTFIX = ".thinkdiffusion.xyz";
+
+        if (GameManager.getInstance().IP == "" || GameManager.getInstance().IP == "127.0.0.1:8188")
+        {
+            GameManager.getInstance().IP = "127.0.0.1:8188";
+            HTTPPrefix = "http://";
+        }
+        else
+        {
+            GameManager.getInstance().IP = THINKDIFFUSION_PREFIX + GameManager.getInstance().IP + THINKDIFFUSION_POSTFIX;
+            HTTPPrefix = "https://";
+        }
+
         // Get all enum adjacent JSON workflows
         TextAsset[] jsonFiles = Resources.LoadAll<TextAsset>(JSONFolderPath);
 
