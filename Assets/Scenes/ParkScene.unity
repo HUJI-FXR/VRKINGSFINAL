@@ -1077,7 +1077,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 505080063357859650, guid: 6cf941391e6bdbc4abdbed9a86feb39a, type: 3}
       propertyPath: serverAddress
-      value: object-26131123
+      value: glitch-27140731
       objectReference: {fileID: 0}
     - target: {fileID: 3320564364425000189, guid: 6cf941391e6bdbc4abdbed9a86feb39a, type: 3}
       propertyPath: m_Name
@@ -1250,8 +1250,7 @@ MonoBehaviour:
     numOfVariations: 1
     positivePrompt: 
     negativePrompt: 
-    uploadImage: {fileID: 0}
-    secondUploadImage: {fileID: 0}
+    uploadTextures: []
     denoise: 1
     diffusionModel: 4
     diffusionJsonType: 8

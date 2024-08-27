@@ -140,8 +140,8 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
         copyTexture.name = uniqueName + ".png";
         secondCopyTexture.name = uniqueName + "_2" + ".png";
 
-        diffusionRequest.uploadImage = copyTexture;
-        diffusionRequest.secondUploadImage = secondCopyTexture;
+        diffusionRequest.uploadTextures.Add(copyTexture);
+        diffusionRequest.uploadTextures.Add(secondCopyTexture);
 
         diffusionRequest.positivePrompt = "";
         if (firstGameObject.TryGetComponent<DiffusableObject>(out DiffusableObject DiffObj))

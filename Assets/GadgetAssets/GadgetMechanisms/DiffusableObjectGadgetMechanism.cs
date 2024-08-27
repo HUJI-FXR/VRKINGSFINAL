@@ -164,7 +164,7 @@ public class DiffusableObjectGadgetMechanism : GadgetMechanism
         string uniqueName = GameManager.getInstance().comfyOrganizer.UniqueImageName();
         copyStyleTexture.name = uniqueName + ".png";
 
-        diffusionRequest.uploadImage = copyStyleTexture;
+        diffusionRequest.uploadTextures.Add(copyStyleTexture);
         diffusionRequest.positivePrompt = positivePrompt;
 
         GameManager.getInstance().comfyOrganizer.SendDiffusionRequest(diffusionRequest);

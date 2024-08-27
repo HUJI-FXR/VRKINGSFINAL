@@ -36,8 +36,9 @@ public class DiffusionRequest
 
     // TODO upload an Image list instead of just 2? outpainting?
     // We upload up-to two images to the server
-    public Texture2D uploadImage;
-    public Texture2D secondUploadImage;
+    public List<Texture2D> uploadTextures;
+    //public Texture2D uploadImage;
+    //public Texture2D secondUploadImage;
 
     // Denoising parameter for the input image
     public float denoise = 1.0f;
@@ -72,12 +73,14 @@ public class DiffusionRequest
     {
         targets = new List<DiffusionTextureChanger>();
         textures = new List<Texture2D>();
+        uploadTextures = new List<Texture2D>();
     }
 
     public DiffusionRequest(List<DiffusionTextureChanger> curTargets)
     {
         targets = curTargets;
         textures = new List<Texture2D>();
+        uploadTextures = new List<Texture2D>();
     }
 }
 
@@ -130,8 +133,6 @@ public class ComfyOrganizer : MonoBehaviour
         newDiffusionRequest.positivePrompt = diffusionRequest.positivePrompt;
         newDiffusionRequest.negativePrompt = diffusionRequest.negativePrompt;
 
-        //newDiffReq.uploadImageName = diffReq.uploadImageName;
-
         newDiffusionRequest.denoise = diffusionRequest.denoise;
         newDiffusionRequest.requestNum = diffusionRequest.requestNum;
 
@@ -152,22 +153,16 @@ public class ComfyOrganizer : MonoBehaviour
 
             newDiffusionRequest.textures.Add(copyTexture);
         }
-        if (diffusionRequest.uploadImage != null)
-        {
-            Texture2D uploadCopyTexture = new Texture2D(diffusionRequest.uploadImage.width, diffusionRequest.uploadImage.height);
-            uploadCopyTexture.SetPixels(diffusionRequest.uploadImage.GetPixels());
-            uploadCopyTexture.Apply();
-            uploadCopyTexture.name = diffusionRequest.uploadImage.name;
-            newDiffusionRequest.uploadImage = uploadCopyTexture;
-        }
-        if (diffusionRequest.secondUploadImage != null)
-        {
-            Texture2D uploadSecondCopyTexture = new Texture2D(diffusionRequest.secondUploadImage.width, diffusionRequest.secondUploadImage.height);
-            uploadSecondCopyTexture.SetPixels(diffusionRequest.secondUploadImage.GetPixels());
-            uploadSecondCopyTexture.Apply();
-            uploadSecondCopyTexture.name = diffusionRequest.secondUploadImage.name;
-            newDiffusionRequest.secondUploadImage = uploadSecondCopyTexture;
 
+        newDiffusionRequest.uploadTextures = new List<Texture2D>();
+        foreach (Texture2D texture in diffusionRequest.uploadTextures)
+        {
+            Texture2D copyTexture = new Texture2D(texture.width, texture.height);
+            copyTexture.SetPixels(texture.GetPixels());
+            copyTexture.Apply();
+            copyTexture.name = texture.name;
+
+            newDiffusionRequest.uploadTextures.Add(copyTexture);
         }
         // Texture2D deep copying --------------------------------------------------------------------
 

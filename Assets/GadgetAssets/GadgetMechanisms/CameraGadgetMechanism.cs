@@ -133,7 +133,12 @@ public class CameraGadgetMechanism : GadgetMechanism
         string uniqueName = GameManager.getInstance().comfyOrganizer.UniqueImageName();
         curTexture.name = uniqueName + "_2.png";
 
-        diffusionRequest.secondUploadImage = curTexture;
+        // Style texture is the second one in the uploadTextures List,
+        // if there is already one, replace it with the current one.
+        if (diffusionRequest.uploadTextures.Count >= 2)
+        {
+            diffusionRequest.uploadTextures[1] = curTexture;
+        }        
     }
 
     // The function is called with the right hand.
@@ -143,9 +148,14 @@ public class CameraGadgetMechanism : GadgetMechanism
     /// </summary>
     public override void ActivateGeneration(InputAction.CallbackContext context)
     {
-        if (diffusionRequest.uploadImage == null || diffusionRequest.secondUploadImage == null)
+        if (diffusionRequest.uploadTextures == null)
         {
-            Debug.Log("Need to select a style and take a screenshot");
+            Debug.LogError("Need to add textures to the camera workflow");
+            return;
+        }
+        if (diffusionRequest.uploadTextures.Count <= 1)
+        {
+            Debug.LogError("Need to add enough textures to the camera workflow");
             return;
         }
 
@@ -170,7 +180,15 @@ public class CameraGadgetMechanism : GadgetMechanism
         GameManager.getInstance().gadget.gadgetCamera.enabled = false;
         GameManager.getInstance().gadget.xrCamera.enabled = true;
 
-        diffusionRequest.uploadImage = screenShot;
+
+        // TODO CRITICAL BUG, COUNT is NOT ENOUGH to know which texture is for style and which for content, need another factor to figure them out.
+        // Content texture is the first one in the uploadTextures List,
+        // if there is already one, replace it with the current one, if there
+        /*if (diffusionRequest.uploadTextures.Count >= 2)
+        {
+            diffusionRequest.uploadTextures[1] = curTexture;
+        }
+        diffusionRequest.uploadImage = screenShot;*/
 
         if (selectedStyleObject != null)
         {

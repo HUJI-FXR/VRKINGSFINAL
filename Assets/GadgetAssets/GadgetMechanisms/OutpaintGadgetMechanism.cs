@@ -71,6 +71,8 @@ public class OutpaintGadgetMechanism : GadgetMechanism
             return;
         }
 
+        DiffusionRequest newDiffusionRequest = GameManager.getInstance().comfyOrganizer.copyDiffusionRequest(diffusionRequest);
+
         DiffusableObject diffObj = args.interactableObject.transform.gameObject.GetComponent<DiffusableObject>();
         OutpaintingTile OPT = args.interactableObject.transform.gameObject.GetComponent<OutpaintingTile>();
         RegularDiffusionTexture RDT = args.interactableObject.transform.gameObject.GetComponent<RegularDiffusionTexture>();
@@ -91,13 +93,24 @@ public class OutpaintGadgetMechanism : GadgetMechanism
             // Finding a texture to be the original to be outpainted from.
             GameObject curTileGO;
 
+            bool topTileOutpaint = false;
+            bool leftTileOutpaint = false;
+            bool rightTileOutpaint = false;
+
+            string uniqueName = GameManager.getInstance().comfyOrganizer.UniqueImageName();
+
             // Top tile outpainting
             if (OPT.tilePosition.y < outpaintingScreen.tileMatrixSize.y-1 && 
                 outpaintingScreen.tiles[OPT.tilePosition.x, OPT.tilePosition.y+1].GetComponent<OutpaintingTile>().painted == true)
             {
                 curTileGO = outpaintingScreen.tiles[OPT.tilePosition.x, OPT.tilePosition.y + 1];
+
                 curTexture = TextureManipulationLibrary.toTexture2D(curTileGO.GetComponent<Renderer>().material.mainTexture);
-                diffusionRequest.SpecialInput = "top";
+                newDiffusionRequest.uploadTextures.Add(curTexture);
+                curTexture.name = uniqueName + "_top" + ".png";
+
+                newDiffusionRequest.SpecialInput = "top";
+                topTileOutpaint = true;
             }
 
             // Left tile outpainting
@@ -105,8 +118,13 @@ public class OutpaintGadgetMechanism : GadgetMechanism
                 outpaintingScreen.tiles[OPT.tilePosition.x-1, OPT.tilePosition.y].GetComponent<OutpaintingTile>().painted == true)
             {
                 curTileGO = outpaintingScreen.tiles[OPT.tilePosition.x-1, OPT.tilePosition.y];
+
                 curTexture = TextureManipulationLibrary.toTexture2D(curTileGO.GetComponent<Renderer>().material.mainTexture);
-                diffusionRequest.SpecialInput = "left";
+                newDiffusionRequest.uploadTextures.Add(curTexture);
+                curTexture.name = uniqueName + "_left" + ".png";
+
+                newDiffusionRequest.SpecialInput = "left";
+                leftTileOutpaint = true;
             }
 
             // Right tile outpainting
@@ -114,36 +132,57 @@ public class OutpaintGadgetMechanism : GadgetMechanism
                 outpaintingScreen.tiles[OPT.tilePosition.x+1, OPT.tilePosition.y].GetComponent<OutpaintingTile>().painted == true)
             {
                 curTileGO = outpaintingScreen.tiles[OPT.tilePosition.x+1, OPT.tilePosition.y];
-                curTexture = TextureManipulationLibrary.toTexture2D(curTileGO.GetComponent<Renderer>().material.mainTexture);
-                diffusionRequest.SpecialInput = "right";
+
+                if (newDiffusionRequest.uploadTextures.Count <= 1)
+                {
+                    curTexture = TextureManipulationLibrary.toTexture2D(curTileGO.GetComponent<Renderer>().material.mainTexture);
+                    newDiffusionRequest.uploadTextures.Add(curTexture);
+                    curTexture.name = uniqueName + "_right" + ".png";
+                }                
+
+                newDiffusionRequest.SpecialInput = "right";
+                rightTileOutpaint = true;
             }
             else
             {
                 return;
             }
 
-            outpaintingScreen.UpdateTiles(new Vector2Int(OPT.tilePosition.x, OPT.tilePosition.y));
-
-            diffusionRequest.uploadImage = curTexture;
-            string uniqueName = GameManager.getInstance().comfyOrganizer.UniqueImageName();
-            curTexture.name = uniqueName + ".png";
-
-            if (diffusionRequest.targets.Count > 0)
+            // TODO check if edge texture exists two, like, the third image
+            // TODO repeat code, bad!
+            if (topTileOutpaint && leftTileOutpaint)
             {
-                diffusionRequest.targets.Clear();
-            }
-            diffusionRequest.targets.Add(RDT);
+                newDiffusionRequest.diffusionJsonType = diffusionWorkflows.grid4Outpainting;
+                curTileGO = outpaintingScreen.tiles[OPT.tilePosition.x-1, OPT.tilePosition.y+1];
 
-            GameManager.getInstance().comfyOrganizer.SendDiffusionRequest(diffusionRequest);
+                curTexture = TextureManipulationLibrary.toTexture2D(curTileGO.GetComponent<Renderer>().material.mainTexture);
+                newDiffusionRequest.uploadTextures.Add(curTexture);
+                curTexture.name = uniqueName + "_bottomRight" + ".png";
+            }
+            else if (topTileOutpaint && rightTileOutpaint)
+            {
+                newDiffusionRequest.diffusionJsonType = diffusionWorkflows.grid4Outpainting;
+                curTileGO = outpaintingScreen.tiles[OPT.tilePosition.x+1, OPT.tilePosition.y+1];
+
+                curTexture = TextureManipulationLibrary.toTexture2D(curTileGO.GetComponent<Renderer>().material.mainTexture);
+                newDiffusionRequest.uploadTextures.Add(curTexture);
+                curTexture.name = uniqueName + "_bottomLeft" + ".png";
+            }
+
+            outpaintingScreen.UpdateTiles(new Vector2Int(OPT.tilePosition.x, OPT.tilePosition.y));                               
+            newDiffusionRequest.targets.Add(RDT);
+
+            GameManager.getInstance().comfyOrganizer.SendDiffusionRequest(newDiffusionRequest);
 
         }
         // Object that is interacted with is a DiffusableObject
         else
         {
-            // Creates selection outline
-            GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.selected);
+            // TODO problem with new and old diffusion requests, need to connect the selected object with the later generation.
+            newDiffusionRequest.positivePrompt = diffObj.keyword;
 
-            diffusionRequest.positivePrompt = diffObj.keyword;
+            // Creates selection outline
+            GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.selected);         
         }                        
     }
 }

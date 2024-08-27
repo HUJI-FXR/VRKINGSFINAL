@@ -32,7 +32,10 @@ public enum diffusionWorkflows
     baseCamera,
     depthCamera,
     openpose,
+
+    // A special two-type mechanism
     outpainting,
+    grid4Outpainting,
 
     // Gadget AI representation
     AIAssistant
@@ -171,15 +174,6 @@ public class ComfySceneLibrary : MonoBehaviour
     /// <param name="diffReq">given DiffusionRequest to create the JSON text from.</param>
     private string DiffusionJSONFactory(DiffusionRequest diffReq)
     {
-        string guid = Guid.NewGuid().ToString();
-        string promptText = $@"
-        {{
-            ""id"": ""{guid}"",
-            ""prompt"": {getWorkflowJSON(diffReq.diffusionJsonType)}
-        }}";
-
-        JObject json = JObject.Parse(promptText); // promptText
-
         // TODO notice that curImageSize will need to change in a situation like outpainting
         string curDiffModel = "";
         Vector2Int curImageSize = Vector2Int.zero;
@@ -217,6 +211,15 @@ public class ComfySceneLibrary : MonoBehaviour
             return null;
         }
 
+        string guid = Guid.NewGuid().ToString();
+        string promptText = $@"
+        {{
+            ""id"": ""{guid}"",
+            ""prompt"": {getWorkflowJSON(diffReq.diffusionJsonType)}
+        }}";
+
+        JObject json = JObject.Parse(promptText); // promptText
+
         string randomSeed = UnityEngine.Random.Range(1, 10000).ToString();
         //TODO add all cases according to diffusionWorkflows ENUM
         switch (diffReq.diffusionJsonType)
@@ -234,24 +237,23 @@ public class ComfySceneLibrary : MonoBehaviour
                 break;
 
             case diffusionWorkflows.img2img:
-                StartCoroutine(UploadImage(diffReq.uploadImage));
+                StartCoroutine(UploadImage(diffReq.uploadTextures));
 
-                json["prompt"]["10"]["inputs"]["image"] = diffReq.uploadImage.name;
+                json["prompt"]["10"]["inputs"]["image"] = diffReq.uploadTextures[0].name;
                 json["prompt"]["3"]["inputs"]["denoise"] = diffReq.denoise;
                 json["prompt"]["3"]["inputs"]["seed"] = randomSeed;
                 json["prompt"]["3"]["inputs"]["steps"] = 10;
                 break;
 
             case diffusionWorkflows.img2imgLCM:
-                /*if (diffReq.uploadImageName == null || diffReq.uploadImageName == "")
+                if (diffReq.uploadTextures == null)
                 {
-                    Debug.LogError("Make sure a valid uploadImage is part of the Diffusion Request before upload it");
+                    Debug.LogError("Upload some existing textures");
                     return null;
-                }*/
-
-                if (diffReq.uploadImage == null)
+                }
+                if (diffReq.uploadTextures.Count <= 0)
                 {
-                    Debug.LogError("Make sure a valid uploadImage is part of the Diffusion Request before upload it");
+                    Debug.LogError("Upload enough textures for the workflow");
                     return null;
                 }
 
@@ -263,9 +265,9 @@ public class ComfySceneLibrary : MonoBehaviour
 
                 json["prompt"]["4"]["inputs"]["ckpt_name"] = curDiffModel;
                 
-                StartCoroutine(UploadImage(diffReq.uploadImage));
+                StartCoroutine(UploadImage(diffReq.uploadTextures));
 
-                json["prompt"]["11"]["inputs"]["image"] = diffReq.uploadImage.name;
+                json["prompt"]["11"]["inputs"]["image"] = diffReq.uploadTextures[0].name;
                 break;
 
             case diffusionWorkflows.txt2img:
@@ -281,9 +283,14 @@ public class ComfySceneLibrary : MonoBehaviour
                 break;
 
             case diffusionWorkflows.combineImages:
-                if (diffReq.uploadImage == null || diffReq.secondUploadImage == null)
+                if (diffReq.uploadTextures == null)
                 {
-                    Debug.LogError("Make sure a valid uploadImage or secondUploadImage is part of the Diffusion Request before upload it");
+                    Debug.LogError("Upload some existing textures");
+                    return null;
+                }
+                if (diffReq.uploadTextures.Count <= 1)
+                {
+                    Debug.LogError("Upload enough textures for the workflow");
                     return null;
                 }
 
@@ -295,14 +302,13 @@ public class ComfySceneLibrary : MonoBehaviour
                 json["prompt"]["50"]["inputs"]["amount"] = diffReq.numOfVariations;
                 json["prompt"]["51"]["inputs"]["amount"] = diffReq.numOfVariations;
 
-                StartCoroutine(UploadImage(diffReq.uploadImage, true));                
-                StartCoroutine(UploadImage(diffReq.secondUploadImage));
+                StartCoroutine(UploadImage(diffReq.uploadTextures));
 
                 // Input Image:
-                json["prompt"]["12"]["inputs"]["image"] = diffReq.uploadImage.name;
+                json["prompt"]["12"]["inputs"]["image"] = diffReq.uploadTextures[0].name;
 
                 // Style is extracted from this Image:
-                json["prompt"]["41"]["inputs"]["image"] = diffReq.secondUploadImage.name;
+                json["prompt"]["41"]["inputs"]["image"] = diffReq.uploadTextures[1].name;
 
                 json["prompt"]["21"]["inputs"]["denoise"] = diffReq.denoise;
                 json["prompt"]["21"]["inputs"]["seed"] = randomSeed;
@@ -323,35 +329,93 @@ public class ComfySceneLibrary : MonoBehaviour
                 json["prompt"]["5"]["inputs"]["height"] = curImageSize.y;
                 break;
 
+            case diffusionWorkflows.grid4Outpainting:
             case diffusionWorkflows.outpainting:
-                if (diffReq.SpecialInput == "")
-                {
-                    Debug.LogError("Make sure to apply the correct special input when dealing with Outpainting");
-                    return null;
-                }
 
+                Debug.Log(diffReq.diffusionJsonType.ToString());
+                // TODO check if words are not approved words? how to do "else" on switch statement?                
                 switch (diffReq.SpecialInput)
                 {
                     // Regular cases.
                     case "left":
-                        json["prompt"]["11"]["inputs"]["left"] = 512;
-                        break;
+                        // TODO ugly repeating code in these two next sections in the switch
+                        if (diffReq.diffusionJsonType == diffusionWorkflows.grid4Outpainting)
+                        {
+                            if (diffReq.uploadTextures == null)
+                            {
+                                Debug.LogError("Upload textures for worklow");
+                                return null;
+                            }
+                            if (diffReq.uploadTextures.Count <= 2)
+                            {
+                                Debug.LogError("Upload enough textures for worklow");
+                                return null;
+                            }
+
+                            promptText = $@"
+                            {{
+                                ""id"": ""{guid}"",
+                                ""prompt"": {getWorkflowJSON(diffusionWorkflows.grid4Outpainting)}
+                            }}";
+
+                            StartCoroutine(UploadImage(diffReq.uploadTextures));
+
+                            json["prompt"]["80"]["inputs"]["image"] = diffReq.uploadTextures[0].name;
+                            json["prompt"]["89"]["inputs"]["image"] = diffReq.uploadTextures[1].name;
+                            json["prompt"]["90"]["inputs"]["image"] = diffReq.uploadTextures[2].name;
+                            break;
+                        }
+                        else
+                        {
+                            StartCoroutine(UploadImage(diffReq.uploadTextures));
+
+                            json["prompt"]["80"]["inputs"]["image"] = diffReq.uploadTextures[0].name;
+                            break;
+                        }                        
                     case "right":
-                        json["prompt"]["11"]["inputs"]["right"] = 512;
-                        json["prompt"]["82"]["inputs"]["x"] = 512;
-                        break;
+                        if (diffReq.diffusionJsonType == diffusionWorkflows.grid4Outpainting)
+                        {
+                            if (diffReq.uploadTextures == null)
+                            {
+                                Debug.LogError("Upload textures for worklow");
+                                return null;
+                            }
+                            if (diffReq.uploadTextures.Count <= 2)
+                            {
+                                Debug.LogError("Upload enough textures for worklow");
+                                return null;
+                            }
+
+                            promptText = $@"
+                            {{
+                                ""id"": ""{guid}"",
+                                ""prompt"": {getWorkflowJSON(diffusionWorkflows.grid4Outpainting)}
+                            }}";
+
+                            StartCoroutine(UploadImage(diffReq.uploadTextures));
+
+                            json["prompt"]["80"]["inputs"]["image"] = diffReq.uploadTextures[0].name;
+                            json["prompt"]["89"]["inputs"]["image"] = diffReq.uploadTextures[1].name;
+                            json["prompt"]["90"]["inputs"]["image"] = diffReq.uploadTextures[2].name;
+
+                            json["prompt"]["82"]["inputs"]["x"] = 512;
+                            break;
+                        }
+                        else
+                        {
+                            StartCoroutine(UploadImage(diffReq.uploadTextures));
+
+                            json["prompt"]["80"]["inputs"]["image"] = diffReq.uploadTextures[0].name;
+                            json["prompt"]["82"]["inputs"]["x"] = 512;
+                            break;
+                        }
                     case "top":
                         json["prompt"]["11"]["inputs"]["top"] = 512;
-                        break;
-
-                    // Cases using up to 3 images as input.
-                    case "topRight":
-                        break;
-                    case "topLeft":
-                        break;                   
+                        break;                
                 }
 
 
+                json["prompt"]["11"]["inputs"][diffReq.SpecialInput] = 512;
                 json["prompt"]["21"]["inputs"]["seed"] = randomSeed;
                 /*json["prompt"]["21"]["inputs"]["denoise"] = diffReq.denoise;
                  * 
@@ -360,13 +424,10 @@ public class ComfySceneLibrary : MonoBehaviour
                 json["prompt"]["7"]["inputs"]["text"] = diffReq.negativePrompt;*/
 
                 // TODO needs inpainting model input?
-                //json["prompt"]["4"]["inputs"]["ckpt_name"] = curDiffModel;
+                //json["prompt"]["4"]["inputs"]["ckpt_name"] = curDiffModel;                
+                
 
-                StartCoroutine(UploadImage(diffReq.uploadImage));
-
-                json["prompt"]["80"]["inputs"]["image"] = diffReq.uploadImage.name;
-
-                Debug.Log("RIGHT " + json["prompt"]["11"]["inputs"]["right"]);
+                //Debug.Log("RIGHT " + json["prompt"]["11"]["inputs"]["right"]);
 
                 break;
 
@@ -506,6 +567,7 @@ public class ComfySceneLibrary : MonoBehaviour
     }
 
 
+    // TODO use the same technique with checking the output/outputs(?) folder before sending a single(?) download request
     public IEnumerator CheckIfFileExists(string imageName, FileExistsChecker fileChecker, bool uploadImageStatusAtEnd)
     {
         string url = HTTPPrefix + GameManager.getInstance().IP + "/view?filename=" + imageName + "&type=input";
@@ -679,40 +741,45 @@ public class ComfySceneLibrary : MonoBehaviour
         }
     }
 
+    // TODO remove uploadImageStatusAtEnd
+
     /// <summary>
     /// Uploads a given Texture to the server.
     /// </summary>
     /// <param name="curTexture">Texture to upload to the server.</param>
     /// <param name="uploadImageStatusAtEnd">Sets the final status of the uploadingImage parameter at the end of the function's work.</param>
-    private IEnumerator UploadImage(Texture2D curTexture, bool uploadImageStatusAtEnd = false)
-    {        
-        string url = HTTPPrefix + GameManager.getInstance().IP + "/upload/image";
-
-        WWWForm form = new WWWForm();
-
-        form.AddBinaryData("image", curTexture.EncodeToPNG(), curTexture.name, "image/png");
-        form.AddField("type", "input");
-        form.AddField("overwrite", "false");
-        uploadingImage = true;
-
-        using (var unityWebRequest = UnityWebRequest.Post(url, form))
+    private IEnumerator UploadImage(List<Texture2D> curTextures, bool uploadImageStatusAtEnd = false)
+    {
+        foreach (Texture2D curTexture in curTextures)
         {
-            yield return unityWebRequest.SendWebRequest();
+            string url = HTTPPrefix + GameManager.getInstance().IP + "/upload/image";
 
-            if (unityWebRequest.result != UnityWebRequest.Result.Success)
-            {
-                Debug.Log(unityWebRequest.error);
-            }
-            else
-            {
-                /*Debug.Log("Image Upload succesful");
-                Debug.Log(unityWebRequest.uploadHandler.progress);*/
+            WWWForm form = new WWWForm();
 
-                FileExistsChecker fileCheck = new FileExistsChecker();
-                while (!fileCheck.fileExists)
+            form.AddBinaryData("image", curTexture.EncodeToPNG(), curTexture.name, "image/png");
+            form.AddField("type", "input");
+            form.AddField("overwrite", "false");
+            uploadingImage = true;
+
+            using (var unityWebRequest = UnityWebRequest.Post(url, form))
+            {
+                yield return unityWebRequest.SendWebRequest();
+
+                if (unityWebRequest.result != UnityWebRequest.Result.Success)
                 {
-                    yield return new WaitForSeconds(0.2f);
-                    StartCoroutine(CheckIfFileExists(curTexture.name, fileCheck, uploadImageStatusAtEnd));
+                    Debug.Log(unityWebRequest.error);
+                }
+                else
+                {
+                    /*Debug.Log("Image Upload succesful");
+                    Debug.Log(unityWebRequest.uploadHandler.progress);*/
+
+                    FileExistsChecker fileCheck = new FileExistsChecker();
+                    while (!fileCheck.fileExists)
+                    {
+                        yield return new WaitForSeconds(0.2f);
+                        StartCoroutine(CheckIfFileExists(curTexture.name, fileCheck, uploadImageStatusAtEnd));
+                    }
                 }
             }
         }
