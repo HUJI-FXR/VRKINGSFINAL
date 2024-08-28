@@ -16,8 +16,9 @@ public class PopUpOnEnable : MonoBehaviour
 
     private void OnEnable()
     {
-        Debug.Log("Pop up!");
+        
         diffusion.CreatePopup(textures);
+        Debug.Log("Pop up!");
     }
 
     // Update is called once per frame
