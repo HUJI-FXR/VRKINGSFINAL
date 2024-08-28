@@ -48,7 +48,8 @@ public enum diffusionModels
     turbo,
     turblxl,
     ghostmix,
-    thinkdiffusiontest
+    thinkdiffusiontest,
+    juggernautXLInpaint
 }
 
 
@@ -204,6 +205,10 @@ public class ComfySceneLibrary : MonoBehaviour
                 break;
             case diffusionModels.thinkdiffusiontest:
                 curDiffModel = "01_ThinkDiffusionXL.safetensors";
+                curImageSize = new Vector2Int(512, 512);
+                break;
+            case diffusionModels.juggernautXLInpaint:
+                curDiffModel = "juggernautXL_versionXInpaint.safetensors.safetensors";
                 curImageSize = new Vector2Int(512, 512);
                 break;
         }

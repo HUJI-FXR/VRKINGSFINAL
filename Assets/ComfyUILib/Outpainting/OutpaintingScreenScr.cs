@@ -4,11 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
+
+// TODO documentation
 public class OutpaintingScreenScr : MonoBehaviour
 {
     public Vector3 tileSize = new Vector3(2, 1, 0.01f);
     public GameObject tileObject;
+
     public Vector2Int tileMatrixSize = Vector2Int.one;
+
     public Vector2Int firstPaintedTile = new Vector2Int(0, 0);
     public Texture2D firstTileTexture;
 
@@ -95,6 +99,7 @@ public class OutpaintingScreenScr : MonoBehaviour
     }
 
 
+    // TODO do I need this function?
     public void Paint(Vector2Int tilePos, string keyword)
     {
         // TODO assuming that we are not yet taking into accoount a situation where we generate a middle image between 8 generated tiles
@@ -124,6 +129,38 @@ public class OutpaintingScreenScr : MonoBehaviour
     }
 
     /// <summary>
+    /// Helper function for the UpdateTiles function. Checks if a tile is painted, if not, makes it paintable.
+    /// </summary>
+    /// <param name="tilePos">Position of the tile in the outpainting screen matrix</param>
+    private void MakePaintableUnpaintedTile(Vector2Int tilePos)
+    {
+        OutpaintingTile cur_tile_target = CheckValidTile(tilePos);
+
+        if (cur_tile_target.painted == false)
+        {
+            cur_tile_target.paintable = true;
+            cur_tile_target.GetComponent<Renderer>().material.mainTexture = paintableTexture;
+        }
+    }
+
+    /// <summary>
+    /// Helper function for other functions in this library. Checks if a tilePos corresponds to a real tile and returns the component.
+    /// </summary>
+    /// <param name="tilePos">Position of the tile in the outpainting screen matrix</param>
+    private OutpaintingTile CheckValidTile(Vector2Int tilePos)
+    {
+        if (tilePos.x > tileMatrixSize.x - 1 || tilePos.x < 0) return null;
+        if (tiles[tilePos.x, tilePos.y] == null) return null;
+
+        if (tiles[tilePos.x, tilePos.y].TryGetComponent<OutpaintingTile>(out OutpaintingTile outTile))
+        {
+            return outTile;
+        }
+
+        return null;
+    }
+
+    /// <summary>
     /// Updates the tiles around the given Tile(given from the position of the tile in the matrix)
     /// </summary>
     /// <param name="tilePos">Position of the tile in the outpainting screen matrix</param>
@@ -140,36 +177,102 @@ public class OutpaintingScreenScr : MonoBehaviour
         cur_tile_scr.painted = true;
         cur_tile_scr.paintable = false;
 
+        // We create a difference between tiles in the MIDDLE column and those on the sides.
+        // 1. If a middle column tile is painted:
+        // it will allow the above tile to be painted,
+        // but will not allow the horizontal neighbours to be painted UNLESS they have a painted vertical member beneath
+        // 2. If a side column tile is painted:
+        // it will allow the horizontal tile neighbours to be painted,
+        // but will allow the above tile to be painted IF that top tile has a horizontal painted tile neighbour.
+
+        int midColumnX = (int)Math.Floor((double)tileMatrixSize.x / 2);
+        // Checks whether the given Tile is in the middle column
+        bool midColumnTileSituation = tilePos.x == midColumnX;
+        // True if the tile is on the right of the middle column, False otherwise
+        bool tileColumnSide = tilePos.x > midColumnX;
+
+        // TODO REDO THIS HORRIBLE CODE - still pretty bad ngl
+
         // Makes the above tile paintable
         if (0 < tilePos.y && tilePos.y < tileMatrixSize.y + 1)
         {
-            OutpaintingTile cur_tile_target = tiles[tilePos.x, tilePos.y-1].GetComponent<OutpaintingTile>();
-            if (cur_tile_target.painted == false)
+            if (midColumnTileSituation)
             {
-                cur_tile_target.paintable = true;
-                cur_tile_target.GetComponent<Renderer>().material.mainTexture = paintableTexture;
-            }            
-        }
-
-        // Makes the right tile paintable
-        if (tilePos.x < tileMatrixSize.x - 1)
-        {
-            OutpaintingTile cur_tile_target = tiles[tilePos.x+1, tilePos.y].GetComponent<OutpaintingTile>();
-            if (cur_tile_target.painted == false)
-            {                
-                cur_tile_target.paintable = true;
-                cur_tile_target.GetComponent<Renderer>().material.mainTexture = paintableTexture;
+                MakePaintableUnpaintedTile(new Vector2Int(tilePos.x, tilePos.y - 1));
+            }
+            else
+            {
+                if (tileColumnSide)
+                {
+                    if (CheckValidTile(new Vector2Int(tilePos.x - 1, tilePos.y - 1)).painted) 
+                    {
+                        MakePaintableUnpaintedTile(new Vector2Int(tilePos.x, tilePos.y - 1));
+                    }
+                }
+                else
+                {
+                    if (CheckValidTile(new Vector2Int(tilePos.x + 1, tilePos.y - 1)).painted)
+                    {
+                        MakePaintableUnpaintedTile(new Vector2Int(tilePos.x, tilePos.y - 1));
+                    }
+                }
             }
         }
 
         // Makes the left tile paintable
+        if (tilePos.x < tileMatrixSize.x - 1)
+        {
+            if (midColumnTileSituation)
+            {
+                // This situation is impossible in practicality because:
+                // We always choose an image at the beginning to be in the middle lower position.
+                if (tilePos.y == tileMatrixSize.y-1)
+                {
+                    MakePaintableUnpaintedTile(new Vector2Int(tilePos.x-1, tilePos.y));
+                }
+                else
+                {
+                    if (CheckValidTile(new Vector2Int(tilePos.x - 1, tilePos.y+1)).painted)
+                    {
+                        MakePaintableUnpaintedTile(new Vector2Int(tilePos.x-1, tilePos.y));
+                    }
+                }
+            }
+            else
+            {
+                if (tileColumnSide)
+                {
+                    MakePaintableUnpaintedTile(new Vector2Int(tilePos.x - 1, tilePos.y));
+                }
+            }
+
+        }
+
+        // Makes the right tile paintable
         if (tilePos.x > 0)
         {
-            OutpaintingTile cur_tile_target = tiles[tilePos.x-1, tilePos.y].GetComponent<OutpaintingTile>();
-            if (cur_tile_target.painted == false)
+            if (midColumnTileSituation)
             {
-                cur_tile_target.paintable = true;
-                cur_tile_target.GetComponent<Renderer>().material.mainTexture = paintableTexture;
+                // This situation is impossible in practicality because:
+                // We always choose an image at the beginning to be in the middle lower position.
+                if (tilePos.y == tileMatrixSize.y - 1)
+                {
+                    MakePaintableUnpaintedTile(new Vector2Int(tilePos.x + 1, tilePos.y));
+                }
+                else
+                {
+                    if (CheckValidTile(new Vector2Int(tilePos.x + 1, tilePos.y + 1)).painted)
+                    {
+                        MakePaintableUnpaintedTile(new Vector2Int(tilePos.x + 1, tilePos.y));
+                    }
+                }
+            }
+            else
+            {
+                if (!tileColumnSide)
+                {
+                    MakePaintableUnpaintedTile(new Vector2Int(tilePos.x + 1, tilePos.y));
+                }
             }
         }
     }
