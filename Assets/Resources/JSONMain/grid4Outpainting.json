@@ -65,7 +65,7 @@
   },
   "21": {
     "inputs": {
-      "seed": 10039,
+      "seed": 389325270421565,
       "steps": 20,
       "cfg": 7,
       "sampler_name": "dpmpp_2m",

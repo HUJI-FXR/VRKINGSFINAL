@@ -12,7 +12,6 @@ using static UnityEngine.XR.Hands.XRHandTrackingEvents;
 // TODO need to remove button from several of these, choose exactly
 public class OutpaintGadgetMechanism : GadgetMechanism
 {
-    public DiffusionRequest diffusionRequest;
     public OutpaintingScreenScr outpaintingScreen;
 
     private void Start()
@@ -60,6 +59,53 @@ public class OutpaintGadgetMechanism : GadgetMechanism
         GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.unSelected);
     }
 
+    /// <summary>
+    /// Helper function to make the appropriate DiffusionRequest for the Outpainting Mechanism
+    /// </summary>
+    /// <returns></returns>
+    protected override DiffusionRequest CreateDiffusionRequest()
+    {
+        DiffusionRequest newDiffusionRequest = new DiffusionRequest();
+
+        newDiffusionRequest.diffusionModel = diffusionModels.ghostmix;
+        newDiffusionRequest.diffusionJsonType = diffusionWorkflows.outpainting;
+
+        return newDiffusionRequest;
+    }
+
+
+    /// <summary>
+    /// Helper function for the selection function. 
+    /// Allows to determine if the adjacent tile that is given, could be used in the outpainting process as an input. 
+    /// </summary>
+    /// <param name="offset">Determines which tile is checked of the surrounding tiles</param>
+    /// <param name="diffusionRequest">DiffusionRequest to change</param>
+    /// <param name="OPT">Input tile for which we check its adjacents</param>
+    /// <param name="offsetTileName">Adjacent tile name</param>
+    /// <param name="mainTileName">Input tile name</param>
+    /// <returns> true if the adjacent tile that is given, could be used in the outpainting process as an input, 
+    /// false otherwise</returns>
+    private bool CheckAdjacentTile(Vector2Int offset, DiffusionRequest diffusionRequest, OutpaintingTile OPT, string mainTileName, string offsetTileName)
+    {
+        GameObject curOffsetTile = outpaintingScreen.tiles[OPT.tilePosition.x + offset.x, OPT.tilePosition.y + offset.y];
+        if (curOffsetTile == null) return false;
+        OutpaintingTile curTileComp = curOffsetTile.GetComponent<OutpaintingTile>();
+        if (curTileComp == null) return false;
+
+        if (curTileComp.painted == true)
+        {
+            Texture2D curTexture = TextureManipulationLibrary.toTexture2D(curOffsetTile.GetComponent<Renderer>().material.mainTexture);
+            diffusionRequest.uploadTextures.Add(curTexture);
+            curTexture.name = mainTileName + "_" + offsetTileName + ".png";
+
+            diffusionRequest.SpecialInput = offsetTileName;
+
+            return true;
+        }
+
+        return false;
+    }
+
     public override void onGameObjectLeftSelectEntered(SelectEnterEventArgs args)
     {
         if (args == null || args.interactableObject == null)
@@ -71,7 +117,7 @@ public class OutpaintGadgetMechanism : GadgetMechanism
             return;
         }
 
-        DiffusionRequest newDiffusionRequest = GameManager.getInstance().comfyOrganizer.copyDiffusionRequest(diffusionRequest);
+        DiffusionRequest newDiffusionRequest = CreateDiffusionRequest();
 
         DiffusableObject diffObj = args.interactableObject.transform.gameObject.GetComponent<DiffusableObject>();
         OutpaintingTile OPT = args.interactableObject.transform.gameObject.GetComponent<OutpaintingTile>();
@@ -88,11 +134,7 @@ public class OutpaintGadgetMechanism : GadgetMechanism
                 return;
             }
 
-            Texture2D curTexture;
-
             // Finding a texture to be the original to be outpainted from.
-            GameObject curTileGO;
-
             bool topTileOutpaint = false;
             bool leftTileOutpaint = false;
             bool rightTileOutpaint = false;
@@ -100,80 +142,42 @@ public class OutpaintGadgetMechanism : GadgetMechanism
             string uniqueName = GameManager.getInstance().comfyOrganizer.UniqueImageName();
 
             // Top tile outpainting
-            if (OPT.tilePosition.y < outpaintingScreen.tileMatrixSize.y-1 && 
-                outpaintingScreen.tiles[OPT.tilePosition.x, OPT.tilePosition.y+1].GetComponent<OutpaintingTile>().painted == true)
+            if (OPT.tilePosition.y < outpaintingScreen.tileMatrixSize.y - 1)
             {
-                curTileGO = outpaintingScreen.tiles[OPT.tilePosition.x, OPT.tilePosition.y + 1];
-
-                curTexture = TextureManipulationLibrary.toTexture2D(curTileGO.GetComponent<Renderer>().material.mainTexture);
-                newDiffusionRequest.uploadTextures.Add(curTexture);
-                curTexture.name = uniqueName + "_top" + ".png";
-
-                newDiffusionRequest.SpecialInput = "top";
-                topTileOutpaint = true;
+                topTileOutpaint = CheckAdjacentTile(new Vector2Int(0, 1), newDiffusionRequest, OPT, uniqueName, "top");
             }
 
             // Left tile outpainting
-            else if (OPT.tilePosition.x > 0 && 
-                outpaintingScreen.tiles[OPT.tilePosition.x-1, OPT.tilePosition.y].GetComponent<OutpaintingTile>().painted == true)
+            if (OPT.tilePosition.x > 0)
             {
-                curTileGO = outpaintingScreen.tiles[OPT.tilePosition.x-1, OPT.tilePosition.y];
-
-                curTexture = TextureManipulationLibrary.toTexture2D(curTileGO.GetComponent<Renderer>().material.mainTexture);
-                newDiffusionRequest.uploadTextures.Add(curTexture);
-                curTexture.name = uniqueName + "_left" + ".png";
-
-                newDiffusionRequest.SpecialInput = "left";
-                leftTileOutpaint = true;
+                leftTileOutpaint = CheckAdjacentTile(new Vector2Int(-1, 0), newDiffusionRequest, OPT, uniqueName, "left");
             }
 
             // Right tile outpainting
-            else if (OPT.tilePosition.x < outpaintingScreen.tileMatrixSize.x-1 && 
-                outpaintingScreen.tiles[OPT.tilePosition.x+1, OPT.tilePosition.y].GetComponent<OutpaintingTile>().painted == true)
+            if (OPT.tilePosition.x < outpaintingScreen.tileMatrixSize.x - 1)
             {
-                curTileGO = outpaintingScreen.tiles[OPT.tilePosition.x+1, OPT.tilePosition.y];
-
                 if (newDiffusionRequest.uploadTextures.Count <= 1)
                 {
-                    curTexture = TextureManipulationLibrary.toTexture2D(curTileGO.GetComponent<Renderer>().material.mainTexture);
-                    newDiffusionRequest.uploadTextures.Add(curTexture);
-                    curTexture.name = uniqueName + "_right" + ".png";
-                }                
+                    rightTileOutpaint = CheckAdjacentTile(new Vector2Int(1, 0), newDiffusionRequest, OPT, uniqueName, "right");
+                }
+            }                      
 
-                newDiffusionRequest.SpecialInput = "right";
-                rightTileOutpaint = true;
-            }
-            else
-            {
-                return;
-            }
-
-            // TODO check if edge texture exists two, like, the third image
-            // TODO repeat code, bad!
+            if (!topTileOutpaint && !leftTileOutpaint && !rightTileOutpaint)    return;
             if (topTileOutpaint && leftTileOutpaint)
             {
+                CheckAdjacentTile(new Vector2Int(-1, 1), newDiffusionRequest, OPT, uniqueName, "bottomRight");
                 newDiffusionRequest.diffusionJsonType = diffusionWorkflows.grid4Outpainting;
-                curTileGO = outpaintingScreen.tiles[OPT.tilePosition.x-1, OPT.tilePosition.y+1];
-
-                curTexture = TextureManipulationLibrary.toTexture2D(curTileGO.GetComponent<Renderer>().material.mainTexture);
-                newDiffusionRequest.uploadTextures.Add(curTexture);
-                curTexture.name = uniqueName + "_bottomRight" + ".png";
             }
             else if (topTileOutpaint && rightTileOutpaint)
             {
+                CheckAdjacentTile(new Vector2Int(1, 1), newDiffusionRequest, OPT, uniqueName, "bottomLeft");
                 newDiffusionRequest.diffusionJsonType = diffusionWorkflows.grid4Outpainting;
-                curTileGO = outpaintingScreen.tiles[OPT.tilePosition.x+1, OPT.tilePosition.y+1];
-
-                curTexture = TextureManipulationLibrary.toTexture2D(curTileGO.GetComponent<Renderer>().material.mainTexture);
-                newDiffusionRequest.uploadTextures.Add(curTexture);
-                curTexture.name = uniqueName + "_bottomLeft" + ".png";
             }
 
             outpaintingScreen.UpdateTiles(new Vector2Int(OPT.tilePosition.x, OPT.tilePosition.y));                               
             newDiffusionRequest.targets.Add(RDT);
 
             GameManager.getInstance().comfyOrganizer.SendDiffusionRequest(newDiffusionRequest);
-
         }
         // Object that is interacted with is a DiffusableObject
         else

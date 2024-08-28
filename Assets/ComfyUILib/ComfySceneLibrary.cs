@@ -104,6 +104,8 @@ public class ComfySceneLibrary : MonoBehaviour
             HTTPPrefix = "https://";
         }
 
+        Debug.Log(HTTPPrefix + GameManager.getInstance().IP);
+
         // Get all enum adjacent JSON workflows
         TextAsset[] jsonFiles = Resources.LoadAll<TextAsset>(JSONFolderPath);
 
@@ -331,8 +333,7 @@ public class ComfySceneLibrary : MonoBehaviour
 
             case diffusionWorkflows.grid4Outpainting:
             case diffusionWorkflows.outpainting:
-
-                Debug.Log(diffReq.diffusionJsonType.ToString());
+                //Debug.Log(diffReq.diffusionJsonType.ToString());
                 // TODO check if words are not approved words? how to do "else" on switch statement?                
                 switch (diffReq.SpecialInput)
                 {
@@ -360,8 +361,8 @@ public class ComfySceneLibrary : MonoBehaviour
 
                             StartCoroutine(UploadImage(diffReq.uploadTextures));
 
-                            json["prompt"]["80"]["inputs"]["image"] = diffReq.uploadTextures[0].name;
-                            json["prompt"]["89"]["inputs"]["image"] = diffReq.uploadTextures[1].name;
+                            json["prompt"]["89"]["inputs"]["image"] = diffReq.uploadTextures[0].name;
+                            json["prompt"]["80"]["inputs"]["image"] = diffReq.uploadTextures[1].name;
                             json["prompt"]["90"]["inputs"]["image"] = diffReq.uploadTextures[2].name;
                             break;
                         }
@@ -394,11 +395,11 @@ public class ComfySceneLibrary : MonoBehaviour
 
                             StartCoroutine(UploadImage(diffReq.uploadTextures));
 
-                            json["prompt"]["80"]["inputs"]["image"] = diffReq.uploadTextures[0].name;
-                            json["prompt"]["89"]["inputs"]["image"] = diffReq.uploadTextures[1].name;
+                            json["prompt"]["89"]["inputs"]["image"] = diffReq.uploadTextures[0].name;
+                            json["prompt"]["80"]["inputs"]["image"] = diffReq.uploadTextures[1].name;
                             json["prompt"]["90"]["inputs"]["image"] = diffReq.uploadTextures[2].name;
 
-                            json["prompt"]["82"]["inputs"]["x"] = 512;
+                            json["prompt"]["110"]["inputs"]["x"] = 512;
                             break;
                         }
                         else
@@ -424,7 +425,7 @@ public class ComfySceneLibrary : MonoBehaviour
                 json["prompt"]["7"]["inputs"]["text"] = diffReq.negativePrompt;*/
 
                 // TODO needs inpainting model input?
-                //json["prompt"]["4"]["inputs"]["ckpt_name"] = curDiffModel;                
+                // json["prompt"]["25"]["inputs"]["ckpt_name"] = curDiffModel;                
                 
 
                 //Debug.Log("RIGHT " + json["prompt"]["11"]["inputs"]["right"]);
@@ -588,31 +589,6 @@ public class ComfySceneLibrary : MonoBehaviour
                 Debug.Log("File " + imageName + " in Input");
             }
         }
-
-        /*using (UnityWebRequest request = UnityWebRequest.Head(url))
-        {
-            // Send the request and wait for a response
-            yield return request.SendWebRequest();
-
-            // Check for network errors
-            if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
-            {
-                Debug.LogError($"Error: {request.error}");
-            }
-            else
-            {
-                // Check the response code
-                if (request.responseCode == 200)
-                {
-                    Debug.Log("File exists.");
-                    fileChecker.fileExists = true;
-                }
-                else
-                {
-                    Debug.Log("File does not exist or is inaccessible.");
-                }
-            }
-        }*/
     }
 
 
@@ -716,6 +692,7 @@ public class ComfySceneLibrary : MonoBehaviour
         return filenames;
     }
 
+    // TODO make the downloads not in an endless for loop, but check if a file exists, then download it ONCE(or until succession?)
     /// <summary>
     /// Downloads a single image according to the given image URL and adds it to the DiffusionRequest
     /// </summary>

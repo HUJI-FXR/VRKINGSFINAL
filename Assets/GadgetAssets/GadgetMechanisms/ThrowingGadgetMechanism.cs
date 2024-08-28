@@ -12,7 +12,6 @@ public class ThrowingGadgetMechanism : GadgetMechanism
     // TODO Do I even need diffusionlist when I have  GeneralGameScript.instance.diffusables??
 
     //private bool allowCollision = false;
-    public DiffusionRequest diffusionRequest = null;
 
 
     private void Start()
@@ -20,25 +19,21 @@ public class ThrowingGadgetMechanism : GadgetMechanism
         mechanismText = "Throwing";
     }
 
-    /*
-    diffusionRequest.positivePrompt = "Beautiful";
-    diffusionRequest.negativePrompt = "watermark";
-    diffusionRequest.numOfVariations = 5;
-    diffusionRequest.targets.Add(GameManager.getInstance().radiusDiffusionTexture);
-    diffusionRequest.diffusionModel = diffusionModels.nano;*/
-
-    /*public ThrowingGadgetMechanism()
+    /// <summary>
+    /// Helper function to make the appropriate DiffusionRequest for the Throwing Mechanism
+    /// </summary>
+    /// <returns></returns>
+    protected override DiffusionRequest CreateDiffusionRequest()
     {
-        this.mechanismText = MECHANISM_PRETEXT + "Throw an Object";
-        this.buttonText = "Generate"; // TODO deccide if throwing mechanism is per object or from the gadget, this will determine button text too
+        DiffusionRequest newDiffusionRequest = new DiffusionRequest();
 
-        diffusionRequest = new DiffusionRequest();
-        diffusionRequest.positivePrompt = "Beautiful";
-        diffusionRequest.negativePrompt = "watermark";
-        diffusionRequest.numOfVariations = 5;
-        diffusionRequest.targets.Add(GameManager.getInstance().radiusDiffusionTexture);
-        diffusionRequest.diffusionModel = diffusionModels.nano;
-    }*/
+        newDiffusionRequest.diffusionModel = diffusionModels.nano;
+        newDiffusionRequest.targets.Add(GameManager.getInstance().radiusDiffusionTexture);
+        newDiffusionRequest.diffusionJsonType = diffusionWorkflows.txt2imgLCM;
+        newDiffusionRequest.numOfVariations = 5;
+
+        return newDiffusionRequest;
+    }
 
     public void DiffusableGrabbed(SelectEnterEventArgs args)
     {
@@ -46,6 +41,9 @@ public class ThrowingGadgetMechanism : GadgetMechanism
         {
             return;
         }
+        
+        DiffusionRequest diffusionRequest = CreateDiffusionRequest();
+
         diffusionRequest.diffusableObject = args.interactableObject.transform.gameObject.GetComponent<DiffusableObject>();
         GameManager.getInstance().comfyOrganizer.SendDiffusionRequest(diffusionRequest);        
     }

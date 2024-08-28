@@ -127,7 +127,11 @@ public class ComfyOrganizer : MonoBehaviour
     {
         DiffusionRequest newDiffusionRequest = new DiffusionRequest();
 
-        newDiffusionRequest.targets = diffusionRequest.targets;
+        foreach (var target in diffusionRequest.targets)
+        {
+            newDiffusionRequest.targets.Add(target);
+        }
+
         newDiffusionRequest.addToTextureTotal = diffusionRequest.addToTextureTotal;
         newDiffusionRequest.numOfVariations = diffusionRequest.numOfVariations;
         newDiffusionRequest.positivePrompt = diffusionRequest.positivePrompt;
@@ -143,7 +147,6 @@ public class ComfyOrganizer : MonoBehaviour
         newDiffusionRequest.diffusableObject = diffusionRequest.diffusableObject;
 
         // Texture2D deep copying --------------------------------------------------------------------
-        newDiffusionRequest.textures = new List<Texture2D>();
         foreach (Texture2D texture in diffusionRequest.textures)
         {
             Texture2D copyTexture = new Texture2D(texture.width, texture.height);
@@ -153,8 +156,7 @@ public class ComfyOrganizer : MonoBehaviour
 
             newDiffusionRequest.textures.Add(copyTexture);
         }
-
-        newDiffusionRequest.uploadTextures = new List<Texture2D>();
+        
         foreach (Texture2D texture in diffusionRequest.uploadTextures)
         {
             Texture2D copyTexture = new Texture2D(texture.width, texture.height);
@@ -176,6 +178,8 @@ public class ComfyOrganizer : MonoBehaviour
         return newDiffusionRequest;
     }
 
+    
+    // TODO check if this works and make sure it does, create minimal workflow without generation and only model loading?
     /// <summary>
     /// Used for loading models into RAM to speed up subsequent image generations using the same model. 
     /// Sends a minimal image generation request with a specified model to load it into RAM.

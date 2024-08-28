@@ -20,8 +20,6 @@ public class DiffusableObjectGadgetMechanism : GadgetMechanism
     [NonSerialized]
     public GameObject selectedTextObject = null;
 
-    public DiffusionRequest diffusionRequest;
-
     private void Start()
     {
         mechanismText = "Object to Image";
@@ -149,6 +147,22 @@ public class DiffusableObjectGadgetMechanism : GadgetMechanism
             }
         }
     }
+
+    /// <summary>
+    /// Helper function to make the appropriate DiffusionRequest for the Diffusable Object Mechanism
+    /// </summary>
+    /// <returns></returns>
+    protected override DiffusionRequest CreateDiffusionRequest()
+    {
+        DiffusionRequest newDiffusionRequest = new DiffusionRequest();
+
+        newDiffusionRequest.diffusionModel = diffusionModels.ghostmix;
+        newDiffusionRequest.targets.Add(GameManager.getInstance().uiDiffusionTexture);
+        newDiffusionRequest.diffusionJsonType = diffusionWorkflows.txt2imgLCM;
+
+        return newDiffusionRequest;
+    }
+
     public override void ActivateGeneration(InputAction.CallbackContext context)
     {
         if (selectedTextObject == null || selectedStyleObject == null)  return;
@@ -163,6 +177,8 @@ public class DiffusableObjectGadgetMechanism : GadgetMechanism
 
         string uniqueName = GameManager.getInstance().comfyOrganizer.UniqueImageName();
         copyStyleTexture.name = uniqueName + ".png";
+
+        DiffusionRequest diffusionRequest = CreateDiffusionRequest();
 
         diffusionRequest.uploadTextures.Add(copyStyleTexture);
         diffusionRequest.positivePrompt = positivePrompt;

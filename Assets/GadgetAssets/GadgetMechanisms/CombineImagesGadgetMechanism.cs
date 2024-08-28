@@ -9,17 +9,11 @@ using UnityEngine.InputSystem;
 
 
 // TODO make a unique ID for everything, downloaded images, uploaded images, request IDs etc
-// TODO make requests repeat themselves until completion with a max number of RETRIES
-
-
 public class CombineImagesGadgetMechanism : GadgetMechanism
 {
     // TODO notice this CAN be generalized to larger number of objects, but requires many changes.
     public Queue<GameObject> selectedObjects = new Queue<GameObject>();
     public int MAX_QUEUED_OBJECTS = 2;
-
-    public DiffusionRequest diffusionRequest;
-    // TODO set several diffusionRequests 
 
     private void Start()
     {
@@ -116,7 +110,22 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
         selectedObjects.Enqueue(args.interactableObject.transform.gameObject);
         // Creates selection outline
         GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.selected);
-    }    
+    }
+
+    /// <summary>
+    /// Helper function to make the appropriate DiffusionRequest for the Combine Images Mechanism
+    /// </summary>
+    /// <returns></returns>
+    protected override DiffusionRequest CreateDiffusionRequest()
+    {
+        DiffusionRequest newDiffusionRequest = new DiffusionRequest();
+
+        newDiffusionRequest.diffusionModel = diffusionModels.ghostmix;
+        newDiffusionRequest.targets.Add(GameManager.getInstance().uiDiffusionTexture);
+        newDiffusionRequest.diffusionJsonType = diffusionWorkflows.combineImages;
+
+        return newDiffusionRequest;
+    }
 
     public void GetTexturesFromSelected()
     {
@@ -139,6 +148,8 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
         string uniqueName = GameManager.getInstance().comfyOrganizer.UniqueImageName();
         copyTexture.name = uniqueName + ".png";
         secondCopyTexture.name = uniqueName + "_2" + ".png";
+
+        DiffusionRequest diffusionRequest = CreateDiffusionRequest();
 
         diffusionRequest.uploadTextures.Add(copyTexture);
         diffusionRequest.uploadTextures.Add(secondCopyTexture);

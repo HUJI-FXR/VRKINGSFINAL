@@ -11,8 +11,9 @@ using UnityEngine.InputSystem;
 // TODO write comments explaining everything for mechanisms
 public class CameraGadgetMechanism : GadgetMechanism
 {
-    // todo break into two parts, one the input the other the output through the comfy lib
-    public DiffusionRequest diffusionRequest;
+    // diffusionRequest;
+    private Texture2D styleTexture;
+    private Texture2D contentTexture;
     public bool UseStyleTransfer = true;
 
     // Object that was selected for the texture to be used as the style base for the Camera's image.
@@ -133,12 +134,24 @@ public class CameraGadgetMechanism : GadgetMechanism
         string uniqueName = GameManager.getInstance().comfyOrganizer.UniqueImageName();
         curTexture.name = uniqueName + "_2.png";
 
-        // Style texture is the second one in the uploadTextures List,
-        // if there is already one, replace it with the current one.
-        if (diffusionRequest.uploadTextures.Count >= 2)
-        {
-            diffusionRequest.uploadTextures[1] = curTexture;
-        }        
+        styleTexture = curTexture;
+    }
+
+    /// <summary>
+    /// Helper function to make the appropriate DiffusionRequest for the Camera Mechanism
+    /// </summary>
+    /// <returns></returns>
+    protected override DiffusionRequest CreateDiffusionRequest()
+    {
+        DiffusionRequest newDiffusionRequest = new DiffusionRequest();
+
+        newDiffusionRequest.diffusionModel = diffusionModels.ghostmix;
+        newDiffusionRequest.targets.Add(GameManager.getInstance().uiDiffusionTexture);
+
+        // TODO do I even NEED the baseCamera workflow? diffusionWorkflows.baseCamera
+        newDiffusionRequest.diffusionJsonType = diffusionWorkflows.combineImages;
+
+        return newDiffusionRequest;
     }
 
     // The function is called with the right hand.
@@ -148,14 +161,9 @@ public class CameraGadgetMechanism : GadgetMechanism
     /// </summary>
     public override void ActivateGeneration(InputAction.CallbackContext context)
     {
-        if (diffusionRequest.uploadTextures == null)
+        if (contentTexture == null || styleTexture== null)
         {
-            Debug.LogError("Need to add textures to the camera workflow");
-            return;
-        }
-        if (diffusionRequest.uploadTextures.Count <= 1)
-        {
-            Debug.LogError("Need to add enough textures to the camera workflow");
+            Debug.LogError("Need to pick style and content textures for Camera mechanism");
             return;
         }
 
@@ -165,10 +173,17 @@ public class CameraGadgetMechanism : GadgetMechanism
             selectedStyleObject = null;
         }
 
-        GameManager.getInstance().comfyOrganizer.SendDiffusionRequest(diffusionRequest);
+
+        // Content texture is the first one in the uploadTextures List, Style texture is the second.
+        DiffusionRequest newDiffusionRequest = CreateDiffusionRequest();
+        newDiffusionRequest.uploadTextures.Add(contentTexture);
+        newDiffusionRequest.uploadTextures.Add(styleTexture);
+
+        GameManager.getInstance().comfyOrganizer.SendDiffusionRequest(newDiffusionRequest);
         return;
     }
 
+    // TODO move the camera from left hand to camera hanging on neck.
     // The function is called with the left hand, and the camera is also positioned on the left hand.
     /// <summary>
     /// Shoots an image with the Gadget left-hand camera.
@@ -189,6 +204,7 @@ public class CameraGadgetMechanism : GadgetMechanism
             diffusionRequest.uploadTextures[1] = curTexture;
         }
         diffusionRequest.uploadImage = screenShot;*/
+        contentTexture = screenShot;
 
         if (selectedStyleObject != null)
         {
@@ -196,10 +212,11 @@ public class CameraGadgetMechanism : GadgetMechanism
             selectedStyleObject = null;
         }
 
-        if (!UseStyleTransfer)
+        // TODO do I need this part? why do I want to send a DiffusionRequest when taking a picture with the camera??
+        /*if (!UseStyleTransfer)
         {
             diffusionRequest.diffusionJsonType = diffusionWorkflows.combineImages;
             GameManager.getInstance().comfyOrganizer.SendDiffusionRequest(diffusionRequest);
-        }
+        }*/
     }
 }

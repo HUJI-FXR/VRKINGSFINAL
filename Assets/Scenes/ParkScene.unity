@@ -1077,7 +1077,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 505080063357859650, guid: 6cf941391e6bdbc4abdbed9a86feb39a, type: 3}
       propertyPath: serverAddress
-      value: glitch-27140731
+      value: architecture-28134448
       objectReference: {fileID: 0}
     - target: {fileID: 3320564364425000189, guid: 6cf941391e6bdbc4abdbed9a86feb39a, type: 3}
       propertyPath: m_Name
@@ -1244,17 +1244,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5871becb5c89d554ca7a9c9c5b94f6a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diffusionRequest:
-    targets: []
-    addToTextureTotal: 0
-    numOfVariations: 1
-    positivePrompt: 
-    negativePrompt: 
-    uploadTextures: []
-    denoise: 1
-    diffusionModel: 4
-    diffusionJsonType: 8
-    SpecialInput: 
   outpaintingScreen: {fileID: 274099988}
 --- !u!1001 &2022962454
 PrefabInstance:

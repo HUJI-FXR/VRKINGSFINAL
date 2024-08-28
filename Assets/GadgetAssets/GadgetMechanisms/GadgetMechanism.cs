@@ -28,6 +28,16 @@ public class GadgetMechanism : MonoBehaviour
     }
 
     /// <summary>
+    /// Helper function to make the appropriate DiffusionRequest for a given mechanism.
+    /// </summary>
+    /// <returns></returns>
+    protected virtual DiffusionRequest CreateDiffusionRequest()
+    {
+        return null;
+    }
+
+
+    /// <summary>
     /// Left hand controller ray hover entered.
     /// </summary>
     public virtual void OnGameObjectLeftHoverEntered(HoverEnterEventArgs args)
