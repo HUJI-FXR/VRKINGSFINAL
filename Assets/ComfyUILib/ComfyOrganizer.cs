@@ -54,6 +54,8 @@ public class DiffusionRequest
     [System.NonSerialized]
     public bool finishedRequest = false;
     [System.NonSerialized]
+    public bool sentDownloadRequest = false;
+    [System.NonSerialized]
     public int requestNum = -1;
     [System.NonSerialized]
     public string diffImgName;
@@ -63,12 +65,15 @@ public class DiffusionRequest
     public Collision collision = null;
     [System.NonSerialized]
     public DiffusableObject diffusableObject = null;
+    [System.NonSerialized]
+    public FileExistsChecker uploadFileChecker;
 
     public DiffusionRequest()
     {
         targets = new List<DiffusionTextureChanger>();
         textures = new List<Texture2D>();
         uploadTextures = new List<Texture2D>();
+        uploadFileChecker = new FileExistsChecker();
     }
 
     public DiffusionRequest(List<DiffusionTextureChanger> curTargets)
@@ -76,6 +81,7 @@ public class DiffusionRequest
         targets = curTargets;
         textures = new List<Texture2D>();
         uploadTextures = new List<Texture2D>();
+        uploadFileChecker = new FileExistsChecker();
     }
 }
 
@@ -196,10 +202,8 @@ public class ComfyOrganizer : MonoBehaviour
     /// <param name="diffusionRequest">Diffusion Request that is sent to the ComfySceneLibrary</param>
     public void SendDiffusionRequest(DiffusionRequest diffusionRequest)
     {
-        //Debug.Log("wiwi " + diffusionRequest.diffusionJsonType.ToString());
         // TODO choose who has the responsibility for defining the various parameters of a diffusion request, the GameObject? whoever?
         DiffusionRequest newDiffusionRequest = copyDiffusionRequest(diffusionRequest);
-        //Debug.Log("wiwi2 " + newDiffusionRequest.diffusionJsonType.ToString());
         newDiffusionRequest.requestNum = currentRequestNum;
         newDiffusionRequest.diffImgName = GetDiffusionImageName(newDiffusionRequest);
         DiffuseDictionary.Add(currentRequestNum, newDiffusionRequest);
@@ -211,29 +215,30 @@ public class ComfyOrganizer : MonoBehaviour
     }
 
     /// <summary>
-    /// Gets a list of the Diffusion Requests that have still not been generated.
+    /// Gets a list of the Diffusion Requests that have still not been downloaded.
     /// </summary>
-    public List<DiffusionRequest> GetUnfinishedRequestPrompts()
+    public List<DiffusionRequest> GetUndownloadedRequestPrompts()
     {
         // TODO take into account ONLY the requests that were sent to generation?
         List<DiffusionRequest> relevantKeys = new List<DiffusionRequest>();
-        List<DiffusionRequest> finishedKeys = new List<DiffusionRequest>();
+        List<DiffusionRequest> sentKeys = new List<DiffusionRequest>();
 
         foreach (var diffReqID in DiffuseDictionary)
         {
-            if (!diffReqID.Value.finishedRequest)
+            if (!diffReqID.Value.sentDownloadRequest)
             {
                 relevantKeys.Add(diffReqID.Value);
             }
             else
             {
-                finishedKeys.Add(diffReqID.Value);
+                sentKeys.Add(diffReqID.Value);
             }
         }
-        foreach (var key in finishedKeys)
+        // TODO should I even remove previous ones?
+        /*foreach (var key in sentKeys)
         {
             DiffuseDictionary.Remove(key.requestNum);
-        }
+        }*/
 
         return relevantKeys;
     }
@@ -249,7 +254,7 @@ public class ComfyOrganizer : MonoBehaviour
         {
             return;
         }
-
+        
         int requestNum = diffusionRequest.requestNum;
         if (!DiffuseDictionary.ContainsKey(requestNum))
         {
@@ -267,6 +272,7 @@ public class ComfyOrganizer : MonoBehaviour
         if (DiffuseDictionary[requestNum].numOfVariations <= DiffuseDictionary[requestNum].textures.Count)
         {
             DiffuseDictionary[requestNum].finishedRequest = true;
+            DiffuseDictionary[requestNum].sentDownloadRequest = true;
             SendTexturesToRecipient(DiffuseDictionary[requestNum]);
         }
     }

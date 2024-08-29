@@ -72,7 +72,7 @@ public class ComfySceneLibrary : MonoBehaviour
     private bool started_generations = false;
     private Dictionary<diffusionWorkflows, string> diffusionJsons;
 
-    private bool uploadingImage = false;
+    //private bool uploadingImage = false;
 
     private bool readyForDiffusion = false;
 
@@ -141,16 +141,13 @@ public class ComfySceneLibrary : MonoBehaviour
         {
             yield return new WaitForSeconds(0.1f);
 
-            while (uploadingImage)
-            {
-                //yield return null;
-                yield return new WaitForSeconds(0.02f);
-            }
-
-            List<DiffusionRequest> allDiffReqs = comfyOrg.GetUnfinishedRequestPrompts();
+            List<DiffusionRequest> allDiffReqs = comfyOrg.GetUndownloadedRequestPrompts();
             foreach (DiffusionRequest diffReq in allDiffReqs)
             {
-                RequestFileName(diffReq);
+                if (!diffReq.sentDownloadRequest)
+                {
+                    RequestFileName(diffReq);
+                }                
             }
         }
     }
@@ -247,7 +244,7 @@ public class ComfySceneLibrary : MonoBehaviour
                 break;
 
             case diffusionWorkflows.img2img:
-                StartCoroutine(UploadImage(diffReq.uploadTextures));
+                StartCoroutine(UploadImage(diffReq));
 
                 json["prompt"]["10"]["inputs"]["image"] = diffReq.uploadTextures[0].name;
                 json["prompt"]["3"]["inputs"]["denoise"] = diffReq.denoise;
@@ -275,7 +272,7 @@ public class ComfySceneLibrary : MonoBehaviour
 
                 json["prompt"]["4"]["inputs"]["ckpt_name"] = curDiffModel;
                 
-                StartCoroutine(UploadImage(diffReq.uploadTextures));
+                StartCoroutine(UploadImage(diffReq));
 
                 json["prompt"]["11"]["inputs"]["image"] = diffReq.uploadTextures[0].name;
                 break;
@@ -306,13 +303,12 @@ public class ComfySceneLibrary : MonoBehaviour
 
                 json["prompt"]["1"]["inputs"]["ckpt_name"] = curDiffModel;
                 json["prompt"]["2"]["inputs"]["text"] = diffReq.positivePrompt;
-                //Debug.Log("POSITIVE " + diffReq.positivePrompt);
                 json["prompt"]["3"]["inputs"]["text"] = diffReq.negativePrompt;
 
                 json["prompt"]["50"]["inputs"]["amount"] = diffReq.numOfVariations;
                 json["prompt"]["51"]["inputs"]["amount"] = diffReq.numOfVariations;
 
-                StartCoroutine(UploadImage(diffReq.uploadTextures));
+                StartCoroutine(UploadImage(diffReq));
 
                 // Input Image:
                 json["prompt"]["12"]["inputs"]["image"] = diffReq.uploadTextures[0].name;
@@ -341,7 +337,6 @@ public class ComfySceneLibrary : MonoBehaviour
 
             case diffusionWorkflows.grid4Outpainting:
             case diffusionWorkflows.outpainting:
-                //Debug.Log(diffReq.diffusionJsonType.ToString());
                 // TODO check if words are not approved words? how to do "else" on switch statement?                
                 switch (diffReq.SpecialInput)
                 {
@@ -367,7 +362,7 @@ public class ComfySceneLibrary : MonoBehaviour
                                 ""prompt"": {getWorkflowJSON(diffusionWorkflows.grid4Outpainting)}
                             }}";
 
-                            StartCoroutine(UploadImage(diffReq.uploadTextures));
+                            StartCoroutine(UploadImage(diffReq));
 
                             json["prompt"]["89"]["inputs"]["image"] = diffReq.uploadTextures[0].name;
                             json["prompt"]["80"]["inputs"]["image"] = diffReq.uploadTextures[1].name;
@@ -376,7 +371,7 @@ public class ComfySceneLibrary : MonoBehaviour
                         }
                         else
                         {
-                            StartCoroutine(UploadImage(diffReq.uploadTextures));
+                            StartCoroutine(UploadImage(diffReq));
 
                             json["prompt"]["80"]["inputs"]["image"] = diffReq.uploadTextures[0].name;
                             break;
@@ -401,7 +396,7 @@ public class ComfySceneLibrary : MonoBehaviour
                                 ""prompt"": {getWorkflowJSON(diffusionWorkflows.grid4Outpainting)}
                             }}";
 
-                            StartCoroutine(UploadImage(diffReq.uploadTextures));
+                            StartCoroutine(UploadImage(diffReq));
 
                             json["prompt"]["89"]["inputs"]["image"] = diffReq.uploadTextures[0].name;
                             json["prompt"]["80"]["inputs"]["image"] = diffReq.uploadTextures[1].name;
@@ -412,7 +407,7 @@ public class ComfySceneLibrary : MonoBehaviour
                         }
                         else
                         {
-                            StartCoroutine(UploadImage(diffReq.uploadTextures));
+                            StartCoroutine(UploadImage(diffReq));
 
                             json["prompt"]["80"]["inputs"]["image"] = diffReq.uploadTextures[0].name;
                             json["prompt"]["82"]["inputs"]["x"] = 512;
@@ -434,10 +429,6 @@ public class ComfySceneLibrary : MonoBehaviour
 
                 // TODO needs inpainting model input?
                 // json["prompt"]["25"]["inputs"]["ckpt_name"] = curDiffModel;                
-                
-
-                //Debug.Log("RIGHT " + json["prompt"]["11"]["inputs"]["right"]);
-
                 break;
 
             default:
@@ -446,19 +437,6 @@ public class ComfySceneLibrary : MonoBehaviour
         }
         return json.ToString();
     }
-
-
-    /*public void RedoQueuePrompt(DiffusionRequest diffReq)
-    {
-        int TOTAL_TRIAL_NUMBER = 5;
-        int cur = -2;
-
-        for (int i = 0; i < TOTAL_TRIAL_NUMBER; i++)
-        {
-            StartCoroutine(cur = QueuePromptCoroutine(diffReq));
-        }
-
-    }*/
 
     /// <summary>
     /// Sends a Diffusion Image generation request to the server.
@@ -475,10 +453,9 @@ public class ComfySceneLibrary : MonoBehaviour
         string url = HTTPPrefix + GameManager.getInstance().IP + "/prompt";
 
         string promptText = DiffusionJSONFactory(diffReq);
-        while (uploadingImage)
-        {
-            yield return -1;
-            //yield return new WaitForSeconds(0.02f);
+        while (!diffReq.uploadFileChecker.fileExists)
+        {            
+            yield return new WaitForSeconds(0.02f);
         }
 
         if (promptText == null || promptText.Length <= 0)
@@ -519,54 +496,6 @@ public class ComfySceneLibrary : MonoBehaviour
     }
 
 
-    /*// Used to save up on compute when not using the image generation
-    private IEnumerator SmallWait()
-    {
-        yield return new WaitForSeconds(5f);
-    }
-
-    private async void StartListening()
-    {
-        //var buffer = new byte[1024 * 1024 * 32];
-        //WebSocketReceiveResult result = null;
-
-        while (ws.State == WebSocketState.Open)
-        {
-            var stringBuilder = new StringBuilder();
-            do
-            {
-                result = await ws.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
-                if (result.MessageType == WebSocketMessageType.Close)
-                {
-                    await ws.CloseAsync(WebSocketCloseStatus.NormalClosure, string.Empty, CancellationToken.None);
-                }
-                else
-                {
-                    var str = Encoding.UTF8.GetString(buffer, 0, result.Count);
-                    stringBuilder.Append(str);
-                }
-            }
-            while (!result.EndOfMessage);
-
-            string response = stringBuilder.ToString();
-
-            // When images are not being generated, this statement makes the program wait a bit which saves on compute
-            if (response.Contains("\"queue_remaining\": 0"))
-            {
-                StartCoroutine(SmallWait());
-            }
-
-            // Goes over each prompt that needs completing and checks whether it has completed,
-            // if it did, it downloads the images and labels the promptID as true(as in, finished).
-
-            List<DiffusionRequest> allDiffReqs = comfyOrg.GetUnfinishedRequestPrompts();
-            foreach (DiffusionRequest diffReq in allDiffReqs)
-            {
-                RequestFileName(diffReq);
-            }
-        }
-    }*/
-
     void OnDestroy()
     {
         if (ws != null && ws.State == WebSocketState.Open)
@@ -575,26 +504,23 @@ public class ComfySceneLibrary : MonoBehaviour
         }
     }
 
-
-    // TODO use the same technique with checking the output/outputs(?) folder before sending a single(?) download request
-    public IEnumerator CheckIfFileExists(string imageName, FileExistsChecker fileChecker, bool uploadImageStatusAtEnd)
+    
+    public IEnumerator CheckIfFileExists(string imageName, FileExistsChecker fileChecker, string subfolder)
     {
-        string url = HTTPPrefix + GameManager.getInstance().IP + "/view?filename=" + imageName + "&type=input";
+        string url = HTTPPrefix + GameManager.getInstance().IP + "/view?filename=" + imageName + "&type=" + subfolder;
 
         using (var unityWebRequest = UnityWebRequest.Head(url))
         {
             yield return unityWebRequest.SendWebRequest();
 
             if (unityWebRequest.result != UnityWebRequest.Result.Success)
-            {
-                uploadingImage = false;
+            {                
                 Debug.Log("File " + imageName + " still not in Input");
             }
             else
             {
-                uploadingImage = uploadImageStatusAtEnd;
                 fileChecker.fileExists = true;
-                Debug.Log("File " + imageName + " in Input");
+                //Debug.Log("File " + imageName + " in Input");
             }
         }
     }
@@ -652,9 +578,10 @@ public class ComfySceneLibrary : MonoBehaviour
                     // Downloading each image of the prompt
                     for (int i = 0; i < filenames.Length; i++)
                     {
-                        string imageURL = HTTPPrefix + GameManager.getInstance().IP + "/view?filename=" + filenames[i];
-                        StartCoroutine(DownloadImage(imageURL, diffReq));
+                        StartCoroutine(DownloadImage(filenames[i], diffReq));
                     }
+                    Debug.Log("finished downloading images for " + diffReq.requestNum.ToString());
+                    diffReq.sentDownloadRequest = true;
                     break;
             }
         }
@@ -702,13 +629,26 @@ public class ComfySceneLibrary : MonoBehaviour
 
     // TODO make the downloads not in an endless for loop, but check if a file exists, then download it ONCE(or until succession?)
     /// <summary>
-    /// Downloads a single image according to the given image URL and adds it to the DiffusionRequest
+    /// Downloads a single image according to the given image name and adds it to the DiffusionRequest
     /// </summary>
-    /// <param name="imageUrl">Image URL to download</param>
+    /// <param name="filename">Image name to download</param>
     /// <param name="diffReq">DiffusionRequest to add downloaded image to</param>
-    IEnumerator DownloadImage(string imageUrl, DiffusionRequest diffReq)
+    private IEnumerator DownloadImage(string filename, DiffusionRequest diffReq)
     {
-        using (UnityWebRequest webRequest = UnityWebRequestTexture.GetTexture(imageUrl))
+        int MAX_RETRIES = 1000;
+
+        FileExistsChecker fileCheck = new FileExistsChecker();
+        while (!fileCheck.fileExists && MAX_RETRIES <= 0)
+        {
+            yield return new WaitForSeconds(0.2f);
+            StartCoroutine(CheckIfFileExists(filename, fileCheck, "output"));
+            MAX_RETRIES--;
+        }
+        if (MAX_RETRIES <= 0)  yield break;
+
+        string imageURL = HTTPPrefix + GameManager.getInstance().IP + "/view?filename=" + filename;
+
+        using (UnityWebRequest webRequest = UnityWebRequestTexture.GetTexture(imageURL))
         {
             yield return webRequest.SendWebRequest();
 
@@ -726,6 +666,7 @@ public class ComfySceneLibrary : MonoBehaviour
         }
     }
 
+
     // TODO remove uploadImageStatusAtEnd
 
     /// <summary>
@@ -733,10 +674,24 @@ public class ComfySceneLibrary : MonoBehaviour
     /// </summary>
     /// <param name="curTexture">Texture to upload to the server.</param>
     /// <param name="uploadImageStatusAtEnd">Sets the final status of the uploadingImage parameter at the end of the function's work.</param>
-    private IEnumerator UploadImage(List<Texture2D> curTextures, bool uploadImageStatusAtEnd = false)
+    private IEnumerator UploadImage(DiffusionRequest diffReq)
     {
-        foreach (Texture2D curTexture in curTextures)
+        if (diffReq == null) yield break;
+        List<Texture2D> curTextures = diffReq.uploadTextures;
+
+        if (curTextures == null) yield break;
+        if (curTextures.Count == 0) yield break;
+
+        bool[] bools = new bool[curTextures.Count];
+        for (int i = 0; i < curTextures.Count; i++)
         {
+            bools[i] = false;
+        }
+        
+        for (int i = 0; i < curTextures.Count; i++)
+        {
+            Texture2D curTexture = curTextures[i];
+
             string url = HTTPPrefix + GameManager.getInstance().IP + "/upload/image";
 
             WWWForm form = new WWWForm();
@@ -744,7 +699,6 @@ public class ComfySceneLibrary : MonoBehaviour
             form.AddBinaryData("image", curTexture.EncodeToPNG(), curTexture.name, "image/png");
             form.AddField("type", "input");
             form.AddField("overwrite", "false");
-            uploadingImage = true;
 
             using (var unityWebRequest = UnityWebRequest.Post(url, form))
             {
@@ -765,7 +719,16 @@ public class ComfySceneLibrary : MonoBehaviour
                     while (!fileCheck.fileExists)
                     {
                         yield return new WaitForSeconds(0.2f);
-                        StartCoroutine(CheckIfFileExists(curTexture.name, fileCheck, uploadImageStatusAtEnd));
+                        StartCoroutine(CheckIfFileExists(curTexture.name, fileCheck, "input"));
+                    }
+
+                    bools[i] = true;
+
+                    // TODO maybe this will cause problems in the future? use maybe a while loop like above?
+                    for (int j = 0; j < bools.Length; j++)
+                    {
+                        if (!bools[j]) break;
+                        diffReq.uploadFileChecker.fileExists = true;
                     }
                 }
             }
