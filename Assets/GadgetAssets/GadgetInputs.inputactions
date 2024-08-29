@@ -15,15 +15,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "TakeTexture",
-                    "type": "Button",
-                    "id": "f3f7384e-2912-41d6-8e2a-2bea3556c042",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "PlaceTexture",
                     "type": "Button",
                     "id": "e94f3b2b-42f9-47db-ba06-cd53d4ccb02e",
@@ -55,7 +46,7 @@
                 {
                     "name": "",
                     "id": "3d9f8b5c-afcd-416a-b731-2f4442b66fbb",
-                    "path": "<XRController>{LeftHand}/{PrimaryButton}",
+                    "path": "<XRController>{LeftHand}/{SecondaryButton}",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -65,12 +56,12 @@
                 },
                 {
                     "name": "",
-                    "id": "3d6b81e7-d027-46e3-8157-a973769f4f1a",
-                    "path": "<XRController>{RightHand}/{GripButton}",
+                    "id": "fd2f10a1-630c-486c-a052-624d8423dbe2",
+                    "path": "<XRController>{RightHand}/{SecondaryButton}",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "TakeTexture",
+                    "action": "ChangeMechanic",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -109,8 +100,30 @@
                 },
                 {
                     "name": "",
-                    "id": "a4ca9cf9-41e2-4d90-81ef-7f52651ba26c",
-                    "path": "<XRController>{LeftHand}/{GripButton}",
+                    "id": "352ff40a-5e86-47ef-9c87-47fa56f4e918",
+                    "path": "<XRController>{LeftHand}/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ActivateGeneration",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7034d70d-20f5-4621-bf24-6eb702bdcd10",
+                    "path": "<XRController>{RightHand}/{TriggerButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TakeScreenshot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1f156395-a1c3-4c5a-bb33-64881465d0cc",
+                    "path": "<XRController>{LeftHand}/{TriggerButton}",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

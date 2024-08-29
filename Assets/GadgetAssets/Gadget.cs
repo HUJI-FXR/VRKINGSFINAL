@@ -62,6 +62,14 @@ public class Gadget : MonoBehaviour
     [NonSerialized]
     public Queue<Texture2D> textureQueue;
 
+    // Controllers, for symmetric input
+    public GameObject LeftHandController;
+    public GameObject RightHandController;
+    private string LeftHandControllerInputName = "OculusTouchControllerOpenXR";
+    private string RightHandControllerInputName = "OculusTouchControllerOpenXR1";
+    private string LeftHandSimulatedControllerInputName = "XRSimulatedController";
+    private string RightHandSimulatedControllerInputName = "XRSimulatedController1";
+
     private void Awake()
     {
         //GadgetMechanisms = new List<GadgetMechanism>();
@@ -70,7 +78,8 @@ public class Gadget : MonoBehaviour
 
     private void Start()
     {
-        if (gadgetCamera == null || xrCamera == null || playGadgetSounds == null || gadgetImagePanel == null || aiGadgetAssistant == null)
+        if (gadgetCamera == null || xrCamera == null || playGadgetSounds == null || gadgetImagePanel == null || aiGadgetAssistant == null ||
+            LeftHandController == null || RightHandController == null)
         {
             Debug.LogError("Add all requirements of Gadget");
             return;
@@ -301,6 +310,29 @@ public class Gadget : MonoBehaviour
 
 
     // -----------------------------------------  PLAYER INPUTS ----------------------------------------- //
+
+    /// <summary>
+    /// Function that finds the controller that performed an action given the action's context
+    /// </summary>
+    /// <returns>GameObject representing the Controller</returns>
+    public GameObject GetActionController(InputAction.CallbackContext context)
+    {
+        var device = context.control.device;
+        if (device.name == LeftHandControllerInputName || device.name == LeftHandSimulatedControllerInputName)
+        {
+            return LeftHandController;
+        }
+        else if (device.name == RightHandControllerInputName || device.name == RightHandSimulatedControllerInputName)
+        {
+            return RightHandController;
+        }
+
+        return null;
+    }
+
+
+    // TODO should all these input functions below not send context onward? is context necessary for the specific mechanisms? should they deal with it, or Gadget?
+
     public void ChangeMechanicInput(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -308,39 +340,28 @@ public class Gadget : MonoBehaviour
             ChangeToNextMechanic();
         }
     }
-    public void TakeTextureInput(InputAction.CallbackContext context)
-    {
-        if (GadgetMechanisms.Count <= 0)
-        {
-            return;
-        }
-        if (context.performed)
-        {
-            GadgetMechanisms[gadgetMechanismIndex].TakeTextureInput(context);
-            Debug.Log("Taking Texture");
-        }
-    }
     public void PlaceTextureInput(InputAction.CallbackContext context)
-    {
+    {        
         if (GadgetMechanisms.Count <= 0)
         {
             return;
         }
         if (context.performed)
         {
-            GadgetMechanisms[gadgetMechanismIndex].PlaceTextureInput(context);
+            GameObject curController = GetActionController(context);
+            GadgetMechanisms[gadgetMechanismIndex].PlaceTextureInput(curController);
             Debug.Log("Placing Texture");
         }
     }
     public void ActivateGeneration(InputAction.CallbackContext context)
-    {
+    {        
         if (GadgetMechanisms.Count <= 0)
         {
             return;
         }
         if (context.performed)
-        {
-            GadgetMechanisms[gadgetMechanismIndex].ActivateGeneration(context);
+        {            
+            GadgetMechanisms[gadgetMechanismIndex].ActivateGeneration(null);
             Debug.Log("Generating Texture");
         }
     }

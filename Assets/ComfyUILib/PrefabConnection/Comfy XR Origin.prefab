@@ -2270,6 +2270,8 @@ MonoBehaviour:
   screenRecorder: {fileID: 7720086305723655827}
   gadgetCamera: {fileID: 3136855045598464760}
   xrCamera: {fileID: 3136855045598464760}
+  LeftHandController: {fileID: 775997343398794804}
+  RightHandController: {fileID: 2998929027895253306}
 --- !u!1 &5323203693223721586
 GameObject:
   m_ObjectHideFlags: 0

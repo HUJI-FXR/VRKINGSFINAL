@@ -8,8 +8,8 @@ using UnityEngine.XR.Interaction.Toolkit;
 // TODO create a class like this DiffusionGroup which will be the father class without radius?
 public class DiffusionRing
 {
-    public float maxRadius = 1;
-    public float curRadius = 0;
+    public float maxRadius = 5;
+    public float curRadius = 1;
     public float changeMaxTime = 0.1f;
     public float curChangeTime = 0;
     public bool changeTextures = true;
@@ -90,6 +90,19 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
 
         diffusionRing.gameObjects = gameObjectsInRadius(diffusionRing.curRadius, position);
         diffusionRing.changeTextures = true;
+
+        // TODO bad situation where the texture adding is not in AddTexture, but is it inevitable in this mechanism?
+        foreach (GameObject GO in diffusionRing.gameObjects)
+        {
+            if (GO.TryGetComponent<TextureTransition>(out TextureTransition tr))
+            {
+                diffusionRing.changeTextures = false;
+                foreach (Texture2D texture in diffusionRing.diffusionTextureList)
+                {
+                    tr.textures.Add(texture);
+                }
+            }
+        }
     }
 
     private List<GameObject> gameObjectsInRadius(float curRadius, Vector3 position)

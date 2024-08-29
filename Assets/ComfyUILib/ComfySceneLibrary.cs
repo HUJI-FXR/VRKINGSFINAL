@@ -38,7 +38,10 @@ public enum diffusionWorkflows
     grid4Outpainting,
 
     // Gadget AI representation
-    AIAssistant
+    AIAssistant,
+
+    // Workflow used to load model into memory for as little cost as possible
+    empty
 }
 
 public enum diffusionModels
@@ -65,7 +68,6 @@ public class ComfySceneLibrary : MonoBehaviour
     private string JSONFolderPath = "JSONMain";
     public string ImageFolderName = "Assets/";
 
-    private string clientId;
     private ClientWebSocket ws;
     private bool started_generations = false;
     private Dictionary<diffusionWorkflows, string> diffusionJsons;
@@ -76,7 +78,6 @@ public class ComfySceneLibrary : MonoBehaviour
 
     private void Awake()
     {
-        clientId = Guid.NewGuid().ToString();
         ws = new ClientWebSocket();
         diffusionJsons = new Dictionary<diffusionWorkflows, string>();
     }
@@ -104,8 +105,6 @@ public class ComfySceneLibrary : MonoBehaviour
             GameManager.getInstance().IP = THINKDIFFUSION_PREFIX + GameManager.getInstance().IP + THINKDIFFUSION_POSTFIX;
             HTTPPrefix = "https://";
         }
-
-        Debug.Log(HTTPPrefix + GameManager.getInstance().IP);
 
         // Get all enum adjacent JSON workflows
         TextAsset[] jsonFiles = Resources.LoadAll<TextAsset>(JSONFolderPath);
@@ -231,6 +230,10 @@ public class ComfySceneLibrary : MonoBehaviour
         //TODO add all cases according to diffusionWorkflows ENUM
         switch (diffReq.diffusionJsonType)
         {
+            case diffusionWorkflows.empty:
+                json["prompt"]["4"]["inputs"]["ckpt_name"] = curDiffModel;
+                break;
+
             case diffusionWorkflows.txt2imgLCM:
                 json["prompt"]["3"]["inputs"]["seed"] = randomSeed;
                 json["prompt"]["6"]["inputs"]["text"] = diffReq.positivePrompt;
@@ -757,6 +760,8 @@ public class ComfySceneLibrary : MonoBehaviour
                     Debug.Log(unityWebRequest.uploadHandler.progress);*/
 
                     FileExistsChecker fileCheck = new FileExistsChecker();
+
+                    // TODO Instead of while, use a limited number of retries?
                     while (!fileCheck.fileExists)
                     {
                         yield return new WaitForSeconds(0.2f);

@@ -36,6 +36,14 @@ public class GadgetMechanism : MonoBehaviour
         return null;
     }
 
+    // TODO implement in the mechanisms - NOTE: should this be implemented in the throwing mechanism? ALSO what happens with uiDiffusionTexture?
+    /// <summary>
+    /// Resets the Mechanism, removing everything it has selected.
+    /// </summary>
+    protected virtual void ResetMechanism()
+    {
+        return;
+    }
 
     /// <summary>
     /// Left hand controller ray hover entered.
@@ -110,15 +118,11 @@ public class GadgetMechanism : MonoBehaviour
     }
 
     // -----------------------------------------  PLAYER INPUTS ----------------------------------------- //
-    public virtual void TakeTextureInput(InputAction.CallbackContext context)
-    {
-        return;
-    }
 
     /// <summary>
     /// Places a texture on a selected object.
     /// </summary>
-    public virtual void PlaceTextureInput(InputAction.CallbackContext context)
+    public virtual void PlaceTextureInput(GameObject GO)
     {
         return;
     }
@@ -126,11 +130,12 @@ public class GadgetMechanism : MonoBehaviour
     /// <summary>
     /// Activates the Diffusion image generation.
     /// </summary>
-    public virtual void ActivateGeneration(InputAction.CallbackContext context)
+    public virtual void ActivateGeneration(GameObject GO)
     {
         return;
     }
 
+    // TODO might not need this one either
     /// <summary>
     /// Uses a camera to shoot an image.
     /// </summary>

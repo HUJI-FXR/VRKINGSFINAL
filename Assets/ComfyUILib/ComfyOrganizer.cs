@@ -34,17 +34,12 @@ public class DiffusionRequest
     public string positivePrompt;
     public string negativePrompt;
 
-    // TODO upload an Image list instead of just 2? outpainting?
     // We upload up-to two images to the server
     public List<Texture2D> uploadTextures;
-    //public Texture2D uploadImage;
-    //public Texture2D secondUploadImage;
 
     // Denoising parameter for the input image
     public float denoise = 1.0f;
 
-    // TODO decide, do I need diffusionModels separate from the workflows? what about models that don't work with certain workflows? do we disregard?
-    // TODO just put everything on the diffusionWorkFlows?
     // Checkpoint model to be used in the generation
     public diffusionModels diffusionModel;
 
@@ -188,8 +183,10 @@ public class ComfyOrganizer : MonoBehaviour
     public void SendMinimalDiffusionRequest(diffusionModels curModel)
     {
         DiffusionRequest diffusionRequest = new DiffusionRequest();
+
+        diffusionRequest.diffusionJsonType = diffusionWorkflows.empty;
         diffusionRequest.diffusionModel = curModel;
-        diffusionRequest.numOfVariations = 1;
+
         SendDiffusionRequest(diffusionRequest);
     }
 

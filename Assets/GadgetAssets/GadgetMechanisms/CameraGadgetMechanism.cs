@@ -30,8 +30,10 @@ public class CameraGadgetMechanism : GadgetMechanism
     /// Places a texture on the object that was selected with the controllers' Trigger button. 
     /// The Object is selected with a ray that comes from the left hand.
     /// </summary>
-    public override void PlaceTextureInput(InputAction.CallbackContext context)
+    public override void PlaceTextureInput(GameObject GO)
     {
+        if (GO == null) return;
+
         Texture2D curTexture = GameManager.getInstance().gadget.getGeneratedTexture();
         if (curTexture == null)
         {
@@ -40,7 +42,8 @@ public class CameraGadgetMechanism : GadgetMechanism
         }
 
         // Perform the raycast
-        Ray ray = new Ray(GameManager.getInstance().gadget.transform.position, GameManager.getInstance().gadget.transform.forward);
+        // Ray ray = new Ray(GameManager.getInstance().gadget.transform.position, GameManager.getInstance().gadget.transform.right);
+        Ray ray = new Ray(GO.transform.position, GO.transform.forward);
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit))
@@ -159,7 +162,7 @@ public class CameraGadgetMechanism : GadgetMechanism
     /// Activates the Diffusion image generation using the right hand controller. 
     /// For the generation to begin, a camera shot and a style texture need to be picked to be sent to the generator.
     /// </summary>
-    public override void ActivateGeneration(InputAction.CallbackContext context)
+    public override void ActivateGeneration(GameObject GO)
     {
         if (contentTexture == null || styleTexture== null)
         {

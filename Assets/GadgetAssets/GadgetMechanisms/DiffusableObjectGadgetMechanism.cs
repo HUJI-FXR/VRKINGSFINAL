@@ -121,8 +121,10 @@ public class DiffusableObjectGadgetMechanism : GadgetMechanism
     }    
 
     // -----------------------------------------  PLAYER INPUTS ----------------------------------------- //
-    public override void PlaceTextureInput(InputAction.CallbackContext context)
+    public override void PlaceTextureInput(GameObject GO)
     {
+        if (GO == null) return;
+
         Texture2D curTexture = GameManager.getInstance().gadget.getGeneratedTexture();
         if (curTexture == null)
         {
@@ -131,7 +133,7 @@ public class DiffusableObjectGadgetMechanism : GadgetMechanism
         }
 
         // Perform the raycast
-        Ray ray = new Ray(GameManager.getInstance().gadget.transform.position, GameManager.getInstance().gadget.transform.forward);
+        Ray ray = new Ray(GO.transform.position, GO.transform.forward);
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit))
@@ -163,7 +165,7 @@ public class DiffusableObjectGadgetMechanism : GadgetMechanism
         return newDiffusionRequest;
     }
 
-    public override void ActivateGeneration(InputAction.CallbackContext context)
+    public override void ActivateGeneration(GameObject GO)
     {
         if (selectedTextObject == null || selectedStyleObject == null)  return;
 

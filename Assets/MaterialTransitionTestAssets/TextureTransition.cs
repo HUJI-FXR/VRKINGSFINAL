@@ -17,20 +17,25 @@ public class TextureTransition : MonoBehaviour
 
     void Start()
     {
-        if (textures.Count < 2)
+        /*if (textures.Count < 2)
         {
             Debug.LogError("You need at least two textures to perform a transition.");
             enabled = false;
             return;
-        }
+        }*/
 
         // Initialize the first two textures
-        transitionMaterial.SetTexture("_CurrentTex", textures[currentTextureIndex]);
-        transitionMaterial.SetTexture("_NextTex", textures[nextTextureIndex]);
+        /*transitionMaterial.SetTexture("_CurrentTex", textures[currentTextureIndex]);
+        transitionMaterial.SetTexture("_NextTex", textures[nextTextureIndex]);*/
     }
 
     void Update()
     {
+        if (textures.Count < 2)
+        {
+            return;
+        }
+
         // Animate the transition value
         transition += Time.deltaTime * transitionSpeed;
         if (transition > 1.0f)
