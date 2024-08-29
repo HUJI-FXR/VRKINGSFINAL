@@ -6,16 +6,27 @@ using UnityEngine.Rendering;
 
 
 // TODO documentation
+
+/// <summary>
+/// Representes a matrix screen used for Outpainting. It is expected that the bottom middle tile, 
+/// tile (floor(tileMatrixSize.x/2), tileMatrixSize.y-1) has a starting Texture.
+/// </summary>
 public class OutpaintingScreenScr : MonoBehaviour
 {
+    // Size of the tile on the screen
     public Vector3 tileSize = new Vector3(2, 1, 0.01f);
+
+    // The object is cloned and used as the base tile
     public GameObject tileObject;
 
+    // The number of tiles in the matrix on the X/Y axes
     public Vector2Int tileMatrixSize = Vector2Int.one;
 
+    // These represent the first tile that is already textured
     public Vector2Int firstPaintedTile = new Vector2Int(0, 0);
     public Texture2D firstTileTexture;
 
+    // Texture that is used on a tile to represent that it is ready to be painted
     public Texture2D paintableTexture;
 
     [NonSerialized]

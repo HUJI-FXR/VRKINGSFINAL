@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9564,7 +9564,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 345902826}
-  - component: {fileID: 345902827}
   - component: {fileID: 345902830}
   - component: {fileID: 345902828}
   m_Layer: 0
@@ -9593,26 +9592,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &345902827
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 345902825}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b65409e0f9223541bc2788b097280ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  display: {fileID: 0}
-  captureWidth: 512
-  captureHeight: 512
-  hideGameObject: {fileID: 0}
-  optimizeForManyScreenshots: 1
-  format: 1
-  folder: Assets/ComfyUILib/Screenshots
-  comfyOrganizer: {fileID: 1818206208}
 --- !u!114 &345902828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11658,14 +11637,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dc49c30374bd5a4ab6481af70bf401f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  displayTexturesGadget: {fileID: 0}
   MechanismText: {fileID: 2029758748}
-  ButtonText: {fileID: 1311101120}
-  screenRecorder: {fileID: 345902827}
-  gadgetCamera: {fileID: 345902830}
-  xrCamera: {fileID: 1791469566}
-  playGadgetSounds: {fileID: 1791469568}
   gadgetImagePanel: {fileID: 1620720338}
+  playGadgetSounds: {fileID: 1791469568}
   aiGadgetAssistant: {fileID: 627817436}
+  xrCamera: {fileID: 1791469566}
+  LeftHandController: {fileID: 0}
+  RightHandController: {fileID: 0}
 --- !u!114 &627817436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23389,8 +23368,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serverAddress: 127.0.0.1:8188
   comfyOrg: {fileID: 1818206208}
-  JSONFolderPath: Assets/ComfyUILib/JSONMain
-  ImageFolderName: Assets/ComfyUILib/DiffusionImageOutput
 --- !u!114 &1818206208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23443,14 +23420,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5c0250285573f24f809c50abfb4d259, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstScene: 
-  diffusables: {fileID: 0}
-  gadget: {fileID: 0}
+  IP: 127.0.0.1:8188
   headAudioSource: {fileID: 0}
-  comfyOrganizer: {fileID: 0}
-  comfySceneLibrary: {fileID: 0}
-  radiusDiffusionTexture: {fileID: 0}
-  uiDiffusionTexture: {fileID: 0}
 --- !u!114 &1818206213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23499,6 +23470,7 @@ MonoBehaviour:
   diffusables: {fileID: 2114443391}
   gadget: {fileID: 627817433}
   headAudioSource: {fileID: 75795148}
+  LoadComfyParametrs: 1
 --- !u!1 &1847060203
 GameObject:
   m_ObjectHideFlags: 0

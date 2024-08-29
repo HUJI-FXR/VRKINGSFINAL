@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// TODO maybe instead of a special gadgetsounds library, we need a unified library for ALL sounds in the game?
+
 public class PlayGadgetSounds : MonoBehaviour
 {
     public string GadgetAudioClipFolder = "Sounds/SFX/GadgetSounds";

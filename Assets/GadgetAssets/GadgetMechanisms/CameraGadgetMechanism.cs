@@ -9,10 +9,16 @@ using UnityEngine.InputSystem;
 
 
 // TODO write comments explaining everything for mechanisms
+
+/// <summary>
+/// Gadget Mechanism wherein a Camera is used to screenshot within the game world,
+/// And that screenshot is used as an input in an img2img Diffusion workflow.
+/// </summary>
 public class CameraGadgetMechanism : GadgetMechanism
 {
-    // diffusionRequest;
     private Texture2D styleTexture;
+
+    // Screenshot that was taken with the Camera
     private Texture2D contentTexture;
     public bool UseStyleTransfer = true;
 
@@ -22,18 +28,9 @@ public class CameraGadgetMechanism : GadgetMechanism
     // Object that was selected for the texture to be used as the style base for the Camera's image.
     private GameObject selectedStyleObject = null;
 
-    // Camera used in mechanism
-    public Camera mechanismCamera;
-    public ScreenRecorder mechanismScreenRecorder;
-
     private void Start()
     {
         mechanismText = "Base Camera";
-
-        if (mechanismCamera == null || mechanismScreenRecorder == null)
-        {
-            Debug.LogError("Add Camera and ScreenRecorder to Camera mechanism");            
-        }
     }
 
     // -----------------------------------------  PLAYER INPUTS ----------------------------------------- //
@@ -196,7 +193,7 @@ public class CameraGadgetMechanism : GadgetMechanism
         return newDiffusionRequest;
     }
 
-    // The function is called with the right hand.
+
     /// <summary>
     /// Activates the Diffusion image generation using the right hand controller. 
     /// For the generation to begin, a camera shot and a style texture need to be picked to be sent to the generator.
@@ -226,26 +223,18 @@ public class CameraGadgetMechanism : GadgetMechanism
     }
 
     // TODO move the camera from left hand to camera hanging on neck.
+
     // This function is called when the grabbed camera is activated(a screenshot is taken).
     /// <summary>
     /// Shoots an image with the Physical grabbable Camera.
     /// </summary>
-    public override void TakeScreenshot()
+    public override void TakeScreenshot(Camera camera)
     {
         // TODO add DiffusableObject data entry for diffusionrequest when taking a picture of stuff
-        Texture2D screenShot = mechanismScreenRecorder.CaptureScreenshot(mechanismCamera);
-        mechanismCamera.enabled = false;
+        Texture2D screenShot = GeneralGameLibraries.TextureManipulationLibrary.CaptureScreenshot(camera);
+        camera.enabled = false;
         GameManager.getInstance().gadget.xrCamera.enabled = true;
 
-
-        // TODO CRITICAL BUG, COUNT is NOT ENOUGH to know which texture is for style and which for content, need another factor to figure them out.
-        // Content texture is the first one in the uploadTextures List,
-        // if there is already one, replace it with the current one, if there
-        /*if (diffusionRequest.uploadTextures.Count >= 2)
-        {
-            diffusionRequest.uploadTextures[1] = curTexture;
-        }
-        diffusionRequest.uploadImage = screenShot;*/
         contentTexture = screenShot;
 
         if (selectedStyleObject != null)

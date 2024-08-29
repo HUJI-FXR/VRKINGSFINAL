@@ -1,10 +1,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/// <summary>
+/// Used on GameObject in the world for which we want to transition between textures in a smooth way.
+/// Used in conjunction with the TextureTransitionShader.
+/// </summary>
 public class TextureTransition : MonoBehaviour
 {
     public Material transitionMaterial;
+
+    // Textures to be cycled through
     public List<Texture> textures;
+
     public float transitionSpeed = 1f;
     [Range(0, 1)]
     public float noiseIntensity = 1f;
@@ -12,31 +20,23 @@ public class TextureTransition : MonoBehaviour
     public float smoothness = 0.5f;
 
     private float transition = 0f;
+
+    // Counter for the textures that are being cycled through
     private int currentTextureIndex = 0;
     private int nextTextureIndex = 1;
 
-    void Start()
-    {
-        /*if (textures.Count < 2)
-        {
-            Debug.LogError("You need at least two textures to perform a transition.");
-            enabled = false;
-            return;
-        }*/
-
-        // Initialize the first two textures
-        /*transitionMaterial.SetTexture("_CurrentTex", textures[currentTextureIndex]);
-        transitionMaterial.SetTexture("_NextTex", textures[nextTextureIndex]);*/
-    }
 
     void Update()
     {
-        if (textures.Count == 1)
-        {
-            transitionMaterial.SetTexture("_CurrentTex", textures[0]);
-        }
+
+        // If there are less than two textures, there is no cycling through them
         if (textures.Count < 2)
         {
+            // If there is a single texture, it is the only seen texture
+            if (textures.Count == 1)
+            {
+                transitionMaterial.SetTexture("_CurrentTex", textures[0]);
+            }
             return;
         }
 

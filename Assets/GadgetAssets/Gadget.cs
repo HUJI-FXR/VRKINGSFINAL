@@ -310,6 +310,7 @@ public class Gadget : MonoBehaviour
         // TODO WHY IS THIS HERE, UNCOMMENT MAYBE?
         //GameManager.getInstance().uiDiffusionTexture.CreateImagesInside(textures, gadgetImagePanel, true);
         
+        if (textures == null) return false;
 
         foreach (Texture2D texture in textures)
         {
@@ -379,14 +380,14 @@ public class Gadget : MonoBehaviour
             Debug.Log("Generating Texture");
         }
     }
-    public void TakeScreenshot()
+    public void TakeScreenshot(Camera camera)
     {
         if (GadgetMechanisms.Count <= 0)
         {
             return;
         }
 
-        GadgetMechanisms[gadgetMechanismIndex].TakeScreenshot();
+        GadgetMechanisms[gadgetMechanismIndex].TakeScreenshot(camera);
         Debug.Log("Taking Screenshot");
     }
     public void GeneralActivation(DiffusionTextureChanger dtc)

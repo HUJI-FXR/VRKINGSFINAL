@@ -1888,7 +1888,6 @@ GameObject:
   - component: {fileID: 4016315919471729710}
   - component: {fileID: 3374183696997669115}
   - component: {fileID: 7113726821864023670}
-  - component: {fileID: 7720086305723655827}
   - component: {fileID: 5230790700989594866}
   - component: {fileID: 5420220418525624970}
   - component: {fileID: 4497300929819157837}
@@ -1986,25 +1985,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &7720086305723655827
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5061901629311991080}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b65409e0f9223541bc2788b097280ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  display: {fileID: 0}
-  captureWidth: 512
-  captureHeight: 512
-  hideGameObject: {fileID: 0}
-  optimizeForManyScreenshots: 0
-  format: 1
-  folder: Assets/ComfyUILib/Screenshots
 --- !u!114 &5230790700989594866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2166,6 +2146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dc49c30374bd5a4ab6481af70bf401f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  displayTexturesGadget: {fileID: 0}
   MechanismText: {fileID: 562017541680351616}
   gadgetImagePanel: {fileID: 2892697472514239738}
   playGadgetSounds: {fileID: 5420220418525624970}

@@ -3,9 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
+/// <summary>
+/// Represents a physical virtual Camera, to be used in conjunction with the Camera Gadget Mechanism.
+/// </summary>
 public class PhysicalCamera : MonoBehaviour
-{
+{    
     CameraGadgetMechanism CGM = null;
+
+    // The Camera that is attached to this Camera
+    // We make it a public variable as it is simple and visual as a whole prefab
+    public Camera curCamera;
 
     /// <summary>
     /// Helper function which retreives the relevant CameraGadgetMechanism
@@ -58,7 +65,7 @@ public class PhysicalCamera : MonoBehaviour
     /// <param name="args"></param>
     public void CameraScreenshot(ActivateEventArgs args)
     {
-        if (!GetCameraGadgetMechanism()) return;
-        GameManager.getInstance().gadget.TakeScreenshot();
+        if (!GetCameraGadgetMechanism() || curCamera == null) return;
+        GameManager.getInstance().gadget.TakeScreenshot(curCamera);
     }
 }

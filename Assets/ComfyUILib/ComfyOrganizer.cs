@@ -49,14 +49,22 @@ public class DiffusionRequest
     // Used for sending any type of information that might be unique to a Request
     public string SpecialInput;
 
+    // Textures that were generated for the request
     [System.NonSerialized]
     public List<Texture2D> textures;
+
+    // True when the request finished, the images were generated, downloaded and sent onwards
     [System.NonSerialized]
     public bool finishedRequest = false;
+
+    // True when the Image download requests have been sent
     [System.NonSerialized]
     public bool sentDownloadRequest = false;
+
+    // Each request in the Game has a unique request number which differentiates them
     [System.NonSerialized]
     public int requestNum = -1;
+
     [System.NonSerialized]
     public string diffImgName;
     [System.NonSerialized]
@@ -89,24 +97,22 @@ public class DiffusionRequest
 
 public class ComfyOrganizer : MonoBehaviour
 {
+    // Holds all the DiffusionRequests that have been made in the duration of the Game
     public Dictionary<int, DiffusionRequest> DiffuseDictionary;
+
     public ComfySceneLibrary comfyLib;
 
+    // Counter for the DiffusionRequests
     private static int currentRequestNum = 0;
     private List<string> allTextureNames;
+
+    // Counter for Images to differentiate them
     private static int currentTextureNameNumber = 0;
 
     private void Awake()
     {
         DiffuseDictionary = new Dictionary<int, DiffusionRequest>();
         allTextureNames = new List<string>();
-    }
-
-    // TODO description
-    private string GetDiffusionImageName(DiffusionRequest diffReq)
-    {
-        string retName = "Generated_" + diffReq.requestNum;
-        return retName;
     }
 
     /// <summary>
@@ -205,7 +211,7 @@ public class ComfyOrganizer : MonoBehaviour
     {
         DiffusionRequest newDiffusionRequest = copyDiffusionRequest(diffusionRequest);
         newDiffusionRequest.requestNum = currentRequestNum;
-        newDiffusionRequest.diffImgName = GetDiffusionImageName(newDiffusionRequest);
+        newDiffusionRequest.diffImgName = "Generated_" + newDiffusionRequest.requestNum;
         DiffuseDictionary.Add(currentRequestNum, newDiffusionRequest);
         currentRequestNum++;
 

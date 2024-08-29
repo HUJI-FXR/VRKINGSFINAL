@@ -61,18 +61,16 @@ public enum diffusionModels
 public class ComfySceneLibrary : MonoBehaviour
 {
     private string HTTPPrefix = "https://";  // https://  ------ When using online API service
-    public ComfyOrganizer comfyOrg;
-
     public string serverAddress = "";
 
-    private string JSONFolderPath = "JSONMain";
-    public string ImageFolderName = "Assets/";
+    public ComfyOrganizer comfyOrg;
+
+    private const string JSONFolderPath = "JSONMain";
+    public const string ImageFolderName = "Assets/";
 
     private ClientWebSocket ws;
     private bool started_generations = false;
     private Dictionary<diffusionWorkflows, string> diffusionJsons;
-
-    //private bool uploadingImage = false;
 
     private bool readyForDiffusion = false;
 
@@ -129,12 +127,12 @@ public class ComfySceneLibrary : MonoBehaviour
         readyForDiffusion = true;
 
         StartCoroutine(DownloadCycle());
-
-        //StartServerConnection();
     }
 
-
-    public IEnumerator DownloadCycle()
+    /// <summary>
+    /// Goes over the yet undownloaded images of the DiffusionRequests and attempts to download these.    
+    /// </summary>
+    IEnumerator DownloadCycle()
     {
         while(true)
         {
@@ -145,7 +143,7 @@ public class ComfySceneLibrary : MonoBehaviour
             {
                 if (!diffReq.sentDownloadRequest)
                 {
-                    RequestFileName(diffReq);
+                    StartCoroutine(RequestFileNameRoutine(diffReq));
                 }                
             }
         }
@@ -512,7 +510,7 @@ public class ComfySceneLibrary : MonoBehaviour
     }
 
     
-    public IEnumerator CheckIfFileExists(string imageName, FileExistsChecker fileChecker, string subfolder)
+    private IEnumerator CheckIfFileExists(string imageName, FileExistsChecker fileChecker, string subfolder)
     {
         string url = HTTPPrefix + GameManager.getInstance().IP + "/view?filename=" + imageName + "&type=" + subfolder;
 
@@ -530,12 +528,6 @@ public class ComfySceneLibrary : MonoBehaviour
                 //Debug.Log("File " + imageName + " in Input");
             }
         }
-    }
-
-
-    public void RequestFileName(DiffusionRequest diffReq)
-    {
-        StartCoroutine(RequestFileNameRoutine(diffReq));
     }
 
     /// <summary>
@@ -712,9 +704,6 @@ public class ComfySceneLibrary : MonoBehaviour
                 }
                 else
                 {
-                    /*Debug.Log("Image Upload succesful");
-                    Debug.Log(unityWebRequest.uploadHandler.progress);*/
-
                     FileExistsChecker fileCheck = new FileExistsChecker();
 
                     // TODO Instead of while, use a limited number of retries?
