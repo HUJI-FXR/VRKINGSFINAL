@@ -8,6 +8,7 @@ public class PopUpOnEnable : MonoBehaviour
 
     [SerializeField] private UIDiffusionTexture diffusion;
     [SerializeField] private List<Texture2D> textures;
+    [SerializeField] private Gadget gadget;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,8 +17,7 @@ public class PopUpOnEnable : MonoBehaviour
 
     private void OnEnable()
     {
-        
-        diffusion.CreatePopup(textures);
+        gadget.AddTexturesToQueue(textures);
         Debug.Log("Pop up!");
     }
 

@@ -21,6 +21,11 @@ public class Gadget : MonoBehaviour
     /// <summary>
     /// TextMeshPro object that shows the text that represents the current Mechanism.
     /// </summary>
+    public GameObject displayTexturesGadget;
+    
+    /// <summary>
+    /// TextMeshPro object that shows the text that represents the current Mechanism.
+    /// </summary>
     public TextMeshProUGUI MechanismText;
     public GameObject gadgetImagePanel;
 
@@ -273,7 +278,9 @@ public class Gadget : MonoBehaviour
     {
         if (GadgetMechanisms.Count <= 0) return;
 
-        textureQueue.Clear();
+        // COMMENTED OUT, WHY IS THIS NECESSARY?
+        // textureQueue.Clear();
+        
         gadgetMechanismIndex = index;
         MechanismText.text = GadgetMechanisms[index].mechanismText;
         //ButtonText.text = GadgetMechanisms[index].buttonText;
@@ -298,12 +305,16 @@ public class Gadget : MonoBehaviour
 
     public bool AddTexturesToQueue(List<Texture2D> textures)
     {
-        GameManager.getInstance().uiDiffusionTexture.CreateImagesInside(textures, gadgetImagePanel, true);
+        // TODO WHY IS THIS HERE, UNCOMMENT MAYBE?
+        //GameManager.getInstance().uiDiffusionTexture.CreateImagesInside(textures, gadgetImagePanel, true);
+        
 
         foreach (Texture2D texture in textures)
         {
             textureQueue.Enqueue(texture);
         }
+        
+        GameManager.getInstance().uiDiffusionTexture.CreateImagesInside(new List<Texture2D>(textureQueue), displayTexturesGadget, true);
 
         return true;
     }
