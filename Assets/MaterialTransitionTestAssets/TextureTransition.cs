@@ -31,6 +31,10 @@ public class TextureTransition : MonoBehaviour
 
     void Update()
     {
+        if (textures.Count == 1)
+        {
+            transitionMaterial.SetTexture("_CurrentTex", textures[0]);
+        }
         if (textures.Count < 2)
         {
             return;

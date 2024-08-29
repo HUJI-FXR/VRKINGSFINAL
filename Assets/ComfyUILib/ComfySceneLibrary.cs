@@ -122,7 +122,6 @@ public class ComfySceneLibrary : MonoBehaviour
             }
             else
             {
-                // TODO check why this error is not reached and instead getting a different dictionary type error
                 Debug.LogError("Please add JSON workflow " + fileName.ToString() + " to the diffusionJsons enum");
             }
         }
@@ -229,6 +228,7 @@ public class ComfySceneLibrary : MonoBehaviour
         {
             case diffusionWorkflows.empty:
                 json["prompt"]["4"]["inputs"]["ckpt_name"] = curDiffModel;
+                diffReq.uploadFileChecker.fileExists = true;
                 break;
 
             case diffusionWorkflows.txt2imgLCM:
@@ -241,6 +241,8 @@ public class ComfySceneLibrary : MonoBehaviour
 
                 json["prompt"]["5"]["inputs"]["width"] = curImageSize.x;
                 json["prompt"]["5"]["inputs"]["height"] = curImageSize.y;
+
+                diffReq.uploadFileChecker.fileExists = true;                
                 break;
 
             case diffusionWorkflows.img2img:
@@ -278,6 +280,7 @@ public class ComfySceneLibrary : MonoBehaviour
                 break;
 
             case diffusionWorkflows.txt2img:
+                // TODO create this one
                 /*json["prompt"]["3"]["inputs"]["seed"] = randomSeed;
                 json["prompt"]["6"]["inputs"]["text"] = diffReq.positivePrompt;
                 json["prompt"]["7"]["inputs"]["text"] = diffReq.negativePrompt;
@@ -287,6 +290,8 @@ public class ComfySceneLibrary : MonoBehaviour
 
                 json["prompt"]["5"]["inputs"]["width"] = curImageSize.x;
                 json["prompt"]["5"]["inputs"]["height"] = curImageSize.y;*/
+
+                diffReq.uploadFileChecker.fileExists = true;
                 break;
 
             case diffusionWorkflows.combineImages:
@@ -333,6 +338,8 @@ public class ComfySceneLibrary : MonoBehaviour
                 curImageSize.y = 768;
                 json["prompt"]["5"]["inputs"]["width"] = curImageSize.x;
                 json["prompt"]["5"]["inputs"]["height"] = curImageSize.y;
+
+                diffReq.uploadFileChecker.fileExists = true;
                 break;
 
             case diffusionWorkflows.grid4Outpainting:
@@ -627,7 +634,6 @@ public class ComfySceneLibrary : MonoBehaviour
         return filenames;
     }
 
-    // TODO make the downloads not in an endless for loop, but check if a file exists, then download it ONCE(or until succession?)
     /// <summary>
     /// Downloads a single image according to the given image name and adds it to the DiffusionRequest
     /// </summary>
@@ -666,14 +672,10 @@ public class ComfySceneLibrary : MonoBehaviour
         }
     }
 
-
-    // TODO remove uploadImageStatusAtEnd
-
     /// <summary>
-    /// Uploads a given Texture to the server.
+    /// Uploads given Textures to the server.
     /// </summary>
-    /// <param name="curTexture">Texture to upload to the server.</param>
-    /// <param name="uploadImageStatusAtEnd">Sets the final status of the uploadingImage parameter at the end of the function's work.</param>
+    /// <param name="diffReq">Diffusion Request containting Textures to upload to the server.</param>
     private IEnumerator UploadImage(DiffusionRequest diffReq)
     {
         if (diffReq == null) yield break;

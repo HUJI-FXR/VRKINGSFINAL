@@ -9,11 +9,6 @@ using UnityEngine.InputSystem;
 
 public class ThrowingGadgetMechanism : GadgetMechanism
 {
-    // TODO Do I even need diffusionlist when I have  GeneralGameScript.instance.diffusables??
-
-    //private bool allowCollision = false;
-
-
     private void Start()
     {
         mechanismText = "Throwing";

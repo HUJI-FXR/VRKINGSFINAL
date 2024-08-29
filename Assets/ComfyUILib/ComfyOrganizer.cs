@@ -65,6 +65,8 @@ public class DiffusionRequest
     public Collision collision = null;
     [System.NonSerialized]
     public DiffusableObject diffusableObject = null;
+
+    // Used to check whether the input Images have been uploaded successfully
     [System.NonSerialized]
     public FileExistsChecker uploadFileChecker;
 
@@ -180,7 +182,6 @@ public class ComfyOrganizer : MonoBehaviour
     }
 
     
-    // TODO check if this works and make sure it does, create minimal workflow without generation and only model loading?
     /// <summary>
     /// Used for loading models into RAM to speed up subsequent image generations using the same model. 
     /// Sends a minimal image generation request with a specified model to load it into RAM.
@@ -202,7 +203,6 @@ public class ComfyOrganizer : MonoBehaviour
     /// <param name="diffusionRequest">Diffusion Request that is sent to the ComfySceneLibrary</param>
     public void SendDiffusionRequest(DiffusionRequest diffusionRequest)
     {
-        // TODO choose who has the responsibility for defining the various parameters of a diffusion request, the GameObject? whoever?
         DiffusionRequest newDiffusionRequest = copyDiffusionRequest(diffusionRequest);
         newDiffusionRequest.requestNum = currentRequestNum;
         newDiffusionRequest.diffImgName = GetDiffusionImageName(newDiffusionRequest);
@@ -219,7 +219,6 @@ public class ComfyOrganizer : MonoBehaviour
     /// </summary>
     public List<DiffusionRequest> GetUndownloadedRequestPrompts()
     {
-        // TODO take into account ONLY the requests that were sent to generation?
         List<DiffusionRequest> relevantKeys = new List<DiffusionRequest>();
         List<DiffusionRequest> sentKeys = new List<DiffusionRequest>();
 

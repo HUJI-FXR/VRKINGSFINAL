@@ -11,11 +11,6 @@ public class DiffusableObject : MonoBehaviour
 
     [NonSerialized]
     public bool grabbed;
-    /*[NonSerialized]
-    private bool allowCollision;*/
-    //public DiffusionRequest diffusionRequest;
-
-    // todo make gamemanager script
 
     // todo maybe the grabbed and ungrabbed should be here as well? maybe another script of theirs instead of gadgetmechanismS?
 
