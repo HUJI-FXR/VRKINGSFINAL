@@ -20,7 +20,7 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
         mechanismText = "Combine Images";
     }
 
-    // In this Mechanism, the selection of images happens equally with both hands.
+    // TODO we've changed all the mechanisms to be symmetric by hands, these separations are no longer needed
     public override void OnGameObjectLeftHoverEntered(HoverEnterEventArgs args)
     {
         OnGameObjectHoverEntered(args);

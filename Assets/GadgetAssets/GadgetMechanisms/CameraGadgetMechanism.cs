@@ -16,12 +16,24 @@ public class CameraGadgetMechanism : GadgetMechanism
     private Texture2D contentTexture;
     public bool UseStyleTransfer = true;
 
+    // Limits when a picture can be taken
+    public bool takePicture = false;
+
     // Object that was selected for the texture to be used as the style base for the Camera's image.
     private GameObject selectedStyleObject = null;
+
+    // Camera used in mechanism
+    public Camera mechanismCamera;
+    public ScreenRecorder mechanismScreenRecorder;
 
     private void Start()
     {
         mechanismText = "Base Camera";
+
+        if (mechanismCamera == null || mechanismScreenRecorder == null)
+        {
+            Debug.LogError("Add Camera and ScreenRecorder to Camera mechanism");            
+        }
     }
 
     // -----------------------------------------  PLAYER INPUTS ----------------------------------------- //
@@ -32,6 +44,7 @@ public class CameraGadgetMechanism : GadgetMechanism
     /// </summary>
     public override void PlaceTextureInput(GameObject GO)
     {
+        if (takePicture) return;
         if (GO == null) return;
 
         Texture2D curTexture = GameManager.getInstance().gadget.getGeneratedTexture();
@@ -60,9 +73,35 @@ public class CameraGadgetMechanism : GadgetMechanism
         }
     }
 
-    
-    // The Mechanism chooses the style of the Camera texture diffusion with the right hand
+
+    // TODO we've changed all the mechanisms to be symmetric by hands, these separations are no longer needed
+    public override void OnGameObjectLeftHoverEntered(HoverEnterEventArgs args)
+    {
+        OnGameObjectHoverEntered(args);
+    }
+    public override void OnGameObjectLeftHoverExited(HoverExitEventArgs args)
+    {
+        OnGameObjectHoverExited(args);
+    }
     public override void OnGameObjectRightHoverEntered(HoverEnterEventArgs args)
+    {
+        OnGameObjectHoverEntered(args);
+    }
+    public override void OnGameObjectRightHoverExited(HoverExitEventArgs args)
+    {
+        OnGameObjectHoverExited(args);
+    }
+    public override void onGameObjectLeftSelectEntered(SelectEnterEventArgs args)
+    {
+        onGameObjectSelectEntered(args);
+    }
+    public override void onGameObjectRightSelectEntered(SelectEnterEventArgs args)
+    {
+        onGameObjectSelectEntered(args);
+    }
+
+
+    public void OnGameObjectHoverEntered(HoverEnterEventArgs args)
     {
         if (!UseStyleTransfer)
         {
@@ -85,7 +124,7 @@ public class CameraGadgetMechanism : GadgetMechanism
         // Creates pre-selection outline
         GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.preSelected);
     }
-    public override void OnGameObjectRightHoverExited(HoverExitEventArgs args)
+    public void OnGameObjectHoverExited(HoverExitEventArgs args)
     {
         if (!UseStyleTransfer)
         {
@@ -107,7 +146,7 @@ public class CameraGadgetMechanism : GadgetMechanism
 
         GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.unSelected);
     }
-    public override void onGameObjectRightSelectEntered(SelectEnterEventArgs args)
+    public void onGameObjectSelectEntered(SelectEnterEventArgs args)
     {
         if (!UseStyleTransfer)
         {
@@ -187,15 +226,15 @@ public class CameraGadgetMechanism : GadgetMechanism
     }
 
     // TODO move the camera from left hand to camera hanging on neck.
-    // The function is called with the left hand, and the camera is also positioned on the left hand.
+    // This function is called when the grabbed camera is activated(a screenshot is taken).
     /// <summary>
-    /// Shoots an image with the Gadget left-hand camera.
+    /// Shoots an image with the Physical grabbable Camera.
     /// </summary>
-    public override void TakeScreenshot(InputAction.CallbackContext context)
+    public override void TakeScreenshot()
     {
         // TODO add DiffusableObject data entry for diffusionrequest when taking a picture of stuff
-        Texture2D screenShot = GameManager.getInstance().gadget.screenRecorder.CaptureScreenshot();
-        GameManager.getInstance().gadget.gadgetCamera.enabled = false;
+        Texture2D screenShot = mechanismScreenRecorder.CaptureScreenshot(mechanismCamera);
+        mechanismCamera.enabled = false;
         GameManager.getInstance().gadget.xrCamera.enabled = true;
 
 

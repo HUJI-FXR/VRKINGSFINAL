@@ -37,12 +37,12 @@ public class Gadget : MonoBehaviour
     /// <summary>
     /// Used for shooting images with virtual cameras.
     /// </summary>
-    public ScreenRecorder screenRecorder = null;
+    //public ScreenRecorder screenRecorder = null;
 
     /// <summary>
     /// Left hand Gadget Camera for taking pictures.
     /// </summary>
-    public Camera gadgetCamera;
+    //public Camera gadgetCamera;
 
     /// <summary>
     /// XR Origin Main Camera.
@@ -78,7 +78,8 @@ public class Gadget : MonoBehaviour
 
     private void Start()
     {
-        if (gadgetCamera == null || xrCamera == null || playGadgetSounds == null || gadgetImagePanel == null || aiGadgetAssistant == null ||
+        //gadgetCamera == null || 
+        if (xrCamera == null || playGadgetSounds == null || gadgetImagePanel == null || aiGadgetAssistant == null ||
             LeftHandController == null || RightHandController == null)
         {
             Debug.LogError("Add all requirements of Gadget");
@@ -365,17 +366,15 @@ public class Gadget : MonoBehaviour
             Debug.Log("Generating Texture");
         }
     }
-    public void TakeScreenshot(InputAction.CallbackContext context)
+    public void TakeScreenshot()
     {
         if (GadgetMechanisms.Count <= 0)
         {
             return;
         }
-        if (context.performed)
-        {
-            GadgetMechanisms[gadgetMechanismIndex].TakeScreenshot(context);
-            Debug.Log("Taking Screenshot");
-        }
+
+        GadgetMechanisms[gadgetMechanismIndex].TakeScreenshot();
+        Debug.Log("Taking Screenshot");
     }
     public void GeneralActivation(DiffusionTextureChanger dtc)
     {

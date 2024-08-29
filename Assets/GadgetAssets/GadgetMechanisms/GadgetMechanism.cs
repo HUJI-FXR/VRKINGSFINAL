@@ -139,7 +139,7 @@ public class GadgetMechanism : MonoBehaviour
     /// <summary>
     /// Uses a camera to shoot an image.
     /// </summary>
-    public virtual void TakeScreenshot(InputAction.CallbackContext context)
+    public virtual void TakeScreenshot()
     {
         return;
     }

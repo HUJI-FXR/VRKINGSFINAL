@@ -13,6 +13,9 @@ using UnityEngine.InputSystem;
 // You can compile these images into a video using ffmpeg:
 // ffmpeg -i screen_3840x2160_%d.ppm -y test.avi
 
+
+// TODO move this entire code to the GENERALCODELIBRARIES script thing because this code doesn't need to not be static
+
 public class ScreenRecorder : MonoBehaviour
 {
     [SerializeField] private GameObject display;
@@ -38,12 +41,13 @@ public class ScreenRecorder : MonoBehaviour
     private Rect rect;
     private RenderTexture renderTexture;
     private Texture2D screenShot;
+    
 
 
     /// <summary>
     /// Captures an image with the Camera it is attached to, saves it to folder and returns it.
     /// </summary>
-    public Texture2D CaptureScreenshot()
+    public Texture2D CaptureScreenshot(Camera camera)
     {
         // cleanup if needed
         if (!optimizeForManyScreenshots)
@@ -66,7 +70,6 @@ public class ScreenRecorder : MonoBehaviour
         }
 
         // get main camera and manually render scene into rt
-        Camera camera = this.GetComponent<Camera>(); // NOTE: added because there was no reference to camera in original script; must add this script to Camera
         camera.targetTexture = renderTexture;
         camera.Render();
 
