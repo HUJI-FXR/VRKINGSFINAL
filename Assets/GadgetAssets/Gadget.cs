@@ -291,6 +291,8 @@ public class Gadget : MonoBehaviour
         if (textureQueue.Count == 0) return null;
 
         Texture2D current = textureQueue.Dequeue();
+        GameManager.getInstance().uiDiffusionTexture.CreateImagesInside(new List<Texture2D>(textureQueue), displayTexturesGadget, true);
+        
         if (textureQueue.Count == 0)
         {
             GameManager.getInstance().uiDiffusionTexture.CreateImagesInside(new List<Texture2D>(), gadgetImagePanel, true);
