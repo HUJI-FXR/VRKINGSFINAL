@@ -719,7 +719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_System: {fileID: 3647912389175953036}
-  m_MoveSpeed: 1
+  m_MoveSpeed: 4
   m_EnableStrafe: 1
   m_EnableFly: 0
   m_UseGravity: 1
@@ -1797,22 +1797,6 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3697320992597312600}
         m_TargetAssemblyTypeName: Gadget, Assembly-CSharp
-        m_MethodName: TakeScreenshot
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: f3f7384e-2912-41d6-8e2a-2bea3556c042
-    m_ActionName: Controller Input/TakeTexture
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3697320992597312600}
-        m_TargetAssemblyTypeName: Gadget, Assembly-CSharp
         m_MethodName: PlaceTextureInput
         m_Mode: 0
         m_Arguments:
@@ -1841,22 +1825,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 1d351ce6-ce57-483e-bd5b-1658d1ffe168
     m_ActionName: Controller Input/ActivateGeneration
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3697320992597312600}
-        m_TargetAssemblyTypeName: Gadget, Assembly-CSharp
-        m_MethodName: TakeScreenshot
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 4e171964-0d2a-47b0-8d8f-176443ad16f8
-    m_ActionName: Controller Input/TakeScreenshot
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Controller Input

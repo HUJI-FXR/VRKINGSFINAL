@@ -102,7 +102,7 @@
   "21": {
     "inputs": {
       "seed": 285537576246822,
-      "steps": 20,
+      "steps": 10,
       "cfg": 2.1,
       "sampler_name": "dpmpp_sde_gpu",
       "scheduler": "karras",
@@ -179,7 +179,7 @@
   },
   "50": {
     "inputs": {
-      "amount": 5,
+      "amount": 1,
       "image": [
         "12",
         0
@@ -192,7 +192,7 @@
   },
   "51": {
     "inputs": {
-      "amount": 5,
+      "amount": 1,
       "image": [
         "41",
         0
