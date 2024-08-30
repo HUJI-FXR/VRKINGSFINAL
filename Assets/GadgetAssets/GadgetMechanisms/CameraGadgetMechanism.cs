@@ -70,35 +70,7 @@ public class CameraGadgetMechanism : GadgetMechanism
         }
     }
 
-
-    // TODO we've changed all the mechanisms to be symmetric by hands, these separations are no longer needed
-    public override void OnGameObjectLeftHoverEntered(HoverEnterEventArgs args)
-    {
-        OnGameObjectHoverEntered(args);
-    }
-    public override void OnGameObjectLeftHoverExited(HoverExitEventArgs args)
-    {
-        OnGameObjectHoverExited(args);
-    }
-    public override void OnGameObjectRightHoverEntered(HoverEnterEventArgs args)
-    {
-        OnGameObjectHoverEntered(args);
-    }
-    public override void OnGameObjectRightHoverExited(HoverExitEventArgs args)
-    {
-        OnGameObjectHoverExited(args);
-    }
-    public override void onGameObjectLeftSelectEntered(SelectEnterEventArgs args)
-    {
-        onGameObjectSelectEntered(args);
-    }
-    public override void onGameObjectRightSelectEntered(SelectEnterEventArgs args)
-    {
-        onGameObjectSelectEntered(args);
-    }
-
-
-    public void OnGameObjectHoverEntered(HoverEnterEventArgs args)
+    public override void OnGameObjectHoverEntered(HoverEnterEventArgs args)
     {
         if (!UseStyleTransfer)
         {
@@ -121,7 +93,7 @@ public class CameraGadgetMechanism : GadgetMechanism
         // Creates pre-selection outline
         GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.preSelected);
     }
-    public void OnGameObjectHoverExited(HoverExitEventArgs args)
+    public override void OnGameObjectHoverExited(HoverExitEventArgs args)
     {
         if (!UseStyleTransfer)
         {
@@ -143,7 +115,7 @@ public class CameraGadgetMechanism : GadgetMechanism
 
         GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.unSelected);
     }
-    public void onGameObjectSelectEntered(SelectEnterEventArgs args)
+    public override void onGameObjectSelectEntered(SelectEnterEventArgs args)
     {
         if (!UseStyleTransfer)
         {
@@ -236,6 +208,8 @@ public class CameraGadgetMechanism : GadgetMechanism
         GameManager.getInstance().gadget.xrCamera.enabled = true;
 
         contentTexture = screenShot;
+
+        GameManager.getInstance().gadget.playGadgetSounds.PlaySound("cameraShutter");
 
         if (selectedStyleObject != null)
         {

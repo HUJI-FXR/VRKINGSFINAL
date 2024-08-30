@@ -292,7 +292,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3697320992597312600}
         m_TargetAssemblyTypeName: Gadget, Assembly-CSharp
-        m_MethodName: OnGameObjectLeftHoverEntered
+        m_MethodName: OnGameObjectHoverEntered
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -307,7 +307,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3697320992597312600}
         m_TargetAssemblyTypeName: Gadget, Assembly-CSharp
-        m_MethodName: OnGameObjectLeftHoverExited
+        m_MethodName: OnGameObjectHoverExited
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -322,7 +322,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3697320992597312600}
         m_TargetAssemblyTypeName: Gadget, Assembly-CSharp
-        m_MethodName: onGameObjectLeftSelectEntered
+        m_MethodName: onGameObjectSelectEntered
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -337,7 +337,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3697320992597312600}
         m_TargetAssemblyTypeName: Gadget, Assembly-CSharp
-        m_MethodName: onGameObjectLeftSelectExited
+        m_MethodName: onGameObjectSelectExited
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1233,7 +1233,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3697320992597312600}
         m_TargetAssemblyTypeName: Gadget, Assembly-CSharp
-        m_MethodName: OnGameObjectRightHoverEntered
+        m_MethodName: OnGameObjectHoverEntered
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1248,7 +1248,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3697320992597312600}
         m_TargetAssemblyTypeName: Gadget, Assembly-CSharp
-        m_MethodName: OnGameObjectRightHoverExited
+        m_MethodName: OnGameObjectHoverExited
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1263,7 +1263,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3697320992597312600}
         m_TargetAssemblyTypeName: Gadget, Assembly-CSharp
-        m_MethodName: onGameObjectRightSelectEntered
+        m_MethodName: onGameObjectSelectEntered
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1278,7 +1278,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3697320992597312600}
         m_TargetAssemblyTypeName: Gadget, Assembly-CSharp
-        m_MethodName: onGameObjectRightSelectExited
+        m_MethodName: onGameObjectSelectExited
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

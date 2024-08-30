@@ -25,32 +25,6 @@ public class DiffusableObjectGadgetMechanism : GadgetMechanism
         mechanismText = "Object to Image";
     }
 
-    // In this Mechanism, the selection of images happens equally with both hands.
-    public override void OnGameObjectLeftHoverEntered(HoverEnterEventArgs args)
-    {
-        OnGameObjectHoverEntered(args);
-    }
-    public override void OnGameObjectLeftHoverExited(HoverExitEventArgs args)
-    {
-        OnGameObjectHoverExited(args);
-    }
-    public override void OnGameObjectRightHoverEntered(HoverEnterEventArgs args)
-    {
-        OnGameObjectHoverEntered(args);
-    }
-    public override void OnGameObjectRightHoverExited(HoverExitEventArgs args)
-    {
-        OnGameObjectHoverExited(args);
-    }
-    public override void onGameObjectLeftSelectEntered(SelectEnterEventArgs args)
-    {
-        onGameObjectSelectEntered(args);
-    }
-    public override void onGameObjectRightSelectEntered(SelectEnterEventArgs args)
-    {
-        onGameObjectSelectEntered(args);
-    }
-
     private bool validInteractableObject(BaseInteractionEventArgs args)
     {
         if (args == null || args.interactableObject == null) return false;
@@ -64,7 +38,7 @@ public class DiffusableObjectGadgetMechanism : GadgetMechanism
         return true;
     }
 
-    public void OnGameObjectHoverEntered(HoverEnterEventArgs args)
+    public override void OnGameObjectHoverEntered(HoverEnterEventArgs args)
     {
         if (!validInteractableObject(args))
         {
@@ -76,7 +50,7 @@ public class DiffusableObjectGadgetMechanism : GadgetMechanism
         GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.preSelected);
     }
 
-    public void OnGameObjectHoverExited(HoverExitEventArgs args)
+    public override void OnGameObjectHoverExited(HoverExitEventArgs args)
     {
         if (!validInteractableObject(args)) return;
 
@@ -84,7 +58,7 @@ public class DiffusableObjectGadgetMechanism : GadgetMechanism
         GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.unSelected);
     }
 
-    public void onGameObjectSelectEntered(SelectEnterEventArgs args)
+    public override void onGameObjectSelectEntered(SelectEnterEventArgs args)
     {
         if (!validInteractableObject(args)) return;
 

@@ -24,6 +24,8 @@ public class ThrowingGadgetMechanism : GadgetMechanism
 
         newDiffusionRequest.diffusionModel = diffusionModels.nano;
         newDiffusionRequest.targets.Add(GameManager.getInstance().radiusDiffusionTexture);
+
+        // TODO check if this workflow works on the thinkdiffusion server
         newDiffusionRequest.diffusionJsonType = diffusionWorkflows.txt2imgLCM;
         newDiffusionRequest.numOfVariations = 5;
 
@@ -41,6 +43,8 @@ public class ThrowingGadgetMechanism : GadgetMechanism
 
         diffusionRequest.diffusableObject = args.interactableObject.transform.gameObject.GetComponent<DiffusableObject>();
         diffusionRequest.positivePrompt = diffusionRequest.diffusableObject.keyword;
+
+        GameManager.getInstance().gadget.MechanismText.text = "throwing3";
 
         GameManager.getInstance().comfyOrganizer.SendDiffusionRequest(diffusionRequest);        
     }

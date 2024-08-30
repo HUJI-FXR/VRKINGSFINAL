@@ -7885,7 +7885,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 505080063357859650, guid: 6cf941391e6bdbc4abdbed9a86feb39a, type: 3}
       propertyPath: serverAddress
-      value: 127.0.0.1:8188
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2161866615071764844, guid: 6cf941391e6bdbc4abdbed9a86feb39a, type: 3}
       propertyPath: gadget
@@ -10374,7 +10374,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6275466435151871231, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 1.169
       objectReference: {fileID: 0}
     - target: {fileID: 6691970022828295770, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
       propertyPath: m_RenderMode
@@ -11621,7 +11621,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

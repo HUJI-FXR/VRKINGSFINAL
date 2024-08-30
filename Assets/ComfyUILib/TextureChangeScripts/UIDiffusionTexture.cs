@@ -155,7 +155,10 @@ public class UIDiffusionTexture : DiffusionTextureChanger
 
             if (curChangeDelta > changeRate)
             {
-                displayTextures = false;                
+                displayTextures = false;
+
+                DestroyImmediate(curDisplayPrefab);
+                curDisplayPrefab = null;
             }
         }
         else

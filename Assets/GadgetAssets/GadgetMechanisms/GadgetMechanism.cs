@@ -48,56 +48,28 @@ public class GadgetMechanism : MonoBehaviour
     /// <summary>
     /// Left hand controller ray hover entered.
     /// </summary>
-    public virtual void OnGameObjectLeftHoverEntered(HoverEnterEventArgs args)
+    public virtual void OnGameObjectHoverEntered(HoverEnterEventArgs args)
     {
         return;
     }
     /// <summary>
     /// Left hand controller ray hover exited.
     /// </summary>
-    public virtual void OnGameObjectLeftHoverExited(HoverExitEventArgs args)
-    {
-        return;
-    }
-    /// <summary>
-    /// Right hand controller ray hover entered.
-    /// </summary>
-    public virtual void OnGameObjectRightHoverEntered(HoverEnterEventArgs args)
-    {
-        return;
-    }
-    /// <summary>
-    /// Right hand controller ray hover exited.
-    /// </summary>
-    public virtual void OnGameObjectRightHoverExited(HoverExitEventArgs args)
+    public virtual void OnGameObjectHoverExited(HoverExitEventArgs args)
     {
         return;
     }
     /// <summary>
     /// Left hand controller ray select entered.
     /// </summary>
-    public virtual void onGameObjectLeftSelectEntered(SelectEnterEventArgs args)
+    public virtual void onGameObjectSelectEntered(SelectEnterEventArgs args)
     {
         return;
     }
     /// <summary>
     /// Left hand controller ray select exited.
     /// </summary>
-    public virtual void onGameObjectLeftSelectExited(SelectExitEventArgs args)
-    {
-        return;
-    }
-    /// <summary>
-    /// Right hand controller ray select entered.
-    /// </summary>
-    public virtual void onGameObjectRightSelectEntered(SelectEnterEventArgs args)
-    {
-        return;
-    }
-    /// <summary>
-    /// Right hand controller ray select exited.
-    /// </summary>
-    public virtual void onGameObjectRightSelectExited(SelectExitEventArgs args)
+    public virtual void onGameObjectSelectExited(SelectExitEventArgs args)
     {
         return;
     }

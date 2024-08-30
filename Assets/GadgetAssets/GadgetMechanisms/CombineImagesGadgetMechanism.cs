@@ -20,33 +20,7 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
         mechanismText = "Combine Images";
     }
 
-    // TODO we've changed all the mechanisms to be symmetric by hands, these separations are no longer needed
-    public override void OnGameObjectLeftHoverEntered(HoverEnterEventArgs args)
-    {
-        OnGameObjectHoverEntered(args);
-    }
-    public override void OnGameObjectLeftHoverExited(HoverExitEventArgs args)
-    {
-        OnGameObjectHoverExited(args);
-    }
-    public override void OnGameObjectRightHoverEntered(HoverEnterEventArgs args)
-    {
-        OnGameObjectHoverEntered(args);
-    }
-    public override void OnGameObjectRightHoverExited(HoverExitEventArgs args)
-    {
-        OnGameObjectHoverExited(args);
-    }
-    public override void onGameObjectLeftSelectEntered(SelectEnterEventArgs args)
-    {
-        onGameObjectSelectEntered(args);
-    }
-    public override void onGameObjectRightSelectEntered(SelectEnterEventArgs args)
-    {
-        onGameObjectSelectEntered(args);
-    }
-
-    public void OnGameObjectHoverEntered(HoverEnterEventArgs args)
+    public override void OnGameObjectHoverEntered(HoverEnterEventArgs args)
     {
         if (args == null || args.interactableObject == null)
         {
@@ -61,11 +35,16 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
         {
             return;
         }
+
+        Renderer interactorRenderer = args.interactableObject.transform.gameObject.GetComponent<Renderer>();
+        if (interactorRenderer == null) return;
+        if (interactorRenderer.material.mainTexture == null) return;
+
         // Creates pre-selection outline
         GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.preSelected);
     }
 
-    public void OnGameObjectHoverExited(HoverExitEventArgs args)
+    public override void OnGameObjectHoverExited(HoverExitEventArgs args)
     {
         if (args == null || args.interactableObject == null)
         {
@@ -85,7 +64,7 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
         GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.unSelected);
     }
 
-    public void onGameObjectSelectEntered(SelectEnterEventArgs args)
+    public override void onGameObjectSelectEntered(SelectEnterEventArgs args)
     {
         if (args == null || args.interactableObject == null)
         {
@@ -100,6 +79,11 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
         {
             return;
         }
+
+        Renderer interactorRenderer = args.interactableObject.transform.gameObject.GetComponent<Renderer>();
+        if (interactorRenderer == null) return;
+        if (interactorRenderer.material.mainTexture == null) return;
+
         // Adds to queue of selected objects
         if (selectedObjects.Count >= MAX_QUEUED_OBJECTS)
         {

@@ -21,7 +21,7 @@ public class OutpaintGadgetMechanism : GadgetMechanism
 
     // TODO currently the mechanism will work by CLICKING on a DiffusableObject, getting the keywords from it and then picking a relevant OutpaintingTile to start the generation on.outpaintin
 
-    public override void OnGameObjectLeftHoverEntered(HoverEnterEventArgs args)
+    public override void OnGameObjectHoverEntered(HoverEnterEventArgs args)
     {
         if (args == null || args.interactableObject == null)
         {
@@ -45,7 +45,7 @@ public class OutpaintGadgetMechanism : GadgetMechanism
         }        
     }
 
-    public override void OnGameObjectLeftHoverExited(HoverExitEventArgs args)
+    public override void OnGameObjectHoverExited(HoverExitEventArgs args)
     {
         if (args == null || args.interactableObject == null)
         {
@@ -67,7 +67,8 @@ public class OutpaintGadgetMechanism : GadgetMechanism
     {
         DiffusionRequest newDiffusionRequest = new DiffusionRequest();
 
-        newDiffusionRequest.diffusionModel = diffusionModels.ghostmix;
+        //newDiffusionRequest.diffusionModel = diffusionModels.ghostmix;
+        newDiffusionRequest.diffusionModel = diffusionModels.juggernautXLInpaint;
         newDiffusionRequest.diffusionJsonType = diffusionWorkflows.outpainting;
 
         return newDiffusionRequest;
@@ -106,7 +107,7 @@ public class OutpaintGadgetMechanism : GadgetMechanism
         return false;
     }
 
-    public override void onGameObjectLeftSelectEntered(SelectEnterEventArgs args)
+    public override void onGameObjectSelectEntered(SelectEnterEventArgs args)
     {
         if (args == null || args.interactableObject == null)
         {

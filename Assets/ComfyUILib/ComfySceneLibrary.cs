@@ -74,15 +74,23 @@ public class ComfySceneLibrary : MonoBehaviour
 
     private bool readyForDiffusion = false;
 
+    private const int MAX_NETWORKING_RETRIES = 1000;
+
     private void Awake()
     {
         ws = new ClientWebSocket();
         diffusionJsons = new Dictionary<diffusionWorkflows, string>();
     }
 
+
+    public void StartComfySceneLibrary()
+    {
+        StartComfySceneLibrary(null);
+    }
+
     // TODO notice that this START must always come BEFORE(put the library before the organizer in the node properties)
     // TODO cont. the ComfyOrganizer or else some things will not be ready for an instant diffusion request
-    public void StartComfySceneLibrary()
+    public void StartComfySceneLibrary(DiffusionRequest beginningDiffusionRequest)
     {
         // TODO delete this PREFIX before full release
         string THINKDIFFUSION_PREFIX = "jonathanmiroshnik-";
@@ -127,6 +135,8 @@ public class ComfySceneLibrary : MonoBehaviour
         readyForDiffusion = true;
 
         StartCoroutine(DownloadCycle());
+
+        if (beginningDiffusionRequest != null) comfyOrg.SendDiffusionRequest(beginningDiffusionRequest);
     }
 
     /// <summary>
@@ -457,11 +467,15 @@ public class ComfySceneLibrary : MonoBehaviour
 
         string url = HTTPPrefix + GameManager.getInstance().IP + "/prompt";
 
+        int MAX_RETRIES = MAX_NETWORKING_RETRIES;
         string promptText = DiffusionJSONFactory(diffReq);
-        while (!diffReq.uploadFileChecker.fileExists)
-        {            
-            yield return new WaitForSeconds(0.02f);
+
+        while (!diffReq.uploadFileChecker.fileExists && MAX_RETRIES <= 0)
+        {
+            yield return new WaitForSeconds(0.2f);
+            MAX_RETRIES--;
         }
+        if (MAX_RETRIES <= 0) yield break;
 
         if (promptText == null || promptText.Length <= 0)
         {
@@ -479,7 +493,7 @@ public class ComfySceneLibrary : MonoBehaviour
 
             if (request.result != UnityWebRequest.Result.Success)
             {
-                GameManager.getInstance().gadget.MechanismText.text = "ERROR1 " + trials.ToString();
+                //GameManager.getInstance().gadget.MechanismText.text = "ERROR1 " + trials.ToString();
                 Debug.Log(request.error);
 
                 yield return new WaitForSeconds(0.2f);
@@ -550,7 +564,7 @@ public class ComfySceneLibrary : MonoBehaviour
                     Debug.LogError(": Error: " + webRequest.error);
                     break;
                 case UnityWebRequest.Result.ProtocolError:
-                    GameManager.getInstance().gadget.MechanismText.text = "PROTERR";
+                    //GameManager.getInstance().gadget.MechanismText.text = "PROTERR";
                     if (started_generations)
                     {
                         Debug.LogError(": HTTP Error: " + webRequest.error);
@@ -633,7 +647,7 @@ public class ComfySceneLibrary : MonoBehaviour
     /// <param name="diffReq">DiffusionRequest to add downloaded image to</param>
     private IEnumerator DownloadImage(string filename, DiffusionRequest diffReq)
     {
-        int MAX_RETRIES = 1000;
+        int MAX_RETRIES = MAX_NETWORKING_RETRIES;
 
         FileExistsChecker fileCheck = new FileExistsChecker();
         while (!fileCheck.fileExists && MAX_RETRIES <= 0)
@@ -642,26 +656,42 @@ public class ComfySceneLibrary : MonoBehaviour
             StartCoroutine(CheckIfFileExists(filename, fileCheck, "output"));
             MAX_RETRIES--;
         }
-        if (MAX_RETRIES <= 0)  yield break;
-
-        string imageURL = HTTPPrefix + GameManager.getInstance().IP + "/view?filename=" + filename;
-
-        using (UnityWebRequest webRequest = UnityWebRequestTexture.GetTexture(imageURL))
+        if (MAX_RETRIES <= 0)
         {
-            yield return webRequest.SendWebRequest();
+            GameManager.getInstance().gadget.MechanismText.text = "bad download1";
+            yield break;
+        }
 
-            if (webRequest.result == UnityWebRequest.Result.Success)
+
+
+        int MAX_RETRIES_DOWNLOAD = MAX_NETWORKING_RETRIES;
+
+        while(MAX_RETRIES_DOWNLOAD > 0)
+        {
+            string imageURL = HTTPPrefix + GameManager.getInstance().IP + "/view?filename=" + filename;
+
+            using (UnityWebRequest webRequest = UnityWebRequestTexture.GetTexture(imageURL))
             {
-                // Get the downloaded texture
-                Texture2D texture = ((DownloadHandlerTexture)webRequest.downloadHandler).texture;
-                // Adding the texture to the texture queue
-                comfyOrg.AddImage(texture, diffReq);
-            }
-            else
-            {
-                Debug.LogError("Image download failed: " + webRequest.error);
+                yield return webRequest.SendWebRequest();
+
+                if (webRequest.result == UnityWebRequest.Result.Success)
+                {
+                    // Get the downloaded texture
+                    Texture2D texture = ((DownloadHandlerTexture)webRequest.downloadHandler).texture;
+                    // Adding the texture to the texture queue
+                    comfyOrg.AddImage(texture, diffReq);
+
+                    yield break;
+                }
+                else
+                {
+                    Debug.LogError("Image download failed: " + webRequest.error);
+                    MAX_RETRIES_DOWNLOAD--;
+                }
             }
         }
+
+        GameManager.getInstance().gadget.MechanismText.text = "bad download2";
     }
 
     /// <summary>
@@ -704,14 +734,21 @@ public class ComfySceneLibrary : MonoBehaviour
                 }
                 else
                 {
+                    int MAX_RETRIES = MAX_NETWORKING_RETRIES;
+
                     FileExistsChecker fileCheck = new FileExistsChecker();
 
-                    // TODO Instead of while, use a limited number of retries?
-                    while (!fileCheck.fileExists)
+                    while (!fileCheck.fileExists && MAX_RETRIES <= 0)
                     {
                         yield return new WaitForSeconds(0.2f);
                         StartCoroutine(CheckIfFileExists(curTexture.name, fileCheck, "input"));
+                        MAX_RETRIES--;
                     }
+                    if (MAX_RETRIES <= 0)
+                    {
+                        GameManager.getInstance().gadget.MechanismText.text = "bad upload1";
+                        yield break;
+                    }                    
 
                     bools[i] = true;
 

@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/StartSceneFol/StartScene.unity
     guid: 14341328f29378e4da6beb7fb2d856bd
   - enabled: 1
+    path: Assets/Scenes/GadgetPrefabTest.unity
+    guid: e12495a11fb9f5a419f9431ca07b8fc1
+  - enabled: 1
     path: Assets/Scenes/MainScene.unity
     guid: a2ba44019e2a540deb4507337c25a844
   - enabled: 1

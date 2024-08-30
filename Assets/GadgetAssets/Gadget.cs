@@ -4,6 +4,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.UI;
 
@@ -70,8 +71,10 @@ public class Gadget : MonoBehaviour
     // Controllers, for symmetric input
     public GameObject LeftHandController;
     public GameObject RightHandController;
-    private string LeftHandControllerInputName = "OculusTouchControllerOpenXR";
-    private string RightHandControllerInputName = "OculusTouchControllerOpenXR1";
+    private string LeftHandBuildControllerInputName = "OculusTouchControllerLeft";
+    private string RightHandBuildControllerInputName = "OculusTouchControllerRight";
+    private string LeftHandLinkControllerInputName = "OculusTouchControllerOpenXR";
+    private string RightHandLinkControllerInputName = "OculusTouchControllerOpenXR1";
     private string LeftHandSimulatedControllerInputName = "XRSimulatedController";
     private string RightHandSimulatedControllerInputName = "XRSimulatedController1";
 
@@ -93,78 +96,40 @@ public class Gadget : MonoBehaviour
     }
 
     // Passing along the various Controller interactions onto the Mechanisms.
-    // We differentiate the input between the two hands, sometimes we want different roles for each hand.
-    // We send a unique function for the same type of action for each hand, the Mechanism will internally change
-    //                                                                                    How it deals with each hand's actions.
-    public void OnGameObjectLeftHoverEntered(HoverEnterEventArgs args)
+    public void OnGameObjectHoverEntered(HoverEnterEventArgs args)
     {
         playGadgetSounds.PlaySound("HoverOverElements");
         if (GadgetMechanisms.Count <= 0)
         {
             return;
         }
-        GadgetMechanisms[gadgetMechanismIndex].OnGameObjectLeftHoverEntered(args);
+        GadgetMechanisms[gadgetMechanismIndex].OnGameObjectHoverEntered(args);
     }
-    public void OnGameObjectLeftHoverExited(HoverExitEventArgs args)
+    public void OnGameObjectHoverExited(HoverExitEventArgs args)
     {
         if (GadgetMechanisms.Count <= 0)
         {
             return;
         }
-        GadgetMechanisms[gadgetMechanismIndex].OnGameObjectLeftHoverExited(args);
+        GadgetMechanisms[gadgetMechanismIndex].OnGameObjectHoverExited(args);
     }
 
-    public void OnGameObjectRightHoverEntered(HoverEnterEventArgs args)
-    {
-        playGadgetSounds.PlaySound("HoverOverElements");
-        if (GadgetMechanisms.Count <= 0)
-        {
-            return;
-        }
-        GadgetMechanisms[gadgetMechanismIndex].OnGameObjectRightHoverEntered(args);
-    }
-    public void OnGameObjectRightHoverExited(HoverExitEventArgs args)
-    {
-        if (GadgetMechanisms.Count <= 0)
-        {
-            return;
-        }
-        GadgetMechanisms[gadgetMechanismIndex].OnGameObjectRightHoverExited(args);
-    }
-
-    public void onGameObjectLeftSelectEntered(SelectEnterEventArgs args)
+    public void onGameObjectSelectEntered(SelectEnterEventArgs args)
     {
         playGadgetSounds.PlaySound("SelectElement");
         if (GadgetMechanisms.Count <= 0)
         {
             return;
         }
-        GadgetMechanisms[gadgetMechanismIndex].onGameObjectLeftSelectEntered(args);
+        GadgetMechanisms[gadgetMechanismIndex].onGameObjectSelectEntered(args);
     }
-    public void onGameObjectLeftSelectExited(SelectExitEventArgs args)
+    public void onGameObjectSelectExited(SelectExitEventArgs args)
     {
         if (GadgetMechanisms.Count <= 0)
         {
             return;
         }
-        GadgetMechanisms[gadgetMechanismIndex].onGameObjectLeftSelectExited(args);
-    }
-    public void onGameObjectRightSelectEntered(SelectEnterEventArgs args)
-    {
-        playGadgetSounds.PlaySound("SelectElement");
-        if (GadgetMechanisms.Count <= 0)
-        {
-            return;
-        }
-        GadgetMechanisms[gadgetMechanismIndex].onGameObjectRightSelectEntered(args);
-    }
-    public void onGameObjectRightSelectExited(SelectExitEventArgs args)
-    {
-        if (GadgetMechanisms.Count <= 0)
-        {
-            return;
-        }
-        GadgetMechanisms[gadgetMechanismIndex].onGameObjectRightSelectExited(args);
+        GadgetMechanisms[gadgetMechanismIndex].onGameObjectSelectExited(args);
     }
 
     public void OnUIHoverEntered(UIHoverEventArgs args)
@@ -190,10 +155,12 @@ public class Gadget : MonoBehaviour
         {
             return;
         }
+
         if (GadgetMechanisms[gadgetMechanismIndex].GetType() != typeof(ThrowingGadgetMechanism))
         {
             return;
         }
+
         (GadgetMechanisms[gadgetMechanismIndex] as ThrowingGadgetMechanism).DiffusableGrabbed(args);
     }
     public void DiffusableUnGrabbed(SelectExitEventArgs args)
@@ -283,7 +250,6 @@ public class Gadget : MonoBehaviour
         
         gadgetMechanismIndex = index;
         MechanismText.text = GadgetMechanisms[index].mechanismText;
-        //ButtonText.text = GadgetMechanisms[index].buttonText;
     }
 
     public Texture2D getGeneratedTexture()
@@ -293,14 +259,17 @@ public class Gadget : MonoBehaviour
         Texture2D current = textureQueue.Dequeue();
         GameManager.getInstance().uiDiffusionTexture.CreateImagesInside(new List<Texture2D>(textureQueue), displayTexturesGadget, true);
         
-        if (textureQueue.Count == 0)
+        // TODO the gadgetImagePanel is simply the panel onwhich we see the popups, we should only use it through the
+        // TODO if the above it correct, gadgetImagePanel is unneeded in this script, DISCUSS this
+        // CreatePopup function, else it breaks the panel.
+        /*if (textureQueue.Count == 0)
         {
             GameManager.getInstance().uiDiffusionTexture.CreateImagesInside(new List<Texture2D>(), gadgetImagePanel, true);
         }
         else
         {
             GameManager.getInstance().uiDiffusionTexture.CreateImagesInside(textureQueue.ToList<Texture2D>(), gadgetImagePanel, true);
-        }
+        }*/
             
         return current;
     }
@@ -333,11 +302,14 @@ public class Gadget : MonoBehaviour
     public GameObject GetActionController(InputAction.CallbackContext context)
     {
         var device = context.control.device;
-        if (device.name == LeftHandControllerInputName || device.name == LeftHandSimulatedControllerInputName)
+
+        if (device.name == LeftHandBuildControllerInputName || device.name == LeftHandLinkControllerInputName ||  
+            device.name == LeftHandSimulatedControllerInputName)
         {
             return LeftHandController;
         }
-        else if (device.name == RightHandControllerInputName || device.name == RightHandSimulatedControllerInputName)
+        else if (device.name == RightHandBuildControllerInputName || device.name == RightHandLinkControllerInputName || 
+            device.name == RightHandSimulatedControllerInputName)
         {
             return RightHandController;
         }
@@ -356,14 +328,16 @@ public class Gadget : MonoBehaviour
         }
     }
     public void PlaceTextureInput(InputAction.CallbackContext context)
-    {        
+    {
         if (GadgetMechanisms.Count <= 0)
         {
             return;
         }
+        
         if (context.performed)
         {
             GameObject curController = GetActionController(context);
+
             GadgetMechanisms[gadgetMechanismIndex].PlaceTextureInput(curController);
             Debug.Log("Placing Texture");
         }
