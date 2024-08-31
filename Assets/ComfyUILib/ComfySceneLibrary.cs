@@ -60,7 +60,7 @@ public enum diffusionModels
 
 public class ComfySceneLibrary : MonoBehaviour
 {
-    private string HTTPPrefix = "https://";  // https://  ------ When using online API service
+    private string HTTPPrefix = "https://";  // https://  ------ When using online API service | http:// ------ When using offline server
     public string serverAddress = "";
 
     public ComfyOrganizer comfyOrg;
@@ -76,11 +76,16 @@ public class ComfySceneLibrary : MonoBehaviour
 
     private const int MAX_NETWORKING_RETRIES = 1000;
 
+    // TODO in ComfyOrganizer I added List of outgioing image names
+    private static HashSet<string> incomingImageNames;
+
     private void Awake()
     {
         ws = new ClientWebSocket();
         diffusionJsons = new Dictionary<diffusionWorkflows, string>();
-    }
+
+        if (incomingImageNames == null) incomingImageNames = new HashSet<string>();
+}
 
 
     public void StartComfySceneLibrary()
@@ -470,7 +475,7 @@ public class ComfySceneLibrary : MonoBehaviour
         int MAX_RETRIES = MAX_NETWORKING_RETRIES;
         string promptText = DiffusionJSONFactory(diffReq);
 
-        while (!diffReq.uploadFileChecker.fileExists && MAX_RETRIES <= 0)
+        while (!diffReq.uploadFileChecker.fileExists && MAX_RETRIES > 0)
         {
             yield return new WaitForSeconds(0.2f);
             MAX_RETRIES--;
@@ -494,7 +499,7 @@ public class ComfySceneLibrary : MonoBehaviour
             if (request.result != UnityWebRequest.Result.Success)
             {
                 //GameManager.getInstance().gadget.MechanismText.text = "ERROR1 " + trials.ToString();
-                Debug.Log(request.error);
+                Debug.Log(request.error + " Trial Number: " + trials.ToString());
 
                 yield return new WaitForSeconds(0.2f);
                 trials--;
@@ -578,7 +583,8 @@ public class ComfySceneLibrary : MonoBehaviour
                     string[] filenames = ExtractFilename(webRequest.downloadHandler.text);
 
                     /*Debug.Log("All File Names:");
-                    foreach (string item in filenames) { 
+                    foreach (string item in filenames)
+                    {
                         Debug.Log(item);
                     }*/
 
@@ -591,9 +597,9 @@ public class ComfySceneLibrary : MonoBehaviour
                     // Downloading each image of the prompt
                     for (int i = 0; i < filenames.Length; i++)
                     {
-                        StartCoroutine(DownloadImage(filenames[i], diffReq));
+                        if (!incomingImageNames.Contains(filenames[i])) StartCoroutine(DownloadImage(filenames[i], diffReq));
                     }
-                    Debug.Log("finished downloading images for " + diffReq.requestNum.ToString());
+                    //Debug.Log("finished downloading images for request number " + diffReq.requestNum.ToString());
                     diffReq.sentDownloadRequest = true;
                     break;
             }
@@ -650,7 +656,7 @@ public class ComfySceneLibrary : MonoBehaviour
         int MAX_RETRIES = MAX_NETWORKING_RETRIES;
 
         FileExistsChecker fileCheck = new FileExistsChecker();
-        while (!fileCheck.fileExists && MAX_RETRIES <= 0)
+        while (!fileCheck.fileExists && MAX_RETRIES > 0)
         {
             yield return new WaitForSeconds(0.2f);
             StartCoroutine(CheckIfFileExists(filename, fileCheck, "output"));
@@ -668,6 +674,9 @@ public class ComfySceneLibrary : MonoBehaviour
 
         while(MAX_RETRIES_DOWNLOAD > 0)
         {
+            // Checks if image already downloaded
+            if (incomingImageNames.Contains(filename)) yield break;
+
             string imageURL = HTTPPrefix + GameManager.getInstance().IP + "/view?filename=" + filename;
 
             using (UnityWebRequest webRequest = UnityWebRequestTexture.GetTexture(imageURL))
@@ -678,6 +687,12 @@ public class ComfySceneLibrary : MonoBehaviour
                 {
                     // Get the downloaded texture
                     Texture2D texture = ((DownloadHandlerTexture)webRequest.downloadHandler).texture;
+
+                    // Checks if image already downloaded
+                    if (incomingImageNames.Contains(filename)) yield break;
+                    // Adds Image to downloaded Images HashSet
+                    incomingImageNames.Add(filename);
+
                     // Adding the texture to the texture queue
                     comfyOrg.AddImage(texture, diffReq);
 
@@ -706,11 +721,7 @@ public class ComfySceneLibrary : MonoBehaviour
         if (curTextures == null) yield break;
         if (curTextures.Count == 0) yield break;
 
-        bool[] bools = new bool[curTextures.Count];
-        for (int i = 0; i < curTextures.Count; i++)
-        {
-            bools[i] = false;
-        }
+        int curUploadedTextures = 0;
         
         for (int i = 0; i < curTextures.Count; i++)
         {
@@ -738,7 +749,7 @@ public class ComfySceneLibrary : MonoBehaviour
 
                     FileExistsChecker fileCheck = new FileExistsChecker();
 
-                    while (!fileCheck.fileExists && MAX_RETRIES <= 0)
+                    while (!fileCheck.fileExists && MAX_RETRIES > 0)
                     {
                         yield return new WaitForSeconds(0.2f);
                         StartCoroutine(CheckIfFileExists(curTexture.name, fileCheck, "input"));
@@ -748,14 +759,11 @@ public class ComfySceneLibrary : MonoBehaviour
                     {
                         GameManager.getInstance().gadget.MechanismText.text = "bad upload1";
                         yield break;
-                    }                    
+                    }
 
-                    bools[i] = true;
-
-                    // TODO maybe this will cause problems in the future? use maybe a while loop like above?
-                    for (int j = 0; j < bools.Length; j++)
+                    curUploadedTextures++;
+                    if (curUploadedTextures == diffReq.uploadTextures.Count)
                     {
-                        if (!bools[j]) break;
                         diffReq.uploadFileChecker.fileExists = true;
                     }
                 }

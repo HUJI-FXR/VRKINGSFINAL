@@ -104,6 +104,10 @@ public class ComfyOrganizer : MonoBehaviour
 
     // Counter for the DiffusionRequests
     private static int currentRequestNum = 0;
+
+    // TODO in ComfySceneLibrary I added HashSet of incoming image names,
+    // TODO but this is used for outgoing/input image names, should be connected into one DB?
+    // TODO it doesn't even seem that I'm really using this List for anything
     private List<string> allTextureNames;
 
     // Counter for Images to differentiate them

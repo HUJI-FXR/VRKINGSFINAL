@@ -7,13 +7,24 @@ using UnityEngine.XR.Interaction.Toolkit;
 /// Represents a physical virtual Camera, to be used in conjunction with the Camera Gadget Mechanism.
 /// </summary>
 public class PhysicalCamera : MonoBehaviour
-{    
+{
+    // TODO do I need this bool? I already have CGM.takePicture
+    bool screenshotEnabled = true;
+    public RenderTexture screenRenderTexture;
     CameraGadgetMechanism CGM = null;
 
     // The Camera that is attached to this Camera
     // We make it a public variable as it is simple and visual as a whole prefab
     public Camera curCamera;
 
+    private void Start()
+    {
+        if (screenRenderTexture == null) Debug.LogError("Add a RenderTexture to the Physical Camera, for the display screen");
+    }
+
+
+
+    // TODO CRITICAL need to check that the CameraGadgetMechanism is ACTIVE and not ONLY that it exists in the Gadget
     /// <summary>
     /// Helper function which retreives the relevant CameraGadgetMechanism
     /// </summary>
@@ -67,5 +78,31 @@ public class PhysicalCamera : MonoBehaviour
     {
         if (!GetCameraGadgetMechanism() || curCamera == null) return;
         GameManager.getInstance().gadget.TakeScreenshot(curCamera);
+    }
+
+
+    // TODO descriptions for these:
+    /*private void FreezeRenderTexture()
+    {
+        screenRenderTexture.active = renderTexture;
+        frozenTexture.ReadPixels(new Rect(0, 0, renderTexture.width, renderTexture.height), 0, 0);
+        frozenTexture.Apply();
+        RenderTexture.active = null;
+    }*/
+
+
+    private IEnumerator FreezeShotTimer()
+    {
+        screenshotEnabled = false;
+
+        // Time until next screenshot is possible
+        yield return new WaitForSeconds(1.5f);
+
+        screenshotEnabled = true;
+    }
+
+    public void FreezeScreen()
+    {
+        StartCoroutine(FreezeShotTimer());
     }
 }
