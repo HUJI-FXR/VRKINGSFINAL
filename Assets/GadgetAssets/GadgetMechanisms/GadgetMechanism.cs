@@ -107,11 +107,11 @@ public class GadgetMechanism : MonoBehaviour
         return;
     }
 
-    // TODO might not need this one either
+    // TODO change the name of this one from TakeScreenshot to something like "TriggerButtonAction" to be more general and not for one specific mechanism
     /// <summary>
     /// Uses a camera to shoot an image.
     /// </summary>
-    public virtual void TakeScreenshot(Camera camera)
+    public virtual void TakeScreenshot(Texture2D screenshot, Camera camera)
     {
         return;
     }

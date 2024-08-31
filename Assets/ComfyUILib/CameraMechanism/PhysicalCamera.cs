@@ -10,7 +10,10 @@ public class PhysicalCamera : MonoBehaviour
 {
     // TODO do I need this bool? I already have CGM.takePicture
     bool screenshotEnabled = true;
+
     public RenderTexture screenRenderTexture;
+    public GameObject screenPlane;
+
     CameraGadgetMechanism CGM = null;
 
     // The Camera that is attached to this Camera
@@ -19,11 +22,11 @@ public class PhysicalCamera : MonoBehaviour
 
     private void Start()
     {
-        if (screenRenderTexture == null) Debug.LogError("Add a RenderTexture to the Physical Camera, for the display screen");
+        if (screenRenderTexture == null || screenPlane == null) Debug.LogError("Add the requirements for the physical camera");
     }
 
 
-
+    // TODO this script shouldn't even deal with CGM, should just send a command to Gadget and THATS IT
     // TODO CRITICAL need to check that the CameraGadgetMechanism is ACTIVE and not ONLY that it exists in the Gadget
     /// <summary>
     /// Helper function which retreives the relevant CameraGadgetMechanism
@@ -76,33 +79,31 @@ public class PhysicalCamera : MonoBehaviour
     /// <param name="args"></param>
     public void CameraScreenshot(ActivateEventArgs args)
     {
-        if (!GetCameraGadgetMechanism() || curCamera == null) return;
-        GameManager.getInstance().gadget.TakeScreenshot(curCamera);
+        if (!GetCameraGadgetMechanism() || curCamera == null || screenshotEnabled) return;
+
+        Texture2D screenShot = GeneralGameLibraries.TextureManipulationLibrary.CaptureScreenshot(curCamera);
+        GameManager.getInstance().gadget.TakeScreenshot(screenShot, curCamera);
+        StartCoroutine(FreezeShotTimer(screenShot));
     }
 
 
-    // TODO descriptions for these:
-    /*private void FreezeRenderTexture()
-    {
-        screenRenderTexture.active = renderTexture;
-        frozenTexture.ReadPixels(new Rect(0, 0, renderTexture.width, renderTexture.height), 0, 0);
-        frozenTexture.Apply();
-        RenderTexture.active = null;
-    }*/
-
-
-    private IEnumerator FreezeShotTimer()
+    private IEnumerator FreezeShotTimer(Texture2D screenShot)
     {
         screenshotEnabled = false;
+
+        // Freezing screen
+        screenPlane.GetComponent<Renderer>().material.mainTexture = screenShot;
+
+        Debug.Log("before");
 
         // Time until next screenshot is possible
         yield return new WaitForSeconds(1.5f);
 
-        screenshotEnabled = true;
-    }
+        Debug.Log("after");
 
-    public void FreezeScreen()
-    {
-        StartCoroutine(FreezeShotTimer());
+        // Unfreezing screen
+        screenPlane.GetComponent<Renderer>().material.mainTexture = screenRenderTexture;
+
+        screenshotEnabled = true;
     }
 }

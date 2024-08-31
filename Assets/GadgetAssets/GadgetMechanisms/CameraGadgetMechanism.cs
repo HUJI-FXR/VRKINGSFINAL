@@ -194,16 +194,13 @@ public class CameraGadgetMechanism : GadgetMechanism
         return;
     }
 
-    // TODO move the camera from left hand to camera hanging on neck.
-
     // This function is called when the grabbed camera is activated(a screenshot is taken).
     /// <summary>
     /// Shoots an image with the Physical grabbable Camera.
     /// </summary>
-    public override void TakeScreenshot(Camera camera)
+    public override void TakeScreenshot(Texture2D screenShot, Camera camera)
     {
-        // TODO add DiffusableObject data entry for diffusionrequest when taking a picture of stuff
-        Texture2D screenShot = GeneralGameLibraries.TextureManipulationLibrary.CaptureScreenshot(camera);
+        // TODO add DiffusableObject data entry for diffusionrequest when taking a picture of stuff        
         camera.enabled = false;
         GameManager.getInstance().gadget.xrCamera.enabled = true;
 

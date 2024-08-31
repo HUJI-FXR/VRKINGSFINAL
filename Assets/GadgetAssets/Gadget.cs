@@ -354,14 +354,16 @@ public class Gadget : MonoBehaviour
             Debug.Log("Generating Texture");
         }
     }
-    public void TakeScreenshot(Camera camera)
+
+    // TODO change name of this function look at GadgetMechanism TODO note
+    public void TakeScreenshot(Texture2D screenshot, Camera camera)
     {
         if (GadgetMechanisms.Count <= 0)
         {
             return;
         }
 
-        GadgetMechanisms[gadgetMechanismIndex].TakeScreenshot(camera);
+        GadgetMechanisms[gadgetMechanismIndex].TakeScreenshot(screenshot, camera);
         Debug.Log("Taking Screenshot");
     }
     public void GeneralActivation(DiffusionTextureChanger dtc)

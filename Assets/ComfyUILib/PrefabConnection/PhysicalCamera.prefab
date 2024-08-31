@@ -518,6 +518,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   screenRenderTexture: {fileID: 8400000, guid: e349cb58d7ed6014c85864ee9b6b7b56, type: 2}
+  screenPlane: {fileID: 5322671497115214869}
   curCamera: {fileID: 7977039577475050326}
 --- !u!1001 &8485499884243021641
 PrefabInstance:
