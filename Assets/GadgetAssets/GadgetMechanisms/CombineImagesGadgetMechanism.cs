@@ -22,21 +22,12 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
 
     public override void OnGameObjectHoverEntered(HoverEnterEventArgs args)
     {
-        if (args == null || args.interactableObject == null)
-        {
-            return;
-        }
-        if (args.interactableObject.transform.parent != GameManager.getInstance().diffusables.transform)
-        {
-            return;
-        }
-
-        if (selectedObjects.Contains(args.interactableObject.transform.gameObject))
-        {
-            return;
-        }
+        if (args == null || args.interactableObject == null) return;
+        if (args.interactableObject.transform.parent != GameManager.getInstance().diffusables.transform) return;
+        if (selectedObjects.Contains(args.interactableObject.transform.gameObject)) return;
 
         Renderer interactorRenderer = args.interactableObject.transform.gameObject.GetComponent<Renderer>();
+
         if (interactorRenderer == null) return;
         if (interactorRenderer.material.mainTexture == null) return;
 
@@ -114,10 +105,7 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
 
     public void GetTexturesFromSelected()
     {
-        if (selectedObjects.Count != MAX_QUEUED_OBJECTS)
-        {
-            return;
-        }
+        if (selectedObjects.Count != MAX_QUEUED_OBJECTS) return;
 
         GameObject firstGameObject = selectedObjects.Dequeue();
         GameObject secondGameObject = selectedObjects.Dequeue();
@@ -175,6 +163,7 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
 
             //TODO maybe this is a wrong choice to make ANOTHER diffusion request because this one isn't really a diffusion request at all, just a transfer from one
             // texturechange to another
+            // TODO discuss with NADAV
             if (hit.collider.gameObject.TryGetComponent<DiffusionTextureChanger>(out DiffusionTextureChanger dtc))
             {
                 dtc.AddTexture(new List<Texture2D>() { curTexture }, false);

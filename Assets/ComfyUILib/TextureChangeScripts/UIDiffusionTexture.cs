@@ -14,7 +14,10 @@ public class UIDiffusionTexture : DiffusionTextureChanger
     private GameObject curDisplayPrefab;
 
     private bool displayTextures = false;
+
+    [Min(0.01f)]
     private float changeRate = 3.0f;
+
     private float curChangeDelta = 0f;
 
     //private static float IMAGES_REDUCE_SIZE_FACTOR = 512;
@@ -124,23 +127,16 @@ public class UIDiffusionTexture : DiffusionTextureChanger
         return false;
     }
 
-    private float totalChangeDelta(float curDelta, float totalDelta)
-    {
-        // TODO can do this with a min statement between these two if options
-        if (curDelta >= totalDelta/2)
-        {
-            return (totalDelta - curDelta) / (totalDelta/2);
-        }
-        return curDelta / (totalDelta/2);
-    }
-
     private void Update()
     {
         if (displayTextures && curDisplayPrefab != null)
         {
             curChangeDelta += Time.deltaTime;
 
-            float curTotalChangeDelta = totalChangeDelta(curChangeDelta, changeRate);
+            // Notice changeRate > 0
+            float curChange = 2 * curChangeDelta / changeRate;
+            float curTotalChangeDelta = Mathf.Min(curChange, 2 - curChange);
+
             // Assume all children of UIDisplay are Images
             foreach (Transform child in curDisplayPrefab.transform)
             {

@@ -9,10 +9,10 @@ using UnityEngine.InputSystem;
 using static UnityEngine.XR.Hands.XRHandTrackingEvents;
 
 
-// TODO need to remove button from several of these, choose exactly
 public class OutpaintGadgetMechanism : GadgetMechanism
 {
     public OutpaintingScreenScr outpaintingScreen;
+    private string curKeyword;
 
     private void Start()
     {
@@ -23,22 +23,13 @@ public class OutpaintGadgetMechanism : GadgetMechanism
 
     public override void OnGameObjectHoverEntered(HoverEnterEventArgs args)
     {
-        if (args == null || args.interactableObject == null)
-        {
-            return;
-        }
-        if (args.interactableObject.transform.parent != GameManager.getInstance().diffusables.transform)
-        {
-            return;
-        }
+        if (args == null || args.interactableObject == null) return;
+        if (args.interactableObject.transform.parent != GameManager.getInstance().diffusables.transform) return;
 
         OutpaintingTile OPT = args.interactableObject.transform.gameObject.GetComponent<OutpaintingTile>();
         if (OPT != null)
         {
-            if (!OPT.paintable || OPT.painted)
-            {
-                return;
-            }
+            if (!OPT.paintable || OPT.painted) return;
 
             // Creates pre-selection outline
             GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.preSelected);
@@ -47,14 +38,8 @@ public class OutpaintGadgetMechanism : GadgetMechanism
 
     public override void OnGameObjectHoverExited(HoverExitEventArgs args)
     {
-        if (args == null || args.interactableObject == null)
-        {
-            return;
-        }
-        if (args.interactableObject.transform.parent != GameManager.getInstance().diffusables.transform)
-        {
-            return;
-        }
+        if (args == null || args.interactableObject == null) return;
+        if (args.interactableObject.transform.parent != GameManager.getInstance().diffusables.transform) return;
 
         GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.unSelected);
     }
@@ -109,14 +94,8 @@ public class OutpaintGadgetMechanism : GadgetMechanism
 
     public override void onGameObjectSelectEntered(SelectEnterEventArgs args)
     {
-        if (args == null || args.interactableObject == null)
-        {
-            return;
-        }
-        if (args.interactableObject.transform.parent != GameManager.getInstance().diffusables.transform)
-        {
-            return;
-        }
+        if (args == null || args.interactableObject == null) return;
+        if (args.interactableObject.transform.parent != GameManager.getInstance().diffusables.transform) return;
 
         DiffusionRequest newDiffusionRequest = CreateDiffusionRequest();
 
@@ -125,15 +104,10 @@ public class OutpaintGadgetMechanism : GadgetMechanism
         RegularDiffusionTexture RDT = args.interactableObject.transform.gameObject.GetComponent<RegularDiffusionTexture>();
         if (diffObj == null) 
         {
-            if (OPT == null)
-            {
-                return;
-            }
+            if (OPT == null) return;
+
             // Object that is interacted with is an OutpaintingTile
-            if (!(OPT.paintable && !OPT.painted) || RDT == null)
-            {
-                return;
-            }
+            if (!(OPT.paintable && !OPT.painted) || RDT == null) return;
 
             // Finding a texture to be the original to be outpainted from.
             bool topTileOutpaint = false;
@@ -178,13 +152,14 @@ public class OutpaintGadgetMechanism : GadgetMechanism
             outpaintingScreen.UpdateTiles(new Vector2Int(OPT.tilePosition.x, OPT.tilePosition.y));                               
             newDiffusionRequest.targets.Add(RDT);
 
+            newDiffusionRequest.positivePrompt = curKeyword;
+
             GameManager.getInstance().comfyOrganizer.SendDiffusionRequest(newDiffusionRequest);
         }
         // Object that is interacted with is a DiffusableObject
         else
         {
-            // TODO problem with new and old diffusion requests, need to connect the selected object with the later generation.
-            newDiffusionRequest.positivePrompt = diffObj.keyword;
+            curKeyword = diffObj.keyword;
 
             // Creates selection outline
             GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.selected);         

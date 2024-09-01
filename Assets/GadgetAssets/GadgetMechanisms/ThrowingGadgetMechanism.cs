@@ -24,8 +24,6 @@ public class ThrowingGadgetMechanism : GadgetMechanism
 
         newDiffusionRequest.diffusionModel = diffusionModels.nano;
         newDiffusionRequest.targets.Add(GameManager.getInstance().radiusDiffusionTexture);
-
-        // TODO check if this workflow works on the thinkdiffusion server
         newDiffusionRequest.diffusionJsonType = diffusionWorkflows.txt2imgLCM;
         newDiffusionRequest.numOfVariations = 5;
 
@@ -34,26 +32,18 @@ public class ThrowingGadgetMechanism : GadgetMechanism
 
     public void DiffusableGrabbed(SelectEnterEventArgs args)
     {
-        if(args.interactableObject == null)
-        {
-            return;
-        }
+        if(args.interactableObject == null) return;
         
         DiffusionRequest diffusionRequest = CreateDiffusionRequest();
 
         diffusionRequest.diffusableObject = args.interactableObject.transform.gameObject.GetComponent<DiffusableObject>();
         diffusionRequest.positivePrompt = diffusionRequest.diffusableObject.keyword;
 
-        GameManager.getInstance().gadget.MechanismText.text = "throwing3";
-
         GameManager.getInstance().comfyOrganizer.SendDiffusionRequest(diffusionRequest);        
     }
     public void DiffusableUnGrabbed(SelectExitEventArgs args)
     {
-        if (args.interactableObject == null)
-        {
-            return;
-        }
+        if (args.interactableObject == null) return;
 
         if (args.interactableObject.transform.gameObject.TryGetComponent<ParticleSystem>(out ParticleSystem ps))
         {

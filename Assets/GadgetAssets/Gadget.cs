@@ -64,7 +64,7 @@ public class Gadget : MonoBehaviour
     // Represents the current used Gadget Mechanism.
     private int gadgetMechanismIndex = 0;
 
-    // TODO make this Queue<List<Texture2D>>
+    // TODO make this Queue<List<Texture2D>>, talk to NADAV on gadget representation of special textures
     [NonSerialized]
     public Queue<Texture2D> textureQueue;
 
@@ -80,7 +80,6 @@ public class Gadget : MonoBehaviour
 
     private void Awake()
     {
-        //GadgetMechanisms = new List<GadgetMechanism>();
         textureQueue = new Queue<Texture2D>();
     }
 
@@ -98,68 +97,51 @@ public class Gadget : MonoBehaviour
     // Passing along the various Controller interactions onto the Mechanisms.
     public void OnGameObjectHoverEntered(HoverEnterEventArgs args)
     {
+        if (GadgetMechanisms.Count <= 0) return;
+
         playGadgetSounds.PlaySound("HoverOverElements");
-        if (GadgetMechanisms.Count <= 0)
-        {
-            return;
-        }
         GadgetMechanisms[gadgetMechanismIndex].OnGameObjectHoverEntered(args);
     }
     public void OnGameObjectHoverExited(HoverExitEventArgs args)
     {
-        if (GadgetMechanisms.Count <= 0)
-        {
-            return;
-        }
+        if (GadgetMechanisms.Count <= 0) return;
+
         GadgetMechanisms[gadgetMechanismIndex].OnGameObjectHoverExited(args);
     }
 
     public void onGameObjectSelectEntered(SelectEnterEventArgs args)
     {
+        if (GadgetMechanisms.Count <= 0) return;
+
         playGadgetSounds.PlaySound("SelectElement");
-        if (GadgetMechanisms.Count <= 0)
-        {
-            return;
-        }
         GadgetMechanisms[gadgetMechanismIndex].onGameObjectSelectEntered(args);
     }
     public void onGameObjectSelectExited(SelectExitEventArgs args)
     {
-        if (GadgetMechanisms.Count <= 0)
-        {
-            return;
-        }
+        if (GadgetMechanisms.Count <= 0) return;
+
         GadgetMechanisms[gadgetMechanismIndex].onGameObjectSelectExited(args);
     }
 
-    public void OnUIHoverEntered(UIHoverEventArgs args)
+    // TODO do I need these 2?
+    /*public void OnUIHoverEntered(UIHoverEventArgs args)
     {
         playGadgetSounds.PlaySound("HoverOverElements");
         //GadgetMechanisms[gadgetMechanismIndex].OnUIHoverEntered(args);
-    }
-
-    public void OnClick()
+    }*/
+    /*public void OnClick()
     {
-        if (GadgetMechanisms.Count <= 0)
-        {
-            return;
-        }
+        if (GadgetMechanisms.Count <= 0) return;
+
         GadgetMechanisms[gadgetMechanismIndex].OnClick();
-    }
+    }*/
 
 
     // todo THESE 2 move this out of gadget, bad design need it in camera mechanism with correct input system of game.
     public void DiffusableGrabbed(SelectEnterEventArgs args)
     {
-        if (GadgetMechanisms.Count <= 0)
-        {
-            return;
-        }
-
-        if (GadgetMechanisms[gadgetMechanismIndex].GetType() != typeof(ThrowingGadgetMechanism))
-        {
-            return;
-        }
+        if (GadgetMechanisms.Count <= 0) return;
+        if (GadgetMechanisms[gadgetMechanismIndex].GetType() != typeof(ThrowingGadgetMechanism)) return;
 
         (GadgetMechanisms[gadgetMechanismIndex] as ThrowingGadgetMechanism).DiffusableGrabbed(args);
     }
@@ -176,17 +158,21 @@ public class Gadget : MonoBehaviour
         (GadgetMechanisms[gadgetMechanismIndex] as ThrowingGadgetMechanism).DiffusableUnGrabbed(args);
     }
 
+    /// <summary>
+    /// Helper function for ChangeOutline that destroys an existing outline on an outlined GameObject
+    /// </summary>
+    /// <param name="obj"></param>
     private void DeleteOutline(GameObject obj)
     {
-        if (obj == null)
-        {
-            return;
-        }
-        if (obj.TryGetComponent<Outline>(out Outline curOutline))
-        {
-            Destroy(curOutline);
-        }
+        if (obj == null) return;
+        if (obj.TryGetComponent<Outline>(out Outline curOutline)) Destroy(curOutline);
     }
+
+    /// <summary>
+    /// Changes the outlining on a given GameObject
+    /// </summary>
+    /// <param name="obj">GameObject to change outlining on</param>
+    /// <param name="gadgetSelection">Outlining to change onto</param>
     public void ChangeOutline(GameObject obj, GadgetSelection gadgetSelection)
     {
         if (obj == null)    return;
@@ -329,10 +315,7 @@ public class Gadget : MonoBehaviour
     }
     public void PlaceTextureInput(InputAction.CallbackContext context)
     {
-        if (GadgetMechanisms.Count <= 0)
-        {
-            return;
-        }
+        if (GadgetMechanisms.Count <= 0) return;
         
         if (context.performed)
         {
@@ -344,10 +327,8 @@ public class Gadget : MonoBehaviour
     }
     public void ActivateGeneration(InputAction.CallbackContext context)
     {        
-        if (GadgetMechanisms.Count <= 0)
-        {
-            return;
-        }
+        if (GadgetMechanisms.Count <= 0) return;
+
         if (context.performed)
         {            
             GadgetMechanisms[gadgetMechanismIndex].ActivateGeneration(null);
@@ -358,20 +339,15 @@ public class Gadget : MonoBehaviour
     // TODO change name of this function look at GadgetMechanism TODO note
     public void TakeScreenshot(Texture2D screenshot, Camera camera)
     {
-        if (GadgetMechanisms.Count <= 0)
-        {
-            return;
-        }
+        if (GadgetMechanisms.Count <= 0) return;
 
         GadgetMechanisms[gadgetMechanismIndex].TakeScreenshot(screenshot, camera);
         Debug.Log("Taking Screenshot");
     }
     public void GeneralActivation(DiffusionTextureChanger dtc)
     {
-        if (GadgetMechanisms.Count <= 0)
-        {
-            return;
-        }
+        if (GadgetMechanisms.Count <= 0) return;
+
         GadgetMechanisms[gadgetMechanismIndex].GeneralActivation(dtc);
         Debug.Log("Activating General Generation");
         return;

@@ -34,10 +34,7 @@ public class GeneralGameLibraries : Object
         /// </summary>
         /// <param name="audioClipFolder">Folder to get Audio Clips from</param>
         private void GetAudioClips(string audioClipFolder)
-        {
-            // TODO what if not mp3 wav?
-            //var audioClipFileNames = Directory.GetFiles(audioClipFolder, "*.wav");
-            //var audioClipFileNames = Directory.GetFiles(audioClipFolder, "*.mp3");      
+        {   
             var audioClipFileNames = Resources.LoadAll(audioClipFolder, typeof(AudioClip));
 
             foreach (AudioClip audioClip in audioClipFileNames)

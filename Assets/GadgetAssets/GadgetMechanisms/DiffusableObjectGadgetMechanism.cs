@@ -10,7 +10,6 @@ using System;
 
 
 // TODO make a unique ID for everything, downloaded images, uploaded images, request IDs etc
-// TODO make requests repeat themselves until completion with a max number of RETRIES
 
 
 public class DiffusableObjectGadgetMechanism : GadgetMechanism

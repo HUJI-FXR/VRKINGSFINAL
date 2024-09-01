@@ -4,8 +4,11 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+// TODO do I need this script? DISCUSS with both of them, NADAV especially
 public class StartSceneUIScript : MonoBehaviour
 {
+    // Text field to get URL part from
     public TMP_InputField URLInputField;    
     public Button ApplyURLButton;
 

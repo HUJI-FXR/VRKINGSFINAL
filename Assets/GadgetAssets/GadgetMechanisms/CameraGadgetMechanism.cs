@@ -7,15 +7,13 @@ using UnityEngine.UI;
 using static GeneralGameLibraries;
 using UnityEngine.InputSystem;
 
-
-// TODO write comments explaining everything for mechanisms
-
 /// <summary>
 /// Gadget Mechanism wherein a Camera is used to screenshot within the game world,
 /// And that screenshot is used as an input in an img2img Diffusion workflow.
 /// </summary>
 public class CameraGadgetMechanism : GadgetMechanism
 {
+    // Texture chosen to be used as the style component in the combination with the content texture
     private Texture2D styleTexture;
 
     // Screenshot that was taken with the Camera
