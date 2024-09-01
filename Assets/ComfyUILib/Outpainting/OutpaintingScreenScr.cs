@@ -4,9 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-
-// TODO documentation
-
 /// <summary>
 /// Representes a matrix screen used for Outpainting. It is expected that the bottom middle tile, 
 /// tile (floor(tileMatrixSize.x/2), tileMatrixSize.y-1) has a starting Texture.
@@ -62,10 +59,7 @@ public class OutpaintingScreenScr : MonoBehaviour
         if (tileObject != null)
         {
             OutpaintingTile tile_scr_check = tileObject.GetComponent<OutpaintingTile>();
-            if (tile_scr_check == null)
-            {
-                return;
-            }
+            if (tile_scr_check == null) return;
 
             tiles = new GameObject[tileMatrixSize.x, tileMatrixSize.y];
 
@@ -111,7 +105,7 @@ public class OutpaintingScreenScr : MonoBehaviour
 
 
     // TODO do I need this function?
-    public void Paint(Vector2Int tilePos, string keyword)
+    /*public void Paint(Vector2Int tilePos, string keyword)
     {
         // TODO assuming that we are not yet taking into accoount a situation where we generate a middle image between 8 generated tiles
         // TODO get adjacent tiles - currently only taking into account the left tile
@@ -137,7 +131,7 @@ public class OutpaintingScreenScr : MonoBehaviour
         // TODO add the outpainted texture to tile
 
         tiles[tilePos.x, tilePos.y].GetComponent<OutpaintingTile>().painted = true;
-    }
+    }*/
 
     /// <summary>
     /// Helper function for the UpdateTiles function. Checks if a tile is painted, if not, makes it paintable.
@@ -163,10 +157,7 @@ public class OutpaintingScreenScr : MonoBehaviour
         if (tilePos.x > tileMatrixSize.x - 1 || tilePos.x < 0) return null;
         if (tiles[tilePos.x, tilePos.y] == null) return null;
 
-        if (tiles[tilePos.x, tilePos.y].TryGetComponent<OutpaintingTile>(out OutpaintingTile outTile))
-        {
-            return outTile;
-        }
+        if (tiles[tilePos.x, tilePos.y].TryGetComponent<OutpaintingTile>(out OutpaintingTile outTile)) return outTile;
 
         return null;
     }
@@ -178,10 +169,7 @@ public class OutpaintingScreenScr : MonoBehaviour
     public void UpdateTiles(Vector2Int tilePos)
     {
         // Checks if the the tile position is valid
-        if (!(tilePos.y < tileMatrixSize.y && tilePos.y >= 0 && tilePos.x < tileMatrixSize.x && tilePos.x >= 0))
-        {
-            return;
-        }
+        if (!(tilePos.y < tileMatrixSize.y && tilePos.y >= 0 && tilePos.x < tileMatrixSize.x && tilePos.x >= 0)) return;
 
         // Paints the current tile and makes it unpaintable beyond that
         OutpaintingTile cur_tile_scr = tiles[tilePos.x, tilePos.y].GetComponent<OutpaintingTile>();

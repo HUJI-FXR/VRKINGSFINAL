@@ -111,7 +111,6 @@ public class GameManager : MonoBehaviour
         // todo maybe make these texturechangers into a universal and individual category?
         /*if (radiusDiffusionTexture == null)
         {
-            // todo Maybe not send this one in other than last scene?
             Debug.LogError("Please add a RadiusDiffusionTexture to the GameManager");
         }*/
         

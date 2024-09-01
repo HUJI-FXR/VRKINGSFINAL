@@ -185,7 +185,6 @@ public class ComfySceneLibrary : MonoBehaviour
     /// <param name="diffReq">given DiffusionRequest to create the JSON text from.</param>
     private string DiffusionJSONFactory(DiffusionRequest diffReq)
     {
-        // TODO notice that curImageSize will need to change in a situation like outpainting
         string curDiffModel = "";
         Vector2Int curImageSize = Vector2Int.zero;
         switch (diffReq.diffusionModel)
@@ -218,6 +217,9 @@ public class ComfySceneLibrary : MonoBehaviour
             case diffusionModels.juggernautXLInpaint:
                 curDiffModel = "juggernautXL_versionXInpaint.safetensors.safetensors";
                 curImageSize = new Vector2Int(512, 512);
+                break;
+            default:
+                Debug.LogError("Pick a valid model from the list");
                 break;
         }
         if (curDiffModel == null || curDiffModel == "" || curImageSize == Vector2Int.zero)
@@ -356,86 +358,86 @@ public class ComfySceneLibrary : MonoBehaviour
                 break;
 
             case diffusionWorkflows.grid4Outpainting:
-            case diffusionWorkflows.outpainting:
-                // TODO check if words are not approved words? how to do "else" on switch statement?                
+            case diffusionWorkflows.outpainting:       
                 switch (diffReq.SpecialInput)
                 {
                     // Regular cases.
                     case "left":
-                        // TODO ugly repeating code in these two next sections in the switch
-                        if (diffReq.diffusionJsonType == diffusionWorkflows.grid4Outpainting)
-                        {
-                            if (diffReq.uploadTextures == null)
-                            {
-                                Debug.LogError("Upload textures for worklow");
-                                return null;
-                            }
-                            if (diffReq.uploadTextures.Count <= 2)
-                            {
-                                Debug.LogError("Upload enough textures for worklow");
-                                return null;
-                            }
+                        StartCoroutine(UploadImage(diffReq));
 
-                            promptText = $@"
-                            {{
-                                ""id"": ""{guid}"",
-                                ""prompt"": {getWorkflowJSON(diffusionWorkflows.grid4Outpainting)}
-                            }}";
-
-                            StartCoroutine(UploadImage(diffReq));
-
-                            json["prompt"]["89"]["inputs"]["image"] = diffReq.uploadTextures[0].name;
-                            json["prompt"]["80"]["inputs"]["image"] = diffReq.uploadTextures[1].name;
-                            json["prompt"]["90"]["inputs"]["image"] = diffReq.uploadTextures[2].name;
-                            break;
-                        }
-                        else
-                        {
-                            StartCoroutine(UploadImage(diffReq));
-
-                            json["prompt"]["80"]["inputs"]["image"] = diffReq.uploadTextures[0].name;
-                            break;
-                        }                        
+                        json["prompt"]["80"]["inputs"]["image"] = diffReq.uploadTextures[0].name;
+                        break;    
+                        
                     case "right":
-                        if (diffReq.diffusionJsonType == diffusionWorkflows.grid4Outpainting)
-                        {
-                            if (diffReq.uploadTextures == null)
-                            {
-                                Debug.LogError("Upload textures for worklow");
-                                return null;
-                            }
-                            if (diffReq.uploadTextures.Count <= 2)
-                            {
-                                Debug.LogError("Upload enough textures for worklow");
-                                return null;
-                            }
+                        StartCoroutine(UploadImage(diffReq));
 
-                            promptText = $@"
+                        json["prompt"]["80"]["inputs"]["image"] = diffReq.uploadTextures[0].name;
+                        json["prompt"]["82"]["inputs"]["x"] = 512;
+                        break;
+
+                    case "top":
+                        StartCoroutine(UploadImage(diffReq));
+
+                        json["prompt"]["80"]["inputs"]["image"] = diffReq.uploadTextures[0].name;
+                        json["prompt"]["11"]["inputs"]["top"] = 512;
+                        break;
+
+                    case "bottomRight":
+                        if (diffReq.uploadTextures == null)
+                        {
+                            Debug.LogError("Upload textures for worklow");
+                            return null;
+                        }
+                        if (diffReq.uploadTextures.Count <= 2)
+                        {
+                            Debug.LogError("Upload enough textures for worklow");
+                            return null;
+                        }
+
+                        promptText = $@"
                             {{
                                 ""id"": ""{guid}"",
                                 ""prompt"": {getWorkflowJSON(diffusionWorkflows.grid4Outpainting)}
                             }}";
 
-                            StartCoroutine(UploadImage(diffReq));
+                        StartCoroutine(UploadImage(diffReq));
 
-                            json["prompt"]["89"]["inputs"]["image"] = diffReq.uploadTextures[0].name;
-                            json["prompt"]["80"]["inputs"]["image"] = diffReq.uploadTextures[1].name;
-                            json["prompt"]["90"]["inputs"]["image"] = diffReq.uploadTextures[2].name;
+                        json["prompt"]["89"]["inputs"]["image"] = diffReq.uploadTextures[0].name;
+                        json["prompt"]["80"]["inputs"]["image"] = diffReq.uploadTextures[1].name;
+                        json["prompt"]["90"]["inputs"]["image"] = diffReq.uploadTextures[2].name;
+                        break;
 
-                            json["prompt"]["110"]["inputs"]["x"] = 512;
-                            break;
-                        }
-                        else
+                    case "bottomLeft":
+                        if (diffReq.uploadTextures == null)
                         {
-                            StartCoroutine(UploadImage(diffReq));
-
-                            json["prompt"]["80"]["inputs"]["image"] = diffReq.uploadTextures[0].name;
-                            json["prompt"]["82"]["inputs"]["x"] = 512;
-                            break;
+                            Debug.LogError("Upload textures for worklow");
+                            return null;
                         }
-                    case "top":
-                        json["prompt"]["11"]["inputs"]["top"] = 512;
-                        break;                
+                        if (diffReq.uploadTextures.Count <= 2)
+                        {
+                            Debug.LogError("Upload enough textures for worklow");
+                            return null;
+                        }
+
+                        promptText = $@"
+                            {{
+                                ""id"": ""{guid}"",
+                                ""prompt"": {getWorkflowJSON(diffusionWorkflows.grid4Outpainting)}
+                            }}";
+
+                        StartCoroutine(UploadImage(diffReq));
+
+                        json["prompt"]["89"]["inputs"]["image"] = diffReq.uploadTextures[0].name;
+                        json["prompt"]["80"]["inputs"]["image"] = diffReq.uploadTextures[1].name;
+                        json["prompt"]["90"]["inputs"]["image"] = diffReq.uploadTextures[2].name;
+
+                        json["prompt"]["110"]["inputs"]["x"] = 512;
+                        break;
+
+                    // Default switch sub-statement will run if it does not enter the previous cases
+                    default:
+                        Debug.LogError("Pick a valid direction for Outpainting");
+                        break;
                 }
 
 
@@ -443,7 +445,7 @@ public class ComfySceneLibrary : MonoBehaviour
                 json["prompt"]["21"]["inputs"]["seed"] = randomSeed;
                 /*json["prompt"]["21"]["inputs"]["denoise"] = diffReq.denoise;
                  * 
-                 * VERY IMPORTANT TO GIVE PROPER PROMPTS for OUTPANGINTG
+                 * VERY IMPORTANT TO GIVE PROPER PROMPTS for OUTPAINTING
                 json["prompt"]["6"]["inputs"]["text"] = diffReq.positivePrompt;
                 json["prompt"]["7"]["inputs"]["text"] = diffReq.negativePrompt;*/
 

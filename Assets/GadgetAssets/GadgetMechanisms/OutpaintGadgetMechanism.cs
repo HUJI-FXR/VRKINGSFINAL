@@ -83,7 +83,6 @@ public class OutpaintGadgetMechanism : GadgetMechanism
             Texture2D curTexture = TextureManipulationLibrary.toTexture2D(curOffsetTile.GetComponent<Renderer>().material.mainTexture);
             diffusionRequest.uploadTextures.Add(curTexture);
             curTexture.name = mainTileName + "_" + offsetTileName + ".png";
-
             diffusionRequest.SpecialInput = offsetTileName;
 
             return true;
