@@ -30937,7 +30937,7 @@ MonoBehaviour:
   - Thanks for playing!
   - Jonathan Miroshnik
   - Nadav Eisen
-  - Suleiman Awawdi
+  - Suleiman Awawi
   - Special Thanks to:<br>Dav Dralleon<br>For the<br>musical accompaniment<br>to
     the<br><br>End of the World
   creditTextPanel: {fileID: 1036931975}
@@ -40996,6 +40996,8 @@ MonoBehaviour:
   m_StopLineAtSelection: 0
   m_SnapEndpointIfAvailable: 1
   m_LineBendRatio: 0.5
+  m_BendingEnabledInteractionLayers:
+    m_Bits: 4294967295
   m_OverrideInteractorLineOrigin: 1
   m_LineOriginTransform: {fileID: 0}
   m_LineOriginOffset: 0
@@ -66957,6 +66959,8 @@ MonoBehaviour:
   m_StopLineAtSelection: 0
   m_SnapEndpointIfAvailable: 1
   m_LineBendRatio: 0.5
+  m_BendingEnabledInteractionLayers:
+    m_Bits: 4294967295
   m_OverrideInteractorLineOrigin: 1
   m_LineOriginTransform: {fileID: 0}
   m_LineOriginOffset: 0

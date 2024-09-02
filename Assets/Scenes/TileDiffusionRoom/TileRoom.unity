@@ -30617,7 +30617,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &1935350024
 Animator:
   serializedVersion: 5
@@ -30626,7 +30626,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1935350023}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 37f95693129e6b948be3a4618bddc089, type: 2}
   m_CullingMode: 0
@@ -35064,18 +35064,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MAX_QUEUED_OBJECTS: 2
-  diffusionRequest:
-    targets:
-    - {fileID: 1979441171}
-    addToTextureTotal: 0
-    numOfVariations: 1
-    positivePrompt: Beautiful, detailed
-    negativePrompt: watermark, bad quality
-    uploadImage: {fileID: 0}
-    secondUploadImage: {fileID: 0}
-    denoise: 0.7
-    diffusionModel: 4
-    diffusionJsonType: 4
 --- !u!114 &2545934797310713547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35088,19 +35076,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f731b13ca2e704e4b98939a72d19572a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diffusionRequest:
-    targets:
-    - {fileID: 1979441171}
-    addToTextureTotal: 0
-    numOfVariations: 3
-    positivePrompt: 
-    negativePrompt: 
-    uploadImage: {fileID: 0}
-    secondUploadImage: {fileID: 0}
-    denoise: 1
-    diffusionModel: 4
-    diffusionJsonType: 4
   UseStyleTransfer: 1
+  takePicture: 0
 --- !u!1001 &4609053867631895012
 PrefabInstance:
   m_ObjectHideFlags: 0
