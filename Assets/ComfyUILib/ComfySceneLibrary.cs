@@ -405,6 +405,8 @@ public class ComfySceneLibrary : MonoBehaviour
                         json["prompt"]["89"]["inputs"]["image"] = diffReq.uploadTextures[0].name;
                         json["prompt"]["80"]["inputs"]["image"] = diffReq.uploadTextures[1].name;
                         json["prompt"]["90"]["inputs"]["image"] = diffReq.uploadTextures[2].name;
+
+                        json["prompt"]["11"]["inputs"]["left"] = 512;
                         break;
 
                     case "bottomLeft":
@@ -431,6 +433,7 @@ public class ComfySceneLibrary : MonoBehaviour
                         json["prompt"]["80"]["inputs"]["image"] = diffReq.uploadTextures[1].name;
                         json["prompt"]["90"]["inputs"]["image"] = diffReq.uploadTextures[2].name;
 
+                        json["prompt"]["11"]["inputs"]["right"] = 512;
                         json["prompt"]["110"]["inputs"]["x"] = 512;
                         break;
 

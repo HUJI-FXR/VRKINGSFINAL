@@ -12,9 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/GadgetPrefabTest.unity
     guid: e12495a11fb9f5a419f9431ca07b8fc1
   - enabled: 1
-    path: Assets/Scenes/MainScene.unity
-    guid: a2ba44019e2a540deb4507337c25a844
-  - enabled: 1
     path: Assets/Scenes/TileDiffusionRoom/TileDiffusionRoom.unity
     guid: 849491530fcb8984aa5794689ceebe9e
   - enabled: 1
