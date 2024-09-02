@@ -202,9 +202,7 @@ public class CameraGadgetMechanism : GadgetMechanism
         camera.enabled = false;
         GameManager.getInstance().gadget.xrCamera.enabled = true;
 
-        contentTexture = screenShot;
-
-        GameManager.getInstance().gadget.playGadgetSounds.PlaySound("cameraShutter");
+        contentTexture = screenShot;        
 
         if (selectedStyleObject != null)
         {

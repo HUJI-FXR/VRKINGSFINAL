@@ -31,6 +31,9 @@ public class PhysicalCamera : MonoBehaviour
         if (curCamera == null || timerActivated) return;
 
         Texture2D screenShot = GeneralGameLibraries.TextureManipulationLibrary.CaptureScreenshot(curCamera);
+
+        GameManager.getInstance().gadget.playGadgetSounds.PlaySound("cameraShutter");
+
         GameManager.getInstance().gadget.TakeScreenshot(screenShot, curCamera);
         StartCoroutine(FreezeShotTimer(screenShot));
     }
