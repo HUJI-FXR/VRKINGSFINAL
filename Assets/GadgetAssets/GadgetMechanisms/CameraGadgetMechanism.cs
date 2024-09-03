@@ -20,8 +20,9 @@ public class CameraGadgetMechanism : GadgetMechanism
     private Texture2D contentTexture;
     public bool UseStyleTransfer = true;
 
+    // TODO delete this line?
     // Limits when a picture can be taken
-    public bool takePicture = false;
+    //public bool takePicture = false;
 
     // Object that was selected for the texture to be used as the style base for the Camera's image.
     private GameObject selectedStyleObject = null;
@@ -39,7 +40,8 @@ public class CameraGadgetMechanism : GadgetMechanism
     /// </summary>
     public override void PlaceTextureInput(GameObject GO)
     {
-        if (takePicture) return;
+        // TODO delete this line?
+        //if (takePicture) return;
         if (GO == null) return;
 
         Texture2D curTexture = GameManager.getInstance().gadget.getGeneratedTexture();

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class OpenDoorScript : MonoBehaviour
@@ -7,12 +8,25 @@ public class OpenDoorScript : MonoBehaviour
 
     private void Start()
     {
-        OpenDoor();
+        StartCoroutine(OpenDoorTimer());
     }
 
     public void OpenDoor()
     {
         doorOpenAnimation.Play();
         GameManager.getInstance().headAudioSource.PlayOneShot(doorOpenAudioClip);
+    }
+
+    IEnumerator OpenDoorTimer()
+    {        
+        while(GameManager.getInstance() == null)
+        {
+            yield return new WaitForSeconds(3f);
+        }
+        while(GameManager.getInstance().headAudioSource == null)
+        {
+            yield return new WaitForSeconds(3f);
+        }
+        OpenDoor();
     }
 }
