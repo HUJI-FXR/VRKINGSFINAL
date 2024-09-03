@@ -112,7 +112,7 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - _thickness: 0.00625
+    - _thickness: 0.008
     m_Colors:
     - _BaseColor: {r: 0.04650232, g: 0.09794661, b: 0.8962264, a: 1}
     - _Color: {r: 0.046502285, g: 0.09794658, b: 0.8962264, a: 1}
