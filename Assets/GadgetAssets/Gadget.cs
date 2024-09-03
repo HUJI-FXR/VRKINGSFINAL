@@ -27,6 +27,11 @@ public class Gadget : MonoBehaviour
     /// <summary>
     /// TextMeshPro object that shows the text that represents the current Mechanism.
     /// </summary>
+    public GameObject displayMainTextureGadget;
+    
+    /// <summary>
+    /// TextMeshPro object that shows the text that represents the current Mechanism.
+    /// </summary>
     public TextMeshProUGUI MechanismText;
     public GameObject gadgetImagePanel;
 
@@ -243,7 +248,10 @@ public class Gadget : MonoBehaviour
         if (textureQueue.Count == 0) return null;
 
         Texture2D current = textureQueue.Dequeue();
-        GameManager.getInstance().uiDiffusionTexture.CreateImagesInside(new List<Texture2D>(textureQueue), displayTexturesGadget, true);
+        
+        
+        GameManager.getInstance().uiDiffusionTexture.CreateImagesInside(textureQueue.Take(1).ToList(), displayMainTextureGadget, true);
+        GameManager.getInstance().uiDiffusionTexture.CreateImagesInside(textureQueue.Take(9).Skip(1).ToList(), displayTexturesGadget, true);
         
         // TODO the gadgetImagePanel is simply the panel onwhich we see the popups, we should only use it through the
         // TODO if the above it correct, gadgetImagePanel is unneeded in this script, DISCUSS this
@@ -272,7 +280,8 @@ public class Gadget : MonoBehaviour
             textureQueue.Enqueue(texture);
         }
         
-        GameManager.getInstance().uiDiffusionTexture.CreateImagesInside(new List<Texture2D>(textureQueue), displayTexturesGadget, true);
+        GameManager.getInstance().uiDiffusionTexture.CreateImagesInside(textureQueue.Take(1).ToList(), displayMainTextureGadget, true);
+        GameManager.getInstance().uiDiffusionTexture.CreateImagesInside(textureQueue.Take(9).Skip(1).ToList(), displayTexturesGadget, true);
 
         return true;
     }
