@@ -6436,7 +6436,7 @@ MonoBehaviour:
   gameActions:
   - index: 0
     name: look at left palm - GadgetInterfaceIntro
-    value: 1
+    value: 0
     eventToCall:
       m_PersistentCalls:
         m_Calls:
@@ -6454,7 +6454,7 @@ MonoBehaviour:
           m_CallState: 2
   - index: 1
     name: uidiffusiontexture addtexture - CombineImagesIntro
-    value: 1
+    value: 0
     eventToCall:
       m_PersistentCalls:
         m_Calls:
@@ -6472,7 +6472,7 @@ MonoBehaviour:
           m_CallState: 2
   - index: 2
     name: place image - ImagePlacementIntro
-    value: 1
+    value: 0
     eventToCall:
       m_PersistentCalls:
         m_Calls:
@@ -35466,6 +35466,50 @@ PrefabInstance:
     - target: {fileID: 5795090120012688178, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
       propertyPath: m_Name
       value: Comfy XR Origin
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222650600317278246, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+      propertyPath: m_HoverExited.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222650600317278246, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+      propertyPath: m_HoverEntered.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222650600317278246, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+      propertyPath: m_HoverExited.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222650600317278246, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+      propertyPath: m_HoverEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222650600317278246, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+      propertyPath: m_HoverEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 462270908}
+    - target: {fileID: 6222650600317278246, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+      propertyPath: m_HoverExited.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222650600317278246, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+      propertyPath: m_HoverEntered.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222650600317278246, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+      propertyPath: m_HoverEntered.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DoGameAction
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222650600317278246, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+      propertyPath: m_HoverEntered.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: AutomaticComfySceneScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222650600317278246, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+      propertyPath: m_HoverEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222650600317278246, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+      propertyPath: m_HoverEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6941804284128476148, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
       propertyPath: gadgetMechanisms.Array.size
