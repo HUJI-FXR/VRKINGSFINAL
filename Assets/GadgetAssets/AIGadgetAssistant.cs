@@ -47,6 +47,7 @@ public class AIGadgetAssistant : MonoBehaviour
     /// <param name="audioClipName">AI Assistant Audio Clip to be played</param>
     public void AITalk(string audioClipName = "")
     {
+        GameManager.getInstance().headAudioSource.PlayOneShot(AudioClipsLibrary.AudioClips[audioClipName]);
         List<Texture2D> curTextures = diffusionTextureChanger.GetTextures();
         if (curTextures.Count == 0)
         {
@@ -60,7 +61,6 @@ public class AIGadgetAssistant : MonoBehaviour
         if (audioClipName == "")
         {
             return;
-        }
-        GameManager.getInstance().headAudioSource.PlayOneShot(AudioClipsLibrary.AudioClips[audioClipName]);
+        }        
     }
 }

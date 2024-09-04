@@ -6,6 +6,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.UI;
 using static GeneralGameLibraries;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
 
 // TODO make a unique ID for everything, downloaded images, uploaded images, request IDs etc
@@ -14,6 +15,7 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
     // TODO notice this CAN be generalized to larger number of objects, but requires many changes.
     public Queue<GameObject> selectedObjects = new Queue<GameObject>();
     public int MAX_QUEUED_OBJECTS = 2;
+    public UnityEvent unityEvent;
 
     private void Start()
     {
@@ -135,7 +137,7 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
         if (secondGameObject.TryGetComponent<DiffusableObject>(out DiffusableObject DiffObjSec))
         {
             diffusionRequest.positivePrompt += DiffObjSec.keyword;
-        }
+        }        
 
         GameManager.getInstance().comfyOrganizer.SendDiffusionRequest(diffusionRequest);
     }
@@ -167,6 +169,9 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
             if (hit.collider.gameObject.TryGetComponent<DiffusionTextureChanger>(out DiffusionTextureChanger dtc))
             {
                 dtc.AddTexture(new List<Texture2D>() { curTexture }, false);
+
+                // Sending broadcast to Game timeline script
+                unityEvent?.Invoke();
             }
         }
     }

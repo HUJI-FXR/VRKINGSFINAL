@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.HID;
 using UnityEngine.Rendering;
@@ -19,6 +20,8 @@ public class UIDiffusionTexture : DiffusionTextureChanger
     private float changeRate = 3.0f;
 
     private float curChangeDelta = 0f;
+
+    public UnityEvent unityEvent;
 
     //private static float IMAGES_REDUCE_SIZE_FACTOR = 512;
 
@@ -120,6 +123,9 @@ public class UIDiffusionTexture : DiffusionTextureChanger
         {
             CreatePopup(diff_Textures);
             GameManager.getInstance().gadget.AddTexturesToQueue(diff_Textures);
+
+            // Sending broadcast to Game timeline script
+            unityEvent?.Invoke();
 
             return true;
         }

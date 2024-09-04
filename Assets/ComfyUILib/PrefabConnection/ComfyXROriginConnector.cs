@@ -18,4 +18,13 @@ public class ComfyXROriginConnector : MonoBehaviour
             gadget.GadgetMechanisms = gadgetMechanisms;
         }
     }
+
+    public void AddMechanism(GadgetMechanism mechanism)
+    {
+        if (gadgetMechanisms != null && mechanism != null)
+        {
+            gadgetMechanisms.Add(mechanism);
+            gadget.GadgetMechanisms = gadgetMechanisms;
+        }
+    }
 }

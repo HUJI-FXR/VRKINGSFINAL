@@ -6433,19 +6433,104 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b71f5e94cc0c14947bee20764269de84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bools:
+  gameActions:
   - index: 0
-    name: Looking at the left palm, GadgetInterfaceIntro
-    value: 0
+    name: look at left palm - GadgetInterfaceIntro
+    value: 1
+    eventToCall:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8001637510276974067}
+          m_TargetAssemblyTypeName: AIGadgetAssistant, Assembly-CSharp
+          m_MethodName: AITalk
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: GadgetInterfaceIntro
+            m_BoolArgument: 0
+          m_CallState: 2
   - index: 1
-    name: Select images and start generation, CombineImagesIntro
-    value: 0
+    name: uidiffusiontexture addtexture - CombineImagesIntro
+    value: 1
+    eventToCall:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8001637510276974067}
+          m_TargetAssemblyTypeName: AIGadgetAssistant, Assembly-CSharp
+          m_MethodName: AITalk
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: CombineImagesIntro
+            m_BoolArgument: 0
+          m_CallState: 2
   - index: 2
-    name: Look at left palm - see generated image, ImagePlacementIntro
-    value: 0
+    name: place image - ImagePlacementIntro
+    value: 1
+    eventToCall:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8001637510276974067}
+          m_TargetAssemblyTypeName: AIGadgetAssistant, Assembly-CSharp
+          m_MethodName: AITalk
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: ImagePlacementIntro
+            m_BoolArgument: 0
+          m_CallState: 2
   - index: 3
-    name: Change mechanism - use it, MechanismChangeIntro
+    name: Go to next scene - MechanismChangeIntro
     value: 0
+    eventToCall:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8001637510276974067}
+          m_TargetAssemblyTypeName: AIGadgetAssistant, Assembly-CSharp
+          m_MethodName: AITalk
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: MechanismChangeIntro
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 2545934797310713548}
+          m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+          m_MethodName: set_enabled
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: MechanismChangeIntro
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 2545934797310713544}
+          m_TargetAssemblyTypeName: ComfyXROriginConnector, Assembly-CSharp
+          m_MethodName: AddMechanism
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 2545934797310713548}
+            m_ObjectArgumentAssemblyTypeName: GadgetMechanism, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: MechanismChangeIntro
+            m_BoolArgument: 1
+          m_CallState: 2
+  IndexToStart: 0
 --- !u!1 &485313310
 GameObject:
   m_ObjectHideFlags: 0
@@ -35179,6 +35264,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MAX_QUEUED_OBJECTS: 2
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 462270908}
+        m_TargetAssemblyTypeName: AutomaticComfySceneScript, Assembly-CSharp
+        m_MethodName: DoGameAction
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2545934797310713548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793777812}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 596fcd8a2b3a8d64dbfb7150a0c6fa86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4609053867631895012
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35319,6 +35431,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4159365404132763867, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+      propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4159365404132763867, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+      propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4159365404132763867, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+      propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 462270908}
+    - target: {fileID: 4159365404132763867, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+      propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4159365404132763867, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+      propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DoGameAction
+      objectReference: {fileID: 0}
+    - target: {fileID: 4159365404132763867, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+      propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: AutomaticComfySceneScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4159365404132763867, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+      propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4159365404132763867, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+      propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5795090120012688178, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
       propertyPath: m_Name
       value: Comfy XR Origin
@@ -35334,7 +35478,7 @@ PrefabInstance:
     - target: {fileID: 6941804284128476148, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
       propertyPath: gadgetMechanisms.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2545934797310713548}
     - target: {fileID: 7720086305723655827, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
       propertyPath: optimizeForManyScreenshots
       value: 1
@@ -35343,6 +35487,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5795090120012688178, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2545934797310713548}
     - targetCorrespondingSourceObject: {fileID: 5795090120012688178, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2545934797310713546}
@@ -35372,6 +35519,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8e9f2e1b5852c54d88a8efaac00f6fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8001637510276974067 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5230790700989594866, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+  m_PrefabInstance: {fileID: 8001637510276974063}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b0b18809a25c204786431db6b254fa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
