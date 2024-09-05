@@ -9,20 +9,20 @@ EditorBuildSettings:
     path: Assets/Scenes/StartSceneFol/StartScene.unity
     guid: 14341328f29378e4da6beb7fb2d856bd
   - enabled: 1
-    path: Assets/Scenes/GadgetPrefabTest.unity
-    guid: e12495a11fb9f5a419f9431ca07b8fc1
-  - enabled: 1
-    path: Assets/Scenes/TileDiffusionRoom/TileDiffusionRoom.unity
-    guid: 849491530fcb8984aa5794689ceebe9e
-  - enabled: 1
     path: Assets/Scenes/TileDiffusionRoom/TileRoom.unity
     guid: da00d9ead27757e44a1910a68619157b
   - enabled: 1
+    path: Assets/fullCameraScene.unity
+    guid: 42d4076d708156a469316d72cf94ae8a
+  - enabled: 1
+    path: Assets/Scenes/WaterPark.unity
+    guid: be0be8d3403200641ab29b12c15e5144
+  - enabled: 1
+    path: Assets/Scenes/GadgetPrefabTest.unity
+    guid: e12495a11fb9f5a419f9431ca07b8fc1
+  - enabled: 1
     path: Assets/Scenes/Empty Scene.unity
     guid: c96e415e25b6f4f46adcc0354859d65d
-  - enabled: 1
-    path: Assets/Scenes/Camera Full Prototype Scene.unity
-    guid: 903a9c97e7bac5a4cb3a98cb5ea37a96
   - enabled: 1
     path: Assets/Scenes/MuseumExhibitTest.unity
     guid: 11aba84f0222e774891e1642f2b17251

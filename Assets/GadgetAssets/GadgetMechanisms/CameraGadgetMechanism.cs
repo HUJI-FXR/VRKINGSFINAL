@@ -6,6 +6,8 @@ using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.UI;
 using static GeneralGameLibraries;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
+using System;
 
 /// <summary>
 /// Gadget Mechanism wherein a Camera is used to screenshot within the game world,
@@ -20,9 +22,11 @@ public class CameraGadgetMechanism : GadgetMechanism
     private Texture2D contentTexture;
     public bool UseStyleTransfer = true;
 
-    // TODO delete this line?
-    // Limits when a picture can be taken
-    //public bool takePicture = false;
+    // Limits when a picture can be taken    
+    public bool takePicture = false;
+
+    public UnityEvent TakeScreenshotUnityEvent;
+    public UnityEvent ActivateGenerationUnityEvent;
 
     // Object that was selected for the texture to be used as the style base for the Camera's image.
     private GameObject selectedStyleObject = null;
@@ -40,8 +44,7 @@ public class CameraGadgetMechanism : GadgetMechanism
     /// </summary>
     public override void PlaceTextureInput(GameObject GO)
     {
-        // TODO delete this line?
-        //if (takePicture) return;
+        if (takePicture) return;
         if (GO == null) return;
 
         Texture2D curTexture = GameManager.getInstance().gadget.getGeneratedTexture();
@@ -190,6 +193,9 @@ public class CameraGadgetMechanism : GadgetMechanism
         newDiffusionRequest.uploadTextures.Add(contentTexture);
         newDiffusionRequest.uploadTextures.Add(styleTexture);
 
+        // Invoking voiceline
+        ActivateGenerationUnityEvent?.Invoke();
+
         GameManager.getInstance().comfyOrganizer.SendDiffusionRequest(newDiffusionRequest);
         return;
     }
@@ -204,7 +210,10 @@ public class CameraGadgetMechanism : GadgetMechanism
         camera.enabled = false;
         GameManager.getInstance().gadget.xrCamera.enabled = true;
 
-        contentTexture = screenShot;        
+        contentTexture = screenShot;
+
+        // Invoking voiceline
+        TakeScreenshotUnityEvent?.Invoke();
 
         if (selectedStyleObject != null)
         {
@@ -218,5 +227,10 @@ public class CameraGadgetMechanism : GadgetMechanism
             diffusionRequest.diffusionJsonType = diffusionWorkflows.combineImages;
             GameManager.getInstance().comfyOrganizer.SendDiffusionRequest(diffusionRequest);
         }*/
+    }
+
+    public void changeTakePicture(bool value)
+    {
+       takePicture = value;
     }
 }
