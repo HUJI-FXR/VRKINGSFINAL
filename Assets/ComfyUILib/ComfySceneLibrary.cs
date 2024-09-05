@@ -60,8 +60,11 @@ public enum diffusionModels
 
 public class ComfySceneLibrary : MonoBehaviour
 {
-    private string HTTPPrefix = "https://";  // https://  ------ When using online API service | http:// ------ When using offline server
+    private static string HTTPPrefix = "https://";  // https://  ------ When using online API service | http:// ------ When using offline server
     public string serverAddress = "";
+
+    // TODO make this nice
+    private static bool loadedServerAddress = false;
 
     public ComfyOrganizer comfyOrg;
 
@@ -75,6 +78,10 @@ public class ComfySceneLibrary : MonoBehaviour
     private bool readyForDiffusion = false;
 
     private const int MAX_NETWORKING_RETRIES = 1000;
+
+    // TODO delete this PREFIX before full release
+    private const string THINKDIFFUSION_PREFIX = "jonathanmiroshnik-";
+    private const string THINKDIFFUSION_POSTFIX = ".thinkdiffusion.xyz";
 
     // TODO in ComfyOrganizer I added List of outgioing image names
     private static HashSet<string> incomingImageNames;
@@ -93,29 +100,37 @@ public class ComfySceneLibrary : MonoBehaviour
         StartComfySceneLibrary(null);
     }
 
-    // TODO notice that this START must always come BEFORE(put the library before the organizer in the node properties)
-    // TODO cont. the ComfyOrganizer or else some things will not be ready for an instant diffusion request
-    public void StartComfySceneLibrary(DiffusionRequest beginningDiffusionRequest)
+    private void LoadSpecialServerAddress()
     {
-        // TODO delete this PREFIX before full release
-        string THINKDIFFUSION_PREFIX = "jonathanmiroshnik-";
-        string THINKDIFFUSION_POSTFIX = ".thinkdiffusion.xyz";
-
-        if (serverAddress != "")
+        if (loadedServerAddress) return;
+        if (serverAddress != "" && serverAddress != "127.0.0.1:8188")
         {
             GameManager.getInstance().IP = serverAddress;
-        }
-
-        if (GameManager.getInstance().IP == "" || GameManager.getInstance().IP == "127.0.0.1:8188")
-        {
-            GameManager.getInstance().IP = "127.0.0.1:8188";
             HTTPPrefix = "http://";
         }
         else
         {
-            GameManager.getInstance().IP = THINKDIFFUSION_PREFIX + GameManager.getInstance().IP + THINKDIFFUSION_POSTFIX;
-            HTTPPrefix = "https://";
+            if (GameManager.getInstance().IP != "")
+            {
+                GameManager.getInstance().IP = THINKDIFFUSION_PREFIX + GameManager.getInstance().IP + THINKDIFFUSION_POSTFIX;
+                HTTPPrefix = "https://";
+            }
+            else
+            {
+                GameManager.getInstance().IP = "127.0.0.1:8188";
+                HTTPPrefix = "http://";
+            }
         }
+
+
+        loadedServerAddress = true;
+    }
+
+    // TODO notice that this START must always come BEFORE(put the library before the organizer in the node properties)
+    // TODO cont. the ComfyOrganizer or else some things will not be ready for an instant diffusion request
+    public void StartComfySceneLibrary(DiffusionRequest beginningDiffusionRequest)
+    {
+        LoadSpecialServerAddress();
 
         // Get all enum adjacent JSON workflows
         TextAsset[] jsonFiles = Resources.LoadAll<TextAsset>(JSONFolderPath);
