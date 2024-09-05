@@ -2205,7 +2205,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3484128597883003591, guid: 02be27ab17ab3b14f954f65dc06dd738, type: 3}
       propertyPath: m_text
-      value: "jonathanmiroshnik-style-17163830.thinkdiffusion.xyz\u200B"
+      value: "\u200B"
       objectReference: {fileID: 0}
     - target: {fileID: 3484128597883003591, guid: 02be27ab17ab3b14f954f65dc06dd738, type: 3}
       propertyPath: m_Enabled
