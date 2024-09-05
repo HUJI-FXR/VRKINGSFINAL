@@ -19,53 +19,36 @@ public enum GadgetSelection
 // TODO change name of class to GadgetScript or something
 public class Gadget : MonoBehaviour
 {
-    /// <summary>
-    /// TextMeshPro object that shows the text that represents the current Mechanism.
-    /// </summary>
+    // Texture display for the images the Gadget is holding onto
     public GameObject displayTexturesGadget;
     
-    /// <summary>
-    /// TextMeshPro object that shows the text that represents the current Mechanism.
-    /// </summary>
+    // Texture display for the current top of the queue Image
     public GameObject displayMainTextureGadget;
-    
-    /// <summary>
-    /// TextMeshPro object that shows the text that represents the current Mechanism.
-    /// </summary>
+
+    // TextMeshPro object that shows the text that represents the current Mechanism.
     public TextMeshProUGUI MechanismText;
     public GameObject gadgetImagePanel;
 
-    /// <summary>
-    /// Plays the sounds associated with the Gadget's actions.
-    /// </summary>
+    // Plays the sounds associated with the Gadget's actions.
     public PlayGadgetSounds playGadgetSounds;
 
-    /// <summary>
-    /// Manages the AI Gadget Assistant.
-    /// </summary>
+    // Manages the AI Gadget Assistant.
     public AIGadgetAssistant aiGadgetAssistant;
 
-    /// <summary>
-    /// Used for shooting images with virtual cameras.
-    /// </summary>
+    // Used for shooting images with virtual cameras.
     //public ScreenRecorder screenRecorder = null;
 
-    /// <summary>
-    /// Left hand Gadget Camera for taking pictures.
-    /// </summary>
+    // Left hand Gadget Camera for taking pictures.
     //public Camera gadgetCamera;
 
-    /// <summary>
-    /// XR Origin Main Camera.
-    /// </summary>
+    // XR Origin Main Camera
     public Camera xrCamera;
 
     // Strategy Design Pattern
-    /// <summary>
-    /// Gadget Mechanisms list to be cycled through.
-    /// </summary>
+    // Gadget Mechanisms list to be cycled through.
     [NonSerialized]
     public List<GadgetMechanism> GadgetMechanisms;
+
     // Represents the current used Gadget Mechanism.
     private int gadgetMechanismIndex = 0;
 
@@ -96,6 +79,11 @@ public class Gadget : MonoBehaviour
         {
             Debug.LogError("Add all requirements of Gadget");
             return;
+        }
+
+        if (GadgetMechanisms.Count > 0 )
+        {
+            MechanismText.text = GadgetMechanisms[0].mechanismText;
         }
     }
 

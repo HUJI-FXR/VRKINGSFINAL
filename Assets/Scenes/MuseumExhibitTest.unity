@@ -1469,6 +1469,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2161866615071764844, guid: 6cf941391e6bdbc4abdbed9a86feb39a, type: 3}
+      propertyPath: SendBeginningDiffusionRequest
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161866615071764844, guid: 6cf941391e6bdbc4abdbed9a86feb39a, type: 3}
+      propertyPath: diffusionRequest.diffusionModel
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161866615071764844, guid: 6cf941391e6bdbc4abdbed9a86feb39a, type: 3}
+      propertyPath: diffusionRequest.diffusionJsonType
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 3320564364425000189, guid: 6cf941391e6bdbc4abdbed9a86feb39a, type: 3}
       propertyPath: m_Name
       value: Universal ComfyUI Object
