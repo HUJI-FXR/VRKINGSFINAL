@@ -24,7 +24,7 @@ public class CameraReturnToSocket : MonoBehaviour
             return;
         }
 
-        // Add a listener to the onSelectExited event
+        // Add a listener to the onSelectExited event        
         socketInteractor.onSelectExited.AddListener(HandleCameraRelease);
     }
 

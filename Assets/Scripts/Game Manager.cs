@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     // Non scene-local objects
     private static GameManager instance = null;
     
-    public string IP = "127.0.0.1:8188"; // jonathanmiroshnik-networks-24172136.thinkdiffusion.xyz
+    public string IP = ""; // jonathanmiroshnik-networks-24172136.thinkdiffusion.xyz
 
     [NonSerialized]
     public List<GameObject> diffusionList;
@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
 
     public void InitiateSceneParameters(ComfyOrganizer _comfyOrganizer, ComfySceneLibrary _comfySceneLibrary, 
         RadiusDiffusionTexture _radiusDiffusionTexture, UIDiffusionTexture _uiDiffusionTexture, 
-        GameObject _diffusables, Gadget _gadget, AudioSource _headAudioSource, DiffusionRequest beginningDiffusionRequest)
+        GameObject _diffusables, Gadget _gadget, AudioSource _headAudioSource)
     {
         comfyOrganizer = _comfyOrganizer;
         comfySceneLibrary = _comfySceneLibrary;
@@ -125,8 +125,6 @@ public class GameManager : MonoBehaviour
         {
             diffusionList.Add(diffusionTransform.gameObject);
         }
-
-        comfySceneLibrary.StartComfySceneLibrary(beginningDiffusionRequest);
     }
 
 

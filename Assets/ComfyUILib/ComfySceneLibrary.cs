@@ -173,7 +173,7 @@ public class ComfySceneLibrary : MonoBehaviour
             {
                 if (!diffReq.sentDownloadRequest)
                 {
-                    StartCoroutine(RequestFileNameRoutine(diffReq));
+                    StartCoroutine(RequestFileNameRoutine(diffReq));                    
                 }                
             }
         }
@@ -259,6 +259,8 @@ public class ComfySceneLibrary : MonoBehaviour
             case diffusionWorkflows.empty:
                 json["prompt"]["4"]["inputs"]["ckpt_name"] = curDiffModel;
                 diffReq.uploadFileChecker.fileExists = true;
+                diffReq.finishedRequest = true;
+                diffReq.sentDownloadRequest = true;
                 break;
 
             case diffusionWorkflows.txt2imgLCM:
@@ -559,7 +561,7 @@ public class ComfySceneLibrary : MonoBehaviour
 
             if (unityWebRequest.result != UnityWebRequest.Result.Success)
             {                
-                Debug.Log("File " + imageName + " still not in Input");
+                Debug.Log("File " + imageName + " still not in " + subfolder);
             }
             else
             {

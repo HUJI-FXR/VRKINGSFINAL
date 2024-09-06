@@ -174,6 +174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &22287334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -412,6 +413,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &47682186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -650,6 +652,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &51126247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -888,6 +891,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 'lemonade and lemon, '
   grabbable: 0
+  Model3D: 0
 --- !u!114 &56308319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1249,6 +1253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &75848223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1610,6 +1615,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &106265910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1848,6 +1854,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 'mondrian, '
   grabbable: 0
+  Model3D: 0
 --- !u!114 &118381771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2086,6 +2093,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &131828169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2324,6 +2332,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &135618705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2685,6 +2694,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &143052056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3046,6 +3056,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &174713814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3572,6 +3583,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &194865693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3933,6 +3945,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &212047382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4294,6 +4307,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &218688383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4532,6 +4546,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &220879998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4770,6 +4785,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &224326772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5008,6 +5024,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &239189293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5246,6 +5263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &240141090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5853,6 +5871,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &260428835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6091,6 +6110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &265646355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6329,6 +6349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &276846142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6567,6 +6588,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &284898704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6805,6 +6827,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &304205220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7043,6 +7066,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &304312434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7281,6 +7305,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &313479791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7769,6 +7794,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: BOX
   grabbable: 1
+  Model3D: 0
 --- !u!1 &324203590
 GameObject:
   m_ObjectHideFlags: 0
@@ -8043,6 +8069,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &326940346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8773,6 +8800,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &354567372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9011,6 +9039,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &361652589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9372,6 +9401,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &367408071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9630,6 +9660,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &396697152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9868,6 +9899,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &406535743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10106,6 +10138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &408934535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10344,6 +10377,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &416090070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10776,6 +10810,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &422342056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10943,6 +10978,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 'anime girl, glitch art, '
   grabbable: 0
+  Model3D: 0
 --- !u!114 &431929737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11588,6 +11624,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &445521808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11826,6 +11863,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &447822752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12309,246 +12347,6 @@ MonoBehaviour:
   transitionSpeed: 1
   noiseIntensity: 1
   smoothness: 0.5
---- !u!1 &468128612
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 468128619}
-  - component: {fileID: 468128618}
-  - component: {fileID: 468128617}
-  - component: {fileID: 468128616}
-  - component: {fileID: 468128615}
-  - component: {fileID: 468128614}
-  - component: {fileID: 468128613}
-  m_Layer: 0
-  m_Name: Cube (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &468128613
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 468128612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a35f6cfbfba9b548aaa00d52cfe8a50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_InteractionManager: {fileID: 0}
-  m_Colliders: []
-  m_InteractionLayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_InteractionLayers:
-    m_Bits: 1
-  m_DistanceCalculationMode: 1
-  m_SelectMode: 0
-  m_FocusMode: 1
-  m_CustomReticle: {fileID: 0}
-  m_AllowGazeInteraction: 0
-  m_AllowGazeSelect: 0
-  m_OverrideGazeTimeToSelect: 0
-  m_GazeTimeToSelect: 0.5
-  m_OverrideTimeToAutoDeselectGaze: 0
-  m_TimeToAutoDeselectGaze: 3
-  m_AllowGazeAssistance: 0
-  m_FirstHoverEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_LastHoverExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_HoverEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_HoverExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FirstSelectEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_LastSelectExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_SelectEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_SelectExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FirstFocusEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_LastFocusExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FocusEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FocusExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Activated:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Deactivated:
-    m_PersistentCalls:
-      m_Calls: []
-  m_StartingHoverFilters: []
-  m_StartingSelectFilters: []
-  m_StartingInteractionStrengthFilters: []
-  m_OnFirstHoverEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnLastHoverExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnHoverEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnHoverExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnSelectEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnSelectExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnSelectCanceled:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnActivate:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnDeactivate:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &468128614
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 468128612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
---- !u!114 &468128615
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 468128612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3c43f5c783ebd54e857eab63e5f6a9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tilePosition: {x: 0, y: 0}
-  painted: 0
-  paintable: 0
-  out_screen: {fileID: 1345182591}
---- !u!65 &468128616
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 468128612}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &468128617
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 468128612}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 5d5dce7c885c06b48a547c5017f8bac1, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &468128618
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 468128612}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &468128619
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 468128612}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: -40.11}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!1 &486735155
 GameObject:
   m_ObjectHideFlags: 0
@@ -12600,6 +12398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &486735158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12961,6 +12760,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &502169693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13199,6 +12999,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &504149406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13683,6 +13484,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &534549886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14044,6 +13846,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &570092292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14593,6 +14396,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &592605740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14954,6 +14758,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &600701370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15706,6 +15511,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &610901208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16362,6 +16168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 'yello duck '
   grabbable: 0
+  Model3D: 0
 --- !u!114 &642239310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16427,6 +16234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &643862896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16665,6 +16473,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &647997521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17272,6 +17081,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &673896190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17879,6 +17689,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &723695334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18117,6 +17928,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &734280500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18478,6 +18290,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &757415692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18839,6 +18652,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &782939008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19077,6 +18891,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &794111599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19315,6 +19130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &800913237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19558,6 +19374,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &826115643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19919,6 +19736,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &869195990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20486,6 +20304,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &907969159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20724,6 +20543,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 'buildings, voxels, gray, '
   grabbable: 0
+  Model3D: 0
 --- !u!114 &933099584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20962,6 +20782,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &934122724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21200,6 +21021,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &935435889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21438,6 +21260,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &954875154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21676,6 +21499,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &960415970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21914,6 +21738,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &972815551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22275,6 +22100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &978974225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22636,6 +22462,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &985713854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22874,6 +22701,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &991812356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23235,6 +23063,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &994281475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23446,6 +23275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: rubber duck
   grabbable: 0
+  Model3D: 0
 --- !u!114 &997065336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23625,6 +23455,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1024832326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23863,6 +23694,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1028498920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24101,6 +23933,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1050316992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24339,6 +24172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1074395690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24577,6 +24411,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1086715769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24815,6 +24650,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1088922357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25127,6 +24963,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1095018406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25365,6 +25202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1098723799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25726,6 +25564,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1122311544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25964,6 +25803,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1126576772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26202,6 +26042,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1129513800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26667,6 +26508,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1142979179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26905,6 +26747,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1143162905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27143,6 +26986,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1161986383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27709,6 +27553,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1221133046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28070,6 +27915,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1264350977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28308,6 +28154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1277380821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28546,6 +28393,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1289344231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29161,6 +29009,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1337482304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29437,130 +29286,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cf941391e6bdbc4abdbed9a86feb39a, type: 3}
---- !u!1 &1345182590
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1345182595}
-  - component: {fileID: 1345182594}
-  - component: {fileID: 1345182593}
-  - component: {fileID: 1345182592}
-  - component: {fileID: 1345182591}
-  m_Layer: 0
-  m_Name: OutpaintingScreen
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1345182591
+--- !u!114 &1345182591 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 2972405933395011896, guid: 8c68af23b8b3f9648bd30983f04ace7f, type: 3}
+  m_PrefabInstance: {fileID: 7850200000192166808}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1345182590}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c766702691d34d64d98803df8b0264c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileSize: {x: 10, y: 6, z: 1}
-  tileObject: {fileID: 468128612}
-  tileMatrixSize: {x: 3, y: 3}
-  firstPaintedTile: {x: 1, y: 2}
-  firstTileTexture: {fileID: 2800000, guid: 83f4ec5d30689f54a9867c503a9aa353, type: 3}
-  paintableTexture: {fileID: 2800000, guid: 5b127cfad4c559247b2e742774b4a208, type: 3}
---- !u!65 &1345182592
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1345182590}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1345182593
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1345182590}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 5eb173112a9353e4788c4c2382a5aabc, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1345182594
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1345182590}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1345182595
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1345182590}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.7, y: 11.5, z: 13.8}
-  m_LocalScale: {x: 45, y: 27, z: 0.01}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1370994610 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8666932676688585784, guid: b82665fac777d4d43bf6f5e7b59fcfe1, type: 3}
@@ -30006,6 +29742,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1426476180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30305,6 +30042,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: rubber duck
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1428214971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31004,6 +30742,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1438204982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31242,6 +30981,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1448669263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31480,6 +31220,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1451290410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31841,6 +31582,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1458229941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32202,6 +31944,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1498730352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32440,6 +32183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1503604190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32678,6 +32422,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1506666262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33162,6 +32907,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 'planet earth, '
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1541369373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33523,6 +33269,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1563790016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33766,6 +33513,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 'camera, '
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1577739238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34004,6 +33752,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1584616333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34242,6 +33991,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1596420916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34603,6 +34353,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1609144362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34841,6 +34592,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1616501381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35079,6 +34831,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1623915214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35317,6 +35070,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1629209689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35555,6 +35309,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1636910839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35798,6 +35553,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1648078636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36205,6 +35961,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1678591706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36443,6 +36200,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1685779016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36681,6 +36439,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1693288400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36919,6 +36678,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1696967381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37157,6 +36917,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1702215461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37395,6 +37156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1743327981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37633,6 +37395,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1745203766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37871,6 +37634,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1762187707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38566,6 +38330,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1787003276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38804,6 +38569,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1792996606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39042,6 +38808,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1796240226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39280,6 +39047,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1803266262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39764,6 +39532,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1822564315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40002,6 +39771,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1825514569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40518,6 +40288,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1856922413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40756,6 +40527,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1862883214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40994,6 +40766,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1863593437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41232,6 +41005,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1869116040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41593,6 +41367,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1884707882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41831,6 +41606,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1886038595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42069,6 +41845,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1892890798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42307,6 +42084,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1899270635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42668,6 +42446,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1917737729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42906,6 +42685,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1947334678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43390,6 +43170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1981961422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43628,6 +43409,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1983023801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43866,6 +43648,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &1985914086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44231,6 +44014,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &2011856426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44469,6 +44253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &2015889237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44974,6 +44759,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: big red sphere
   grabbable: 1
+  Model3D: 0
 --- !u!135 &2059760566
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -49916,6 +49702,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &2076976113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50103,228 +49890,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2076976110}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &2109132491
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2109132496}
-  - component: {fileID: 2109132495}
-  - component: {fileID: 2109132494}
-  - component: {fileID: 2109132493}
-  - component: {fileID: 2109132492}
-  m_Layer: 0
-  m_Name: Capsule
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2109132492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2109132491}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a35f6cfbfba9b548aaa00d52cfe8a50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_InteractionManager: {fileID: 0}
-  m_Colliders: []
-  m_InteractionLayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_InteractionLayers:
-    m_Bits: 1
-  m_DistanceCalculationMode: 1
-  m_SelectMode: 0
-  m_FocusMode: 1
-  m_CustomReticle: {fileID: 0}
-  m_AllowGazeInteraction: 0
-  m_AllowGazeSelect: 0
-  m_OverrideGazeTimeToSelect: 0
-  m_GazeTimeToSelect: 0.5
-  m_OverrideTimeToAutoDeselectGaze: 0
-  m_TimeToAutoDeselectGaze: 3
-  m_AllowGazeAssistance: 0
-  m_FirstHoverEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_LastHoverExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_HoverEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_HoverExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FirstSelectEntered:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1345182591}
-        m_TargetAssemblyTypeName: OutpaintingScreenScr, Assembly-CSharp
-        m_MethodName: CreateScreen
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  m_LastSelectExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_SelectEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_SelectExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FirstFocusEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_LastFocusExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FocusEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FocusExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Activated:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Deactivated:
-    m_PersistentCalls:
-      m_Calls: []
-  m_StartingHoverFilters: []
-  m_StartingSelectFilters: []
-  m_StartingInteractionStrengthFilters: []
-  m_OnFirstHoverEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnLastHoverExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnHoverEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnHoverExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnSelectEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnSelectExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnSelectCanceled:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnActivate:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnDeactivate:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!136 &2109132493
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2109132491}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &2109132494
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2109132491}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &2109132495
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2109132491}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &2109132496
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2109132491}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.96, y: -5.2, z: 7.6}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2132859392
 GameObject:
   m_ObjectHideFlags: 0
@@ -50499,6 +50064,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &2136343225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50966,6 +50532,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 
   grabbable: 0
+  Model3D: 0
 --- !u!114 &2140772527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51342,6 +50909,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0347aff77fa5c7a47aa997d85871d7d3, type: 3}
+--- !u!1001 &7850200000192166808
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3210976340312497382, guid: 8c68af23b8b3f9648bd30983f04ace7f, type: 3}
+      propertyPath: m_Name
+      value: OutpaintingPhysicals
+      objectReference: {fileID: 0}
+    - target: {fileID: 8253275177769109177, guid: 8c68af23b8b3f9648bd30983f04ace7f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -13.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 8253275177769109177, guid: 8c68af23b8b3f9648bd30983f04ace7f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8253275177769109177, guid: 8c68af23b8b3f9648bd30983f04ace7f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 7.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8253275177769109177, guid: 8c68af23b8b3f9648bd30983f04ace7f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8253275177769109177, guid: 8c68af23b8b3f9648bd30983f04ace7f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8253275177769109177, guid: 8c68af23b8b3f9648bd30983f04ace7f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8253275177769109177, guid: 8c68af23b8b3f9648bd30983f04ace7f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8253275177769109177, guid: 8c68af23b8b3f9648bd30983f04ace7f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8253275177769109177, guid: 8c68af23b8b3f9648bd30983f04ace7f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8253275177769109177, guid: 8c68af23b8b3f9648bd30983f04ace7f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8c68af23b8b3f9648bd30983f04ace7f, type: 3}
 --- !u!1 &8910628765377378777 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5439537844890730581, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
@@ -51360,8 +50984,6 @@ SceneRoots:
   - {fileID: 1997644504}
   - {fileID: 1772330516}
   - {fileID: 447881970}
-  - {fileID: 468128619}
-  - {fileID: 1345182595}
-  - {fileID: 2109132496}
+  - {fileID: 7850200000192166808}
   - {fileID: 3108558930228976018}
   - {fileID: 883835788}

@@ -43,7 +43,8 @@ public class DiffusableObjectGadgetMechanism : GadgetMechanism
         {
             Debug.Log(args.interactableObject.transform.gameObject.name);
             return;
-        }        
+        }
+        if (selectedStyleObject == args.interactableObject.transform.gameObject || selectedTextObject == args.interactableObject.transform.gameObject) return;
 
         // Creates pre-selection outline
         GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.preSelected);
@@ -52,6 +53,7 @@ public class DiffusableObjectGadgetMechanism : GadgetMechanism
     public override void OnGameObjectHoverExited(HoverExitEventArgs args)
     {
         if (!validInteractableObject(args)) return;
+        if (selectedStyleObject == args.interactableObject.transform.gameObject || selectedTextObject == args.interactableObject.transform.gameObject) return;
 
         // Remove pre-selection outline
         GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.unSelected);
@@ -66,10 +68,13 @@ public class DiffusableObjectGadgetMechanism : GadgetMechanism
 
         if (curDO != null)
         {
-            if (selectedTextObject != null)
+            if (curDO.Model3D)
             {
-                GameManager.getInstance().gadget.ChangeOutline(selectedTextObject, GadgetSelection.unSelected);
-                selectedTextObject = null;
+                selectedTextObject = args.interactableObject.transform.gameObject;
+            }
+            else
+            {
+                selectedStyleObject = args.interactableObject.transform.gameObject;
             }
 
             selectedTextObject = curInteractable;
@@ -79,15 +84,7 @@ public class DiffusableObjectGadgetMechanism : GadgetMechanism
         }
 
         if (curInteractable.GetComponent<Renderer>().material.mainTexture == null)  return;
-
-        // Adds to queue of selected objects
-        if (selectedStyleObject != null)
-        {
-            GameManager.getInstance().gadget.ChangeOutline(selectedStyleObject, GadgetSelection.unSelected);
-            selectedStyleObject = null;
-        }
-
-        selectedStyleObject = curInteractable;
+        selectedStyleObject = args.interactableObject.transform.gameObject;
 
         // Creates selection outline
         GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.selected);

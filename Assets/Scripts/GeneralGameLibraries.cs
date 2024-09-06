@@ -138,6 +138,8 @@ public class GeneralGameLibraries : Object
             camera.targetTexture = null;
             RenderTexture.active = null;
 
+            Debug.Log("screen 1");
+
             // get our unique filename
             string filename = folder + '/' + GameManager.getInstance().comfyOrganizer.UniqueImageName() + '.' + format.ToString().ToLower();
 

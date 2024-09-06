@@ -208,6 +208,39 @@ public class ComfyOrganizer : MonoBehaviour
     }
 
     /// <summary>
+    /// Used to send an empty DiffusionRequest to the server to load a model preemptively to the RAM.
+    /// </summary>
+    /// <param name="diffusionModel">Model to load to RAM</param>
+    public void SendEmptyDiffusionRequest(diffusionModels diffusionModel)
+    {
+        DiffusionRequest newDiffusionRequest = new DiffusionRequest();
+        newDiffusionRequest.diffusionJsonType = diffusionWorkflows.empty;
+        newDiffusionRequest.diffusionModel = diffusionModel;
+        
+        SendDiffusionRequest(newDiffusionRequest);
+    }
+
+    /// <summary>
+    /// Used to send an empty DiffusionRequest to the server to load a model preemptively to the RAM.
+    /// </summary>
+    /// <param name="diffusionModel">Model to load to RAM</param>
+    public void SendEmptyDiffusionRequest(string modelName)
+    {
+        diffusionModels enumVal;
+        if (Enum.IsDefined(typeof(diffusionModels), modelName))
+        {
+            Enum.TryParse<diffusionModels>(modelName, out enumVal);
+        }
+        else
+        {
+            Debug.LogError("Tried to send an empty Diffusion Request of false model " + modelName.ToString());
+            return;
+        }
+
+        SendEmptyDiffusionRequest(enumVal);
+    }
+
+    /// <summary>
     /// Sends an image generation request to the ComfySceneLibrary. The Images that are created are then added to the targets list of the diffusionRequest.
     /// </summary>
     /// <param name="diffusionRequest">Diffusion Request that is sent to the ComfySceneLibrary</param>
@@ -234,7 +267,7 @@ public class ComfyOrganizer : MonoBehaviour
 
         foreach (var diffReqID in DiffuseDictionary)
         {
-            if (!diffReqID.Value.sentDownloadRequest)
+            if (!diffReqID.Value.sentDownloadRequest && !diffReqID.Value.finishedRequest)
             {
                 relevantKeys.Add(diffReqID.Value);
             }

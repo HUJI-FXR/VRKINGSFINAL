@@ -48,20 +48,29 @@ public class PhysicalCamera : MonoBehaviour
         // Time until next screenshot is possible
         const float timeToWait = 2.0f;
 
-        yield return new WaitForSeconds(timeToWait);
+        yield return new WaitForSeconds(timeToWait);        
 
         // Freezing screen
         timerActivated = true;        
         screenshotPlane.GetComponent<Renderer>().material.mainTexture = screenShot; // screenShot
-        screenshotPlane.SetActive(true);
+        screenshotPlane.SetActive(true);        
 
-        curCamera.targetTexture = screenRenderTexture;
+        yield return new WaitForSeconds(timeToWait);
 
-        // Unfreezing screen        
-        screenPlane.GetComponent<Renderer>().material.SetTexture("_BaseMap", screenRenderTexture);
+        Debug.Log("falser");
 
         timerActivated = false;
         screenshotPlane.SetActive(false);
+
+        // creates off-screen render texture that can rendered into
+        screenRenderTexture = new RenderTexture(screenRenderTexture.width, screenRenderTexture.height, 24);
+        curCamera.enabled = false;
+        curCamera.enabled = true;
+        curCamera.targetTexture = screenRenderTexture;        
+        RenderTexture.active = screenRenderTexture;
+
+        // Unfreezing screen        
+        screenPlane.GetComponent<Renderer>().material.SetTexture("_BaseMap", screenRenderTexture);
 
         yield break;
     }

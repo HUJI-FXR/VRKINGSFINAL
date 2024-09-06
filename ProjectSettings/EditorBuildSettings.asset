@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/TileDiffusionRoom/TileRoom.unity
     guid: da00d9ead27757e44a1910a68619157b
   - enabled: 1
-    path: Assets/fullCameraScene.unity
+    path: Assets/Scenes/fullCameraScene.unity
     guid: 42d4076d708156a469316d72cf94ae8a
   - enabled: 1
     path: Assets/Scenes/WaterPark.unity

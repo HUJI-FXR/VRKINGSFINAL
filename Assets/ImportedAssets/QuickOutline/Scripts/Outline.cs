@@ -83,7 +83,11 @@ public class Outline : MonoBehaviour {
   void Awake() {
 
     // Cache renderers
-    renderers = GetComponentsInChildren<Renderer>();
+    // Jonathan changed this line from children to only the main GameObject
+    // renderers = GetComponentsInChildren<Renderer>();
+    Renderer[] curRenderers = new Renderer[1];
+    curRenderers[0] = GetComponent<Renderer>();
+    renderers = curRenderers;
 
     // Instantiate outline materials
     outlineMaskMaterial = Instantiate(Resources.Load<Material>(@"Materials/OutlineMask"));
@@ -162,7 +166,17 @@ public class Outline : MonoBehaviour {
     // Generate smooth normals for each mesh
     var bakedMeshes = new HashSet<Mesh>();
 
-    foreach (var meshFilter in GetComponentsInChildren<MeshFilter>()) {
+    // Jonathan changed this section
+    // MeshFilter[] curMeshFilters = GetComponentsInChildren<MeshFilter>();
+    MeshFilter[] curMeshFilters = new MeshFilter[1];
+    curMeshFilters[0] = GetComponent<MeshFilter>();
+    if (TryGetComponent<MeshFilter>(out MeshFilter curMeshFilter))
+    {
+        curMeshFilters[0] = curMeshFilter;
+    }
+    else return;
+
+    foreach (var meshFilter in curMeshFilters) {
 
       // Skip duplicates
       if (!bakedMeshes.Add(meshFilter.sharedMesh)) {
@@ -178,9 +192,18 @@ public class Outline : MonoBehaviour {
   }
 
   void LoadSmoothNormals() {
+    // Jonathan changed this section
+    // MeshFilter[] curMeshFilters = GetComponentsInChildren<MeshFilter>();
+    MeshFilter[] curMeshFilters = new MeshFilter[1];
+    if (TryGetComponent<MeshFilter>(out MeshFilter curMeshFilter))
+    {
+        curMeshFilters[0] = curMeshFilter;
+    }
+    else return;
+
 
     // Retrieve or generate smooth normals
-    foreach (var meshFilter in GetComponentsInChildren<MeshFilter>()) {
+    foreach (var meshFilter in curMeshFilters) {
 
       // Skip if smooth normals have already been adopted
       if (!registeredMeshes.Add(meshFilter.sharedMesh)) {
@@ -202,8 +225,18 @@ public class Outline : MonoBehaviour {
       }
     }
 
+    // Jonathan changed this section
+    // SkinnedMeshRenderer[] curSkinnedMeshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
+    SkinnedMeshRenderer[] curSkinnedMeshRenderers = new SkinnedMeshRenderer[1];
+    curSkinnedMeshRenderers[0] = GetComponent<SkinnedMeshRenderer>();
+    if (TryGetComponent<SkinnedMeshRenderer>(out SkinnedMeshRenderer curSkinnedMeshRenderer))
+    {
+        curSkinnedMeshRenderers[0] = curSkinnedMeshRenderer;
+    }
+    else return;
+
     // Clear UV3 on skinned mesh renderers
-    foreach (var skinnedMeshRenderer in GetComponentsInChildren<SkinnedMeshRenderer>()) {
+    foreach (var skinnedMeshRenderer in curSkinnedMeshRenderers) {
 
       // Skip if UV3 has already been reset
       if (!registeredMeshes.Add(skinnedMeshRenderer.sharedMesh)) {

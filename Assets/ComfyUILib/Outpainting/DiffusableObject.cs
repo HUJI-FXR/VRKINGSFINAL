@@ -21,6 +21,9 @@ public class DiffusableObject : MonoBehaviour
     public bool grabbed;
 
     // todo maybe the grabbed and ungrabbed should be here as well? maybe another script of theirs instead of gadgetmechanismS?
+    
+    // If true, then the DiffusableObject is a complex 3D model and not a simple shape/image container
+    public bool Model3D = false;
 
     private void Start()
     {

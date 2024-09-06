@@ -26,6 +26,8 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
     {
         if (args == null || args.interactableObject == null) return;
         if (args.interactableObject.transform.parent != GameManager.getInstance().diffusables.transform) return;
+        Debug.Log(args.interactableObject.transform.name + " " + GameManager.getInstance().diffusables.name);
+        Debug.Log(args.interactableObject.transform.parent.name + " " + GameManager.getInstance().diffusables.transform.name);
         if (selectedObjects.Contains(args.interactableObject.transform.gameObject)) return;
 
         Renderer interactorRenderer = args.interactableObject.transform.gameObject.GetComponent<Renderer>();

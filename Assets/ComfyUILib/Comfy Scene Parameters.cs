@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 /// <summary>
@@ -34,9 +35,8 @@ public class ComfySceneParameters : MonoBehaviour
     // If false, won't load scene parameters onto the GameManager
     public bool LoadComfyParametrs = true;
 
-    // Used to send empty DiffusionRequests to load models onto memory as fast as possible
-    public DiffusionRequest diffusionRequest;
-    public bool SendBeginningDiffusionRequest = false;
+    // These events will be invoked after the GameManager is fully loaded
+    public UnityEvent unityEventAfterLoading;
 
     public IEnumerator LoadGameManagerScene()
     {
@@ -69,19 +69,15 @@ public class ComfySceneParameters : MonoBehaviour
             }
 
             // Sending the Beginning DiffusionRequest onwards
-            if (SendBeginningDiffusionRequest) 
-            {
-                DiffusionRequest newDiffusionRequest = comfyOrganizer.copyDiffusionRequest(diffusionRequest);
-                GameManager.getInstance().InitiateSceneParameters(comfyOrganizer, comfySceneLibrary,
-                radiusDiffusionTexture, uiDiffusionTexture, diffusables, gadget, headAudioSource, newDiffusionRequest);
-            }
-            else
-            {
-                GameManager.getInstance().InitiateSceneParameters(comfyOrganizer, comfySceneLibrary,
-                radiusDiffusionTexture, uiDiffusionTexture, diffusables, gadget, headAudioSource, null);
-            }
+            GameManager.getInstance().InitiateSceneParameters(comfyOrganizer, comfySceneLibrary,
+                radiusDiffusionTexture, uiDiffusionTexture, diffusables, gadget, headAudioSource);
         }
 
         yield return new WaitForSeconds(1f);
+
+        comfySceneLibrary.StartComfySceneLibrary();
+        unityEventAfterLoading?.Invoke();
+
+        yield break;
     }
 }
