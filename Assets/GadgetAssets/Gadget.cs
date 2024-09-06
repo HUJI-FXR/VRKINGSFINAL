@@ -81,6 +81,7 @@ public class Gadget : MonoBehaviour
             return;
         }
 
+        if (GadgetMechanisms == null) GadgetMechanisms = new List<GadgetMechanism>();
         if (GadgetMechanisms.Count > 0 )
         {
             MechanismText.text = GadgetMechanisms[0].mechanismText;
