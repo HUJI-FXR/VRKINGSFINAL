@@ -18,6 +18,7 @@ public class OutpaintingTile : MonoBehaviour
 
         DiffusableObject diff = other.gameObject.GetComponent<DiffusableObject>();
         if (diff == null) return;
+        if (!diff.Model3D) return;
         /*XRGrabInteractable inter = other.gameObject.GetComponent<XRGrabInteractable>();
         if (inter == null) return;*/
         /*Rigidbody rigidbody = inter.gameObject.GetComponent<Rigidbody>();

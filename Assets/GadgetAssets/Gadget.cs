@@ -135,21 +135,12 @@ public class Gadget : MonoBehaviour
     public void DiffusableGrabbed(SelectEnterEventArgs args)
     {
         if (GadgetMechanisms.Count <= 0) return;
-        if (GadgetMechanisms[gadgetMechanismIndex].GetType() != typeof(ThrowingGadgetMechanism)) return;
-
-        (GadgetMechanisms[gadgetMechanismIndex] as ThrowingGadgetMechanism).DiffusableGrabbed(args);
+        GadgetMechanisms[gadgetMechanismIndex].DiffusableGrabbed(args);
     }
     public void DiffusableUnGrabbed(SelectExitEventArgs args)
     {
-        if (GadgetMechanisms.Count <= 0)
-        {
-            return;
-        }
-        if (GadgetMechanisms[gadgetMechanismIndex].GetType() != typeof(ThrowingGadgetMechanism))
-        {
-            return;
-        }
-        (GadgetMechanisms[gadgetMechanismIndex] as ThrowingGadgetMechanism).DiffusableUnGrabbed(args);
+        if (GadgetMechanisms.Count <= 0) return;
+        GadgetMechanisms[gadgetMechanismIndex].DiffusableUnGrabbed(args);
     }
 
     /// <summary>

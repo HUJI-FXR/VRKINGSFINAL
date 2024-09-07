@@ -119,4 +119,13 @@ public class GadgetMechanism : MonoBehaviour
     {
         return;
     }
+
+    public virtual void DiffusableGrabbed(SelectEnterEventArgs args)
+    {
+        return;
+    }
+    public virtual void DiffusableUnGrabbed(SelectExitEventArgs args)
+    {
+        return;
+    }
 }

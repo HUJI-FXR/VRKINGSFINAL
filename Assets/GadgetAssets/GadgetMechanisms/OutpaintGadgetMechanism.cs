@@ -46,6 +46,7 @@ public class OutpaintGadgetMechanism : GadgetMechanism
         GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.unSelected);
     }
 
+
     /// <summary>
     /// Helper function to make the appropriate DiffusionRequest for the Outpainting Mechanism
     /// </summary>

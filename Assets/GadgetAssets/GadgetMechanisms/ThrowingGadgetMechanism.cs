@@ -32,7 +32,7 @@ public class ThrowingGadgetMechanism : GadgetMechanism
         return newDiffusionRequest;
     }
 
-    public void DiffusableGrabbed(SelectEnterEventArgs args)
+    public override void DiffusableGrabbed(SelectEnterEventArgs args)
     {
         if(args.interactableObject == null) return;
         
@@ -43,7 +43,7 @@ public class ThrowingGadgetMechanism : GadgetMechanism
 
         GameManager.getInstance().comfyOrganizer.SendDiffusionRequest(diffusionRequest);        
     }
-    public void DiffusableUnGrabbed(SelectExitEventArgs args)
+    public override void DiffusableUnGrabbed(SelectExitEventArgs args)
     {
         if (args.interactableObject == null) return;
 
