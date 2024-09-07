@@ -20,6 +20,8 @@ public class ExitSceneChangeTrigger : MonoBehaviour
 
     public void ChangeScene(TMP_InputField txt)
     {
+        if (GameManager.getInstance() == null) return;
+
         GameManager.getInstance().IP = txt.text;
         if (toggle.isOn)
         {

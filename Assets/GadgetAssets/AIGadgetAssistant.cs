@@ -27,6 +27,8 @@ public class AIGadgetAssistant : MonoBehaviour
     /// <param name="keywords">To be added to the prompts of the Image Generation request</param>
     public void CreateAITexture(string keywords = "")
     {
+        if (GameManager.getInstance() == null) return;
+
         DiffusionRequest diffusionRequest = new DiffusionRequest();
         diffusionRequest.diffusionModel = diffusionModels.ghostmix;
 
@@ -47,6 +49,9 @@ public class AIGadgetAssistant : MonoBehaviour
     /// <param name="audioClipName">AI Assistant Audio Clip to be played</param>
     public void AITalk(string audioClipName = "")
     {
+        if (GameManager.getInstance() == null) return;
+        if (GameManager.getInstance().gadget == null) return;
+
         GameManager.getInstance().headAudioSource.PlayOneShot(AudioClipsLibrary.AudioClips[audioClipName]);
         List<Texture2D> curTextures = diffusionTextureChanger.GetTextures();
         if (curTextures.Count == 0)

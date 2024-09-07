@@ -13,6 +13,8 @@ public class StartSceneManager : MonoBehaviour
 
     public void TryTransferScene()
     {
+        if (GameManager.getInstance() == null) return;
+
         Debug.Log("Called TryTransferScene!");
         if (input.text == "")
         {

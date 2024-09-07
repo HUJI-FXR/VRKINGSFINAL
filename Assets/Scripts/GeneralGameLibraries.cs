@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 
 /// <summary>
@@ -49,7 +50,13 @@ public class GeneralGameLibraries : Object
     /// </summary>
     public class TextureManipulationLibrary : Object
     {
-        //https://stackoverflow.com/questions/44264468/convert-rendertexture-to-texture2d
+        // https://stackoverflow.com/questions/44264468/convert-rendertexture-to-texture2d
+
+        /// <summary>
+        /// Converts a given RenderTexture to a Texture2D
+        /// </summary>
+        /// <param name="rTex">RenderTexture to convert</param>
+        /// <returns>Converted rTex to Texture2D</returns>
         public static Texture2D toTexture2D(RenderTexture rTex)
         {
             Texture2D tex = new Texture2D(rTex.width, rTex.height, TextureFormat.RGB24, false);
@@ -63,6 +70,11 @@ public class GeneralGameLibraries : Object
             return tex;
         }
 
+        /// <summary>
+        /// Converts a given Texture to a Texture2D
+        /// </summary>
+        /// <param name="inTex">Texture to convert</param>
+        /// <returns>Converted inTex to Texture2D</returns>
         public static Texture2D toTexture2D(Texture inTex)
         {
             RenderTexture rTex = new RenderTexture(inTex.width, inTex.height, 4);
@@ -97,6 +109,80 @@ public class GeneralGameLibraries : Object
             return readableText;
         }
 
+        /// <summary>
+        /// Copies a Texture2D a returns a new instance of the same Texture2D
+        /// </summary>
+        public static Texture2D CopyTexture(Texture2D texture)
+        {
+            if (texture == null) return null;
+
+            Texture2D copyTexture = new Texture2D(texture.width, texture.height);
+            copyTexture.SetPixels(texture.GetPixels());
+            copyTexture.Apply();
+            copyTexture.name = texture.name;
+
+            return copyTexture;
+        }
+
+        // TODO allow height = 768?
+        // Default image size for Diffusion
+        public const int DEFAULT_HEIGHT = 512;
+        public const int DEFAULT_WIDTH = 512;
+
+        /// <summary>
+        /// Resizes a Texture2D to a default size
+        /// </summary>
+        /// <param name="texture">Input Texture2D</param>
+        /// <returns>New instance of Texture2D with default size</returns>
+        public static Texture2D Resize(Texture2D texture)
+        {
+            return Resize(texture, DEFAULT_WIDTH, DEFAULT_HEIGHT);
+        }
+
+        // TODO delete this function?
+        /// <summary>
+        /// Resizes a Texture2D to a given size
+        /// </summary>
+        /// <param name="texture">Input Texture2D</param>
+        /// <param name="newWidth">Given new width</param>
+        /// <param name="newHeight">Given new height</param>
+        /// <returns>New instance of Texture2D with given size</returns>
+        /*public static Texture2D Resize(Texture2D texture, int newWidth, int newHeight)
+        {            
+            if (texture == null) return null;
+            if (texture.height == newHeight && texture.width == newWidth) return texture;
+            Texture2D newTexture = CopyTexture(texture);
+            newTexture.Reinitialize(newWidth, newHeight);
+            return newTexture;
+        }*/
+
+
+        //--------------------------------
+
+        /// <summary>
+        /// Resizes a Texture2D to a given size
+        /// </summary>
+        /// <param name="texture2D">Input Texture2D</param>
+        /// <param name="targetX">Given new width</param>
+        /// <param name="targetY">Given new height</param>
+        /// <returns>New instance of Texture2D with given size</returns>
+        public static Texture2D Resize(Texture2D texture2D, int targetX, int targetY)
+        {
+            Texture2D newTexture = CopyTexture(texture2D);
+
+            RenderTexture rt = new RenderTexture(targetX, targetY, 24);
+            RenderTexture.active = rt;
+            Graphics.Blit(newTexture, rt);
+            Texture2D result = new Texture2D(targetX, targetY);
+            result.ReadPixels(new Rect(0, 0, targetX, targetY), 0, 0);
+            result.Apply();
+
+            result.name = newTexture.name;
+
+            return result;
+        }
+
+        //--------------------------------
 
         // configure with raw, jpg, png, or ppm (simple raw format)
         enum Format { RAW, JPG, PNG, PPM };
@@ -106,6 +192,8 @@ public class GeneralGameLibraries : Object
         /// </summary>
         public static Texture2D CaptureScreenshot(Camera camera)
         {
+            if (GameManager.getInstance() == null) return null;
+
             // 4k = 3840 x 2160   1080p = 1920 x 1080
             int captureWidth = 512;
             int captureHeight = 512;

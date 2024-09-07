@@ -13,6 +13,8 @@ public class OpenDoorScript : MonoBehaviour
 
     public void OpenDoor()
     {
+        if (GameManager.getInstance() == null) return;
+
         doorOpenAnimation.Play();
         GameManager.getInstance().headAudioSource.PlayOneShot(doorOpenAudioClip);
     }

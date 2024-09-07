@@ -44,6 +44,8 @@ public class CameraGadgetMechanism : GadgetMechanism
     /// </summary>
     public override void PlaceTextureInput(GameObject GO)
     {
+        if (GameManager.getInstance() == null) return;
+
         if (takePicture) return;
         if (GO == null) return;
 
@@ -75,63 +77,31 @@ public class CameraGadgetMechanism : GadgetMechanism
 
     public override void OnGameObjectHoverEntered(HoverEnterEventArgs args)
     {
-        if (!UseStyleTransfer)
-        {
-            return;
-        }
-
-        if (args == null || args.interactableObject == null)
-        {
-            return;
-        }
-        if (args.interactableObject.transform.parent != GameManager.getInstance().diffusables.transform)
-        {
-            return;
-        }
-        if (args.interactableObject.transform.gameObject == selectedStyleObject)
-        {
-            return;
-        }
+        if (GameManager.getInstance() == null) return;
+        if (!UseStyleTransfer) return;
+        if (args == null || args.interactableObject == null) return;
+        if (args.interactableObject.transform.parent != GameManager.getInstance().diffusables.transform) return;
+        if (args.interactableObject.transform.gameObject == selectedStyleObject) return;
 
         // Creates pre-selection outline
         GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.preSelected);
     }
     public override void OnGameObjectHoverExited(HoverExitEventArgs args)
     {
-        if (!UseStyleTransfer)
-        {
-            return;
-        }
-        if (args == null || args.interactableObject == null)
-        {
-            return;
-        }
-        if (args.interactableObject.transform.parent != GameManager.getInstance().diffusables.transform)
-        {
-
-            return;
-        }
-        if (args.interactableObject.transform.gameObject == selectedStyleObject)
-        {
-            return;
-        }
+        if (GameManager.getInstance() == null) return;
+        if (!UseStyleTransfer) return;
+        if (args == null || args.interactableObject == null) return;
+        if (args.interactableObject.transform.parent != GameManager.getInstance().diffusables.transform) return;
+        if (args.interactableObject.transform.gameObject == selectedStyleObject) return;
 
         GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.unSelected);
     }
     public override void onGameObjectSelectEntered(SelectEnterEventArgs args)
     {
-        if (!UseStyleTransfer)
-        {
-            return;
-        }
-        if (args == null || args.interactableObject == null)
-        {
-            return;
-        }
-        if (args.interactableObject.transform.parent != GameManager.getInstance().diffusables.transform)
-        {
-            return;
-        }
+        if (GameManager.getInstance() == null) return;
+        if (!UseStyleTransfer) return;
+        if (args == null || args.interactableObject == null) return;
+        if (args.interactableObject.transform.parent != GameManager.getInstance().diffusables.transform) return;
 
         // Removing previously selected object
         if (selectedStyleObject != null)
@@ -157,6 +127,7 @@ public class CameraGadgetMechanism : GadgetMechanism
     /// <returns></returns>
     protected override DiffusionRequest CreateDiffusionRequest()
     {
+        if (GameManager.getInstance() == null) return null;
         DiffusionRequest newDiffusionRequest = new DiffusionRequest();
 
         newDiffusionRequest.diffusionModel = diffusionModels.ghostmix;
@@ -175,6 +146,8 @@ public class CameraGadgetMechanism : GadgetMechanism
     /// </summary>
     public override void ActivateGeneration(GameObject GO)
     {
+        if (GameManager.getInstance() == null) return;
+
         if (contentTexture == null || styleTexture== null)
         {
             Debug.LogError("Need to pick style and content textures for Camera mechanism");
@@ -206,6 +179,8 @@ public class CameraGadgetMechanism : GadgetMechanism
     /// </summary>
     public override void TakeScreenshot(Texture2D screenShot, Camera camera)
     {
+        if (GameManager.getInstance() == null) return;
+
         // TODO add DiffusableObject data entry for diffusionrequest when taking a picture of stuff        
         camera.enabled = false;
         GameManager.getInstance().gadget.xrCamera.enabled = true;

@@ -20,6 +20,8 @@ public class ThrowingGadgetMechanism : GadgetMechanism
     /// <returns></returns>
     protected override DiffusionRequest CreateDiffusionRequest()
     {
+        if (GameManager.getInstance() == null) return null; ;
+
         DiffusionRequest newDiffusionRequest = new DiffusionRequest();
 
         newDiffusionRequest.diffusionModel = diffusionModels.nano;

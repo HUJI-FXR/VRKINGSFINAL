@@ -107,6 +107,8 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
 
     private List<GameObject> gameObjectsInRadius(float curRadius, Vector3 position)
     {
+        if (GameManager.getInstance().gadget == null) return null;
+
         List<GameObject> radiusGameObjects = new List<GameObject>();
         foreach (GameObject go in GameManager.getInstance().diffusionList)
         {

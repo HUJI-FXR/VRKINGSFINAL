@@ -23,6 +23,7 @@ public class OutpaintGadgetMechanism : GadgetMechanism
 
     public override void OnGameObjectHoverEntered(HoverEnterEventArgs args)
     {
+        if (GameManager.getInstance() == null) return;
         if (args == null || args.interactableObject == null) return;
         if (args.interactableObject.transform.parent != GameManager.getInstance().diffusables.transform) return;
 
@@ -38,6 +39,7 @@ public class OutpaintGadgetMechanism : GadgetMechanism
 
     public override void OnGameObjectHoverExited(HoverExitEventArgs args)
     {
+        if (GameManager.getInstance() == null) return;
         if (args == null || args.interactableObject == null) return;
         if (args.interactableObject.transform.parent != GameManager.getInstance().diffusables.transform) return;
 
@@ -93,6 +95,7 @@ public class OutpaintGadgetMechanism : GadgetMechanism
 
     public override void onGameObjectSelectEntered(SelectEnterEventArgs args)
     {
+        if (GameManager.getInstance() == null) return;
         if (args == null || args.interactableObject == null) return;
         if (args.interactableObject.transform.parent != GameManager.getInstance().diffusables.transform) return;
 

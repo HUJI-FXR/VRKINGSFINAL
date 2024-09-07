@@ -36,32 +36,25 @@ public class DiffusableObject : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (grabbed)
-        {
-            return;
-        }
-        if (GameManager.getInstance().radiusDiffusionTexture == null)
-        {
-            return;
-        }
+        if (grabbed) return;
+        if (GameManager.getInstance() == null) return;
+        if (GameManager.getInstance().radiusDiffusionTexture == null) return;
+
         GameManager.getInstance().radiusDiffusionTexture.DiffusableObjectCollided(collision);    
     }
 
     public void OnSelectEntered(SelectEnterEventArgs args)
     {
-        grabbed = true;
-        if (GameManager.getInstance().gadget == null) {
-            return;
-        }
+        if (GameManager.getInstance().gadget == null) return;
+        grabbed = true;        
+
         GameManager.getInstance().gadget.DiffusableGrabbed(args);
     }
     public void OnSelectExited(SelectExitEventArgs args)
     {
-        grabbed = false;
-        if (GameManager.getInstance().gadget == null)
-        {
-            return;
-        }
+        if (GameManager.getInstance().gadget == null) return;
+        grabbed = false;        
+
         GameManager.getInstance().gadget.DiffusableUnGrabbed(args);
     }
 }

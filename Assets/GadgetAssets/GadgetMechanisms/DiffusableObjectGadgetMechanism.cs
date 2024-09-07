@@ -23,9 +23,10 @@ public class DiffusableObjectGadgetMechanism : GadgetMechanism
     {
         mechanismText = "Object to Image";
     }
-
+    
     private bool validInteractableObject(BaseInteractionEventArgs args)
     {
+        if (GameManager.getInstance() == null) return false;
         if (args == null || args.interactableObject == null) return false;
 
         Transform curTransform = args.interactableObject.transform;
@@ -39,6 +40,7 @@ public class DiffusableObjectGadgetMechanism : GadgetMechanism
 
     public override void OnGameObjectHoverEntered(HoverEnterEventArgs args)
     {
+        if (GameManager.getInstance() == null) return;
         if (!validInteractableObject(args))
         {
             Debug.Log(args.interactableObject.transform.gameObject.name);
@@ -61,6 +63,7 @@ public class DiffusableObjectGadgetMechanism : GadgetMechanism
 
     public override void onGameObjectSelectEntered(SelectEnterEventArgs args)
     {
+        if (GameManager.getInstance() == null) return;
         if (!validInteractableObject(args)) return;
 
         GameObject curInteractable = args.interactableObject.transform.gameObject;
@@ -70,16 +73,22 @@ public class DiffusableObjectGadgetMechanism : GadgetMechanism
         {
             if (curDO.Model3D)
             {
+                if (selectedTextObject != null)
+                {
+                    GameManager.getInstance().gadget.ChangeOutline(selectedTextObject, GadgetSelection.unSelected);
+                }
                 selectedTextObject = args.interactableObject.transform.gameObject;
             }
             else
             {
+                if (selectedStyleObject != null)
+                {
+                    GameManager.getInstance().gadget.ChangeOutline(selectedStyleObject, GadgetSelection.unSelected);
+                }
                 selectedStyleObject = args.interactableObject.transform.gameObject;
             }
 
-            selectedTextObject = curInteractable;
             GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.selected);
-
             return;
         }
 
@@ -93,6 +102,7 @@ public class DiffusableObjectGadgetMechanism : GadgetMechanism
     // -----------------------------------------  PLAYER INPUTS ----------------------------------------- //
     public override void PlaceTextureInput(GameObject GO)
     {
+        if (GameManager.getInstance() == null) return;
         if (GO == null) return;
 
         Texture2D curTexture = GameManager.getInstance().gadget.getGeneratedTexture();
@@ -126,24 +136,24 @@ public class DiffusableObjectGadgetMechanism : GadgetMechanism
     /// <returns></returns>
     protected override DiffusionRequest CreateDiffusionRequest()
     {
+        if (GameManager.getInstance() == null) return null;
+
         DiffusionRequest newDiffusionRequest = new DiffusionRequest();
 
         newDiffusionRequest.diffusionModel = diffusionModels.ghostmix;
         newDiffusionRequest.targets.Add(GameManager.getInstance().uiDiffusionTexture);
-        newDiffusionRequest.diffusionJsonType = diffusionWorkflows.txt2imgLCM;
+        newDiffusionRequest.diffusionJsonType = diffusionWorkflows.img2imgLCM;
 
         return newDiffusionRequest;
     }
 
     public override void ActivateGeneration(GameObject GO)
     {
+        if (GameManager.getInstance() == null) return;
         if (selectedTextObject == null || selectedStyleObject == null)  return;
 
         Texture styleTexture = selectedStyleObject.GetComponent<Renderer>().material.mainTexture;
         string positivePrompt = selectedTextObject.GetComponent<DiffusableObject>().keyword;
-
-        GameManager.getInstance().gadget.ChangeOutline(selectedStyleObject, GadgetSelection.unSelected);
-        GameManager.getInstance().gadget.ChangeOutline(selectedTextObject, GadgetSelection.unSelected);
 
         Texture2D copyStyleTexture = TextureManipulationLibrary.toTexture2D(styleTexture);
 
@@ -155,6 +165,23 @@ public class DiffusableObjectGadgetMechanism : GadgetMechanism
         diffusionRequest.uploadTextures.Add(copyStyleTexture);
         diffusionRequest.positivePrompt = positivePrompt;
 
+        ResetMechanism();
+
         GameManager.getInstance().comfyOrganizer.SendDiffusionRequest(diffusionRequest);
+    }
+
+    public override void ResetMechanism()
+    {
+        if (selectedTextObject != null)
+        {
+            GameManager.getInstance().gadget.ChangeOutline(selectedTextObject, GadgetSelection.unSelected);
+            selectedTextObject = null;
+        }
+
+        if (selectedStyleObject != null)
+        {
+            GameManager.getInstance().gadget.ChangeOutline(selectedStyleObject, GadgetSelection.unSelected);
+            selectedStyleObject = null;
+        }
     }
 }

@@ -40,7 +40,7 @@ public class GadgetMechanism : MonoBehaviour
     /// <summary>
     /// Resets the Mechanism, removing everything it has selected.
     /// </summary>
-    protected virtual void ResetMechanism()
+    public virtual void ResetMechanism()
     {
         return;
     }

@@ -11,7 +11,7 @@ public class OutpaintingTile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (painted || other == null || out_screen == null || GetComponent<RegularDiffusionTexture>() == null)
+        if (painted || other == null || out_screen == null || GetComponent<RegularDiffusionTexture>() == null || GameManager.getInstance().gadget == null)
         {
             return;
         }

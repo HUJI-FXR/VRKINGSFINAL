@@ -208,14 +208,21 @@ public class Gadget : MonoBehaviour
     public void ChangeToNextMechanic()
     {
         if (GadgetMechanisms.Count <= 0) return;
+        if (gadgetMechanismIndex >= GadgetMechanisms.Count) gadgetMechanismIndex %= GadgetMechanisms.Count;
+
+        GadgetMechanisms[gadgetMechanismIndex].ResetMechanism();
 
         gadgetMechanismIndex++;
         gadgetMechanismIndex %= GadgetMechanisms.Count;
         ChangeToMechanic(gadgetMechanismIndex);
     }
+    // TODO do I need this one?
     public void ChangeToPreviousMechanic()
     {
         if (GadgetMechanisms.Count <= 0) return;
+        if (gadgetMechanismIndex >= GadgetMechanisms.Count) gadgetMechanismIndex %= GadgetMechanisms.Count;
+
+        GadgetMechanisms[gadgetMechanismIndex].ResetMechanism();
 
         gadgetMechanismIndex--;
         gadgetMechanismIndex %= GadgetMechanisms.Count;
@@ -233,7 +240,8 @@ public class Gadget : MonoBehaviour
     }
 
     public Texture2D getGeneratedTexture()
-    {        
+    {
+        if (GameManager.getInstance() == null) return null;
         if (textureQueue.Count == 0) return null;
 
         Texture2D current = textureQueue.Dequeue();
@@ -259,9 +267,11 @@ public class Gadget : MonoBehaviour
 
     public bool AddTexturesToQueue(List<Texture2D> textures)
     {
+        if (GameManager.getInstance() == null) return false;
+
         // TODO WHY IS THIS HERE, UNCOMMENT MAYBE?
         //GameManager.getInstance().uiDiffusionTexture.CreateImagesInside(textures, gadgetImagePanel, true);
-        
+
         if (textures == null) return false;
 
         foreach (Texture2D texture in textures)

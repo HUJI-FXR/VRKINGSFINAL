@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using static GeneralGameLibraries;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
+using System.Linq;
 
 
 // TODO make a unique ID for everything, downloaded images, uploaded images, request IDs etc
@@ -22,18 +23,37 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
         mechanismText = "Combine Images";
     }
 
+    /// <summary>
+    /// Helper function for the Combine Mechanism script that checks whether a interactable object should be interacted with further.
+    /// </summary>
+    /// <param name="args">Interactable Object args to check</param>
+    /// <returns>True if should be interacted with</returns>
+    private bool ValidInteractableObject(BaseInteractionEventArgs args)
+    {
+        if (args == null || args.interactableObject == null) return false;
+        if (GameManager.getInstance() == null) return false;
+        Transform curTrans = args.interactableObject.transform;
+        if (curTrans.parent != GameManager.getInstance().diffusables.transform) return false;
+        if (curTrans.gameObject.TryGetComponent<DiffusableObject>(out DiffusableObject DO))
+        {
+            if (DO.Model3D) return false;
+        }
+        if (selectedObjects.Contains(curTrans.gameObject)) return false;
+        if (curTrans.gameObject.TryGetComponent<Renderer>(out Renderer REN))
+        {
+            if (REN.material.mainTexture == null) return false;
+        }
+        else
+        {
+            return false;
+        }
+
+        return true;
+    }
+
     public override void OnGameObjectHoverEntered(HoverEnterEventArgs args)
     {
-        if (args == null || args.interactableObject == null) return;
-        if (args.interactableObject.transform.parent != GameManager.getInstance().diffusables.transform) return;
-        Debug.Log(args.interactableObject.transform.name + " " + GameManager.getInstance().diffusables.name);
-        Debug.Log(args.interactableObject.transform.parent.name + " " + GameManager.getInstance().diffusables.transform.name);
-        if (selectedObjects.Contains(args.interactableObject.transform.gameObject)) return;
-
-        Renderer interactorRenderer = args.interactableObject.transform.gameObject.GetComponent<Renderer>();
-
-        if (interactorRenderer == null) return;
-        if (interactorRenderer.material.mainTexture == null) return;
+        if (!ValidInteractableObject(args)) return;
 
         // Creates pre-selection outline
         GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.preSelected);
@@ -41,43 +61,15 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
 
     public override void OnGameObjectHoverExited(HoverExitEventArgs args)
     {
-        if (args == null || args.interactableObject == null)
-        {
-            return;
-        }
-        if (args.interactableObject.transform.parent != GameManager.getInstance().diffusables.transform)
-        {
-
-            return;
-        }
+        if (!ValidInteractableObject(args)) return;
 
         // Remove pre-selection outline
-        if (selectedObjects.Contains(args.interactableObject.transform.gameObject))
-        {
-            return;
-        }
         GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.unSelected);
     }
 
     public override void onGameObjectSelectEntered(SelectEnterEventArgs args)
     {
-        if (args == null || args.interactableObject == null)
-        {
-            return;
-        }
-        if (args.interactableObject.transform.parent != GameManager.getInstance().diffusables.transform)
-        {
-            return;
-        }
-
-        if (selectedObjects.Contains(args.interactableObject.transform.gameObject))
-        {
-            return;
-        }
-
-        Renderer interactorRenderer = args.interactableObject.transform.gameObject.GetComponent<Renderer>();
-        if (interactorRenderer == null) return;
-        if (interactorRenderer.material.mainTexture == null) return;
+        if (!ValidInteractableObject(args)) return;
 
         // Adds to queue of selected objects
         if (selectedObjects.Count >= MAX_QUEUED_OBJECTS)
@@ -97,6 +89,8 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
     /// <returns></returns>
     protected override DiffusionRequest CreateDiffusionRequest()
     {
+        if (GameManager.getInstance() == null) return null;
+
         DiffusionRequest newDiffusionRequest = new DiffusionRequest();
 
         newDiffusionRequest.diffusionModel = diffusionModels.ghostmix;
@@ -109,15 +103,13 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
 
     public void GetTexturesFromSelected()
     {
+        if (GameManager.getInstance() == null) return;
         if (selectedObjects.Count != MAX_QUEUED_OBJECTS) return;
 
         GameObject firstGameObject = selectedObjects.Dequeue();
         GameObject secondGameObject = selectedObjects.Dequeue();
         Texture go1Text = firstGameObject.GetComponent<Renderer>().material.mainTexture;
-        Texture go2Text = secondGameObject.GetComponent<Renderer>().material.mainTexture;
-
-        GameManager.getInstance().gadget.ChangeOutline(firstGameObject, GadgetSelection.unSelected);
-        GameManager.getInstance().gadget.ChangeOutline(secondGameObject, GadgetSelection.unSelected);
+        Texture go2Text = secondGameObject.GetComponent<Renderer>().material.mainTexture;        
 
         Texture2D copyTexture = TextureManipulationLibrary.toTexture2D(go1Text);
         Texture2D secondCopyTexture = TextureManipulationLibrary.toTexture2D(go2Text);
@@ -139,7 +131,9 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
         if (secondGameObject.TryGetComponent<DiffusableObject>(out DiffusableObject DiffObjSec))
         {
             diffusionRequest.positivePrompt += DiffObjSec.keyword;
-        }        
+        }
+
+        ResetMechanism();
 
         GameManager.getInstance().comfyOrganizer.SendDiffusionRequest(diffusionRequest);
     }
@@ -147,6 +141,7 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
     // -----------------------------------------  PLAYER INPUTS ----------------------------------------- //
     public override void PlaceTextureInput(GameObject GO)
     {
+        if (GameManager.getInstance() == null) return;
         if (GO == null) return;
 
         Texture2D curTexture = GameManager.getInstance().gadget.getGeneratedTexture();
@@ -180,5 +175,15 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
     public override void ActivateGeneration(GameObject GO)
     {
         GetTexturesFromSelected();
+    }
+
+    public override void ResetMechanism()
+    {
+        foreach(GameObject GO in selectedObjects)
+        {
+            GameManager.getInstance().gadget.ChangeOutline(GO, GadgetSelection.unSelected);
+        }
+
+        selectedObjects = new Queue<GameObject>();
     }
 }

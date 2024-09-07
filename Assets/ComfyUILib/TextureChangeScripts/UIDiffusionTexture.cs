@@ -114,6 +114,8 @@ public class UIDiffusionTexture : DiffusionTextureChanger
 
     public override bool AddTexture(DiffusionRequest diffusionRequest)
     {
+        if (GameManager.getInstance().gadget == null) return false;
+
         if (PopupDisplay == null || displayPrefab == null)
         {
             Debug.LogError("Add UI Display and Prefab for the Image UI popup");

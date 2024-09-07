@@ -56,6 +56,7 @@ public class OutpaintingScreenScr : MonoBehaviour
     /// </summary>
     public void CreateScreen()
     {
+        if (GameManager.getInstance().gadget == null) return;
         if (tileObject != null)
         {
             OutpaintingTile tile_scr_check = tileObject.GetComponent<OutpaintingTile>();

@@ -19,6 +19,8 @@ public class TransferSceneOnCollision : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
+        if (GameManager.getInstance() == null) return;
+
         Debug.Log("Exited Scene!");
         GameManager.getInstance().LoadNextScene(thisScene, nextScene);
     }

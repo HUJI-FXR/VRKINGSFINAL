@@ -102,6 +102,7 @@ public class ComfySceneLibrary : MonoBehaviour
 
     private void LoadSpecialServerAddress()
     {
+        if (GameManager.getInstance() == null) return;
         if (loadedServerAddress) return;
         if (serverAddress != "" && serverAddress != "127.0.0.1:8188")
         {
@@ -486,7 +487,7 @@ public class ComfySceneLibrary : MonoBehaviour
     /// <param name="diffReq">DiffusionRequest to send to the server.</param>
     public IEnumerator QueuePromptCoroutine(DiffusionRequest diffReq, int trials)
     {
-        if (!readyForDiffusion || trials <= 0)
+        if (!readyForDiffusion || trials <= 0 || GameManager.getInstance() == null)
         {
             //yield return -1;
             yield break;
@@ -553,6 +554,7 @@ public class ComfySceneLibrary : MonoBehaviour
     
     private IEnumerator CheckIfFileExists(string imageName, FileExistsChecker fileChecker, string subfolder)
     {
+        if (GameManager.getInstance() == null) yield break;
         string url = HTTPPrefix + GameManager.getInstance().IP + "/view?filename=" + imageName + "&type=" + subfolder;
 
         using (var unityWebRequest = UnityWebRequest.Head(url))
@@ -577,6 +579,7 @@ public class ComfySceneLibrary : MonoBehaviour
     /// <param name="diffReq">given DiffusionRequest to download the images created for it</param>
     IEnumerator RequestFileNameRoutine(DiffusionRequest diffReq)
     {
+        if (GameManager.getInstance() == null) yield break;
         string url = HTTPPrefix + GameManager.getInstance().IP + "/history/" + diffReq.prompt_id;
 
         using (UnityWebRequest webRequest = UnityWebRequest.Get(url))
@@ -675,6 +678,7 @@ public class ComfySceneLibrary : MonoBehaviour
     /// <param name="diffReq">DiffusionRequest to add downloaded image to</param>
     private IEnumerator DownloadImage(string filename, DiffusionRequest diffReq)
     {
+        if (GameManager.getInstance() == null) yield break;
         int MAX_RETRIES = MAX_NETWORKING_RETRIES;
 
         FileExistsChecker fileCheck = new FileExistsChecker();
@@ -737,6 +741,7 @@ public class ComfySceneLibrary : MonoBehaviour
     /// <param name="diffReq">Diffusion Request containting Textures to upload to the server.</param>
     private IEnumerator UploadImage(DiffusionRequest diffReq)
     {
+        if (GameManager.getInstance() == null) yield break;
         if (diffReq == null) yield break;
         List<Texture2D> curTextures = diffReq.uploadTextures;
 
@@ -748,6 +753,8 @@ public class ComfySceneLibrary : MonoBehaviour
         for (int i = 0; i < curTextures.Count; i++)
         {
             Texture2D curTexture = curTextures[i];
+            // Resizing the image to a default size for fast Diffusion
+            curTexture = GeneralGameLibraries.TextureManipulationLibrary.Resize(curTexture);
 
             string url = HTTPPrefix + GameManager.getInstance().IP + "/upload/image";
 

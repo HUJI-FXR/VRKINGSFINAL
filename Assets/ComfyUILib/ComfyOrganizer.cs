@@ -162,21 +162,13 @@ public class ComfyOrganizer : MonoBehaviour
         // Texture2D deep copying --------------------------------------------------------------------
         foreach (Texture2D texture in diffusionRequest.textures)
         {
-            Texture2D copyTexture = new Texture2D(texture.width, texture.height);
-            copyTexture.SetPixels(texture.GetPixels());
-            copyTexture.Apply();
-            copyTexture.name = texture.name;
-
+            Texture2D copyTexture = GeneralGameLibraries.TextureManipulationLibrary.CopyTexture(texture);
             newDiffusionRequest.textures.Add(copyTexture);
         }
         
         foreach (Texture2D texture in diffusionRequest.uploadTextures)
         {
-            Texture2D copyTexture = new Texture2D(texture.width, texture.height);
-            copyTexture.SetPixels(texture.GetPixels());
-            copyTexture.Apply();
-            copyTexture.name = texture.name;
-
+            Texture2D copyTexture = GeneralGameLibraries.TextureManipulationLibrary.CopyTexture(texture);
             newDiffusionRequest.uploadTextures.Add(copyTexture);
         }
         // Texture2D deep copying --------------------------------------------------------------------

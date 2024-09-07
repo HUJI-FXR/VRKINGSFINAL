@@ -28,7 +28,7 @@ public class PhysicalCamera : MonoBehaviour
     /// <param name="args"></param>
     public void CameraScreenshot(ActivateEventArgs args)
     {        
-        if (curCamera == null || timerActivated) return;
+        if (curCamera == null || timerActivated || GameManager.getInstance() == null) return;
 
         Texture2D screenShot = GeneralGameLibraries.TextureManipulationLibrary.CaptureScreenshot(curCamera);
 
