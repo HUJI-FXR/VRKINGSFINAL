@@ -14,6 +14,9 @@ public class OutpaintGadgetMechanism : GadgetMechanism
     public OutpaintingScreenScr outpaintingScreen;
     private string curKeyword;
 
+    // Diffusable Object that is being held up
+    private GameObject grabbedObject;
+
     private void Start()
     {
         mechanismText = "Outpainting";
@@ -21,29 +24,74 @@ public class OutpaintGadgetMechanism : GadgetMechanism
 
     // TODO currently the mechanism will work by CLICKING on a DiffusableObject, getting the keywords from it and then picking a relevant OutpaintingTile to start the generation on.outpaintin
 
+    /// <summary>
+    /// Helper function for the Outpainting Mechanism script that checks whether a interactable object should be interacted with further.
+    /// </summary>
+    /// <param name="args">Interactable Object args to check</param>
+    /// <returns>True if should be interacted with</returns>
+    private bool ValidInteractableObject(BaseInteractionEventArgs args, bool grabbable)
+    {
+        if (args == null || args.interactableObject == null) return false;
+        if (GameManager.getInstance() == null) return false;
+
+        Transform curTrans = args.interactableObject.transform;
+
+        // When you use a GrabInteractable, it moves the transform in the hierarchy, thus not being in the Diffusables anymore while being grabbed.
+        if (!grabbable)
+        {
+            if (curTrans.parent != GameManager.getInstance().diffusables.transform) return false;
+        }
+        if (curTrans.gameObject.TryGetComponent<DiffusableObject>(out DiffusableObject DO))
+        {
+            if (!DO.Model3D) return false;
+        }
+
+        return true;
+    }
+
+
     public override void OnGameObjectHoverEntered(HoverEnterEventArgs args)
     {
-        if (GameManager.getInstance() == null) return;
-        if (args == null || args.interactableObject == null) return;
-        if (args.interactableObject.transform.parent != GameManager.getInstance().diffusables.transform) return;
+        if (grabbedObject == null) return;
+        if (!ValidInteractableObject(args, false)) return;
 
-        OutpaintingTile OPT = args.interactableObject.transform.gameObject.GetComponent<OutpaintingTile>();
-        if (OPT != null)
+        if (args.interactableObject.transform.gameObject.TryGetComponent<OutpaintingTile>(out OutpaintingTile OPT))
         {
             if (!OPT.paintable || OPT.painted) return;
 
             // Creates pre-selection outline
             GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.preSelected);
-        }        
+        }  
     }
 
     public override void OnGameObjectHoverExited(HoverExitEventArgs args)
     {
-        if (GameManager.getInstance() == null) return;
-        if (args == null || args.interactableObject == null) return;
-        if (args.interactableObject.transform.parent != GameManager.getInstance().diffusables.transform) return;
+        if (!ValidInteractableObject(args, false)) return;
 
         GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.unSelected);
+    }
+
+
+    public override void DiffusableGrabbed(SelectEnterEventArgs args)
+    {
+        if (!ValidInteractableObject(args, true)) return;
+
+        if (args.interactableObject.transform.gameObject.TryGetComponent<DiffusableObject>(out DiffusableObject DO))
+        {
+            if (DO.Model3D)
+            {
+                grabbedObject = args.interactableObject.transform.gameObject;
+            }
+        }        
+    }
+    // TODO notice possible issue, you grab with left, then right, then release left, you get null, not right
+    // TODO weird potential problem
+    // TODO  - solved when right calls above function and then right becomes grabbed?
+    public override void DiffusableUnGrabbed(SelectExitEventArgs args)
+    {
+        if (!ValidInteractableObject(args, true)) return;
+        if (args.interactableObject.transform.gameObject != grabbedObject) return;
+        grabbedObject = null;
     }
 
 
@@ -96,76 +144,78 @@ public class OutpaintGadgetMechanism : GadgetMechanism
 
     public override void onGameObjectSelectEntered(SelectEnterEventArgs args)
     {
-        if (GameManager.getInstance() == null) return;
-        if (args == null || args.interactableObject == null) return;
-        if (args.interactableObject.transform.parent != GameManager.getInstance().diffusables.transform) return;
+        if (grabbedObject == null) return;
+        if (!ValidInteractableObject(args, false)) return;
+
+        string curPositivePrompt = "";
+        if (grabbedObject.TryGetComponent<DiffusableObject>(out DiffusableObject DO))
+        {
+            if (!DO.Model3D) return;
+            curPositivePrompt = DO.keyword;
+        }
 
         DiffusionRequest newDiffusionRequest = CreateDiffusionRequest();
+        newDiffusionRequest.positivePrompt = curPositivePrompt;
 
-        DiffusableObject diffObj = args.interactableObject.transform.gameObject.GetComponent<DiffusableObject>();
         OutpaintingTile OPT = args.interactableObject.transform.gameObject.GetComponent<OutpaintingTile>();
         RegularDiffusionTexture RDT = args.interactableObject.transform.gameObject.GetComponent<RegularDiffusionTexture>();
-        if (diffObj == null) 
+
+        if (OPT == null || RDT == null) return;
+
+        // Object that is interacted with is an OutpaintingTile
+        if (!(OPT.paintable && !OPT.painted)) return;
+
+        // Finding a texture to be the original to be outpainted from.
+        bool topTileOutpaint = false;
+        bool leftTileOutpaint = false;
+        bool rightTileOutpaint = false;
+
+        string uniqueName = GameManager.getInstance().comfyOrganizer.UniqueImageName();
+
+        // Top tile outpainting
+        if (OPT.tilePosition.y < outpaintingScreen.tileMatrixSize.y - 1)
         {
-            if (OPT == null) return;
-
-            // Object that is interacted with is an OutpaintingTile
-            if (!(OPT.paintable && !OPT.painted) || RDT == null) return;
-
-            // Finding a texture to be the original to be outpainted from.
-            bool topTileOutpaint = false;
-            bool leftTileOutpaint = false;
-            bool rightTileOutpaint = false;
-
-            string uniqueName = GameManager.getInstance().comfyOrganizer.UniqueImageName();
-
-            // Top tile outpainting
-            if (OPT.tilePosition.y < outpaintingScreen.tileMatrixSize.y - 1)
-            {
-                topTileOutpaint = CheckAdjacentTile(new Vector2Int(0, 1), newDiffusionRequest, OPT, uniqueName, "top");
-            }
-
-            // Left tile outpainting
-            if (OPT.tilePosition.x > 0)
-            {
-                leftTileOutpaint = CheckAdjacentTile(new Vector2Int(-1, 0), newDiffusionRequest, OPT, uniqueName, "left");
-            }
-
-            // Right tile outpainting
-            if (OPT.tilePosition.x < outpaintingScreen.tileMatrixSize.x - 1)
-            {
-                if (newDiffusionRequest.uploadTextures.Count <= 1)
-                {
-                    rightTileOutpaint = CheckAdjacentTile(new Vector2Int(1, 0), newDiffusionRequest, OPT, uniqueName, "right");
-                }
-            }                      
-
-            if (!topTileOutpaint && !leftTileOutpaint && !rightTileOutpaint)    return;
-            if (topTileOutpaint && leftTileOutpaint)
-            {
-                CheckAdjacentTile(new Vector2Int(-1, 1), newDiffusionRequest, OPT, uniqueName, "bottomRight");
-                newDiffusionRequest.diffusionJsonType = diffusionWorkflows.grid4Outpainting;
-            }
-            else if (topTileOutpaint && rightTileOutpaint)
-            {
-                CheckAdjacentTile(new Vector2Int(1, 1), newDiffusionRequest, OPT, uniqueName, "bottomLeft");
-                newDiffusionRequest.diffusionJsonType = diffusionWorkflows.grid4Outpainting;
-            }
-
-            outpaintingScreen.UpdateTiles(new Vector2Int(OPT.tilePosition.x, OPT.tilePosition.y));                               
-            newDiffusionRequest.targets.Add(RDT);
-
-            newDiffusionRequest.positivePrompt = curKeyword;
-
-            GameManager.getInstance().comfyOrganizer.SendDiffusionRequest(newDiffusionRequest);
+            topTileOutpaint = CheckAdjacentTile(new Vector2Int(0, 1), newDiffusionRequest, OPT, uniqueName, "top");
         }
-        // Object that is interacted with is a DiffusableObject
-        else
-        {
-            curKeyword = diffObj.keyword;
 
-            // Creates selection outline
-            GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.selected);         
-        }                        
+        // Left tile outpainting
+        if (OPT.tilePosition.x > 0)
+        {
+            leftTileOutpaint = CheckAdjacentTile(new Vector2Int(-1, 0), newDiffusionRequest, OPT, uniqueName, "left");
+        }
+
+        // Right tile outpainting
+        if (OPT.tilePosition.x < outpaintingScreen.tileMatrixSize.x - 1)
+        {
+            if (newDiffusionRequest.uploadTextures.Count <= 1)
+            {
+                rightTileOutpaint = CheckAdjacentTile(new Vector2Int(1, 0), newDiffusionRequest, OPT, uniqueName, "right");
+            }
+        }                      
+
+        if (!topTileOutpaint && !leftTileOutpaint && !rightTileOutpaint)    return;
+        if (topTileOutpaint && leftTileOutpaint)
+        {
+            CheckAdjacentTile(new Vector2Int(-1, 1), newDiffusionRequest, OPT, uniqueName, "bottomRight");
+            newDiffusionRequest.diffusionJsonType = diffusionWorkflows.grid4Outpainting;
+        }
+        else if (topTileOutpaint && rightTileOutpaint)
+        {
+            CheckAdjacentTile(new Vector2Int(1, 1), newDiffusionRequest, OPT, uniqueName, "bottomLeft");
+            newDiffusionRequest.diffusionJsonType = diffusionWorkflows.grid4Outpainting;
+        }
+
+        outpaintingScreen.UpdateTiles(new Vector2Int(OPT.tilePosition.x, OPT.tilePosition.y));                               
+        newDiffusionRequest.targets.Add(RDT);
+
+        // TODO force ungrab the grabbedObject
+        ObjectFlightToTile curFlight = grabbedObject.AddComponent<ObjectFlightToTile>();
+        curFlight.StartMovement(grabbedObject.transform.position, args.interactableObject.transform.position);
+
+        grabbedObject = null;
+        // TODO add script to move it towards tile and disappear when inside        
+        // TODO create effect on tile while image is being made, to indicate diffusion is processing
+
+        GameManager.getInstance().comfyOrganizer.SendDiffusionRequest(newDiffusionRequest);
     }
 }

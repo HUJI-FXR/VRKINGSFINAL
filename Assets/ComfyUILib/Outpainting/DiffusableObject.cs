@@ -45,15 +45,21 @@ public class DiffusableObject : MonoBehaviour
 
     public void OnSelectEntered(SelectEnterEventArgs args)
     {
+        if (GameManager.getInstance() == null) return;
         if (GameManager.getInstance().gadget == null) return;
-        grabbed = true;        
+        grabbed = true;
+
+        Debug.Log("sent1");
 
         GameManager.getInstance().gadget.DiffusableGrabbed(args);
     }
     public void OnSelectExited(SelectExitEventArgs args)
     {
+        if (GameManager.getInstance() == null) return;
         if (GameManager.getInstance().gadget == null) return;
-        grabbed = false;        
+        grabbed = false;
+
+        Debug.Log("sent2");
 
         GameManager.getInstance().gadget.DiffusableUnGrabbed(args);
     }
