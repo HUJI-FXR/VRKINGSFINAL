@@ -11,7 +11,6 @@ public class PhysicalCamera : MonoBehaviour
 
     public RenderTexture screenRenderTexture;
     public GameObject screenPlane;
-    public GameObject screenshotPlane;
 
     // The Camera that is attached to this Camera
     // We make it a public variable as it is simple and visual as a whole prefab
@@ -19,7 +18,7 @@ public class PhysicalCamera : MonoBehaviour
 
     private void Start()
     {
-        if (screenRenderTexture == null || screenPlane == null || screenshotPlane == null) Debug.LogError("Add the requirements for the physical camera");
+        if (screenRenderTexture == null || screenPlane == null) Debug.LogError("Add the requirements for the physical camera");
     }
 
     /// <summary>
@@ -48,19 +47,10 @@ public class PhysicalCamera : MonoBehaviour
         // Time until next screenshot is possible
         const float timeToWait = 2.0f;
 
-        yield return new WaitForSeconds(timeToWait);        
-
         // Freezing screen
-        timerActivated = true;        
-        screenshotPlane.GetComponent<Renderer>().material.mainTexture = screenShot; // screenShot
-        screenshotPlane.SetActive(true);        
+        timerActivated = true;                   
 
         yield return new WaitForSeconds(timeToWait);
-
-        Debug.Log("falser");
-
-        timerActivated = false;
-        screenshotPlane.SetActive(false);
 
         // creates off-screen render texture that can rendered into
         screenRenderTexture = new RenderTexture(screenRenderTexture.width, screenRenderTexture.height, 24);
@@ -71,6 +61,8 @@ public class PhysicalCamera : MonoBehaviour
 
         // Unfreezing screen        
         screenPlane.GetComponent<Renderer>().material.SetTexture("_BaseMap", screenRenderTexture);
+
+        timerActivated = false;
 
         yield break;
     }

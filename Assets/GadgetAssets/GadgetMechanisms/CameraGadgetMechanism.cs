@@ -75,33 +75,48 @@ public class CameraGadgetMechanism : GadgetMechanism
         }
     }
 
+    /// <summary>
+    /// Helper function used to validate further interaction with an object in accordance to the Camera Mechanism
+    /// </summary>
+    /// <param name="args">Interactable Object to be evaluated</param>
+    /// <returns>True is further interaction is validated</returns>
+    private bool ValidInteractableObject(BaseInteractionEventArgs args)
+    {
+        if (GameManager.getInstance() == null) return false;
+        if (!UseStyleTransfer) return false;
+        if (args == null || args.interactableObject == null) return false;
+
+        Transform curTrans = args.interactableObject.transform;
+        if (curTrans.parent != GameManager.getInstance().diffusables.transform) return false;
+        if (curTrans.gameObject == selectedStyleObject) return false;
+        if (curTrans.gameObject.TryGetComponent<Renderer>(out Renderer REN))
+        {
+            if (REN.material.mainTexture == null) return false;
+        }
+        else
+        {
+            return false;
+        }
+
+        return true;
+    }
+
     public override void OnGameObjectHoverEntered(HoverEnterEventArgs args)
     {
-        if (GameManager.getInstance() == null) return;
-        if (!UseStyleTransfer) return;
-        if (args == null || args.interactableObject == null) return;
-        if (args.interactableObject.transform.parent != GameManager.getInstance().diffusables.transform) return;
-        if (args.interactableObject.transform.gameObject == selectedStyleObject) return;
+        if (!ValidInteractableObject(args)) return;
 
         // Creates pre-selection outline
         GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.preSelected);
     }
     public override void OnGameObjectHoverExited(HoverExitEventArgs args)
     {
-        if (GameManager.getInstance() == null) return;
-        if (!UseStyleTransfer) return;
-        if (args == null || args.interactableObject == null) return;
-        if (args.interactableObject.transform.parent != GameManager.getInstance().diffusables.transform) return;
-        if (args.interactableObject.transform.gameObject == selectedStyleObject) return;
+        if (!ValidInteractableObject(args)) return;
 
         GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.unSelected);
     }
     public override void onGameObjectSelectEntered(SelectEnterEventArgs args)
     {
-        if (GameManager.getInstance() == null) return;
-        if (!UseStyleTransfer) return;
-        if (args == null || args.interactableObject == null) return;
-        if (args.interactableObject.transform.parent != GameManager.getInstance().diffusables.transform) return;
+        if (!ValidInteractableObject(args)) return;
 
         // Removing previously selected object
         if (selectedStyleObject != null)
@@ -148,7 +163,7 @@ public class CameraGadgetMechanism : GadgetMechanism
     {
         if (GameManager.getInstance() == null) return;
 
-        if (contentTexture == null || styleTexture== null)
+        if (contentTexture == null || styleTexture == null)
         {
             Debug.LogError("Need to pick style and content textures for Camera mechanism");
             return;
