@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.Events;
 
 /// <summary>
 /// Representes a matrix screen used for Outpainting. It is expected that the bottom middle tile, 
@@ -28,6 +29,9 @@ public class OutpaintingScreenScr : MonoBehaviour
 
     [NonSerialized]
     public GameObject[,] tiles;
+
+    // Event that is Invoked when all the screen has been painted
+    public UnityEvent UponScreenCompletionEvent;
 
     private void OnValidate()
     {
@@ -275,5 +279,28 @@ public class OutpaintingScreenScr : MonoBehaviour
                 }
             }
         }
+
+        // Check if the Screen is complete
+        CheckIfScreenComplete();
+    }
+
+    /// <summary>
+    /// Checks if the Screen is fully painted, if it is, invokes a predetermined UnityEvent
+    /// </summary>
+    private void CheckIfScreenComplete()
+    {
+        for (int i = 0; i < tileMatrixSize.x; i++)
+        {
+            for(int j = 0; j < tileMatrixSize.y; j++)
+            {
+                if (tiles[i, j] == null) return;
+
+                OutpaintingTile OT = tiles[i, j].GetComponent<OutpaintingTile>();
+                if (OT == null) return;
+                if (!OT.painted) return;
+            }
+        }
+
+        UponScreenCompletionEvent?.Invoke();
     }
 }

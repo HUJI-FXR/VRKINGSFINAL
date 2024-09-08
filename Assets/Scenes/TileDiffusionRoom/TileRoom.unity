@@ -347,6 +347,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &12056918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -586,6 +589,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &42837841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1050,6 +1056,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &55492143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1394,6 +1403,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &86120571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1633,6 +1645,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &91492034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1977,6 +1992,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &99414949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2321,6 +2339,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &136435415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2560,6 +2581,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &169183193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3009,6 +3033,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &216963953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3248,6 +3275,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &231581986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3487,6 +3517,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &233211910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3726,6 +3759,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &240204968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3965,6 +4001,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &249392697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4204,6 +4243,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &254281440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4443,6 +4485,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &270928322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4682,6 +4727,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &275422407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5026,6 +5074,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &310355188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5265,6 +5316,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &311625273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5578,6 +5632,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &396488720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5817,6 +5874,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &420266072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6056,6 +6116,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &426813900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6295,6 +6358,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &429806582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6534,6 +6600,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &439153152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7125,6 +7194,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &485313317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7442,6 +7514,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &529502623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7716,6 +7791,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &547426335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7955,6 +8033,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &551852395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8194,6 +8275,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &555438201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8433,6 +8517,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &586563071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9227,6 +9314,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &606912254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9466,6 +9556,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &616580816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9705,6 +9798,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &628517386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9978,6 +10074,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &643079720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10263,6 +10362,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &696655055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10502,6 +10604,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &723593762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10741,6 +10846,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &734963300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10980,6 +11088,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &760119365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11219,6 +11330,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &760680784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11563,6 +11677,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &762773938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11802,6 +11919,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &774584952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12041,6 +12161,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &780158951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12280,6 +12403,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &780439434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12519,6 +12645,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &782581016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12758,6 +12887,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &784089021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12997,6 +13129,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &789476709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13236,6 +13371,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &805634358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13509,6 +13647,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &844672529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13748,6 +13889,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &860375142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14054,7 +14198,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14285,6 +14429,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &914502730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14524,6 +14671,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &915580428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14868,6 +15018,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &941085397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15107,6 +15260,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &948879690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15346,6 +15502,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &951592371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15585,6 +15744,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &956096118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15824,6 +15986,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &967237803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16063,6 +16228,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &976101364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16451,6 +16619,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &993040332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16690,6 +16861,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &995355353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16929,6 +17103,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1023749982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17168,6 +17345,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1025244894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17407,6 +17587,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1035233574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17692,6 +17875,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1064909286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17931,6 +18117,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1065483115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18170,6 +18359,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1097503037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18409,6 +18601,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1104538617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18648,6 +18843,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1108611053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19112,6 +19310,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1122711280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19351,6 +19552,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1124034263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19590,6 +19794,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1161135666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19829,6 +20036,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1213760601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20068,6 +20278,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1253428754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20307,6 +20520,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1283365950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20546,6 +20762,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1287641703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20785,6 +21004,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1307699308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21024,6 +21246,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1315463457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21263,6 +21488,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1317852035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21502,6 +21730,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1319180843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21741,6 +21972,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1356221761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21980,6 +22214,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1371635859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22219,6 +22456,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1373172423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22458,6 +22698,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1390348244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22802,6 +23045,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1408461965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23209,6 +23455,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1431444573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23448,6 +23697,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1458268277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23687,6 +23939,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1473677046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23926,6 +24181,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1475736861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24165,6 +24423,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1479327461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24404,6 +24665,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1518296041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24643,6 +24907,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1523247927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24882,6 +25149,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1530173542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25121,6 +25391,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1559456158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25360,6 +25633,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1592545283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25739,6 +26015,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1606235704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25978,6 +26257,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1621497325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26217,6 +26499,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1628069282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26456,6 +26741,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1628762412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26695,6 +26983,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1634395717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26934,6 +27225,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1645537300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27173,6 +27467,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1662085381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27412,6 +27709,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1694715206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27651,6 +27951,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1719788307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27890,6 +28193,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1735843009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28129,6 +28435,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1747060768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28473,6 +28782,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1760570395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28937,6 +29249,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1775010315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29176,6 +29491,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1783920365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29420,6 +29738,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1795123101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29764,6 +30085,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1800784065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30110,6 +30434,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1803398555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30454,6 +30781,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1845255815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30693,6 +31023,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1848956180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30932,6 +31265,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1854325905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31171,6 +31507,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1866399619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31620,6 +31959,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1926784815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31964,6 +32306,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1933398289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32273,6 +32618,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1940128949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32512,6 +32860,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1951458312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32751,6 +33102,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1973839954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33001,6 +33355,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1988538350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33240,6 +33597,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2002718662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33479,6 +33839,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2018227952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33796,6 +34159,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2021991209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34035,6 +34401,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2043925927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34274,6 +34643,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2053303197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34513,6 +34885,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2055051313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34870,6 +35245,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2074979267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35109,6 +35487,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2093926155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35422,6 +35803,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2100643121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35766,6 +36150,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2112697018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36005,6 +36392,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2113428681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36322,6 +36712,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2127361336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36666,6 +37059,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTextureEvery: 1
   changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2138888609
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -106,8 +106,10 @@ public class ComfySceneLibrary : MonoBehaviour
         if (loadedServerAddress) return;
         if (serverAddress != "" && serverAddress != "127.0.0.1:8188")
         {
-            GameManager.getInstance().IP = serverAddress;
-            HTTPPrefix = "http://";
+            GameManager.getInstance().IP = THINKDIFFUSION_PREFIX + serverAddress + THINKDIFFUSION_POSTFIX;            
+            HTTPPrefix = "https://";
+
+            Debug.Log("NOTICE! You have set a custom server IP in this scene: " + GameManager.getInstance().IP.ToString());
         }
         else
         {
@@ -115,11 +117,15 @@ public class ComfySceneLibrary : MonoBehaviour
             {
                 GameManager.getInstance().IP = THINKDIFFUSION_PREFIX + GameManager.getInstance().IP + THINKDIFFUSION_POSTFIX;
                 HTTPPrefix = "https://";
+
+                Debug.Log("Set the final server IP as: " + GameManager.getInstance().IP.ToString());
             }
             else
             {
                 GameManager.getInstance().IP = "127.0.0.1:8188";
                 HTTPPrefix = "http://";
+
+                Debug.Log("No unique server IP set, seeting default: " + GameManager.getInstance().IP.ToString());
             }
         }
 

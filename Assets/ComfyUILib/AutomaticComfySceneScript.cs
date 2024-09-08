@@ -7,7 +7,9 @@ using UnityEngine.Events;
 [Serializable]
 public class GameAction
 {
+    // TODO remove index, why do I even need it?? there is already index by default
     public int index;
+
     public string name;
     public bool value;
     public UnityEvent eventToCall;
