@@ -6637,7 +6637,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameActions:
   - index: 0
-    name: look at left palm - GadgetInterfaceIntro
+    TimeToFinishGameAction: 12
+    name: 'Next: look at left palm - GadgetInterfaceIntro'
     value: 0
     eventToCall:
       m_PersistentCalls:
@@ -6655,7 +6656,8 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   - index: 1
-    name: uidiffusiontexture addtexture - CombineImagesIntro
+    TimeToFinishGameAction: 11
+    name: 'Next: uidiffusiontexture addtexture - CombineImagesIntro'
     value: 0
     eventToCall:
       m_PersistentCalls:
@@ -6673,7 +6675,8 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   - index: 2
-    name: place image - ImagePlacementIntro
+    TimeToFinishGameAction: 15
+    name: 'Next: place image - ImagePlacementIntro'
     value: 0
     eventToCall:
       m_PersistentCalls:
@@ -6691,7 +6694,8 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   - index: 3
-    name: Go to next scene - MechanismChangeIntro
+    TimeToFinishGameAction: 16
+    name: 'Next: Go to next scene - MechanismChangeIntro'
     value: 0
     eventToCall:
       m_PersistentCalls:
@@ -6708,18 +6712,6 @@ MonoBehaviour:
             m_StringArgument: MechanismChangeIntro
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 2545934797310713548}
-          m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-          m_MethodName: set_enabled
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: MechanismChangeIntro
-            m_BoolArgument: 1
-          m_CallState: 2
         - m_Target: {fileID: 2545934797310713544}
           m_TargetAssemblyTypeName: ComfyXROriginConnector, Assembly-CSharp
           m_MethodName: AddMechanism
@@ -6729,7 +6721,19 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: GadgetMechanism, Assembly-CSharp
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: MechanismChangeIntro
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 2545934797310713548}
+          m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+          m_MethodName: set_enabled
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
   IndexToStart: 0
@@ -14198,7 +14202,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

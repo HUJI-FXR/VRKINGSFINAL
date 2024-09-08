@@ -110,6 +110,9 @@ public class ComfyOrganizer : MonoBehaviour
     // TODO it doesn't even seem that I'm really using this List for anything
     private List<string> allTextureNames;
 
+    // An updating list of all textures that have been generated throughout the Game
+    public List<Texture2D> allTextures;
+
     // Counter for Images to differentiate them
     private static int currentTextureNameNumber = 0;
 
@@ -302,6 +305,9 @@ public class ComfyOrganizer : MonoBehaviour
         if (DiffuseDictionary[requestNum].numOfVariations > DiffuseDictionary[requestNum].textures.Count)
         {
             DiffuseDictionary[requestNum].textures.Add(texture);
+            
+            // Not efficient to hold a large List like this, but used for explosion in the end of the Game
+            allTextures.Add(texture);
         }
         if (DiffuseDictionary[requestNum].numOfVariations <= DiffuseDictionary[requestNum].textures.Count)
         {
