@@ -16600,7 +16600,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0db4d44b628fd40b52208e6d3bbb0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionMode: 1
+  explosionMode: 0
   diffusionTextures:
   - {fileID: 2800000, guid: 68a3887fe7391e8428e66dc1b1bfc0d2, type: 3}
   - {fileID: 2800000, guid: b941bcb49435b284187c12d625055b26, type: 3}
