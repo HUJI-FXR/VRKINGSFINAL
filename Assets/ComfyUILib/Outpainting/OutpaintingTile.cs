@@ -11,7 +11,8 @@ public class OutpaintingTile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (painted || other == null || out_screen == null || GetComponent<RegularDiffusionTexture>() == null || GameManager.getInstance().gadget == null)
+        if (painted || other == null || out_screen == null || 
+            GetComponent<RegularDiffusionTexture>() == null || GameManager.getInstance().gadget == null)
         {
             return;
         }
@@ -19,14 +20,12 @@ public class OutpaintingTile : MonoBehaviour
         DiffusableObject diff = other.gameObject.GetComponent<DiffusableObject>();
         if (diff == null) return;
         if (!diff.Model3D) return;
-        /*XRGrabInteractable inter = other.gameObject.GetComponent<XRGrabInteractable>();
-        if (inter == null) return;*/
-        /*Rigidbody rigidbody = inter.gameObject.GetComponent<Rigidbody>();
-        if (rigidbody == null) return;*/
-
-        /*rigidbody.useGravity = false;
-        out_screen.Paint(tilePosition, diff.keyword);*/
 
         GameManager.getInstance().gadget.GeneralActivation(GetComponent<RegularDiffusionTexture>());
+    }
+
+    public void SetPainted(bool curPaintedStatus)
+    {
+        painted = curPaintedStatus;
     }
 }

@@ -242,7 +242,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1507636620937791836, guid: 7097ba7ba649e1f41bba232312bdcbd8, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1507636620937791839, guid: 7097ba7ba649e1f41bba232312bdcbd8, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -6555,7 +6555,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1507636620937791836, guid: 7097ba7ba649e1f41bba232312bdcbd8, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1507636620937791839, guid: 7097ba7ba649e1f41bba232312bdcbd8, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -7753,6 +7753,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 111534746}
   m_LocalEulerAnglesHint: {x: 0, y: -88.61, z: 0}
+--- !u!1 &660404590 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3840329834457225280, guid: 8c68af23b8b3f9648bd30983f04ace7f, type: 3}
+  m_PrefabInstance: {fileID: 1271311801}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &696661816
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7956,7 +7961,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1507636620937791836, guid: 7097ba7ba649e1f41bba232312bdcbd8, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1507636620937791839, guid: 7097ba7ba649e1f41bba232312bdcbd8, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -10675,18 +10680,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9215893083828604471, guid: 8c68af23b8b3f9648bd30983f04ace7f, type: 3}
       propertyPath: AddedTextureUnityEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9215893083828604471, guid: 8c68af23b8b3f9648bd30983f04ace7f, type: 3}
       propertyPath: AddedTextureUnityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9215893083828604471, guid: 8c68af23b8b3f9648bd30983f04ace7f, type: 3}
+      propertyPath: AddedTextureUnityEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9215893083828604471, guid: 8c68af23b8b3f9648bd30983f04ace7f, type: 3}
       propertyPath: AddedTextureUnityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1486141752}
     - target: {fileID: 9215893083828604471, guid: 8c68af23b8b3f9648bd30983f04ace7f, type: 3}
+      propertyPath: AddedTextureUnityEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1271311803}
+    - target: {fileID: 9215893083828604471, guid: 8c68af23b8b3f9648bd30983f04ace7f, type: 3}
       propertyPath: AddedTextureUnityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9215893083828604471, guid: 8c68af23b8b3f9648bd30983f04ace7f, type: 3}
+      propertyPath: AddedTextureUnityEvent.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9215893083828604471, guid: 8c68af23b8b3f9648bd30983f04ace7f, type: 3}
@@ -10694,21 +10711,44 @@ PrefabInstance:
       value: DoGameAction
       objectReference: {fileID: 0}
     - target: {fileID: 9215893083828604471, guid: 8c68af23b8b3f9648bd30983f04ace7f, type: 3}
+      propertyPath: AddedTextureUnityEvent.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetPainted
+      objectReference: {fileID: 0}
+    - target: {fileID: 9215893083828604471, guid: 8c68af23b8b3f9648bd30983f04ace7f, type: 3}
       propertyPath: AddedTextureUnityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: AutomaticComfySceneScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 9215893083828604471, guid: 8c68af23b8b3f9648bd30983f04ace7f, type: 3}
+      propertyPath: AddedTextureUnityEvent.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: OutpaintingTile, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 9215893083828604471, guid: 8c68af23b8b3f9648bd30983f04ace7f, type: 3}
       propertyPath: AddedTextureUnityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9215893083828604471, guid: 8c68af23b8b3f9648bd30983f04ace7f, type: 3}
+      propertyPath: AddedTextureUnityEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9215893083828604471, guid: 8c68af23b8b3f9648bd30983f04ace7f, type: 3}
+      propertyPath: AddedTextureUnityEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9215893083828604471, guid: 8c68af23b8b3f9648bd30983f04ace7f, type: 3}
       propertyPath: AddedTextureUnityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 9215893083828604471, guid: 8c68af23b8b3f9648bd30983f04ace7f, type: 3}
+      propertyPath: AddedTextureUnityEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3840329834457225280, guid: 8c68af23b8b3f9648bd30983f04ace7f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1271311810}
   m_SourcePrefab: {fileID: 100100000, guid: 8c68af23b8b3f9648bd30983f04ace7f, type: 3}
 --- !u!114 &1271311802 stripped
 MonoBehaviour:
@@ -10721,6 +10761,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c766702691d34d64d98803df8b0264c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1271311803 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1229692610307927706, guid: 8c68af23b8b3f9648bd30983f04ace7f, type: 3}
+  m_PrefabInstance: {fileID: 1271311801}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 660404590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3c43f5c783ebd54e857eab63e5f6a9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1271311810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 660404590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textures: []
+  constantTransition: 1
+  transitionSpeed: 0.3
+  noiseIntensity: 1
+  smoothness: 0.01
 --- !u!1001 &1354546080
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10994,6 +11062,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameActions:
   - index: 0
+    TimeToFinishGameAction: 0
     name: Go to end of path - ParkIntro
     value: 0
     eventToCall:
@@ -11012,6 +11081,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   - index: 1
+    TimeToFinishGameAction: 0
     name: Do one outpainting tile - OutpaintingIntro
     value: 0
     eventToCall:
@@ -11030,6 +11100,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   - index: 2
+    TimeToFinishGameAction: 0
     name: Complete outpainting screen - OutpaintingProgress
     value: 0
     eventToCall:
@@ -11048,6 +11119,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   - index: 3
+    TimeToFinishGameAction: 0
     name: finished
     value: 0
     eventToCall:

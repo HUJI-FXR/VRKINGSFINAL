@@ -759,6 +759,7 @@ public class ComfySceneLibrary : MonoBehaviour
         for (int i = 0; i < curTextures.Count; i++)
         {
             Texture2D curTexture = curTextures[i];
+
             // Resizing the image to a default size for fast Diffusion
             curTexture = GeneralGameLibraries.TextureManipulationLibrary.Resize(curTexture);
 

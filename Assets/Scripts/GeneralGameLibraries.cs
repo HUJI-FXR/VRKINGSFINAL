@@ -99,6 +99,8 @@ public static class GeneralGameLibraries : System.Object
             tex.ReadPixels(new Rect(0, 0, rTex.width, rTex.height), 0, 0);
             tex.Apply();
 
+            tex.name = inTex.name;
+
             return tex;
         }
 

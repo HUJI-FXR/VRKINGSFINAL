@@ -131,7 +131,23 @@ public class OutpaintGadgetMechanism : GadgetMechanism
 
         if (curTileComp.painted == true)
         {
-            Texture2D curTexture = TextureManipulationLibrary.toTexture2D(curOffsetTile.GetComponent<Renderer>().material.mainTexture);
+            Texture2D curTexture = null;
+            if (curOffsetTile.TryGetComponent<TextureTransition>(out TextureTransition TT))
+            {
+                if (TT.textures.Count <= 0)
+                {
+                    Debug.LogError("There is no texture in the painted tile " + curOffsetTile.name);
+                    return false;
+                }
+                Texture curTextureToConvert = TT.textures[0];
+                curTexture = GeneralGameLibraries.TextureManipulationLibrary.toTexture2D(curTextureToConvert);
+            }
+            else
+            {
+                curTexture = TextureManipulationLibrary.toTexture2D(curOffsetTile.GetComponent<Renderer>().material.mainTexture);
+            }
+            Debug.Log(curTexture.name);
+
             diffusionRequest.uploadTextures.Add(curTexture);
             curTexture.name = mainTileName + "_" + offsetTileName + ".png";
             diffusionRequest.SpecialInput = offsetTileName;
@@ -212,8 +228,9 @@ public class OutpaintGadgetMechanism : GadgetMechanism
         ObjectFlightToTile curFlight = grabbedObject.AddComponent<ObjectFlightToTile>();
         curFlight.StartMovement(grabbedObject.transform.position, args.interactableObject.transform.position);
 
-        grabbedObject = null;
-        // TODO add script to move it towards tile and disappear when inside        
+        GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.unSelected);
+
+        grabbedObject = null;        
         // TODO create effect on tile while image is being made, to indicate diffusion is processing
 
         GameManager.getInstance().comfyOrganizer.SendDiffusionRequest(newDiffusionRequest);

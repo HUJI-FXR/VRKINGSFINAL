@@ -10,7 +10,7 @@ using UnityEngine;
 public class TextureTransition : MonoBehaviour
 {
     // Textures to be cycled through
-    public List<Texture2D> textures;
+    public List<Texture> textures;
 
     // Simple optimization to stop retexturing a single texture
     private bool singleTexture = false;
@@ -56,7 +56,7 @@ public class TextureTransition : MonoBehaviour
 
     void Update()
     {
-        if (textures == null) return;
+        if (textures == null || transitionMaterial == null) return;
         if (textures.Count <= 0) return;
 
         if (textures.Count == 1)
@@ -90,7 +90,7 @@ public class TextureTransition : MonoBehaviour
     /// </summary>
     public void TriggerNextTexture()
     {
-        if (textures == null) return;
+        if (textures == null || transitionMaterial == null) return;
         if (textures.Count <= 0) return;
         if (transition <= 1.0f) return;
 
@@ -101,5 +101,18 @@ public class TextureTransition : MonoBehaviour
         // Update the textures in the shader
         transitionMaterial.SetTexture("_CurrentTex", textures[currentTextureIndex]);
         transitionMaterial.SetTexture("_NextTex", textures[nextTextureIndex]);
+    }
+
+    public void ResetTransition()
+    {
+        if (transitionMaterial == null) return;
+
+        textures = new List<Texture>();
+        transition = 0;
+        currentTextureIndex = 0;
+        nextTextureIndex = 1;
+
+        transitionMaterial.SetTexture("_CurrentTex", null);
+        transitionMaterial.SetTexture("_NextTex", null);
     }
 }

@@ -98,45 +98,24 @@ public class OutpaintingScreenScr : MonoBehaviour
 
             if (firstTileTexture != null)
             {
+                UpdateTiles(firstPaintedTile);
+
                 Debug.Log("Setting first texture in screen");
                 Renderer renderer = tiles[firstPaintedTile.x, firstPaintedTile.y].GetComponent<Renderer>();
                 tiles[firstPaintedTile.x, firstPaintedTile.y].GetComponent<OutpaintingTile>().painted = true;
-                renderer.material.mainTexture = firstTileTexture;
-                renderer.material.SetTexture("_BaseMap", firstTileTexture);
-                UpdateTiles(firstPaintedTile);
+
+                if (tiles[firstPaintedTile.x, firstPaintedTile.y].TryGetComponent<TextureTransition>(out TextureTransition TT))
+                {
+                    TT.textures = new List<Texture> { firstTileTexture };
+                }
+                else
+                {
+                    renderer.material.mainTexture = firstTileTexture;
+                    renderer.material.SetTexture("_BaseMap", firstTileTexture);
+                }                               
             }            
         }
     }
-
-
-    // TODO do I need this function?
-    /*public void Paint(Vector2Int tilePos, string keyword)
-    {
-        // TODO assuming that we are not yet taking into accoount a situation where we generate a middle image between 8 generated tiles
-        // TODO get adjacent tiles - currently only taking into account the left tile
-        if (tilePos.x == 0)
-        {
-            return;
-        }
-        if (tilePos.x > 0)
-        {
-            if (!tiles[tilePos.x-1, tilePos.y].GetComponent<OutpaintingTile>().painted)
-            {
-                return;
-            }
-        }
-
-        // TODO get adjacent tile textures - currently only taking into account the left tile
-        Renderer tileRenderer = tiles[tilePos.x-1, tilePos.y].GetComponent<Renderer>();
-        Texture prevTexture = tileRenderer.material.GetTexture("_MainTex");
-
-        // TODO make texture to fill up accordingly
-        // TODO send texture
-        // TODO get outpainted texture for tile
-        // TODO add the outpainted texture to tile
-
-        tiles[tilePos.x, tilePos.y].GetComponent<OutpaintingTile>().painted = true;
-    }*/
 
     /// <summary>
     /// Helper function for the UpdateTiles function. Checks if a tile is painted, if not, makes it paintable.
@@ -149,7 +128,18 @@ public class OutpaintingScreenScr : MonoBehaviour
         if (cur_tile_target.painted == false)
         {
             cur_tile_target.paintable = true;
-            cur_tile_target.GetComponent<Renderer>().material.mainTexture = paintableTexture;
+
+            Renderer renderer = cur_tile_target.gameObject.GetComponent<Renderer>();
+            if (cur_tile_target.gameObject.TryGetComponent<TextureTransition>(out TextureTransition TT))
+            {
+                TT.ResetTransition();
+                TT.textures = new List<Texture> { paintableTexture };
+            }
+            else
+            {
+                renderer.material.mainTexture = paintableTexture;
+                renderer.material.SetTexture("_BaseMap", paintableTexture);
+            }
         }
     }
 
@@ -178,8 +168,32 @@ public class OutpaintingScreenScr : MonoBehaviour
 
         // Paints the current tile and makes it unpaintable beyond that
         OutpaintingTile cur_tile_scr = tiles[tilePos.x, tilePos.y].GetComponent<OutpaintingTile>();
-        cur_tile_scr.painted = true;
+        
         cur_tile_scr.paintable = false;
+
+        // This is no longer done here because a tile IS NOT painted before a texture arrives for it,
+        // it is under progress, and we create an effect to indicate that here
+        // cur_tile_scr.painted = true;
+
+        // Creating an effect of the tile being under progress
+        if (tiles[tilePos.x, tilePos.y].TryGetComponent<TextureTransition>(out TextureTransition TT))
+        {
+            Texture2D[] curTextures = Resources.LoadAll<Texture2D>("Textures/Noise");
+            List<Texture2D> listTextures = new List<Texture2D>(curTextures);
+            listTextures = GeneralGameLibraries.GetRandomElements(listTextures, 2);
+            if (listTextures.Count <= 1)
+            {
+                Debug.LogError("Add more noise textures to the Resources/Textures/Noise folder");
+            }
+
+            TT.ResetTransition();
+
+            TT.textures = new List<Texture>
+            {
+                listTextures[0],
+                listTextures[1]
+            };
+        }
 
         // We create a difference between tiles in the MIDDLE column and those on the sides.
         // 1. If a middle column tile is painted:
