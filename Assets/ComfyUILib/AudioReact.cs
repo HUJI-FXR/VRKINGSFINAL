@@ -11,7 +11,13 @@ public class AudioReact : MonoBehaviour
     AudioSource audioSource;
     public float[] samples;
 
-    public float avg = 0f;
+    public bool wentOverThreshold = false;
+
+    private float avg = 0f;
+    private float rollingAvg = 0f;
+
+    [Range(0f, 1f)]
+    private float rollingAvgAlpha = 0.9f;
 
     // Start is called before the first frame update
     void Start()
@@ -26,11 +32,16 @@ public class AudioReact : MonoBehaviour
         GetSpectrumAudioSource ();
         avg = samples.Average();
 
-        //Debug.Log(avg);
-        /*if (avg > 1 )
+        rollingAvg = rollingAvgAlpha * rollingAvg + (1 - rollingAvgAlpha) * avg;
+
+        if (rollingAvg > 1.5 * avg)
         {
-            Debug.Log(avg);
-        }*/
+            wentOverThreshold = true;
+        }
+        else
+        {
+            wentOverThreshold = false;
+        }
     }
 
     void GetSpectrumAudioSource()

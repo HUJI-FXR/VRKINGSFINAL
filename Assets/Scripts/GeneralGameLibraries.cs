@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -7,12 +9,23 @@ using UnityEngine.Rendering;
 /// <summary>
 /// A collection of Classes and functions that are useful throughout the project and are based on default Unity types of Objects.
 /// </summary>
-public class GeneralGameLibraries : Object
+public static class GeneralGameLibraries : System.Object
 {
+    /// <summary>
+    /// Gets a random sublist of size elementsCount from given list
+    /// </summary>
+    /// <returns>Sublist of size elementsCount from given list</returns>
+    public static List<T> GetRandomElements<T>(List<T> list, int elementsCount)
+    {
+        if (list == null) return null;
+        if (list.Count() <= elementsCount) return null;
+        return list.OrderBy(arg => Guid.NewGuid()).Take(elementsCount).ToList();
+    }
+
     /// <summary>
     /// Opens an folder and retreives all the Audio Clips within for easy use through its Dictionary
     /// </summary>
-    public class AudioClipsLibrary : Object
+    public class AudioClipsLibrary : UnityEngine.Object
     {
         public string AudioClipFolder;
         public Dictionary<string, AudioClip> AudioClips;
@@ -48,7 +61,7 @@ public class GeneralGameLibraries : Object
     /// <summary>
     /// Provides functions for general Texture manipulations
     /// </summary>
-    public class TextureManipulationLibrary : Object
+    public class TextureManipulationLibrary : UnityEngine.Object
     {
         // https://stackoverflow.com/questions/44264468/convert-rendertexture-to-texture2d
 
