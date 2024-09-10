@@ -30,8 +30,6 @@ public class RegularDiffusionTexture : DiffusionTextureChanger
                 }
                 else
                 {
-                    Debug.Log("2COUNT " + diff_Textures.Count);
-                    Debug.Log("2COUNTIND " + curTextureIndex);
                     Debug.Log(diff_Textures[curTextureIndex] == null);
                     base.changeTextureOn(gameObject, diff_Textures[curTextureIndex]);
                 }

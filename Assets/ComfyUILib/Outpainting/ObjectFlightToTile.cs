@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// TODO documentation
+
+/// <summary>
+/// Moves a GameObject from its position to a final position at a certain speed
+/// </summary>
 
 public class ObjectFlightToTile : MonoBehaviour
-{   
+{       
     private Vector3 initialPos = Vector3.zero;
     private Vector3 finalPos = Vector3.zero;
     private float moveSpeed = 5f;
@@ -13,7 +16,7 @@ public class ObjectFlightToTile : MonoBehaviour
     private bool begin = false;     
 
     /// <summary>
-    /// Starting the flight of the object towards the tile
+    /// Starting the flight of the gameObject towards the final position
     /// </summary>
     /// <param name="iPos">Initial position</param>
     /// <param name="fPos">Final tile position</param>
