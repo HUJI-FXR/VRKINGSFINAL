@@ -12,7 +12,6 @@ using static UnityEngine.XR.Hands.XRHandTrackingEvents;
 public class OutpaintGadgetMechanism : GadgetMechanism
 {
     public OutpaintingScreenScr outpaintingScreen;
-    private string curKeyword;
 
     // Diffusable Object that is being held up
     private GameObject grabbedObject;
@@ -58,7 +57,7 @@ public class OutpaintGadgetMechanism : GadgetMechanism
         if (args.interactableObject.transform.gameObject.TryGetComponent<OutpaintingTile>(out OutpaintingTile OPT))
         {
             if (!OPT.paintable || OPT.painted) return;
-            Debug.Log("OUTLINE");
+
             // Creates pre-selection outline
             GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.preSelected);
         }  
@@ -106,6 +105,7 @@ public class OutpaintGadgetMechanism : GadgetMechanism
         //newDiffusionRequest.diffusionModel = diffusionModels.ghostmix;
         newDiffusionRequest.diffusionModel = diffusionModels.juggernautXLInpaint;
         newDiffusionRequest.diffusionJsonType = diffusionWorkflows.outpainting;
+        newDiffusionRequest.addToTextureTotal = false;
 
         return newDiffusionRequest;
     }
@@ -174,9 +174,9 @@ public class OutpaintGadgetMechanism : GadgetMechanism
         newDiffusionRequest.positivePrompt = curPositivePrompt;
 
         OutpaintingTile OPT = args.interactableObject.transform.gameObject.GetComponent<OutpaintingTile>();
-        RegularDiffusionTexture RDT = args.interactableObject.transform.gameObject.GetComponent<RegularDiffusionTexture>();
+        TextureTransition TT = args.interactableObject.transform.gameObject.GetComponent<TextureTransition>();
 
-        if (OPT == null || RDT == null) return;
+        if (OPT == null || TT == null) return;
 
         // Object that is interacted with is an OutpaintingTile
         if (!(OPT.paintable && !OPT.painted)) return;
@@ -222,16 +222,16 @@ public class OutpaintGadgetMechanism : GadgetMechanism
         }
 
         outpaintingScreen.UpdateTiles(new Vector2Int(OPT.tilePosition.x, OPT.tilePosition.y));                               
-        newDiffusionRequest.targets.Add(RDT);
+        newDiffusionRequest.targets.Add(TT);        
 
-        // TODO force ungrab the grabbedObject
         ObjectFlightToTile curFlight = grabbedObject.AddComponent<ObjectFlightToTile>();
         curFlight.StartMovement(grabbedObject.transform.position, args.interactableObject.transform.position);
 
         GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.unSelected);
 
+        XRGrabInteractable xRGrabInteractable = grabbedObject.GetComponent<XRGrabInteractable>();
+        if (xRGrabInteractable != null) xRGrabInteractable.enabled = false;
         grabbedObject = null;        
-        // TODO create effect on tile while image is being made, to indicate diffusion is processing
 
         GameManager.getInstance().comfyOrganizer.SendDiffusionRequest(newDiffusionRequest);
     }

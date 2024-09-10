@@ -27,5 +27,6 @@ public class OutpaintingTile : MonoBehaviour
     public void SetPainted(bool curPaintedStatus)
     {
         painted = curPaintedStatus;
+        out_screen.UpdateTiles(tilePosition);
     }
 }

@@ -12,6 +12,11 @@ public class ObjectFlightToTile : MonoBehaviour
     private float percentage = 0;
     private bool begin = false;     
 
+    /// <summary>
+    /// Starting the flight of the object towards the tile
+    /// </summary>
+    /// <param name="iPos">Initial position</param>
+    /// <param name="fPos">Final tile position</param>
     public void StartMovement(Vector3 iPos, Vector3 fPos)
     {
         if (iPos == null || fPos == null) return;
@@ -23,12 +28,14 @@ public class ObjectFlightToTile : MonoBehaviour
 
     private void Update()
     {
+        // Trigger stopping the updates before beginning
         if (!begin) return;
 
         transform.position = Vector3.Lerp(initialPos, finalPos, percentage);
         percentage += Time.deltaTime * (moveSpeed/100);
 
-        if (percentage >= 1)
+        // A bit more than 1.0 to have an effect of going "into" the screen(staying there for a bit)
+        if (percentage >= 1.2)
         {
             DestroyImmediate(gameObject);
         }

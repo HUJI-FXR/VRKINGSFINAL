@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 /// <summary>
 /// Parent class for all Diffusion texture changers. Has a list of textures and an index indicating the current one of these textures.
@@ -9,6 +10,8 @@ public class DiffusionTextureChanger : MonoBehaviour
 {
     protected List<Texture2D> diff_Textures;
     protected int curTextureIndex = 0;
+
+    public UnityEvent AddedTextureUnityEvent;
 
     private void Awake()
     {
@@ -34,6 +37,8 @@ public class DiffusionTextureChanger : MonoBehaviour
         {
             diff_Textures.Add(texture);
         }
+
+        AddedTextureUnityEvent?.Invoke();
 
         return true;
     }
@@ -62,6 +67,8 @@ public class DiffusionTextureChanger : MonoBehaviour
             diff_Textures.Add(texture);
         }
 
+        AddedTextureUnityEvent?.Invoke();
+
         return true;
     }
 
@@ -73,20 +80,10 @@ public class DiffusionTextureChanger : MonoBehaviour
     public virtual void changeTextureOn(GameObject curGameObject, Texture2D texture)
     {
         if (curGameObject == null || texture == null) return;
-        
-        if (curGameObject.TryGetComponent<TextureTransition>(out TextureTransition TT))
-        {
-            // TODO this only adds to the total instead of "changing" the texture
-            // TODO maybe do TT.textures = new List<Texture2D> { texture } ??
 
-            TT.TransitionTextures(new List<Texture> { texture }, -1, -1, -1);
-        }
-        else
-        {
-            Renderer renderer = curGameObject.GetComponent<Renderer>();
-            renderer.material.mainTexture = texture;
-            renderer.material.SetTexture("_BaseMap", texture);
-        }
+        Renderer renderer = curGameObject.GetComponent<Renderer>();
+        renderer.material.mainTexture = texture;
+        renderer.material.SetTexture("_BaseMap", texture);
     }
 
     /// <returns>Current held textures</returns>

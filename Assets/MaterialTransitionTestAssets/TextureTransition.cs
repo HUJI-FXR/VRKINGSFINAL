@@ -10,7 +10,7 @@ using UnityEngine;
 /// Used on GameObject in the world for which we want to transition between textures in a smooth way.
 /// Used in conjunction with the TextureTransitionShader.
 /// </summary>
-public class TextureTransition : MonoBehaviour
+public class TextureTransition : DiffusionTextureChanger
 {
     // Textures to be cycled through
     public List<Texture> textures;
@@ -34,7 +34,7 @@ public class TextureTransition : MonoBehaviour
     public float transition = 0f;
 
     // Counter for the textures that are being cycled through
-    private int currentTextureIndex = 0;
+    // We use the default curTextureIndex for the other texture
     private int nextTextureIndex = 1;
 
     private Material transitionMaterial = null;    
@@ -106,14 +106,14 @@ public class TextureTransition : MonoBehaviour
     public void TriggerNextTexture()
     {
         if (textures == null || transitionMaterial == null) return;
-        if (textures.Count <= 0) return;
+        if (textures.Count <= 1) return;
 
         transition = 0f;
-        currentTextureIndex = nextTextureIndex;
+        curTextureIndex = nextTextureIndex;
         nextTextureIndex = (nextTextureIndex + 1) % textures.Count;
 
         // Update the textures in the shader
-        transitionMaterial.SetTexture("_CurrentTex", textures[currentTextureIndex]);
+        transitionMaterial.SetTexture("_CurrentTex", textures[curTextureIndex]);
         transitionMaterial.SetTexture("_NextTex", textures[nextTextureIndex]);
     }
 
@@ -123,7 +123,7 @@ public class TextureTransition : MonoBehaviour
 
         textures = new List<Texture>();
         transition = 0;
-        currentTextureIndex = 0;
+        curTextureIndex = 0;
         nextTextureIndex = 1;
 
         transitionMaterial.SetTexture("_CurrentTex", null);
@@ -157,5 +157,40 @@ public class TextureTransition : MonoBehaviour
         textures = curTextures;
         
         TriggerNextTexture();
+    }
+
+    public override bool AddTexture(DiffusionRequest diffusionRequest)
+    {
+        if (base.AddTexture(diffusionRequest))
+        {
+            textures = new List<Texture>(diff_Textures);
+            return true;
+        }
+
+        return false;
+    }
+
+    public override bool AddTexture(List<Texture2D> newDiffTextures, bool addToTextureTotal)
+    {
+        if (base.AddTexture(newDiffTextures, addToTextureTotal))
+        {
+            textures = new List<Texture>(diff_Textures);
+            return true;
+        }
+
+        return false;
+    }
+
+    public override void changeTextureOn(GameObject curGameObject, Texture2D texture)
+    {
+        if (texture == null) return;
+
+        Texture2D copiedTexture = GeneralGameLibraries.TextureManipulationLibrary.CopyTexture(texture);
+        textures = new List<Texture>() { copiedTexture };
+    }
+
+    public void changeTextureOn(Texture2D texture)
+    {
+        changeTextureOn(null, texture);
     }
 }

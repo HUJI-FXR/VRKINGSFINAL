@@ -10679,6 +10679,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9215893083828604471, guid: 8c68af23b8b3f9648bd30983f04ace7f, type: 3}
+      propertyPath: changeTextureToChildren
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9215893083828604471, guid: 8c68af23b8b3f9648bd30983f04ace7f, type: 3}
       propertyPath: AddedTextureUnityEvent.m_PersistentCalls.m_Calls.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -10784,6 +10788,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1486141752}
+        m_TargetAssemblyTypeName: AutomaticComfySceneScript, Assembly-CSharp
+        m_MethodName: DoGameAction
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1271311803}
+        m_TargetAssemblyTypeName: OutpaintingTile, Assembly-CSharp
+        m_MethodName: SetPainted
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   textures: []
   constantTransition: 1
   transitionSpeed: 0.3

@@ -7,8 +7,7 @@ using UnityEngine.Events;
 public class RegularDiffusionTexture : DiffusionTextureChanger
 {
     public float changeTextureEvery = 1;
-    public bool changeTextureToChildren = false;
-    public UnityEvent AddedTextureUnityEvent;
+    public bool changeTextureToChildren = false;    
 
     private float textureChangeDelta = 0;
 
@@ -44,26 +43,4 @@ public class RegularDiffusionTexture : DiffusionTextureChanger
             }
         }
     }
-
-
-
-    public override bool AddTexture(DiffusionRequest diffusionRequest)
-    {
-        /*foreach (Texture2D tex in diffusionRequest.textures)
-        {
-            Debug.Log("NAME " +  tex.name);
-        }*/
-
-        bool ret = base.AddTexture(diffusionRequest);
-        if (ret) AddedTextureUnityEvent?.Invoke();
-        return ret;
-    }
-
-    public override bool AddTexture(List<Texture2D> newDiffTextures, bool addToTextureTotal)
-    {
-        bool ret = base.AddTexture(newDiffTextures, addToTextureTotal);
-        if (ret) AddedTextureUnityEvent?.Invoke();
-        return ret;
-    }
-
 }
