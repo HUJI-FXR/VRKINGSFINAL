@@ -21,10 +21,7 @@ public class DiffusionTextureChanger : MonoBehaviour
     /// <returns>True if the addition of textures was successful</returns>
     public virtual bool AddTexture(DiffusionRequest diffusionRequest)
     {
-        if (diffusionRequest.textures == null)
-        {
-            return false;
-        }
+        if (diffusionRequest.textures == null) return false;
 
         if (!diffusionRequest.addToTextureTotal)
         {
@@ -51,10 +48,7 @@ public class DiffusionTextureChanger : MonoBehaviour
     /// <returns>True if the addition of textures was successful</returns>
     public virtual bool AddTexture(List<Texture2D> newDiffTextures, bool addToTextureTotal)
     {
-        if (newDiffTextures == null)
-        {
-            return false;
-        }
+        if (newDiffTextures == null) return false;
 
         if (!addToTextureTotal)
         {
@@ -76,25 +70,20 @@ public class DiffusionTextureChanger : MonoBehaviour
     /// </summary>
     /// <param name="curGameObject">GameObject to change texture on</param>
     /// <param name="texture">Texture to change into</param>
-    protected virtual void changeTextureOn(GameObject curGameObject, Texture2D texture)
+    public virtual void changeTextureOn(GameObject curGameObject, Texture2D texture)
     {
-        if (curGameObject == null || texture == null)
-        {
-            return;
-        }
-
-        Renderer renderer = curGameObject.GetComponent<Renderer>();
+        if (curGameObject == null || texture == null) return;
+        
         if (curGameObject.TryGetComponent<TextureTransition>(out TextureTransition TT))
         {
             // TODO this only adds to the total instead of "changing" the texture
             // TODO maybe do TT.textures = new List<Texture2D> { texture } ??
 
-            TT.ResetTransition();
-            //TT.textures.Add(texture);
-            TT.textures = new List<Texture>() { texture };
+            TT.TransitionTextures(new List<Texture> { texture }, -1, -1, -1);
         }
         else
         {
+            Renderer renderer = curGameObject.GetComponent<Renderer>();
             renderer.material.mainTexture = texture;
             renderer.material.SetTexture("_BaseMap", texture);
         }

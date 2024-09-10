@@ -164,7 +164,10 @@ public class Gadget : MonoBehaviour
 
         // Only GameObjects with valid textures
         if (obj.GetComponent<Renderer>() == null ) return;
-        if (obj.GetComponent<Renderer>().material.mainTexture == null && obj.GetComponent<DiffusableObject>() == null)  return;
+        if (!obj.TryGetComponent<TextureTransition>(out TextureTransition curTransition))
+        {
+            if (obj.GetComponent<Renderer>().material.mainTexture == null && obj.GetComponent<DiffusableObject>() == null) return;
+        }        
 
         Color curColor = Color.black;
         float outlineWidth = 0;

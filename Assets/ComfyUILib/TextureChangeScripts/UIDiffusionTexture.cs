@@ -171,7 +171,7 @@ public class UIDiffusionTexture : DiffusionTextureChanger
         }        
     }
 
-    protected override void changeTextureOn(GameObject curGameObject, Texture2D texture)
+    public override void changeTextureOn(GameObject curGameObject, Texture2D texture)
     {
         if (curGameObject == null || texture == null)
         {

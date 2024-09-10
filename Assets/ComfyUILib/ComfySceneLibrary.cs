@@ -527,7 +527,6 @@ public class ComfySceneLibrary : MonoBehaviour
 
             if (request.result != UnityWebRequest.Result.Success)
             {
-                //GameManager.getInstance().gadget.MechanismText.text = "ERROR1 " + trials.ToString();
                 Debug.Log(request.error + " Trial Number: " + trials.ToString());
 
                 yield return new WaitForSeconds(0.2f);
@@ -600,7 +599,6 @@ public class ComfySceneLibrary : MonoBehaviour
                     Debug.LogError(": Error: " + webRequest.error);
                     break;
                 case UnityWebRequest.Result.ProtocolError:
-                    //GameManager.getInstance().gadget.MechanismText.text = "PROTERR";
                     if (started_generations)
                     {
                         Debug.LogError(": HTTP Error: " + webRequest.error);
@@ -696,11 +694,8 @@ public class ComfySceneLibrary : MonoBehaviour
         }
         if (MAX_RETRIES <= 0)
         {
-            GameManager.getInstance().gadget.MechanismText.text = "bad download1";
             yield break;
         }
-
-
 
         int MAX_RETRIES_DOWNLOAD = MAX_NETWORKING_RETRIES;
 
@@ -726,6 +721,7 @@ public class ComfySceneLibrary : MonoBehaviour
                     incomingImageNames.Add(filename);
 
                     // Adding the texture to the texture queue
+                    texture.name = filename;
                     comfyOrg.AddImage(texture, diffReq);
 
                     yield break;
@@ -737,8 +733,6 @@ public class ComfySceneLibrary : MonoBehaviour
                 }
             }
         }
-
-        GameManager.getInstance().gadget.MechanismText.text = "bad download2";
     }
 
     /// <summary>
@@ -793,7 +787,6 @@ public class ComfySceneLibrary : MonoBehaviour
                     }
                     if (MAX_RETRIES <= 0)
                     {
-                        GameManager.getInstance().gadget.MechanismText.text = "bad upload1";
                         yield break;
                     }
 

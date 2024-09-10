@@ -33,6 +33,8 @@ public class OutpaintingScreenScr : MonoBehaviour
     // Event that is Invoked when all the screen has been painted
     public UnityEvent UponScreenCompletionEvent;
 
+    // These are used to represent the tiles that are under progress
+    private Texture2D[] NOISE_TEXTURES;
     private void OnValidate()
     {
         // tileMatrixSize needs to be positive
@@ -53,6 +55,12 @@ public class OutpaintingScreenScr : MonoBehaviour
         {
             tileMatrixSize.y -= 1;
         }
+    }
+
+
+    private void Start()
+    {
+        NOISE_TEXTURES = Resources.LoadAll<Texture2D>("Textures/Noise");
     }
 
     /// <summary>
@@ -106,7 +114,7 @@ public class OutpaintingScreenScr : MonoBehaviour
 
                 if (tiles[firstPaintedTile.x, firstPaintedTile.y].TryGetComponent<TextureTransition>(out TextureTransition TT))
                 {
-                    TT.textures = new List<Texture> { firstTileTexture };
+                    TT.TransitionTextures(new List<Texture> { firstTileTexture }, 0, 0, 0.01f);
                 }
                 else
                 {
@@ -132,8 +140,7 @@ public class OutpaintingScreenScr : MonoBehaviour
             Renderer renderer = cur_tile_target.gameObject.GetComponent<Renderer>();
             if (cur_tile_target.gameObject.TryGetComponent<TextureTransition>(out TextureTransition TT))
             {
-                TT.ResetTransition();
-                TT.textures = new List<Texture> { paintableTexture };
+                TT.TransitionTextures(new List<Texture> { paintableTexture }, 0, 0, 0.01f);
             }
             else
             {
@@ -173,27 +180,7 @@ public class OutpaintingScreenScr : MonoBehaviour
 
         // This is no longer done here because a tile IS NOT painted before a texture arrives for it,
         // it is under progress, and we create an effect to indicate that here
-        // cur_tile_scr.painted = true;
-
-        // Creating an effect of the tile being under progress
-        if (tiles[tilePos.x, tilePos.y].TryGetComponent<TextureTransition>(out TextureTransition TT))
-        {
-            Texture2D[] curTextures = Resources.LoadAll<Texture2D>("Textures/Noise");
-            List<Texture2D> listTextures = new List<Texture2D>(curTextures);
-            listTextures = GeneralGameLibraries.GetRandomElements(listTextures, 2);
-            if (listTextures.Count <= 1)
-            {
-                Debug.LogError("Add more noise textures to the Resources/Textures/Noise folder");
-            }
-
-            TT.ResetTransition();
-
-            TT.textures = new List<Texture>
-            {
-                listTextures[0],
-                listTextures[1]
-            };
-        }
+        // cur_tile_scr.painted = true;        
 
         // We create a difference between tiles in the MIDDLE column and those on the sides.
         // 1. If a middle column tile is painted:
@@ -292,6 +279,19 @@ public class OutpaintingScreenScr : MonoBehaviour
                     MakePaintableUnpaintedTile(new Vector2Int(tilePos.x + 1, tilePos.y));
                 }
             }
+        }
+
+        // Creating an effect of the tile being under progress
+        if (tiles[tilePos.x, tilePos.y].TryGetComponent<TextureTransition>(out TextureTransition TT))
+        {
+            List<Texture2D> listTextures = new List<Texture2D>(NOISE_TEXTURES);
+            listTextures = GeneralGameLibraries.GetRandomElements(listTextures, 2);
+            if (listTextures.Count <= 1)
+            {
+                Debug.LogError("Add more noise textures to the Resources/Textures/Noise folder");
+            }
+
+            TT.TransitionTextures(new List<Texture> { listTextures[0], listTextures[1] }, -1, 0, 1);
         }
 
         // Check if the Screen is complete

@@ -80,6 +80,7 @@ public static class GeneralGameLibraries : System.Object
             tex.Apply();
 
             RenderTexture.active = old_rt;
+            tex.name = rTex.name;
             return tex;
         }
 
@@ -121,6 +122,9 @@ public static class GeneralGameLibraries : System.Object
             readableText.Apply();
             RenderTexture.active = previous;
             RenderTexture.ReleaseTemporary(renderTex);
+
+            readableText.name = source.name;
+
             return readableText;
         }
 

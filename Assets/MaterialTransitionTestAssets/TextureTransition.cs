@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+// TODO end of transition is too rapid, need smoothness when exchanging 2 textures
+
+
 /// <summary>
 /// Used on GameObject in the world for which we want to transition between textures in a smooth way.
 /// Used in conjunction with the TextureTransitionShader.
@@ -22,8 +25,10 @@ public class TextureTransition : MonoBehaviour
     public float transitionSpeed = 1f;
     [Range(0, 1)]
     public float noiseIntensity = 1f;
+    private float m_noiseIntensity = 1f;
     [Range(0.01f, 1f)]
     public float smoothness = 0.5f;
+    private float m_smoothness = 0.5f;
 
     [NonSerialized]
     public float transition = 0f;
@@ -59,10 +64,22 @@ public class TextureTransition : MonoBehaviour
         if (textures == null || transitionMaterial == null) return;
         if (textures.Count <= 0) return;
 
+        if (m_noiseIntensity != noiseIntensity)
+        {
+            m_noiseIntensity = noiseIntensity;
+            transitionMaterial.SetFloat("_NoiseIntensity", noiseIntensity);
+        }
+        if (m_smoothness != smoothness)
+        {
+            m_smoothness = smoothness;
+            transitionMaterial.SetFloat("_Smoothness", smoothness);
+        }
+
         if (textures.Count == 1)
         {
             if (singleTexture) return;
-            transitionMaterial.SetTexture("_CurrentTex", textures[0]);
+            transitionMaterial.SetTexture("_NextTex", textures[0]);
+            transitionMaterial.SetFloat("_Transition", 1f);
             singleTexture = true;
             return;
         }        
@@ -80,9 +97,7 @@ public class TextureTransition : MonoBehaviour
         }
 
         // Sends the needed parameters to the shader to look appropriate in accordance with the transition
-        transitionMaterial.SetFloat("_Transition", transition);
-        transitionMaterial.SetFloat("_NoiseIntensity", noiseIntensity);
-        transitionMaterial.SetFloat("_Smoothness", smoothness);
+        transitionMaterial.SetFloat("_Transition", transition);       
     }
 
     /// <summary>
@@ -92,7 +107,6 @@ public class TextureTransition : MonoBehaviour
     {
         if (textures == null || transitionMaterial == null) return;
         if (textures.Count <= 0) return;
-        if (transition <= 1.0f) return;
 
         transition = 0f;
         currentTextureIndex = nextTextureIndex;
@@ -114,5 +128,34 @@ public class TextureTransition : MonoBehaviour
 
         transitionMaterial.SetTexture("_CurrentTex", null);
         transitionMaterial.SetTexture("_NextTex", null);
+    }
+
+    /// <summary>
+    /// Changes all the relevant parameters in the Texture Transition and restarts it with these parameters.
+    /// </summary>
+    /// <param name="curTextures">New Textures of the TransitionTexture</param>
+    /// <param name="curTransition">Transition value, if out of range, will not change the current value</param>
+    /// <param name="curNoiseIntensity">Noise Intensity value, if out of range, will not change the current value</param>
+    /// <param name="curSmoothness">Smoothness value, if out of range, will not change the current value</param>
+    public void TransitionTextures(List<Texture> curTextures, float curTransition, float curNoiseIntensity, float curSmoothness)
+    {
+        if (curTransition >= 0 && curTransition <= 1)
+        {
+            transition = curTransition;
+        }
+        if (curNoiseIntensity >= 0.01f && curNoiseIntensity <= 1)
+        {
+            noiseIntensity = curNoiseIntensity;
+        }
+        if (curSmoothness >= 0 && curSmoothness <= 1)
+        {
+            smoothness = curSmoothness;
+        }
+
+        ResetTransition();
+
+        textures = curTextures;
+        
+        TriggerNextTexture();
     }
 }

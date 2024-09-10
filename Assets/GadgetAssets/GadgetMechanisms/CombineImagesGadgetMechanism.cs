@@ -79,6 +79,7 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
         }
 
         selectedObjects.Enqueue(args.interactableObject.transform.gameObject);
+        Debug.Log(selectedObjects.Count);
         // Creates selection outline
         GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.selected);
     }
@@ -101,13 +102,20 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
         return newDiffusionRequest;
     }
 
-    public void GetTexturesFromSelected()
+    public override void ActivateGeneration(GameObject GO)
     {
         if (GameManager.getInstance() == null) return;
         if (selectedObjects.Count != MAX_QUEUED_OBJECTS) return;
 
+
+        // TODO terrible, make this code general
+
         GameObject firstGameObject = selectedObjects.Dequeue();
         GameObject secondGameObject = selectedObjects.Dequeue();
+
+        GameManager.getInstance().gadget.ChangeOutline(firstGameObject, GadgetSelection.unSelected);
+        GameManager.getInstance().gadget.ChangeOutline(secondGameObject, GadgetSelection.unSelected);
+
         Texture go1Text = firstGameObject.GetComponent<Renderer>().material.mainTexture;
         Texture go2Text = secondGameObject.GetComponent<Renderer>().material.mainTexture;        
 
@@ -171,10 +179,6 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
                 unityEvent?.Invoke();
             }
         }
-    }
-    public override void ActivateGeneration(GameObject GO)
-    {
-        GetTexturesFromSelected();
     }
 
     public override void ResetMechanism()

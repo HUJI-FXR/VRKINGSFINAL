@@ -58,7 +58,7 @@ public class OutpaintGadgetMechanism : GadgetMechanism
         if (args.interactableObject.transform.gameObject.TryGetComponent<OutpaintingTile>(out OutpaintingTile OPT))
         {
             if (!OPT.paintable || OPT.painted) return;
-
+            Debug.Log("OUTLINE");
             // Creates pre-selection outline
             GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.preSelected);
         }  
@@ -139,6 +139,7 @@ public class OutpaintGadgetMechanism : GadgetMechanism
                     Debug.LogError("There is no texture in the painted tile " + curOffsetTile.name);
                     return false;
                 }
+
                 Texture curTextureToConvert = TT.textures[0];
                 curTexture = GeneralGameLibraries.TextureManipulationLibrary.toTexture2D(curTextureToConvert);
             }
@@ -146,7 +147,6 @@ public class OutpaintGadgetMechanism : GadgetMechanism
             {
                 curTexture = TextureManipulationLibrary.toTexture2D(curOffsetTile.GetComponent<Renderer>().material.mainTexture);
             }
-            Debug.Log(curTexture.name);
 
             diffusionRequest.uploadTextures.Add(curTexture);
             curTexture.name = mainTileName + "_" + offsetTileName + ".png";

@@ -52,7 +52,7 @@ public class ExplosionMain : MonoBehaviour
         }
 
         // TODO delete this line 
-        StartExplosion();
+        //StartExplosion();
 
         
         TransitionExplosionMode(explosionMode);
@@ -154,7 +154,7 @@ public class ExplosionMain : MonoBehaviour
                         }
 
                         TT.constantTransition = false;
-                        StopExplosion(); 
+                        //StopExplosion(); 
                     }
                 }
                 break;

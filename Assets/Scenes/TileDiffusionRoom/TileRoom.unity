@@ -137,7 +137,6 @@ GameObject:
   - component: {fileID: 12056914}
   - component: {fileID: 12056913}
   - component: {fileID: 12056917}
-  - component: {fileID: 12056918}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -155,7 +154,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -24, y: 0.51, z: -36.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -350,21 +349,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &12056918
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 12056911}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &42837834
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,7 +363,6 @@ GameObject:
   - component: {fileID: 42837837}
   - component: {fileID: 42837836}
   - component: {fileID: 42837840}
-  - component: {fileID: 42837841}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -396,8 +379,8 @@ Transform:
   m_GameObject: {fileID: 42837834}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: -0.5}
-  m_LocalPosition: {x: -48.99, y: 14.5, z: -36.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalPosition: {x: -49.18, y: 14.5, z: -36.5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -592,21 +575,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &42837841
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 42837834}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &55150127
 GameObject:
   m_ObjectHideFlags: 0
@@ -846,7 +814,6 @@ GameObject:
   - component: {fileID: 55492139}
   - component: {fileID: 55492138}
   - component: {fileID: 55492142}
-  - component: {fileID: 55492143}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -864,7 +831,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -35, y: 0.51, z: -31}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -1059,21 +1026,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &55492143
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 55492136}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &72554404
 GameObject:
   m_ObjectHideFlags: 0
@@ -1193,7 +1145,6 @@ GameObject:
   - component: {fileID: 86120567}
   - component: {fileID: 86120566}
   - component: {fileID: 86120570}
-  - component: {fileID: 86120571}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -1210,8 +1161,8 @@ Transform:
   m_GameObject: {fileID: 86120564}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.70710677, z: -0.70710677, w: 0}
-  m_LocalPosition: {x: -40.599995, y: 3.5, z: 9.88}
-  m_LocalScale: {x: 5, y: 0.020000005, z: 5}
+  m_LocalPosition: {x: -40.599995, y: 3.5, z: 9.85}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -1406,21 +1357,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &86120571
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 86120564}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &91492027
 GameObject:
   m_ObjectHideFlags: 0
@@ -1435,7 +1371,6 @@ GameObject:
   - component: {fileID: 91492030}
   - component: {fileID: 91492029}
   - component: {fileID: 91492033}
-  - component: {fileID: 91492034}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -1453,7 +1388,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -40.5, y: 0.51, z: -25.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -1648,21 +1583,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &91492034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 91492027}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &96990078
 GameObject:
   m_ObjectHideFlags: 0
@@ -1782,7 +1702,6 @@ GameObject:
   - component: {fileID: 99414945}
   - component: {fileID: 99414944}
   - component: {fileID: 99414948}
-  - component: {fileID: 99414949}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -1800,7 +1719,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -29.5, y: 0.51, z: -36.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -1995,21 +1914,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &99414949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 99414942}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &133476519
 GameObject:
   m_ObjectHideFlags: 0
@@ -2371,7 +2275,6 @@ GameObject:
   - component: {fileID: 169183189}
   - component: {fileID: 169183188}
   - component: {fileID: 169183192}
-  - component: {fileID: 169183193}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -2389,7 +2292,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -46, y: 0.51, z: 7.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -2584,21 +2487,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &169183193
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 169183186}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &182062782
 GameObject:
   m_ObjectHideFlags: 0
@@ -2823,7 +2711,6 @@ GameObject:
   - component: {fileID: 216963949}
   - component: {fileID: 216963948}
   - component: {fileID: 216963952}
-  - component: {fileID: 216963953}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -2841,7 +2728,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -35, y: 0.51, z: -3.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -3036,21 +2923,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &216963953
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 216963946}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1001 &222551170
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3134,7 +3006,6 @@ GameObject:
   - component: {fileID: 231581982}
   - component: {fileID: 231581981}
   - component: {fileID: 231581985}
-  - component: {fileID: 231581986}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -3152,7 +3023,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -40.5, y: 0.51, z: 2}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -3347,21 +3218,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &231581986
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 231581979}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &233211903
 GameObject:
   m_ObjectHideFlags: 0
@@ -3376,7 +3232,6 @@ GameObject:
   - component: {fileID: 233211906}
   - component: {fileID: 233211905}
   - component: {fileID: 233211909}
-  - component: {fileID: 233211910}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -3394,7 +3249,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -24, y: 0.51, z: -31}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -3589,21 +3444,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &233211910
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 233211903}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &240204961
 GameObject:
   m_ObjectHideFlags: 0
@@ -3618,7 +3458,6 @@ GameObject:
   - component: {fileID: 240204964}
   - component: {fileID: 240204963}
   - component: {fileID: 240204967}
-  - component: {fileID: 240204968}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -3636,7 +3475,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -24, y: 0.51, z: 7.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -3831,21 +3670,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &240204968
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 240204961}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &249392690
 GameObject:
   m_ObjectHideFlags: 0
@@ -3860,7 +3684,6 @@ GameObject:
   - component: {fileID: 249392693}
   - component: {fileID: 249392692}
   - component: {fileID: 249392696}
-  - component: {fileID: 249392697}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -3877,8 +3700,8 @@ Transform:
   m_GameObject: {fileID: 249392690}
   serializedVersion: 2
   m_LocalRotation: {x: 0.70710677, y: 0, z: 0, w: 0.70710677}
-  m_LocalPosition: {x: -46.109997, y: 9, z: -44.97}
-  m_LocalScale: {x: 5, y: 0.020000005, z: 5}
+  m_LocalPosition: {x: -46.109997, y: 9, z: -44.94}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -4073,21 +3896,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &249392697
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 249392690}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &254281433
 GameObject:
   m_ObjectHideFlags: 0
@@ -4102,7 +3910,6 @@ GameObject:
   - component: {fileID: 254281436}
   - component: {fileID: 254281435}
   - component: {fileID: 254281439}
-  - component: {fileID: 254281440}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -4119,8 +3926,8 @@ Transform:
   m_GameObject: {fileID: 254281433}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: -0.5}
-  m_LocalPosition: {x: -48.99, y: 14.5, z: -42}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalPosition: {x: -49.18, y: 14.5, z: -42}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -4315,21 +4122,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &254281440
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 254281433}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &270928315
 GameObject:
   m_ObjectHideFlags: 0
@@ -4344,7 +4136,6 @@ GameObject:
   - component: {fileID: 270928318}
   - component: {fileID: 270928317}
   - component: {fileID: 270928321}
-  - component: {fileID: 270928322}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -4361,8 +4152,8 @@ Transform:
   m_GameObject: {fileID: 270928315}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: -0.5}
-  m_LocalPosition: {x: -48.99, y: 9, z: 2}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalPosition: {x: -49.18, y: 9, z: 2}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -4557,21 +4348,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &270928322
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 270928315}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &275422400
 GameObject:
   m_ObjectHideFlags: 0
@@ -4586,7 +4362,6 @@ GameObject:
   - component: {fileID: 275422403}
   - component: {fileID: 275422402}
   - component: {fileID: 275422406}
-  - component: {fileID: 275422407}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -4603,8 +4378,8 @@ Transform:
   m_GameObject: {fileID: 275422400}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.70710677, z: -0.70710677, w: 0}
-  m_LocalPosition: {x: -29.599997, y: 3.5, z: 9.88}
-  m_LocalScale: {x: 5, y: 0.020000005, z: 5}
+  m_LocalPosition: {x: -29.599997, y: 3.5, z: 9.85}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -4799,21 +4574,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &275422407
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 275422400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &301203102
 GameObject:
   m_ObjectHideFlags: 0
@@ -4933,7 +4693,6 @@ GameObject:
   - component: {fileID: 310355184}
   - component: {fileID: 310355183}
   - component: {fileID: 310355187}
-  - component: {fileID: 310355188}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -4950,8 +4709,8 @@ Transform:
   m_GameObject: {fileID: 310355181}
   serializedVersion: 2
   m_LocalRotation: {x: 0.70710677, y: 0, z: 0, w: 0.70710677}
-  m_LocalPosition: {x: -40.609997, y: 14.5, z: -44.97}
-  m_LocalScale: {x: 5, y: 0.020000005, z: 5}
+  m_LocalPosition: {x: -40.609997, y: 14.5, z: -44.94}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -5146,21 +4905,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &310355188
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 310355181}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &311625266
 GameObject:
   m_ObjectHideFlags: 0
@@ -5175,7 +4919,6 @@ GameObject:
   - component: {fileID: 311625269}
   - component: {fileID: 311625268}
   - component: {fileID: 311625272}
-  - component: {fileID: 311625273}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -5192,8 +4935,8 @@ Transform:
   m_GameObject: {fileID: 311625266}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: -0.5}
-  m_LocalPosition: {x: -48.99, y: 9, z: -36.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalPosition: {x: -49.18, y: 9, z: -36.5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -5388,21 +5131,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &311625273
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 311625266}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1001 &377617855
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5582,7 +5310,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: -20.71, y: 3.5, z: -36.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -5806,7 +5534,6 @@ GameObject:
   - component: {fileID: 420266068}
   - component: {fileID: 420266067}
   - component: {fileID: 420266071}
-  - component: {fileID: 420266072}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -5824,7 +5551,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -35, y: 0.51, z: 7.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -6019,21 +5746,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &420266072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 420266065}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &426813893
 GameObject:
   m_ObjectHideFlags: 0
@@ -6048,7 +5760,6 @@ GameObject:
   - component: {fileID: 426813896}
   - component: {fileID: 426813895}
   - component: {fileID: 426813899}
-  - component: {fileID: 426813900}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -6065,8 +5776,8 @@ Transform:
   m_GameObject: {fileID: 426813893}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: -0.5}
-  m_LocalPosition: {x: -48.99, y: 14.5, z: 7.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalPosition: {x: -49.18, y: 14.5, z: 7.5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -6261,21 +5972,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &426813900
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 426813893}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &429806575
 GameObject:
   m_ObjectHideFlags: 0
@@ -6550,7 +6246,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: -20.710001, y: 3.5, z: -20}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -6766,31 +6462,31 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1072879222}
+    m_TransformParent: {fileID: 1417362187}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e3a4aa8658d98cf498c8fdd833909a5a, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.2998199
+      value: 0.4280162
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e3a4aa8658d98cf498c8fdd833909a5a, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.2998199
+      value: 0.4280162
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e3a4aa8658d98cf498c8fdd833909a5a, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.2998199
+      value: 0.4280162
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e3a4aa8658d98cf498c8fdd833909a5a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.048482586
+      value: -33.288788
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e3a4aa8658d98cf498c8fdd833909a5a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 3.07
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e3a4aa8658d98cf498c8fdd833909a5a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -10.535
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e3a4aa8658d98cf498c8fdd833909a5a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7228,7 +6924,6 @@ GameObject:
   - component: {fileID: 485313313}
   - component: {fileID: 485313312}
   - component: {fileID: 485313316}
-  - component: {fileID: 485313317}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -7246,7 +6941,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -35, y: 0.51, z: -42}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -7441,21 +7136,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &485313317
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 485313310}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &528055297
 GameObject:
   m_ObjectHideFlags: 0
@@ -7825,7 +7505,6 @@ GameObject:
   - component: {fileID: 547426331}
   - component: {fileID: 547426330}
   - component: {fileID: 547426334}
-  - component: {fileID: 547426335}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -7842,8 +7521,8 @@ Transform:
   m_GameObject: {fileID: 547426328}
   serializedVersion: 2
   m_LocalRotation: {x: 0.70710677, y: 0, z: 0, w: 0.70710677}
-  m_LocalPosition: {x: -35.109997, y: 14.5, z: -44.97}
-  m_LocalScale: {x: 5, y: 0.020000005, z: 5}
+  m_LocalPosition: {x: -35.109997, y: 14.5, z: -44.94}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -8038,21 +7717,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &547426335
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 547426328}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &551852388
 GameObject:
   m_ObjectHideFlags: 0
@@ -8085,7 +7749,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: -20.710001, y: 14.5, z: -14.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -8327,7 +7991,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: -20.710001, y: 9, z: -36.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -8543,47 +8207,47 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1417362187}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 3d26f2a18bae3534a9f8e1a71e6b95b6, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 0.56866
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3d26f2a18bae3534a9f8e1a71e6b95b6, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 0.56866
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3d26f2a18bae3534a9f8e1a71e6b95b6, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.5
+      value: 0.56866
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3d26f2a18bae3534a9f8e1a71e6b95b6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -34.13806
+      value: -33.79
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3d26f2a18bae3534a9f8e1a71e6b95b6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.80802
+      value: 2.8237998
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3d26f2a18bae3534a9f8e1a71e6b95b6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -24.01
+      value: -24.02
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3d26f2a18bae3534a9f8e1a71e6b95b6, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.70710784
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3d26f2a18bae3534a9f8e1a71e6b95b6, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3d26f2a18bae3534a9f8e1a71e6b95b6, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.70710576
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3d26f2a18bae3534a9f8e1a71e6b95b6, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3d26f2a18bae3534a9f8e1a71e6b95b6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -8591,7 +8255,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3d26f2a18bae3534a9f8e1a71e6b95b6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3d26f2a18bae3534a9f8e1a71e6b95b6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -8635,7 +8299,6 @@ GameObject:
   - component: {fileID: 586563067}
   - component: {fileID: 586563066}
   - component: {fileID: 586563070}
-  - component: {fileID: 586563071}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -8653,7 +8316,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -40.5, y: 0.51, z: -20}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -8848,21 +8511,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &586563071
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 586563064}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &592549162
 GameObject:
   m_ObjectHideFlags: 0
@@ -9432,7 +9080,6 @@ GameObject:
   - component: {fileID: 606912250}
   - component: {fileID: 606912249}
   - component: {fileID: 606912253}
-  - component: {fileID: 606912254}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -9449,8 +9096,8 @@ Transform:
   m_GameObject: {fileID: 606912247}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: -0.5}
-  m_LocalPosition: {x: -48.99, y: 9, z: -14.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalPosition: {x: -49.18, y: 9, z: -14.5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -9645,21 +9292,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &606912254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 606912247}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &616580809
 GameObject:
   m_ObjectHideFlags: 0
@@ -9674,7 +9306,6 @@ GameObject:
   - component: {fileID: 616580812}
   - component: {fileID: 616580811}
   - component: {fileID: 616580815}
-  - component: {fileID: 616580816}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -9691,8 +9322,8 @@ Transform:
   m_GameObject: {fileID: 616580809}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: -0.5}
-  m_LocalPosition: {x: -48.99, y: 3.5, z: -25.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalPosition: {x: -49.18, y: 3.5, z: -25.5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -9887,21 +9518,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &616580816
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 616580809}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &628517379
 GameObject:
   m_ObjectHideFlags: 0
@@ -9916,7 +9532,6 @@ GameObject:
   - component: {fileID: 628517382}
   - component: {fileID: 628517381}
   - component: {fileID: 628517385}
-  - component: {fileID: 628517386}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -9934,7 +9549,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -24, y: 0.51, z: -42}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -10129,21 +9744,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &628517386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 628517379}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &630462558
 GameObject:
   m_ObjectHideFlags: 0
@@ -10433,7 +10033,6 @@ GameObject:
   - component: {fileID: 643079716}
   - component: {fileID: 643079715}
   - component: {fileID: 643079719}
-  - component: {fileID: 643079720}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -10450,8 +10049,8 @@ Transform:
   m_GameObject: {fileID: 643079713}
   serializedVersion: 2
   m_LocalRotation: {x: 0.70710677, y: 0, z: 0, w: 0.70710677}
-  m_LocalPosition: {x: -40.609997, y: 9, z: -44.97}
-  m_LocalScale: {x: 5, y: 0.020000005, z: 5}
+  m_LocalPosition: {x: -40.609997, y: 9, z: -44.94}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -10646,21 +10245,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &643079720
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 643079713}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &692042902
 GameObject:
   m_ObjectHideFlags: 0
@@ -10721,7 +10305,6 @@ GameObject:
   - component: {fileID: 696655051}
   - component: {fileID: 696655050}
   - component: {fileID: 696655054}
-  - component: {fileID: 696655055}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -10738,8 +10321,8 @@ Transform:
   m_GameObject: {fileID: 696655048}
   serializedVersion: 2
   m_LocalRotation: {x: 0.70710677, y: 0, z: 0, w: 0.70710677}
-  m_LocalPosition: {x: -40.609997, y: 3.5, z: -44.97}
-  m_LocalScale: {x: 5, y: 0.020000005, z: 5}
+  m_LocalPosition: {x: -40.609997, y: 3.5, z: -44.94}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -10934,21 +10517,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &696655055
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 696655048}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &723593755
 GameObject:
   m_ObjectHideFlags: 0
@@ -10963,7 +10531,6 @@ GameObject:
   - component: {fileID: 723593758}
   - component: {fileID: 723593757}
   - component: {fileID: 723593761}
-  - component: {fileID: 723593762}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -10980,8 +10547,8 @@ Transform:
   m_GameObject: {fileID: 723593755}
   serializedVersion: 2
   m_LocalRotation: {x: 0.70710677, y: 0, z: 0, w: 0.70710677}
-  m_LocalPosition: {x: -46.109997, y: 3.5, z: -44.97}
-  m_LocalScale: {x: 5, y: 0.020000005, z: 5}
+  m_LocalPosition: {x: -46.109997, y: 3.5, z: -44.94}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -11176,21 +10743,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &723593762
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 723593755}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &734963293
 GameObject:
   m_ObjectHideFlags: 0
@@ -11205,7 +10757,6 @@ GameObject:
   - component: {fileID: 734963296}
   - component: {fileID: 734963295}
   - component: {fileID: 734963299}
-  - component: {fileID: 734963300}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -11222,8 +10773,8 @@ Transform:
   m_GameObject: {fileID: 734963293}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: -0.5}
-  m_LocalPosition: {x: -48.99, y: 3.5, z: 7.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalPosition: {x: -49.18, y: 3.5, z: 7.5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -11418,21 +10969,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &734963300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 734963293}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &760119358
 GameObject:
   m_ObjectHideFlags: 0
@@ -11447,7 +10983,6 @@ GameObject:
   - component: {fileID: 760119361}
   - component: {fileID: 760119360}
   - component: {fileID: 760119364}
-  - component: {fileID: 760119365}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -11464,8 +10999,8 @@ Transform:
   m_GameObject: {fileID: 760119358}
   serializedVersion: 2
   m_LocalRotation: {x: 0.70710677, y: 0, z: 0, w: 0.70710677}
-  m_LocalPosition: {x: -46.109997, y: 14.5, z: -44.97}
-  m_LocalScale: {x: 5, y: 0.020000005, z: 5}
+  m_LocalPosition: {x: -46.109997, y: 14.5, z: -44.94}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -11660,21 +11195,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &760119365
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 760119358}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &760680777
 GameObject:
   m_ObjectHideFlags: 0
@@ -11689,7 +11209,6 @@ GameObject:
   - component: {fileID: 760680780}
   - component: {fileID: 760680779}
   - component: {fileID: 760680783}
-  - component: {fileID: 760680784}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -11706,8 +11225,8 @@ Transform:
   m_GameObject: {fileID: 760680777}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.70710677, z: -0.70710677, w: 0}
-  m_LocalPosition: {x: -29.599997, y: 9, z: 9.88}
-  m_LocalScale: {x: 5, y: 0.020000005, z: 5}
+  m_LocalPosition: {x: -29.599997, y: 9, z: 9.85}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -11902,21 +11421,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &760680784
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 760680777}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &762408584
 GameObject:
   m_ObjectHideFlags: 0
@@ -12036,7 +11540,6 @@ GameObject:
   - component: {fileID: 762773934}
   - component: {fileID: 762773933}
   - component: {fileID: 762773937}
-  - component: {fileID: 762773938}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -12053,8 +11556,8 @@ Transform:
   m_GameObject: {fileID: 762773931}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.70710677, z: -0.70710677, w: 0}
-  m_LocalPosition: {x: -29.599997, y: 14.5, z: 9.88}
-  m_LocalScale: {x: 5, y: 0.020000005, z: 5}
+  m_LocalPosition: {x: -29.599997, y: 14.5, z: 9.85}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -12249,21 +11752,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &762773938
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 762773931}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &774584945
 GameObject:
   m_ObjectHideFlags: 0
@@ -12296,7 +11784,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: -20.710001, y: 9, z: -25.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -12520,7 +12008,6 @@ GameObject:
   - component: {fileID: 780158947}
   - component: {fileID: 780158946}
   - component: {fileID: 780158950}
-  - component: {fileID: 780158951}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -12538,7 +12025,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -46, y: 0.51, z: -20}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -12733,21 +12220,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &780158951
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 780158944}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &780439427
 GameObject:
   m_ObjectHideFlags: 0
@@ -12762,7 +12234,6 @@ GameObject:
   - component: {fileID: 780439430}
   - component: {fileID: 780439429}
   - component: {fileID: 780439433}
-  - component: {fileID: 780439434}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -12779,8 +12250,8 @@ Transform:
   m_GameObject: {fileID: 780439427}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: -0.5}
-  m_LocalPosition: {x: -48.99, y: 9, z: -20}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalPosition: {x: -49.18, y: 9, z: -20}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -12975,21 +12446,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &780439434
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 780439427}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &782581009
 GameObject:
   m_ObjectHideFlags: 0
@@ -13004,7 +12460,6 @@ GameObject:
   - component: {fileID: 782581012}
   - component: {fileID: 782581011}
   - component: {fileID: 782581015}
-  - component: {fileID: 782581016}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -13022,7 +12477,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -40.5, y: 0.51, z: -9}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -13217,21 +12672,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &782581016
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 782581009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &784089014
 GameObject:
   m_ObjectHideFlags: 0
@@ -13246,7 +12686,6 @@ GameObject:
   - component: {fileID: 784089017}
   - component: {fileID: 784089016}
   - component: {fileID: 784089020}
-  - component: {fileID: 784089021}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -13263,8 +12702,8 @@ Transform:
   m_GameObject: {fileID: 784089014}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: -0.5}
-  m_LocalPosition: {x: -48.99, y: 9, z: -42}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalPosition: {x: -49.18, y: 9, z: -42}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -13459,21 +12898,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &784089021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 784089014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &789476702
 GameObject:
   m_ObjectHideFlags: 0
@@ -13488,7 +12912,6 @@ GameObject:
   - component: {fileID: 789476705}
   - component: {fileID: 789476704}
   - component: {fileID: 789476708}
-  - component: {fileID: 789476709}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -13506,7 +12929,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -29.5, y: 0.51, z: -9}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -13701,21 +13124,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &789476709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 789476702}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &805634351
 GameObject:
   m_ObjectHideFlags: 0
@@ -13748,7 +13156,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: -20.710001, y: 14.5, z: -25.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -14006,7 +13414,6 @@ GameObject:
   - component: {fileID: 844672525}
   - component: {fileID: 844672524}
   - component: {fileID: 844672528}
-  - component: {fileID: 844672529}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -14023,8 +13430,8 @@ Transform:
   m_GameObject: {fileID: 844672522}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: -0.5}
-  m_LocalPosition: {x: -48.99, y: 9, z: -31}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalPosition: {x: -49.18, y: 9, z: -31}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -14219,21 +13626,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &844672529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 844672522}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &860375135
 GameObject:
   m_ObjectHideFlags: 0
@@ -14248,7 +13640,6 @@ GameObject:
   - component: {fileID: 860375138}
   - component: {fileID: 860375137}
   - component: {fileID: 860375141}
-  - component: {fileID: 860375142}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -14265,8 +13656,8 @@ Transform:
   m_GameObject: {fileID: 860375135}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: -0.5}
-  m_LocalPosition: {x: -48.99, y: 3.5, z: -36.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalPosition: {x: -49.18, y: 3.5, z: -36.5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -14461,21 +13852,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &860375142
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 860375135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &865100765
 GameObject:
   m_ObjectHideFlags: 0
@@ -14806,7 +14182,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: -20.710001, y: 14.5, z: -20}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -15048,7 +14424,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: -20.710001, y: 9, z: -20}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -15395,7 +14771,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: -20.710001, y: 14.5, z: -42}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -15619,7 +14995,6 @@ GameObject:
   - component: {fileID: 948879686}
   - component: {fileID: 948879685}
   - component: {fileID: 948879689}
-  - component: {fileID: 948879690}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -15636,8 +15011,8 @@ Transform:
   m_GameObject: {fileID: 948879683}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: -0.5}
-  m_LocalPosition: {x: -48.99, y: 14.5, z: -20}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalPosition: {x: -49.18, y: 14.5, z: -20}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -15832,21 +15207,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &948879690
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 948879683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &951592364
 GameObject:
   m_ObjectHideFlags: 0
@@ -15861,7 +15221,6 @@ GameObject:
   - component: {fileID: 951592367}
   - component: {fileID: 951592366}
   - component: {fileID: 951592370}
-  - component: {fileID: 951592371}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -15878,8 +15237,8 @@ Transform:
   m_GameObject: {fileID: 951592364}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.70710677, z: -0.70710677, w: 0}
-  m_LocalPosition: {x: -40.599995, y: 9, z: 9.88}
-  m_LocalScale: {x: 5, y: 0.020000005, z: 5}
+  m_LocalPosition: {x: -40.599995, y: 9, z: 9.85}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -16074,21 +15433,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &951592371
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 951592364}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &956096111
 GameObject:
   m_ObjectHideFlags: 0
@@ -16103,7 +15447,6 @@ GameObject:
   - component: {fileID: 956096114}
   - component: {fileID: 956096113}
   - component: {fileID: 956096117}
-  - component: {fileID: 956096118}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -16120,8 +15463,8 @@ Transform:
   m_GameObject: {fileID: 956096111}
   serializedVersion: 2
   m_LocalRotation: {x: 0.70710677, y: 0, z: 0, w: 0.70710677}
-  m_LocalPosition: {x: -29.609997, y: 14.5, z: -44.97}
-  m_LocalScale: {x: 5, y: 0.020000005, z: 5}
+  m_LocalPosition: {x: -29.609997, y: 14.5, z: -44.94}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -16316,21 +15659,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &956096118
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 956096111}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &967237796
 GameObject:
   m_ObjectHideFlags: 0
@@ -16587,7 +15915,6 @@ GameObject:
   - component: {fileID: 976101360}
   - component: {fileID: 976101359}
   - component: {fileID: 976101363}
-  - component: {fileID: 976101364}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -16605,7 +15932,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -35, y: 0.51, z: -36.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -16800,21 +16127,232 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &976101364
+--- !u!1 &981518607
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 981518608}
+  - component: {fileID: 981518613}
+  - component: {fileID: 981518612}
+  - component: {fileID: 981518611}
+  - component: {fileID: 981518610}
+  - component: {fileID: 981518609}
+  m_Layer: 0
+  m_Name: Cube (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &981518608
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 981518607}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -40.5, y: 0.51, z: -31}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1417362187}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &981518609
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 976101357}
+  m_GameObject: {fileID: 981518607}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
+  m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &981518610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 981518607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a35f6cfbfba9b548aaa00d52cfe8a50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_InteractionManager: {fileID: 0}
+  m_Colliders: []
+  m_InteractionLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_InteractionLayers:
+    m_Bits: 1
+  m_DistanceCalculationMode: 1
+  m_SelectMode: 0
+  m_FocusMode: 1
+  m_CustomReticle: {fileID: 0}
+  m_AllowGazeInteraction: 0
+  m_AllowGazeSelect: 0
+  m_OverrideGazeTimeToSelect: 0
+  m_GazeTimeToSelect: 0.5
+  m_OverrideTimeToAutoDeselectGaze: 0
+  m_TimeToAutoDeselectGaze: 3
+  m_AllowGazeAssistance: 0
+  m_FirstHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_HoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_HoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FirstSelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastSelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_SelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_SelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FirstFocusEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastFocusExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FocusEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FocusExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Activated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Deactivated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_StartingHoverFilters: []
+  m_StartingSelectFilters: []
+  m_StartingInteractionStrengthFilters: []
+  m_OnFirstHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnLastHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectCanceled:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnActivate:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnDeactivate:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!23 &981518611
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 981518607}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: cbf570fa40922c94da36386ea18f60c7, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &981518612
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 981518607}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &981518613
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 981518607}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &991437473
 GameObject:
   m_ObjectHideFlags: 0
@@ -16996,7 +16534,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: -20.710001, y: 3.5, z: -3.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -17220,7 +16758,6 @@ GameObject:
   - component: {fileID: 995355349}
   - component: {fileID: 995355348}
   - component: {fileID: 995355352}
-  - component: {fileID: 995355353}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -17238,7 +16775,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -46, y: 0.51, z: -9}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -17433,21 +16970,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &995355353
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 995355346}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &1023749975
 GameObject:
   m_ObjectHideFlags: 0
@@ -17462,7 +16984,6 @@ GameObject:
   - component: {fileID: 1023749978}
   - component: {fileID: 1023749977}
   - component: {fileID: 1023749981}
-  - component: {fileID: 1023749982}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -17479,8 +17000,8 @@ Transform:
   m_GameObject: {fileID: 1023749975}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: -0.5}
-  m_LocalPosition: {x: -48.99, y: 3.5, z: -14.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalPosition: {x: -49.18, y: 3.5, z: -14.5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -17675,21 +17196,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1023749982
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1023749975}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &1025244887
 GameObject:
   m_ObjectHideFlags: 0
@@ -17722,7 +17228,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: -20.710001, y: 14.5, z: -31}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -17964,7 +17470,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: -20.710001, y: 3.5, z: -31}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -18220,6 +17726,232 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1057013345
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1057013346}
+  - component: {fileID: 1057013351}
+  - component: {fileID: 1057013350}
+  - component: {fileID: 1057013349}
+  - component: {fileID: 1057013348}
+  - component: {fileID: 1057013347}
+  m_Layer: 0
+  m_Name: Cube (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1057013346
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1057013345}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -46, y: 0.51, z: -31}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1417362187}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1057013347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1057013345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1057013348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1057013345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a35f6cfbfba9b548aaa00d52cfe8a50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_InteractionManager: {fileID: 0}
+  m_Colliders: []
+  m_InteractionLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_InteractionLayers:
+    m_Bits: 1
+  m_DistanceCalculationMode: 1
+  m_SelectMode: 0
+  m_FocusMode: 1
+  m_CustomReticle: {fileID: 0}
+  m_AllowGazeInteraction: 0
+  m_AllowGazeSelect: 0
+  m_OverrideGazeTimeToSelect: 0
+  m_GazeTimeToSelect: 0.5
+  m_OverrideTimeToAutoDeselectGaze: 0
+  m_TimeToAutoDeselectGaze: 3
+  m_AllowGazeAssistance: 0
+  m_FirstHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_HoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_HoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FirstSelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastSelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_SelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_SelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FirstFocusEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastFocusExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FocusEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FocusExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Activated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Deactivated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_StartingHoverFilters: []
+  m_StartingSelectFilters: []
+  m_StartingInteractionStrengthFilters: []
+  m_OnFirstHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnLastHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectCanceled:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnActivate:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnDeactivate:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!23 &1057013349
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1057013345}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: cbf570fa40922c94da36386ea18f60c7, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1057013350
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1057013345}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &1057013351
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1057013345}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1064909279
 GameObject:
   m_ObjectHideFlags: 0
@@ -18252,7 +17984,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: -20.710001, y: 9, z: -31}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -18476,7 +18208,6 @@ GameObject:
   - component: {fileID: 1065483111}
   - component: {fileID: 1065483110}
   - component: {fileID: 1065483114}
-  - component: {fileID: 1065483115}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -18494,7 +18225,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -29.5, y: 0.51, z: 7.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -18689,21 +18420,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1065483115
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1065483108}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &1072879221
 GameObject:
   m_ObjectHideFlags: 0
@@ -18734,11 +18450,10 @@ Transform:
   m_GameObject: {fileID: 1072879221}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -33.217, y: 3.045, z: -11.43}
-  m_LocalScale: {x: 1.78, y: 1.78, z: 1.78}
+  m_LocalPosition: {x: -33.358, y: 3.53, z: -10.535}
+  m_LocalScale: {x: 2.1504905, y: 1.5965627, z: 2.2351584}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 461746487}
+  m_Children: []
   m_Father: {fileID: 1417362187}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1072879223
@@ -18755,7 +18470,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 'Golden Crown '
   grabbable: 0
-  Model3D: 0
+  Model3D: 1
 --- !u!65 &1072879224
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18943,7 +18658,6 @@ GameObject:
   - component: {fileID: 1097503033}
   - component: {fileID: 1097503032}
   - component: {fileID: 1097503036}
-  - component: {fileID: 1097503037}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -18961,7 +18675,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -29.5, y: 0.51, z: -14.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -19156,21 +18870,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1097503037
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1097503030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &1104538610
 GameObject:
   m_ObjectHideFlags: 0
@@ -19185,7 +18884,6 @@ GameObject:
   - component: {fileID: 1104538613}
   - component: {fileID: 1104538612}
   - component: {fileID: 1104538616}
-  - component: {fileID: 1104538617}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -19203,7 +18901,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -40.5, y: 0.51, z: -14.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -19398,21 +19096,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1104538617
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1104538610}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &1108611046
 GameObject:
   m_ObjectHideFlags: 0
@@ -19445,7 +19128,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: -20.710001, y: 3.5, z: -9}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -19912,7 +19595,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: -20.710001, y: 9, z: -9}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -20136,7 +19819,6 @@ GameObject:
   - component: {fileID: 1124034259}
   - component: {fileID: 1124034258}
   - component: {fileID: 1124034262}
-  - component: {fileID: 1124034263}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -20154,7 +19836,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -40.5, y: 0.51, z: -3.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -20349,21 +20031,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1124034263
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1124034256}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &1161135659
 GameObject:
   m_ObjectHideFlags: 0
@@ -20378,7 +20045,6 @@ GameObject:
   - component: {fileID: 1161135662}
   - component: {fileID: 1161135661}
   - component: {fileID: 1161135665}
-  - component: {fileID: 1161135666}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -20396,7 +20062,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -24, y: 0.51, z: -3.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -20591,21 +20257,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1161135666
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1161135659}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &1178788841
 GameObject:
   m_ObjectHideFlags: 0
@@ -20759,7 +20410,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyword: 'M16,Automatic Gun '
   grabbable: 0
-  Model3D: 0
+  Model3D: 1
 --- !u!65 &1178788845
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21086,7 +20737,6 @@ GameObject:
   - component: {fileID: 1213760597}
   - component: {fileID: 1213760596}
   - component: {fileID: 1213760600}
-  - component: {fileID: 1213760601}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -21104,7 +20754,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -29.5, y: 0.51, z: -25.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -21299,21 +20949,232 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1213760601
+--- !u!1 &1227892821
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1227892822}
+  - component: {fileID: 1227892827}
+  - component: {fileID: 1227892826}
+  - component: {fileID: 1227892825}
+  - component: {fileID: 1227892824}
+  - component: {fileID: 1227892823}
+  m_Layer: 0
+  m_Name: Cube (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1227892822
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227892821}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -46, y: 0.51, z: -36.5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1417362187}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1227892823
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1213760594}
+  m_GameObject: {fileID: 1227892821}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
+  m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1227892824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227892821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a35f6cfbfba9b548aaa00d52cfe8a50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_InteractionManager: {fileID: 0}
+  m_Colliders: []
+  m_InteractionLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_InteractionLayers:
+    m_Bits: 1
+  m_DistanceCalculationMode: 1
+  m_SelectMode: 0
+  m_FocusMode: 1
+  m_CustomReticle: {fileID: 0}
+  m_AllowGazeInteraction: 0
+  m_AllowGazeSelect: 0
+  m_OverrideGazeTimeToSelect: 0
+  m_GazeTimeToSelect: 0.5
+  m_OverrideTimeToAutoDeselectGaze: 0
+  m_TimeToAutoDeselectGaze: 3
+  m_AllowGazeAssistance: 0
+  m_FirstHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_HoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_HoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FirstSelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastSelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_SelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_SelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FirstFocusEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastFocusExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FocusEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FocusExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Activated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Deactivated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_StartingHoverFilters: []
+  m_StartingSelectFilters: []
+  m_StartingInteractionStrengthFilters: []
+  m_OnFirstHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnLastHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectCanceled:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnActivate:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnDeactivate:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!23 &1227892825
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227892821}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: cbf570fa40922c94da36386ea18f60c7, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1227892826
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227892821}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &1227892827
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227892821}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1253428747
 GameObject:
   m_ObjectHideFlags: 0
@@ -21328,7 +21189,6 @@ GameObject:
   - component: {fileID: 1253428750}
   - component: {fileID: 1253428749}
   - component: {fileID: 1253428753}
-  - component: {fileID: 1253428754}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -21346,7 +21206,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -35, y: 0.51, z: 2}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -21541,21 +21401,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1253428754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1253428747}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &1283365943
 GameObject:
   m_ObjectHideFlags: 0
@@ -21570,7 +21415,6 @@ GameObject:
   - component: {fileID: 1283365946}
   - component: {fileID: 1283365945}
   - component: {fileID: 1283365949}
-  - component: {fileID: 1283365950}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -21587,8 +21431,8 @@ Transform:
   m_GameObject: {fileID: 1283365943}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: -0.5}
-  m_LocalPosition: {x: -48.99, y: 3.5, z: -20}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalPosition: {x: -49.18, y: 3.5, z: -20}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -21783,21 +21627,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1283365950
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1283365943}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &1287641696
 GameObject:
   m_ObjectHideFlags: 0
@@ -21830,7 +21659,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: -20.710001, y: 3.5, z: 2}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -22072,7 +21901,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: -20.710001, y: 9, z: -14.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -22296,7 +22125,6 @@ GameObject:
   - component: {fileID: 1315463453}
   - component: {fileID: 1315463452}
   - component: {fileID: 1315463456}
-  - component: {fileID: 1315463457}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -22313,8 +22141,8 @@ Transform:
   m_GameObject: {fileID: 1315463450}
   serializedVersion: 2
   m_LocalRotation: {x: 0.70710677, y: 0, z: 0, w: 0.70710677}
-  m_LocalPosition: {x: -24.109995, y: 9, z: -44.97}
-  m_LocalScale: {x: 5, y: 0.020000005, z: 5}
+  m_LocalPosition: {x: -24.109995, y: 9, z: -44.94}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -22509,21 +22337,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1315463457
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1315463450}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &1317852028
 GameObject:
   m_ObjectHideFlags: 0
@@ -22538,7 +22351,6 @@ GameObject:
   - component: {fileID: 1317852031}
   - component: {fileID: 1317852030}
   - component: {fileID: 1317852034}
-  - component: {fileID: 1317852035}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -22555,8 +22367,8 @@ Transform:
   m_GameObject: {fileID: 1317852028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.70710677, z: -0.70710677, w: 0}
-  m_LocalPosition: {x: -40.599995, y: 14.5, z: 9.88}
-  m_LocalScale: {x: 5, y: 0.020000005, z: 5}
+  m_LocalPosition: {x: -40.599995, y: 14.5, z: 9.85}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -22751,21 +22563,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1317852035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1317852028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &1319180836
 GameObject:
   m_ObjectHideFlags: 0
@@ -22798,7 +22595,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: -20.710001, y: 14.5, z: 2}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -23040,7 +22837,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: -20.710001, y: 14.5, z: -9}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -23264,7 +23061,6 @@ GameObject:
   - component: {fileID: 1371635855}
   - component: {fileID: 1371635854}
   - component: {fileID: 1371635858}
-  - component: {fileID: 1371635859}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -23281,8 +23077,8 @@ Transform:
   m_GameObject: {fileID: 1371635852}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: -0.5}
-  m_LocalPosition: {x: -48.99, y: 9, z: -9}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalPosition: {x: -49.18, y: 9, z: -9}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -23477,21 +23273,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1371635859
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1371635852}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &1373172416
 GameObject:
   m_ObjectHideFlags: 0
@@ -23506,7 +23287,6 @@ GameObject:
   - component: {fileID: 1373172419}
   - component: {fileID: 1373172418}
   - component: {fileID: 1373172422}
-  - component: {fileID: 1373172423}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -23523,8 +23303,8 @@ Transform:
   m_GameObject: {fileID: 1373172416}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: -0.5}
-  m_LocalPosition: {x: -48.99, y: 14.5, z: -9}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalPosition: {x: -49.18, y: 14.5, z: -9}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -23719,21 +23499,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1373172423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1373172416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &1390348237
 GameObject:
   m_ObjectHideFlags: 0
@@ -23748,7 +23513,6 @@ GameObject:
   - component: {fileID: 1390348240}
   - component: {fileID: 1390348239}
   - component: {fileID: 1390348243}
-  - component: {fileID: 1390348244}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -23766,7 +23530,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -24, y: 0.51, z: -14.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -23961,21 +23725,232 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1390348244
+--- !u!1 &1397117373
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1397117374}
+  - component: {fileID: 1397117379}
+  - component: {fileID: 1397117378}
+  - component: {fileID: 1397117377}
+  - component: {fileID: 1397117376}
+  - component: {fileID: 1397117375}
+  m_Layer: 0
+  m_Name: Cube (6)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1397117374
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397117373}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -46, y: 0.51, z: -42}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1417362187}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1397117375
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1390348237}
+  m_GameObject: {fileID: 1397117373}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
+  m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1397117376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397117373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a35f6cfbfba9b548aaa00d52cfe8a50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_InteractionManager: {fileID: 0}
+  m_Colliders: []
+  m_InteractionLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_InteractionLayers:
+    m_Bits: 1
+  m_DistanceCalculationMode: 1
+  m_SelectMode: 0
+  m_FocusMode: 1
+  m_CustomReticle: {fileID: 0}
+  m_AllowGazeInteraction: 0
+  m_AllowGazeSelect: 0
+  m_OverrideGazeTimeToSelect: 0
+  m_GazeTimeToSelect: 0.5
+  m_OverrideTimeToAutoDeselectGaze: 0
+  m_TimeToAutoDeselectGaze: 3
+  m_AllowGazeAssistance: 0
+  m_FirstHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_HoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_HoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FirstSelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastSelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_SelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_SelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FirstFocusEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastFocusExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FocusEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FocusExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Activated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Deactivated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_StartingHoverFilters: []
+  m_StartingSelectFilters: []
+  m_StartingInteractionStrengthFilters: []
+  m_OnFirstHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnLastHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectCanceled:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnActivate:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnDeactivate:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!23 &1397117377
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397117373}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: cbf570fa40922c94da36386ea18f60c7, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1397117378
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397117373}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &1397117379
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397117373}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1403611529
 GameObject:
   m_ObjectHideFlags: 0
@@ -24095,7 +24070,6 @@ GameObject:
   - component: {fileID: 1408461961}
   - component: {fileID: 1408461960}
   - component: {fileID: 1408461964}
-  - component: {fileID: 1408461965}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -24112,8 +24086,8 @@ Transform:
   m_GameObject: {fileID: 1408461958}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: -0.5}
-  m_LocalPosition: {x: -48.99, y: 3.5, z: -9}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalPosition: {x: -49.18, y: 3.5, z: -9}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -24308,21 +24282,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1408461965
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1408461958}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!4 &1409226360 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 505b676b815456145bda2fc5751d9b00, type: 3}
@@ -24475,7 +24434,9 @@ Transform:
   - {fileID: 91492028}
   - {fileID: 1933398283}
   - {fileID: 967237797}
+  - {fileID: 1057013346}
   - {fileID: 1530173536}
+  - {fileID: 981518608}
   - {fileID: 55492137}
   - {fileID: 976101358}
   - {fileID: 99414943}
@@ -24483,10 +24444,14 @@ Transform:
   - {fileID: 233211904}
   - {fileID: 12056912}
   - {fileID: 429806576}
+  - {fileID: 1529524335}
   - {fileID: 529502617}
+  - {fileID: 1227892822}
   - {fileID: 1775010309}
   - {fileID: 2138888603}
+  - {fileID: 1491840460}
   - {fileID: 136435409}
+  - {fileID: 1397117374}
   - {fileID: 485313311}
   - {fileID: 628517380}
   - {fileID: 594788247}
@@ -24494,9 +24459,11 @@ Transform:
   - {fileID: 1115432502}
   - {fileID: 55150128}
   - {fileID: 592549163}
+  - {fileID: 461746487}
   - {fileID: 1072879222}
   - {fileID: 2117421016}
   - {fileID: 1178788842}
+  - {fileID: 566492558}
   - {fileID: 1768034706}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -24514,7 +24481,6 @@ GameObject:
   - component: {fileID: 1431444569}
   - component: {fileID: 1431444568}
   - component: {fileID: 1431444572}
-  - component: {fileID: 1431444573}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -24531,8 +24497,8 @@ Transform:
   m_GameObject: {fileID: 1431444566}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.70710677, z: -0.70710677, w: 0}
-  m_LocalPosition: {x: -24.099995, y: 14.5, z: 9.88}
-  m_LocalScale: {x: 5, y: 0.020000005, z: 5}
+  m_LocalPosition: {x: -24.099995, y: 14.5, z: 9.85}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -24727,21 +24693,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1431444573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1431444566}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &1458268270
 GameObject:
   m_ObjectHideFlags: 0
@@ -24756,7 +24707,6 @@ GameObject:
   - component: {fileID: 1458268273}
   - component: {fileID: 1458268272}
   - component: {fileID: 1458268276}
-  - component: {fileID: 1458268277}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -24773,8 +24723,8 @@ Transform:
   m_GameObject: {fileID: 1458268270}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: -0.5}
-  m_LocalPosition: {x: -48.99, y: 14.5, z: -3.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalPosition: {x: -49.18, y: 14.5, z: -3.5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -24969,21 +24919,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1458268277
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1458268270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &1473677039
 GameObject:
   m_ObjectHideFlags: 0
@@ -24998,7 +24933,6 @@ GameObject:
   - component: {fileID: 1473677042}
   - component: {fileID: 1473677041}
   - component: {fileID: 1473677045}
-  - component: {fileID: 1473677046}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -25015,8 +24949,8 @@ Transform:
   m_GameObject: {fileID: 1473677039}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: -0.5}
-  m_LocalPosition: {x: -48.99, y: 14.5, z: -14.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalPosition: {x: -49.18, y: 14.5, z: -14.5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -25211,21 +25145,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1473677046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1473677039}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &1475736854
 GameObject:
   m_ObjectHideFlags: 0
@@ -25240,7 +25159,6 @@ GameObject:
   - component: {fileID: 1475736857}
   - component: {fileID: 1475736856}
   - component: {fileID: 1475736860}
-  - component: {fileID: 1475736861}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -25257,8 +25175,8 @@ Transform:
   m_GameObject: {fileID: 1475736854}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.70710677, z: -0.70710677, w: 0}
-  m_LocalPosition: {x: -46.099995, y: 14.5, z: 9.88}
-  m_LocalScale: {x: 5, y: 0.020000005, z: 5}
+  m_LocalPosition: {x: -46.099995, y: 14.5, z: 9.85}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -25453,21 +25371,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1475736861
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1475736854}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &1479327454
 GameObject:
   m_ObjectHideFlags: 0
@@ -25482,7 +25385,6 @@ GameObject:
   - component: {fileID: 1479327457}
   - component: {fileID: 1479327456}
   - component: {fileID: 1479327460}
-  - component: {fileID: 1479327461}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -25500,7 +25402,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -46, y: 0.51, z: -3.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -25695,21 +25597,232 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1479327461
+--- !u!1 &1491840459
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1491840460}
+  - component: {fileID: 1491840465}
+  - component: {fileID: 1491840464}
+  - component: {fileID: 1491840463}
+  - component: {fileID: 1491840462}
+  - component: {fileID: 1491840461}
+  m_Layer: 0
+  m_Name: Cube (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1491840460
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1491840459}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -40.5, y: 0.51, z: -42}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1417362187}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1491840461
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1479327454}
+  m_GameObject: {fileID: 1491840459}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
+  m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1491840462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1491840459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a35f6cfbfba9b548aaa00d52cfe8a50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_InteractionManager: {fileID: 0}
+  m_Colliders: []
+  m_InteractionLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_InteractionLayers:
+    m_Bits: 1
+  m_DistanceCalculationMode: 1
+  m_SelectMode: 0
+  m_FocusMode: 1
+  m_CustomReticle: {fileID: 0}
+  m_AllowGazeInteraction: 0
+  m_AllowGazeSelect: 0
+  m_OverrideGazeTimeToSelect: 0
+  m_GazeTimeToSelect: 0.5
+  m_OverrideTimeToAutoDeselectGaze: 0
+  m_TimeToAutoDeselectGaze: 3
+  m_AllowGazeAssistance: 0
+  m_FirstHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_HoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_HoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FirstSelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastSelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_SelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_SelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FirstFocusEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastFocusExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FocusEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FocusExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Activated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Deactivated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_StartingHoverFilters: []
+  m_StartingSelectFilters: []
+  m_StartingInteractionStrengthFilters: []
+  m_OnFirstHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnLastHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectCanceled:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnActivate:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnDeactivate:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!23 &1491840463
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1491840459}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: cbf570fa40922c94da36386ea18f60c7, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1491840464
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1491840459}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &1491840465
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1491840459}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1518296034
 GameObject:
   m_ObjectHideFlags: 0
@@ -25742,7 +25855,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: -20.710001, y: 9, z: -3.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -25984,7 +26097,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: -20.710001, y: 14.5, z: 7.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -26194,6 +26307,232 @@ MonoBehaviour:
   keyword: 
   grabbable: 0
   Model3D: 0
+--- !u!1 &1529524334
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1529524335}
+  - component: {fileID: 1529524340}
+  - component: {fileID: 1529524339}
+  - component: {fileID: 1529524338}
+  - component: {fileID: 1529524337}
+  - component: {fileID: 1529524336}
+  m_Layer: 0
+  m_Name: Cube (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1529524335
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1529524334}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -40.5, y: 0.51, z: -36.5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1417362187}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1529524336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1529524334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1529524337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1529524334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a35f6cfbfba9b548aaa00d52cfe8a50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_InteractionManager: {fileID: 0}
+  m_Colliders: []
+  m_InteractionLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_InteractionLayers:
+    m_Bits: 1
+  m_DistanceCalculationMode: 1
+  m_SelectMode: 0
+  m_FocusMode: 1
+  m_CustomReticle: {fileID: 0}
+  m_AllowGazeInteraction: 0
+  m_AllowGazeSelect: 0
+  m_OverrideGazeTimeToSelect: 0
+  m_GazeTimeToSelect: 0.5
+  m_OverrideTimeToAutoDeselectGaze: 0
+  m_TimeToAutoDeselectGaze: 3
+  m_AllowGazeAssistance: 0
+  m_FirstHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_HoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_HoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FirstSelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastSelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_SelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_SelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FirstFocusEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastFocusExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FocusEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FocusExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Activated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Deactivated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_StartingHoverFilters: []
+  m_StartingSelectFilters: []
+  m_StartingInteractionStrengthFilters: []
+  m_OnFirstHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnLastHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectCanceled:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnActivate:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnDeactivate:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!23 &1529524338
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1529524334}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: cbf570fa40922c94da36386ea18f60c7, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1529524339
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1529524334}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &1529524340
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1529524334}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1530173535
 GameObject:
   m_ObjectHideFlags: 0
@@ -26450,7 +26789,6 @@ GameObject:
   - component: {fileID: 1559456154}
   - component: {fileID: 1559456153}
   - component: {fileID: 1559456157}
-  - component: {fileID: 1559456158}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -26468,7 +26806,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -29.5, y: 0.51, z: 2}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -26663,21 +27001,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1559456158
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1559456151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &1592545276
 GameObject:
   m_ObjectHideFlags: 0
@@ -26692,7 +27015,6 @@ GameObject:
   - component: {fileID: 1592545279}
   - component: {fileID: 1592545278}
   - component: {fileID: 1592545282}
-  - component: {fileID: 1592545283}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -26709,8 +27031,8 @@ Transform:
   m_GameObject: {fileID: 1592545276}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: -0.5}
-  m_LocalPosition: {x: -48.99, y: 9, z: -3.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalPosition: {x: -49.18, y: 9, z: -3.5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -26905,21 +27227,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1592545283
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1592545276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &1592977851
 GameObject:
   m_ObjectHideFlags: 0
@@ -27092,7 +27399,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: -20.710001, y: 3.5, z: -25.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -27316,7 +27623,6 @@ GameObject:
   - component: {fileID: 1621497321}
   - component: {fileID: 1621497320}
   - component: {fileID: 1621497324}
-  - component: {fileID: 1621497325}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -27333,8 +27639,8 @@ Transform:
   m_GameObject: {fileID: 1621497318}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: -0.5}
-  m_LocalPosition: {x: -48.99, y: 3.5, z: -3.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalPosition: {x: -49.18, y: 3.5, z: -3.5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -27529,21 +27835,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1621497325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1621497318}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &1628069275
 GameObject:
   m_ObjectHideFlags: 0
@@ -27558,7 +27849,6 @@ GameObject:
   - component: {fileID: 1628069278}
   - component: {fileID: 1628069277}
   - component: {fileID: 1628069281}
-  - component: {fileID: 1628069282}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -27575,8 +27865,8 @@ Transform:
   m_GameObject: {fileID: 1628069275}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: -0.5}
-  m_LocalPosition: {x: -48.99, y: 9, z: -25.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalPosition: {x: -49.18, y: 9, z: -25.5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -27771,21 +28061,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1628069282
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1628069275}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &1628762405
 GameObject:
   m_ObjectHideFlags: 0
@@ -27800,7 +28075,6 @@ GameObject:
   - component: {fileID: 1628762408}
   - component: {fileID: 1628762407}
   - component: {fileID: 1628762411}
-  - component: {fileID: 1628762412}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -27818,7 +28092,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -24, y: 0.51, z: 2}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -28013,21 +28287,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1628762412
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1628762405}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &1634395710
 GameObject:
   m_ObjectHideFlags: 0
@@ -28042,7 +28301,6 @@ GameObject:
   - component: {fileID: 1634395713}
   - component: {fileID: 1634395712}
   - component: {fileID: 1634395716}
-  - component: {fileID: 1634395717}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -28059,8 +28317,8 @@ Transform:
   m_GameObject: {fileID: 1634395710}
   serializedVersion: 2
   m_LocalRotation: {x: 0.70710677, y: 0, z: 0, w: 0.70710677}
-  m_LocalPosition: {x: -24.109995, y: 14.5, z: -44.97}
-  m_LocalScale: {x: 5, y: 0.020000005, z: 5}
+  m_LocalPosition: {x: -24.109995, y: 14.5, z: -44.94}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -28255,21 +28513,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1634395717
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1634395710}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &1645537293
 GameObject:
   m_ObjectHideFlags: 0
@@ -28302,7 +28545,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: -20.710001, y: 9, z: -42}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -28526,7 +28769,6 @@ GameObject:
   - component: {fileID: 1662085377}
   - component: {fileID: 1662085376}
   - component: {fileID: 1662085380}
-  - component: {fileID: 1662085381}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -28543,8 +28785,8 @@ Transform:
   m_GameObject: {fileID: 1662085374}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: -0.5}
-  m_LocalPosition: {x: -48.99, y: 3.5, z: -42}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalPosition: {x: -49.18, y: 3.5, z: -42}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -28739,21 +28981,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1662085381
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1662085374}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &1694715199
 GameObject:
   m_ObjectHideFlags: 0
@@ -28768,7 +28995,6 @@ GameObject:
   - component: {fileID: 1694715202}
   - component: {fileID: 1694715201}
   - component: {fileID: 1694715205}
-  - component: {fileID: 1694715206}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -28786,7 +29012,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -29.5, y: 0.51, z: -3.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -28981,21 +29207,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1694715206
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1694715199}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &1719788300
 GameObject:
   m_ObjectHideFlags: 0
@@ -29010,7 +29221,6 @@ GameObject:
   - component: {fileID: 1719788303}
   - component: {fileID: 1719788302}
   - component: {fileID: 1719788306}
-  - component: {fileID: 1719788307}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -29027,8 +29237,8 @@ Transform:
   m_GameObject: {fileID: 1719788300}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: -0.5}
-  m_LocalPosition: {x: -48.99, y: 14.5, z: 2}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalPosition: {x: -49.18, y: 14.5, z: 2}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -29223,21 +29433,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1719788307
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1719788300}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &1735843002
 GameObject:
   m_ObjectHideFlags: 0
@@ -29252,7 +29447,6 @@ GameObject:
   - component: {fileID: 1735843005}
   - component: {fileID: 1735843004}
   - component: {fileID: 1735843008}
-  - component: {fileID: 1735843009}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -29270,7 +29464,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -46, y: 0.51, z: -14.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -29465,21 +29659,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1735843009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1735843002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &1747060761
 GameObject:
   m_ObjectHideFlags: 0
@@ -29494,7 +29673,6 @@ GameObject:
   - component: {fileID: 1747060764}
   - component: {fileID: 1747060763}
   - component: {fileID: 1747060767}
-  - component: {fileID: 1747060768}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -29511,8 +29689,8 @@ Transform:
   m_GameObject: {fileID: 1747060761}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.70710677, z: -0.70710677, w: 0}
-  m_LocalPosition: {x: -24.099995, y: 9, z: 9.88}
-  m_LocalScale: {x: 5, y: 0.020000005, z: 5}
+  m_LocalPosition: {x: -24.099995, y: 9, z: 9.85}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -29707,21 +29885,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1747060768
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1747060761}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &1752827720
 GameObject:
   m_ObjectHideFlags: 0
@@ -29841,7 +30004,6 @@ GameObject:
   - component: {fileID: 1760570391}
   - component: {fileID: 1760570390}
   - component: {fileID: 1760570394}
-  - component: {fileID: 1760570395}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -29858,8 +30020,8 @@ Transform:
   m_GameObject: {fileID: 1760570388}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.70710677, z: -0.70710677, w: 0}
-  m_LocalPosition: {x: -24.099995, y: 3.5, z: 9.88}
-  m_LocalScale: {x: 5, y: 0.020000005, z: 5}
+  m_LocalPosition: {x: -24.099995, y: 3.5, z: 9.85}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -30054,21 +30216,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1760570395
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1760570388}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &1768034705
 GameObject:
   m_ObjectHideFlags: 0
@@ -30084,7 +30231,7 @@ GameObject:
   - component: {fileID: 1768034708}
   - component: {fileID: 1768034707}
   m_Layer: 0
-  m_Name: 'MincraftSwardContainer '
+  m_Name: 'MinecraftSwordContainer '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30098,13 +30245,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1768034705}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0.4781554, z: 0, w: 0.8782753}
-  m_LocalPosition: {x: -33.81, y: 2.7580202, z: -23.971}
-  m_LocalScale: {x: 2.85, y: 0.37, z: 1.51205}
+  m_LocalRotation: {x: -0, y: 0.43721876, z: -0, w: 0.8993552}
+  m_LocalPosition: {x: -33.82, y: 2.883, z: -24.15}
+  m_LocalScale: {x: 3.6459405, y: 0.37, z: 1.7625966}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
-  m_LocalEulerAnglesHint: {x: 0, y: -57.13, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 51.853, z: 0}
 --- !u!114 &1768034707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30117,9 +30264,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyword: Mincraft Sward
+  keyword: Minecraft Sword
   grabbable: 0
-  Model3D: 0
+  Model3D: 1
 --- !u!114 &1768034708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30532,7 +30679,6 @@ GameObject:
   - component: {fileID: 1775010311}
   - component: {fileID: 1775010310}
   - component: {fileID: 1775010314}
-  - component: {fileID: 1775010315}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -30550,7 +30696,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -29.5, y: 0.51, z: -42}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -30745,21 +30891,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1775010315
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1775010308}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &1783920358
 GameObject:
   m_ObjectHideFlags: 0
@@ -30774,7 +30905,6 @@ GameObject:
   - component: {fileID: 1783920361}
   - component: {fileID: 1783920360}
   - component: {fileID: 1783920364}
-  - component: {fileID: 1783920365}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -30791,8 +30921,8 @@ Transform:
   m_GameObject: {fileID: 1783920358}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: -0.5}
-  m_LocalPosition: {x: -48.99, y: 3.5, z: 2}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalPosition: {x: -49.18, y: 3.5, z: 2}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -30987,21 +31117,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1783920365
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1783920358}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &1793777812 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5795090120012688178, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
@@ -31039,7 +31154,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: -20.710001, y: 3.5, z: -42}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -31373,7 +31488,6 @@ GameObject:
   - component: {fileID: 1800784061}
   - component: {fileID: 1800784060}
   - component: {fileID: 1800784064}
-  - component: {fileID: 1800784065}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -31390,8 +31504,8 @@ Transform:
   m_GameObject: {fileID: 1800784058}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.70710677, z: -0.70710677, w: 0}
-  m_LocalPosition: {x: -35.099995, y: 14.5, z: 9.88}
-  m_LocalScale: {x: 5, y: 0.020000005, z: 5}
+  m_LocalPosition: {x: -35.099995, y: 14.5, z: 9.85}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -31586,21 +31700,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1800784065
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1800784058}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1001 &1801768677
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31722,7 +31821,6 @@ GameObject:
   - component: {fileID: 1803398551}
   - component: {fileID: 1803398550}
   - component: {fileID: 1803398554}
-  - component: {fileID: 1803398555}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -31739,8 +31837,8 @@ Transform:
   m_GameObject: {fileID: 1803398548}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: -0.5}
-  m_LocalPosition: {x: -48.99, y: 14.5, z: -31}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalPosition: {x: -49.18, y: 14.5, z: -31}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -31935,21 +32033,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1803398555
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1803398548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &1836779266
 GameObject:
   m_ObjectHideFlags: 0
@@ -32069,7 +32152,6 @@ GameObject:
   - component: {fileID: 1845255811}
   - component: {fileID: 1845255810}
   - component: {fileID: 1845255814}
-  - component: {fileID: 1845255815}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -32087,7 +32169,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -29.5, y: 0.51, z: -20}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -32282,21 +32364,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1845255815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1845255808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &1848956173
 GameObject:
   m_ObjectHideFlags: 0
@@ -32311,7 +32378,6 @@ GameObject:
   - component: {fileID: 1848956176}
   - component: {fileID: 1848956175}
   - component: {fileID: 1848956179}
-  - component: {fileID: 1848956180}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -32329,7 +32395,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -40.5, y: 0.51, z: 7.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -32524,21 +32590,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1848956180
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1848956173}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &1854325898
 GameObject:
   m_ObjectHideFlags: 0
@@ -32553,7 +32604,6 @@ GameObject:
   - component: {fileID: 1854325901}
   - component: {fileID: 1854325900}
   - component: {fileID: 1854325904}
-  - component: {fileID: 1854325905}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -32571,7 +32621,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -29.5, y: 0.51, z: -31}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -32766,21 +32816,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1854325905
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1854325898}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &1866399612
 GameObject:
   m_ObjectHideFlags: 0
@@ -32813,7 +32848,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: -20.710001, y: 3.5, z: 7.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -33247,7 +33282,6 @@ GameObject:
   - component: {fileID: 1926784811}
   - component: {fileID: 1926784810}
   - component: {fileID: 1926784814}
-  - component: {fileID: 1926784815}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -33265,7 +33299,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -46, y: 0.51, z: 2}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -33460,21 +33494,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1926784815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1926784808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &1927090833
 GameObject:
   m_ObjectHideFlags: 0
@@ -33594,7 +33613,6 @@ GameObject:
   - component: {fileID: 1933398285}
   - component: {fileID: 1933398284}
   - component: {fileID: 1933398288}
-  - component: {fileID: 1933398289}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -33612,7 +33630,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -46, y: 0.51, z: -25.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -33807,21 +33825,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1933398289
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1933398282}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &1935350023
 GameObject:
   m_ObjectHideFlags: 0
@@ -33906,7 +33909,6 @@ GameObject:
   - component: {fileID: 1940128945}
   - component: {fileID: 1940128944}
   - component: {fileID: 1940128948}
-  - component: {fileID: 1940128949}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -33923,8 +33925,8 @@ Transform:
   m_GameObject: {fileID: 1940128942}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: -0.5}
-  m_LocalPosition: {x: -48.99, y: 9, z: 7.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalPosition: {x: -49.18, y: 9, z: 7.5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -34119,21 +34121,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1940128949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1940128942}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &1951458305
 GameObject:
   m_ObjectHideFlags: 0
@@ -34148,7 +34135,6 @@ GameObject:
   - component: {fileID: 1951458308}
   - component: {fileID: 1951458307}
   - component: {fileID: 1951458311}
-  - component: {fileID: 1951458312}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -34166,7 +34152,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -24, y: 0.51, z: -20}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -34361,21 +34347,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1951458312
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1951458305}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &1973839947
 GameObject:
   m_ObjectHideFlags: 0
@@ -34390,7 +34361,6 @@ GameObject:
   - component: {fileID: 1973839950}
   - component: {fileID: 1973839949}
   - component: {fileID: 1973839953}
-  - component: {fileID: 1973839954}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -34407,8 +34377,8 @@ Transform:
   m_GameObject: {fileID: 1973839947}
   serializedVersion: 2
   m_LocalRotation: {x: 0.70710677, y: 0, z: 0, w: 0.70710677}
-  m_LocalPosition: {x: -24.109995, y: 3.5, z: -44.97}
-  m_LocalScale: {x: 5, y: 0.020000005, z: 5}
+  m_LocalPosition: {x: -24.109995, y: 3.5, z: -44.94}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -34603,21 +34573,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1973839954
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1973839947}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!114 &1979441171 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4159365404132763867, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
@@ -34661,7 +34616,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: -20.710001, y: 14.5, z: -3.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -34885,7 +34840,6 @@ GameObject:
   - component: {fileID: 2002718658}
   - component: {fileID: 2002718657}
   - component: {fileID: 2002718661}
-  - component: {fileID: 2002718662}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -34902,8 +34856,8 @@ Transform:
   m_GameObject: {fileID: 2002718655}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: -0.5}
-  m_LocalPosition: {x: -48.99, y: 14.5, z: -25.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalPosition: {x: -49.18, y: 14.5, z: -25.5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -35098,21 +35052,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &2002718662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2002718655}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &2018227945
 GameObject:
   m_ObjectHideFlags: 0
@@ -35127,7 +35066,6 @@ GameObject:
   - component: {fileID: 2018227948}
   - component: {fileID: 2018227947}
   - component: {fileID: 2018227951}
-  - component: {fileID: 2018227952}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -35144,8 +35082,8 @@ Transform:
   m_GameObject: {fileID: 2018227945}
   serializedVersion: 2
   m_LocalRotation: {x: 0.70710677, y: 0, z: 0, w: 0.70710677}
-  m_LocalPosition: {x: -29.609997, y: 3.5, z: -44.97}
-  m_LocalScale: {x: 5, y: 0.020000005, z: 5}
+  m_LocalPosition: {x: -29.609997, y: 3.5, z: -44.94}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -35340,21 +35278,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &2018227952
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2018227945}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1001 &2020769419
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35447,7 +35370,6 @@ GameObject:
   - component: {fileID: 2021991205}
   - component: {fileID: 2021991204}
   - component: {fileID: 2021991208}
-  - component: {fileID: 2021991209}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -35464,8 +35386,8 @@ Transform:
   m_GameObject: {fileID: 2021991202}
   serializedVersion: 2
   m_LocalRotation: {x: 0.70710677, y: 0, z: 0, w: 0.70710677}
-  m_LocalPosition: {x: -29.609997, y: 9, z: -44.97}
-  m_LocalScale: {x: 5, y: 0.020000005, z: 5}
+  m_LocalPosition: {x: -29.609997, y: 9, z: -44.94}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -35660,21 +35582,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &2021991209
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2021991202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &2043925920
 GameObject:
   m_ObjectHideFlags: 0
@@ -35707,7 +35614,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: -20.710001, y: 9, z: 7.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -35931,7 +35838,6 @@ GameObject:
   - component: {fileID: 2053303193}
   - component: {fileID: 2053303192}
   - component: {fileID: 2053303196}
-  - component: {fileID: 2053303197}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -35948,8 +35854,8 @@ Transform:
   m_GameObject: {fileID: 2053303190}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: -0.5}
-  m_LocalPosition: {x: -48.99, y: 3.5, z: -31}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalPosition: {x: -49.18, y: 3.5, z: -31}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -36144,21 +36050,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &2053303197
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2053303190}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &2055051306
 GameObject:
   m_ObjectHideFlags: 0
@@ -36173,7 +36064,6 @@ GameObject:
   - component: {fileID: 2055051309}
   - component: {fileID: 2055051308}
   - component: {fileID: 2055051312}
-  - component: {fileID: 2055051313}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -36191,7 +36081,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -24, y: 0.51, z: -25.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -36386,21 +36276,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &2055051313
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2055051306}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &2070549931
 GameObject:
   m_ObjectHideFlags: 0
@@ -36551,7 +36426,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: -20.710001, y: 14.5, z: -36.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -36775,7 +36650,6 @@ GameObject:
   - component: {fileID: 2093926151}
   - component: {fileID: 2093926150}
   - component: {fileID: 2093926154}
-  - component: {fileID: 2093926155}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -36792,8 +36666,8 @@ Transform:
   m_GameObject: {fileID: 2093926148}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.70710677, z: -0.70710677, w: 0}
-  m_LocalPosition: {x: -46.099995, y: 3.5, z: 9.88}
-  m_LocalScale: {x: 5, y: 0.020000005, z: 5}
+  m_LocalPosition: {x: -46.099995, y: 3.5, z: 9.85}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -36988,21 +36862,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &2093926155
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2093926148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1001 &2100168472
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37109,7 +36968,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: -20.710001, y: 3.5, z: -14.5}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -37438,7 +37297,6 @@ GameObject:
   - component: {fileID: 2112697014}
   - component: {fileID: 2112697013}
   - component: {fileID: 2112697017}
-  - component: {fileID: 2112697018}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -37455,8 +37313,8 @@ Transform:
   m_GameObject: {fileID: 2112697011}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.70710677, z: -0.70710677, w: 0}
-  m_LocalPosition: {x: -46.099995, y: 9, z: 9.88}
-  m_LocalScale: {x: 5, y: 0.020000005, z: 5}
+  m_LocalPosition: {x: -46.099995, y: 9, z: 9.85}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -37651,21 +37509,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &2112697018
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2112697011}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &2113428674
 GameObject:
   m_ObjectHideFlags: 0
@@ -37698,7 +37541,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: -20.710001, y: 9, z: 2}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -37923,7 +37766,7 @@ GameObject:
   - component: {fileID: 2117421018}
   - component: {fileID: 2117421017}
   m_Layer: 0
-  m_Name: WaterMelonContainer
+  m_Name: WatermelonContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38059,9 +37902,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyword: WaterMelon
+  keyword: Watermelon
   grabbable: 0
-  Model3D: 0
+  Model3D: 1
 --- !u!65 &2117421019
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -38225,7 +38068,6 @@ GameObject:
   - component: {fileID: 2127361332}
   - component: {fileID: 2127361331}
   - component: {fileID: 2127361335}
-  - component: {fileID: 2127361336}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -38243,7 +38085,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -24, y: 0.51, z: -9}
-  m_LocalScale: {x: 5, y: 0.02, z: 5}
+  m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417362187}
@@ -38438,21 +38280,6 @@ MonoBehaviour:
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &2127361336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2127361329}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
-  grabbable: 0
-  Model3D: 0
 --- !u!1 &2129443616
 GameObject:
   m_ObjectHideFlags: 0
@@ -39159,4 +38986,3 @@ SceneRoots:
   - {fileID: 1417362187}
   - {fileID: 1596020044}
   - {fileID: 897985626}
-  - {fileID: 566492557}

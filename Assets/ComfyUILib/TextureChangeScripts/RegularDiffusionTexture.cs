@@ -26,12 +26,15 @@ public class RegularDiffusionTexture : DiffusionTextureChanger
                     for (int i = 0; i < transform.childCount; i++)
                     {
                         GameObject child = transform.GetChild(i).gameObject;
-                        changeTextureOn(child, diff_Textures[curTextureIndex]);
+                        base.changeTextureOn(child, diff_Textures[curTextureIndex]);
                     }
                 }
                 else
                 {
-                    changeTextureOn(gameObject, diff_Textures[curTextureIndex]);
+                    Debug.Log("2COUNT " + diff_Textures.Count);
+                    Debug.Log("2COUNTIND " + curTextureIndex);
+                    Debug.Log(diff_Textures[curTextureIndex] == null);
+                    base.changeTextureOn(gameObject, diff_Textures[curTextureIndex]);
                 }
 
                 curTextureIndex++;
@@ -46,6 +49,11 @@ public class RegularDiffusionTexture : DiffusionTextureChanger
 
     public override bool AddTexture(DiffusionRequest diffusionRequest)
     {
+        /*foreach (Texture2D tex in diffusionRequest.textures)
+        {
+            Debug.Log("NAME " +  tex.name);
+        }*/
+
         bool ret = base.AddTexture(diffusionRequest);
         if (ret) AddedTextureUnityEvent?.Invoke();
         return ret;
