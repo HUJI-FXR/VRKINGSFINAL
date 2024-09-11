@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     
     public string IP = ""; // jonathanmiroshnik-networks-24172136.thinkdiffusion.xyz
 
+    // TODO why diffusionList when diffusables should suffice? what if diffusables changes in the middle of the game etc?
     [NonSerialized]
     public List<GameObject> diffusionList;
 

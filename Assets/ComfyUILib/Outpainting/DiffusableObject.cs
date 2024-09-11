@@ -57,8 +57,6 @@ public class DiffusableObject : MonoBehaviour
         if (GameManager.getInstance().gadget == null) return;
         grabbed = false;
 
-        Debug.Log("sent2");
-
         GameManager.getInstance().gadget.DiffusableUnGrabbed(args);
     }
 }

@@ -125,7 +125,7 @@ public class ComfySceneLibrary : MonoBehaviour
                 GameManager.getInstance().IP = "127.0.0.1:8188";
                 HTTPPrefix = "http://";
 
-                Debug.Log("No unique server IP set, seeting default: " + GameManager.getInstance().IP.ToString());
+                Debug.Log("No unique server IP set, setting default: " + GameManager.getInstance().IP.ToString());
             }
         }
 

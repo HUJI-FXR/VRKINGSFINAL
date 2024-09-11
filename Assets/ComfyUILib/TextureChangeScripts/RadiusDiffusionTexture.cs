@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class DiffusionRing
 {    
     // Max Radius of the circle
-    public float maxRadius = 5;
+    public float maxRadius = 1;
     public float curRadius = 1;
 
     // Max Time must be greater than 0
@@ -40,7 +41,11 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
     public List<DiffusionRing> radiusDiffusionRings;
 
     // Max Radius of the circles that are made at the current time
-    public float CurrentMaxRadius = 5;
+    public float CurrentMaxRadius = 1;
+
+    // Counts the number of Radius generations that went through
+    [NonSerialized]
+    public int totalGenerationCounter = 0;
 
     private void Awake()
     {
@@ -68,21 +73,60 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
         }
     }
 
-    // TODO documentation
+
+    // TODO bad designed function
+    /// <summary>
+    /// Helper function used entirely to change the CurrentMaxRadius in accordance 
+    /// to the number of generations in this texture changer for the final explosion scene 
+    /// </summary>
+    private void CurMaxRad()
+    {
+        if (totalGenerationCounter > 3)
+        {
+            CurrentMaxRadius = 2;
+        }
+        if (totalGenerationCounter > 6)
+        {
+            CurrentMaxRadius = 3;
+        }
+        if (totalGenerationCounter > 10)
+        {
+            CurrentMaxRadius = 4;
+        }
+        if (totalGenerationCounter > 15)
+        {
+            CurrentMaxRadius = 6;
+        }
+        if (totalGenerationCounter > 20)
+        {
+            CurrentMaxRadius = 100;
+        }
+
+        // TODO starts explosion here?
+    }
 
     public override bool AddTexture(DiffusionRequest diffusionRequest)
     {
         // TODO think if this line is even useful in this script
         //base.AddTexture(diffusionRequest);
 
+        // TODO do I want this to only work if it is grabbed AND the textures get there?
+        // TODO if you keep this line, notice at the line below, can be removed there
+        if (!diffusionRequest.diffusableObject.grabbed) return false;
+
+        // For the Throwing mechanism, after the textures for a certain grabbing have finished generating and downloading,
+        // this activates the particles that indicate the end of the generation
         if (diffusionRequest.diffusableObject.grabbed)
         {
-            if (diffusionRequest.diffusableObject.gameObject.TryGetComponent<ParticleSystem>(out ParticleSystem ps))
-            {
-                var emission = ps.emission;
-                emission.enabled = true;
-            }            
+            if (diffusionRequest.diffusableObject.transform.childCount > 0)
+            {                
+                diffusionRequest.diffusableObject.transform.GetChild(0).gameObject.SetActive(true);
+            }       
         }
+
+        // TODO these two lines, bad design
+        totalGenerationCounter++;
+        CurMaxRad();
 
         DiffusionRing newDiffusionRing = new DiffusionRing();
         newDiffusionRing.gameObjects = new List<GameObject>();
@@ -98,13 +142,16 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
         return true;
     }
 
+    /// <summary>
+    /// Adds all GameObjects in the DiffusionRing Radius to the DiffusionRing, along with adding the textures to them
+    /// </summary>
     public void addRadiusGameObjects(DiffusionRing diffusionRing)
     {        
         if (diffusionRing == null) return;       
 
+        // Finding all relevant GameObjects inside the DiffusionRing current radius that are not yet in the DiffusionRing gameObjects
         List<GameObject> curRadiusGameObjects = gameObjectsInRadius(diffusionRing.curRadius, diffusionRing.centerPosition);
         List<GameObject> newRadiusGameObjects = new List<GameObject>();
-
         foreach(GameObject GO in curRadiusGameObjects)
         {
             if (!diffusionRing.gameObjects.Contains(GO)) {
@@ -112,6 +159,7 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
             }
         }                
 
+        // Adding the textures to the new ring GameObjects
         foreach (GameObject GO in newRadiusGameObjects)
         {
             if (GO.TryGetComponent<TextureTransition>(out TextureTransition TT))
@@ -122,6 +170,12 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
         }
     }
 
+    /// <summary>
+    /// Finds all the GameObjects in given radius from a given center position
+    /// </summary>
+    /// <param name="curRadius">Radius of the ball in-which the GameObjects are found</param>
+    /// <param name="position">Center position</param>
+    /// <returns></returns>
     private List<GameObject> gameObjectsInRadius(float curRadius, Vector3 position)
     {
         if (GameManager.getInstance().gadget == null) return null;
@@ -137,7 +191,10 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
         return radiusGameObjects;
     }
 
-
+    /// <summary>
+    /// Called when a relevant DiffusableObject has collided and should thus create a Diffusion Texture Transition effect
+    /// </summary>
+    /// <param name="collision">Collision of the Diffusable Object with another GameObject</param>
     public void DiffusableObjectCollided(Collision collision)
     {
         if (radiusDiffusionRings.Count <= 0) return;

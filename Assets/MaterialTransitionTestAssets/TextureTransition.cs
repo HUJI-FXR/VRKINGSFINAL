@@ -52,7 +52,7 @@ public class TextureTransition : DiffusionTextureChanger
             !renderer.material.HasProperty("_Smoothness") ||
             !renderer.material.HasProperty("_NoiseIntensity"))
         {
-            Debug.LogError("Add correct shader to Game Object " + name);
+            Debug.Log("Add correct shader to Game Object " + name);
             return;
         }
 
