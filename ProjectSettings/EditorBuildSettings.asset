@@ -18,8 +18,11 @@ EditorBuildSettings:
     path: Assets/Scenes/fullCameraScene.unity
     guid: 42d4076d708156a469316d72cf94ae8a
   - enabled: 1
-    path: Assets/Scenes/WaterPark.unity
+    path: Assets/Scenes/WaterPArk.unity
     guid: be0be8d3403200641ab29b12c15e5144
+  - enabled: 1
+    path: Assets/Scenes/Square.unity
+    guid: d90f57fa265dedd46b9dfcd08875c9d0
   - enabled: 1
     path: Assets/Scenes/GadgetPrefabTest.unity
     guid: e12495a11fb9f5a419f9431ca07b8fc1
