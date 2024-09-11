@@ -108,10 +108,17 @@ public class TextureTransition : DiffusionTextureChanger
         if (textures == null || transitionMaterial == null) return;
         if (textures.Count <= 1) return;
 
+        // TODO should I keep this? smoother audioReaction?
+        if (!constantTransition)
+        {
+            if (transition < 1.0f) return;
+        }
+
         transition = 0f;
         curTextureIndex = nextTextureIndex;
         nextTextureIndex = (nextTextureIndex + 1) % textures.Count;
 
+        if (curTextureIndex >= textures.Count || nextTextureIndex >= textures.Count) return;
         // Update the textures in the shader
         transitionMaterial.SetTexture("_CurrentTex", textures[curTextureIndex]);
         transitionMaterial.SetTexture("_NextTex", textures[nextTextureIndex]);

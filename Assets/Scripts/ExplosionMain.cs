@@ -22,6 +22,7 @@ public class ExplosionMain : MonoBehaviour
     public List<GameObject> diffusableGameObjects;
 
     public AudioReact audioReact;
+    private bool randomActive = false;
 
     // The minimal time it takes between two audioReactions
     public float audioReactBreathingRoom = 0.1f;
@@ -51,6 +52,8 @@ public class ExplosionMain : MonoBehaviour
             diffusableGameObjects.Add(TN.gameObject);
         }
 
+        diffusionTextures = GameManager.getInstance().comfyOrganizer.allTextures;
+
         // TODO delete this line 
         //StartExplosion();
 
@@ -66,42 +69,51 @@ public class ExplosionMain : MonoBehaviour
             TransitionExplosionMode(explosionMode);
         }
 
-        // When the mode is in audio reactivity, in accordance to the AudioReact parameters at a certain time, the transitions are triggered
-        if (explosionMode == ExplosionMode.audioReactive)
+        switch(explosionMode)
         {
-            if (audioReact == null) return;
-            if (!audioReact.wentOverThreshold) return;
+            case ExplosionMode.random:
+                if (randomActive) return;
+                StartExplosion();
+                break;
 
-            // A basic timer for a minimal amount of time before two audio reactions
-            if (m_audioReactBreathingRoom > 0)
-            {
-                m_audioReactBreathingRoom -= Time.deltaTime;
-                return;
-            }
-            m_audioReactBreathingRoom = audioReactBreathingRoom;
+            // When the mode is in audio reactivity, in accordance to the AudioReact parameters at a certain time, the transitions are triggered
+            case ExplosionMode.audioReactive:
+                if (audioReact == null) return;
+                if (!audioReact.wentOverThreshold) return;
 
-            // A random selection of Game Objects will be effected by the audio reaction
-            foreach (GameObject GO in diffusableGameObjects)
-            {
-                if (Random.value <= diffusedPercentage)
+                // A basic timer for a minimal amount of time before two audio reactions
+                if (m_audioReactBreathingRoom > 0)
                 {
-                    if (GO.TryGetComponent<TextureTransition>(out TextureTransition TT))
+                    m_audioReactBreathingRoom -= Time.deltaTime;
+                    return;
+                }
+                m_audioReactBreathingRoom = audioReactBreathingRoom;
+
+                // A random selection of Game Objects will be effected by the audio reaction
+                foreach (GameObject GO in diffusableGameObjects)
+                {
+                    if (Random.value <= diffusedPercentage)
                     {
-                        TT.TriggerNextTexture();
+                        if (GO.TryGetComponent<TextureTransition>(out TextureTransition TT))
+                        {
+                            TT.TriggerNextTexture();
+                        }
                     }
-                }                
-            }
+                }
+                break;
         }
     }
 
     public void StartExplosion()
     {
         InvokeRepeating("ExplosionTick", 0, explosionTickLength);
+        randomActive = true;
     }
 
     public void StopExplosion()
     {
         CancelInvoke("ExplosionTick");
+        randomActive = false;
     }
 
     public void ExplosionTick()
@@ -131,6 +143,9 @@ public class ExplosionMain : MonoBehaviour
         switch (explosionMode)
         {
             case ExplosionMode.random:
+                if (randomActive) return;
+                StopExplosion();
+
                 foreach (GameObject GO in diffusableGameObjects)
                 {
                     if (GO.TryGetComponent<TextureTransition>(out TextureTransition TT))
@@ -143,6 +158,8 @@ public class ExplosionMain : MonoBehaviour
                 break;
 
             case ExplosionMode.audioReactive:
+                if (randomActive) StopExplosion();
+
                 foreach (GameObject GO in diffusableGameObjects)
                 {
                     if (GO.TryGetComponent<TextureTransition>(out TextureTransition TT))
@@ -157,6 +174,19 @@ public class ExplosionMain : MonoBehaviour
                         //StopExplosion(); 
                     }
                 }
+                break;
+        }
+    }
+
+    public void ChangeExplosionMode(string ExplosionModeName)
+    {
+        switch (ExplosionModeName)
+        {
+            case "audioReactive":
+                explosionMode = ExplosionMode.audioReactive;
+                break;
+            case "random":
+                explosionMode = ExplosionMode.random;
                 break;
         }
     }

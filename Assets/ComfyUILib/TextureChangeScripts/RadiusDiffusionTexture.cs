@@ -6,6 +6,7 @@ using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal.Internal;
 using UnityEngine.UIElements;
 using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.Events;
 
 /// <summary>
 /// Represents a ring(technically a circle) of effected GameObjects that is effected by the Diffusion request that begins at its center
@@ -47,6 +48,12 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
     [NonSerialized]
     public int totalGenerationCounter = 0;
 
+    // Event that is invoked after many(>=20) throws have been done, and the EXPLOSION needs to begin
+    public UnityEvent ManyThrowsEvent;
+
+    // Similar to enabled, but keeps the mechanism technically working
+    public bool stopAnymoreGenerations = false;
+
     private void Awake()
     {
         radiusDiffusionRings = new List<DiffusionRing>();        
@@ -81,32 +88,44 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
     /// </summary>
     private void CurMaxRad()
     {
-        if (totalGenerationCounter > 3)
-        {
-            CurrentMaxRadius = 2;
+        if (totalGenerationCounter > 4)
+        {            
+            CurrentMaxRadius = 100;
         }
-        if (totalGenerationCounter > 6)
+        if (totalGenerationCounter > 5)
         {
+            // TODO remove from this > 3 part
+            // Start of the explosion
+            ManyThrowsEvent?.Invoke();
+            GameManager.getInstance().gadget.GadgetMechanisms[0].enabled = false;
+            GameManager.getInstance().gadget.MechanismText.text = "?????????????????";
+            stopAnymoreGenerations = true;
+
             CurrentMaxRadius = 3;
         }
         if (totalGenerationCounter > 10)
         {
             CurrentMaxRadius = 4;
         }
-        if (totalGenerationCounter > 15)
+        if (totalGenerationCounter > 11)
         {
             CurrentMaxRadius = 6;
         }
-        if (totalGenerationCounter > 20)
+        if (totalGenerationCounter > 12)
         {
             CurrentMaxRadius = 100;
-        }
 
-        // TODO starts explosion here?
+            // Start of the explosion
+            ManyThrowsEvent?.Invoke();
+            GameManager.getInstance().gadget.GadgetMechanisms[0].enabled = false;
+            GameManager.getInstance().gadget.MechanismText.text = "?????????????????";
+            stopAnymoreGenerations = true;
+        }
     }
 
     public override bool AddTexture(DiffusionRequest diffusionRequest)
     {
+        if (stopAnymoreGenerations) return false;
         // TODO think if this line is even useful in this script
         //base.AddTexture(diffusionRequest);
 
@@ -123,6 +142,8 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
                 diffusionRequest.diffusableObject.transform.GetChild(0).gameObject.SetActive(true);
             }       
         }
+
+        AddedTextureUnityEvent?.Invoke();
 
         // TODO these two lines, bad design
         totalGenerationCounter++;
