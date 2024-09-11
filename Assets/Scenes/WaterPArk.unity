@@ -745,7 +745,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyword: big cube
+  keyword: dog
   grabbable: 1
   Model3D: 1
 --- !u!65 &101040967
@@ -7244,7 +7244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyword: big cube
+  keyword: cat
   grabbable: 1
   Model3D: 1
 --- !u!65 &540056464
@@ -9659,7 +9659,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3113e01160e68824b85d30027e191981, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyword: big cube
+  keyword: duck
   grabbable: 1
   Model3D: 1
 --- !u!65 &1079646063
@@ -10992,7 +10992,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 505080063357859650, guid: 6cf941391e6bdbc4abdbed9a86feb39a, type: 3}
       propertyPath: serverAddress
-      value: 
+      value: segmentation-11151759
       objectReference: {fileID: 0}
     - target: {fileID: 2161866615071764844, guid: 6cf941391e6bdbc4abdbed9a86feb39a, type: 3}
       propertyPath: gadget

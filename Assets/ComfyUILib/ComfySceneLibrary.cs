@@ -389,21 +389,25 @@ public class ComfySceneLibrary : MonoBehaviour
                     case "left":
                         StartCoroutine(UploadImage(diffReq));
 
-                        json["prompt"]["80"]["inputs"]["image"] = diffReq.uploadTextures[0].name;
+                        json["prompt"]["89"]["inputs"]["image"] = diffReq.uploadTextures[0].name;
+                        json["prompt"]["11"]["inputs"]["left"] = 512;
                         break;    
                         
                     case "right":
                         StartCoroutine(UploadImage(diffReq));
 
-                        json["prompt"]["80"]["inputs"]["image"] = diffReq.uploadTextures[0].name;
-                        json["prompt"]["82"]["inputs"]["x"] = 512;
+                        json["prompt"]["89"]["inputs"]["image"] = diffReq.uploadTextures[0].name;
+                        json["prompt"]["11"]["inputs"]["right"] = 512;
+                        json["prompt"]["110"]["inputs"]["x"] = 512;
                         break;
 
                     case "top":
                         StartCoroutine(UploadImage(diffReq));
 
-                        json["prompt"]["80"]["inputs"]["image"] = diffReq.uploadTextures[0].name;
-                        json["prompt"]["11"]["inputs"]["top"] = 512;
+                        json["prompt"]["89"]["inputs"]["image"] = diffReq.uploadTextures[0].name;
+                        json["prompt"]["11"]["inputs"]["right"] = 512;
+                        json["prompt"]["110"]["inputs"]["y"] = 512;
+
                         break;
 
                     case "bottomRight":
@@ -473,8 +477,10 @@ public class ComfySceneLibrary : MonoBehaviour
                 /*json["prompt"]["21"]["inputs"]["denoise"] = diffReq.denoise;
                  * 
                  * VERY IMPORTANT TO GIVE PROPER PROMPTS for OUTPAINTING
-                json["prompt"]["6"]["inputs"]["text"] = diffReq.positivePrompt;
-                json["prompt"]["7"]["inputs"]["text"] = diffReq.negativePrompt;*/
+                */
+
+                json["prompt"]["6"]["inputs"]["text"] += ", floating " + diffReq.positivePrompt + " in the middle";
+                json["prompt"]["7"]["inputs"]["text"] += diffReq.negativePrompt;
 
                 // TODO needs inpainting model input?
                 // json["prompt"]["25"]["inputs"]["ckpt_name"] = curDiffModel;                
