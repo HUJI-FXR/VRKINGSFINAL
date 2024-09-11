@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -5,12 +6,17 @@ using UnityEngine;
 using static Unity.Burst.Intrinsics.X86;
 
 
+// TODO documentation
+
 [RequireComponent (typeof(AudioSource))]
 public class AudioReact : MonoBehaviour
 {
-    AudioSource audioSource;
-    public float[] samples;
+    public AudioSource audioSource;
 
+    [NonSerialized]
+    public float[] samples = new float[512];
+
+    [NonSerialized]
     public bool wentOverThreshold = false;
 
     private float avg = 0f;
@@ -19,16 +25,11 @@ public class AudioReact : MonoBehaviour
     [Range(0f, 1f)]
     private float rollingAvgAlpha = 0.9f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        samples = new float[512];
-        audioSource = GetComponent<AudioSource> ();
-    }
-
     // Update is called once per frame
     void Update()
     {
+        if (audioSource == null) return;
+
         GetSpectrumAudioSource ();
         avg = samples.Average();
 
@@ -46,6 +47,8 @@ public class AudioReact : MonoBehaviour
 
     void GetSpectrumAudioSource()
     {
+        if (audioSource == null) return;
+
         audioSource.GetSpectrumData(samples, 0, FFTWindow.Blackman);
     }
 }

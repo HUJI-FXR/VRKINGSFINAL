@@ -3,24 +3,44 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal.Internal;
+using UnityEngine.UIElements;
 using UnityEngine.XR.Interaction.Toolkit;
 
-// TODO create a class like this DiffusionGroup which will be the father class without radius?
+/// <summary>
+/// Represents a ring(technically a circle) of effected GameObjects that is effected by the Diffusion request that begins at its center
+/// </summary>
 public class DiffusionRing
-{
+{    
+    // Max Radius of the circle
     public float maxRadius = 5;
     public float curRadius = 1;
-    public float changeMaxTime = 0.1f;
+
+    // Max Time must be greater than 0
+    public float changeMaxTime = 5f;
     public float curChangeTime = 0;
-    public bool changeTextures = true;
+
+    // If False, stops the enlargening of the Ring
+    public bool changeTextures = false;
+
+    // GameObjects effected by the Diffusion texture change
     public List<GameObject> gameObjects;
+
+    // Textures of the Diffusion circle
     public List<Texture2D> diffusionTextureList;
-    public int diffusionTextureIndex = 0;
+
+    // Circle center position
+    public Vector3 centerPosition;
 }
 
+/// <summary>
+/// Diffusion Texture Changer that creates a Diffusion texture change in circles
+/// </summary>
 public class RadiusDiffusionTexture : DiffusionTextureChanger
-{
+{    
     public List<DiffusionRing> radiusDiffusionRings;
+
+    // Max Radius of the circles that are made at the current time
+    public float CurrentMaxRadius = 5;
 
     private void Awake()
     {
@@ -30,28 +50,25 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
     // Update is called once per frame
     protected void Update()
     {
-        if (radiusDiffusionRings.Count == 0)
-        {
-            return;
-        }
-        foreach (DiffusionRing dr in radiusDiffusionRings)
-        {            
-            dr.curChangeTime += Time.deltaTime;
-            if (dr.curChangeTime > dr.changeMaxTime && dr.changeTextures)
-            {
-                foreach (GameObject diffusionGO in dr.gameObjects)
-                {
-                    // TODO add timer(?) to changeTextureOn
-                    changeTextureOn(diffusionGO, dr.diffusionTextureList[dr.diffusionTextureIndex]);
-                }
-                // TODO change curRadius of dr over time
-                dr.diffusionTextureIndex++;
-                dr.diffusionTextureIndex %= dr.diffusionTextureList.Count;
+        if (radiusDiffusionRings.Count <= 0) return;
 
-                dr.curChangeTime = 0;
+        foreach (DiffusionRing dr in radiusDiffusionRings)
+        {
+            if (!dr.changeTextures) continue;
+
+            dr.curChangeTime += Time.deltaTime;
+            dr.curRadius = (dr.curChangeTime / dr.changeMaxTime) * dr.maxRadius;
+
+            addRadiusGameObjects(dr);
+
+            if (dr.curChangeTime > dr.changeMaxTime)
+            {
+                dr.changeTextures = false;
             }
         }
     }
+
+    // TODO documentation
 
     public override bool AddTexture(DiffusionRequest diffusionRequest)
     {
@@ -70,37 +87,37 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
         DiffusionRing newDiffusionRing = new DiffusionRing();
         newDiffusionRing.gameObjects = new List<GameObject>();
         newDiffusionRing.diffusionTextureList = new List<Texture2D>();
+        newDiffusionRing.maxRadius = CurrentMaxRadius;
+
         foreach (Texture2D texture in diffusionRequest.textures)
         {
             newDiffusionRing.diffusionTextureList.Add(texture);
         }
         radiusDiffusionRings.Add(newDiffusionRing);
-        //Debug.Log("added diffusion ring");
 
-        // todo needs to be bool??
         return true;
     }
 
-    public void addRadiusGameObjects(DiffusionRing diffusionRing, Vector3 position)
+    public void addRadiusGameObjects(DiffusionRing diffusionRing)
     {        
-        if (diffusionRing == null)
-        {
-            return;
-        }        
+        if (diffusionRing == null) return;       
 
-        diffusionRing.gameObjects = gameObjectsInRadius(diffusionRing.curRadius, position);
-        diffusionRing.changeTextures = true;
+        List<GameObject> curRadiusGameObjects = gameObjectsInRadius(diffusionRing.curRadius, diffusionRing.centerPosition);
+        List<GameObject> newRadiusGameObjects = new List<GameObject>();
 
-        // TODO bad situation where the texture adding is not in AddTexture, but is it inevitable in this mechanism?
-        foreach (GameObject GO in diffusionRing.gameObjects)
+        foreach(GameObject GO in curRadiusGameObjects)
         {
-            if (GO.TryGetComponent<TextureTransition>(out TextureTransition tr))
+            if (!diffusionRing.gameObjects.Contains(GO)) {
+                newRadiusGameObjects.Add(GO);
+            }
+        }                
+
+        foreach (GameObject GO in newRadiusGameObjects)
+        {
+            if (GO.TryGetComponent<TextureTransition>(out TextureTransition TT))
             {
-                diffusionRing.changeTextures = false;
-                foreach (Texture2D texture in diffusionRing.diffusionTextureList)
-                {
-                    tr.textures.Add(texture);
-                }
+                TT.AddTexture(diffusionRing.diffusionTextureList, true);
+                diffusionRing.gameObjects.Add(GO);
             }
         }
     }
@@ -123,21 +140,17 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
 
     public void DiffusableObjectCollided(Collision collision)
     {
-        if (radiusDiffusionRings.Count <= 0)
-        {
-            return;
-        }
+        if (radiusDiffusionRings.Count <= 0) return;
         DiffusionRing dr = radiusDiffusionRings[radiusDiffusionRings.Count - 1];
 
-        if (dr.gameObjects.Count > 0)
-        {
-            return;
-        }
+        if (dr.gameObjects.Count > 0) return;
+
+        dr.centerPosition = collision.transform.position;
+        dr.changeTextures = true;
 
         // todo delete, and delete collision in diffusionrequest??
-        // TODO change radius over time
 
-        addRadiusGameObjects(dr, collision.transform.position);
+        addRadiusGameObjects(dr);
     }
        
 }

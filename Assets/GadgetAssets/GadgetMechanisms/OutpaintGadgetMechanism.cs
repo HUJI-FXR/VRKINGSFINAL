@@ -21,7 +21,8 @@ public class OutpaintGadgetMechanism : GadgetMechanism
         mechanismText = "Outpainting";
     }
 
-    // TODO currently the mechanism will work by CLICKING on a DiffusableObject, getting the keywords from it and then picking a relevant OutpaintingTile to start the generation on.outpaintin
+    // TODO currently the mechanism will work by CLICKING on a DiffusableObject,
+    // TODO getting the keywords from it and then picking a relevant OutpaintingTile to start the generation on
 
     /// <summary>
     /// Helper function for the Outpainting Mechanism script that checks whether a interactable object should be interacted with further.
