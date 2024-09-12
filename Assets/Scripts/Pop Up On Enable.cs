@@ -19,6 +19,8 @@ public class PopUpOnEnable : MonoBehaviour
     {
         // gadget.AddTexturesToQueue(textures);
         
+        // diffusion.CreatePopup(textures);
+        
         diffusion.CreateAIPopup(textures);
         
         Debug.Log("Pop up!");

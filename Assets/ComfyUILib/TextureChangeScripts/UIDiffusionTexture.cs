@@ -74,6 +74,9 @@ public class UIDiffusionTexture : DiffusionTextureChanger
             RectTransform rectTransform = childGameObject.AddComponent<RectTransform>();            
             // rectTransform.localScale = new Vector2(IMAGES_REDUCE_SIZE_FACTOR / ((float)tex.width), IMAGES_REDUCE_SIZE_FACTOR / ((float)tex.height));
             //rectTransform.sizeDelta = new Vector2(tex.width / IMAGES_REDUCE_SIZE_FACTOR, tex.height / IMAGES_REDUCE_SIZE_FACTOR); // Adjust the size as needed
+            
+            
+            rectTransform.sizeDelta = new Vector2(tex.width / 100, tex.height / 100);
 
             // Add an Image component to the child GameObject
             Image curImage = childGameObject.AddComponent<Image>();
