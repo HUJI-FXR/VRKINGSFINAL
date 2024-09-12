@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour
             Debug.LogError("Please add a Audio Source to the GameManager");
         } 
         
-        if (uiDiffusionTexture.PopupDisplay == null || uiDiffusionTexture.displayPrefab == null)
+        if (uiDiffusionTexture.PopupDisplay == null || uiDiffusionTexture.imagesDisplayPrefab == null)
         {
             Debug.LogError("Add UI Display and Prefab for the Image UI popup");
         }

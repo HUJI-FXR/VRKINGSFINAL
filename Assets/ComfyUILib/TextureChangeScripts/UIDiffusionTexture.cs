@@ -5,12 +5,14 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.HID;
 using UnityEngine.Rendering;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class UIDiffusionTexture : DiffusionTextureChanger
 {
     public GameObject PopupDisplay;
-    public GameObject displayPrefab;    
+    public GameObject imagesDisplayPrefab;    
+    [SerializeField] public GameObject AIDisplayPrefab;    
 
     private GameObject curDisplayPrefab;
 
@@ -29,7 +31,7 @@ public class UIDiffusionTexture : DiffusionTextureChanger
 
     private void Start()
     {
-        if (PopupDisplay == null || displayPrefab == null)
+        if (PopupDisplay == null || imagesDisplayPrefab == null)
         {
             Debug.LogError("Add UI Display and Prefab for the Image UI popup");
             return;
@@ -85,11 +87,17 @@ public class UIDiffusionTexture : DiffusionTextureChanger
                 changeTextureOn(go, textures[i]);
             }
         }
-    }    
+    }
 
-    public void CreatePopup(List<Texture2D> textures)
+    private void CreatePopupTemplate(List<Texture2D> textures, GameObject givenDispayPrefab)
     {
-        if (PopupDisplay == null || displayPrefab == null)
+        if (textures.Count == 0)
+        {
+            Debug.Log("Tried creating popup with no textures");
+            return;
+        }
+        
+        if (PopupDisplay == null || imagesDisplayPrefab == null)
         {
             Debug.LogError("Add UI Display and Prefab for the Image UI popup");
             return;
@@ -104,7 +112,7 @@ public class UIDiffusionTexture : DiffusionTextureChanger
         }
         
         
-        curDisplayPrefab = Instantiate(displayPrefab, PopupDisplay.transform, false);
+        curDisplayPrefab = Instantiate(givenDispayPrefab, PopupDisplay.transform, false);
         Debug.Log("Instantiated popup!");
 
         CreateImagesInside(textures, curDisplayPrefab, true);
@@ -115,11 +123,21 @@ public class UIDiffusionTexture : DiffusionTextureChanger
         playGadgetSounds.PlaySound("ShowUIElement");
     }
 
+    public void CreatePopup(List<Texture2D> textures)
+    {
+        CreatePopupTemplate(textures, imagesDisplayPrefab);
+    }
+    
+    public void CreateAIPopup(List<Texture2D> textures)
+    {
+        CreatePopupTemplate(textures, AIDisplayPrefab);
+    }
+
     public override bool AddTexture(DiffusionRequest diffusionRequest)
     {
         if (GameManager.getInstance().gadget == null) return false;
 
-        if (PopupDisplay == null || displayPrefab == null)
+        if (PopupDisplay == null || imagesDisplayPrefab == null)
         {
             Debug.LogError("Add UI Display and Prefab for the Image UI popup");
             return false;
