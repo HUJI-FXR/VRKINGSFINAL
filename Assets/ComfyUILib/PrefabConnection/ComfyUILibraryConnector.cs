@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +10,7 @@ public class ComfyUILibraryConnector : MonoBehaviour
     public ComfyXROriginConnector comfyXROriginConnector;
     public GameObject diffusables;
 
-    public ComfySceneParameters curParameters;
+    public ComfySceneParameters curParameters;    
 
     // Start is called before the first frame update
     void Start()
@@ -19,9 +20,6 @@ public class ComfyUILibraryConnector : MonoBehaviour
             Debug.LogError("Add the requirements to the Universal Comfy Object");
             return;
         }
-
-        /*GameObject comfyUILibrary = GameObject.Find(ComfyUILibraryName);
-        ComfySceneParameters curParameters = comfyUILibrary.GetComponent<ComfySceneParameters>();*/
 
         if (curParameters == null)
         {
@@ -33,9 +31,9 @@ public class ComfyUILibraryConnector : MonoBehaviour
         curParameters.uiDiffusionTexture = comfyXROriginConnector.uiDiffusionTexture;
         curParameters.radiusDiffusionTexture = comfyXROriginConnector.radiusDiffusionTexture;
         curParameters.headAudioSource = comfyXROriginConnector.headAudioSource;
-
         curParameters.diffusables = diffusables;
 
-        StartCoroutine(curParameters.LoadGameManagerScene());
+        // Indicates to the parameters object that the connector has loaded all the relevant parameters into it
+        curParameters.LoadedConnectorParameters = true;
     }
 }

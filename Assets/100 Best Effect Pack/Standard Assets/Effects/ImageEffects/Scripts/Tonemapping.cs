@@ -125,6 +125,7 @@ namespace UnityStandardAssets.ImageEffects
         }
 
 
+        [Obsolete] // Jonathan Added this tag
         // attribute indicates that the image filter chain will continue in LDR
         [ImageEffectTransformsToLDR]
         private void OnRenderImage(RenderTexture source, RenderTexture destination)

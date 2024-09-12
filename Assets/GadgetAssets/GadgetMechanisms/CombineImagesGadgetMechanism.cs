@@ -32,6 +32,7 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
     {
         if (args == null || args.interactableObject == null) return false;
         if (GameManager.getInstance() == null) return false;
+        if (GameManager.getInstance().diffusables == null) return false;
         Transform curTrans = args.interactableObject.transform;
         if (curTrans.parent != GameManager.getInstance().diffusables.transform) return false;
         if (curTrans.gameObject.TryGetComponent<DiffusableObject>(out DiffusableObject DO))

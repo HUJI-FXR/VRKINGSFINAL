@@ -85,6 +85,7 @@ namespace UnityStandardAssets.ImageEffects
             }
         }
 
+        [Obsolete] // Jonathan Added this tag
         void Start()
         {
             // Disable if we don't support image effects

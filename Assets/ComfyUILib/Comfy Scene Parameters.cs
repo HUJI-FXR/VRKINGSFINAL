@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.Events;
@@ -38,8 +40,21 @@ public class ComfySceneParameters : MonoBehaviour
     // These events will be invoked after the GameManager is fully loaded
     public UnityEvent unityEventAfterLoading;
 
+    [NonSerialized]
+    public bool LoadedConnectorParameters = false;
+
+    private void Start()
+    {
+        StartCoroutine(LoadGameManagerScene());
+    }
+
     public IEnumerator LoadGameManagerScene()
     {
+        while (!LoadedConnectorParameters)
+        {
+            yield return new WaitForSeconds(1);
+        }
+
         // Loading the GameManager scene
         if (SceneManager.sceneCount < 3 && !loadedGameManagerScene)
         {
@@ -52,6 +67,8 @@ public class ComfySceneParameters : MonoBehaviour
             //asyncLoad.allowSceneActivation = false;
             Debug.Log("Got to part of script after load scene!");
         }
+
+        Debug.Log("Loaded GameManager!");
 
         // Finished loading GameManager scene
         loadedGameManagerScene = true;
@@ -75,8 +92,12 @@ public class ComfySceneParameters : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
+        Debug.Log("Loading Comfy Scene Library!");
+
         comfySceneLibrary.StartComfySceneLibrary();
         unityEventAfterLoading?.Invoke();
+
+        Debug.Log("Loaded scene parameters!");
 
         yield break;
     }

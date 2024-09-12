@@ -31,8 +31,7 @@ public class GameManager : MonoBehaviour
     [NonSerialized]
     public UIDiffusionTexture uiDiffusionTexture;
 
-    /*public string firstScene = "StartScene";
-    public static bool loadFirstScene = true;*/
+    public static bool fullyLoaded = false;
 
     private void Awake()
     {
@@ -59,6 +58,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadNextScene(string thisScene, string nextScene)
     {
+        fullyLoaded = false;
         StartCoroutine(LoadScene(thisScene, nextScene));
     }
 
@@ -126,6 +126,8 @@ public class GameManager : MonoBehaviour
         {
             diffusionList.Add(diffusionTransform.gameObject);
         }
+
+        fullyLoaded = true;
     }
 
 
@@ -181,5 +183,13 @@ public class GameManager : MonoBehaviour
         Debug.Log("New Scene: " + SceneManager.GetActiveScene().name);
     }
 
+    public static IEnumerator CallWhenGameManagerLoaded(Action action)
+    {
+        while(!fullyLoaded)
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
 
+        action.Invoke();
+    }
 }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Rendering;
  
@@ -8,7 +9,8 @@ public class CameraManager : MonoBehaviour
         RenderPipelineManager.beginCameraRendering += PreRender;
         RenderPipelineManager.endCameraRendering += PostRender;
     }
- 
+
+    [Obsolete] // Jonathan Added this tag
     private void PreRender(ScriptableRenderContext _context, Camera _camera)
     {
         if (_camera.TryGetComponent<CameraRenderControl>(out CameraRenderControl _cameraRenderControl))

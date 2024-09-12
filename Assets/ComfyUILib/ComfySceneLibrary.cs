@@ -63,9 +63,6 @@ public class ComfySceneLibrary : MonoBehaviour
     private static string HTTPPrefix = "https://";  // https://  ------ When using online API service | http:// ------ When using offline server
     public string serverAddress = "";
 
-    // TODO make this nice
-    private static bool loadedServerAddress = false;
-
     public ComfyOrganizer comfyOrg;
 
     private const string JSONFolderPath = "JSONMain";
@@ -100,44 +97,38 @@ public class ComfySceneLibrary : MonoBehaviour
         StartComfySceneLibrary(null);
     }
 
-    private void LoadSpecialServerAddress()
+    public void LoadSpecialServerAddress(string initialIP)
     {
         if (GameManager.getInstance() == null) return;
-        if (loadedServerAddress) return;
-        if (serverAddress != "" && serverAddress != "127.0.0.1:8188")
-        {
-            GameManager.getInstance().IP = THINKDIFFUSION_PREFIX + serverAddress + THINKDIFFUSION_POSTFIX;            
-            HTTPPrefix = "https://";
 
-            Debug.Log("NOTICE! You have set a custom server IP in this scene: " + GameManager.getInstance().IP.ToString());
+        if (initialIP == "" || initialIP == "127.0.0.1:8188")
+        {
+            GameManager.getInstance().IP = "127.0.0.1:8188";
+            HTTPPrefix = "http://";
+
+            Debug.Log("No unique server IP set, setting default: " + GameManager.getInstance().IP.ToString());
+
+            
         }
         else
         {
-            if (GameManager.getInstance().IP != "")
-            {
-                GameManager.getInstance().IP = THINKDIFFUSION_PREFIX + GameManager.getInstance().IP + THINKDIFFUSION_POSTFIX;
-                HTTPPrefix = "https://";
+            GameManager.getInstance().IP = THINKDIFFUSION_PREFIX + initialIP + THINKDIFFUSION_POSTFIX;
+            HTTPPrefix = "https://";
 
-                Debug.Log("Set the final server IP as: " + GameManager.getInstance().IP.ToString());
-            }
-            else
-            {
-                GameManager.getInstance().IP = "127.0.0.1:8188";
-                HTTPPrefix = "http://";
-
-                Debug.Log("No unique server IP set, setting default: " + GameManager.getInstance().IP.ToString());
-            }
+            Debug.Log("Set the final server IP as: " + GameManager.getInstance().IP.ToString());
         }
-
-
-        loadedServerAddress = true;
     }
 
     // TODO notice that this START must always come BEFORE(put the library before the organizer in the node properties)
     // TODO cont. the ComfyOrganizer or else some things will not be ready for an instant diffusion request
     public void StartComfySceneLibrary(DiffusionRequest beginningDiffusionRequest)
     {
-        LoadSpecialServerAddress();
+        /*// TODO bad if statement because alread exists inside the function, remove serveraddress as it is
+        if (serverAddress != "" && serverAddress != "127.0.0.1:8188")
+        {
+            LoadSpecialServerAddress(serverAddress);
+        }*/
+        LoadSpecialServerAddress(serverAddress);
 
         // Get all enum adjacent JSON workflows
         TextAsset[] jsonFiles = Resources.LoadAll<TextAsset>(JSONFolderPath);

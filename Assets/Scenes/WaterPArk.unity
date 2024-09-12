@@ -12673,7 +12673,6 @@ MonoBehaviour:
   currentRoomSceneName: WaterPark
   nextRoomSceneName: Square
   altNextRoomSceneName: GadgetPrefabTest
-  toggle: {fileID: 0}
 --- !u!65 &2021590182
 BoxCollider:
   m_ObjectHideFlags: 0

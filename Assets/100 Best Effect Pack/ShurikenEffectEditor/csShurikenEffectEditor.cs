@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
+
 #if UNITY_EDITOR
 using UnityEditor;
 
@@ -22,6 +24,7 @@ public class csShurikenEffectEditor : EditorWindow
 		myWindow.title = "Scale Editor";
 	}
 
+    [Obsolete] // Jonathan Added this tag
     void OnGUI()
     {
         GUILayout.Box("Shuriken System Effect Scale Editor", GUILayout.Width(295));

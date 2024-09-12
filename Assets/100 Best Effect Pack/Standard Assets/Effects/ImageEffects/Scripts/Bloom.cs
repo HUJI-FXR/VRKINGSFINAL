@@ -311,6 +311,7 @@ namespace UnityStandardAssets.ImageEffects
             RenderTexture.ReleaseTemporary (secondQuarterRezColor);
         }
 
+        [Obsolete] // Jonathan Added this tag
         private void AddTo (float intensity_, RenderTexture from, RenderTexture to)
         {
             screenBlend.SetFloat ("_Intensity", intensity_);
@@ -318,6 +319,7 @@ namespace UnityStandardAssets.ImageEffects
             Graphics.Blit (from, to, screenBlend, 9);
         }
 
+        [Obsolete] // Jonathan Added this tag
         private void BlendFlares (RenderTexture from, RenderTexture to)
         {
             lensFlareMaterial.SetVector ("colorA", new Vector4 (flareColorA.r, flareColorA.g, flareColorA.b, flareColorA.a) * lensflareIntensity);

@@ -19,7 +19,7 @@ public class PlayGadgetSounds : MonoBehaviour
         if (GameManager.getInstance() == null) return;
         if (GameManager.getInstance().headAudioSource == null)
         {
-            Debug.LogError("Add a Head Audio Source");
+            Debug.Log("Add a Head Audio Source");
             return;
         }
 
