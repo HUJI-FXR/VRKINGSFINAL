@@ -105,8 +105,11 @@ public class UIDiffusionTexture : DiffusionTextureChanger
         
         
         curDisplayPrefab = Instantiate(displayPrefab, PopupDisplay.transform, false);
+        Debug.Log("Instantiated popup!");
 
         CreateImagesInside(textures, curDisplayPrefab, true);
+        
+        Debug.Log("Created images inside popup!");
 
         displayTextures = true;
         playGadgetSounds.PlaySound("ShowUIElement");
@@ -124,6 +127,7 @@ public class UIDiffusionTexture : DiffusionTextureChanger
         if (base.AddTexture(diffusionRequest))
         {
             CreatePopup(diff_Textures);
+            
             GameManager.getInstance().gadget.AddTexturesToQueue(diff_Textures);
 
             // Sending broadcast to Game timeline script
