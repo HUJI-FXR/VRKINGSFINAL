@@ -21,7 +21,7 @@ public class PopUpOnEnable : MonoBehaviour
         
         // diffusion.CreatePopup(textures);
         
-        diffusion.CreateAIPopup(textures);
+        // diffusion.CreateAIPopup(textures);
         
         Debug.Log("Pop up!");
     }

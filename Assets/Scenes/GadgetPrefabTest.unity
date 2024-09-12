@@ -187,11 +187,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &22287335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -429,11 +429,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &47682187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -671,11 +671,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &51126248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -913,11 +913,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &56308320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1209,6 +1209,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -1278,11 +1281,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &75848224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1574,6 +1577,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -1643,11 +1649,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &106265911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1885,11 +1891,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &118381772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2127,11 +2133,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &131828170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2369,11 +2375,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &135618706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2665,6 +2671,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -2734,11 +2743,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &143052057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3030,6 +3039,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -3099,11 +3111,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &174713815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3560,6 +3572,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -3629,11 +3644,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &194865694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3925,6 +3940,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -3994,11 +4012,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &212047383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4290,6 +4308,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -4359,11 +4380,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &218688384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4601,11 +4622,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &220879999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4843,11 +4864,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &224326773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5085,11 +5106,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &239189294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5327,11 +5348,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &240141091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5623,6 +5644,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -5746,6 +5770,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -5869,6 +5896,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -5938,11 +5968,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &260428836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6180,11 +6210,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &265646356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6422,11 +6452,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &276846143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6664,11 +6694,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &284898705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6906,11 +6936,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &304205221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7148,11 +7178,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &304312435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7390,11 +7420,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &313479792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7989,11 +8019,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &324203597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8160,11 +8190,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &326940347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8456,6 +8486,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -8579,6 +8612,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -8702,6 +8738,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -8825,6 +8864,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -8894,11 +8936,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &354567373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9136,11 +9178,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &361652590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9432,6 +9474,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -9501,11 +9546,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &367408072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9696,9 +9741,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e5267df2bff66c4aa05620a6f21e091, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  socketInteractor: {fileID: 0}
-  socketTransform: {fileID: 0}
-  returnSpeed: 5
 --- !u!1 &396697149
 GameObject:
   m_ObjectHideFlags: 0
@@ -9763,11 +9805,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &396697153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10005,11 +10047,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &406535744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10247,11 +10289,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &408934536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10489,11 +10531,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &416090071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10785,6 +10827,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -10925,11 +10970,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &422342057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11096,11 +11141,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &431929738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11510,6 +11555,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -11745,11 +11793,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &445521809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11987,11 +12035,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &447822753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12189,14 +12237,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 447881968}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d3e45449a0ad0d45934f141ebfc78a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   diffusion: {fileID: 1772330520}
   textures:
-  - {fileID: 2800000, guid: 1bec4ceed54be914fa1fd24a11b4f7bf, type: 3}
   - {fileID: 2800000, guid: 1bec4ceed54be914fa1fd24a11b4f7bf, type: 3}
   - {fileID: 2800000, guid: 1bec4ceed54be914fa1fd24a11b4f7bf, type: 3}
   gadget: {fileID: 1772330530}
@@ -12333,6 +12380,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -12456,6 +12506,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -12525,11 +12578,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &486735159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12821,6 +12874,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -12890,11 +12946,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &502169694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13132,11 +13188,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &504149407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13428,6 +13484,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -13551,6 +13610,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -13620,11 +13682,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &534549887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13916,6 +13978,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -13985,11 +14050,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &570092293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14281,6 +14346,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -14538,11 +14606,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &592605741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14834,6 +14902,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -14903,11 +14974,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &600701371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15199,6 +15270,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -15322,6 +15396,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -15333,7 +15410,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 2066159342}
+    m_TransformParent: {fileID: 1928322571}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 639a7f5b4b6ede5488c846be7bf53960, type: 3}
       propertyPath: m_LocalScale.x
@@ -15349,11 +15426,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 639a7f5b4b6ede5488c846be7bf53960, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.192
+      value: -0.19199991
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 639a7f5b4b6ede5488c846be7bf53960, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.8
+      value: 0.79999995
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 639a7f5b4b6ede5488c846be7bf53960, type: 3}
       propertyPath: m_LocalPosition.z
@@ -15373,7 +15450,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 639a7f5b4b6ede5488c846be7bf53960, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 639a7f5b4b6ede5488c846be7bf53960, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -15590,6 +15667,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -15659,11 +15739,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &610901209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16319,11 +16399,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!1 &643862893
 GameObject:
   m_ObjectHideFlags: 0
@@ -16388,11 +16468,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &643862897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16630,11 +16710,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &647997522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16926,6 +17006,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -17049,6 +17132,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -17172,6 +17258,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -17241,11 +17330,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &673896191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17537,6 +17626,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -17660,6 +17752,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -17783,6 +17878,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -17852,11 +17950,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &723695335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18094,11 +18192,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &734280501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18390,6 +18488,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -18459,11 +18560,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &757415693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18755,6 +18856,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -18824,11 +18928,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &782939009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19066,11 +19170,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &794111600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19308,11 +19412,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &800913238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19555,11 +19659,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &826115644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19851,6 +19955,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -19920,11 +20027,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &869195991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20216,6 +20323,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -20424,9 +20534,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e5267df2bff66c4aa05620a6f21e091, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  socketInteractor: {fileID: 439541639}
-  socketTransform: {fileID: 439541638}
-  returnSpeed: 5
 --- !u!1 &907969156
 GameObject:
   m_ObjectHideFlags: 0
@@ -20491,11 +20598,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &907969160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20733,11 +20840,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &933099585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20975,11 +21082,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &934122725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21217,11 +21324,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &935435890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21459,11 +21566,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &954875155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21701,11 +21808,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &960415971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21943,11 +22050,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &972815552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22239,6 +22346,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -22308,11 +22418,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &978974226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22604,6 +22714,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -22673,11 +22786,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &985713855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22915,11 +23028,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &991812357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23211,6 +23324,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -23280,11 +23396,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &994281476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23675,11 +23791,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1024832327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23917,11 +24033,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1028498921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24159,11 +24275,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1050316993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24401,11 +24517,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1074395691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24643,11 +24759,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1086715770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24885,11 +25001,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1088922358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25201,11 +25317,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1095018407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25443,11 +25559,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1098723800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25739,6 +25855,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -25808,11 +25927,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1122311545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26050,11 +26169,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1126576773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26292,11 +26411,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1129513801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26761,11 +26880,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1142979180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27003,11 +27122,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1143162906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27245,11 +27364,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1161986384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27541,6 +27660,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -27746,6 +27868,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -27815,11 +27940,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1221133047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28111,6 +28236,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -28180,11 +28308,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1264350978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28422,11 +28550,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1277380822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28664,11 +28792,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1289344232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28960,6 +29088,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -29115,11 +29246,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1306036675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29286,11 +29417,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1337482305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29953,6 +30084,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -30022,11 +30156,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1426476181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30733,6 +30867,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -30857,11 +30994,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1435112700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31028,11 +31165,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1438204983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31270,11 +31407,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1448669264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31512,11 +31649,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1451290411
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31808,6 +31945,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -31877,11 +32017,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1458229942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32173,6 +32313,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -32242,11 +32385,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1498730353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32484,11 +32627,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1503604191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32726,11 +32869,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1506666263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33022,6 +33165,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -33145,6 +33291,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -33214,11 +33363,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1541369374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33510,6 +33659,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -33579,11 +33731,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1563790017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33826,11 +33978,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1577739239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34068,11 +34220,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1584616334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34310,11 +34462,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1596420917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34606,6 +34758,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -34675,11 +34830,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1609144363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34917,11 +35072,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1616501382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35159,11 +35314,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1623915215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35401,11 +35556,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1629209690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35643,11 +35798,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1636910840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35890,11 +36045,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1648078637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36186,6 +36341,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -36301,11 +36459,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1678591707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36543,11 +36701,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1685779017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36785,11 +36943,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1693288401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37027,11 +37185,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1696967382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37269,11 +37427,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1702215462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37511,11 +37669,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1743327982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37753,11 +37911,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1745203767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37995,11 +38153,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1762187708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38313,6 +38471,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3308637897552449391, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3697320992597312600, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
       propertyPath: xrCamera
       value: 
@@ -38329,6 +38491,14 @@ PrefabInstance:
       propertyPath: displayMainTextureGadget
       value: 
       objectReference: {fileID: 1567005113}
+    - target: {fileID: 4159365404132763867, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+      propertyPath: AIDisplayPrefab
+      value: 
+      objectReference: {fileID: 8910628764355201766, guid: d7a967dded0a54e4689fa3afe19b35c3, type: 3}
+    - target: {fileID: 4159365404132763867, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+      propertyPath: imagesDisplayPrefab
+      value: 
+      objectReference: {fileID: 8910628764355201766, guid: 8ee60319c427de74b987c210b9babef9, type: 3}
     - target: {fileID: 5474877198674403245, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.75
@@ -38407,31 +38577,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6275466435151871231, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6275466435151871231, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6275466435151871231, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.5
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6275466435151871231, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.27
+      value: 0.634
+      objectReference: {fileID: 0}
+    - target: {fileID: 6275466435151871231, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6275466435151871231, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6275466435151871231, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6275466435151871231, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6275466435151871231, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -38439,8 +38613,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6275466435151871231, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.169
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6275466435151871231, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 6691970022828295770, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 804672574}
     - target: {fileID: 6691970022828295770, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
       propertyPath: m_RenderMode
       value: 2
@@ -38477,15 +38659,31 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0.0604
       objectReference: {fileID: 0}
+    - target: {fileID: 7899192166245443459, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7899192166245443459, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 85
+      objectReference: {fileID: 0}
+    - target: {fileID: 7899192166245443459, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.0351
+      objectReference: {fileID: 0}
+    - target: {fileID: 7899192166245443459, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.0095
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8939874713832933767, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 608898073}
-    - targetCorrespondingSourceObject: {fileID: 8939874713832933767, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 439541638}
+    - targetCorrespondingSourceObject: {fileID: 2261863275378601136, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 608898073}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5795090120012688178, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
       insertIndex: -1
@@ -38694,11 +38892,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1787003277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38936,11 +39134,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1792996607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39178,11 +39376,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1796240227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39420,11 +39618,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1803266263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39716,6 +39914,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -39839,6 +40040,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -39908,11 +40112,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1822564316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40150,11 +40354,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1825514570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40601,6 +40805,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -40670,11 +40877,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1856922414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40912,11 +41119,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1862883215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41154,11 +41361,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1863593438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41396,11 +41603,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1869116041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41692,6 +41899,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -41761,11 +41971,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1884707883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42003,11 +42213,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1886038596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42245,11 +42455,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1892890799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42487,11 +42697,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1899270636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42783,6 +42993,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -42852,11 +43065,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1917737730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43030,6 +43243,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1917737726}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1928322571 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2261863275378601136, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+  m_PrefabInstance: {fileID: 1772330516}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1947334675
 GameObject:
   m_ObjectHideFlags: 0
@@ -43094,11 +43312,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1947334679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43390,6 +43608,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -43513,6 +43734,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -43582,11 +43806,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1981961423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43824,11 +44048,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1983023802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44066,11 +44290,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &1985914087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44276,6 +44500,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures:
   - {fileID: 2800000, guid: 3c83981dd2e9ce943868ec9b1047cab3, type: 3}
   - {fileID: 2800000, guid: 26f5d52439369e24fbd5c18874fd35f7, type: 3}
@@ -44435,11 +44662,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &2011856427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44677,11 +44904,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &2015889238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50129,11 +50356,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &2076976114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50425,6 +50652,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -50494,11 +50724,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &2136343226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50965,11 +51195,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89cc2fdaaf06dd41850db9b6bc7d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTextureEvery: 1
-  changeTextureToChildren: 0
   AddedTextureUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+  changeTextureEvery: 1
+  changeTextureToChildren: 0
 --- !u!114 &2140772528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51261,6 +51491,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 1
   transitionSpeed: 1
@@ -51409,6 +51642,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61c80792a21a054f85da4bec379fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedTextureUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   textures: []
   constantTransition: 0
   transitionSpeed: 1
