@@ -174,6 +174,9 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
             // TODO discuss with NADAV
             if (hit.collider.gameObject.TryGetComponent<DiffusionTextureChanger>(out DiffusionTextureChanger dtc))
             {
+                // TODO do like this for all SFX mechanism sounds? IE inside the most specific mechanism parts
+                //GameManager.getInstance().gadget.playGadgetSounds.PlaySound("ImagePlacement");
+
                 dtc.AddTexture(new List<Texture2D>() { curTexture }, false);
 
                 // Sending broadcast to Game timeline script

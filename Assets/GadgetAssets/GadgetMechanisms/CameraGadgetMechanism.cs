@@ -38,6 +38,9 @@ public class CameraGadgetMechanism : GadgetMechanism
 
     // -----------------------------------------  PLAYER INPUTS ----------------------------------------- //
 
+
+    // TODO notice that these PlaceTextureInput methods are exactly the same for several mechanisms, make it one somewhere?
+
     /// <summary>
     /// Places a texture on the object that was selected with the controllers' Trigger button. 
     /// The Object is selected with a ray that comes from the left hand.
@@ -70,6 +73,7 @@ public class CameraGadgetMechanism : GadgetMechanism
             // texturechange to another
             if (hit.collider.gameObject.TryGetComponent<DiffusionTextureChanger>(out DiffusionTextureChanger dtc))
             {
+                //GameManager.getInstance().gadget.playGadgetSounds.PlaySound("ImagePlacement");
                 dtc.AddTexture(new List<Texture2D>() { curTexture }, false);
             }
         }

@@ -34,11 +34,15 @@ public class DiffusableObject : MonoBehaviour
         }
     }
 
+    // TODO what about when not using throwing mechanism? only thing that is stopping this from activating is just grabbed and radiusDiffusionTexture?
+    // TODO problem, need to be more specific, for outpainting for example
     private void OnCollisionEnter(Collision collision)
     {
         if (grabbed) return;
         if (GameManager.getInstance() == null) return;
         if (GameManager.getInstance().radiusDiffusionTexture == null) return;
+
+        GameManager.getInstance().gadget.playGadgetSounds.PlaySound("FallSound");
 
         GameManager.getInstance().radiusDiffusionTexture.DiffusableObjectCollided(collision);    
     }

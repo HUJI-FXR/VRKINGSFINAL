@@ -323,16 +323,20 @@ public class Gadget : MonoBehaviour
         {
             GameObject curController = GetActionController(context);
 
-            GadgetMechanisms[gadgetMechanismIndex].PlaceTextureInput(curController);
+            GameManager.getInstance().gadget.playGadgetSounds.PlaySound("ImagePlacement");
+            GadgetMechanisms[gadgetMechanismIndex].PlaceTextureInput(curController);            
             Debug.Log("Placing Texture");
         }
     }
+
+    // TODO PlaySounds is in these functions, but they are only relevant for CERTAIN mechanisms, maybe play the sounds inside the mechanisms instead of here(this script?)
     public void ActivateGeneration(InputAction.CallbackContext context)
     {        
         if (GadgetMechanisms.Count <= 0) return;
 
         if (context.performed)
-        {            
+        {
+            playGadgetSounds.PlaySound("ActivateGeneration");
             GadgetMechanisms[gadgetMechanismIndex].ActivateGeneration(null);
             Debug.Log("Generating Texture");
         }

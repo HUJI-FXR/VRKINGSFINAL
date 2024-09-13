@@ -125,6 +125,7 @@ public class DiffusableObjectGadgetMechanism : GadgetMechanism
             // texturechange to another
             if (hit.collider.gameObject.TryGetComponent<DiffusionTextureChanger>(out DiffusionTextureChanger dtc))
             {
+                //GameManager.getInstance().gadget.playGadgetSounds.PlaySound("ImagePlacement");
                 dtc.AddTexture(new List<Texture2D>() { curTexture }, false);
             }
         }

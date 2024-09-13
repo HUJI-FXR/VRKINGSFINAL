@@ -38868,6 +38868,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4159365404132763867, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+      propertyPath: AIDisplayPrefab
+      value: 
+      objectReference: {fileID: 8001637510276974068}
+    - target: {fileID: 4159365404132763867, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+      propertyPath: imagesDisplayPrefab
+      value: 
+      objectReference: {fileID: 8001637510276974068}
+    - target: {fileID: 4159365404132763867, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
       propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -39019,6 +39027,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b0b18809a25c204786431db6b254fa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &8001637510276974068 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2892697472514239738, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+  m_PrefabInstance: {fileID: 8001637510276974063}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
