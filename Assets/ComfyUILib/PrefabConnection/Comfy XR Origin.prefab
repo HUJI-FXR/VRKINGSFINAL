@@ -2014,6 +2014,7 @@ GameObject:
   - component: {fileID: 2029316619326500151}
   - component: {fileID: 3201689383266895927}
   - component: {fileID: 3647912389175953036}
+  - component: {fileID: 1053690719707624314}
   m_Layer: 0
   m_Name: XR Origin (XR Rig)
   m_TagString: Untagged
@@ -2161,6 +2162,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Timeout: 10
   m_XROrigin: {fileID: 8970866424460239292}
+--- !u!143 &1053690719707624314
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3217933535468958748}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3741143712104967585
 GameObject:
   m_ObjectHideFlags: 0
@@ -2860,7 +2887,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   PopupDisplay: {fileID: 2892697472514239738}
-  displayPrefab: {fileID: 8910628764355201766, guid: 8ee60319c427de74b987c210b9babef9, type: 3}
+  imagesDisplayPrefab: {fileID: 0}
+  AIDisplayPrefab: {fileID: 0}
   unityEvent:
     m_PersistentCalls:
       m_Calls: []
