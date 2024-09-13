@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -38700,6 +38700,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5795090120012688178, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1772330523}
+    - targetCorrespondingSourceObject: {fileID: 3217933535468958748, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1916303365}
   m_SourcePrefab: {fileID: 100100000, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
 --- !u!114 &1772330517 stripped
 MonoBehaviour:
@@ -43001,6 +43004,37 @@ MonoBehaviour:
   transitionSpeed: 1
   noiseIntensity: 1
   smoothness: 0.5
+--- !u!1 &1916303364 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3217933535468958748, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+  m_PrefabInstance: {fileID: 1772330516}
+  m_PrefabAsset: {fileID: 0}
+--- !u!143 &1916303365
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916303364}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1917737726
 GameObject:
   m_ObjectHideFlags: 0
