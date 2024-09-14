@@ -33909,11 +33909,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1563790013}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1567005113 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1875595844777027939, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
-  m_PrefabInstance: {fileID: 1772330516}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1577739235
 GameObject:
   m_ObjectHideFlags: 0
@@ -38341,11 +38336,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 562017541680351616, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
       propertyPath: m_text
-      value: 
+      value: Combine Images
       objectReference: {fileID: 0}
     - target: {fileID: 562017541680351616, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
       propertyPath: m_fontSize
-      value: 0.7
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 562017541680351616, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
       propertyPath: m_margin.w
@@ -38353,7 +38348,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 562017541680351616, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
       propertyPath: m_margin.x
-      value: 2.9623127
+      value: 0.7373593
       objectReference: {fileID: 0}
     - target: {fileID: 562017541680351616, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
       propertyPath: m_margin.y
@@ -38361,7 +38356,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 562017541680351616, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
       propertyPath: m_margin.z
-      value: 2.9546843
+      value: 0.51632977
       objectReference: {fileID: 0}
     - target: {fileID: 562017541680351616, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
       propertyPath: m_fontAsset
@@ -38389,7 +38384,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 562017541680351616, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
       propertyPath: m_fontSizeBase
-      value: 0.7
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 562017541680351616, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
       propertyPath: m_sharedMaterial
@@ -38397,7 +38392,7 @@ PrefabInstance:
       objectReference: {fileID: -6928062312416944995, guid: 5c819c5ecf641504697b09ec31695540, type: 2}
     - target: {fileID: 562017541680351616, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 2147483648
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 562017541680351616, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
       propertyPath: m_hasFontAssetChanged
@@ -38486,11 +38481,11 @@ PrefabInstance:
     - target: {fileID: 3697320992597312600, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
       propertyPath: displayTexturesGadget
       value: 
-      objectReference: {fileID: 8910628765377378777}
+      objectReference: {fileID: 0}
     - target: {fileID: 3697320992597312600, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
       propertyPath: displayMainTextureGadget
       value: 
-      objectReference: {fileID: 1567005113}
+      objectReference: {fileID: 0}
     - target: {fileID: 4159365404132763867, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
       propertyPath: AIDisplayPrefab
       value: 
@@ -38657,7 +38652,7 @@ PrefabInstance:
       objectReference: {fileID: 1772330521}
     - target: {fileID: 7735996093210175905, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.0604
+      value: 0.0562
       objectReference: {fileID: 0}
     - target: {fileID: 7899192166245443459, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
       propertyPath: m_SizeDelta.x
@@ -51684,11 +51679,6 @@ MonoBehaviour:
   transitionSpeed: 1
   noiseIntensity: 1
   smoothness: 0.5
---- !u!1 &8910628765377378777 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5439537844890730581, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
-  m_PrefabInstance: {fileID: 1772330516}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
