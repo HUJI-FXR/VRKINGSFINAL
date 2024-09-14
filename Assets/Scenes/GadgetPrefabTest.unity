@@ -1585,6 +1585,11 @@ MonoBehaviour:
   transitionSpeed: 1
   noiseIntensity: 1
   smoothness: 0.5
+--- !u!1 &100460957 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1875595844777027939, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+  m_PrefabInstance: {fileID: 1772330516}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &106265907
 GameObject:
   m_ObjectHideFlags: 0
@@ -38481,11 +38486,11 @@ PrefabInstance:
     - target: {fileID: 3697320992597312600, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
       propertyPath: displayTexturesGadget
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2121209307}
     - target: {fileID: 3697320992597312600, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
       propertyPath: displayMainTextureGadget
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 100460957}
     - target: {fileID: 4159365404132763867, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
       propertyPath: AIDisplayPrefab
       value: 
@@ -50563,6 +50568,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2076976110}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2121209307 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5439537844890730581, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+  m_PrefabInstance: {fileID: 1772330516}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2132859392
 GameObject:
   m_ObjectHideFlags: 0
