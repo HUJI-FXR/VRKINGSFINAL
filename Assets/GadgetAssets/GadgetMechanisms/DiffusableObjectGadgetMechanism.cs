@@ -95,6 +95,8 @@ public class DiffusableObjectGadgetMechanism : GadgetMechanism
         if (curInteractable.GetComponent<Renderer>().material.mainTexture == null)  return;
         selectedStyleObject = args.interactableObject.transform.gameObject;
 
+        GameManager.getInstance().gadget.playGadgetSounds.PlaySound("SelectElement");
+
         // Creates selection outline
         GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.selected);
     }    
@@ -125,7 +127,8 @@ public class DiffusableObjectGadgetMechanism : GadgetMechanism
             // texturechange to another
             if (hit.collider.gameObject.TryGetComponent<DiffusionTextureChanger>(out DiffusionTextureChanger dtc))
             {
-                //GameManager.getInstance().gadget.playGadgetSounds.PlaySound("ImagePlacement");
+                GameManager.getInstance().gadget.playGadgetSounds.PlaySound("ImagePlacement");
+
                 dtc.AddTexture(new List<Texture2D>() { curTexture }, false);
             }
         }
@@ -165,6 +168,8 @@ public class DiffusableObjectGadgetMechanism : GadgetMechanism
 
         diffusionRequest.uploadTextures.Add(copyStyleTexture);
         diffusionRequest.positivePrompt = positivePrompt;
+
+        GameManager.getInstance().gadget.playGadgetSounds.PlaySound("ImagePlacement");
 
         ResetMechanism();
 

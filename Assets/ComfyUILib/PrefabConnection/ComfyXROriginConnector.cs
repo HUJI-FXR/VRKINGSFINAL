@@ -6,7 +6,6 @@ public class ComfyXROriginConnector : MonoBehaviour
 {
     public RadiusDiffusionTexture radiusDiffusionTexture;
     public UIDiffusionTexture uiDiffusionTexture;
-    public AudioSource headAudioSource;
 
     public Gadget gadget;
     public List<GadgetMechanism> gadgetMechanisms;

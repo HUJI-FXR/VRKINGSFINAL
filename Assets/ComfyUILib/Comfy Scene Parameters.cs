@@ -31,8 +31,6 @@ public class ComfySceneParameters : MonoBehaviour
 
     public Gadget gadget;
 
-    // Global 2D audio source
-    public AudioSource headAudioSource;
 
     // If false, won't load scene parameters onto the GameManager
     public bool LoadComfyParametrs = true;
@@ -87,7 +85,7 @@ public class ComfySceneParameters : MonoBehaviour
 
             // Sending the Beginning DiffusionRequest onwards
             GameManager.getInstance().InitiateSceneParameters(comfyOrganizer, comfySceneLibrary,
-                radiusDiffusionTexture, uiDiffusionTexture, diffusables, gadget, headAudioSource);
+                radiusDiffusionTexture, uiDiffusionTexture, diffusables, gadget);
         }
 
         yield return new WaitForSeconds(1f);

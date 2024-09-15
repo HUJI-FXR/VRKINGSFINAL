@@ -105,9 +105,7 @@ public class Gadget : MonoBehaviour
 
     public void onGameObjectSelectEntered(SelectEnterEventArgs args)
     {
-        if (GadgetMechanisms.Count <= 0) return;
-
-        playGadgetSounds.PlaySound("SelectElement");
+        if (GadgetMechanisms.Count <= 0) return;        
         GadgetMechanisms[gadgetMechanismIndex].onGameObjectSelectEntered(args);
     }
     public void onGameObjectSelectExited(SelectExitEventArgs args)
@@ -322,8 +320,7 @@ public class Gadget : MonoBehaviour
         if (context.performed)
         {
             GameObject curController = GetActionController(context);
-
-            GameManager.getInstance().gadget.playGadgetSounds.PlaySound("ImagePlacement");
+ 
             GadgetMechanisms[gadgetMechanismIndex].PlaceTextureInput(curController);            
             Debug.Log("Placing Texture");
         }
@@ -336,7 +333,6 @@ public class Gadget : MonoBehaviour
 
         if (context.performed)
         {
-            playGadgetSounds.PlaySound("ActivateGeneration");
             GadgetMechanisms[gadgetMechanismIndex].ActivateGeneration(null);
             Debug.Log("Generating Texture");
         }

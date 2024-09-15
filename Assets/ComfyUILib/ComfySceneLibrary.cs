@@ -128,7 +128,7 @@ public class ComfySceneLibrary : MonoBehaviour
         {
             LoadSpecialServerAddress(serverAddress);
         }*/
-        LoadSpecialServerAddress(serverAddress);
+        //LoadSpecialServerAddress(serverAddress);
 
         // Get all enum adjacent JSON workflows
         TextAsset[] jsonFiles = Resources.LoadAll<TextAsset>(JSONFolderPath);

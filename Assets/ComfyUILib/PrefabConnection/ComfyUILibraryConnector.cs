@@ -30,7 +30,6 @@ public class ComfyUILibraryConnector : MonoBehaviour
         curParameters.gadget = comfyXROriginConnector.gadget;
         curParameters.uiDiffusionTexture = comfyXROriginConnector.uiDiffusionTexture;
         curParameters.radiusDiffusionTexture = comfyXROriginConnector.radiusDiffusionTexture;
-        curParameters.headAudioSource = comfyXROriginConnector.headAudioSource;
         curParameters.diffusables = diffusables;
 
         // Indicates to the parameters object that the connector has loaded all the relevant parameters into it

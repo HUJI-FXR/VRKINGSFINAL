@@ -9,6 +9,8 @@ public class PlayGadgetSounds : MonoBehaviour
     public string GadgetAudioClipFolder = "Sounds/SFX/GadgetSounds";
     private GeneralGameLibraries.AudioClipsLibrary AudioClipsLibrary;
 
+    public AudioSource audioSource;
+
     private void Awake()
     {
         AudioClipsLibrary = new GeneralGameLibraries.AudioClipsLibrary(GadgetAudioClipFolder);
@@ -16,13 +18,12 @@ public class PlayGadgetSounds : MonoBehaviour
 
     public void PlaySound(string sound)
     {
-        if (GameManager.getInstance() == null) return;
-        if (GameManager.getInstance().headAudioSource == null)
+        if (audioSource == null)
         {
-            Debug.Log("Add a Head Audio Source");
+            Debug.Log("Add a Audio Source to Gadget Sounds");
             return;
         }
 
-        GameManager.getInstance().headAudioSource.PlayOneShot(AudioClipsLibrary.AudioClips[sound]);
+        audioSource.PlayOneShot(AudioClipsLibrary.AudioClips[sound]);
     }
 }
