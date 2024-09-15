@@ -20,7 +20,7 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: World Space
+  m_Name: SFX
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: c208207ec0d5b194eb62264abfe9e572
   m_Children: []
