@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
 
     public void InitiateSceneParameters(ComfyOrganizer _comfyOrganizer, ComfySceneLibrary _comfySceneLibrary, 
         RadiusDiffusionTexture _radiusDiffusionTexture, UIDiffusionTexture _uiDiffusionTexture, 
-        GameObject _diffusables, Gadget _gadget, AudioSource _headAudioSource)
+        GameObject _diffusables, Gadget _gadget)
     {
         comfyOrganizer = _comfyOrganizer;
         comfySceneLibrary = _comfySceneLibrary;
