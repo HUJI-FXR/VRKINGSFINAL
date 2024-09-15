@@ -7260,11 +7260,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 11986669}
   m_SourcePrefab: {fileID: 100100000, guid: 30b92d217c24dcf4b970b65d5c6945c1, type: 3}
---- !u!1 &778403958 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2892697472514239738, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
-  m_PrefabInstance: {fileID: 963088091}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &882462405
 GameObject:
   m_ObjectHideFlags: 0
@@ -7780,11 +7775,11 @@ PrefabInstance:
     - target: {fileID: 4159365404132763867, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
       propertyPath: AIDisplayPrefab
       value: 
-      objectReference: {fileID: 778403958}
+      objectReference: {fileID: 8910628764355201766, guid: d7a967dded0a54e4689fa3afe19b35c3, type: 3}
     - target: {fileID: 4159365404132763867, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
       propertyPath: imagesDisplayPrefab
       value: 
-      objectReference: {fileID: 778403958}
+      objectReference: {fileID: 8910628764355201766, guid: 8ee60319c427de74b987c210b9babef9, type: 3}
     - target: {fileID: 5795090120012688178, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
       propertyPath: m_Name
       value: Comfy XR Origin
@@ -7805,7 +7800,12 @@ PrefabInstance:
       propertyPath: m_StartingSelectFilters.Array.size
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5738044016649175964, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+    - {fileID: 8653577616522537486, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+    - {fileID: 8393824489704239062, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+    - {fileID: 5976749803464485123, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
+    - {fileID: 5778924559144914736, guid: 81bd658d6428bec4282f5ec85b221a41, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
