@@ -1015,7 +1015,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1651,6 +1651,25 @@ MonoBehaviour:
   gameActions:
   - index: 0
     TimeToFinishGameAction: 0
+    name: automechanic for TileRoom
+    value: 0
+    eventToCall:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 238379638}
+          m_TargetAssemblyTypeName: ComfyOrganizer, Assembly-CSharp
+          m_MethodName: SendEmptyDiffusionRequest
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: ghostmix
+            m_BoolArgument: 0
+          m_CallState: 2
+  - index: 1
+    TimeToFinishGameAction: 0
     name: get gadget - LainIntro
     value: 0
     eventToCall:
@@ -1692,7 +1711,18 @@ MonoBehaviour:
             m_StringArgument: LainIntro
             m_BoolArgument: 1
           m_CallState: 2
-  IndexToStart: -1
+  IndexToStart: 0
+--- !u!114 &238379638 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1123020247713921374, guid: 6cf941391e6bdbc4abdbed9a86feb39a, type: 3}
+  m_PrefabInstance: {fileID: 238379635}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76a2971b81e6fae4da6b85ea734f8e05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &267228100
 GameObject:
   m_ObjectHideFlags: 0
@@ -2297,7 +2327,7 @@ GameObject:
   - component: {fileID: 486498636}
   - component: {fileID: 486498635}
   - component: {fileID: 486498634}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DiffusionMainPodium
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5946,7 +5976,7 @@ GameObject:
   - component: {fileID: 1149968404}
   - component: {fileID: 1149968405}
   - component: {fileID: 1149968406}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9738,7 +9768,7 @@ GameObject:
   - component: {fileID: 2075914508}
   - component: {fileID: 2075914507}
   - component: {fileID: 2075914506}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DiffusionSubPodium
   m_TagString: Untagged
   m_Icon: {fileID: 0}
