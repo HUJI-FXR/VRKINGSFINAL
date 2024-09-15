@@ -560,7 +560,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 95.882, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3.79, y: 1.67155}
+  m_AnchoredPosition: {x: 14.42, y: 1.67155}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &591693208
@@ -1406,7 +1406,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2366,7 +2366,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3484128599083367831, guid: 02be27ab17ab3b14f954f65dc06dd738, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3484128599083367831, guid: 02be27ab17ab3b14f954f65dc06dd738, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
@@ -2402,7 +2402,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3484128599083367831, guid: 02be27ab17ab3b14f954f65dc06dd738, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: ToggleBasedChangeScene
+      value: ChangeScene
       objectReference: {fileID: 0}
     - target: {fileID: 3484128599083367831, guid: 02be27ab17ab3b14f954f65dc06dd738, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
@@ -2439,7 +2439,7 @@ PrefabInstance:
     - target: {fileID: 3484128599083367831, guid: 02be27ab17ab3b14f954f65dc06dd738, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 1306914929}
+      objectReference: {fileID: 0}
     - target: {fileID: 3484128599083367831, guid: 02be27ab17ab3b14f954f65dc06dd738, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgument
       value: 
@@ -2450,7 +2450,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3484128599083367831, guid: 02be27ab17ab3b14f954f65dc06dd738, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.UI.Toggle, UnityEngine.UI
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3484128599083367831, guid: 02be27ab17ab3b14f954f65dc06dd738, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -3230,11 +3230,11 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1480534366}
   - {fileID: 682143255}
   - {fileID: 1647387974}
   - {fileID: 2143629719}
   - {fileID: 1876738956}
-  - {fileID: 1480534366}
   - {fileID: 1492619854}
   - {fileID: 1218631847}
   - {fileID: 183267470}
