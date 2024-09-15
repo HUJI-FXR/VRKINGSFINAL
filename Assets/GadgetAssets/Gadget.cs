@@ -321,7 +321,8 @@ public class Gadget : MonoBehaviour
         {
             GameObject curController = GetActionController(context);
  
-            GadgetMechanisms[gadgetMechanismIndex].PlaceTextureInput(curController);            
+            GadgetMechanisms[gadgetMechanismIndex].PlaceTextureInput(curController);   
+            // TODO move these debugsLogs inside the specific mechanisms
             Debug.Log("Placing Texture");
         }
     }

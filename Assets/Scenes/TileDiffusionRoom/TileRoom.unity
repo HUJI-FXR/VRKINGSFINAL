@@ -13961,7 +13961,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16222,6 +16222,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doorOpenAnimation: {fileID: 1935350026}
   doorOpenAudioClip: {fileID: 8300000, guid: 90093d0fb8b6de44dbd6f7aeff2eff2a, type: 3}
+  audioSource: {fileID: 0}
 --- !u!54 &991437477
 Rigidbody:
   m_ObjectHideFlags: 0
