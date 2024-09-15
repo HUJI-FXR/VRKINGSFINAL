@@ -502,8 +502,17 @@ LineRenderer:
         outSlope: 0
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1887,8 +1896,17 @@ LineRenderer:
         outSlope: 0
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -2147,7 +2165,7 @@ GameObject:
   - component: {fileID: 3201689383266895927}
   - component: {fileID: 3647912389175953036}
   - component: {fileID: 8127637787351049996}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: XR Origin (XR Rig)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2926,7 +2944,7 @@ Transform:
   m_GameObject: {fileID: 4969259560183461160}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.00057, y: -0.00286, z: 0.00227}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4027,7 +4045,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radiusDiffusionTexture: {fileID: 5620513667033401894}
   uiDiffusionTexture: {fileID: 4159365404132763867}
-  headAudioSource: {fileID: 4497300929819157837}
   gadget: {fileID: 3697320992597312600}
   gadgetMechanisms:
   - {fileID: 5778924559144914736}
@@ -4785,7 +4802,10 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 639a7f5b4b6ede5488c846be7bf53960, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2954333072889803302}
+      addedObject: {fileID: 998437013895315526}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 639a7f5b4b6ede5488c846be7bf53960, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 192899083366107164}
   m_SourcePrefab: {fileID: 100100000, guid: 639a7f5b4b6ede5488c846be7bf53960, type: 3}
 --- !u!4 &4827877172717540848 stripped
 Transform:
@@ -4797,7 +4817,28 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 639a7f5b4b6ede5488c846be7bf53960, type: 3}
   m_PrefabInstance: {fileID: 4938946621677679131}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2954333072889803302
+--- !u!65 &998437013895315526
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5209468607619895114}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.0015575882, y: 0.0019107413, z: 0.0021386517}
+  m_Center: {x: 0.000029148228, y: -0.0016221782, z: 0.0015764036}
+--- !u!114 &192899083366107164
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4814,8 +4855,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 2
-  m_AttachTransform: {fileID: 3920650204312465343}
+    m_Bits: 4294967295
+  m_AttachTransform: {fileID: 0}
   m_KeepSelectedTargetValid: 1
   m_DisableVisualsWhenBlockedInGroup: 1
   m_StartingSelectedInteractable: {fileID: 0}
