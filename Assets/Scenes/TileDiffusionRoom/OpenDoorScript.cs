@@ -5,6 +5,8 @@ public class OpenDoorScript : MonoBehaviour
 {
     public Animation doorOpenAnimation;
     public AudioClip doorOpenAudioClip;
+    
+    public AudioSource audioSource;
 
     private void Start()
     {
@@ -13,10 +15,14 @@ public class OpenDoorScript : MonoBehaviour
 
     public void OpenDoor()
     {
-        if (GameManager.getInstance() == null) return;
+        if (audioSource == null)
+        {
+            Debug.Log("Add a Audio Source to open door");
+            return;
+        }
 
         doorOpenAnimation.Play();
-        GameManager.getInstance().headAudioSource.PlayOneShot(doorOpenAudioClip);
+        audioSource.PlayOneShot(doorOpenAudioClip);
     }
 
     IEnumerator OpenDoorTimer()
@@ -25,7 +31,7 @@ public class OpenDoorScript : MonoBehaviour
         {
             yield return new WaitForSeconds(3f);
         }
-        while(GameManager.getInstance().headAudioSource == null)
+        while(audioSource == null)
         {
             yield return new WaitForSeconds(3f);
         }

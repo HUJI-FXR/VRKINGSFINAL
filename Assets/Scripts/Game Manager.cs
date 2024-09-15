@@ -21,7 +21,6 @@ public class GameManager : MonoBehaviour
     [NonSerialized]
     public Gadget gadget;
     //[NonSerialized]
-    public AudioSource headAudioSource;
     [NonSerialized]
     public ComfyOrganizer comfyOrganizer;
     [NonSerialized]
@@ -72,7 +71,6 @@ public class GameManager : MonoBehaviour
         uiDiffusionTexture = _uiDiffusionTexture;
         diffusables = _diffusables;
         gadget = _gadget;
-        headAudioSource = _headAudioSource;
 
         //Debug.Log("DIFF " + (diffusables == null).ToString());
 
@@ -85,10 +83,7 @@ public class GameManager : MonoBehaviour
             Debug.LogError("Please add a Gadget to the GameManager");
         }
         
-        if (headAudioSource == null)
-        {
-            Debug.LogError("Please add a Audio Source to the GameManager");
-        } 
+
         
         if (uiDiffusionTexture.PopupDisplay == null || uiDiffusionTexture.imagesDisplayPrefab == null)
         {

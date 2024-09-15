@@ -11,6 +11,8 @@ public class AIGadgetAssistant : MonoBehaviour
     private GeneralGameLibraries.AudioClipsLibrary AudioClipsLibrary;
 
     private DiffusionTextureChanger diffusionTextureChanger;
+    
+    public AudioSource audioSource;
 
     private static string DEFAULT_POSITIVE_PROMPT = "masterpiece,high quality,highres,solo,pslain,x hair ornament,brown eyes,dress,hoop,black dress,strings,floating circles,blue orbs,turning around,detached sleeves,black background, short hair,luminous hair,blonde hair,smile";
     private static string DEFAULT_NEGATIVE_PROMPT = "EasyNegativeV2,negative_hand-neg,(low quality, worst quality:1.2)";
@@ -49,10 +51,14 @@ public class AIGadgetAssistant : MonoBehaviour
     /// <param name="audioClipName">AI Assistant Audio Clip to be played</param>
     public void AITalk(string audioClipName = "")
     {
-        if (GameManager.getInstance() == null) return;
-        if (GameManager.getInstance().gadget == null) return;
+        
+        if (audioSource == null)
+        {
+            Debug.Log("Add a Audio Source to AI Assistant");
+            return;
+        }
 
-        GameManager.getInstance().headAudioSource.PlayOneShot(AudioClipsLibrary.AudioClips[audioClipName]);
+        audioSource.PlayOneShot(AudioClipsLibrary.AudioClips[audioClipName]);
         List<Texture2D> curTextures = diffusionTextureChanger.GetTextures();
         if (curTextures.Count == 0)
         {
