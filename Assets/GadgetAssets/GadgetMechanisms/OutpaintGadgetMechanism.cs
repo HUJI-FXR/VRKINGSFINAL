@@ -232,7 +232,9 @@ public class OutpaintGadgetMechanism : GadgetMechanism
 
         XRGrabInteractable xRGrabInteractable = grabbedObject.GetComponent<XRGrabInteractable>();
         if (xRGrabInteractable != null) xRGrabInteractable.enabled = false;
-        grabbedObject = null;        
+        grabbedObject = null;
+
+        GameManager.getInstance().gadget.playGadgetSounds.PlaySound("SelectElement");
 
         GameManager.getInstance().comfyOrganizer.SendDiffusionRequest(newDiffusionRequest);
     }
