@@ -80,7 +80,8 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
         }
 
         selectedObjects.Enqueue(args.interactableObject.transform.gameObject);
-        Debug.Log(selectedObjects.Count);
+        GameManager.getInstance().gadget.playGadgetSounds.PlaySound("SelectElement");
+
         // Creates selection outline
         GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.selected);
     }
@@ -142,6 +143,8 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
             diffusionRequest.positivePrompt += DiffObjSec.keyword;
         }
 
+        GameManager.getInstance().gadget.playGadgetSounds.PlaySound("ImagePlacement");
+
         ResetMechanism();
 
         GameManager.getInstance().comfyOrganizer.SendDiffusionRequest(diffusionRequest);
@@ -174,8 +177,7 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
             // TODO discuss with NADAV
             if (hit.collider.gameObject.TryGetComponent<DiffusionTextureChanger>(out DiffusionTextureChanger dtc))
             {
-                // TODO do like this for all SFX mechanism sounds? IE inside the most specific mechanism parts
-                //GameManager.getInstance().gadget.playGadgetSounds.PlaySound("ImagePlacement");
+                GameManager.getInstance().gadget.playGadgetSounds.PlaySound("ImagePlacement");
 
                 dtc.AddTexture(new List<Texture2D>() { curTexture }, false);
 

@@ -73,7 +73,8 @@ public class CameraGadgetMechanism : GadgetMechanism
             // texturechange to another
             if (hit.collider.gameObject.TryGetComponent<DiffusionTextureChanger>(out DiffusionTextureChanger dtc))
             {
-                //GameManager.getInstance().gadget.playGadgetSounds.PlaySound("ImagePlacement");
+                GameManager.getInstance().gadget.playGadgetSounds.PlaySound("ImagePlacement");
+
                 dtc.AddTexture(new List<Texture2D>() { curTexture }, false);
             }
         }
@@ -138,6 +139,8 @@ public class CameraGadgetMechanism : GadgetMechanism
         curTexture.name = uniqueName + "_2.png";
 
         styleTexture = curTexture;
+
+        GameManager.getInstance().gadget.playGadgetSounds.PlaySound("SelectElement");
     }
 
     /// <summary>
@@ -187,6 +190,8 @@ public class CameraGadgetMechanism : GadgetMechanism
 
         // Invoking voiceline
         ActivateGenerationUnityEvent?.Invoke();
+
+        GameManager.getInstance().gadget.playGadgetSounds.PlaySound("ImagePlacement");
 
         GameManager.getInstance().comfyOrganizer.SendDiffusionRequest(newDiffusionRequest);
         return;
