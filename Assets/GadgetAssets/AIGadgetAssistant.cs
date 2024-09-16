@@ -5,22 +5,49 @@ using UnityEditor.Rendering;
 using UnityEngine;
 using static GeneralGameLibraries;
 
-public class AIGadgetAssistant : MonoBehaviour
+public class AIGadgetAssistant : DiffusionTextureChanger
 {
+    public static List<Texture2D> AITextures;
+
     public string AIAudioClipFolder = "Sounds/Voiceover";
     private GeneralGameLibraries.AudioClipsLibrary AudioClipsLibrary;
-
-    private DiffusionTextureChanger diffusionTextureChanger;
     
     public AudioSource audioSource;    
 
     private static string DEFAULT_POSITIVE_PROMPT = "masterpiece,high quality,highres,solo,pslain,x hair ornament,brown eyes,dress,hoop,black dress,strings,floating circles,blue orbs,turning around,detached sleeves,black background, short hair,luminous hair,blonde hair,smile";
     private static string DEFAULT_NEGATIVE_PROMPT = "EasyNegativeV2,negative_hand-neg,(low quality, worst quality:1.2)";
 
-    private void Awake()
+    protected override void Awake()
     {
-        AudioClipsLibrary = new GeneralGameLibraries.AudioClipsLibrary(AIAudioClipFolder);
-        diffusionTextureChanger = gameObject.AddComponent<DiffusionTextureChanger>();
+        base.Awake();
+
+        if (AITextures == null)
+        {
+            AITextures = new List<Texture2D>();
+        }
+
+        AudioClipsLibrary = new GeneralGameLibraries.AudioClipsLibrary(AIAudioClipFolder);       
+    }
+
+
+    public override bool AddTexture(DiffusionRequest diffusionRequest)
+    {
+        foreach (Texture2D texture in diffusionRequest.textures)
+        {
+            AITextures.Add(texture);
+        }
+
+        return base.AddTexture(diffusionRequest);
+    }
+
+    public override bool AddTexture(List<Texture2D> newDiffTextures, bool addToTextureTotal)
+    {
+        foreach (Texture2D texture in newDiffTextures)
+        {
+            AITextures.Add(texture);
+        }
+
+        return base.AddTexture(newDiffTextures, addToTextureTotal);
     }
 
     /// <summary>
@@ -38,7 +65,7 @@ public class AIGadgetAssistant : MonoBehaviour
         diffusionRequest.positivePrompt = DEFAULT_POSITIVE_PROMPT + keywords;
         diffusionRequest.negativePrompt = DEFAULT_NEGATIVE_PROMPT;
 
-        diffusionRequest.targets.Add(diffusionTextureChanger);
+        diffusionRequest.targets.Add(this);
         diffusionRequest.addToTextureTotal = true;
         diffusionRequest.diffusionJsonType = diffusionWorkflows.AIAssistant;
 
@@ -61,22 +88,20 @@ public class AIGadgetAssistant : MonoBehaviour
         }
 
         audioSource.PlayOneShot(AudioClipsLibrary.AudioClips[audioClipName]);
-        List<Texture2D> curTextures = diffusionTextureChanger.GetTextures();
-        if (curTextures.Count == 0) return;
+        if (AITextures.Count == 0) return;
 
-        int curIndex = diffusionTextureChanger.GetTextureIndex();
+        Texture2D currentTexture = AITextures[curTextureIndex];
 
-        Texture2D currentTexture = curTextures[curIndex];
-
-        if (curTextures.Count-1 > curIndex) {
-            curIndex++;
-            diffusionTextureChanger.SetTextureIndex(curIndex);
+        if (AITextures.Count-1 > curTextureIndex) {
+            curTextureIndex++;
         }   
         else
         {
-            diffusionTextureChanger.SetTextureIndex(0);
+            curTextureIndex = 0;
         }
 
         GameManager.getInstance().uiDiffusionTexture.CreateAIPopup(new List<Texture2D>() { currentTexture });       
     }
+
+    
 }

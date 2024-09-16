@@ -173,6 +173,7 @@ public class UIDiffusionTexture : DiffusionTextureChanger
             // Assume all children of UIDisplay are Images
             foreach (Transform child in curDisplayPrefab.transform)
             {
+                Debug.Log(curTotalChangeDelta);
                 Image curImage = child.GetComponent<Image>();
                 // 1 - (curChangeDelta / changeRate)
                 curImage.color = new Color(curImage.color.r, curImage.color.g, curImage.color.b, curTotalChangeDelta);

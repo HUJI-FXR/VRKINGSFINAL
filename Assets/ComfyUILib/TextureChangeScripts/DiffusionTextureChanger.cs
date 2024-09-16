@@ -13,7 +13,7 @@ public class DiffusionTextureChanger : MonoBehaviour
 
     public UnityEvent AddedTextureUnityEvent;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         diff_Textures = new List<Texture2D>();
     }
