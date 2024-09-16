@@ -89,6 +89,9 @@ public class OutpaintGadgetMechanism : GadgetMechanism
     // TODO  - solved when right calls above function and then right becomes grabbed?
     public override void DiffusableUnGrabbed(SelectExitEventArgs args)
     {
+        // TODO delete this return before full build
+        return;
+
         if (!ValidInteractableObject(args, true)) return;
         if (args.interactableObject.transform.gameObject != grabbedObject) return;
         grabbedObject = null;
@@ -204,21 +207,21 @@ public class OutpaintGadgetMechanism : GadgetMechanism
         // Right tile outpainting
         if (OPT.tilePosition.x < outpaintingScreen.tileMatrixSize.x - 1)
         {
-            if (newDiffusionRequest.uploadTextures.Count <= 1)
-            {
+           /* if (newDiffusionRequest.uploadTextures.Count <= 1)
+            {*/
                 rightTileOutpaint = CheckAdjacentTile(new Vector2Int(1, 0), newDiffusionRequest, OPT, uniqueName, "right");
-            }
+            //}
         }                      
 
         if (!topTileOutpaint && !leftTileOutpaint && !rightTileOutpaint)    return;
         if (topTileOutpaint && leftTileOutpaint)
         {
-            CheckAdjacentTile(new Vector2Int(-1, 1), newDiffusionRequest, OPT, uniqueName, "bottomRight");
+            if (!CheckAdjacentTile(new Vector2Int(-1, 1), newDiffusionRequest, OPT, uniqueName, "bottomRight")) return;
             newDiffusionRequest.diffusionJsonType = diffusionWorkflows.grid4Outpainting;
         }
         else if (topTileOutpaint && rightTileOutpaint)
         {
-            CheckAdjacentTile(new Vector2Int(1, 1), newDiffusionRequest, OPT, uniqueName, "bottomLeft");
+            if (!CheckAdjacentTile(new Vector2Int(1, 1), newDiffusionRequest, OPT, uniqueName, "bottomLeft")) return;
             newDiffusionRequest.diffusionJsonType = diffusionWorkflows.grid4Outpainting;
         }
 

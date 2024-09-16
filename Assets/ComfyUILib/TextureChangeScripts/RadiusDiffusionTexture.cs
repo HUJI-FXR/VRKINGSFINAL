@@ -178,7 +178,9 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
             if (!diffusionRing.gameObjects.Contains(GO)) {
                 newRadiusGameObjects.Add(GO);
             }
-        }                
+        }
+
+        GameManager.getInstance().gadget.MechanismText.text += " " + newRadiusGameObjects.Count.ToString();
 
         // Adding the textures to the new ring GameObjects
         foreach (GameObject GO in newRadiusGameObjects)
@@ -224,7 +226,11 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
         if (radiusDiffusionRings.Count <= 0) return;
         DiffusionRing dr = radiusDiffusionRings[radiusDiffusionRings.Count - 1];
 
+        GameManager.getInstance().gadget.MechanismText.text += " OK1";
+
         if (dr.gameObjects.Count > 0) return;
+
+        GameManager.getInstance().gadget.MechanismText.text += " OK2";
 
         dr.centerPosition = collision.transform.position;
         dr.changeTextures = true;

@@ -87,13 +87,12 @@ public class DiffusableObjectGadgetMechanism : GadgetMechanism
                 }
                 selectedStyleObject = args.interactableObject.transform.gameObject;
             }
-
-            GameManager.getInstance().gadget.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.selected);
-            return;
         }
-
-        if (curInteractable.GetComponent<Renderer>().material.mainTexture == null)  return;
-        selectedStyleObject = args.interactableObject.transform.gameObject;
+        else 
+        {
+            if (curInteractable.GetComponent<Renderer>().material.mainTexture == null) return;
+            selectedStyleObject = args.interactableObject.transform.gameObject;
+        }
 
         GameManager.getInstance().gadget.playGadgetSounds.PlaySound("SelectElement");
 
