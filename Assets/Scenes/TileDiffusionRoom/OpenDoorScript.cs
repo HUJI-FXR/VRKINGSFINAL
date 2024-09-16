@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class OpenDoorScript : MonoBehaviour
 {
-    public Animation doorOpenAnimation;
+    public Animator doorOpenAnimation;
     
     public AudioSource audioSource;
 
@@ -22,7 +22,7 @@ public class OpenDoorScript : MonoBehaviour
             return;
         }
 
-        doorOpenAnimation.Play();
+        doorOpenAnimation.Play("Door Open Clip 3");
         audioSource.Play();
     }
 
