@@ -10,6 +10,7 @@ using UnityEngine.Windows;
 using static UnityEngine.GraphicsBuffer;
 using System.Net;
 using UnityEngine.Rendering;
+using UnityEngine.Events;
 
 
 // TODO maybe remove requestNum from this class?
@@ -115,6 +116,10 @@ public class ComfyOrganizer : MonoBehaviour
 
     // Counter for Images to differentiate them
     private static int currentTextureNameNumber = 0;
+
+    // When comes to 0, invokes a UnityEvent
+    public int EndSceneTextureNum = 0;
+    public UnityEvent EndSceneUnityEvent;
 
     private void Awake()
     {
@@ -343,12 +348,20 @@ public class ComfyOrganizer : MonoBehaviour
             
             // Not efficient to hold a large List like this, but used for explosion in the end of the Game
             allTextures.Add(texture);
+
+            EndSceneTextureNum--;
         }
         if (DiffuseDictionary[requestNum].numOfVariations <= DiffuseDictionary[requestNum].textures.Count)
         {
             DiffuseDictionary[requestNum].finishedRequest = true;
             DiffuseDictionary[requestNum].sentDownloadRequest = true;
             SendTexturesToRecipient(DiffuseDictionary[requestNum]);
+        }
+
+        // When the needed number of textures in a scene has been generated, invokes the given EndSceneUnityEvent
+        if (EndSceneTextureNum <= 0)
+        {
+            EndSceneUnityEvent?.Invoke();
         }
     }
 

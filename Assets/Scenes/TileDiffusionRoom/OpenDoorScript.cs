@@ -1,10 +1,11 @@
 using System.Collections;
 using UnityEngine;
 
+// TODO documentation
+
 public class OpenDoorScript : MonoBehaviour
 {
     public Animation doorOpenAnimation;
-    public AudioClip doorOpenAudioClip;
     
     public AudioSource audioSource;
 
@@ -22,7 +23,7 @@ public class OpenDoorScript : MonoBehaviour
         }
 
         doorOpenAnimation.Play();
-        audioSource.PlayOneShot(doorOpenAudioClip);
+        audioSource.Play();
     }
 
     IEnumerator OpenDoorTimer()
