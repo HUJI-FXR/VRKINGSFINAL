@@ -12,7 +12,7 @@ public class AIGadgetAssistant : MonoBehaviour
 
     private DiffusionTextureChanger diffusionTextureChanger;
     
-    public AudioSource audioSource;
+    public AudioSource audioSource;    
 
     private static string DEFAULT_POSITIVE_PROMPT = "masterpiece,high quality,highres,solo,pslain,x hair ornament,brown eyes,dress,hoop,black dress,strings,floating circles,blue orbs,turning around,detached sleeves,black background, short hair,luminous hair,blonde hair,smile";
     private static string DEFAULT_NEGATIVE_PROMPT = "EasyNegativeV2,negative_hand-neg,(low quality, worst quality:1.2)";
@@ -42,6 +42,9 @@ public class AIGadgetAssistant : MonoBehaviour
         diffusionRequest.addToTextureTotal = true;
         diffusionRequest.diffusionJsonType = diffusionWorkflows.AIAssistant;
 
+        // TODO do I need so many at every time?
+        diffusionRequest.numOfVariations = 5;
+
         GameManager.getInstance().comfyOrganizer.SendDiffusionRequest(diffusionRequest);
     }
 
@@ -51,7 +54,6 @@ public class AIGadgetAssistant : MonoBehaviour
     /// <param name="audioClipName">AI Assistant Audio Clip to be played</param>
     public void AITalk(string audioClipName = "")
     {
-        
         if (audioSource == null)
         {
             Debug.Log("Add a Audio Source to AI Assistant");
@@ -60,18 +62,21 @@ public class AIGadgetAssistant : MonoBehaviour
 
         audioSource.PlayOneShot(AudioClipsLibrary.AudioClips[audioClipName]);
         List<Texture2D> curTextures = diffusionTextureChanger.GetTextures();
-        if (curTextures.Count == 0)
+        if (curTextures.Count == 0) return;
+
+        int curIndex = diffusionTextureChanger.GetTextureIndex();
+
+        Texture2D currentTexture = curTextures[curIndex];
+
+        if (curTextures.Count-1 > curIndex) {
+            curIndex++;
+            diffusionTextureChanger.SetTextureIndex(curIndex);
+        }   
+        else
         {
-            return;
+            diffusionTextureChanger.SetTextureIndex(0);
         }
 
-        Texture2D currentTexture = curTextures[curTextures.Count - 1];
-
-        GameManager.getInstance().uiDiffusionTexture.CreatePopup(new List<Texture2D>() { currentTexture });
-
-        if (audioClipName == "")
-        {
-            return;
-        }        
+        GameManager.getInstance().uiDiffusionTexture.CreateAIPopup(new List<Texture2D>() { currentTexture });       
     }
 }

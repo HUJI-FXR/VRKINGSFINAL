@@ -1015,7 +1015,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1658,14 +1658,38 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 238379638}
           m_TargetAssemblyTypeName: ComfyOrganizer, Assembly-CSharp
-          m_MethodName: SendEmptyDiffusionRequest
+          m_MethodName: SendNonTargetWorkflowDiffusionRequest
           m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: ghostmix
+            m_StringArgument: combineImages
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 389757253}
+          m_TargetAssemblyTypeName: AIGadgetAssistant, Assembly-CSharp
+          m_MethodName: CreateAITexture
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: holding puppy
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 389757253}
+          m_TargetAssemblyTypeName: AIGadgetAssistant, Assembly-CSharp
+          m_MethodName: CreateAITexture
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: twirling, holding orb
             m_BoolArgument: 0
           m_CallState: 2
   - index: 1
@@ -10203,8 +10227,36 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5085818675827328381, guid: 241e6011d893a7f46918d35d78f4d4c4, type: 3}
+      propertyPath: m_VideoClip
+      value: 
+      objectReference: {fileID: 32900000, guid: 4ab82498806afbe4eb40e1a1f011cd1f, type: 3}
+    - target: {fileID: 5085818675827328381, guid: 241e6011d893a7f46918d35d78f4d4c4, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5085818675827328381, guid: 241e6011d893a7f46918d35d78f4d4c4, type: 3}
+      propertyPath: m_ControlledAudioTrackCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5085818675827328381, guid: 241e6011d893a7f46918d35d78f4d4c4, type: 3}
+      propertyPath: m_DirectAudioMutes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5085818675827328381, guid: 241e6011d893a7f46918d35d78f4d4c4, type: 3}
+      propertyPath: m_DirectAudioVolumes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5085818675827328381, guid: 241e6011d893a7f46918d35d78f4d4c4, type: 3}
+      propertyPath: m_EnabledAudioTracks.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5085818675827328381, guid: 241e6011d893a7f46918d35d78f4d4c4, type: 3}
+      propertyPath: m_TargetAudioSources.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5085818675827328381, guid: 241e6011d893a7f46918d35d78f4d4c4, type: 3}
+      propertyPath: m_TargetAudioSources.Array.data[0]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5164694941441529483, guid: 241e6011d893a7f46918d35d78f4d4c4, type: 3}
       propertyPath: m_Camera

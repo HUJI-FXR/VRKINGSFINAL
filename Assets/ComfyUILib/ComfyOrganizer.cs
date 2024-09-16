@@ -203,13 +203,23 @@ public class ComfyOrganizer : MonoBehaviour
         DiffusionRequest newDiffusionRequest = new DiffusionRequest();
         newDiffusionRequest.diffusionJsonType = enumVal;
 
+        Texture[] emptyTextures = Resources.LoadAll<Texture>("Textures/EmptyDiffuseTexture");
+        Texture2D defEmptyTexture = GeneralGameLibraries.TextureManipulationLibrary.toTexture2D(emptyTextures[0]);
+
         switch (enumVal)
         {
             case diffusionWorkflows.combineImages:
+                if (emptyTextures.Length == 0) Debug.LogError("Add an empty default texture");
+                newDiffusionRequest.uploadTextures.Add(defEmptyTexture);
+                newDiffusionRequest.uploadTextures.Add(defEmptyTexture);
+
                 newDiffusionRequest.diffusionModel = diffusionModels.ghostmix;
                 newDiffusionRequest.numOfVariations = 1;
                 break;
             case diffusionWorkflows.outpainting:
+                if (emptyTextures.Length == 0) Debug.LogError("Add an empty default texture");
+                newDiffusionRequest.uploadTextures.Add(defEmptyTexture);
+
                 newDiffusionRequest.diffusionModel = diffusionModels.juggernautXLInpaint;
                 newDiffusionRequest.SpecialInput = "right";
                 newDiffusionRequest.numOfVariations = 1;

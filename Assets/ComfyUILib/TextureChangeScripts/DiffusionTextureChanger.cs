@@ -91,4 +91,17 @@ public class DiffusionTextureChanger : MonoBehaviour
     {
         return diff_Textures;
     }
+
+    public int GetTextureIndex()
+    {
+        return curTextureIndex;
+    }
+
+    public void SetTextureIndex(int newIndex)
+    {
+        if (newIndex >= 0)
+        {
+            curTextureIndex = newIndex;
+        }        
+    }
 }

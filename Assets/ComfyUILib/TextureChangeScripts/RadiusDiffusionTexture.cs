@@ -218,6 +218,9 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
     /// <param name="collision">Collision of the Diffusable Object with another GameObject</param>
     public void DiffusableObjectCollided(Collision collision)
     {
+        // TODO delete this line
+        GameManager.getInstance().gadget.MechanismText.text = collision.transform.position.ToString();
+
         if (radiusDiffusionRings.Count <= 0) return;
         DiffusionRing dr = radiusDiffusionRings[radiusDiffusionRings.Count - 1];
 
