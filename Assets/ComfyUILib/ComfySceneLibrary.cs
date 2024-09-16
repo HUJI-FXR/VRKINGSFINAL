@@ -61,7 +61,11 @@ public enum diffusionModels
 public class ComfySceneLibrary : MonoBehaviour
 {
     private static string HTTPPrefix = "https://";  // https://  ------ When using online API service | http:// ------ When using offline server
+
     public string serverAddress = "";
+
+    [NonSerialized]
+    public static bool loadedAddress = false;
 
     public ComfyOrganizer comfyOrg;
 
@@ -99,6 +103,7 @@ public class ComfySceneLibrary : MonoBehaviour
 
     public void LoadSpecialServerAddress(string initialIP)
     {
+        if (loadedAddress) return;
         if (GameManager.getInstance() == null) return;
 
         if (initialIP == "" || initialIP == "127.0.0.1:8188")
@@ -117,6 +122,8 @@ public class ComfySceneLibrary : MonoBehaviour
 
             Debug.Log("Set the final server IP as: " + GameManager.getInstance().IP.ToString());
         }
+
+        loadedAddress = true;
     }
 
     // TODO notice that this START must always come BEFORE(put the library before the organizer in the node properties)
@@ -128,7 +135,7 @@ public class ComfySceneLibrary : MonoBehaviour
         {
             LoadSpecialServerAddress(serverAddress);
         }*/
-        //LoadSpecialServerAddress(serverAddress);
+        LoadSpecialServerAddress(serverAddress);
 
         // Get all enum adjacent JSON workflows
         TextAsset[] jsonFiles = Resources.LoadAll<TextAsset>(JSONFolderPath);
@@ -490,58 +497,63 @@ public class ComfySceneLibrary : MonoBehaviour
     /// <param name="diffReq">DiffusionRequest to send to the server.</param>
     public IEnumerator QueuePromptCoroutine(DiffusionRequest diffReq, int trials)
     {
-        if (!readyForDiffusion || trials <= 0 || GameManager.getInstance() == null)
+        if (trials <= 0 || GameManager.getInstance() == null) yield break;
+
+        // Waits for the Library to be started
+        int INNER_DIFFUSION_TRIALS = 10;
+        if (!readyForDiffusion)
         {
-            //yield return -1;
-            yield break;
+            if (INNER_DIFFUSION_TRIALS <= 0) yield break;
+            INNER_DIFFUSION_TRIALS--;
+            yield return new WaitForSeconds(1);
         }
 
         string url = HTTPPrefix + GameManager.getInstance().IP + "/prompt";
-
-        int MAX_RETRIES = MAX_NETWORKING_RETRIES;
+        
+        // Creates the prompt string to be send to the server
         string promptText = DiffusionJSONFactory(diffReq);
+        if (promptText == null || promptText.Length <= 0) yield break;
 
+        // Waits for all the relevant images for the workflow to upload to the server
+        int MAX_RETRIES = MAX_NETWORKING_RETRIES;
         while (!diffReq.uploadFileChecker.fileExists && MAX_RETRIES > 0)
         {
             yield return new WaitForSeconds(0.2f);
             MAX_RETRIES--;
         }
-        if (MAX_RETRIES <= 0) yield break;
+        if (MAX_RETRIES <= 0) yield break;        
+        
+        // Sends the workflow to the server
+        UnityWebRequest request = new UnityWebRequest(url, "POST");
+        byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(promptText);
+        request.uploadHandler = (UploadHandler)new UploadHandlerRaw(bodyRaw);
+        request.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
+        request.SetRequestHeader("Content-Type", "application/json");
 
-        if (promptText == null || promptText.Length <= 0)
+        yield return request.SendWebRequest();
+
+        if (request.result != UnityWebRequest.Result.Success)
         {
-            yield return -1;
+            Debug.Log(request.error + " Trial Number: " + trials.ToString());
+            
+            yield return new WaitForSeconds(0.2f);
+
+            // If the workflow wasn't properly sent, resend it, retry up to the number of trials
+            trials--;
+            StartCoroutine(QueuePromptCoroutine(diffReq, trials));
+
+            yield return 0;
         }
         else
         {
-            UnityWebRequest request = new UnityWebRequest(url, "POST");
-            byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(promptText);
-            request.uploadHandler = (UploadHandler)new UploadHandlerRaw(bodyRaw);
-            request.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
-            request.SetRequestHeader("Content-Type", "application/json");
+            //Debug.Log("Prompt queued successfully." + request.downloadHandler.text);
 
-            yield return request.SendWebRequest();
-
-            if (request.result != UnityWebRequest.Result.Success)
-            {
-                Debug.Log(request.error + " Trial Number: " + trials.ToString());
-
-                yield return new WaitForSeconds(0.2f);
-                trials--;
-                StartCoroutine(QueuePromptCoroutine(diffReq, trials));
-
-                yield return 0;
-            }
-            else
-            {
-                //Debug.Log("Prompt queued successfully." + request.downloadHandler.text);
-
-                // This is the only use of ResponseData, but it is needed for proper downloading of the prompt
-                ResponseData data = JsonUtility.FromJson<ResponseData>(request.downloadHandler.text);
-                diffReq.prompt_id = data.prompt_id;
-                yield return 1;
-            }                
-        }
+            // This is the only use of ResponseData, but it is needed for proper downloading of the prompt
+            ResponseData data = JsonUtility.FromJson<ResponseData>(request.downloadHandler.text);
+            diffReq.prompt_id = data.prompt_id;
+            yield return 1;
+        }                
+        
     }
 
 
@@ -553,7 +565,12 @@ public class ComfySceneLibrary : MonoBehaviour
         }
     }
 
-    
+    /// <summary>
+    /// Checks whether a file exists in the server
+    /// </summary>
+    /// <param name="imageName">Name of the file we want to check exists</param>
+    /// <param name="fileChecker">Used to keep track of the final result of the check</param>
+    /// <param name="subfolder">Subfolder on the server the file should be found in</param>
     private IEnumerator CheckIfFileExists(string imageName, FileExistsChecker fileChecker, string subfolder)
     {
         if (GameManager.getInstance() == null) yield break;
@@ -570,7 +587,6 @@ public class ComfySceneLibrary : MonoBehaviour
             else
             {
                 fileChecker.fileExists = true;
-                //Debug.Log("File " + imageName + " in Input");
             }
         }
     }

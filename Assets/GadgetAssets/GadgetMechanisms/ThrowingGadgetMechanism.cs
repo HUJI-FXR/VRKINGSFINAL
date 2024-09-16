@@ -9,7 +9,7 @@ using UnityEngine.InputSystem;
 
 public class ThrowingGadgetMechanism : GadgetMechanism
 {
-    private void Start()
+    private void Awake()
     {
         mechanismText = "Throwing";
     }

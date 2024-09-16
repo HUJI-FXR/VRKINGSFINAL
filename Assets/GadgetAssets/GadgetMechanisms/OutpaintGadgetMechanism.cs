@@ -16,7 +16,7 @@ public class OutpaintGadgetMechanism : GadgetMechanism
     // Diffusable Object that is being held up
     private GameObject grabbedObject;
 
-    private void Start()
+    private void Awake()
     {
         mechanismText = "Outpainting";
     }

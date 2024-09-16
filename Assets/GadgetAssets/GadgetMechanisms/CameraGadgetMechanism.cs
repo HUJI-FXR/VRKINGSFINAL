@@ -14,7 +14,7 @@ using System;
 /// And that screenshot is used as an input in an img2img Diffusion workflow.
 /// </summary>
 public class CameraGadgetMechanism : GadgetMechanism
-{
+{ 
     // Texture chosen to be used as the style component in the combination with the content texture
     private Texture2D styleTexture;
 
@@ -31,7 +31,8 @@ public class CameraGadgetMechanism : GadgetMechanism
     // Object that was selected for the texture to be used as the style base for the Camera's image.
     private GameObject selectedStyleObject = null;
 
-    private void Start()
+
+    private void Awake()
     {
         mechanismText = "Base Camera";
     }

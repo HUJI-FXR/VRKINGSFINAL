@@ -6305,6 +6305,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_CatSculpture_master
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8f734f1c6705ac1438ae52079fd474fe, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6564,6 +6568,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 06b44f911323fab4ca040462aa648bac, type: 3}
       propertyPath: m_Name
       value: Lion
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 06b44f911323fab4ca040462aa648bac, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8831,7 +8839,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1079646059
 Transform:
   m_ObjectHideFlags: 0
@@ -9189,6 +9197,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mosesbrunnen_C
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a52a3e137d2c0034eb1c8c18901dde34, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9398,6 +9410,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b199d6476cc1b484ea6f525f25fdf951, type: 3}
       propertyPath: m_Name
       value: Girl_with_Dog
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b199d6476cc1b484ea6f525f25fdf951, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10672,6 +10688,18 @@ MonoBehaviour:
             m_StringArgument: ParkIntro
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 1486141753}
+          m_TargetAssemblyTypeName: ComfyOrganizer, Assembly-CSharp
+          m_MethodName: SendEmptyDiffusionRequest
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: juggernautXLInpaint
+            m_BoolArgument: 0
+          m_CallState: 2
   - index: 1
     TimeToFinishGameAction: 0
     name: Do one outpainting tile - OutpaintingIntro
@@ -10736,12 +10764,47 @@ MonoBehaviour:
           m_CallState: 2
   - index: 3
     TimeToFinishGameAction: 0
-    name: finished
+    name: Outpainting Screen finished, Square opened
     value: 0
     eventToCall:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 1486141753}
+          m_TargetAssemblyTypeName: ComfyOrganizer, Assembly-CSharp
+          m_MethodName: SendEmptyDiffusionRequest
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: nano
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 2021590179}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: nano
+            m_BoolArgument: 1
+          m_CallState: 2
   IndexToStart: 0
+--- !u!114 &1486141753 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1123020247713921374, guid: 6cf941391e6bdbc4abdbed9a86feb39a, type: 3}
+  m_PrefabInstance: {fileID: 1486141750}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76a2971b81e6fae4da6b85ea734f8e05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1519246286
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10805,6 +10868,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d388a616e8e679b4ea63d53e9ac797ce, type: 3}
       propertyPath: m_Name
       value: Loewe_C (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d388a616e8e679b4ea63d53e9ac797ce, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3826243528184748876, guid: d388a616e8e679b4ea63d53e9ac797ce, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -10887,6 +10954,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: hyde-part-stone-jar
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 34fc3426d3797f143b67335d8733f832, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10947,6 +11018,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 22716efd396a4ae47ac0fcb8da179809, type: 3}
       propertyPath: m_Name
       value: 20240328_Hirakata_kaikan_371MB_triming_table_Remesh578K_smooth
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 22716efd396a4ae47ac0fcb8da179809, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11043,6 +11118,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 20240328_Hirakata_kaikan_371MB_triming_table_Remesh578K_smooth (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 22716efd396a4ae47ac0fcb8da179809, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11103,6 +11182,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 22716efd396a4ae47ac0fcb8da179809, type: 3}
       propertyPath: m_Name
       value: 20240328_Hirakata_kaikan_371MB_triming_table_Remesh578K_smooth (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 22716efd396a4ae47ac0fcb8da179809, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12261,6 +12344,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: hyde-part-stone-jar (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 34fc3426d3797f143b67335d8733f832, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1151388028547126963, guid: 34fc3426d3797f143b67335d8733f832, type: 3}
       propertyPath: m_LocalPosition.x
       value: 41.6
@@ -12815,6 +12902,7 @@ MonoBehaviour:
   currentRoomSceneName: WaterPark
   nextRoomSceneName: square
   altNextRoomSceneName: GadgetPrefabTest
+  toggle: {fileID: 0}
 --- !u!65 &2021590182
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13450,6 +13538,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: hippocampe
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4404a6cd005dbdf4bb2816e4ed62ac76, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13518,6 +13610,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d388a616e8e679b4ea63d53e9ac797ce, type: 3}
       propertyPath: m_Name
       value: Loewe_C
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d388a616e8e679b4ea63d53e9ac797ce, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3826243528184748876, guid: d388a616e8e679b4ea63d53e9ac797ce, type: 3}
       propertyPath: m_Materials.Array.data[0]

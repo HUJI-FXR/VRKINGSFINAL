@@ -40,12 +40,24 @@ public class CameraToNecklace : MonoBehaviour
 
     public void StopSummoning()
     {
+        Rigidbody body = GetComponent<Rigidbody>();
+        if (body != null)
+        {
+            body.useGravity = true;
+        }
+
         returning = false;
     }
 
     IEnumerator DragToSocket()
     {
         yield return new WaitForSeconds(delay);
+
+        Rigidbody body = GetComponent<Rigidbody>();
+        if (body != null )
+        {
+            body.useGravity = false;
+        }
 
         returning = true;
 

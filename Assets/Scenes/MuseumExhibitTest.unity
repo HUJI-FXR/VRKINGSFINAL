@@ -1015,7 +1015,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3351,7 +3351,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &639904301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3367,6 +3367,7 @@ MonoBehaviour:
   currentRoomSceneName: MuseumExhibitTest
   nextRoomSceneName: TileRoom
   altNextRoomSceneName: GadgetPrefabTest
+  toggle: {fileID: 0}
 --- !u!65 &639904302
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6296,7 +6297,7 @@ GameObject:
   - component: {fileID: 1160427282}
   - component: {fileID: 1160427281}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: GadgetContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6360,7 +6361,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -6376,6 +6377,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 639904300}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
@@ -6531,14 +6544,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1160427280}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: -0.5}
-  m_LocalPosition: {x: -0.09100008, y: 1.91, z: -0.039000034}
+  m_LocalRotation: {x: 0.48595327, y: -0.45850235, z: -0.54426414, w: -0.50734764}
+  m_LocalPosition: {x: 0.204, y: 0.297, z: -0.039000034}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1275746150}
   m_Father: {fileID: 486008202}
-  m_LocalEulerAnglesHint: {x: 270, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 277.167, y: -30.721, z: 121.264}
 --- !u!1 &1267894334
 GameObject:
   m_ObjectHideFlags: 0
@@ -6660,7 +6673,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3c3ee6ab24dee9d4cb30be4b43b7f0a4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.19000053
+      value: 0.116
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3c3ee6ab24dee9d4cb30be4b43b7f0a4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6668,7 +6681,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3c3ee6ab24dee9d4cb30be4b43b7f0a4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.13200009
+      value: -0.135
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3c3ee6ab24dee9d4cb30be4b43b7f0a4, type: 3}
       propertyPath: m_LocalRotation.w

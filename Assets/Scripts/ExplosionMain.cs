@@ -190,4 +190,10 @@ public class ExplosionMain : MonoBehaviour
                 break;
         }
     }
+
+    public void SetDiffusedPercentage(float percentage)
+    {
+        if (percentage < 0 || percentage > 1) return;
+        diffusedPercentage = percentage;
+    }
 }

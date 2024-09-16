@@ -11,6 +11,8 @@ public class ExitSceneChangeTrigger : MonoBehaviour
     public string nextRoomSceneName = "Camera Full Prototype Scene";
     public string altNextRoomSceneName = "GadgetPrefabTest";
 
+    public Toggle toggle;
+
     // TODO do I need this collision detection thing even?
     /*private void OnTriggerEnter(Collider other)
     {
@@ -21,15 +23,18 @@ public class ExitSceneChangeTrigger : MonoBehaviour
     // TODO this is for many types of scripts throughout the project that NEED the GameManager up and running with everything, so maybe a check like that will help
     // TODO Or maybe some indicator bool that indicated it is "fully loaded"??
 
-    
+
     public void InputToIP(TMP_InputField txt)
     {
         if (GameManager.getInstance() == null) return;
+
+        ComfySceneLibrary.loadedAddress = false;
         GameManager.getInstance().comfySceneLibrary.LoadSpecialServerAddress(txt.text);
     }
 
-    public void ToggleBasedChangeScene(Toggle toggle)
+    public void ToggleBasedChangeScene()
     {
+        if (toggle == null) return;
         if (toggle.isOn)
         {
             GameManager.getInstance().LoadNextScene(currentRoomSceneName, nextRoomSceneName);

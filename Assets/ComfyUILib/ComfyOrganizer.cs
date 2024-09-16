@@ -186,21 +186,46 @@ public class ComfyOrganizer : MonoBehaviour
         return newDiffusionRequest;
     }
 
-    
-    /// <summary>
-    /// Used for loading models into RAM to speed up subsequent image generations using the same model. 
-    /// Sends a minimal image generation request with a specified model to load it into RAM.
-    /// </summary>
-    /// <param name="curModel">Model to load onto RAM</param>
-    public void SendMinimalDiffusionRequest(diffusionModels curModel)
+
+    public void SendNonTargetWorkflowDiffusionRequest(string diffusionWorkflow)
     {
-        DiffusionRequest diffusionRequest = new DiffusionRequest();
+        diffusionWorkflows enumVal;
+        if (Enum.IsDefined(typeof(diffusionWorkflows), diffusionWorkflow))
+        {
+            Enum.TryParse<diffusionWorkflows>(diffusionWorkflow, out enumVal);
+        }
+        else
+        {
+            Debug.LogError("Tried to send an empty Diffusion Request of false workflow " + diffusionWorkflow.ToString());
+            return;
+        }
 
-        diffusionRequest.diffusionJsonType = diffusionWorkflows.empty;
-        diffusionRequest.diffusionModel = curModel;
+        DiffusionRequest newDiffusionRequest = new DiffusionRequest();
+        newDiffusionRequest.diffusionJsonType = enumVal;
 
-        SendDiffusionRequest(diffusionRequest);
+        switch (enumVal)
+        {
+            case diffusionWorkflows.combineImages:
+                newDiffusionRequest.diffusionModel = diffusionModels.ghostmix;
+                newDiffusionRequest.numOfVariations = 1;
+                break;
+            case diffusionWorkflows.outpainting:
+                newDiffusionRequest.diffusionModel = diffusionModels.juggernautXLInpaint;
+                newDiffusionRequest.SpecialInput = "right";
+                newDiffusionRequest.numOfVariations = 1;
+                break;
+            case diffusionWorkflows.txt2imgLCM:
+                newDiffusionRequest.diffusionModel = diffusionModels.nano;
+                newDiffusionRequest.numOfVariations = 1;
+                break;
+        }              
+
+
+        SendDiffusionRequest(newDiffusionRequest);
     }
+
+
+    // TODO problem with empty, sometimes not everything is loaded, maybe better to not have special workflow, but just have an empty version of each workflow? see above
 
     /// <summary>
     /// Used to send an empty DiffusionRequest to the server to load a model preemptively to the RAM.
@@ -218,7 +243,7 @@ public class ComfyOrganizer : MonoBehaviour
     /// <summary>
     /// Used to send an empty DiffusionRequest to the server to load a model preemptively to the RAM.
     /// </summary>
-    /// <param name="diffusionModel">Model to load to RAM</param>
+    /// <param name="modelName">Model to load to RAM</param>
     public void SendEmptyDiffusionRequest(string modelName)
     {
         diffusionModels enumVal;
@@ -231,7 +256,7 @@ public class ComfyOrganizer : MonoBehaviour
             Debug.LogError("Tried to send an empty Diffusion Request of false model " + modelName.ToString());
             return;
         }
-
+        
         SendEmptyDiffusionRequest(enumVal);
     }
 

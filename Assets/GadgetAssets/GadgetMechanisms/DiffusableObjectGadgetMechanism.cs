@@ -19,7 +19,7 @@ public class DiffusableObjectGadgetMechanism : GadgetMechanism
     [NonSerialized]
     public GameObject selectedTextObject = null;
 
-    private void Start()
+    private void Awake()
     {
         mechanismText = "Object to Image";
     }

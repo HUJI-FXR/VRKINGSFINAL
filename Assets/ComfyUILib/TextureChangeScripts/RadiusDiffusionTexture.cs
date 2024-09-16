@@ -90,7 +90,7 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
     {
         if (totalGenerationCounter > 4)
         {            
-            CurrentMaxRadius = 100;
+            CurrentMaxRadius = 4;
         }
         if (totalGenerationCounter > 5)
         {
@@ -113,7 +113,7 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
         }
         if (totalGenerationCounter > 12)
         {
-            CurrentMaxRadius = 100;
+            CurrentMaxRadius = 10;
 
             // Start of the explosion
             ManyThrowsEvent?.Invoke();

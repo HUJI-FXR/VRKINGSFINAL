@@ -18,7 +18,8 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
     public int MAX_QUEUED_OBJECTS = 2;
     public UnityEvent unityEvent;
 
-    private void Start()
+
+    private void Awake()
     {
         mechanismText = "Combine Images";
     }
