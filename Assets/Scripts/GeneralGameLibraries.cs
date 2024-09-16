@@ -17,8 +17,12 @@ public static class GeneralGameLibraries : System.Object
     /// <returns>Sublist of size elementsCount from given list</returns>
     public static List<T> GetRandomElements<T>(List<T> list, int elementsCount)
     {
+        if (elementsCount <= 0) return null;
         if (list == null) return null;
-        if (list.Count() <= elementsCount) return null;
+        if (list.Count() < elementsCount)
+        {
+            elementsCount = list.Count();
+        }
         return list.OrderBy(arg => Guid.NewGuid()).Take(elementsCount).ToList();
     }
 

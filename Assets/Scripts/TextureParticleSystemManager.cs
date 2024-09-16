@@ -41,11 +41,15 @@ public class TextureParticleSystemManage : MonoBehaviour
 
     public void AddRandomParticles(int NumOfTextures)
     {
+        Debug.Log("ttt");
+
         if (NumOfTextures <= 0) return;
         if (GameManager.getInstance() == null) return;
 
+        Debug.Log("ttt1");
         foreach (Texture2D texture in GeneralGameLibraries.GetRandomElements(GameManager.getInstance().comfyOrganizer.allTextures, NumOfTextures))
         {
+            Debug.Log("ttt2");
             AddTextureParticleSystem(texture);
         }
     }
