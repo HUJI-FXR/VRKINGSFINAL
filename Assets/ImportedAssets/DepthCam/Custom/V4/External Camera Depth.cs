@@ -12,7 +12,7 @@ public class ExternalCameraDepth : MonoBehaviour
     [NotNull] [SerializeField] private float swtichTime = 0.2f;
     private bool switchEnabled = false;
 
-    private Texture2D _texture2D;
+    public Texture2D _texture2D;
 
     [SerializeField] private Renderer project;
     // Start is called before the first frame update
