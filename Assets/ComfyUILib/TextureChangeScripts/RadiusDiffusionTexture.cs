@@ -54,8 +54,9 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
     // Similar to enabled, but keeps the mechanism technically working
     public bool stopAnymoreGenerations = false;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         radiusDiffusionRings = new List<DiffusionRing>();        
     }
 
@@ -168,8 +169,13 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
     /// </summary>
     public void addRadiusGameObjects(DiffusionRing diffusionRing)
     {        
-        if (diffusionRing == null) return;       
+        if (diffusionRing == null)
+        {
+            GameManager.getInstance().gadget.MechanismText.text += " NULL";
+            return;
+        }
 
+        GameManager.getInstance().gadget.MechanismText.text += " SOME";
         // Finding all relevant GameObjects inside the DiffusionRing current radius that are not yet in the DiffusionRing gameObjects
         List<GameObject> curRadiusGameObjects = gameObjectsInRadius(diffusionRing.curRadius, diffusionRing.centerPosition);
         List<GameObject> newRadiusGameObjects = new List<GameObject>();
@@ -177,6 +183,7 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
         {
             if (!diffusionRing.gameObjects.Contains(GO)) {
                 newRadiusGameObjects.Add(GO);
+                GameManager.getInstance().gadget.MechanismText.text += " WHO";
             }
         }
 

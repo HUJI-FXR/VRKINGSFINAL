@@ -16,9 +16,13 @@ public class OutpaintGadgetMechanism : GadgetMechanism
     // Diffusable Object that is being held up
     private GameObject grabbedObject;
 
+    // These are used to represent the tiles that are under progress
+    private Texture2D[] NOISE_TEXTURES;
+
     private void Awake()
     {
         mechanismText = "Outpainting";
+        NOISE_TEXTURES = Resources.LoadAll<Texture2D>("Textures/Noise");
     }
 
     // TODO currently the mechanism will work by CLICKING on a DiffusableObject,
@@ -162,6 +166,21 @@ public class OutpaintGadgetMechanism : GadgetMechanism
         return false;
     }
 
+    
+    /// <summary>
+    /// Helper function that gets a TextureTransition and adds a "in-progress" effect with a few random textures
+    /// </summary>
+    private void CreateInProgressDiffusionTileEffect(TextureTransition TT)
+    {
+        List<Texture2D> listTextures = new List<Texture2D>(NOISE_TEXTURES);
+        listTextures = GeneralGameLibraries.GetRandomElements(listTextures, 2);
+        if (listTextures.Count <= 1)
+        {
+            Debug.LogError("Add more noise textures to the Resources/Textures/Noise folder");
+        }
+        TT.TransitionTextures(new List<Texture> { listTextures[0], listTextures[1] }, -1, 0, 1);
+    }
+
     public override void onGameObjectSelectEntered(SelectEnterEventArgs args)
     {
         if (grabbedObject == null) return;
@@ -225,7 +244,7 @@ public class OutpaintGadgetMechanism : GadgetMechanism
             newDiffusionRequest.diffusionJsonType = diffusionWorkflows.grid4Outpainting;
         }
 
-        outpaintingScreen.UpdateTiles(new Vector2Int(OPT.tilePosition.x, OPT.tilePosition.y));                               
+        CreateInProgressDiffusionTileEffect(TT);
         newDiffusionRequest.targets.Add(TT);        
 
         ObjectFlightToTile curFlight = grabbedObject.AddComponent<ObjectFlightToTile>();
