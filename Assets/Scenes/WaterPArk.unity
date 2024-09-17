@@ -10661,7 +10661,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 505080063357859650, guid: 6cf941391e6bdbc4abdbed9a86feb39a, type: 3}
       propertyPath: serverAddress
-      value: token-17095757
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1123020247713921374, guid: 6cf941391e6bdbc4abdbed9a86feb39a, type: 3}
       propertyPath: allTextures.Array.size
