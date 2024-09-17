@@ -8,12 +8,10 @@ public class OpenDoorScript : MonoBehaviour
     public Animator doorOpenAnimation;
     
     public AudioSource audioSource;
-
-    private void Start()
-    {
-        StartCoroutine(OpenDoorTimer());
-    }
-
+    
+    
+    
+    
     public void OpenDoor()
     {
         if (audioSource == null)
@@ -22,20 +20,14 @@ public class OpenDoorScript : MonoBehaviour
             return;
         }
 
+        if (GameManager.getInstance() == null)
+        {
+            Debug.Log("Game manager null!");
+            return;
+        }
+
         doorOpenAnimation.Play("Door Open Clip 3");
         audioSource.Play();
     }
-
-    IEnumerator OpenDoorTimer()
-    {        
-        while(GameManager.getInstance() == null)
-        {
-            yield return new WaitForSeconds(3f);
-        }
-        while(audioSource == null)
-        {
-            yield return new WaitForSeconds(3f);
-        }
-        OpenDoor();
-    }
+    
 }
