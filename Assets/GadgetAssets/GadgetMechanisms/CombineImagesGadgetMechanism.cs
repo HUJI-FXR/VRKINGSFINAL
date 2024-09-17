@@ -98,6 +98,8 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
         DiffusionRequest newDiffusionRequest = new DiffusionRequest();
 
         newDiffusionRequest.diffusionModel = diffusionModels.ghostmix;
+        //newDiffusionRequest.diffusionModel = diffusionModels.mini;
+
         newDiffusionRequest.targets.Add(GameManager.getInstance().uiDiffusionTexture);
         newDiffusionRequest.diffusionJsonType = diffusionWorkflows.combineImages;
         newDiffusionRequest.numOfVariations = 1;

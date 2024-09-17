@@ -283,7 +283,7 @@ public class ComfySceneLibrary : MonoBehaviour
                 break;
 
             case diffusionWorkflows.img2img:
-                StartCoroutine(UploadImage(diffReq));
+                StartCoroutine(UploadImage(diffReq, curImageSize));
 
                 json["prompt"]["10"]["inputs"]["image"] = diffReq.uploadTextures[0].name;
                 json["prompt"]["3"]["inputs"]["denoise"] = diffReq.denoise;
@@ -311,7 +311,7 @@ public class ComfySceneLibrary : MonoBehaviour
 
                 json["prompt"]["4"]["inputs"]["ckpt_name"] = curDiffModel;
                 
-                StartCoroutine(UploadImage(diffReq));
+                StartCoroutine(UploadImage(diffReq, curImageSize));
 
                 json["prompt"]["11"]["inputs"]["image"] = diffReq.uploadTextures[0].name;
                 break;
@@ -350,7 +350,7 @@ public class ComfySceneLibrary : MonoBehaviour
                 json["prompt"]["50"]["inputs"]["amount"] = diffReq.numOfVariations;
                 json["prompt"]["51"]["inputs"]["amount"] = diffReq.numOfVariations;
 
-                StartCoroutine(UploadImage(diffReq));
+                StartCoroutine(UploadImage(diffReq, curImageSize));
 
                 // Input Image:
                 json["prompt"]["12"]["inputs"]["image"] = diffReq.uploadTextures[0].name;
@@ -385,14 +385,14 @@ public class ComfySceneLibrary : MonoBehaviour
                 {
                     // Regular cases.
                     case "left":
-                        StartCoroutine(UploadImage(diffReq));
+                        StartCoroutine(UploadImage(diffReq, curImageSize));
 
                         json["prompt"]["89"]["inputs"]["image"] = diffReq.uploadTextures[0].name;
                         json["prompt"]["11"]["inputs"]["left"] = 512;
                         break;    
                         
                     case "right":
-                        StartCoroutine(UploadImage(diffReq));
+                        StartCoroutine(UploadImage(diffReq, curImageSize));
 
                         json["prompt"]["89"]["inputs"]["image"] = diffReq.uploadTextures[0].name;
                         json["prompt"]["11"]["inputs"]["right"] = 512;
@@ -400,7 +400,7 @@ public class ComfySceneLibrary : MonoBehaviour
                         break;
 
                     case "top":
-                        StartCoroutine(UploadImage(diffReq));
+                        StartCoroutine(UploadImage(diffReq, curImageSize));
 
                         json["prompt"]["89"]["inputs"]["image"] = diffReq.uploadTextures[0].name;
                         json["prompt"]["11"]["inputs"]["right"] = 512;
@@ -426,7 +426,7 @@ public class ComfySceneLibrary : MonoBehaviour
                                 ""prompt"": {getWorkflowJSON(diffusionWorkflows.grid4Outpainting)}
                             }}";
 
-                        StartCoroutine(UploadImage(diffReq));
+                        StartCoroutine(UploadImage(diffReq, curImageSize));
 
                         json["prompt"]["89"]["inputs"]["image"] = diffReq.uploadTextures[0].name;
                         json["prompt"]["80"]["inputs"]["image"] = diffReq.uploadTextures[1].name;
@@ -453,7 +453,7 @@ public class ComfySceneLibrary : MonoBehaviour
                                 ""prompt"": {getWorkflowJSON(diffusionWorkflows.grid4Outpainting)}
                             }}";
 
-                        StartCoroutine(UploadImage(diffReq));
+                        StartCoroutine(UploadImage(diffReq, curImageSize));
 
                         json["prompt"]["89"]["inputs"]["image"] = diffReq.uploadTextures[0].name;
                         json["prompt"]["80"]["inputs"]["image"] = diffReq.uploadTextures[1].name;
@@ -752,8 +752,10 @@ public class ComfySceneLibrary : MonoBehaviour
     /// Uploads given Textures to the server.
     /// </summary>
     /// <param name="diffReq">Diffusion Request containting Textures to upload to the server.</param>
-    private IEnumerator UploadImage(DiffusionRequest diffReq)
+    private IEnumerator UploadImage(DiffusionRequest diffReq, Vector2Int imageSize)
     {
+        Debug.Log("SIZE " + imageSize.x + " " + imageSize.y);
+
         if (GameManager.getInstance() == null) yield break;
         if (diffReq == null) yield break;
         List<Texture2D> curTextures = diffReq.uploadTextures;
@@ -768,7 +770,7 @@ public class ComfySceneLibrary : MonoBehaviour
             Texture2D curTexture = curTextures[i];
 
             // Resizing the image to a default size for fast Diffusion
-            curTexture = GeneralGameLibraries.TextureManipulationLibrary.Resize(curTexture);
+            curTexture = GeneralGameLibraries.TextureManipulationLibrary.Resize(curTexture, imageSize.x, imageSize.y);
 
             string url = HTTPPrefix + GameManager.getInstance().IP + "/upload/image";
 

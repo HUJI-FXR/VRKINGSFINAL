@@ -244,14 +244,14 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
 
         if (dr.gameObjects.Count > 0) return;        
 
-        dr.centerPosition = collision.transform.position;
-        dr.changeTextures = true;
-
+        dr.centerPosition = collision.transform.position;        
 
         GameManager.getInstance().gadget.MechanismText.text += " OK2";
         // todo delete, and delete collision in diffusionrequest??
 
         addRadiusGameObjects(dr);
+
+        dr.changeTextures = true;
 
         GameManager.getInstance().gadget.MechanismText.text += " OK3";
     }

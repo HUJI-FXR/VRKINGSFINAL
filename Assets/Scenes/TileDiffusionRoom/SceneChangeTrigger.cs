@@ -35,6 +35,8 @@ public class ExitSceneChangeTrigger : MonoBehaviour
     public void ToggleBasedChangeScene()
     {
         if (toggle == null) return;
+        if (GameManager.getInstance() == null) return;
+
         if (toggle.isOn)
         {
             GameManager.getInstance().LoadNextScene(currentRoomSceneName, nextRoomSceneName);
@@ -47,6 +49,8 @@ public class ExitSceneChangeTrigger : MonoBehaviour
 
     public void ChangeScene()
     {
+        if (GameManager.getInstance() == null) return;
+
         GameManager.getInstance().LoadNextScene(currentRoomSceneName, nextRoomSceneName);
     }
 }
