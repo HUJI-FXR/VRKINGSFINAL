@@ -14,9 +14,26 @@ public class RegularDiffusionTexture : DiffusionTextureChanger
     // Update is called once per frame
     protected void Update()
     {
-        // TODO should be more than 1, because otherwise only one change is necessary and should be down in addimage function
         if (diff_Textures.Count > 0)
         {
+            if (diff_Textures.Count == 1)
+            {
+                if (changeTextureToChildren)
+                {
+                    for (int i = 0; i < transform.childCount; i++)
+                    {
+                        GameObject child = transform.GetChild(i).gameObject;
+                        base.changeTextureOn(child, diff_Textures[0]);
+                    }
+                }
+                else
+                {
+                    base.changeTextureOn(gameObject, diff_Textures[0]);
+                }
+
+                return;
+            }
+
             textureChangeDelta += Time.deltaTime;
             if (textureChangeDelta > changeTextureEvery)
             {
@@ -30,7 +47,6 @@ public class RegularDiffusionTexture : DiffusionTextureChanger
                 }
                 else
                 {
-                    Debug.Log(diff_Textures[curTextureIndex] == null);
                     base.changeTextureOn(gameObject, diff_Textures[curTextureIndex]);
                 }
 

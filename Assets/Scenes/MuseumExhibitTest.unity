@@ -3390,7 +3390,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentRoomSceneName: MuseumExhibitTest
   nextRoomSceneName: TileRoom
-  altNextRoomSceneName: GadgetPrefabTest
+  altNextRoomSceneName: TileRoom
   toggle: {fileID: 0}
 --- !u!65 &639904302
 BoxCollider:
@@ -3600,6 +3600,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 836063702541087453, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 653009826}
     - target: {fileID: 1470312566115670337, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5
@@ -3622,7 +3626,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1470312566115670337, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.03
+      value: 0.091
       objectReference: {fileID: 0}
     - target: {fileID: 1470312566115670337, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3652,6 +3656,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1658046869540106143, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+      propertyPath: nextRoomSceneName
+      value: TileRoom
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658046869540106143, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+      propertyPath: altNextRoomSceneName
+      value: TileRoom
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658046869540106143, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+      propertyPath: currentRoomSceneName
+      value: MuseumExhibitTest
+      objectReference: {fileID: 0}
+    - target: {fileID: 5975469139444065059, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5975469139444065059, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 653009827}
+    - target: {fileID: 5975469139444065059, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 5975469139444065059, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ExitSceneChangeTrigger, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5975469139444065059, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6751262409888887007, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
       propertyPath: m_Name
       value: Scene Change Object
@@ -3670,6 +3706,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7dcd84eff85b03b47af5a1e7e80626e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!82 &653009826 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 9125241545973796939, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+  m_PrefabInstance: {fileID: 653009824}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &653009827 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1658046869540106143, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+  m_PrefabInstance: {fileID: 653009824}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b6367430deddb04fafba16be9ff259b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &669893389

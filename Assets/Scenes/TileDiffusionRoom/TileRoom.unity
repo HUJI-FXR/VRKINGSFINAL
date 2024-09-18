@@ -6634,7 +6634,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   - index: 3
-    TimeToFinishGameAction: 16
+    TimeToFinishGameAction: 20
     name: 'Next: Go to next scene - MechanismChangeIntro'
     value: 0
     eventToCall:
@@ -6672,6 +6672,18 @@ MonoBehaviour:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 462270908}
+          m_TargetAssemblyTypeName: AutomaticComfySceneScript, Assembly-CSharp
+          m_MethodName: DoGameAction
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 4
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 1
@@ -37849,7 +37861,7 @@ PrefabInstance:
       objectReference: {fileID: 8001637510276974065}
     - target: {fileID: 1470312566115670337, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 0.50950325
       objectReference: {fileID: 0}
     - target: {fileID: 1470312566115670337, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
       propertyPath: m_LocalScale.y
@@ -37861,7 +37873,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1470312566115670337, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -35.01
+      value: -35.036
       objectReference: {fileID: 0}
     - target: {fileID: 1470312566115670337, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
       propertyPath: m_LocalPosition.y
@@ -37899,6 +37911,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1658046869540106143, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+      propertyPath: altNextRoomSceneName
+      value: fullCameraScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 1755418725403869902, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5975469139444065059, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5975469139444065059, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4661604297314010092}
+    - target: {fileID: 5975469139444065059, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 5975469139444065059, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ExitSceneChangeTrigger, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5975469139444065059, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6751262409888887007, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
       propertyPath: m_Name
       value: Scene Change Object
@@ -37908,6 +37948,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+--- !u!114 &4661604297314010092 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1658046869540106143, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+  m_PrefabInstance: {fileID: 4661604297314010091}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b6367430deddb04fafba16be9ff259b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8001637510276974063
 PrefabInstance:
   m_ObjectHideFlags: 0

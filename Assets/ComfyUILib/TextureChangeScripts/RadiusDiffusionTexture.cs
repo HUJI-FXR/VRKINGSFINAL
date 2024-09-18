@@ -89,6 +89,8 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
     /// </summary>
     private void CurMaxRad()
     {
+        if (GameManager.getInstance() == null) return;
+
         if (totalGenerationCounter > 4)
         {            
             CurrentMaxRadius = 4;
@@ -126,6 +128,7 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
 
     public override bool AddTexture(DiffusionRequest diffusionRequest)
     {
+        if (GameManager.getInstance() == null) return false;
         if (stopAnymoreGenerations) return false;
         // TODO think if this line is even useful in this script
         //base.AddTexture(diffusionRequest);
@@ -176,7 +179,8 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
     /// Adds all GameObjects in the DiffusionRing Radius to the DiffusionRing, along with adding the textures to them
     /// </summary>
     public void addRadiusGameObjects(DiffusionRing diffusionRing)
-    {        
+    {
+        if (GameManager.getInstance() == null) return;
         if (diffusionRing == null)
         {
             GameManager.getInstance().gadget.MechanismText.text += " NULL";
@@ -188,6 +192,7 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
         List<GameObject> newRadiusGameObjects = new List<GameObject>();
         foreach(GameObject GO in curRadiusGameObjects)
         {
+            if (GO == null) continue;
             if (!diffusionRing.gameObjects.Contains(GO)) {
                 newRadiusGameObjects.Add(GO);
                 GameManager.getInstance().gadget.MechanismText.text += " WHO";
@@ -215,11 +220,13 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
     /// <returns></returns>
     private List<GameObject> gameObjectsInRadius(float curRadius, Vector3 position)
     {
+        if (GameManager.getInstance() == null) return null;
         if (GameManager.getInstance().gadget == null) return null;
 
         List<GameObject> radiusGameObjects = new List<GameObject>();
         foreach (GameObject go in GameManager.getInstance().diffusionList)
         {
+            if (go == null) continue;
             if (Vector3.Distance(go.transform.position, position) <= curRadius)
             {
                 radiusGameObjects.Add(go);
@@ -234,6 +241,8 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
     /// <param name="collision">Collision of the Diffusable Object with another GameObject</param>
     public void DiffusableObjectCollided(Collision collision)
     {
+        if (GameManager.getInstance() == null) return;
+
         // TODO delete this line
         GameManager.getInstance().gadget.MechanismText.text = collision.transform.position.ToString();
 

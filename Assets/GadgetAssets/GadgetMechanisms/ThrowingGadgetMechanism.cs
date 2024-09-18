@@ -20,7 +20,7 @@ public class ThrowingGadgetMechanism : GadgetMechanism
     /// <returns></returns>
     protected override DiffusionRequest CreateDiffusionRequest()
     {
-        if (GameManager.getInstance() == null) return null; ;
+        if (GameManager.getInstance() == null) return null;
 
         DiffusionRequest newDiffusionRequest = new DiffusionRequest();
 
@@ -34,6 +34,7 @@ public class ThrowingGadgetMechanism : GadgetMechanism
 
     public override void DiffusableGrabbed(SelectEnterEventArgs args)
     {
+        if (GameManager.getInstance() == null) return;
         if(args.interactableObject == null) return;
         
         DiffusionRequest diffusionRequest = CreateDiffusionRequest();

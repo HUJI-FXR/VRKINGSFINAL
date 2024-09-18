@@ -255,6 +255,8 @@ public class ComfySceneLibrary : MonoBehaviour
             ""prompt"": {getWorkflowJSON(diffReq.diffusionJsonType)}
         }}";
 
+        Debug.Log("Current Diffusion Request type: " + diffReq.diffusionJsonType.ToString());
+
         JObject json = JObject.Parse(promptText); // promptText
 
         string randomSeed = UnityEngine.Random.Range(1, 10000).ToString();
@@ -754,8 +756,6 @@ public class ComfySceneLibrary : MonoBehaviour
     /// <param name="diffReq">Diffusion Request containting Textures to upload to the server.</param>
     private IEnumerator UploadImage(DiffusionRequest diffReq, Vector2Int imageSize)
     {
-        Debug.Log("SIZE " + imageSize.x + " " + imageSize.y);
-
         if (GameManager.getInstance() == null) yield break;
         if (diffReq == null) yield break;
         List<Texture2D> curTextures = diffReq.uploadTextures;
