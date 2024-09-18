@@ -1,7 +1,7 @@
 {
   "6": {
     "inputs": {
-      "text": "a fantastic colorful alien landscape with mountains and valleys with galaxy in the sky",
+      "text": "a fantastic landscape ",
       "clip": [
         "25",
         1
@@ -14,7 +14,7 @@
   },
   "7": {
     "inputs": {
-      "text": "illustration, painting, text, watermark, copyright, signature, notes, ((straight lines)), (border), (grid)",
+      "text": "illustration, painting, text, watermark, copyright, signature, notes, (straight lines), (border), (grid)",
       "clip": [
         "25",
         1
@@ -46,7 +46,7 @@
     "inputs": {
       "grow_mask_by": 0,
       "pixels": [
-        "119",
+        "156",
         0
       ],
       "vae": [
@@ -65,7 +65,7 @@
   },
   "21": {
     "inputs": {
-      "seed": 273514852596333,
+      "seed": 977551302154064,
       "steps": 20,
       "cfg": 7,
       "sampler_name": "dpmpp_2m",
@@ -126,7 +126,7 @@
       "width": 512,
       "height": 512,
       "x": 0,
-      "y": 512,
+      "y": 0,
       "samples": [
         "21",
         0
@@ -264,8 +264,8 @@
   },
   "143": {
     "inputs": {
-      "width": 512,
-      "height": 512,
+      "width": 256,
+      "height": 256,
       "batch_size": 1
     },
     "class_type": "EmptyLatentImage",
@@ -289,30 +289,6 @@
       "title": "VAE Decode"
     }
   },
-  "146": {
-    "inputs": {
-      "images": [
-        "119",
-        0
-      ]
-    },
-    "class_type": "PreviewImage",
-    "_meta": {
-      "title": "Preview Image"
-    }
-  },
-  "147": {
-    "inputs": {
-      "mask": [
-        "113",
-        1
-      ]
-    },
-    "class_type": "MaskPreview+",
-    "_meta": {
-      "title": "🔧 Mask Preview"
-    }
-  },
   "148": {
     "inputs": {
       "mask": [
@@ -323,6 +299,107 @@
     "class_type": "InvertMask",
     "_meta": {
       "title": "InvertMask"
+    }
+  },
+  "150": {
+    "inputs": {
+      "seed": 662838167342951,
+      "steps": 10,
+      "cfg": 8,
+      "sampler_name": "euler",
+      "scheduler": "normal",
+      "denoise": 1,
+      "model": [
+        "151",
+        0
+      ],
+      "positive": [
+        "152",
+        0
+      ],
+      "negative": [
+        "153",
+        0
+      ],
+      "latent_image": [
+        "143",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "151": {
+    "inputs": {
+      "ckpt_name": "juggernaut_reborn.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "152": {
+    "inputs": {
+      "text": "beautiful, earthen pot, pot",
+      "clip": [
+        "151",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Positive)"
+    }
+  },
+  "153": {
+    "inputs": {
+      "text": "illustration, painting, text, watermark, copyright, signature, notes, (border), (grid)",
+      "clip": [
+        "151",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Negative)"
+    }
+  },
+  "154": {
+    "inputs": {
+      "samples": [
+        "150",
+        0
+      ],
+      "vae": [
+        "151",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "156": {
+    "inputs": {
+      "x": 128,
+      "y": 640,
+      "offset_x": 0,
+      "offset_y": 0,
+      "destination": [
+        "119",
+        0
+      ],
+      "source": [
+        "154",
+        0
+      ]
+    },
+    "class_type": "ImageComposite+",
+    "_meta": {
+      "title": "🔧 Image Composite"
     }
   }
 }
