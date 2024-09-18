@@ -36,9 +36,8 @@ public class ObjectFlightToTile : MonoBehaviour
 
         transform.position = Vector3.Lerp(initialPos, finalPos, percentage);
         percentage += Time.deltaTime * (moveSpeed/100);
-
-        // A bit more than 1.0 to have an effect of going "into" the screen(staying there for a bit)
-        if (percentage >= 1.2)
+        
+        if (percentage >= 1)
         {
             DestroyImmediate(gameObject);
         }
