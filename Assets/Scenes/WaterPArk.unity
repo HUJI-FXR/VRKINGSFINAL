@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.2395032, g: 0.47374249, b: 0.49118778, a: 1}
+  m_IndirectSpecularColor: {r: 0.23959, g: 0.4738419, b: 0.49090973, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -19186,11 +19186,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1470312566115670337, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
       propertyPath: m_LocalScale.x
-      value: 7.481527
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1470312566115670337, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
       propertyPath: m_LocalScale.y
-      value: 3.4937794
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1470312566115670337, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
       propertyPath: m_LocalPosition.x
@@ -19249,16 +19249,24 @@ PrefabInstance:
       value: 0.12403833
       objectReference: {fileID: 0}
     - target: {fileID: 2764274523380319387, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2764274523380319387, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2764274523380319387, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.087
+      value: 16.2
       objectReference: {fileID: 0}
     - target: {fileID: 2764274523380319387, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.1
+      value: -0.83
       objectReference: {fileID: 0}
     - target: {fileID: 2764274523380319387, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 12.22
+      value: 12.1
       objectReference: {fileID: 0}
     - target: {fileID: 6751262409888887007, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
       propertyPath: m_Name
@@ -19273,12 +19281,24 @@ PrefabInstance:
       value: 0.32
       objectReference: {fileID: 0}
     - target: {fileID: 8822325375413516338, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 37.628716
+      objectReference: {fileID: 0}
+    - target: {fileID: 8822325375413516338, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 34.557014
+      objectReference: {fileID: 0}
+    - target: {fileID: 8822325375413516338, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.445
+      value: -2.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 8822325375413516338, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.17
       objectReference: {fileID: 0}
     - target: {fileID: 8822325375413516338, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 12.65
+      value: 12.67
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
