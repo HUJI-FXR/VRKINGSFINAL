@@ -698,7 +698,8 @@ public class ComfySceneLibrary : MonoBehaviour
             {
                 case UnityWebRequest.Result.ConnectionError:
                 case UnityWebRequest.Result.DataProcessingError:
-                    Debug.LogError(": Error: " + webRequest.error);
+                    Debug.Log(": Error: " + webRequest.error);
+                    //Debug.LogError(": Error: " + webRequest.error);
                     break;
                 case UnityWebRequest.Result.ProtocolError:
                     if (started_generations)

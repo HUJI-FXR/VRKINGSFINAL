@@ -19224,12 +19224,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -1.523
       objectReference: {fileID: 0}
+    - target: {fileID: 1658046869540106143, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+      propertyPath: nextRoomSceneName
+      value: square
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658046869540106143, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+      propertyPath: altNextRoomSceneName
+      value: square
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658046869540106143, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+      propertyPath: currentRoomSceneName
+      value: WaterPArk
+      objectReference: {fileID: 0}
     - target: {fileID: 6751262409888887007, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
       propertyPath: m_Name
       value: Scene Change Object
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 9004948715406351805, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}

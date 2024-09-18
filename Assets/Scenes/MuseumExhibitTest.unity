@@ -3588,6 +3588,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 19300626163292939, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 836063702541087453, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
       propertyPath: audioSource
       value: 
@@ -3659,6 +3663,10 @@ PrefabInstance:
     - target: {fileID: 1755418725403869902, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4816739044852463111, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+      propertyPath: m_UseGravity
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4816739044852463111, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
       propertyPath: m_IsKinematic
