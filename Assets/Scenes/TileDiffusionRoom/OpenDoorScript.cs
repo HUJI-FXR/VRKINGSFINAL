@@ -34,6 +34,7 @@ public class OpenDoorScript : MonoBehaviour
         }
 
         GetComponent<BoxCollider>().enabled = false;
+        doorOpenAnimation.enabled = true;
         doorOpenAnimation.Play("Door Open Clip 3");
         audioSource.Play();
 

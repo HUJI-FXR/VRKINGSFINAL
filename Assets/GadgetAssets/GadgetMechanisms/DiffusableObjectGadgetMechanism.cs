@@ -143,7 +143,8 @@ public class DiffusableObjectGadgetMechanism : GadgetMechanism
 
         DiffusionRequest newDiffusionRequest = new DiffusionRequest();
 
-        newDiffusionRequest.diffusionModel = diffusionModels.ghostmix;
+        //newDiffusionRequest.diffusionModel = diffusionModels.ghostmix;
+        newDiffusionRequest.diffusionModel = diffusionModels.juggernautReborn;
         newDiffusionRequest.targets.Add(GameManager.getInstance().uiDiffusionTexture);
         newDiffusionRequest.diffusionJsonType = diffusionWorkflows.img2imgLCM;
 

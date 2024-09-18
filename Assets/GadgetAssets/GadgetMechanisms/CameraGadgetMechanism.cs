@@ -153,7 +153,8 @@ public class CameraGadgetMechanism : GadgetMechanism
         if (GameManager.getInstance() == null) return null;
         DiffusionRequest newDiffusionRequest = new DiffusionRequest();
 
-        newDiffusionRequest.diffusionModel = diffusionModels.ghostmix;
+        //newDiffusionRequest.diffusionModel = diffusionModels.ghostmix;
+        newDiffusionRequest.diffusionModel = diffusionModels.juggernautReborn;
         newDiffusionRequest.targets.Add(GameManager.getInstance().uiDiffusionTexture);
 
         // TODO do I even NEED the baseCamera workflow? diffusionWorkflows.baseCamera

@@ -1,7 +1,7 @@
 {
   "6": {
     "inputs": {
-      "text": "a fantastic colorful alien landscape with mountains and valleys with galaxy in the sky",
+      "text": "a fantastic colorful landscape",
       "clip": [
         "25",
         1
@@ -46,7 +46,7 @@
     "inputs": {
       "grow_mask_by": 0,
       "pixels": [
-        "119",
+        "126",
         0
       ],
       "vae": [
@@ -65,7 +65,7 @@
   },
   "21": {
     "inputs": {
-      "seed": 389325270421565,
+      "seed": 978767670964509,
       "steps": 20,
       "cfg": 7,
       "sampler_name": "dpmpp_2m",
@@ -265,6 +265,118 @@
     "class_type": "JoinImages",
     "_meta": {
       "title": "Join Images"
+    }
+  },
+  "120": {
+    "inputs": {
+      "width": 256,
+      "height": 256,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
+    }
+  },
+  "121": {
+    "inputs": {
+      "seed": 740790254726473,
+      "steps": 10,
+      "cfg": 8,
+      "sampler_name": "euler",
+      "scheduler": "normal",
+      "denoise": 1,
+      "model": [
+        "122",
+        0
+      ],
+      "positive": [
+        "123",
+        0
+      ],
+      "negative": [
+        "124",
+        0
+      ],
+      "latent_image": [
+        "120",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "122": {
+    "inputs": {
+      "ckpt_name": "juggernaut_reborn.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "123": {
+    "inputs": {
+      "text": "",
+      "clip": [
+        "122",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Positive)"
+    }
+  },
+  "124": {
+    "inputs": {
+      "text": "illustration, painting, text, watermark, copyright, signature, notes, ((straight lines)), (border), (grid)",
+      "clip": [
+        "122",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Negative)"
+    }
+  },
+  "125": {
+    "inputs": {
+      "samples": [
+        "121",
+        0
+      ],
+      "vae": [
+        "122",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "126": {
+    "inputs": {
+      "x": 128,
+      "y": 128,
+      "offset_x": 0,
+      "offset_y": 0,
+      "destination": [
+        "119",
+        0
+      ],
+      "source": [
+        "125",
+        0
+      ]
+    },
+    "class_type": "ImageComposite+",
+    "_meta": {
+      "title": "🔧 Image Composite"
     }
   }
 }

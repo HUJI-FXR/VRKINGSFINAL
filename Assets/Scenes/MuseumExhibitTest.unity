@@ -1658,26 +1658,14 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 238379638}
           m_TargetAssemblyTypeName: ComfyOrganizer, Assembly-CSharp
-          m_MethodName: SendNonTargetWorkflowDiffusionRequest
+          m_MethodName: SendEmptyDiffusionRequest
           m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: combineImages
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 389757253}
-          m_TargetAssemblyTypeName: AIGadgetAssistant, Assembly-CSharp
-          m_MethodName: CreateAITexture
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: holding puppy
+            m_StringArgument: juggernautReborn
             m_BoolArgument: 0
           m_CallState: 2
   - index: 1
@@ -3409,7 +3397,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -3472,7 +3460,7 @@ Transform:
   m_GameObject: {fileID: 639904300}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.4, y: 2.27, z: 0}
+  m_LocalPosition: {x: -9.4, y: 2.77, z: 0}
   m_LocalScale: {x: 1, y: 4.0945, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3668,6 +3656,14 @@ PrefabInstance:
       propertyPath: currentRoomSceneName
       value: MuseumExhibitTest
       objectReference: {fileID: 0}
+    - target: {fileID: 1755418725403869902, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4816739044852463111, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5975469139444065059, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -3691,6 +3687,22 @@ PrefabInstance:
     - target: {fileID: 6751262409888887007, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
       propertyPath: m_Name
       value: Scene Change Object
+      objectReference: {fileID: 0}
+    - target: {fileID: 8822325375413516338, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4.3572
+      objectReference: {fileID: 0}
+    - target: {fileID: 8822325375413516338, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 8.90616
+      objectReference: {fileID: 0}
+    - target: {fileID: 8822325375413516338, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.41187716
+      objectReference: {fileID: 0}
+    - target: {fileID: 8822325375413516338, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.44549
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

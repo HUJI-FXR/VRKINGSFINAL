@@ -19168,6 +19168,82 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6366e10f9cacd274ebee65ade5a76def, type: 3}
   m_PrefabInstance: {fileID: 1354546080}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1367281027
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1470312566115670337, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4.296267
+      objectReference: {fileID: 0}
+    - target: {fileID: 1470312566115670337, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.4937794
+      objectReference: {fileID: 0}
+    - target: {fileID: 1470312566115670337, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 11.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 1470312566115670337, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 29.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1470312566115670337, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 140.51581
+      objectReference: {fileID: 0}
+    - target: {fileID: 1470312566115670337, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7070454
+      objectReference: {fileID: 0}
+    - target: {fileID: 1470312566115670337, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.009400255
+      objectReference: {fileID: 0}
+    - target: {fileID: 1470312566115670337, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7070433
+      objectReference: {fileID: 0}
+    - target: {fileID: 1470312566115670337, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.009400227
+      objectReference: {fileID: 0}
+    - target: {fileID: 1470312566115670337, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1470312566115670337, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1470312566115670337, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -1.523
+      objectReference: {fileID: 0}
+    - target: {fileID: 6751262409888887007, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+      propertyPath: m_Name
+      value: Scene Change Object
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+--- !u!114 &1367281028 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 836063702541087453, guid: dce14a47ba89574439cf6f8a4aaf26ee, type: 3}
+  m_PrefabInstance: {fileID: 1367281027}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dcd84eff85b03b47af5a1e7e80626e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1384637358
 GameObject:
   m_ObjectHideFlags: 0
@@ -19870,7 +19946,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 505080063357859650, guid: 6cf941391e6bdbc4abdbed9a86feb39a, type: 3}
       propertyPath: serverAddress
-      value: early-18130031
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1123020247713921374, guid: 6cf941391e6bdbc4abdbed9a86feb39a, type: 3}
       propertyPath: allTextures.Array.size
@@ -20115,20 +20191,20 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1486141753}
           m_TargetAssemblyTypeName: ComfyOrganizer, Assembly-CSharp
-          m_MethodName: SendNonTargetWorkflowDiffusionRequest
+          m_MethodName: SendEmptyDiffusionRequest
           m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: txt2imgLCM
-            m_BoolArgument: 0
+            m_StringArgument: nano
+            m_BoolArgument: 1
           m_CallState: 2
-        - m_Target: {fileID: 2021590179}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
+        - m_Target: {fileID: 1367281028}
+          m_TargetAssemblyTypeName: OpenDoorScript, Assembly-CSharp
+          m_MethodName: OpenDoor
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -30786,3 +30862,4 @@ SceneRoots:
   - {fileID: 686871489}
   - {fileID: 693626083}
   - {fileID: 109860034}
+  - {fileID: 1367281027}

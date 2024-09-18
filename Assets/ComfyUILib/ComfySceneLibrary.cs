@@ -52,7 +52,8 @@ public enum diffusionModels
     turblxl,
     ghostmix,
     thinkdiffusiontest,
-    juggernautXLInpaint
+    juggernautXLInpaint,
+    juggernautReborn
 }
 
 
@@ -235,9 +236,13 @@ public class ComfySceneLibrary : MonoBehaviour
                 curImageSize = new Vector2Int(512, 512);
                 break;
             case diffusionModels.juggernautXLInpaint:
-                curDiffModel = "juggernautXL_versionXInpaint.safetensors.safetensors";
+                curDiffModel = "juggernautXL_versionXInpaint.safetensors";
                 curImageSize = new Vector2Int(512, 512);
                 break;
+            case diffusionModels.juggernautReborn:
+                curDiffModel = "juggernaut_reborn.safetensors";
+                curImageSize = new Vector2Int(512, 512);
+                break;                
             default:
                 Debug.LogError("Pick a valid model from the list");
                 break;
@@ -408,6 +413,10 @@ public class ComfySceneLibrary : MonoBehaviour
                         // Prompt for the whole grid, taking into account the small image that was created and placed in it
                         json["prompt"]["6"]["inputs"]["text"] += ", " + diffReq.positivePrompt + " on left";
                         json["prompt"]["7"]["inputs"]["text"] += diffReq.negativePrompt;
+
+                        // Random seeds for both diffusions of the single workflow request(one for the small image, the other for the whole grid)
+                        json["prompt"]["21"]["inputs"]["seed"] = randomSeed;
+                        json["prompt"]["150"]["inputs"]["seed"] = randomSeed;
                         break;    
                         
                     case "right":
@@ -433,6 +442,10 @@ public class ComfySceneLibrary : MonoBehaviour
                         // Prompt for the whole grid, taking into account the small image that was created and placed in it
                         json["prompt"]["6"]["inputs"]["text"] += ", " + diffReq.positivePrompt + " on right";
                         json["prompt"]["7"]["inputs"]["text"] += diffReq.negativePrompt;
+
+                        // Random seeds for both diffusions of the single workflow request(one for the small image, the other for the whole grid)
+                        json["prompt"]["21"]["inputs"]["seed"] = randomSeed;
+                        json["prompt"]["150"]["inputs"]["seed"] = randomSeed;
                         break;
 
                     case "top":
@@ -454,6 +467,10 @@ public class ComfySceneLibrary : MonoBehaviour
                         // Prompt for the whole grid, taking into account the small image that was created and placed in it
                         json["prompt"]["6"]["inputs"]["text"] += ", " + diffReq.positivePrompt + " on top";
                         json["prompt"]["7"]["inputs"]["text"] += diffReq.negativePrompt;
+
+                        // Random seeds for both diffusions of the single workflow request(one for the small image, the other for the whole grid)
+                        json["prompt"]["21"]["inputs"]["seed"] = randomSeed;
+                        json["prompt"]["150"]["inputs"]["seed"] = randomSeed;
                         break;
 
                     case "bottomRight":
@@ -474,13 +491,32 @@ public class ComfySceneLibrary : MonoBehaviour
                                 ""prompt"": {getWorkflowJSON(diffusionWorkflows.grid4Outpainting)}
                             }}";
 
-                        StartCoroutine(UploadImage(diffReq, curImageSize));
+                        StartCoroutine(UploadImage(diffReq, curImageSize));                        
 
+                        // Inputing the correct upload image name
                         json["prompt"]["89"]["inputs"]["image"] = diffReq.uploadTextures[0].name;
                         json["prompt"]["80"]["inputs"]["image"] = diffReq.uploadTextures[1].name;
                         json["prompt"]["90"]["inputs"]["image"] = diffReq.uploadTextures[2].name;
 
+                        // Outpainting increase size of original upload image
                         json["prompt"]["11"]["inputs"]["left"] = 512;
+
+                        // For the final quarter-of-the-grid output - no need to do anything in this case
+
+                        // Compositing the small image to the grid
+                        json["prompt"]["126"]["inputs"]["x"] = 128;
+                        json["prompt"]["126"]["inputs"]["y"] = 128;
+
+                        // Prompt for creating the small image to be placed in the grid
+                        json["prompt"]["123"]["inputs"]["text"] = diffReq.positivePrompt;
+
+                        // Prompt for the whole grid, taking into account the small image that was created and placed in it
+                        json["prompt"]["6"]["inputs"]["text"] += ", " + diffReq.positivePrompt + " on top left";
+                        json["prompt"]["7"]["inputs"]["text"] += diffReq.negativePrompt;
+
+                        // Random seeds for both diffusions of the single workflow request(one for the small image, the other for the whole grid)
+                        json["prompt"]["21"]["inputs"]["seed"] += randomSeed;
+                        json["prompt"]["121"]["inputs"]["seed"] += randomSeed;
                         break;
 
                     case "bottomLeft":
@@ -503,28 +539,38 @@ public class ComfySceneLibrary : MonoBehaviour
 
                         StartCoroutine(UploadImage(diffReq, curImageSize));
 
-                        json["prompt"]["89"]["inputs"]["image"] = diffReq.uploadTextures[0].name;
+                        // Inputing the correct upload image name
+                        json["prompt"]["89"]["inputs"]["image"] = diffReq.uploadTextures[2].name;
                         json["prompt"]["80"]["inputs"]["image"] = diffReq.uploadTextures[1].name;
-                        json["prompt"]["90"]["inputs"]["image"] = diffReq.uploadTextures[2].name;
+                        json["prompt"]["90"]["inputs"]["image"] = diffReq.uploadTextures[0].name;
 
+                        // Outpainting increase size of original upload image
                         json["prompt"]["11"]["inputs"]["right"] = 512;
+
+                        // For the final quarter-of-the-grid output
                         json["prompt"]["110"]["inputs"]["x"] = 512;
+
+                        // Compositing the small image to the grid
+                        json["prompt"]["126"]["inputs"]["x"] = 640;
+                        json["prompt"]["126"]["inputs"]["y"] = 128;
+
+                        // Prompt for creating the small image to be placed in the grid
+                        json["prompt"]["123"]["inputs"]["text"] = diffReq.positivePrompt;
+
+                        // Prompt for the whole grid, taking into account the small image that was created and placed in it
+                        json["prompt"]["6"]["inputs"]["text"] += ", " + diffReq.positivePrompt + " on top right";
+                        json["prompt"]["7"]["inputs"]["text"] += diffReq.negativePrompt;
+
+                        // Random seeds for both diffusions of the single workflow request(one for the small image, the other for the whole grid)
+                        json["prompt"]["21"]["inputs"]["seed"] += randomSeed;
+                        json["prompt"]["121"]["inputs"]["seed"] += randomSeed;
                         break;
 
                     // Default switch sub-statement will run if it does not enter the previous cases
                     default:
                         Debug.LogError("Pick a valid direction for Outpainting");
                         break;
-                }
-                
-                // Random seeds for both diffusions of the single workflow request(one for the small image, the other for the whole grid)
-                json["prompt"]["21"]["inputs"]["seed"] = randomSeed;
-                json["prompt"]["150"]["inputs"]["seed"] = randomSeed;
-
-                /*json["prompt"]["21"]["inputs"]["denoise"] = diffReq.denoise;
-                 * 
-                 * VERY IMPORTANT TO GIVE PROPER PROMPTS for OUTPAINTING
-                */                          
+                }                                                       
                 break;
 
             default:
