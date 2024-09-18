@@ -54,10 +54,6 @@ public class ExplosionMain : MonoBehaviour
 
         diffusionTextures = GameManager.getInstance().comfyOrganizer.allTextures;
 
-        // TODO delete this line 
-        //StartExplosion();
-
-        
         TransitionExplosionMode(explosionMode);
     }
 

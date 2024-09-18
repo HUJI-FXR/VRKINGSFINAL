@@ -93,17 +93,10 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
 
         if (totalGenerationCounter > 4)
         {            
-            CurrentMaxRadius = 4;
+            CurrentMaxRadius = 2;
         }
         if (totalGenerationCounter > 5)
         {
-            // TODO remove from this > 3 part
-            // Start of the explosion
-            ManyThrowsEvent?.Invoke();
-            GameManager.getInstance().gadget.GadgetMechanisms[0].enabled = false;
-            GameManager.getInstance().gadget.MechanismText.text = "?????????????????";
-            stopAnymoreGenerations = true;
-
             CurrentMaxRadius = 3;
         }
         if (totalGenerationCounter > 10)
@@ -114,7 +107,7 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
         {
             CurrentMaxRadius = 6;
         }
-        if (totalGenerationCounter > 12)
+        if (totalGenerationCounter > 15)
         {
             CurrentMaxRadius = 10;
 
@@ -133,13 +126,9 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
         // TODO think if this line is even useful in this script
         //base.AddTexture(diffusionRequest);
 
-        GameManager.getInstance().gadget.MechanismText.text += " BOR1";
-
         // TODO do I want this to only work if it is grabbed AND the textures get there?
         // TODO if you keep this line, notice at the line below, can be removed there
         if (!diffusionRequest.diffusableObject.grabbed) return false;
-
-        GameManager.getInstance().gadget.MechanismText.text += " BOR2";
 
         // For the Throwing mechanism, after the textures for a certain grabbing have finished generating and downloading,
         // this activates the particles that indicate the end of the generation
@@ -157,8 +146,6 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
         totalGenerationCounter++;
         CurMaxRad();
 
-        GameManager.getInstance().gadget.MechanismText.text += " BOR3";
-
         DiffusionRing newDiffusionRing = new DiffusionRing();
         newDiffusionRing.gameObjects = new List<GameObject>();
         newDiffusionRing.diffusionTextureList = new List<Texture2D>();
@@ -170,8 +157,6 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
         }
         radiusDiffusionRings.Add(newDiffusionRing);
 
-        GameManager.getInstance().gadget.MechanismText.text += " BOR4";
-
         return true;
     }
 
@@ -181,11 +166,7 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
     public void addRadiusGameObjects(DiffusionRing diffusionRing)
     {
         if (GameManager.getInstance() == null) return;
-        if (diffusionRing == null)
-        {
-            GameManager.getInstance().gadget.MechanismText.text += " NULL";
-            return;
-        }
+        if (diffusionRing == null) return;
 
         // Finding all relevant GameObjects inside the DiffusionRing current radius that are not yet in the DiffusionRing gameObjects
         List<GameObject> curRadiusGameObjects = gameObjectsInRadius(diffusionRing.curRadius, diffusionRing.centerPosition);
@@ -195,11 +176,8 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
             if (GO == null) continue;
             if (!diffusionRing.gameObjects.Contains(GO)) {
                 newRadiusGameObjects.Add(GO);
-                GameManager.getInstance().gadget.MechanismText.text += " WHO";
             }
         }
-
-        GameManager.getInstance().gadget.MechanismText.text += " " + newRadiusGameObjects.Count.ToString();
 
         // Adding the textures to the new ring GameObjects
         foreach (GameObject GO in newRadiusGameObjects)
@@ -243,26 +221,17 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
     {
         if (GameManager.getInstance() == null) return;
 
-        // TODO delete this line
-        GameManager.getInstance().gadget.MechanismText.text = collision.transform.position.ToString();
-
         if (radiusDiffusionRings.Count <= 0) return;
         DiffusionRing dr = radiusDiffusionRings[radiusDiffusionRings.Count - 1];
-
-        GameManager.getInstance().gadget.MechanismText.text += " OK1";
 
         if (dr.gameObjects.Count > 0) return;        
 
         dr.centerPosition = collision.transform.position;        
-
-        GameManager.getInstance().gadget.MechanismText.text += " OK2";
         // todo delete, and delete collision in diffusionrequest??
 
         addRadiusGameObjects(dr);
 
         dr.changeTextures = true;
-
-        GameManager.getInstance().gadget.MechanismText.text += " OK3";
     }
        
 }

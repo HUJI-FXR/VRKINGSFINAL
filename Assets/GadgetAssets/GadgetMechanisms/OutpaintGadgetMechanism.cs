@@ -92,10 +92,7 @@ public class OutpaintGadgetMechanism : GadgetMechanism
     // TODO weird potential problem
     // TODO  - solved when right calls above function and then right becomes grabbed?
     public override void DiffusableUnGrabbed(SelectExitEventArgs args)
-    {
-        // TODO delete this return before full build
-        return;
-
+    { 
         if (!ValidInteractableObject(args, true)) return;
         if (args.interactableObject.transform.gameObject != grabbedObject) return;
         grabbedObject = null;
