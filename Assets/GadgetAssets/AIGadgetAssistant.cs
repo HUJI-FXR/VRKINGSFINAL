@@ -62,8 +62,8 @@ public class AIGadgetAssistant : DiffusionTextureChanger
         diffusionRequest.diffusionModel = diffusionModels.ghostmix;
 
         // TODO need to ADD keywords to an existing prompt?
-        diffusionRequest.positivePrompt = DEFAULT_POSITIVE_PROMPT + keywords;
-        diffusionRequest.negativePrompt = DEFAULT_NEGATIVE_PROMPT;
+        diffusionRequest.positivePrompt = DEFAULT_POSITIVE_PROMPT + ", " + keywords;
+        diffusionRequest.negativePrompt += DEFAULT_NEGATIVE_PROMPT;
 
         diffusionRequest.targets.Add(this);
         diffusionRequest.addToTextureTotal = true;

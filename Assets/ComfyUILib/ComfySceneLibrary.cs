@@ -278,7 +278,7 @@ public class ComfySceneLibrary : MonoBehaviour
             case diffusionWorkflows.txt2imgLCM:
                 json["prompt"]["3"]["inputs"]["seed"] = randomSeed;
                 json["prompt"]["6"]["inputs"]["text"] = diffReq.positivePrompt;
-                json["prompt"]["7"]["inputs"]["text"] = diffReq.negativePrompt;
+                json["prompt"]["7"]["inputs"]["text"] += diffReq.negativePrompt;
                 json["prompt"]["5"]["inputs"]["batch_size"] = diffReq.numOfVariations;
 
                 json["prompt"]["4"]["inputs"]["ckpt_name"] = curDiffModel;
@@ -313,7 +313,7 @@ public class ComfySceneLibrary : MonoBehaviour
                 json["prompt"]["3"]["inputs"]["seed"] = randomSeed;
                 json["prompt"]["3"]["inputs"]["denoise"] = diffReq.denoise;
                 json["prompt"]["6"]["inputs"]["text"] = diffReq.positivePrompt;
-                json["prompt"]["7"]["inputs"]["text"] = diffReq.negativePrompt;
+                json["prompt"]["7"]["inputs"]["text"] += diffReq.negativePrompt;
                 json["prompt"]["15"]["inputs"]["amount"] = diffReq.numOfVariations;
 
                 json["prompt"]["4"]["inputs"]["ckpt_name"] = curDiffModel;
@@ -352,7 +352,7 @@ public class ComfySceneLibrary : MonoBehaviour
 
                 json["prompt"]["1"]["inputs"]["ckpt_name"] = curDiffModel;
                 json["prompt"]["2"]["inputs"]["text"] = diffReq.positivePrompt;
-                json["prompt"]["3"]["inputs"]["text"] = diffReq.negativePrompt;
+                json["prompt"]["3"]["inputs"]["text"] += diffReq.negativePrompt;
 
                 json["prompt"]["50"]["inputs"]["amount"] = diffReq.numOfVariations;
                 json["prompt"]["51"]["inputs"]["amount"] = diffReq.numOfVariations;
@@ -373,7 +373,7 @@ public class ComfySceneLibrary : MonoBehaviour
             case diffusionWorkflows.AIAssistant:
                 json["prompt"]["3"]["inputs"]["seed"] = randomSeed;
                 json["prompt"]["6"]["inputs"]["text"] = diffReq.positivePrompt;
-                json["prompt"]["7"]["inputs"]["text"] = diffReq.negativePrompt;
+                json["prompt"]["7"]["inputs"]["text"] += diffReq.negativePrompt;
                 json["prompt"]["5"]["inputs"]["batch_size"] = diffReq.numOfVariations;
 
                 json["prompt"]["4"]["inputs"]["ckpt_name"] = curDiffModel;
