@@ -1815,7 +1815,19 @@ MonoBehaviour:
     value: 0
     eventToCall:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 238379638}
+          m_TargetAssemblyTypeName: ComfyOrganizer, Assembly-CSharp
+          m_MethodName: SendNonTargetWorkflowDiffusionRequest
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: combineImages
+            m_BoolArgument: 0
+          m_CallState: 2
   - index: 2
     TimeToFinishGameAction: 0
     name: get gadget - LainIntro
@@ -1872,6 +1884,17 @@ MonoBehaviour:
             m_BoolArgument: 1
           m_CallState: 2
   IndexToStart: 0
+--- !u!114 &238379638 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1123020247713921374, guid: 6cf941391e6bdbc4abdbed9a86feb39a, type: 3}
+  m_PrefabInstance: {fileID: 238379635}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76a2971b81e6fae4da6b85ea734f8e05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &267228100
 GameObject:
   m_ObjectHideFlags: 0
